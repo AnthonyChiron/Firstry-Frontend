@@ -1,0 +1,17 @@
+@import "../../../styles.scss";
+
+.main {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    align-self: center;
+  }
+
+  .riders {
+    display: flex;
+    width: 80vw;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}

@@ -1,0 +1,11 @@
+@import "../../../styles.scss";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+
+  h1 {
+    align-self: center;
+  }
+}
