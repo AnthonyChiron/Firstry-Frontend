@@ -1,0 +1,15 @@
+@import "../../../styles.scss";
+
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 110px;
+  background-color: $firstry-bg-1;
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}

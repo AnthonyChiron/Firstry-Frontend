@@ -9,9 +9,28 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from './services/UsersService/users.service';
+import { SidebarIconComponent } from './shared/sidebar-icon/sidebar-icon.component';
+import { IconBtnComponent } from './shared/icon-btn/icon-btn.component';
+import { SidebarIconTextComponent } from './shared/sidebar-icon-text/sidebar-icon-text.component';
+import { RidersComponent } from './components/riders/riders.component';
+import { ContestsComponent } from './components/contests/contests.component';
+import { AccueilComponent } from './components/accueil/accueil.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RidersService } from './services/RidersService/riders.service';
+import { RiderCardComponent } from './components/riders/rider-card/rider-card.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    SidebarIconComponent,
+    SidebarIconTextComponent,
+    IconBtnComponent,
+    RidersComponent,
+    ContestsComponent,
+    AccueilComponent,
+    NotFoundComponent,
+    RiderCardComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,7 +40,7 @@ import { UsersService } from './services/UsersService/users.service';
     MatInputModule,
     MatIconModule,
   ],
-  providers: [UsersService],
+  providers: [UsersService, RidersService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
