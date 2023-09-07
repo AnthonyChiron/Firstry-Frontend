@@ -2,14 +2,14 @@ import { UserModel } from './../../models/user.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { BaseHttpService } from '../BaseHttpService/base-http.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CrudService<T> {
-  private baseUrl = 'http://localhost:3000/api/';
-
+export class CrudService<T> extends BaseHttpService {
   constructor(private http: HttpClient, route: String) {
+    super();
     this.baseUrl += route;
     console.log(this.baseUrl);
   }

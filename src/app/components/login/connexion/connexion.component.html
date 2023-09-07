@@ -1,11 +1,26 @@
 <form action="submit()" method="post">
+  <p *ngIf="invalidCredentials">
+    Votre email ou votre mot de passe est incorrect
+  </p>
   <div class="inputForm">
     <label for="email">Email</label>
-    <input type="email" name="email" id="email" />
+    <input
+      [(ngModel)]="credentials.email"
+      placeholder="Entrez votre email..."
+      type="email"
+      name="email"
+      id="email"
+    />
   </div>
   <div class="inputForm">
     <label for="password">Mot de passe</label>
-    <input type="password" name="password" id="password" />
+    <input
+      [(ngModel)]="credentials.password"
+      placeholder="Entrez votre mot de passe..."
+      type="password"
+      name="password"
+      id="password"
+    />
   </div>
   <button (click)="submit()">Connexion</button>
 </form>
