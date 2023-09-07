@@ -1,0 +1,38 @@
+@import "../../../styles.scss";
+
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 200px;
+  background-color: $firstry-black-3;
+  color: white;
+
+  .item {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-bottom: 2px solid $firstry-black-4;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    outline-offset: -12px;
+    height: 50px;
+
+    i {
+      margin-right: 20px;
+    }
+
+    h3 {
+      font-family: "Montserrat";
+    }
+  }
+
+  .item:hover {
+    background-color: $firstry-black-4;
+    transition: 0.2s;
+  }
+}

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SidebarIconTextComponent } from './sidebar-icon-text.component';
+import { SidebarSecondaryComponent } from './sidebar-secondary.component';
 
 describe('SidebarIconTextComponent', () => {
-  let component: SidebarIconTextComponent;
-  let fixture: ComponentFixture<SidebarIconTextComponent>;
+  let component: SidebarSecondaryComponent;
+  let fixture: ComponentFixture<SidebarSecondaryComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SidebarIconTextComponent]
+      declarations: [SidebarSecondaryComponent],
     });
-    fixture = TestBed.createComponent(SidebarIconTextComponent);
+    fixture = TestBed.createComponent(SidebarSecondaryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
