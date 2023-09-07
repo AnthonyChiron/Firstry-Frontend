@@ -1,0 +1,57 @@
+@import "./colors.scss";
+@import "./fonts.scss";
+@import "./border-radius.scss";
+
+button {
+  cursor: pointer;
+  padding: 10px;
+  font-family: "Montserrat";
+  font-variation-settings: "wght" 600;
+  color: $firstry-white-1;
+  background-color: $firstry-black-1;
+  border: transparent;
+  border-radius: $border-radius-1;
+
+  i {
+    margin-right: 5px;
+  }
+}
+
+.primary-btn {
+  color: $firstry-white-1;
+  background-color: $firstry-black-1;
+  border-radius: $border-radius-1;
+  border: 2px solid transparent;
+}
+
+.primary-btn:hover {
+  background-color: $firstry-black-4;
+  transition: 0.3s;
+}
+
+.secondary-btn {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  color: $firstry-black-1;
+  background-color: $firstry-white-1;
+  border-radius: $border-radius-1;
+  border: 2px solid transparent;
+}
+
+.secondary-btn:hover {
+  border: 2px solid $firstry-black-1;
+  transition: 0.5s;
+}
+
+input {
+  padding: 5px;
+  border: 2px solid $firstry-black-1;
+  border-radius: $border-radius-1;
+  font-family: "Montserrat";
+}
+
+.inputForm {
+  display: flex;
+  flex-direction: column;
+}

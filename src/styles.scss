@@ -35,30 +35,9 @@ $firstry-theme: mat.define-light-theme(
 @include mat.all-component-themes($firstry-theme);
 
 /* You can add global styles to this file, and also import other style files */
-
-@font-face {
-  font-family: "Akira";
-  src: url(./assets/fonts/AkiraExpandedDemo.otf) format("opentype");
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url(./assets/fonts/Montserrat-VariableFont_wght.ttf);
-}
-
-$firstry-bg-1: rgb(8, 8, 8);
-$firstry-bg-2: rgb(20, 20, 20);
-$firstry-bg-3: rgb(34, 34, 34);
-$firstry-bg-4: rgb(227, 227, 227);
-$firstry-bg-5: rgb(240, 240, 240);
-
-$firstry-font-1: rgb(255, 255, 255);
-$firstry-font-2: rgb(215, 215, 215);
-$firstry-font-3: rgb(173, 173, 173);
-
-$border-radius-1: 10px;
-$border-radius-2: 12px;
-$border-radius-3: 14px;
+@import "./styles/components.scss";
+@import "./styles/colors.scss";
+@import "./styles/fonts.scss";
 
 html,
 body {
@@ -69,6 +48,7 @@ body {
   margin: 0;
   font-family: "Montserrat";
   font-variation-settings: "wght" 500;
+  background-color: white;
 }
 
 * {
