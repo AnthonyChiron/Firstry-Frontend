@@ -1,6 +1,6 @@
 import { RiderModel } from 'src/app/models/rider.model';
-import { RidersService } from './../../services/RidersService/riders.service';
 import { Component, OnInit } from '@angular/core';
+import { RidersService } from 'src/app/services/data/RidersService/riders.service';
 
 @Component({
   selector: 'riders',

@@ -4,33 +4,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
-import { UsersService } from './services/UsersService/users.service';
 import { SidebarPrimaryComponent } from './shared/sidebar-primary/sidebar-primary.component';
 import { IconBtnComponent } from './shared/icon-btn/icon-btn.component';
-import { SidebarSecondaryComponent } from './shared/sidebar-secondary/sidebar-secondary.component';
-import { ContestsComponent } from './components/contests/contests.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterBtnComponent } from './shared/register-btn/register-btn.component';
-import { LoginComponent } from './components/login/login.component';
-import { ConnexionComponent } from './components/login/connexion/connexion.component';
 import { BtnPrimaryComponent } from './shared/btn-primary/btn-primary.component';
+import { UsersService } from './services/data/UsersService/users.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarPrimaryComponent,
-    SidebarSecondaryComponent,
     IconBtnComponent,
     AccueilComponent,
     NotFoundComponent,
     RegisterBtnComponent,
-    LoginComponent,
-    ConnexionComponent,
     BtnPrimaryComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],

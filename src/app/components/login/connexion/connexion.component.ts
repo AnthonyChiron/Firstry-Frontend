@@ -1,6 +1,6 @@
-import { AuthService } from './../../../services/AuthService/auth.service';
+import { AuthService } from '../../../services/Auth/AuthService/auth.service';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CredentialsModel } from 'src/app/models/credentials.model';
 
 @Component({
@@ -12,12 +12,17 @@ export class ConnexionComponent {
   credentials: CredentialsModel = { email: '', password: '' };
   invalidCredentials: Boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   submit() {
     this.authService.login(this.credentials).subscribe({
       next: (customer) => {
-        this.router.navigate(['/']);
+        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+        this.router.navigate([returnUrl || '/']);
       },
       error: (err) => {
         this.invalidCredentials = true;

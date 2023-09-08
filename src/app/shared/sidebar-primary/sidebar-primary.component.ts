@@ -1,4 +1,4 @@
-import { AuthService } from './../../services/AuthService/auth.service';
+import { AuthService } from '../../services/Auth/AuthService/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { rolesEnum } from 'src/app/constants/rolesEnum';
 
