@@ -28,8 +28,16 @@ const routes: Routes = [
         (m) => m.DashboardModule
       ),
   },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: LoginComponent },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./components/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./components/login/login.module').then((m) => m.LoginModule),
+  },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: '/not-found' },
 ];

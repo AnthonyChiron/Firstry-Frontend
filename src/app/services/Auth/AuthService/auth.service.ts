@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BaseHttpService } from '../BaseHttpService/base-http.service';
+import { BaseHttpService } from '../../data/BaseHttpService/base-http.service';
 import { CredentialsModel } from 'src/app/models/credentials.model';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
