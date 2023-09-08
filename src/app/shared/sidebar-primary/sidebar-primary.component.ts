@@ -1,5 +1,6 @@
-import { Routes } from '@angular/router';
+import { AuthService } from './../../services/AuthService/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { rolesEnum } from 'src/app/constants/rolesEnum';
 
 @Component({
   selector: 'sidebar-primary',
@@ -8,6 +9,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SidebarPrimaryComponent implements OnInit {
   @Input() Routes: { icon: String; path: String }[] = [];
+  rolesEnum = rolesEnum;
+
+  constructor(protected authService: AuthService) {}
 
   ngOnInit(): void {}
 
