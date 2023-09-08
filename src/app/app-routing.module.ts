@@ -9,8 +9,25 @@ import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
-  { path: 'riders', component: RidersComponent },
-  { path: 'contests', component: ContestsComponent },
+  {
+    path: 'riders',
+    loadChildren: () =>
+      import('./components/riders/riders.module').then((m) => m.RidersModule),
+  },
+  {
+    path: 'contests',
+    loadChildren: () =>
+      import('./components/contests/contests.module').then(
+        (m) => m.ContestsModule
+      ),
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./components/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: LoginComponent },
   { path: 'not-found', component: NotFoundComponent },
