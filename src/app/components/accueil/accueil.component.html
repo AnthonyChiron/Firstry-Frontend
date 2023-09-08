@@ -1,3 +1,8 @@
 <p class="title">ACCUEIL</p>
 
-<register-btn></register-btn>
+<app-btn-primary
+  *ngIf="authService.isLoggedIn()"
+  (click)="logout()"
+  [content]="'Se déconnecté'"
+  [icon]="'person-running'"
+></app-btn-primary>

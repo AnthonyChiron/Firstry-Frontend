@@ -1,10 +1,21 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../../services/AuthService/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
-  styleUrls: ['./accueil.component.scss']
+  styleUrls: ['./accueil.component.scss'],
 })
 export class AccueilComponent {
+  constructor(protected authService: AuthService, private router: Router) {}
 
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['./register']);
+  }
+
+  isLoggedIn() {
+    this.authService.isLoggedIn();
+  }
 }

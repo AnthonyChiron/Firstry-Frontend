@@ -21,6 +21,12 @@ import { RiderCardComponent } from './components/riders/rider-card/rider-card.co
 import { RegisterBtnComponent } from './shared/register-btn/register-btn.component';
 import { LoginComponent } from './components/login/login.component';
 import { ConnexionComponent } from './components/login/connexion/connexion.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { BtnPrimaryComponent } from './shared/btn-primary/btn-primary.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -36,6 +42,7 @@ import { ConnexionComponent } from './components/login/connexion/connexion.compo
     RegisterBtnComponent,
     LoginComponent,
     ConnexionComponent,
+    BtnPrimaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +52,12 @@ import { ConnexionComponent } from './components/login/connexion/connexion.compo
     HttpClientModule,
     MatInputModule,
     MatIconModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:4200'], // remplacez par votre domaine
+      },
+    }),
   ],
   providers: [UsersService, RidersService],
   bootstrap: [AppComponent],

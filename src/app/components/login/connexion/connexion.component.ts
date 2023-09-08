@@ -15,7 +15,6 @@ export class ConnexionComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   submit() {
-    console.log(this.credentials);
     this.authService.login(this.credentials).subscribe({
       next: (customer) => {
         this.router.navigate(['/']);
