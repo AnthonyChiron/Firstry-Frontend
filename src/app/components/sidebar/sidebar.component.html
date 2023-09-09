@@ -1,38 +1,54 @@
-<nav class="navbar">
+<nav class="navbar" [class.active]="toggleMenu">
   <div class="menu-toggle" id="mobile-menu" (click)="toggleMenu = !toggleMenu">
     <i class="fa-solid fa-xl fa-bars"></i>
   </div>
-  <ul class="nav-list" [class.active]="toggleMenu">
-    <li><img routerLink="/" src="../../../assets/logos/Globe_Blanc.png" /></li>
-    <li>
-      <app-icon-btn
-        *ngIf="screenSizeService.isMobile"
-        [icon]="'user'"
-        routerLink="/riders"
-      ></app-icon-btn>
-    </li>
-    <li>
-      <app-icon-btn [icon]="'trophy'" routerLink="/contests"></app-icon-btn>
-    </li>
-    <li>
-      <app-icon-btn
-        *ngIf="
-          authService.isLoggedIn() &&
-          authService.currentUser.role == rolesEnum.CONSTEST
-        "
-        [icon]="'gear'"
-        routerLink="/dashboard"
-      ></app-icon-btn>
-    </li>
-    <li>
-      <app-icon-btn
-        *ngIf="!authService.isLoggedIn()"
-        [icon]="'sign-in'"
-        (click)="showModal = true"
-      ></app-icon-btn>
-    </li>
+  <ul class="nav-list">
+    <div class="main">
+      <li routerLink="/">
+        <img
+          *ngIf="!screenSizeService.isMobile"
+          src="../../../assets/logos/Globe_Blanc.png"
+        />
+        <a class="nav-btn">ACCUEIL</a>
+      </li>
+      <li routerLink="/riders">
+        <nav-icon-btn
+          *ngIf="!screenSizeService.isMobile"
+          [icon]="'user'"
+        ></nav-icon-btn>
+        <a class="nav-btn">RIDERS</a>
+      </li>
+      <li routerLink="/contests">
+        <nav-icon-btn
+          *ngIf="!screenSizeService.isMobile"
+          [icon]="'trophy'"
+        ></nav-icon-btn>
+        <a class="nav-btn">CONTESTS</a>
+      </li>
+      <li routerLink="/dashboard">
+        <nav-icon-btn
+          *ngIf="
+            !screenSizeService.isMobile &&
+            authService.isLoggedIn() &&
+            authService.currentUser.role == rolesEnum.CONSTEST
+          "
+          [icon]="'gear'"
+        ></nav-icon-btn>
+        <a class="nav-btn">DASHBOARD</a>
+      </li>
+    </div>
+    <div class="connexion">
+      <li (click)="showLoginModal = true">
+        <nav-icon-btn
+          *ngIf="!authService.isLoggedIn()"
+          [type]="'primary'"
+          [icon]="'user'"
+        ></nav-icon-btn>
+        <!-- <a class="nav-btn">CONNEXION</a> -->
+      </li>
+    </div>
   </ul>
 </nav>
-<app-modal [show]="showModal" (onClose)="closeModal()"
+<app-modal [show]="showLoginModal" (onClose)="closeModal()"
   ><app-login></app-login>
 </app-modal>

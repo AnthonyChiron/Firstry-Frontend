@@ -17,7 +17,7 @@ import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-siz
 })
 export class SidebarComponent {
   rolesEnum = rolesEnum;
-  showModal = true;
+  showLoginModal = false;
   toggleMenu = true;
 
   constructor(
@@ -26,10 +26,6 @@ export class SidebarComponent {
   ) {}
 
   closeModal() {
-    this.showModal = false;
-  }
-
-  display(log: String) {
-    console.log(log);
+    this.showLoginModal = false;
   }
 }
