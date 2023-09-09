@@ -4,26 +4,29 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { SidebarPrimaryComponent } from './shared/sidebar-primary/sidebar-primary.component';
-import { IconBtnComponent } from './shared/icon-btn/icon-btn.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { RegisterBtnComponent } from './shared/register-btn/register-btn.component';
-import { BtnPrimaryComponent } from './shared/btn-primary/btn-primary.component';
 import { UsersService } from './services/data/UsersService/users.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { LoginModule } from './components/login/login.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarPrimaryComponent,
-    IconBtnComponent,
     AccueilComponent,
     NotFoundComponent,
-    RegisterBtnComponent,
-    BtnPrimaryComponent,
+    SidebarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    SharedModule,
+    LoginModule,
+  ],
   providers: [UsersService],
   bootstrap: [AppComponent],
 })

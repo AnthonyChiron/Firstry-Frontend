@@ -1,17 +1,22 @@
-import { AuthService } from '../../services/Auth/AuthService/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { rolesEnum } from 'src/app/constants/rolesEnum';
+import { AuthService } from 'src/app/services/auth/AuthService/auth.service';
 
 @Component({
-  selector: 'sidebar-primary',
-  templateUrl: './sidebar-primary.component.html',
-  styleUrls: ['./sidebar-primary.component.scss'],
+  selector: 'sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarPrimaryComponent implements OnInit {
+export class SidebarComponent implements OnInit {
   @Input() Routes: { icon: String; path: String }[] = [];
   rolesEnum = rolesEnum;
+  showModal = true;
 
   constructor(protected authService: AuthService) {}
+
+  closeModal() {
+    this.showModal = false;
+  }
 
   ngOnInit(): void {}
 

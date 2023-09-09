@@ -1,0 +1,30 @@
+:host {
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 100%;
+
+  .tabs {
+    display: flex;
+    flex-direction: column;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+
+      li {
+        list-style: none;
+        cursor: pointer;
+        font-size: 20px;
+        font-variation-settings: "wght" 500;
+        border-bottom: 2px solid transparent;
+      }
+
+      .active {
+        font-variation-settings: "wght" 800;
+        transition: 0.5s;
+        border-bottom: 2px solid black;
+      }
+    }
+  }
+}
