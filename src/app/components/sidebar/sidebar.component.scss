@@ -1,17 +1,75 @@
 @import "../../../styles.scss";
 
 .sideBar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  width: 110px;
-  background-color: $firstry-black-1;
+  /* Styles communs */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px;
+  }
+
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+  }
+
+  .nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+}
+
+/* Styles pour mobile */
+@media only screen and (max-width: 768px) {
+  .nav-list {
+    width: 0vw;
+    text-align: center;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: $firstry-black-1;
+    flex-direction: column;
+    transition: 0.5s;
+  }
+
+  .nav-list.active {
+    width: 50vw;
+  }
+
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    padding: 20px;
+  }
 
   img {
-    margin-top: 10px;
-    width: 70px;
-    mix-blend-mode: exclusion;
-    cursor: pointer;
+    height: 5vh;
+  }
+}
+
+/* Styles pour PC */
+@media only screen and (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 110px;
+    background-color: $firstry-black-1;
+
+    img {
+      margin-top: 10px;
+      width: 70px;
+      mix-blend-mode: exclusion;
+      cursor: pointer;
+    }
   }
 }

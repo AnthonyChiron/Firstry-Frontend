@@ -1,25 +1,38 @@
-<div class="sideBar">
-  <img routerLink="/" src="../../../assets/logos/Globe_Blanc.png" />
-  <app-icon-btn
-    [icon]="'user'"
-    routerLink="/riders"
-    (click)="display('test')"
-  ></app-icon-btn>
-  <app-icon-btn [icon]="'trophy'" routerLink="/contests"></app-icon-btn>
-  <app-icon-btn
-    *ngIf="
-      authService.isLoggedIn() &&
-      authService.currentUser.role == rolesEnum.CONSTEST
-    "
-    [icon]="'gear'"
-    routerLink="/dashboard"
-  ></app-icon-btn>
-  <app-icon-btn
-    *ngIf="!authService.isLoggedIn()"
-    [icon]="'sign-in'"
-    (click)="showModal = true"
-  ></app-icon-btn>
-</div>
+<nav class="navbar">
+  <div class="menu-toggle" id="mobile-menu" (click)="toggleMenu = !toggleMenu">
+    <i class="fa-solid fa-xl fa-bars"></i>
+  </div>
+  <ul class="nav-list" [class.active]="toggleMenu">
+    <li><img routerLink="/" src="../../../assets/logos/Globe_Blanc.png" /></li>
+    <li>
+      <app-icon-btn
+        *ngIf="screenSizeService.isMobile"
+        [icon]="'user'"
+        routerLink="/riders"
+      ></app-icon-btn>
+    </li>
+    <li>
+      <app-icon-btn [icon]="'trophy'" routerLink="/contests"></app-icon-btn>
+    </li>
+    <li>
+      <app-icon-btn
+        *ngIf="
+          authService.isLoggedIn() &&
+          authService.currentUser.role == rolesEnum.CONSTEST
+        "
+        [icon]="'gear'"
+        routerLink="/dashboard"
+      ></app-icon-btn>
+    </li>
+    <li>
+      <app-icon-btn
+        *ngIf="!authService.isLoggedIn()"
+        [icon]="'sign-in'"
+        (click)="showModal = true"
+      ></app-icon-btn>
+    </li>
+  </ul>
+</nav>
 <app-modal [show]="showModal" (onClose)="closeModal()"
   ><app-login></app-login>
 </app-modal>

@@ -1,8 +1,8 @@
-import { RegisterUserService } from './../../../services/data/RegisterUserService/register-user.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RegisterModel } from 'src/app/models/register.model';
 import { rolesEnum } from 'src/app/constants/rolesEnum';
+import { RegisterUserService } from 'src/app/shared/data/RegisterUserService/register-user.service';
 
 @Component({
   selector: 'app-register',
