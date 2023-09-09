@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { RidersComponent } from './components/riders/riders.component';
-import { ContestsComponent } from './components/contests/contests.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
-import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },

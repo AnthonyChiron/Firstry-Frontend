@@ -1,0 +1,27 @@
+@import "./colors.scss";
+@import "./fonts.scss";
+@import "./border-radius.scss";
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .inputForm {
+    width: 100%;
+
+    label {
+      font-variation-settings: "wght" 600;
+      margin-bottom: 0.5vh;
+    }
+
+    input {
+      margin-bottom: 2vh;
+    }
+  }
+
+  button {
+    align-self: end;
+  }
+}

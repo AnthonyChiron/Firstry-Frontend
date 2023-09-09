@@ -1,0 +1,12 @@
+<div class="popup" *ngIf="show" @fadeInOut>
+  <div class="popup-content">
+    <div class="header">
+      <span class="close" (click)="close()"
+        ><i class="fa-solid fa-xl fa-close"></i
+      ></span>
+    </div>
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

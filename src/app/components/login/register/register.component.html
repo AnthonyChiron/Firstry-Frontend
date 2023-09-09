@@ -1,0 +1,44 @@
+<form action="submit()" method="post">
+  <p *ngIf="invalidCredentials">
+    Votre email ou votre mot de passe est incorrect
+  </p>
+  <div class="inputForm">
+    <label for="email">Email</label>
+    <input
+      [(ngModel)]="registerModel.email"
+      placeholder="Entrez votre email..."
+      type="email"
+      name="email"
+      id="email"
+    />
+  </div>
+  <div class="inputForm">
+    <label for="password">Mot de passe</label>
+    <input
+      [(ngModel)]="registerModel.password"
+      placeholder="Entrez votre mot de passe..."
+      type="password"
+      name="password"
+      id="password"
+    />
+    <input
+      placeholder="Confirmez votre mot de passe..."
+      type="password"
+      name="password"
+      id="password"
+    />
+  </div>
+  <div class="inputForm">
+    <label for="role">Je suis</label>
+    <mat-chip-listbox
+      id="role"
+      name="role"
+      aria-label="role"
+      [(ngModel)]="registerModel.role"
+    >
+      <mat-chip-option value="contest">Contest</mat-chip-option>
+      <mat-chip-option value="rider">Rider</mat-chip-option>
+    </mat-chip-listbox>
+  </div>
+  <button (click)="submit()">Connexion</button>
+</form>

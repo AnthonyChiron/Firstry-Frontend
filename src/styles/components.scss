@@ -20,7 +20,7 @@ button {
 .primary-btn {
   color: $firstry-white-1;
   background-color: $firstry-black-1;
-  border-radius: $border-radius-1;
+  border-radius: $border-radius-3;
   border: 2px solid transparent;
 }
 
@@ -35,7 +35,7 @@ button {
   -webkit-box-sizing: border-box;
   color: $firstry-black-1;
   background-color: $firstry-white-1;
-  border-radius: $border-radius-1;
+  border-radius: $border-radius-3;
   border: 2px solid transparent;
 }
 
@@ -47,7 +47,7 @@ button {
 input {
   padding: 5px;
   border: 2px solid $firstry-black-1;
-  border-radius: $border-radius-1;
+  border-radius: $border-radius-3;
   font-family: "Montserrat";
 }
 
