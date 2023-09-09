@@ -1,16 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-icon-btn',
+  selector: 'nav-icon-btn',
   template: `
-    <button>
+    <button class="{{ type }}">
       <i class="fa-solid fa-2xl {{ class }}"></i>
     </button>
   `,
-  styleUrls: ['./icon-btn.component.scss'],
+  styleUrls: ['./nav-icon-btn.component.scss'],
 })
-export class IconBtnComponent implements OnInit {
+export class NavIconBtnComponent implements OnInit {
   @Input() icon: String = 'home';
+  @Input() type: String = 'primary';
   class: String[] = [];
 
   constructor() {}

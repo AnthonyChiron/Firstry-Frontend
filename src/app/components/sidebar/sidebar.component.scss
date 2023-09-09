@@ -1,53 +1,82 @@
 @import "../../../styles.scss";
 
-.sideBar {
-  /* Styles communs */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    background-color: #333;
-    padding: 10px;
-  }
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 0vw;
+  background-color: $firstry-black-1;
+  height: 100vh;
+  transition: 0.5s;
+}
 
-  .nav-link {
-    color: white;
-    text-decoration: none;
-    padding: 15px;
-  }
-
-  .nav-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 /* Styles pour mobile */
 @media only screen and (max-width: 768px) {
-  .nav-list {
-    width: 0vw;
-    text-align: center;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: $firstry-black-1;
-    flex-direction: column;
-    transition: 0.5s;
-  }
-
-  .nav-list.active {
-    width: 50vw;
-  }
-
   .menu-toggle {
-    display: block;
     cursor: pointer;
     padding: 20px;
+    color: $firstry-black-1;
   }
 
-  img {
-    height: 5vh;
+  .nav-list {
+    .main {
+      justify-self: start;
+      margin-bottom: 30vh;
+    }
+
+    .connexion {
+      justify-self: self-end;
+    }
+
+    li {
+      border-bottom: 1px solid transparent;
+      margin-bottom: 5vh;
+
+      .nav-btn {
+        color: transparent;
+        text-decoration: none;
+        font-size: 20px;
+        font-family: "Akira";
+      }
+    }
+
+    nav-icon-btn {
+      opacity: 0;
+      transition: 0.2s;
+      transition-delay: 0.2s;
+    }
+  }
+
+  .navbar.active {
+    width: 50vw;
+
+    .menu-toggle {
+      color: $firstry-white-1;
+    }
+
+    li {
+      transition: 0.2s;
+      border-bottom: 1px solid $firstry-white-1;
+
+      .nav-btn {
+        color: $firstry-white-1;
+      }
+    }
+
+    .connexion > li {
+      border: none;
+    }
+
+    nav-icon-btn {
+      opacity: 1;
+    }
   }
 }
 
