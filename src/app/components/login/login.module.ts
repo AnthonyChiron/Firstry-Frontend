@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ConnexionComponent } from './connexion/connexion.component';
 import { FormsModule } from '@angular/forms';
-import { RegisterComponent } from './register/register.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ConnexionComponent } from './connexion/connexion.component';
+import { RegisterComponent } from './register/register.component';
 
 const loginRoutes: Routes = [{ path: '', component: LoginComponent }];
 

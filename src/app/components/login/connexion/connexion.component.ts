@@ -1,7 +1,7 @@
-import { AuthService } from '../../../services/auth/AuthService/auth.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CredentialsModel } from 'src/app/models/credentials.model';
+import { AuthService } from 'src/app/shared/auth/AuthService/auth.service';
 
 @Component({
   selector: 'app-connexion',

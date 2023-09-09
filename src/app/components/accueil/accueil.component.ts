@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/services/auth/AuthService/auth.service';
+import { AuthService } from 'src/app/shared/auth/AuthService/auth.service';
 
 @Component({
   selector: 'app-accueil',

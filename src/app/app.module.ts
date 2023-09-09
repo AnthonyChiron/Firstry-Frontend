@@ -6,11 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { UsersService } from './services/data/UsersService/users.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginModule } from './components/login/login.module';
+import { UsersService } from './shared/data/UsersService/users.service';
+import { ScreenSizeService } from './shared/services/screenSize/screen-size.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { LoginModule } from './components/login/login.module';
     SharedModule,
     LoginModule,
   ],
-  providers: [UsersService],
+  providers: [UsersService, ScreenSizeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

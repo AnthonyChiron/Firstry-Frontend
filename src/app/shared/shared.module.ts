@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalComponent } from './modal/modal.component';
-import { TabComponent } from './tab/tab.component';
-import { TabsComponent } from './tabs/tabs.component';
-import { IconBtnComponent } from './icon-btn/icon-btn.component';
-import { BtnPrimaryComponent } from './btn-primary/btn-primary.component';
+import { IconBtnComponent } from './components/icon-btn/icon-btn.component';
+import { BtnPrimaryComponent } from './components/btn-primary/btn-primary.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { TabComponent } from './components/tab/tab.component';
+import { TabsComponent } from './components/tabs/tabs.component';
+import { ScreenSizeService } from './services/screenSize/screen-size.service';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { BtnPrimaryComponent } from './btn-primary/btn-primary.component';
     BtnPrimaryComponent,
   ],
   imports: [CommonModule],
+  providers: [ScreenSizeService],
   exports: [
     ModalComponent,
     TabComponent,
