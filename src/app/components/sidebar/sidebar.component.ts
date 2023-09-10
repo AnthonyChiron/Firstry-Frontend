@@ -23,7 +23,9 @@ export class SidebarComponent {
   constructor(
     protected authService: AuthService,
     protected screenSizeService: ScreenSizeService
-  ) {}
+  ) {
+    if (screenSizeService.isDesktop) this.toggleMenu = true;
+  }
 
   closeModal() {
     this.showLoginModal = false;

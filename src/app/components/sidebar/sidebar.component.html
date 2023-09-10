@@ -2,54 +2,45 @@
   <div class="menu-toggle" id="mobile-menu" (click)="toggleMenu = !toggleMenu">
     <i class="fa-solid fa-xl fa-bars"></i>
   </div>
-  <ul class="nav-list" *ngIf="toggleMenu" (click)="toggleMenu = !toggleMenu">
+  <ul class="nav-list">
     <div class="main">
-      <li routerLink="/">
-        <img
-          *ngIf="!screenSizeService.isMobile"
-          src="../../../assets/logos/Globe_Blanc.png"
-        />
-        <a class="nav-btn">ACCUEIL</a>
+      <li>
+        <a routerLink="/" (click)="toggleMenu = !toggleMenu">ACCUEIL</a>
       </li>
-      <li routerLink="/riders">
-        <nav-icon-btn
-          *ngIf="screenSizeService.isDesktop"
-          [icon]="'user'"
-          [type]="'secondary'"
-        ></nav-icon-btn>
-        <a class="nav-btn">RIDERS</a>
+      <li>
+        <a routerLink="/riders" (click)="toggleMenu = !toggleMenu">RIDERS</a>
       </li>
-      <li routerLink="/contests">
-        <nav-icon-btn
-          *ngIf="screenSizeService.isDesktop"
-          [icon]="'trophy'"
-          [type]="'secondary'"
-        ></nav-icon-btn>
-        <a class="nav-btn">CONTESTS</a>
+      <li>
+        <a routerLink="/contests" (click)="toggleMenu = !toggleMenu"
+          >CONTESTS</a
+        >
       </li>
-      <li routerLink="/dashboard">
-        <nav-icon-btn
-          *ngIf="
-            screenSizeService.isDesktop &&
-            authService.isLoggedIn() &&
-            authService.currentUser.role == rolesEnum.CONSTEST
-          "
-          [icon]="'gear'"
-          [type]="'secondary'"
-        ></nav-icon-btn>
-        <a class="nav-btn">DASHBOARD</a>
+      <li>
+        <a routerLink="/dashboard" (click)="toggleMenu = !toggleMenu"
+          >DASHBOARD</a
+        >
       </li>
     </div>
-    <div class="connexion" *ngIf="screenSizeService.isMobile">
-      <li (click)="showLoginModal = true">
-        <a class="primary-btn connexion" *ngIf="!authService.isLoggedIn()"
-          >CONNEXION</a
+    <div class="connexion">
+      <li>
+        <div
+          class="primary-btn connexion"
+          (click)="toggleMenu = !toggleMenu"
+          routerLink="/login"
+          *ngIf="!authService.isLoggedIn()"
         >
+          CONNEXION
+        </div>
       </li>
-      <li (click)="showLoginModal = true">
-        <a class="secondary-btn connexion" *ngIf="!authService.isLoggedIn()"
-          >INSCRIPTION</a
+      <li>
+        <div
+          class="secondary-btn connexion"
+          (click)="toggleMenu = !toggleMenu"
+          routerLink="/register"
+          *ngIf="!authService.isLoggedIn()"
         >
+          INSCRIPTION
+        </div>
       </li>
     </div>
     <div class="account" *ngIf="authService.isLoggedIn()">
