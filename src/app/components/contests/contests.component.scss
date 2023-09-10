@@ -1,11 +1,14 @@
-@import "../../../styles.scss";
+@import "../../../styles/components.scss";
 
 .main {
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 100vw;
 
   h1 {
+    height: 5vh;
+
     align-self: center;
+    justify-content: center;
   }
 }

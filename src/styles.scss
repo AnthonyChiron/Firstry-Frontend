@@ -69,11 +69,6 @@ $firstry-theme: mat.define-light-theme(
 @include mat.all-component-themes($firstry-theme);
 
 /* You can add global styles to this file, and also import other style files */
-@import "./styles/components.scss";
-@import "./styles/colors.scss";
-@import "./styles/fonts.scss";
-@import "./styles/text.scss";
-@import "./styles/form.scss";
 
 html,
 body {
@@ -94,6 +89,5 @@ body {
 
 .title {
   margin: 2vh;
-  font-size: 75px;
   font-family: "Akira";
 }

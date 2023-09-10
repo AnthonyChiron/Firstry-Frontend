@@ -18,10 +18,11 @@ button {
 }
 
 .primary-btn {
+  padding: 10px;
   color: $firstry-white-1;
   background-color: $firstry-black-1;
   border-radius: $border-radius-3;
-  border: 2px solid transparent;
+  border: 1px solid $firstry-white-1;
 }
 
 .primary-btn:hover {
@@ -30,23 +31,24 @@ button {
 }
 
 .secondary-btn {
+  padding: 10px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   color: $firstry-black-1;
   background-color: $firstry-white-1;
   border-radius: $border-radius-3;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
 }
 
 .secondary-btn:hover {
-  border: 2px solid $firstry-black-1;
+  border: 1px solid $firstry-black-1;
   transition: 0.5s;
 }
 
 input {
   padding: 5px;
-  border: 2px solid $firstry-black-1;
+  border: 1.5px solid $firstry-white-3;
   border-radius: $border-radius-3;
   font-family: "Montserrat";
 }
