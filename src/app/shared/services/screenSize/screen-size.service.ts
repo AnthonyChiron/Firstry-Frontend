@@ -5,6 +5,7 @@ import { Injectable, EventEmitter, OnDestroy } from '@angular/core';
 })
 export class ScreenSizeService implements OnDestroy {
   public isMobile: boolean = false;
+  public isDesktop: boolean = !this.isMobile;
   public sizeChanged: EventEmitter<boolean> = new EventEmitter();
   private resizeListener: () => void;
 
@@ -27,6 +28,7 @@ export class ScreenSizeService implements OnDestroy {
 
     if (isMobile !== this.isMobile) {
       this.isMobile = isMobile;
+      this.isDesktop = !this.isMobile;
       this.sizeChanged.emit(this.isMobile);
     }
   }

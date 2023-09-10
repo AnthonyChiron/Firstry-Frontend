@@ -2,7 +2,7 @@
   <div class="menu-toggle" id="mobile-menu" (click)="toggleMenu = !toggleMenu">
     <i class="fa-solid fa-xl fa-bars"></i>
   </div>
-  <ul class="nav-list">
+  <ul class="nav-list" *ngIf="toggleMenu" (click)="toggleMenu = !toggleMenu">
     <div class="main">
       <li routerLink="/">
         <img
@@ -13,39 +13,47 @@
       </li>
       <li routerLink="/riders">
         <nav-icon-btn
-          *ngIf="!screenSizeService.isMobile"
+          *ngIf="screenSizeService.isDesktop"
           [icon]="'user'"
+          [type]="'secondary'"
         ></nav-icon-btn>
         <a class="nav-btn">RIDERS</a>
       </li>
       <li routerLink="/contests">
         <nav-icon-btn
-          *ngIf="!screenSizeService.isMobile"
+          *ngIf="screenSizeService.isDesktop"
           [icon]="'trophy'"
+          [type]="'secondary'"
         ></nav-icon-btn>
         <a class="nav-btn">CONTESTS</a>
       </li>
       <li routerLink="/dashboard">
         <nav-icon-btn
           *ngIf="
-            !screenSizeService.isMobile &&
+            screenSizeService.isDesktop &&
             authService.isLoggedIn() &&
             authService.currentUser.role == rolesEnum.CONSTEST
           "
           [icon]="'gear'"
+          [type]="'secondary'"
         ></nav-icon-btn>
         <a class="nav-btn">DASHBOARD</a>
       </li>
     </div>
-    <div class="connexion">
+    <div class="connexion" *ngIf="screenSizeService.isMobile">
       <li (click)="showLoginModal = true">
-        <nav-icon-btn
-          *ngIf="!authService.isLoggedIn()"
-          [type]="'primary'"
-          [icon]="'user'"
-        ></nav-icon-btn>
-        <!-- <a class="nav-btn">CONNEXION</a> -->
+        <a class="primary-btn connexion" *ngIf="!authService.isLoggedIn()"
+          >CONNEXION</a
+        >
       </li>
+      <li (click)="showLoginModal = true">
+        <a class="secondary-btn connexion" *ngIf="!authService.isLoggedIn()"
+          >INSCRIPTION</a
+        >
+      </li>
+    </div>
+    <div class="account" *ngIf="authService.isLoggedIn()">
+      <a>ACCOUNT</a>
     </div>
   </ul>
 </nav>

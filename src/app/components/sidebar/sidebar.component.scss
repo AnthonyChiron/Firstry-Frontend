@@ -1,20 +1,27 @@
-@import "../../../styles.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/components.scss";
 
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 0vw;
   background-color: $firstry-black-1;
   height: 100vh;
   transition: 0.5s;
+  z-index: 12;
 }
 
 .nav-list {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100%;
+  justify-content: space-between;
+  padding-top: 5vh;
+  height: 85vh;
+}
+
+.account {
+  color: white;
 }
 
 /* Styles pour mobile */
@@ -26,15 +33,6 @@
   }
 
   .nav-list {
-    .main {
-      justify-self: start;
-      margin-bottom: 30vh;
-    }
-
-    .connexion {
-      justify-self: self-end;
-    }
-
     li {
       border-bottom: 1px solid transparent;
       margin-bottom: 5vh;
@@ -45,12 +43,6 @@
         font-size: 20px;
         font-family: "Akira";
       }
-    }
-
-    nav-icon-btn {
-      opacity: 0;
-      transition: 0.2s;
-      transition-delay: 0.2s;
     }
   }
 
@@ -68,14 +60,10 @@
       .nav-btn {
         color: $firstry-white-1;
       }
-    }
 
-    .connexion > li {
-      border: none;
-    }
-
-    nav-icon-btn {
-      opacity: 1;
+      .connexion {
+        transition: 1.2s;
+      }
     }
   }
 }
