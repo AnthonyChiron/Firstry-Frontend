@@ -1,4 +1,9 @@
 import { Injectable, EventEmitter, OnDestroy } from '@angular/core';
+import {
+  ActivatedRouteSnapshot,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +14,7 @@ export class ScreenSizeService implements OnDestroy {
   public sizeChanged: EventEmitter<boolean> = new EventEmitter();
   private resizeListener: () => void;
 
-  constructor() {
+  constructor(public router: Router) {
     this.checkScreenSize();
 
     this.resizeListener = () => {

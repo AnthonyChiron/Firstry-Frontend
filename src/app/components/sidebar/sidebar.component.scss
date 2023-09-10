@@ -1,47 +1,57 @@
 @import "../../../styles/colors.scss";
 @import "../../../styles/components.scss";
 
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 0vw;
-  background-color: $firstry-black-1;
-  height: 100vh;
-  transition: 0.5s;
-  z-index: 12;
-}
-
-.nav-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 5vh;
-  height: 85vh;
-}
-
-.account {
-  color: white;
-}
-
-/* Styles pour mobile */
 @media only screen and (max-width: 768px) {
-  .menu-toggle {
-    cursor: pointer;
-    padding: 20px;
-    color: $firstry-black-1;
-  }
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 0vw;
+    background-color: $firstry-black-1;
+    height: 100vh;
+    transition: 0.5s;
+    z-index: 999;
 
-  .nav-list {
-    li {
-      border-bottom: 1px solid transparent;
-      margin-bottom: 5vh;
+    .menu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 6vh;
+      width: 6vh;
+      color: $firstry-black-1;
+      transition: 0.3s;
+    }
 
-      .nav-btn {
-        color: transparent;
-        text-decoration: none;
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 5vh;
+      height: 85vh;
+      transition: 0.5s;
+
+      li {
+        z-index: -999;
+        border-bottom: 1px solid transparent;
+        margin-bottom: 5vh;
         font-size: 20px;
         font-family: "Akira";
+        margin-right: 50vw;
+        transition: 0.5s;
+
+        a {
+          color: transparent;
+          text-decoration: none;
+          transition: 0.5s;
+        }
+      }
+
+      .connexion {
+        li {
+          border: none;
+          font-family: "Montserrat";
+          font-size: 15px;
+        }
       }
     }
   }
@@ -51,42 +61,31 @@
 
     .menu-toggle {
       color: $firstry-white-1;
+
+      img {
+        display: block;
+        opacity: 1;
+      }
     }
 
-    li {
-      transition: 0.2s;
-      border-bottom: 1px solid $firstry-white-1;
+    .nav-list {
+      z-index: 999;
+      li {
+        margin-right: 0px;
+        border-bottom: 1px solid $firstry-white-1;
 
-      .nav-btn {
-        color: $firstry-white-1;
+        a {
+          color: $firstry-white-1;
+        }
       }
 
       .connexion {
-        transition: 1.2s;
+        li {
+          border: none;
+          font-family: "Montserrat";
+          font-size: 15px;
+        }
       }
-    }
-  }
-}
-
-/* Styles pour PC */
-@media only screen and (min-width: 769px) {
-  .menu-toggle {
-    display: none;
-  }
-
-  .nav-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    width: 110px;
-    background-color: $firstry-black-1;
-
-    img {
-      margin-top: 10px;
-      width: 70px;
-      mix-blend-mode: exclusion;
-      cursor: pointer;
     }
   }
 }

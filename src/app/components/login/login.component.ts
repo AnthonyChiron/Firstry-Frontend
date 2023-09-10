@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,7 +7,13 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor() {}
+  isLogin: boolean = false;
+  isRegister: boolean = false;
+
+  constructor(private route: Router) {
+    if (route.url.includes('login')) this.isLogin = true;
+    else this.isRegister = true;
+  }
 
   closeModal() {}
 }

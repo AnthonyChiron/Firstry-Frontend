@@ -10,9 +10,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TabComponent implements OnInit {
   @Input() title: string = '';
+  @Input() onInitActivation: boolean = false;
   public active: boolean = false;
 
   ngOnInit() {
-    this.active = false;
+    this.active = this.onInitActivation;
   }
 }
