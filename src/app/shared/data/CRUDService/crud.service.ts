@@ -7,7 +7,7 @@ import { BaseHttpService } from '../BaseHttpService/base-http.service';
   providedIn: 'root',
 })
 export class CrudService<T> extends BaseHttpService {
-  constructor(private http: HttpClient, route: String) {
+  constructor(protected http: HttpClient, route: String) {
     super();
     this.baseUrl += route;
     console.log(this.baseUrl);

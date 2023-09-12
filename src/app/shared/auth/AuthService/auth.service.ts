@@ -33,9 +33,9 @@ export class AuthService {
           };
           this.usersService.create(newUser).subscribe({
             next: (user) => {
-              console.log(user);
+              localStorage.setItem('currentUser', JSON.stringify(user));
             },
-            error: (err: firebase.FirebaseError) => {
+            error: (err) => {
               console.log(err);
             },
           });
@@ -45,7 +45,9 @@ export class AuthService {
   }
 
   getCurrentUser() {
-    return getAuth().currentUser;
+    if (getAuth().currentUser)
+      return JSON.parse(localStorage.getItem('currentUser'));
+    else return getAuth().currentUser;
   }
 
   isLoggedIn() {
@@ -60,10 +62,16 @@ export class AuthService {
         credentials.email,
         credentials.password
       )
-        .then((userCredential) => {
+        .then(({ user }) => {
           // Signed in
-          const user = userCredential.user;
-          console.log(userCredential);
+          this.usersService.getByGoogleId(user.uid).subscribe({
+            next: (user) => {
+              localStorage.setItem('currentUser', JSON.stringify(user));
+            },
+            error: (err) => {
+              console.log(err);
+            },
+          });
           // ...
         })
         .catch((error) => {
@@ -79,6 +87,8 @@ export class AuthService {
   }
 
   logout() {
-    return this.auth.signOut();
+    return this.auth
+      .signOut()
+      .then(() => localStorage.removeItem('currentUser'));
   }
 }

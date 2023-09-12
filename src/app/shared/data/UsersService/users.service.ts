@@ -11,5 +11,8 @@ export class UsersService extends CrudService<UserModel> {
     super(http, 'users');
   }
 
-  register() {}
+  getByGoogleId(googleId) {
+    const url = `${this.baseUrl}/getUserByGoogleId/${googleId}`;
+    return this.http.get<UserModel>(url);
+  }
 }
