@@ -15,6 +15,7 @@ export class CrudService<T> extends BaseHttpService {
 
   // Créer une nouvelle entité
   create(entity: T): Observable<T> {
+    console.log(this.baseUrl);
     return this.http.post<T>(this.baseUrl, entity);
   }
 

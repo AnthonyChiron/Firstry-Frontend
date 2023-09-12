@@ -1,52 +1,84 @@
+import { UsersService } from './../../data/UsersService/users.service';
+import { SignUpModel } from 'src/app/models/signUp.model';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BaseHttpService } from '../../data/BaseHttpService/base-http.service';
 import { CredentialsModel } from 'src/app/models/credentials.model';
-import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserModel } from 'src/app/models/user.model';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService extends BaseHttpService {
-  constructor(private HttpClient: HttpClient, private router: Router) {
-    super();
-    this.baseUrl += 'auth';
-  }
+export class AuthService {
+  auth = getAuth();
+  constructor(private usersService: UsersService) {}
 
-  login(credentials: CredentialsModel) {
-    return this.HttpClient.post(this.baseUrl, credentials).pipe(
-      map((result) => {
-        if ('token' in result) {
-          console.log('Succès:', result.token);
-          localStorage.setItem('access_token', <string>result.token);
-          return true;
+  signUp(signUpModel: SignUpModel) {
+    createUserWithEmailAndPassword(
+      this.auth,
+      signUpModel.email,
+      signUpModel.password
+    )
+      .then(({ user }) => {
+        if (user) {
+          let newUser: UserModel = {
+            googleId: user.uid,
+            email: <string>user.email,
+            role: signUpModel.role,
+            isValid: user.emailVerified,
+          };
+          this.usersService.create(newUser).subscribe({
+            next: (user) => {
+              console.log(user);
+            },
+            error: (err: firebase.FirebaseError) => {
+              console.log(err);
+            },
+          });
         }
-        return false;
       })
-    );
+      .catch((result) => console.log(result));
   }
 
-  logout() {
-    localStorage.removeItem('access_token');
+  getCurrentUser() {
+    return getAuth().currentUser;
   }
 
   isLoggedIn() {
-    let jwtHelper = new JwtHelperService();
-    const token = localStorage.getItem('access_token');
-    if (!token) return false;
-
-    // jwtHelper.decodeToken(<string>localStorage.getItem('access_token'));
-    const isExpired = jwtHelper.isTokenExpired(token);
-
-    return !isExpired;
+    if (getAuth().currentUser) return true;
+    return false;
   }
 
-  get currentUser() {
-    let token = localStorage.getItem('access_token');
-    if (!token) return null;
+  async login(credentials: CredentialsModel) {
+    try {
+      await signInWithEmailAndPassword(
+        this.auth,
+        credentials.email,
+        credentials.password
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(userCredential);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+          // ..
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
-    return new JwtHelperService().decodeToken(token);
+  logout() {
+    return this.auth.signOut();
   }
 }

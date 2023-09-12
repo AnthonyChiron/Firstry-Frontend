@@ -16,6 +16,6 @@ export class AccueilComponent {
   }
 
   isLoggedIn() {
-    this.authService.isLoggedIn();
+    console.log(this.authService.getCurrentUser());
   }
 }

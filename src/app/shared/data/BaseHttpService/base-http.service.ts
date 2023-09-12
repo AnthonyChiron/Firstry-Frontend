@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class BaseHttpService {
+  protected baseUrlProd =
+    'https://us-central1-firstry-7e136.cloudfunctions.net/api/';
   protected baseUrl = 'http://localhost:3000/api/';
 
   constructor() {}

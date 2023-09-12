@@ -18,17 +18,11 @@ export class ConnexionComponent {
     private route: ActivatedRoute
   ) {}
 
-  submit() {
-    this.authService.login(this.credentials).subscribe({
-      next: (customer) => {
-        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-        this.router.navigate([returnUrl || '/']);
-      },
-      error: (err) => {
-        this.invalidCredentials = true;
-      },
-    });
+  async submit() {
+    try {
+      await this.authService.login(this.credentials);
+    } catch (e) {
+      console.log(e);
+    }
   }
-  // (res) => (this.invalidCredentials = true),
-  // (err) => this.router.navigate(['/'])
 }

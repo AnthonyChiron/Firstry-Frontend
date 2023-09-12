@@ -43,7 +43,7 @@
         </div>
       </li>
     </div>
-    <div class="account" *ngIf="authService.isLoggedIn()">
+    <div class="account" *ngIf="authService.getCurrentUser()">
       <a>ACCOUNT</a>
     </div>
   </ul>
