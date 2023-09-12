@@ -1,9 +1,18 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/components.scss";
+@import "../../../styles/border-radius.scss";
+
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 100vh;
-  width: 90vw;
-  padding-left: 5vw;
-  padding-right: 5vw;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
+
+  app-tabs {
+    width: 84vw;
+    padding: 3vw;
+    border-radius: $border-radius-1;
+    background-color: $firstry-white-2;
+  }
 }

@@ -5,6 +5,7 @@
 button {
   cursor: pointer;
   padding: 10px;
+  margin-top: 3vw;
   font-family: "Montserrat";
   font-variation-settings: "wght" 600;
   color: $firstry-white-1;
@@ -56,4 +57,16 @@ input {
 .inputForm {
   display: flex;
   flex-direction: column;
+  margin-top: 3vw;
+}
+
+.buttonsForm {
+  display: flex;
+  margin-top: 3vw;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    margin: 0;
+  }
 }

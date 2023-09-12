@@ -5,7 +5,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2vh;
-  height: 2vh;
-  background-color: $firstry-white-2;
+  padding: 3vh;
+  height: 3vh;
+
+  .account {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    font-variation-settings: "wght" 800;
+  }
 }

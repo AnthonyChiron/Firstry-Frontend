@@ -3,13 +3,13 @@
 
 @media only screen and (max-width: 768px) {
   .menu-exit {
-    position: fixed;
+    position: absolute;
     top: 0;
     justify-content: space-between;
     align-items: center;
     color: transparent;
-    padding: 2vh;
-    height: 2vh;
+    padding: 3vh;
+    height: 3vh;
     z-index: 999;
     transition: 0.5s;
   }
