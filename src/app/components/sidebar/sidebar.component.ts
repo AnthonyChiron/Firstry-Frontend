@@ -1,10 +1,12 @@
 import { Subscription } from 'rxjs';
 import {
   Component,
+  EventEmitter,
   HostListener,
   Input,
   OnDestroy,
   OnInit,
+  Output,
 } from '@angular/core';
 import { rolesEnum } from 'src/app/constants/rolesEnum';
 import { AuthService } from 'src/app/shared/auth/AuthService/auth.service';
@@ -18,13 +20,18 @@ import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-siz
 export class SidebarComponent {
   rolesEnum = rolesEnum;
   showLoginModal = false;
-  toggleMenu = true;
+  @Input() toggleSidebar: boolean = false;
+  @Output() clickToggle = new EventEmitter();
 
   constructor(
     protected authService: AuthService,
     protected screenSizeService: ScreenSizeService
   ) {
-    if (screenSizeService.isDesktop) this.toggleMenu = true;
+    if (screenSizeService.isDesktop) this.toggleSidebar = true;
+  }
+
+  emitClickToggle() {
+    this.clickToggle.emit();
   }
 
   closeModal() {

@@ -2,62 +2,77 @@
 @import "../../../styles/components.scss";
 
 @media only screen and (max-width: 768px) {
+  .menu-exit {
+    position: absolute;
+    top: 0;
+    justify-content: space-between;
+    align-items: center;
+    color: transparent;
+    padding: 3vh;
+    height: 3vh;
+    z-index: 999;
+    transition: 0.5s;
+  }
+
   .navbar {
     position: fixed;
     top: 0;
-    width: 0vw;
-    background-color: $firstry-black-1;
+    padding-top: 5vh;
+    left: -100vw;
+    width: 100vw;
     height: 100vh;
+    background-color: $firstry-black-1;
     transition: 0.5s;
-    z-index: 999;
-
-    .menu-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 6vh;
-      width: 6vh;
-      color: $firstry-black-1;
-      transition: 0.3s;
-    }
+    z-index: 998;
 
     .nav-list {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding-top: 5vh;
-      height: 85vh;
+      height: 75vh;
       transition: 0.5s;
+
+      img {
+        height: 5vh;
+      }
 
       li {
         z-index: -999;
         border-bottom: 1px solid transparent;
         margin-bottom: 5vh;
-        font-size: 20px;
+        font-size: 25px;
         font-family: "Akira";
-        margin-right: 50vw;
+        width: 70vw;
         transition: 0.5s;
 
         a {
+          display: flex;
+          justify-content: space-between;
           color: transparent;
           text-decoration: none;
           transition: 0.5s;
+
+          i {
+            align-self: center;
+          }
         }
       }
 
       .connexion {
-        li {
-          border: none;
-          font-family: "Montserrat";
-          font-size: 15px;
-        }
+        display: flex;
+        flex-direction: column;
+        gap: 3vh;
       }
     }
   }
 
+  .menu-exit.active {
+    color: $firstry-white-1;
+  }
+
   .navbar.active {
-    width: 50vw;
+    left: 0;
 
     .menu-toggle {
       color: $firstry-white-1;
@@ -76,14 +91,6 @@
 
         a {
           color: $firstry-white-1;
-        }
-      }
-
-      .connexion {
-        li {
-          border: none;
-          font-family: "Montserrat";
-          font-size: 15px;
         }
       }
     }

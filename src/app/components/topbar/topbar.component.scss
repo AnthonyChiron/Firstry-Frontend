@@ -1,0 +1,17 @@
+@import "../../../styles/components.scss";
+@import "../../../styles/colors.scss";
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3vh;
+  height: 3vh;
+
+  .account {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    font-variation-settings: "wght" 800;
+  }
+}

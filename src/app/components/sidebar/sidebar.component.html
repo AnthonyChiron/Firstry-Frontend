@@ -1,47 +1,57 @@
-<nav class="navbar" [class.active]="toggleMenu">
-  <div class="menu-toggle" id="mobile-menu" (click)="toggleMenu = !toggleMenu">
-    <i class="fa-solid fa-xl fa-bars"></i>
-  </div>
+<div
+  class="menu-exit"
+  id="mobile-menu"
+  (click)="emitClickToggle()"
+  [class.active]="toggleSidebar"
+>
+  <i class="fa-solid fa-2xl fa-xmark"></i>
+</div>
+<nav class="navbar" [class.active]="toggleSidebar">
   <ul class="nav-list">
+    <img src="../../../assets/logos/Globe_Blanc.png" alt="logo" />
     <div class="main">
       <li>
-        <a routerLink="/" (click)="toggleMenu = !toggleMenu">ACCUEIL</a>
-      </li>
-      <li>
-        <a routerLink="/riders" (click)="toggleMenu = !toggleMenu">RIDERS</a>
-      </li>
-      <li>
-        <a routerLink="/contests" (click)="toggleMenu = !toggleMenu"
-          >CONTESTS</a
+        <a routerLink="/" (click)="emitClickToggle()">
+          <i class="fa-solid fa-xs fa-home"></i>
+          <p>ACCUEIL</p></a
         >
       </li>
       <li>
-        <a routerLink="/dashboard" (click)="toggleMenu = !toggleMenu"
-          >DASHBOARD</a
+        <a routerLink="/riders" (click)="emitClickToggle()">
+          <p>RIDERS</p>
+          <i class="fa-solid fa-xs fa-person-skating"></i>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/contests" (click)="emitClickToggle()"
+          ><i class="fa-regular fa-xs fa-calendar"></i>
+          <p>CONTESTS</p></a
         >
+      </li>
+      <li>
+        <a routerLink="/dashboard" (click)="emitClickToggle()"
+          ><p>DASHBOARD</p>
+          <i class="fa-solid fa-xs fa-globe"></i
+        ></a>
       </li>
     </div>
     <div class="connexion">
-      <li>
-        <div
-          class="primary-btn connexion"
-          (click)="toggleMenu = !toggleMenu"
-          routerLink="/login"
-          *ngIf="!authService.isLoggedIn()"
-        >
-          CONNEXION
-        </div>
-      </li>
-      <li>
-        <div
-          class="secondary-btn connexion"
-          (click)="toggleMenu = !toggleMenu"
-          routerLink="/register"
-          *ngIf="!authService.isLoggedIn()"
-        >
-          INSCRIPTION
-        </div>
-      </li>
+      <div
+        class="primary-btn connexion"
+        (click)="emitClickToggle()"
+        routerLink="/login"
+        *ngIf="!authService.isLoggedIn()"
+      >
+        CONNEXION
+      </div>
+      <div
+        class="secondary-btn connexion"
+        (click)="emitClickToggle()"
+        routerLink="/register"
+        *ngIf="!authService.isLoggedIn()"
+      >
+        INSCRIPTION
+      </div>
     </div>
     <div class="account" *ngIf="authService.getCurrentUser()">
       <a>ACCOUNT</a>

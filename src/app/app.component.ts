@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'firstry';
+  toggleSidebar: boolean = false;
+
+  changeToggle() {
+    this.toggleSidebar = !this.toggleSidebar;
+  }
 }

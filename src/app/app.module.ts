@@ -13,6 +13,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginModule } from './components/login/login.module';
 import { UsersService } from './shared/data/UsersService/users.service';
 import { ScreenSizeService } from './shared/services/screenSize/screen-size.service';
+import { TopbarComponent } from './components/topbar/topbar.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ScreenSizeService } from './shared/services/screenSize/screen-size.serv
     AccueilComponent,
     NotFoundComponent,
     SidebarComponent,
+    TopbarComponent,
   ],
   imports: [
     AppRoutingModule,
