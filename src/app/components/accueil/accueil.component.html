@@ -1,8 +1,14 @@
 <!-- <p class="title">ACCUEIL</p> -->
 
 <app-btn-primary
-  *ngIf="authService.isLoggedIn()"
+  *ngIf="authService.getCurrentUser()"
   (click)="logout()"
   [content]="'Se déconnecté'"
+  [icon]="'person-running'"
+></app-btn-primary>
+
+<app-btn-primary
+  (click)="isLoggedIn()"
+  [content]="'is isLoggedIn ?'"
   [icon]="'person-running'"
 ></app-btn-primary>

@@ -16,7 +16,7 @@ export class AuthGuard {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    if (this.authService.isLoggedIn() !== true) {
+    if (this.authService.getCurrentUser()) {
       this.router.navigate(['/register'], {
         queryParams: { returnUrl: state.url },
       });

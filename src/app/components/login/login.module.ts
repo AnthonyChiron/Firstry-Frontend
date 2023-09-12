@@ -6,12 +6,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ConnexionComponent } from './connexion/connexion.component';
-import { RegisterComponent } from './register/register.component';
+import { SignUpComponent } from './signUp/sign-up.component';
 
 const loginRoutes: Routes = [{ path: '', component: LoginComponent }];
 
 @NgModule({
-  declarations: [LoginComponent, ConnexionComponent, RegisterComponent],
+  declarations: [LoginComponent, ConnexionComponent, SignUpComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(loginRoutes),

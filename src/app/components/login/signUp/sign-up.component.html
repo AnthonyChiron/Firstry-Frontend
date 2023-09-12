@@ -5,7 +5,7 @@
   <div class="inputForm">
     <label for="email">Email</label>
     <input
-      [(ngModel)]="registerModel.email"
+      [(ngModel)]="signUpForm.email"
       placeholder="Entrez votre email..."
       type="email"
       name="email"
@@ -15,7 +15,7 @@
   <div class="inputForm">
     <label for="password">Mot de passe</label>
     <input
-      [(ngModel)]="registerModel.password"
+      [(ngModel)]="signUpForm.password"
       placeholder="Entrez votre mot de passe..."
       type="password"
       name="password"
@@ -34,11 +34,11 @@
       id="role"
       name="role"
       aria-label="role"
-      [(ngModel)]="registerModel.role"
+      [(ngModel)]="signUpForm.role"
     >
       <mat-chip-option value="rider">Rider</mat-chip-option>
       <mat-chip-option value="contest">Contest</mat-chip-option>
     </mat-chip-listbox>
   </div>
-  <button (click)="submit()">Connexion</button>
+  <button (click)="submit()">Inscription</button>
 </form>
