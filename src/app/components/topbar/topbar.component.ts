@@ -1,0 +1,14 @@
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+@Component({
+  selector: 'topbar',
+  templateUrl: './topbar.component.html',
+  styleUrls: ['./topbar.component.scss'],
+})
+export class TopbarComponent {
+  @Output() clickToggle = new EventEmitter();
+
+  emit() {
+    this.clickToggle.emit();
+  }
+}

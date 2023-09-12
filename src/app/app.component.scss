@@ -1,7 +1,9 @@
 .main {
   display: flex;
+  flex-direction: column;
 
   .content {
-    width: 100vw;
+    display: flex;
+    border-radius: 15px;
   }
 }

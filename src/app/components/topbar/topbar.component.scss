@@ -1,0 +1,11 @@
+@import "../../../styles/components.scss";
+@import "../../../styles/colors.scss";
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vh;
+  height: 2vh;
+  background-color: $firstry-white-2;
+}

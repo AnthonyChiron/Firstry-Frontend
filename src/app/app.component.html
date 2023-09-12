@@ -1,4 +1,10 @@
 <div class="main">
-  <sidebar></sidebar>
-  <div class="content"><router-outlet></router-outlet></div>
+  <topbar (clickToggle)="changeToggle()"></topbar>
+  <div class="content">
+    <sidebar
+      [toggleSidebar]="toggleSidebar"
+      (clickToggle)="changeToggle()"
+    ></sidebar>
+    <div class="content"><router-outlet></router-outlet></div>
+  </div>
 </div>
