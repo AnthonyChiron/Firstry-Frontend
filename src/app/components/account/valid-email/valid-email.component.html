@@ -1,0 +1,10 @@
+<div *ngIf="!authService.isValid()" class="notValid">
+  <p>Veuillez valider votre email</p>
+  <button (click)="sendNewEmail()">
+    Envoyer un nouvel email de confirmation
+  </button>
+</div>
+<div *ngIf="authService.isValid()" class="notValid">
+  <p>Votre email a bien été validé !</p>
+  <button (click)="backHome()">Retour à l'accueil</button>
+</div>

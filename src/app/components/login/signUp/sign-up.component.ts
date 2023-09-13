@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SignUpModel as SignUpModel } from 'src/app/models/signUp.model';
 import { rolesEnum } from 'src/app/constants/rolesEnum';
 import { RegisterUserService } from 'src/app/shared/data/RegisterUserService/register-user.service';
-import { AuthService } from 'src/app/shared/auth/AuthService/auth.service';
+import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
 
 @Component({
   selector: 'sign-up',
@@ -25,17 +25,26 @@ export class SignUpComponent {
     private authService: AuthService
   ) {}
 
+  test() {}
+
   submit() {
     console.log(this.signUpForm);
-    this.authService.signUp(this.signUpForm);
-    // this.registerUserService.create(this.signUpForm).subscribe({
-    //   next: (user) => {
-    //     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-    //     this.router.navigate([returnUrl || '/']);
-    //   },
-    //   error: (err) => {
-    //     this.invalidCredentials = true;
-    //   },
-    // });
+    this.authService.signUp(this.signUpForm).subscribe({
+      next: () => {
+        this.authService
+          .login({
+            email: this.signUpForm.email,
+            password: this.signUpForm.password,
+          })
+          .subscribe({
+            next: (token) => {
+              this.authService.saveToken(token);
+              this.router.navigate(['/account/validEmail']);
+            },
+            error: (err) => {},
+          });
+      },
+      error: (err) => (this.invalidCredentials = true),
+    });
   }
 }

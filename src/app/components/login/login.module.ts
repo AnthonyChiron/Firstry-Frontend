@@ -7,8 +7,11 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { SignUpComponent } from './signUp/sign-up.component';
+import { IsNotAuthGuard } from 'src/app/shared/guards/IsNotAuth/is-not-auth.service';
 
-const loginRoutes: Routes = [{ path: '', component: LoginComponent }];
+const loginRoutes: Routes = [
+  { path: '', component: LoginComponent, canActivate: [IsNotAuthGuard] },
+];
 
 @NgModule({
   declarations: [LoginComponent, ConnexionComponent, SignUpComponent],
