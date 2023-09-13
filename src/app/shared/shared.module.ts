@@ -7,13 +7,6 @@ import { TabComponent } from './components/tab/tab.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { ScreenSizeService } from './services/screenSize/screen-size.service';
 
-import * as firebase from 'firebase/app';
-import { environment } from 'src/environments/environment';
-import { getAuth } from 'firebase/auth';
-
-const app = firebase.initializeApp(environment.firebaseConfig);
-getAuth(app);
-
 @NgModule({
   declarations: [
     ModalComponent,

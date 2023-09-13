@@ -9,7 +9,7 @@ import {
   Output,
 } from '@angular/core';
 import { rolesEnum } from 'src/app/constants/rolesEnum';
-import { AuthService } from 'src/app/shared/auth/AuthService/auth.service';
+import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
 import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 
 @Component({
