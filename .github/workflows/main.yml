@@ -4,7 +4,6 @@ on:
   pull_request:
     branches:
       - master # Trigger only on PR to the main branch
-  workflow_dispatch:
 
 jobs:
   deploy:
