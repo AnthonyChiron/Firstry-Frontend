@@ -24,24 +24,24 @@ jobs:
 
       - name: Update environment file
         env: # Set the secret as an input
-          secret_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
-          secret_AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
-          secret_PROJECT_ID: ${{ secrets.PROJECT_ID }}
-          secret_STORAGE_BUCKET: ${{ secrets.STORAGE_BUCKET }}
-          secret_MESSAGING_SENDER_IDY: ${{ secrets.MESSAGING_SENDER_ID }}
-          secret_APP_ID: ${{ secrets.APP_ID }}
-          secret_MEASUREMENT_ID: ${{ secrets.MEASUREMENT_ID }}
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          STORAGE_BUCKET: ${{ secrets.STORAGE_BUCKET }}
+          MESSAGING_SENDER_IDY: ${{ secrets.MESSAGING_SENDER_ID }}
+          APP_ID: ${{ secrets.APP_ID }}
+          MEASUREMENT_ID: ${{ secrets.MEASUREMENT_ID }}
         run: |
           echo "export const environment = {" > src/environments/environment.prod.ts
           echo "  production: true," >> src/environments/environment.prod.ts
           echo "  firebaseConfig: {" >> src/environments/environment.prod.ts
-          echo "    apiKey: '$secret_FIREBASE_API_KEY'," >> src/environments/environment.prod.ts
-          echo "    authDomain: '$secrets_AUTH_DOMAIN'," >> src/environments/environment.prod.ts
-          echo "    projectId: '$secrets_PROJECT_ID'," >> src/environments/environment.prod.ts
-          echo "    storageBucket: '$secrets_STORAGE_BUCKET'," >> src/environments/environment.prod.ts
-          echo "    messagingSenderId: '$secrets_MESSAGING_SENDER_ID'," >> src/environments/environment.prod.ts
-          echo "    appId: '$secrets_APP_ID'," >> src/environments/environment.prod.ts
-          echo "    measurementId: '$secrets_MEASUREMENT_ID'," >> src/environments/environment.prod.ts
+          echo "    apiKey: '$FIREBASE_API_KEY'," >> src/environments/environment.prod.ts
+          echo "    authDomain: '$AUTH_DOMAIN'," >> src/environments/environment.prod.ts
+          echo "    projectId: '$PROJECT_ID'," >> src/environments/environment.prod.ts
+          echo "    storageBucket: '$STORAGE_BUCKET'," >> src/environments/environment.prod.ts
+          echo "    messagingSenderId: '$MESSAGING_SENDER_ID'," >> src/environments/environment.prod.ts
+          echo "    appId: '$APP_ID'," >> src/environments/environment.prod.ts
+          echo "    measurementId: '$MEASUREMENT_ID'," >> src/environments/environment.prod.ts
           echo "  }," >> src/environments/environment.prod.ts
           echo "};" >> src/environments/environment.prod.ts
 
