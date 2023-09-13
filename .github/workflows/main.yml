@@ -52,4 +52,5 @@ jobs:
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FIRSTRY_7E136 }}
+          channelId: live
           projectId: firstry-7e136
