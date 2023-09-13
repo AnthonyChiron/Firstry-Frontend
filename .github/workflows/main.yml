@@ -4,7 +4,6 @@ on:
   pull_request:
     branches:
       - master # Trigger only on PR to the main branch
-  workflow_dispatch:
 
 jobs:
   deploy:
@@ -46,12 +45,10 @@ jobs:
           echo "  }," >> src/environments/environment.prod.ts
           echo "};" >> src/environments/environment.prod.ts
 
-      - name: Build Angular app
-        run: npm run build --prod
-
-      - name: Deploy to Firebase
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
+      - uses: actions/checkout@v3
+      - run: npm ci && npm run build --prod
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          appId: ${{secrets.FIREBASE_APP_ID}}
-          token: ${{secrets.FIREBASE_TOKEN}}
-          groups: testers, trusted
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FIRSTRY_7E136 }}
+          projectId: firstry-7e136
