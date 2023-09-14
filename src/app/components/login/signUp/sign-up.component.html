@@ -1,46 +1,132 @@
-<form action="submit()" method="post">
-  <p *ngIf="invalidCredentials">
-    Votre email ou votre mot de passe est incorrect
-  </p>
-  <div class="inputForm">
-    <label for="email">Email</label>
-    <input
-      [(ngModel)]="signUpForm.email"
-      placeholder="Entrez votre email..."
-      type="email"
-      name="email"
-      id="email"
-    />
-  </div>
-  <div class="inputForm">
-    <label for="password">Mot de passe</label>
-    <input
-      [(ngModel)]="signUpForm.password"
-      placeholder="Entrez votre mot de passe..."
-      type="password"
-      name="password"
-      id="password"
-    />
-    <input
-      placeholder="Confirmez votre mot de passe..."
-      type="password"
-      name="password"
-      id="password"
-    />
-  </div>
-  <div class="inputForm">
-    <label for="role">Je suis</label>
-    <mat-chip-listbox
-      id="role"
-      name="role"
-      aria-label="role"
-      [(ngModel)]="signUpForm.role"
-    >
-      <mat-chip-option value="rider">Rider</mat-chip-option>
-      <mat-chip-option value="contest">Contest</mat-chip-option>
-    </mat-chip-listbox>
-  </div>
-  <div class="buttonsForm">
-    <button (click)="submit()">Inscription</button>
-  </div>
-</form>
+<mat-vertical-stepper [linear]="false" #stepper>
+  <mat-step [stepControl]="userForm" state="test">
+    <form [formGroup]="userForm">
+      <ng-template matStepLabel>Identifiants</ng-template>
+      <mat-label>Tu es</mat-label>
+      <mat-chip-listbox
+        id="role"
+        name="role"
+        aria-label="role"
+        formControlName="role"
+      >
+        <mat-chip-option value="rider">Rider</mat-chip-option>
+        <mat-chip-option value="contest">Contest</mat-chip-option>
+      </mat-chip-listbox>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          email
+          name="email"
+          placeholder="Email"
+          formControlName="email"
+          required
+        />
+        <mat-error *ngIf="userForm.get('email').errors"
+          >Email invalide</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Mot de passe</mat-label>
+        <input
+          matInput
+          minlength="6"
+          placeholder="Mot de passe..."
+          formControlName="password"
+          required
+        />
+        <mat-error *ngIf="userForm.get('password').hasError('minlength')"
+          >Il faut au minimum 6 caractères !</mat-error
+        >
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step *ngIf="userForm.value.role == 'rider'" [stepControl]="riderForm">
+    <form [formGroup]="riderForm">
+      <ng-template matStepLabel>Informations personnelles</ng-template>
+      <mat-form-field>
+        <mat-label>Prénom</mat-label>
+        <input
+          matInput
+          minlength="2"
+          placeholder="Prénom..."
+          formControlName="firstName"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input
+          matInput
+          minlength="2"
+          placeholder="Nom..."
+          formControlName="lastName"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Date de naissance</mat-label>
+        <input matInput formControlName="birthDate" [matDatepicker]="picker" />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Nationalité</mat-label>
+        <input
+          type="text"
+          placeholder="Nationalité..."
+          aria-label="Number"
+          matInput
+          formControlName="nationality"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let country of filteredOptions | async"
+            [value]="country.name.common"
+          >
+            <img
+              src="{{ country.flags.png }}"
+              alt="{{ country.name.common }}"
+            />
+            {{ country.name.common }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step
+    *ngIf="userForm.value.role == 'contest'"
+    [stepControl]="organizerForm"
+  >
+    <form [formGroup]="organizerForm">
+      <ng-template matStepLabel>Informations générales</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Prénom" formControlName="name" required />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

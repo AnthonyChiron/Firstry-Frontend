@@ -6,4 +6,8 @@ export interface UserModel extends GenericModel {
   email: string;
   role: rolesEnum;
   isValid: boolean;
+  rider?: {};
+  organizer?: {};
+  riderId?: string;
+  organizerId?: string;
 }
