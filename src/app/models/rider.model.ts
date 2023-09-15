@@ -10,8 +10,8 @@ export interface RiderModel extends GenericModel {
   nationality: String;
   city: String;
   socials?: {
-    instagram: String;
-    twitter: String;
-    youtube: String;
+    instagram?: String;
+    twitter?: String;
+    youtube?: String;
   };
 }

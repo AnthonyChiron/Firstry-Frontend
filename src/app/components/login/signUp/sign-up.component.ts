@@ -1,6 +1,6 @@
 import { Observable, map, startWith } from 'rxjs';
 import { CountryService } from './../../../shared/services/CountryService/country.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SignUpModel as SignUpModel } from 'src/app/models/signUp.model';
 import { rolesEnum } from 'src/app/constants/rolesEnum';
@@ -14,19 +14,23 @@ import {
   NgForm,
   Validators,
 } from '@angular/forms';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class SignUpComponent implements OnInit {
   invalidCredentials: Boolean = false;
-  countries: any[] = [];
-  userForm: FormGroup;
+  credentialsForm: FormGroup;
+  signUpForm: FormGroup;
   riderForm: FormGroup;
   organizerForm: FormGroup;
-  filteredOptions: Observable<any[]>;
+  photoForm: FormGroup;
+  items: MenuItem[] | undefined;
+  activeIndex: number = 0;
 
   constructor(
     private router: Router,
@@ -38,20 +42,19 @@ export class SignUpComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.countryService.getAllCountry().subscribe((data: []) => {
-      this.countries = data.sort((a: any, b: any) => {
-        if (a.name.common < b.name.common) {
-          return -1;
-        }
-        if (a.name.common > b.name.common) {
-          return 1;
-        }
-        return 0;
-      });
-      console.log(data);
-    });
+    this.items = [
+      {
+        label: 'Login',
+      },
+      {
+        label: 'Infos',
+      },
+      {
+        label: 'Smile',
+      },
+    ];
 
-    this.userForm = this.fb.group({
+    this.credentialsForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
       role: rolesEnum.RIDER,
@@ -63,6 +66,7 @@ export class SignUpComponent implements OnInit {
       birthDate: ['', Validators.required],
       nationality: ['', Validators.required],
       city: ['', Validators.required],
+      sports: ['', Validators.required],
     });
 
     this.organizerForm = this.fb.group({
@@ -70,44 +74,49 @@ export class SignUpComponent implements OnInit {
       siretNumber: ['', Validators.required],
     });
 
-    this.filteredOptions = this.riderForm.controls[
-      'nationality'
-    ].valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filter(value || ''))
-    );
-  }
+    this.photoForm = this.fb.group({
+      photo: ['', Validators.required],
+    });
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.countries.filter((option) =>
-      option.name.common.toLowerCase().includes(filterValue)
-    );
+    this.signUpForm = this.fb.group({
+      user: this.credentialsForm,
+      rider: this.riderForm,
+      organizer: this.organizerForm,
+    });
   }
 
   test() {
-    console.log(this.userForm.hasError('email'));
+    console.log(this.credentialsForm.status);
+  }
+
+  next(form: FormGroup) {
+    form.markAllAsTouched();
+    form.updateValueAndValidity();
+    if (form.valid) this.activeIndex++;
+  }
+
+  prev() {
+    this.activeIndex--;
   }
 
   submit() {
-    // console.log(this.signUpForm);
-    // this.authService.signUp(this.signUpForm).subscribe({
-    //   next: () => {
-    //     this.authService
-    //       .login({
-    //         email: this.signUpForm.email,
-    //         password: this.signUpForm.password,
-    //       })
-    //       .subscribe({
-    //         next: (token) => {
-    //           this.authService.saveToken(token);
-    //           this.router.navigate(['/account/validEmail']);
-    //         },
-    //         error: (err) => {},
-    //       });
-    //   },
-    //   error: (err) => (this.invalidCredentials = true),
-    // });
+    console.log(this.signUpForm.value);
+    this.authService.signUp(this.signUpForm.value).subscribe({
+      next: () => {
+        this.authService
+          .login({
+            email: this.signUpForm.value.user.email,
+            password: this.signUpForm.value.user.password,
+          })
+          .subscribe({
+            next: (token) => {
+              this.authService.saveToken(token);
+              this.router.navigate(['/account/validEmail']);
+            },
+            error: (err) => {},
+          });
+      },
+      error: (err) => (this.invalidCredentials = true),
+    });
   }
 }

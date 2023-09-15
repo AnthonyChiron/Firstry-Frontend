@@ -9,64 +9,34 @@ import { SignUpComponent } from './signUp/sign-up.component';
 import { IsNotAuthGuard } from 'src/app/shared/guards/IsNotAuth/is-not-auth.service';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatStepperModule } from '@angular/material/stepper';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-} from '@angular/material/core';
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { SignupCredentialsFormComponent } from './signUp/signup-credentials-form/signup-credentials-form.component';
+import { SignupRiderFormComponent } from './signUp/signup-rider-form/signup-rider-form.component';
+import { SignupOrganizerFormComponent } from './signUp/signup-organizer-form/signup-organizer-form.component';
+import { SignupPhotoFormComponent } from './signUp/signup-photo-form/signup-photo-form.component';
 
 const loginRoutes: Routes = [
   { path: '', component: LoginComponent, canActivate: [IsNotAuthGuard] },
 ];
 
-const MY_DATE_FORMAT = {
-  parse: {
-    dateInput: 'DD/MM/YYYY', // this is how your date will be parsed from Input
-  },
-  display: {
-    dateInput: 'DD/MM/YYYY', // this is how your date will get displayed on the Input
-    monthYearLabel: 'MMMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
-
 @NgModule({
-  declarations: [LoginComponent, ConnexionComponent, SignUpComponent],
+  declarations: [
+    LoginComponent,
+    ConnexionComponent,
+    SignUpComponent,
+    SignupCredentialsFormComponent,
+    SignupRiderFormComponent,
+    SignupOrganizerFormComponent,
+    SignupPhotoFormComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(loginRoutes),
     FormsModule,
     MatChipsModule,
     MatSelectModule,
-    MatButtonModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
-    MatIconModule,
-    MatStepperModule,
     SharedModule,
     ReactiveFormsModule,
   ],
   exports: [LoginComponent],
-  providers: [
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE],
-    },
-    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMAT },
-  ],
 })
 export class LoginModule {}

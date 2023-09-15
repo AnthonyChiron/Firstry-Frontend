@@ -1,132 +1,58 @@
-<mat-vertical-stepper [linear]="false" #stepper>
-  <mat-step [stepControl]="userForm" state="test">
-    <form [formGroup]="userForm">
-      <ng-template matStepLabel>Identifiants</ng-template>
-      <mat-label>Tu es</mat-label>
-      <mat-chip-listbox
-        id="role"
-        name="role"
-        aria-label="role"
-        formControlName="role"
-      >
-        <mat-chip-option value="rider">Rider</mat-chip-option>
-        <mat-chip-option value="contest">Contest</mat-chip-option>
-      </mat-chip-listbox>
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input
-          matInput
-          email
-          name="email"
-          placeholder="Email"
-          formControlName="email"
-          required
-        />
-        <mat-error *ngIf="userForm.get('email').errors"
-          >Email invalide</mat-error
-        >
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Mot de passe</mat-label>
-        <input
-          matInput
-          minlength="6"
-          placeholder="Mot de passe..."
-          formControlName="password"
-          required
-        />
-        <mat-error *ngIf="userForm.get('password').hasError('minlength')"
-          >Il faut au minimum 6 caractères !</mat-error
-        >
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step *ngIf="userForm.value.role == 'rider'" [stepControl]="riderForm">
-    <form [formGroup]="riderForm">
-      <ng-template matStepLabel>Informations personnelles</ng-template>
-      <mat-form-field>
-        <mat-label>Prénom</mat-label>
-        <input
-          matInput
-          minlength="2"
-          placeholder="Prénom..."
-          formControlName="firstName"
-          required
-        />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Nom</mat-label>
-        <input
-          matInput
-          minlength="2"
-          placeholder="Nom..."
-          formControlName="lastName"
-          required
-        />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Date de naissance</mat-label>
-        <input matInput formControlName="birthDate" [matDatepicker]="picker" />
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Nationalité</mat-label>
-        <input
-          type="text"
-          placeholder="Nationalité..."
-          aria-label="Number"
-          matInput
-          formControlName="nationality"
-          [matAutocomplete]="auto"
-        />
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option
-            *ngFor="let country of filteredOptions | async"
-            [value]="country.name.common"
-          >
-            <img
-              src="{{ country.flags.png }}"
-              alt="{{ country.name.common }}"
-            />
-            {{ country.name.common }}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
+<p-card styleClass="card">
+  <ng-template pTemplate="header">
+    <p-steps [model]="items" [activeIndex]="activeIndex"></p-steps>
+  </ng-template>
 
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+  <div class="content">
+    <div *ngIf="activeIndex === 0">
+      <signup-credentials-form
+        [userForm]="credentialsForm"
+      ></signup-credentials-form>
+      <div class="footer">
+        <button pButton type="button" label="Test" (click)="test()"></button>
+        <button
+          pButton
+          type="button"
+          label="Suivant"
+          (click)="next(credentialsForm)"
+        ></button>
       </div>
-    </form>
-  </mat-step>
-  <mat-step
-    *ngIf="userForm.value.role == 'contest'"
-    [stepControl]="organizerForm"
-  >
-    <form [formGroup]="organizerForm">
-      <ng-template matStepLabel>Informations générales</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Prénom" formControlName="name" required />
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
-  </mat-step>
-</mat-vertical-stepper>
+
+    <div *ngIf="activeIndex === 1 && credentialsForm.value.role == 'rider'">
+      <signup-rider-form [riderForm]="riderForm"></signup-rider-form>
+      <div class="footer">
+        <button pButton type="button" label="Prev" (click)="prev()"></button>
+        <button
+          pButton
+          type="button"
+          label="Suivant"
+          (click)="next(riderForm)"
+        ></button>
+      </div>
+    </div>
+
+    <div *ngIf="activeIndex === 1 && credentialsForm.value.role == 'contest'">
+      <signup-organizer-form
+        [organizerForm]="organizerForm"
+      ></signup-organizer-form>
+      <div class="footer">
+        <button pButton type="button" label="Prev" (click)="prev()"></button>
+        <button
+          pButton
+          type="button"
+          label="Suivant"
+          (click)="next(organizerForm)"
+        ></button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="activeIndex === 2">
+    <signup-photo-form [photoForm]="photoForm"></signup-photo-form>
+    <div class="footer">
+      <button pButton type="button" label="Prev" (click)="prev()"></button>
+      <button pButton type="button" label="Valider" (click)="submit()"></button>
+    </div>
+  </div>
+</p-card>

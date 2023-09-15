@@ -1,0 +1,13 @@
+<form [formGroup]="photoForm">
+  <h4>Ajouter une photo à votre compte !</h4>
+  <p-fileUpload
+    mode="basic"
+    name="demo[]"
+    url="https://www.primefaces.org/cdn/api/upload.php"
+    accept="image/*"
+    (onUpload)="onUpload($event)"
+    [auto]="true"
+    chooseLabel="Browse"
+  ></p-fileUpload>
+  <small>Votre photo ne doit pas dépasser les 3mo</small>
+</form>
