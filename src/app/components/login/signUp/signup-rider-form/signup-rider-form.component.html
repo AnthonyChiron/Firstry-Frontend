@@ -1,0 +1,76 @@
+<form [formGroup]="riderForm">
+  <div class="inputGroup">
+    <h4>Nom & prénom</h4>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
+        <i class="fa-solid fa-user"></i>
+      </span>
+      <input
+        pInputText
+        placeholder="Prénom"
+        formControlName="firstName"
+        required
+      />
+    </div>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
+        <i class="fa-solid fa-user"></i>
+      </span>
+      <input pInputText placeholder="Nom" formControlName="lastName" required />
+    </div>
+  </div>
+  <div class="inputGroup">
+    <h4>Date de naissance</h4>
+    <div class="p-inputgroup">
+      <p-calendar
+        placeholder="Date de naissance"
+        formControlName="birthDate"
+        [showIcon]="true"
+      ></p-calendar>
+    </div>
+  </div>
+  <div class="inputGroup">
+    <h4>Nationalité</h4>
+    <p-autoComplete
+      placeholder="Nationalité"
+      formControlName="nationality"
+      [suggestions]="filteredCountries"
+      (completeMethod)="filterCountry($event)"
+      field="name.common"
+      [dropdown]="true"
+    >
+      <ng-template let-country pTemplate="item">
+        <div class="option">
+          <img src="{{ country.flags.png }}" />
+          <div>{{ country.name.common }}</div>
+        </div>
+      </ng-template>
+    </p-autoComplete>
+  </div>
+  <div class="inputGroup">
+    <h4>Ville</h4>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
+        <i class="fa-solid fa-location-dot"></i>
+      </span>
+      <input pInputText placeholder="Ville" formControlName="city" required />
+    </div>
+  </div>
+
+  <div>
+    <div class="p-field-checkbox">
+      <p-checkbox
+        name="sports"
+        value="val1"
+        label="Value 1"
+        formControlName="sports"
+      ></p-checkbox>
+      <p-checkbox
+        name="sports"
+        value="val2"
+        label="Value 2"
+        formControlName="sports"
+      ></p-checkbox>
+    </div>
+  </div>
+</form>
