@@ -86,13 +86,13 @@ export class SignUpComponent implements OnInit {
   }
 
   test() {
-    console.log(this.credentialsForm.status);
+    console.log(this.credentialsForm.value);
   }
 
   next(form: FormGroup) {
-    form.markAllAsTouched();
-    form.updateValueAndValidity();
-    if (form.valid) this.activeIndex++;
+    // form.markAllAsTouched();
+    // if (form.valid) this.activeIndex++;
+    this.activeIndex++;
   }
 
   prev() {
@@ -101,22 +101,22 @@ export class SignUpComponent implements OnInit {
 
   submit() {
     console.log(this.signUpForm.value);
-    this.authService.signUp(this.signUpForm.value).subscribe({
-      next: () => {
-        this.authService
-          .login({
-            email: this.signUpForm.value.user.email,
-            password: this.signUpForm.value.user.password,
-          })
-          .subscribe({
-            next: (token) => {
-              this.authService.saveToken(token);
-              this.router.navigate(['/account/validEmail']);
-            },
-            error: (err) => {},
-          });
-      },
-      error: (err) => (this.invalidCredentials = true),
-    });
+    // this.authService.signUp(this.signUpForm.value).subscribe({
+    //   next: () => {
+    //     this.authService
+    //       .login({
+    //         email: this.signUpForm.value.user.email,
+    //         password: this.signUpForm.value.user.password,
+    //       })
+    //       .subscribe({
+    //         next: (token) => {
+    //           this.authService.saveToken(token);
+    //           this.router.navigate(['/account/validEmail']);
+    //         },
+    //         error: (err) => {},
+    //       });
+    //   },
+    //   error: (err) => (this.invalidCredentials = true),
+    // });
   }
 }

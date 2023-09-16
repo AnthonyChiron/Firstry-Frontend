@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { Observable, map, startWith } from 'rxjs';
+import { sportsEnum } from 'src/app/constants/sportsEnum';
 import { CountryService } from 'src/app/shared/services/CountryService/country.service';
 
 @Component({

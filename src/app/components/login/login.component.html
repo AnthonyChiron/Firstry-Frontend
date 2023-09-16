@@ -1,10 +1,12 @@
 <div class="main">
-  <app-tabs>
-    <app-tab [onInitActivation]="isLogin" title="Connexion">
-      <app-connexion></app-connexion>
-    </app-tab>
-    <app-tab [onInitActivation]="isRegister" title="Inscription">
-      <sign-up></sign-up>
-    </app-tab>
-  </app-tabs>
+  <p-card>
+    <p-tabView [(activeIndex)]="activeIndex">
+      <p-tabPanel header="Connexion">
+        <app-connexion></app-connexion>
+      </p-tabPanel>
+      <p-tabPanel header="Inscription">
+        <sign-up></sign-up>
+      </p-tabPanel>
+    </p-tabView>
+  </p-card>
 </div>

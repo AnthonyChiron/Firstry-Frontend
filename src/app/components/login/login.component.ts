@@ -7,12 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  isLogin: boolean = false;
-  isRegister: boolean = false;
+  activeIndex: number = 0;
 
   constructor(private route: Router) {
-    if (route.url.includes('login')) this.isLogin = true;
-    else this.isRegister = true;
+    if (route.url.includes('login')) this.activeIndex = 0;
+    else this.activeIndex = 1;
   }
 
   closeModal() {}

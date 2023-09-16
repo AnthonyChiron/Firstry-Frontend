@@ -47,17 +47,15 @@ button {
   transition: 0.5s;
 }
 
-input {
-  padding: 5px;
-  border: 1.5px solid $firstry-white-3;
-  border-radius: $border-radius-3;
-  font-family: "Montserrat";
-}
-
-.inputForm {
+.inputGroup {
   display: flex;
   flex-direction: column;
-  margin-top: 3vw;
+  gap: 5px;
+}
+
+.inputRowGroup {
+  display: flex;
+  gap: 3vw;
 }
 
 .buttonsForm {

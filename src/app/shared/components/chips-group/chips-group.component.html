@@ -1,0 +1,14 @@
+<div class="chips-group">
+  <p-button
+    *ngFor="let chip of chips"
+    (click)="toggleSelection(chip)"
+    styleClass="{{
+      isSelected(chip) ? 'p-button-primary' : 'p-button-secondary'
+    }}"
+  >
+    <div class="btn">
+      <i *ngIf="isSelected(chip)" class="fa-solid fa-check"></i>
+      {{ chip.name }}
+    </div>
+  </p-button>
+</div>

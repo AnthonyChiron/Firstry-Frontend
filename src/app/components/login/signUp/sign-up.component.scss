@@ -11,31 +11,11 @@ option {
   padding-right: 2vw;
 }
 
-.p-steps {
-  padding-top: 2vh;
-  nav > ul > {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20vw;
-  }
-}
-
-.card {
-  box-shadow: none;
-}
-
 .content {
   form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-
-    .inputGroup {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
   }
 
   .footer {
