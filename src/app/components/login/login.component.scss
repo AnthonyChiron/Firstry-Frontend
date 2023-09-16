@@ -1,18 +1,14 @@
 @import "../../../styles/colors.scss";
-@import "../../../styles/components.scss";
 @import "../../../styles/border-radius.scss";
+@import "../../../styles/primeng.scss";
 
 .main {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding-top: 5vw;
-  padding-bottom: 5vw;
+  width: 85vw;
+  padding-top: 7.5vw;
+}
 
-  app-tabs {
-    width: 84vw;
-    padding: 3vw;
-    border-radius: $border-radius-1;
-    background-color: $firstry-white-2;
-  }
+.card {
 }

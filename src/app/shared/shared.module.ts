@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavIconBtnComponent } from './components/nav-icon-btn/nav-icon-btn.component';
-import { BtnPrimaryComponent } from './components/btn-primary/btn-primary.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { TabComponent } from './components/tab/tab.component';
 import { TabsComponent } from './components/tabs/tabs.component';
@@ -16,6 +15,10 @@ import { CalendarModule } from 'primeng/calendar';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FileUploadModule } from 'primeng/fileupload';
 import { CheckboxModule } from 'primeng/checkbox';
+import { TabViewModule } from 'primeng/tabview';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { ChipsGroupComponent } from './components/chips-group/chips-group.component';
+import { BtnPrimaryComponent } from './components/btn-primary/btn-primary.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     TabComponent,
     TabsComponent,
     NavIconBtnComponent,
+    ChipsGroupComponent,
     BtnPrimaryComponent,
   ],
   imports: [
@@ -37,6 +41,8 @@ import { CheckboxModule } from 'primeng/checkbox';
     AutoCompleteModule,
     FileUploadModule,
     CheckboxModule,
+    TabViewModule,
+    ToggleButtonModule,
   ],
   providers: [ScreenSizeService],
   exports: [
@@ -44,7 +50,6 @@ import { CheckboxModule } from 'primeng/checkbox';
     TabComponent,
     TabsComponent,
     NavIconBtnComponent,
-    BtnPrimaryComponent,
     ButtonModule,
     StepsModule,
     CardModule,
@@ -55,6 +60,10 @@ import { CheckboxModule } from 'primeng/checkbox';
     AutoCompleteModule,
     FileUploadModule,
     CheckboxModule,
+    TabViewModule,
+    ToggleButtonModule,
+    ChipsGroupComponent,
+    BtnPrimaryComponent,
   ],
 })
 export class SharedModule {}

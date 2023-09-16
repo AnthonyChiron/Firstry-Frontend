@@ -1,8 +1,3 @@
-@font-face {
-  font-family: "Montserrat";
-  src: url(../assets/fonts/Montserrat-VariableFont_wght.ttf);
-}
-
 :root {
   --surface-a: #ffffff;
   --surface-b: #efefef;
@@ -1767,6 +1762,8 @@ p-selectbutton.ng-dirty.ng-invalid > .p-selectbutton > .p-button {
   transition: height 0.15s;
 }
 .p-togglebutton.p-button {
+  display: flex;
+  justify-content: center;
   background: #6c757d;
   border: 1px solid #6c757d;
   color: #fff;
@@ -4594,14 +4591,11 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   border-bottom-left-radius: 8px;
 }
 .p-card {
-  background: #fff;
+  background: #f0f0f0;
   color: #212529;
-  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
-    0 1px 3px 0 rgba(0, 0, 0, 0.12);
   border-radius: 8px;
 }
 .p-card .p-card-body {
-  padding: 1.5rem;
 }
 .p-card .p-card-title {
   font-size: 1.5rem;
@@ -4614,7 +4608,6 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   color: #6c757d;
 }
 .p-card .p-card-content {
-  padding: 1rem 0;
 }
 .p-card .p-card-footer {
   padding: 1rem 0 0 0;
@@ -4765,42 +4758,43 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   background: #dee2e6;
 }
 .p-tabview .p-tabview-nav {
+  display: flex;
+  justify-content: space-between;
   background: transparent;
-  border: 1px solid #dee2e6;
-  border-width: 0 0 1px 0;
 }
 .p-tabview .p-tabview-nav li {
+  width: 100%;
   margin-right: 0;
 }
 .p-tabview .p-tabview-nav li .p-tabview-nav-link {
-  border: solid;
-  border-width: 1px;
-  border-color: #fff #fff #dee2e6 #fff;
-  background: #fff;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  font-variation-settings: "wght" 500;
   color: #6c757d;
   padding: 0.75rem 1rem;
   font-weight: 600;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   transition: box-shadow 0.15s;
-  margin: 0 0 -1px 0;
 }
 .p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: inset 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 .p-tabview
   .p-tabview-nav
   li:not(.p-highlight):not(.p-disabled):hover
   .p-tabview-nav-link {
-  background: #fff;
-  border-color: #dee2e6;
+  background: transparent;
+  border-bottom: 2px solid transparent;
   color: #6c757d;
 }
 .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
-  background: #fff;
-  border-color: #dee2e6 #dee2e6 #fff #dee2e6;
+  background: transparent;
+  border-bottom: 2px solid black;
+  font-variation-settings: "wght" 800;
+  transition: 0.5s;
   color: #495057;
 }
 .p-tabview .p-tabview-left-icon {
@@ -4813,22 +4807,18 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   margin-left: 0.5rem;
 }
 .p-tabview .p-tabview-nav-btn.p-link {
-  background: #fff;
+  background: transparent;
   color: #495057;
   width: 2.357rem;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12);
   border-radius: 0;
 }
 .p-tabview .p-tabview-nav-btn.p-link:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: inset 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 .p-tabview .p-tabview-panels {
-  background: #fff;
+  background: transparent;
   padding: 1.25rem;
-  border: 0 none;
   color: #212529;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;

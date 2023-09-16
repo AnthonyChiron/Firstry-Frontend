@@ -57,20 +57,16 @@
     </div>
   </div>
 
-  <div>
-    <div class="p-field-checkbox">
-      <p-checkbox
-        name="sports"
-        value="val1"
-        label="Value 1"
-        formControlName="sports"
-      ></p-checkbox>
-      <p-checkbox
-        name="sports"
-        value="val2"
-        label="Value 2"
-        formControlName="sports"
-      ></p-checkbox>
-    </div>
+  <div class="inputGroup">
+    <h4>Sports</h4>
+    <chips-group
+      [chips]="[
+        { value: 'roller', name: 'Roller' },
+        { value: 'trottinette', name: 'Trottinette' },
+        { value: 'skate', name: 'Skate' },
+        { value: 'quad', name: 'Quad' }
+      ]"
+      formControlName="sports"
+    ></chips-group>
   </div>
 </form>
