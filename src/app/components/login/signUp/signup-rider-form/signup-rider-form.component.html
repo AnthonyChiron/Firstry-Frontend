@@ -1,23 +1,20 @@
 <form [formGroup]="riderForm">
   <div class="inputGroup">
     <h4>Nom & prénom</h4>
-    <div class="p-inputgroup">
-      <span class="p-inputgroup-addon">
-        <i class="fa-solid fa-user"></i>
-      </span>
-      <input
-        pInputText
-        placeholder="Prénom"
-        formControlName="firstName"
-        required
-      />
-    </div>
-    <div class="p-inputgroup">
-      <span class="p-inputgroup-addon">
-        <i class="fa-solid fa-user"></i>
-      </span>
-      <input pInputText placeholder="Nom" formControlName="lastName" required />
-    </div>
+    <input
+      pInputText
+      placeholder="Prénom"
+      formControlName="firstName"
+      [class.ng-dirty]="fus.isFieldInvalid('firstName')"
+      required
+    />
+    <input
+      pInputText
+      placeholder="Nom"
+      formControlName="lastName"
+      [class.ng-dirty]="fus.isFieldInvalid('lastName')"
+      required
+    />
   </div>
   <div class="inputGroup">
     <h4>Date de naissance</h4>
@@ -25,6 +22,7 @@
       <p-calendar
         placeholder="Date de naissance"
         formControlName="birthDate"
+        [class.ng-dirty]="fus.isFieldInvalid('birthDate')"
         [showIcon]="true"
       ></p-calendar>
     </div>
@@ -37,6 +35,7 @@
       [suggestions]="filteredCountries"
       (completeMethod)="filterCountry($event)"
       field="name.common"
+      [class.ng-dirty]="fus.isFieldInvalid('nationality')"
       [dropdown]="true"
     >
       <ng-template let-country pTemplate="item">
@@ -49,12 +48,13 @@
   </div>
   <div class="inputGroup">
     <h4>Ville</h4>
-    <div class="p-inputgroup">
-      <span class="p-inputgroup-addon">
-        <i class="fa-solid fa-location-dot"></i>
-      </span>
-      <input pInputText placeholder="Ville" formControlName="city" required />
-    </div>
+    <input
+      pInputText
+      placeholder="Ville"
+      formControlName="city"
+      [class.ng-dirty]="fus.isFieldInvalid('city')"
+      required
+    />
   </div>
 
   <div class="inputGroup">
@@ -68,5 +68,8 @@
       ]"
       formControlName="sports"
     ></chips-group>
+    <small *ngIf="fus.isFieldInvalid('sports')" class="p-error">
+      Veuillez choisir au moins un sport !
+    </small>
   </div>
 </form>

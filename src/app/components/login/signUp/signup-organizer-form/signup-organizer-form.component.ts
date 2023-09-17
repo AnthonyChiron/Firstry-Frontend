@@ -1,5 +1,6 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-utility.service';
 
 @Component({
   selector: 'signup-organizer-form',
@@ -7,8 +8,12 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./signup-organizer-form.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class SignupOrganizerFormComponent {
+export class SignupOrganizerFormComponent implements OnInit {
   @Input() organizerForm: FormGroup;
 
-  constructor() {}
+  constructor(protected fus: FormUtilityService) {}
+
+  ngOnInit(): void {
+    this.fus.setForm(this.organizerForm);
+  }
 }

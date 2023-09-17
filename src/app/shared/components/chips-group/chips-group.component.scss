@@ -1,6 +1,13 @@
 .chips-group {
   display: flex;
+  flex-wrap: wrap;
   gap: 3vw;
+
+  p-button {
+    button {
+      margin: 0;
+    }
+  }
 }
 
 .btn {

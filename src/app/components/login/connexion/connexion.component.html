@@ -1,9 +1,6 @@
 <form [formGroup]="connexionForm">
-  <p *ngIf="invalidCredentials">
-    Votre email ou votre mot de passe est incorrect
-  </p>
   <div class="inputGroup">
-    <h4 for="email">Votre email</h4>
+    <h4 for="email">Email</h4>
     <input
       pInputText
       type="email"
@@ -13,9 +10,12 @@
     />
   </div>
   <div class="inputGroup">
-    <h4>Votre mot de passe</h4>
+    <h4>Mot de passe</h4>
 
     <p-password
+      styleClass="p-password p-component p-inputwrapper p-input-icon-right"
+      [style]="{ width: '100%' }"
+      [inputStyle]="{ width: '100%' }"
       minlength="6"
       placeholder="Mot de passe"
       [feedback]="false"
@@ -23,6 +23,10 @@
       required
     ></p-password>
   </div>
+  <small *ngIf="invalidCredentials" class="p-error"
+    >Votre email ou votre mot de passe est incorrect</small
+  >
+
   <div class="buttonsForm">
     <p>Mot de passe oublié ?</p>
     <button (click)="submit()">Connexion</button>

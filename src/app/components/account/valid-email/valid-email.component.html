@@ -1,10 +1,26 @@
-<div *ngIf="!authService.isValid()" class="notValid">
-  <p>Veuillez valider votre email</p>
-  <button (click)="sendNewEmail()">
-    Envoyer un nouvel email de confirmation
-  </button>
-</div>
-<div *ngIf="authService.isValid()" class="notValid">
-  <p>Votre email a bien été validé !</p>
-  <button (click)="backHome()">Retour à l'accueil</button>
+<div class="main">
+  <p-card>
+    <div *ngIf="!authService.isValid()" class="content">
+      <div class="header">
+        <i class="fa-regular fa-envelope fa-xl"></i>
+        <h3>Veuillez valider votre email</h3>
+      </div>
+      <p>
+        Pour se faire, vérifier votre boite email et cliquer sur le lien se
+        trouvant dans l'email que nous vous avons envoyé.
+      </p>
+      <p-button (click)="sendNewEmail()">
+        <div class="inputForm">
+          <i class="fa-solid fa-paper-plane"></i>
+          Envoyer un nouvel email de confirmation
+        </div>
+      </p-button>
+    </div>
+    <div *ngIf="authService.isValid()" class="content">
+      <div class="header">
+        <h2>Votre email a bien été validé !</h2>
+      </div>
+      <p-button (click)="backHome()">Retour à l'accueil</p-button>
+    </div>
+  </p-card>
 </div>
