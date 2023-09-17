@@ -32,8 +32,12 @@ export class ConnexionComponent implements OnInit {
       this.authService.login(this.connexionForm.value).subscribe({
         next: (token) => {
           this.authService.saveToken(token);
-          let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-          this.router.navigate([returnUrl || '/']);
+          if (!this.authService.getCurrentUser().isValid)
+            this.router.navigate(['/account/validateEmail']);
+          else {
+            let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+            this.router.navigate([returnUrl || '/']);
+          }
         },
         error: (err) => {
           this.invalidCredentials = true;

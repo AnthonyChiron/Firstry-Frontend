@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,7 +9,7 @@ const dashboardRoutes: Routes = [
   {
     path: 'validateEmail',
     component: ValidEmailComponent,
-    canActivate: [IsNotValidGuard],
+    // canActivate: [IsNotValidGuard],
   },
   {
     path: 'validateEmail/:token',
@@ -19,6 +20,6 @@ const dashboardRoutes: Routes = [
 
 @NgModule({
   declarations: [ValidEmailComponent],
-  imports: [CommonModule, RouterModule.forChild(dashboardRoutes)],
+  imports: [CommonModule, RouterModule.forChild(dashboardRoutes), SharedModule],
 })
 export class AccountModule {}

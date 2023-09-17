@@ -1,3 +1,4 @@
+import { FormUtilityService } from './../../../../shared/services/FormUtility/form-utility.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
@@ -15,7 +16,10 @@ export class SignupRiderFormComponent implements OnInit {
   filteredCountries: any[];
   countries: any[] = [];
 
-  constructor(private countryService: CountryService) {}
+  constructor(
+    private countryService: CountryService,
+    protected fus: FormUtilityService
+  ) {}
 
   ngOnInit(): void {
     this.countryService.getAllCountry().subscribe((data: []) => {
@@ -29,6 +33,7 @@ export class SignupRiderFormComponent implements OnInit {
         return 0;
       });
     });
+    this.fus.setForm(this.riderForm);
   }
 
   filterCountry(event: AutoCompleteCompleteEvent) {

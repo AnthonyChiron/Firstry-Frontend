@@ -1,34 +1,28 @@
 <form [formGroup]="organizerForm">
   <div class="inputGroup">
     <h4>Nom de votre organisation</h4>
-    <div class="p-inputgroup">
-      <span class="p-inputgroup-addon">
-        <i class="fa-solid fa-user"></i>
-      </span>
-      <input
-        pInputText
-        placeholder="Organisation"
-        formControlName="name"
-        required
-      />
-      <small
-        >Attention : C'est le nom de votre organisation, pas de votre
-        contest</small
-      >
-    </div>
+
+    <input
+      pInputText
+      placeholder="Organisation"
+      formControlName="name"
+      [class.ng-dirty]="fus.isFieldInvalid('name')"
+      required
+    />
+    <small
+      >Attention : C'est le nom de votre organisation, pas de votre
+      contest</small
+    >
   </div>
   <div class="inputGroup">
     <h4>N° de SIRET</h4>
-    <div class="p-inputgroup">
-      <span class="p-inputgroup-addon">
-        <i class="fa-solid fa-code"></i>
-      </span>
-      <input
-        pInputText
-        placeholder="Siret"
-        formControlName="siretNumber"
-        required
-      />
-    </div>
+
+    <input
+      pInputText
+      placeholder="Siret"
+      formControlName="siretNumber"
+      [class.ng-dirty]="fus.isFieldInvalid('siretNumber')"
+      required
+    />
   </div>
 </form>
