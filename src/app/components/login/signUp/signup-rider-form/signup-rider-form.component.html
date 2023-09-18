@@ -32,6 +32,7 @@
     <p-autoComplete
       placeholder="Nationalité"
       formControlName="nationality"
+      [forceSelection]="true"
       [suggestions]="filteredCountries"
       (completeMethod)="filterCountry($event)"
       field="name.common"

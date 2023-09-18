@@ -15,4 +15,9 @@ export class UsersService extends CrudService<UserModel> {
     const url = `${this.baseUrl}/getUserByGoogleId/${googleId}`;
     return this.http.get<UserModel>(url);
   }
+
+  isEmailAvailable(email) {
+    const url = `${this.baseUrl}/isEmailAvailable`;
+    return this.http.post(url, { email: email });
+  }
 }
