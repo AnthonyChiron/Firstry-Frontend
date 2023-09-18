@@ -10,6 +10,7 @@ import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-uti
 })
 export class SignupCredentialsFormComponent implements OnInit {
   @Input() userForm: FormGroup;
+  @Input() emailAvailable: boolean;
 
   constructor(protected fus: FormUtilityService) {}
 

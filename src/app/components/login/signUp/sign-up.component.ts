@@ -1,4 +1,4 @@
-import { Observable, map, startWith } from 'rxjs';
+import { Observable, firstValueFrom, map, startWith } from 'rxjs';
 import { CountryService } from './../../../shared/services/CountryService/country.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,6 +15,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
+import { UsersService } from 'src/app/shared/data/UsersService/users.service';
 
 @Component({
   selector: 'sign-up',
@@ -31,12 +32,14 @@ export class SignUpComponent implements OnInit {
   photoForm: FormGroup;
   items: MenuItem[] | undefined;
   activeIndex: number = 0;
+  emailAvailable: boolean = true;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private registerUserService: RegisterUserService,
     private authService: AuthService,
+    private userService: UsersService,
     private countryService: CountryService,
     private fb: FormBuilder
   ) {}
@@ -90,9 +93,16 @@ export class SignUpComponent implements OnInit {
     console.log(this.credentialsForm.value);
   }
 
-  next(form: FormGroup) {
-    if (form.invalid) form.markAllAsTouched();
-    if (form.valid) this.activeIndex++;
+  async next(form: FormGroup) {
+    if (this.activeIndex == 0) {
+      this.emailAvailable = <boolean>(
+        await firstValueFrom(
+          this.userService.isEmailAvailable(form.value.email)
+        )
+      );
+    }
+    if (form.invalid && !this.emailAvailable) form.markAllAsTouched();
+    if (form.valid && this.emailAvailable) this.activeIndex++;
   }
 
   prev() {

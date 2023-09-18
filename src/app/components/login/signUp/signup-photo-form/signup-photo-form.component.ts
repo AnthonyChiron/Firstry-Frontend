@@ -10,7 +10,7 @@ import { UploadEvent } from 'primeng/fileupload';
 })
 export class SignupPhotoFormComponent {
   @Input() photoForm: FormGroup;
-  maxFileSize = 1000;
+  maxFileSize = 4000;
 
   constructor() {}
 

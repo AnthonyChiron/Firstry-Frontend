@@ -54,14 +54,11 @@ export class ChipsGroupComponent implements ControlValueAccessor, OnInit {
 
   writeValue(value: [] | string): void {
     if (value && Array.isArray(value)) {
-      console.log(value);
       this.selectedChips = value;
     } else if (value) {
-      console.log('a');
       this.selectedChips = [<string>value];
     }
     if (this.preSelect && !value) {
-      console.log('a');
       this.toggleSelection(this.chips[0]);
     }
   }

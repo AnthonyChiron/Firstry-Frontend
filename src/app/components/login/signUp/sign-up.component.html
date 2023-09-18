@@ -4,9 +4,11 @@
   <div *ngIf="activeIndex === 0">
     <signup-credentials-form
       [userForm]="credentialsForm"
+      [emailAvailable]="emailAvailable"
     ></signup-credentials-form>
     <div class="footer">
-      <button pButton type="button" label="Test" (click)="test()"></button>
+      <!-- <button pButton type="button" label="Test" (click)="test()"></button> -->
+      <p>Etape {{ activeIndex + 1 }} sur 3</p>
       <button
         pButton
         type="button"
@@ -19,7 +21,8 @@
   <div *ngIf="activeIndex === 1 && credentialsForm.value.role == 'rider'">
     <signup-rider-form [riderForm]="riderForm"></signup-rider-form>
     <div class="footer">
-      <button pButton type="button" label="Prev" (click)="prev()"></button>
+      <!-- <button pButton type="button" label="Prev" (click)="prev()"></button> -->
+      <p>Etape {{ activeIndex + 1 }} sur 3</p>
       <button
         pButton
         type="button"
@@ -34,7 +37,8 @@
       [organizerForm]="organizerForm"
     ></signup-organizer-form>
     <div class="footer">
-      <button pButton type="button" label="Prev" (click)="prev()"></button>
+      <!-- <button pButton type="button" label="Prev" (click)="prev()"></button> -->
+      <p>Etape {{ activeIndex + 1 }} sur 3</p>
       <button
         pButton
         type="button"
@@ -48,7 +52,8 @@
 <div *ngIf="activeIndex === 2">
   <signup-photo-form [photoForm]="photoForm"></signup-photo-form>
   <div class="footer">
-    <button pButton type="button" label="Prev" (click)="prev()"></button>
+    <!-- <button pButton type="button" label="Prev" (click)="prev()"></button> -->
+    <p>Etape {{ activeIndex + 1 }} sur 3</p>
     <button pButton type="button" label="Valider" (click)="submit()"></button>
   </div>
 </div>
