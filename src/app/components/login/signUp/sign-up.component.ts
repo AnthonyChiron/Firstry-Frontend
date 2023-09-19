@@ -16,6 +16,7 @@ import {
 } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
 import { UsersService } from 'src/app/shared/data/UsersService/users.service';
+import { FileUploadEvent, UploadEvent } from 'primeng/fileupload';
 
 @Component({
   selector: 'sign-up',
@@ -30,8 +31,9 @@ export class SignUpComponent implements OnInit {
   riderForm: FormGroup;
   organizerForm: FormGroup;
   photoForm: FormGroup;
+  photoFile: File;
   items: MenuItem[] | undefined;
-  activeIndex: number = 0;
+  activeIndex: number = 2;
   emailAvailable: boolean = true;
 
   constructor(
@@ -94,24 +96,31 @@ export class SignUpComponent implements OnInit {
   }
 
   async next(form: FormGroup) {
-    if (this.activeIndex == 0) {
-      this.emailAvailable = <boolean>(
-        await firstValueFrom(
-          this.userService.isEmailAvailable(form.value.email)
-        )
-      );
-    }
-    if (form.invalid && !this.emailAvailable) form.markAllAsTouched();
-    if (form.valid && this.emailAvailable) this.activeIndex++;
+    // if (this.activeIndex == 0) {
+    //   this.emailAvailable = <boolean>(
+    //     await firstValueFrom(
+    //       this.userService.isEmailAvailable(form.value.email)
+    //     )
+    //   );
+    // }
+    // if (form.invalid && !this.emailAvailable) form.markAllAsTouched();
+    // if (form.valid && this.emailAvailable) this.activeIndex++;
+    this.activeIndex++;
   }
 
   prev() {
     this.activeIndex--;
   }
 
+  uploadPhoto(event) {
+    console.log(event);
+    this.photoFile = new File([event], 'test');
+    console.log(this.photoFile);
+  }
+
   submit() {
-    console.log(this.signUpForm.value);
-    this.authService.signUp(this.signUpForm.value).subscribe({
+    console.log(this.photoFile);
+    this.authService.signUp(this.signUpForm.value, this.photoFile).subscribe({
       next: (token) => {
         this.authService.saveToken(token);
         this.router.navigate(['/account/validateEmail']);

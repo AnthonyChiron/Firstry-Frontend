@@ -13,6 +13,7 @@ import { SignupCredentialsFormComponent } from './signUp/signup-credentials-form
 import { SignupRiderFormComponent } from './signUp/signup-rider-form/signup-rider-form.component';
 import { SignupOrganizerFormComponent } from './signUp/signup-organizer-form/signup-organizer-form.component';
 import { SignupPhotoFormComponent } from './signUp/signup-photo-form/signup-photo-form.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 const loginRoutes: Routes = [
   { path: '', component: LoginComponent, canActivate: [IsNotAuthGuard] },
@@ -36,6 +37,7 @@ const loginRoutes: Routes = [
     MatSelectModule,
     SharedModule,
     ReactiveFormsModule,
+    ImageCropperModule,
   ],
   exports: [LoginComponent],
 })
