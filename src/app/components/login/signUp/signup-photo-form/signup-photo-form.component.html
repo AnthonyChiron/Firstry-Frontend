@@ -1,13 +1,39 @@
 <form [formGroup]="photoForm">
   <h4>Ajouter une photo à votre compte !</h4>
-  <p-fileUpload
-    mode="basic"
-    name="demo[]"
-    url="https://www.primefaces.org/cdn/api/upload.php"
-    accept="image/*"
-    (onUpload)="onUpload($event)"
-    [auto]="true"
-    chooseLabel="Browse"
-  ></p-fileUpload>
-  <small>Votre photo ne doit pas dépasser les 4mo</small>
+
+  <div class="addPhoto" *ngIf="!imgConfirmed">
+    <!-- <input type="file" accept="image/*" (change)="onUpload($event)" />
+    <small>Votre photo ne doit pas dépasser les 4mo</small> -->
+    <label *ngIf="imageChangedEvent == '' && !isLoading" class="labelAddPhoto">
+      <input
+        class="inputAddPhoto"
+        type="file"
+        (change)="fileChangeEvent($event)"
+      />
+      <i class="fa-solid fa-add fa-xl"></i>
+    </label>
+    <loader *ngIf="isLoading"></loader>
+    <image-cropper
+      *ngIf="imageChangedEvent != ''"
+      [imageChangedEvent]="imageChangedEvent"
+      [maintainAspectRatio]="true"
+      [aspectRatio]="4 / 5"
+      [onlyScaleDown]="false"
+      format="png"
+      output="blob"
+      (imageCropped)="imageCropped($event)"
+      (imageLoaded)="imageLoaded()"
+      (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"
+    ></image-cropper>
+    <p-button *ngIf="imageChangedEvent != ''" (click)="confirmImage()">
+      Confirmer
+    </p-button>
+  </div>
+  <div class="photo" *ngIf="imgConfirmed">
+    <img
+      [src]="sanitizer.bypassSecurityTrustUrl(croppedImage.objectUrl)"
+      alt=""
+    />
+  </div>
 </form>

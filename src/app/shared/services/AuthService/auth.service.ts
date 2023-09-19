@@ -6,6 +6,7 @@ import { BaseHttpService } from '../../data/BaseHttpService/base-http.service';
 import { Router } from '@angular/router';
 import { SignUpModel } from 'src/app/models/signUp.model';
 import jwt_decode from 'jwt-decode';
+import { UploadEvent } from 'primeng/fileupload';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +17,12 @@ export class AuthService extends BaseHttpService {
   }
 
   // Méthode pour enregistrer un utilisateur
-  signUp(signUpForm: SignUpModel) {
-    return this.http.post(`${this.baseUrl}auth/signup`, signUpForm);
+  signUp(signUpForm: SignUpModel, photo: File) {
+    const formData = new FormData();
+    console.log(photo);
+    formData.append('photo', photo, photo.name);
+    formData.append('signUpForm', JSON.stringify(signUpForm));
+    return this.http.post(`${this.baseUrl}auth/signup`, formData);
   }
 
   sendNewValidationEmail() {

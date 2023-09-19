@@ -19,6 +19,8 @@ import { TabViewModule } from 'primeng/tabview';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { ChipsGroupComponent } from './components/chips-group/chips-group.component';
 import { BtnPrimaryComponent } from './components/btn-primary/btn-primary.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { BtnPrimaryComponent } from './components/btn-primary/btn-primary.compon
     NavIconBtnComponent,
     ChipsGroupComponent,
     BtnPrimaryComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +46,7 @@ import { BtnPrimaryComponent } from './components/btn-primary/btn-primary.compon
     CheckboxModule,
     TabViewModule,
     ToggleButtonModule,
+    ProgressSpinnerModule,
   ],
   providers: [ScreenSizeService],
   exports: [
@@ -64,6 +68,8 @@ import { BtnPrimaryComponent } from './components/btn-primary/btn-primary.compon
     ToggleButtonModule,
     ChipsGroupComponent,
     BtnPrimaryComponent,
+    ProgressSpinnerModule,
+    LoaderComponent,
   ],
 })
 export class SharedModule {}
