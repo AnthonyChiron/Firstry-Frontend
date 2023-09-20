@@ -1,5 +1,8 @@
 <div class="main">
   <h1 class="title">RIDERS</h1>
+  <!-- <div class="filters">
+    <p-dropdown [options]="sports" optionLabel="name"></p-dropdown>
+  </div> -->
   <div class="riders">
     <rider-card *ngFor="let rider of riders" [rider]="rider"></rider-card>
   </div>

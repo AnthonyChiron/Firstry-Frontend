@@ -16,7 +16,7 @@ export class IsNotAuthGuard {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    if (this.authService.isLoggedIn()) {
+    if (this.authService.hasToken()) {
       this.router.navigate(['/']);
     }
     return true;

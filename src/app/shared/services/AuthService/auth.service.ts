@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { CredentialsModel } from 'src/app/models/credentials.model';
 import { BaseHttpService } from '../../data/BaseHttpService/base-http.service';
 import { Router } from '@angular/router';
@@ -12,15 +12,18 @@ import { UploadEvent } from 'primeng/fileupload';
   providedIn: 'root',
 })
 export class AuthService extends BaseHttpService {
+  private loggedInSubject: BehaviorSubject<boolean>;
+
   constructor(private http: HttpClient, private route: Router) {
     super();
+    this.loggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
   }
 
   // Méthode pour enregistrer un utilisateur
-  signUp(signUpForm: SignUpModel, photo: File) {
+  signUp(signUpForm: SignUpModel, photo) {
     const formData = new FormData();
     console.log(photo);
-    formData.append('photo', photo, photo.name);
+    formData.append('photo', photo);
     formData.append('signUpForm', JSON.stringify(signUpForm));
     return this.http.post(`${this.baseUrl}auth/signup`, formData);
   }
@@ -35,8 +38,9 @@ export class AuthService extends BaseHttpService {
   }
 
   validateEmail(token) {
+    console.log(this.getCurrentUser().user._id);
     return this.http.post(
-      `${this.baseUrl}auth/validateEmail/${this.getCurrentUser()['_id']}`,
+      `${this.baseUrl}auth/validateEmail/${this.getCurrentUser()._id}`,
       { token: token }
     );
   }
@@ -50,11 +54,15 @@ export class AuthService extends BaseHttpService {
   logout(): void {
     localStorage.removeItem('auth-token');
     localStorage.removeItem('current-user');
+    this.loggedInSubject.next(false);
   }
 
-  // Vérifie si l'utilisateur est connecté
-  isLoggedIn(): boolean {
+  hasToken(): boolean {
     return !!localStorage.getItem('auth-token');
+  }
+
+  isLoggedIn(): Observable<boolean> {
+    return this.loggedInSubject.asObservable();
   }
 
   isValid(): boolean {
@@ -71,5 +79,6 @@ export class AuthService extends BaseHttpService {
   saveToken(token) {
     localStorage.setItem('auth-token', token);
     localStorage.setItem('current-user', JSON.stringify(jwt_decode(token)));
+    this.loggedInSubject.next(true);
   }
 }

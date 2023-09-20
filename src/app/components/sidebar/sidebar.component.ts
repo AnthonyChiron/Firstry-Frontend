@@ -22,12 +22,19 @@ export class SidebarComponent {
   showLoginModal = false;
   @Input() toggleSidebar: boolean = false;
   @Output() clickToggle = new EventEmitter();
+  isLoggedIn: boolean = false;
 
   constructor(
     protected authService: AuthService,
     protected screenSizeService: ScreenSizeService
   ) {
     if (screenSizeService.isDesktop) this.toggleSidebar = true;
+  }
+
+  ngOnInit(): void {
+    this.authService.isLoggedIn().subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
+    });
   }
 
   emitClickToggle() {

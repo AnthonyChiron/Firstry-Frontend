@@ -9,6 +9,13 @@ import { RidersService } from 'src/app/shared/data/RidersService/riders.service'
 })
 export class RidersComponent implements OnInit {
   riders: RiderModel[] = [];
+  sports = [
+    { name: 'Roller' },
+    { name: 'Trottinette' },
+    { name: 'Skate' },
+    { name: 'Quad' },
+    { name: 'BMX' },
+  ];
 
   constructor(private ridersService: RidersService) {}
 

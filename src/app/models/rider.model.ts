@@ -3,6 +3,7 @@ import { GenericModel } from './generic.model';
 export interface RiderModel extends GenericModel {
   firstName: String;
   lastName: String;
+  photoUrl: String;
   gender?: String;
   birthDate: Date;
   sports: [];

@@ -1,5 +1,7 @@
 <!-- <p class="title">ACCUEIL</p> -->
 
+<h1>Bienvenue {{ user.rider ? user.rider.firstName : "" }} !</h1>
+
 <app-btn-primary
   *ngIf="authService.getCurrentUser()"
   (click)="logout()"
@@ -8,7 +10,7 @@
 ></app-btn-primary>
 
 <app-btn-primary
-  (click)="isLoggedIn()"
+  (click)="isLoggedInBtn()"
   [content]="'is isLoggedIn ?'"
   [icon]="'person-running'"
 ></app-btn-primary>

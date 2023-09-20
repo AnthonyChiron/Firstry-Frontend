@@ -9,5 +9,7 @@ import { RiderModel } from 'src/app/models/rider.model';
 export class RiderCardComponent implements OnInit {
   @Input() rider!: RiderModel;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.rider);
+  }
 }

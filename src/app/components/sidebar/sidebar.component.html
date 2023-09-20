@@ -40,7 +40,7 @@
         class="primary-btn connexion"
         (click)="emitClickToggle()"
         routerLink="/login"
-        *ngIf="!authService.isLoggedIn()"
+        *ngIf="!isLoggedIn"
       >
         CONNEXION
       </div>
@@ -48,13 +48,10 @@
         class="secondary-btn connexion"
         (click)="emitClickToggle()"
         routerLink="/register"
-        *ngIf="!authService.isLoggedIn()"
+        *ngIf="!isLoggedIn"
       >
         INSCRIPTION
       </div>
-    </div>
-    <div class="account" *ngIf="authService.getCurrentUser()">
-      <a>ACCOUNT</a>
     </div>
   </ul>
 </nav>
