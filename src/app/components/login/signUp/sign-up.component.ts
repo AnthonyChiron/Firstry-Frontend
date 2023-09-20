@@ -32,8 +32,9 @@ export class SignUpComponent implements OnInit {
   organizerForm: FormGroup;
   photoForm: FormGroup;
   photoFile: File;
+  photoBlob: Blob;
   items: MenuItem[] | undefined;
-  activeIndex: number = 2;
+  activeIndex: number = 0;
   emailAvailable: boolean = true;
 
   constructor(
@@ -96,30 +97,33 @@ export class SignUpComponent implements OnInit {
   }
 
   async next(form: FormGroup) {
-    // if (this.activeIndex == 0) {
-    //   this.emailAvailable = <boolean>(
-    //     await firstValueFrom(
-    //       this.userService.isEmailAvailable(form.value.email)
-    //     )
-    //   );
-    // }
-    // if (form.invalid && !this.emailAvailable) form.markAllAsTouched();
-    // if (form.valid && this.emailAvailable) this.activeIndex++;
-    this.activeIndex++;
+    if (this.activeIndex == 0) {
+      this.emailAvailable = <boolean>(
+        await firstValueFrom(
+          this.userService.isEmailAvailable(form.value.email)
+        )
+      );
+    }
+    if (form.invalid && !this.emailAvailable) form.markAllAsTouched();
+    if (form.valid && this.emailAvailable) this.activeIndex++;
+    // this.activeIndex++;
   }
 
   prev() {
     this.activeIndex--;
   }
 
-  uploadPhoto(event) {
+  async uploadPhoto(event) {
     console.log(event);
-    this.photoFile = new File([event], 'test');
+    const blob = await fetch(event.objectUrl).then((r) => r.blob());
+    console.log(blob);
+    this.photoFile = new File([blob], 'test.png', { type: 'image/png' });
     console.log(this.photoFile);
   }
 
   submit() {
     console.log(this.photoFile);
+    console.log(this.signUpForm.value);
     this.authService.signUp(this.signUpForm.value, this.photoFile).subscribe({
       next: (token) => {
         this.authService.saveToken(token);

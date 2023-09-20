@@ -16,7 +16,7 @@ export class IsAuthGuard {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    if (!this.authService.isLoggedIn()) {
+    if (!this.authService.hasToken()) {
       this.router.navigate(['/register'], {
         queryParams: { returnUrl: state.url },
       });

@@ -1,3 +1,4 @@
+import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RiderCardComponent } from './rider-card/rider-card.component';
@@ -10,7 +11,7 @@ const ridersRoutes: Routes = [{ path: '', component: RidersComponent }];
 
 @NgModule({
   declarations: [RidersComponent, RiderCardComponent],
-  imports: [CommonModule, RouterModule.forChild(ridersRoutes)],
+  imports: [CommonModule, RouterModule.forChild(ridersRoutes), SharedModule],
   providers: [RidersService],
 })
 export class RidersModule {}

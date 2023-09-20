@@ -34,6 +34,7 @@ export class SignupPhotoFormComponent {
 
   async fileChangeEvent(event: any): Promise<void> {
     const file: File = event.target.files[0];
+    // this.imageChangedEvent = event;
     this.isLoading = true;
     try {
       const newFile = this.removebg
@@ -91,9 +92,11 @@ export class SignupPhotoFormComponent {
   confirmImage() {
     // Ici, vous pouvez envoyer this.croppedImage au serveur ou quoi que ce soit.
     console.log(this.croppedImage);
-    this.uploadPhoto.emit(this.croppedImage.objectUrl);
+    this.uploadPhoto.emit(this.croppedImage);
     this.imgConfirmed = true;
   }
+
+  test() {}
 
   onUpload(event) {
     console.log(event);

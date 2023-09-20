@@ -3,7 +3,24 @@
     <i class="fa-solid fa-2x fa-bars"></i>
   </div>
   <div class="account">
-    <p>Mon compte</p>
-    <i class="fa-solid fa-2x fa-user"></i>
+    <div *ngIf="user.role == 'rider'">
+      <h3 class="firstName">{{ user.rider.firstName }}</h3>
+      <h3 class="lastName">{{ user.rider.lastName }}</h3>
+    </div>
+    <div *ngIf="user.role == 'contest'">
+      <h3>{{ user.firstName }}</h3>
+      <h3>{{ user.lastName }}</h3>
+    </div>
+    <img
+      *ngIf="isLoggedIn && user.role == 'rider'"
+      src="{{ user.rider.photoUrl }}"
+      alt=""
+    />
+    <img
+      *ngIf="isLoggedIn && user.role == 'contest'"
+      src="{{ user.organizer.photoUrl }}"
+      alt=""
+    />
+    <i *ngIf="!isLoggedIn" class="fa-solid fa-2x fa-user"></i>
   </div>
 </div>

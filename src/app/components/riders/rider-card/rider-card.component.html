@@ -1,7 +1,16 @@
 <div class="card">
-  <img src="../../../../assets/riders/pnj.png" alt="Rider" />
+  <img
+    *ngIf="!rider.photoUrl || rider.photoUrl == ''"
+    src="../../../../assets/riders/pnj.png"
+    alt="Rider"
+  />
+  <img
+    *ngIf="rider.photoUrl && rider.photoUrl != ''"
+    [src]="rider.photoUrl"
+    alt="Rider"
+  />
   <div class="name">
-    <h3>{{ rider.firstName }}</h3>
-    <h3>{{ rider.lastName }}</h3>
+    <h3 class="firstName">{{ rider.firstName }}</h3>
+    <h3 class="lastName">{{ rider.lastName }}</h3>
   </div>
 </div>

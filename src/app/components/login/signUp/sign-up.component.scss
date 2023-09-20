@@ -1,9 +1,31 @@
+@import "../../../../styles/colors.scss";
+
 option {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-left: 2vw;
   padding-right: 2vw;
+}
+
+.step {
+  color: $firstry-white-4;
+  font-size: 13px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h4 {
+    font-variation-settings: "wght" 400;
+  }
+
+  i {
+    margin-left: 1vh;
+    margin-right: 0;
+  }
 }
 
 .content {

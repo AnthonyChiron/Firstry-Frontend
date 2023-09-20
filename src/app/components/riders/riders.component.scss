@@ -9,9 +9,12 @@
   }
 
   .riders {
+    margin-top: 5vh;
     display: flex;
-    width: 80vw;
+    width: 90vw;
+    gap: 10vw;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
   }
 }

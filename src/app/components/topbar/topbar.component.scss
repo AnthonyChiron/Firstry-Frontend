@@ -5,13 +5,43 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3vh;
-  height: 3vh;
+  padding: 4.5vh;
+  height: 6vh;
+
+  .menu-toggle {
+    background-color: white;
+    padding: 1.2vh;
+    padding-top: 0.7vh;
+    padding-bottom: 0.7vh;
+    border-radius: 10px;
+  }
 
   .account {
     display: flex;
     align-items: center;
     gap: 2vw;
-    font-variation-settings: "wght" 800;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+
+      .firstName {
+        font-variation-settings: "wght" 200;
+        padding: 0;
+        margin-bottom: -5px;
+      }
+
+      .lastName {
+        font-variation-settings: "wght" 500;
+        font-size: 15px;
+      }
+    }
+
+    img {
+      max-height: 6vh;
+      object-fit: contain;
+      border-radius: 5000px;
+    }
   }
 }

@@ -18,14 +18,12 @@
   </div>
   <div class="inputGroup">
     <h4>Date de naissance</h4>
-    <div class="p-inputgroup">
-      <p-calendar
-        placeholder="Date de naissance"
-        formControlName="birthDate"
-        [class.ng-dirty]="fus.isFieldInvalid('birthDate')"
-        [showIcon]="true"
-      ></p-calendar>
-    </div>
+    <p-calendar
+      placeholder="Date de naissance"
+      formControlName="birthDate"
+      [class.ng-dirty]="fus.isFieldInvalid('birthDate')"
+      [showIcon]="true"
+    ></p-calendar>
   </div>
   <div class="inputGroup">
     <h4>Nationalité</h4>

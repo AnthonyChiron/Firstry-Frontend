@@ -1,12 +1,26 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { rolesEnum } from './../../constants/rolesEnum';
+import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'topbar',
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.scss'],
 })
-export class TopbarComponent {
+export class TopbarComponent implements OnInit {
   @Output() clickToggle = new EventEmitter();
+  user;
+  isLoggedIn: boolean = false;
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.authService.isLoggedIn().subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
+      this.user = this.authService.getCurrentUser();
+      console.log(this.user);
+    });
+  }
 
   emit() {
     this.clickToggle.emit();

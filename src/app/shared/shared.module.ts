@@ -21,6 +21,7 @@ import { ChipsGroupComponent } from './components/chips-group/chips-group.compon
 import { BtnPrimaryComponent } from './components/btn-primary/btn-primary.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { LoaderComponent } from './components/loader/loader.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     TabViewModule,
     ToggleButtonModule,
     ProgressSpinnerModule,
+    DropdownModule,
   ],
   providers: [ScreenSizeService],
   exports: [
@@ -70,6 +72,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     BtnPrimaryComponent,
     ProgressSpinnerModule,
     LoaderComponent,
+    DropdownModule,
   ],
 })
 export class SharedModule {}
