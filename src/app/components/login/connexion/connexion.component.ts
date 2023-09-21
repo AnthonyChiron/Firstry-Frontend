@@ -31,6 +31,7 @@ export class ConnexionComponent implements OnInit {
     try {
       this.authService.login(this.connexionForm.value).subscribe({
         next: (token) => {
+          console.log(token);
           this.authService.saveToken(token);
           if (!this.authService.getCurrentUser().isValid)
             this.router.navigate(['/account/validateEmail']);

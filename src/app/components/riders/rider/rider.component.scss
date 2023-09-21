@@ -1,0 +1,17 @@
+@import "../../../../styles/components.scss";
+
+.header {
+  padding: 2vh;
+}
+
+.content {
+  padding: 4vh;
+  display: flex;
+
+  .photo {
+    img {
+      max-height: 35vh;
+      border-radius: 10px;
+    }
+  }
+}

@@ -38,7 +38,6 @@ export class AuthService extends BaseHttpService {
   }
 
   validateEmail(token) {
-    console.log(this.getCurrentUser().user._id);
     return this.http.post(
       `${this.baseUrl}auth/validateEmail/${this.getCurrentUser()._id}`,
       { token: token }

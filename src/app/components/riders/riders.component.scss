@@ -16,5 +16,25 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+
+    // Afficher chaque carte rider avec une animation
+    .rider {
+      opacity: 0;
+      animation: slide-right 0.6s ease-in-out;
+      animation-delay: calc(0.15s * var(--rider-index));
+      animation-fill-mode: forwards;
+    }
+
+    // Animation
+    @keyframes slide-right {
+      0% {
+        opacity: 0;
+        transform: translateX(-70px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
   }
 }

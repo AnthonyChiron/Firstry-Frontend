@@ -1,0 +1,20 @@
+<div class="header">
+  <btn
+    [routerLink]="['/riders']"
+    label="Retour"
+    icon="fa-solid fa-angles-left fa-2xs"
+    iconPos="left"
+  ></btn>
+</div>
+<div class="content">
+  <p-card class="photo">
+    <img *ngIf="rider && rider.photoUrl" [src]="rider.photoUrl" alt="" />
+  </p-card>
+  <p-card *ngIf="rider">
+    <div class="commonRiderInfo">
+      <h2 class="firstName">{{ rider.firstName }}</h2>
+      <h2 class="lastName">{{ rider.lastName }}</h2>
+    </div>
+  </p-card>
+</div>
+<div class="footer"></div>

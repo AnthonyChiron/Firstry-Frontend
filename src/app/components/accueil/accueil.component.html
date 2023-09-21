@@ -2,27 +2,35 @@
 
 <h1>Bienvenue {{ user.rider ? user.rider.firstName : "" }} !</h1>
 
-<app-btn-primary
+<btn [label]="'Test'" icon="fa-solid fa-check"></btn>
+<btn
+  [label]="'Test'"
+  type="secondary"
+  icon="fa-solid fa-check"
+  iconPos="right"
+></btn>
+
+<p-button
   *ngIf="authService.getCurrentUser()"
   (click)="logout()"
-  [content]="'Se déconnecté'"
+  [label]="'Se déconnecté'"
   [icon]="'person-running'"
-></app-btn-primary>
+></p-button>
 
-<app-btn-primary
+<p-button
   (click)="isLoggedInBtn()"
-  [content]="'is isLoggedIn ?'"
+  [label]="'is isLoggedIn ?'"
   [icon]="'person-running'"
-></app-btn-primary>
+></p-button>
 
-<app-btn-primary
+<p-button
   (click)="getCurrentUser()"
-  [content]="'Current user'"
+  [label]="'Current user'"
   [icon]="'person-running'"
-></app-btn-primary>
+></p-button>
 
-<app-btn-primary
+<p-button
   (click)="isValid()"
-  [content]="'isValid()'"
+  [label]="'isValid()'"
   [icon]="'person-running'"
-></app-btn-primary>
+></p-button>

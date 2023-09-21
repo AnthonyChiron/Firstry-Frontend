@@ -26,9 +26,13 @@
       (cropperReady)="cropperReady()"
       (loadImageFailed)="loadImageFailed()"
     ></image-cropper>
-    <p-button *ngIf="imageChangedEvent != ''" (click)="confirmImage()">
-      Confirmer
-    </p-button>
+    <btn
+      *ngIf="imageChangedEvent != ''"
+      (click)="confirmImage()"
+      label="Confirmer"
+      icon="fa-solid fa-check fa-2xs"
+      iconPos="left"
+    ></btn>
   </div>
   <div class="photo" *ngIf="imgConfirmed">
     <img

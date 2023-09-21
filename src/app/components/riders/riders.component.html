@@ -4,6 +4,12 @@
     <p-dropdown [options]="sports" optionLabel="name"></p-dropdown>
   </div> -->
   <div class="riders">
-    <rider-card *ngFor="let rider of riders" [rider]="rider"></rider-card>
+    <rider-card
+      *ngFor="let rider of riders; let i = index"
+      [style.--rider-index]="i"
+      [rider]="rider"
+      class="rider"
+      [routerLink]="['/riders', rider._id]"
+    ></rider-card>
   </div>
 </div>

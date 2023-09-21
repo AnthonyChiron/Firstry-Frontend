@@ -2,21 +2,4 @@
   display: flex;
   flex-wrap: wrap;
   gap: 3vw;
-
-  p-button {
-    button {
-      margin: 0;
-    }
-  }
-}
-
-.btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-variation-settings: "wght" 400;
-
-  i {
-    margin: 0;
-  }
 }

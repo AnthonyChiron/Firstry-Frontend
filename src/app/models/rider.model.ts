@@ -8,7 +8,7 @@ export interface RiderModel extends GenericModel {
   birthDate: Date;
   sports: [];
   category?: String;
-  nationality: String;
+  nationality: any;
   city: String;
   socials?: {
     instagram?: String;
