@@ -9,11 +9,12 @@
     <div class="footer">
       <!-- <button pButton type="button" label="Test" (click)="test()"></button> -->
       <p class="step">Etape {{ activeIndex + 1 }} sur 3</p>
-      <p-button type="button" (click)="next(credentialsForm)"
-        ><div class="btn">
-          <h4>Suivant</h4>
-          <i class="fa-solid fa-angles-right fa-2xs"></i></div
-      ></p-button>
+      <btn
+        (click)="next(credentialsForm)"
+        label="Suivant"
+        icon="fa-solid fa-angles-right fa-2xs"
+        iconPos="right"
+      ></btn>
     </div>
   </div>
 
@@ -22,11 +23,12 @@
     <div class="footer">
       <!-- <button pButton type="button" label="Prev" (click)="prev()"></button> -->
       <p class="step">Etape {{ activeIndex + 1 }} sur 3</p>
-      <p-button type="button" (click)="next(riderForm)"
-        ><div class="btn">
-          <h4>Suivant</h4>
-          <i class="fa-solid fa-angles-right fa-2xs"></i></div
-      ></p-button>
+      <btn
+        (click)="next(riderForm)"
+        label="Suivant"
+        icon="fa-solid fa-angles-right fa-2xs"
+        iconPos="right"
+      ></btn>
     </div>
   </div>
 
@@ -37,11 +39,12 @@
     <div class="footer">
       <!-- <button pButton type="button" label="Prev" (click)="prev()"></button> -->
       <p class="step">Etape {{ activeIndex + 1 }} sur 3</p>
-      <p-button type="button" (click)="next(organizerForm)"
-        ><div class="btn">
-          <h4>Suivant</h4>
-          <i class="fa-solid fa-angles-right fa-2xs"></i></div
-      ></p-button>
+      <btn
+        (click)="next(organizerForm)"
+        label="Suivant"
+        icon="fa-solid fa-angles-right fa-2xs"
+        iconPos="right"
+      ></btn>
     </div>
   </div>
 </div>
@@ -53,12 +56,12 @@
     (uploadPhoto)="uploadPhoto($event)"
   ></signup-photo-form>
   <div class="footer">
-    <!-- <button pButton type="button" label="Prev" (click)="prev()"></button> -->
     <p class="step">Etape {{ activeIndex + 1 }} sur 3</p>
-    <p-button *ngIf="photoFile" type="button" (click)="submit()"
-      ><div class="btn">
-        <h4>Valider</h4>
-        <i class="fa-solid fa-angles-check fa-2xs"></i></div
-    ></p-button>
+    <btn
+      (click)="submit()"
+      label="Valider"
+      icon="fa-solid fa-angles-check fa-2xs"
+      iconPos="right"
+    ></btn>
   </div>
 </div>

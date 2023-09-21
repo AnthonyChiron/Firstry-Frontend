@@ -1,0 +1,38 @@
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1vh 0.2vh;
+  padding: 0.4vh 1.2vh;
+  border-radius: 8px;
+  border: none;
+  font-variation-settings: "wght" 500;
+  font-family: "HankenGrotesk";
+  transition: 0.3s;
+}
+
+.primary {
+  background-color: black;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.secondary {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.third {
+  background-color: rgb(148, 148, 148);
+  color: white;
+  border: 1px solid transparent;
+}
+
+.left {
+  margin-right: 0.7vh;
+}
+
+.right {
+  margin-left: 0.7vh;
+}

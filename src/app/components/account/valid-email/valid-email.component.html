@@ -9,18 +9,21 @@
         Pour se faire, vérifier votre boite email et cliquer sur le lien se
         trouvant dans l'email que nous vous avons envoyé.
       </p>
-      <p-button (click)="sendNewEmail()">
-        <div class="inputForm">
-          <i class="fa-solid fa-paper-plane"></i>
-          Envoyer un nouvel email de confirmation
-        </div>
-      </p-button>
+      <btn
+        (click)="sendNewEmail()"
+        label="Envoyer un nouvel email de confirmation"
+        icon="fa-solid fa-paper-plane"
+      ></btn>
     </div>
     <div *ngIf="authService.isValid()" class="content">
       <div class="header">
         <h2>Votre email a bien été validé !</h2>
       </div>
-      <p-button (click)="backHome()">Retour à l'accueil</p-button>
+      <btn
+        (click)="backHome()"
+        label="Retour à l'accueil"
+        icon="fa-solid fa-paper-home"
+      ></btn>
     </div>
   </p-card>
 </div>
