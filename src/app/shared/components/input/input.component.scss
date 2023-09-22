@@ -1,0 +1,36 @@
+@import "../../../../styles/colors.scss";
+
+.inputGroup {
+  label {
+    font-variation-settings: "wght" 700;
+    font-family: "HankenGrotesk";
+  }
+
+  input {
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 0.4vh 1.5vw;
+    width: 100%;
+    color: black;
+    background-color: white;
+    font-variation-settings: "wght" 400;
+    font-family: "HankenGrotesk";
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+  input[type="date"]::-moz-calendar-picker-indicator {
+    display: none;
+  }
+
+  input::placeholder {
+    color: $firstry-white-3;
+    opacity: 1; /* Firefox */
+  }
+
+  .error {
+    border: 1px solid $firstry-red-1;
+  }
+}

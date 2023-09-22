@@ -1,22 +1,31 @@
 <form [formGroup]="riderForm">
-  <div class="inputGroup">
-    <h4>Nom & prénom</h4>
-    <input
-      pInputText
-      placeholder="Prénom"
+  <div class="flexRow">
+    <input-text
+      [error]="fus.isFieldInvalid('firstName')"
+      name="firstName"
+      type="Text"
+      placeholder="Prénom..."
+      label="Prénom"
       formControlName="firstName"
-      [class.ng-dirty]="fus.isFieldInvalid('firstName')"
-      required
-    />
-    <input
-      pInputText
-      placeholder="Nom"
+    ></input-text>
+    <input-text
+      [error]="fus.isFieldInvalid('lastName')"
+      name="lastName"
+      type="Text"
+      placeholder="Nom..."
+      label="Nom"
       formControlName="lastName"
-      [class.ng-dirty]="fus.isFieldInvalid('lastName')"
-      required
-    />
+    ></input-text>
   </div>
-  <div class="inputGroup">
+  <input-text
+    [error]="fus.isFieldInvalid('lastName')"
+    name="lastName"
+    type="Date"
+    placeholder="Nom..."
+    label="Date de naissance"
+    formControlName="birthDate"
+  ></input-text>
+  <!-- <div class="inputGroup">
     <h4>Date de naissance</h4>
     <p-calendar
       placeholder="Date de naissance"
@@ -24,7 +33,13 @@
       [class.ng-dirty]="fus.isFieldInvalid('birthDate')"
       [showIcon]="true"
     ></p-calendar>
-  </div>
+  </div> -->
+  <dropdown formControlName="nationality">
+    <div class="custom-option" (click)="selectOption('1')"></div>
+  </dropdown>
+  <ng-template #optionTemplate let-option>
+    <option [value]="option.value">{{ option.label }} (custom)</option>
+  </ng-template>
   <div class="inputGroup">
     <h4>Nationalité</h4>
     <p-autoComplete

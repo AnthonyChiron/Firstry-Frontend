@@ -1,13 +1,10 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'input-text',
-  template: `<input
-    type="text"
-    [ngModel]="value"
-    (ngModelChange)="onChange($event)"
-  />`,
+  templateUrl: './input.component.html',
+  styleUrls: ['./input.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -17,21 +14,33 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
 })
 export class InputTextComponent implements ControlValueAccessor {
-  value: any;
-  onChange: any = () => {};
-  onTouched: any = () => {};
+  @Input() label: string = '';
+  @Input() placeholder: string = '';
+  @Input() name: string = '';
+  @Input() type: string = '';
+  @Input() error: boolean = false;
 
-  writeValue(value: any): void {
+  value: string;
+  onChange: (value: string) => void;
+  onTouched: () => void;
+
+  writeValue(value: string): void {
     this.value = value;
     console.log(value);
   }
 
-  registerOnChange(fn: any): void {
-    console.log(fn);
+  registerOnChange(fn: (value: string) => void): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
+  }
+
+  updateValue(value: string): void {
+    console.log(value);
+    this.value = value;
+    this.onChange(value);
+    this.onTouched();
   }
 }
