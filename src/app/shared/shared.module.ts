@@ -11,6 +11,7 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { ChipsGroupComponent } from './components/chips-group/chips-group.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { BtnComponent } from './components/btn/btn.component';
+import { NoteComponent } from './components/note/note.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { BtnComponent } from './components/btn/btn.component';
     BtnComponent,
     ChipsGroupComponent,
     LoaderComponent,
+    NoteComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { BtnComponent } from './components/btn/btn.component';
     ChipsGroupComponent,
     LoaderComponent,
     BtnComponent,
+    NoteComponent,
   ],
 })
 export class SharedModule {}

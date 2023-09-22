@@ -34,7 +34,7 @@ export class SignUpComponent implements OnInit {
   photoFile: File;
   photoBlob: Blob;
   items: MenuItem[] | undefined;
-  activeIndex: number = 0;
+  activeIndex: number = 1;
   emailAvailable: boolean = true;
 
   constructor(
@@ -63,7 +63,6 @@ export class SignUpComponent implements OnInit {
     this.credentialsForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
-      confirmPassword: ['', [Validators.required]],
       role: rolesEnum.RIDER,
     });
 
@@ -93,7 +92,7 @@ export class SignUpComponent implements OnInit {
   }
 
   test() {
-    console.log(this.credentialsForm.value);
+    console.log(this.riderForm.value);
   }
 
   async next(form: FormGroup) {

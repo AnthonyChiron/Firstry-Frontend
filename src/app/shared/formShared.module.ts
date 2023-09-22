@@ -9,9 +9,10 @@ import { TabViewModule } from 'primeng/tabview';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextComponent } from './components/input/input.component';
 import { FormsModule } from '@angular/forms';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 @NgModule({
-  declarations: [InputTextComponent],
+  declarations: [InputTextComponent, DropdownComponent],
   imports: [
     CommonModule,
     InputTextModule,
@@ -33,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     TabViewModule,
     DropdownModule,
     InputTextComponent,
+    DropdownComponent,
   ],
 })
 export class FormSharedModule {}
