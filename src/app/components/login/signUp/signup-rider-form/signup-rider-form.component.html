@@ -34,9 +34,10 @@
       [showIcon]="true"
     ></p-calendar>
   </div> -->
-  <dropdown formControlName="nationality">
-    <div class="custom-option" (click)="selectOption('1')"></div>
-  </dropdown>
+  <dropdown
+    formControlName="ze"
+    [options]="['Option 1', 'Option 2', 'Option 3']"
+  ></dropdown>
   <ng-template #optionTemplate let-option>
     <option [value]="option.value">{{ option.label }} (custom)</option>
   </ng-template>

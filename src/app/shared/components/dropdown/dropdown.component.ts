@@ -1,25 +1,10 @@
-import {
-  Component,
-  forwardRef,
-  ContentChildren,
-  QueryList,
-  AfterContentInit,
-} from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'dropdown',
-  template: `
-    <div class="dropdown">
-      <div class="selected-option" (click)="toggleDropdown()">
-        {{ selectedLabel }}
-      </div>
-      <div class="options" *ngIf="showOptions">
-        <ng-content></ng-content>
-      </div>
-    </div>
-  `,
-  styleUrls: ['./dropdown.component.css'],
+  templateUrl: './dropdown.component.html',
+  styleUrls: ['./dropdown.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -28,30 +13,52 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     },
   ],
 })
-export class DropdownComponent implements ControlValueAccessor {
-  selectedLabel: string = 'Select an option';
-  showOptions: boolean = false;
+export class DropdownComponent implements OnInit {
+  @Input() options: string[] = [];
+  selected: any;
+  filteredOptions: string[] = [];
+  showDropdown = false;
+  value: string;
+  onChange: (value: string) => void;
+  onTouched: () => void;
 
-  onChange: any = () => {};
-  onTouched: any = () => {};
-
-  toggleDropdown() {
-    this.showOptions = !this.showOptions;
+  ngOnInit(): void {
+    this.filteredOptions = [...this.options];
   }
 
-  writeValue(value: any): void {
-    // Implement your logic to update the value
+  filterOptions(): void {
+    const value = this.selected.toLowerCase();
+    this.filteredOptions = this.options.filter((option) =>
+      option.toLowerCase().includes(value)
+    );
   }
 
-  registerOnChange(fn: any): void {
+  toggleDropdown(): void {
+    this.showDropdown = !this.showDropdown;
+  }
+
+  selectOption(option: string): void {
+    this.selected = option;
+    this.showDropdown = false;
+  }
+
+  writeValue(value: string): void {
+    this.value = value;
+    console.log(value);
+  }
+
+  registerOnChange(fn: (value: string) => void): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 
-  setDisabledState?(isDisabled: boolean): void {
-    // Implement this method to disable the dropdown if needed
+  updateValue(value: string): void {
+    console.log(value);
+    this.value = value;
+    this.onChange(value);
+    this.onTouched();
   }
 }

@@ -1,1 +1,17 @@
-<p>dropdown works!</p>
+<div class="dropdown-input-container">
+  <input
+    type="text"
+    [(ngModel)]="selected"
+    (input)="filterOptions()"
+    placeholder="Sélectionnez une option"
+  />
+  <button class="toggle-button" (click)="toggleDropdown()">
+    <i class="arrow down"></i>
+    <!-- Utilisez une icône de flèche vers le bas ici -->
+  </button>
+  <div *ngIf="showDropdown" class="dropdown-options">
+    <div *ngFor="let option of filteredOptions" (click)="selectOption(option)">
+      {{ option }}
+    </div>
+  </div>
+</div>
