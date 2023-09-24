@@ -73,6 +73,7 @@ export class SignUpComponent implements OnInit {
       nationality: ['', Validators.required],
       city: ['', Validators.required],
       sports: ['', Validators.required],
+      test: ['', Validators.required],
     });
 
     this.organizerForm = this.fb.group({
