@@ -12,6 +12,7 @@ import { ChipsGroupComponent } from './components/chips-group/chips-group.compon
 import { LoaderComponent } from './components/loader/loader.component';
 import { BtnComponent } from './components/btn/btn.component';
 import { NoteComponent } from './components/note/note.component';
+import { CapitalizeDirective } from './directives/capitalize.directive';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NoteComponent } from './components/note/note.component';
     ChipsGroupComponent,
     LoaderComponent,
     NoteComponent,
+    CapitalizeDirective,
   ],
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { NoteComponent } from './components/note/note.component';
     LoaderComponent,
     BtnComponent,
     NoteComponent,
+    CapitalizeDirective,
   ],
 })
 export class SharedModule {}

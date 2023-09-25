@@ -19,7 +19,7 @@
       </div>
       <div class="sep"></div>
       <div class="footer">
-        <p class="sports">{{ rider.sports }}</p>
+        <p Capitalize class="sports">{{ rider.sports }}</p>
         <img
           *ngIf="rider.nationality"
           [src]="rider.nationality.flags.png"
@@ -30,4 +30,20 @@
     </div>
   </div>
   <div class="shadow"></div>
+  <div class="quadrillage">
+    <div class="vertical">
+      <div class="sepVertical"></div>
+      <div class="sepVertical"></div>
+      <div class="sepVertical"></div>
+      <div class="sepVertical"></div>
+      <div class="sepVertical"></div>
+    </div>
+    <div class="horizontal">
+      <div class="sepHorizontal"></div>
+      <div class="sepHorizontal"></div>
+      <div class="sepHorizontal"></div>
+      <div class="sepHorizontal"></div>
+      <div class="sepHorizontal"></div>
+    </div>
+  </div>
 </div>
