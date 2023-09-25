@@ -5,7 +5,6 @@
 }
 
 .content {
-  padding: 4vh;
   display: flex;
 
   .photo {
@@ -13,5 +12,9 @@
       max-height: 35vh;
       border-radius: 10px;
     }
+  }
+
+  .rider {
+    width: 90vw;
   }
 }
