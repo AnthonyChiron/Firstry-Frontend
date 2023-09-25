@@ -5,8 +5,8 @@ $scale: 1.15;
 $height: 150px * $scale;
 $width: 130px * $scale;
 $info-height: 12vw * $scale;
-$bottom-photo: 20px;
-$bottom-infos: $bottom-photo * 4.2;
+$bottom-photo: 16px;
+$bottom-infos: $bottom-photo * 4.6;
 
 .card {
   display: flex;
@@ -26,19 +26,20 @@ $bottom-infos: $bottom-photo * 4.2;
     .name {
       color: $firstry-white-1;
       border-radius: $border-radius-1;
-      font-size: 13px;
       display: flex;
       flex-direction: column;
       justify-content: center;
 
       .firstName {
-        font-variation-settings: "wght" 400;
+        font-variation-settings: "wght" 300;
+        font-size: 11px;
       }
 
       .lastName {
+        font-size: 13px;
+        font-variation-settings: "wght" 700;
         position: relative;
         bottom: 3px;
-        font-variation-settings: "wght" 700;
       }
     }
 
@@ -53,6 +54,7 @@ $bottom-infos: $bottom-photo * 4.2;
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      margin: 0;
 
       .sports {
         color: white;
@@ -85,45 +87,11 @@ $bottom-infos: $bottom-photo * 4.2;
     height: $height;
     min-width: $width;
     border-radius: $border-radius-1;
-    background: rgb(0, 0, 0);
-    background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 0.4318102240896359) 29%,
-      rgba(0, 0, 0, 0) 56%,
-      rgba(0, 212, 255, 0) 100%
-    );
   }
 
   .quadrillage {
     position: relative;
+    width: $width;
     right: $width * 2;
-
-    .vertical {
-      display: flex;
-      justify-content: space-around;
-      height: $height;
-      min-width: $width;
-
-      .sepVertical {
-        width: 1px;
-        background-color: rgba(0, 0, 0, 0.09);
-      }
-    }
-
-    .horizontal {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      height: $height;
-      min-width: $width;
-      position: relative;
-      bottom: $height;
-
-      .sepHorizontal {
-        height: 1px;
-        background-color: rgba(0, 0, 0, 0.09);
-      }
-    }
   }
 }

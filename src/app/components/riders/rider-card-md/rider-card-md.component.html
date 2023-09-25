@@ -29,21 +29,12 @@
       </div>
     </div>
   </div>
-  <div class="shadow"></div>
-  <div class="quadrillage">
-    <div class="vertical">
-      <div class="sepVertical"></div>
-      <div class="sepVertical"></div>
-      <div class="sepVertical"></div>
-      <div class="sepVertical"></div>
-      <div class="sepVertical"></div>
-    </div>
-    <div class="horizontal">
-      <div class="sepHorizontal"></div>
-      <div class="sepHorizontal"></div>
-      <div class="sepHorizontal"></div>
-      <div class="sepHorizontal"></div>
-      <div class="sepHorizontal"></div>
-    </div>
-  </div>
+  <div class="shadow fadeBlackBg"></div>
+  <quadrillage
+    class="quadrillage"
+    [heigth]="150 * 1.15"
+    [width]="130 * 1.15"
+    [nbRows]="6"
+    [nbColumns]="6"
+  ></quadrillage>
 </div>

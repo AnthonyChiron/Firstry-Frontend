@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RiderCardComponent } from './rider-card.component';
+import { RiderCardMediumComponent } from './rider-card-md.component';
 
 describe('RiderCardComponent', () => {
-  let component: RiderCardComponent;
-  let fixture: ComponentFixture<RiderCardComponent>;
+  let component: RiderCardMediumComponent;
+  let fixture: ComponentFixture<RiderCardMediumComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RiderCardComponent]
+      declarations: [RiderCardMediumComponent],
     });
-    fixture = TestBed.createComponent(RiderCardComponent);
+    fixture = TestBed.createComponent(RiderCardMediumComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

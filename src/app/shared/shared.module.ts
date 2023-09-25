@@ -13,6 +13,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { BtnComponent } from './components/btn/btn.component';
 import { NoteComponent } from './components/note/note.component';
 import { CapitalizeDirective } from './directives/capitalize.directive';
+import { QuadrillageComponent } from './components/quadrillage/quadrillage.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CapitalizeDirective } from './directives/capitalize.directive';
     LoaderComponent,
     NoteComponent,
     CapitalizeDirective,
+    QuadrillageComponent,
   ],
   imports: [
     CommonModule,
@@ -44,6 +46,7 @@ import { CapitalizeDirective } from './directives/capitalize.directive';
     BtnComponent,
     NoteComponent,
     CapitalizeDirective,
+    QuadrillageComponent,
   ],
 })
 export class SharedModule {}

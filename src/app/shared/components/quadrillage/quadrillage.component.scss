@@ -1,0 +1,30 @@
+.quadrillage {
+  position: relative;
+  //   right: $width * 2;
+
+  .vertical {
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    // min-width: $width;
+
+    .sepVertical {
+      width: 1px;
+      background-color: rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  .horizontal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    position: relative;
+    // bottom: $height;
+
+    .sepHorizontal {
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.09);
+    }
+  }
+}

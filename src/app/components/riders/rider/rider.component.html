@@ -7,7 +7,8 @@
   ></btn>
 </div>
 <div class="content">
-  <p-card class="photo">
+  <rider-card-lg [rider]="rider" class="rider"></rider-card-lg>
+  <!-- <p-card class="photo">
     <img *ngIf="rider && rider.photoUrl" [src]="rider.photoUrl" alt="" />
   </p-card>
   <p-card *ngIf="rider">
@@ -15,6 +16,6 @@
       <h2 class="firstName">{{ rider.firstName }}</h2>
       <h2 class="lastName">{{ rider.lastName }}</h2>
     </div>
-  </p-card>
+  </p-card> -->
 </div>
 <div class="footer"></div>
