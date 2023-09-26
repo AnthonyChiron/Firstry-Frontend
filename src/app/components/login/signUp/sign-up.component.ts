@@ -31,10 +31,9 @@ export class SignUpComponent implements OnInit {
   riderForm: FormGroup;
   organizerForm: FormGroup;
   photoForm: FormGroup;
+  riderFormTouched: boolean = false;
   photoFile: File;
-  photoBlob: Blob;
-  items: MenuItem[] | undefined;
-  activeIndex: number = 1;
+  activeIndex: number = 0;
   emailAvailable: boolean = true;
 
   constructor(
@@ -48,18 +47,6 @@ export class SignUpComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.items = [
-      {
-        label: 'Login',
-      },
-      {
-        label: 'Infos',
-      },
-      {
-        label: 'Smile',
-      },
-    ];
-
     this.credentialsForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
@@ -73,7 +60,6 @@ export class SignUpComponent implements OnInit {
       nationality: ['', Validators.required],
       city: ['', Validators.required],
       sports: ['', Validators.required],
-      test: ['', Validators.required],
     });
 
     this.organizerForm = this.fb.group({
@@ -104,7 +90,9 @@ export class SignUpComponent implements OnInit {
         )
       );
     }
-    if (form.invalid && !this.emailAvailable) form.markAllAsTouched();
+    console.log(this.riderForm.value);
+    if (this.activeIndex == 1) this.riderFormTouched = true;
+    if (form.invalid && !this.emailAvailable) form.markAllAsTouched;
     if (form.valid && this.emailAvailable) this.activeIndex++;
     // this.activeIndex++;
   }

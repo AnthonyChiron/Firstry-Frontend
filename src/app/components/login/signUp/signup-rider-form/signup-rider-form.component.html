@@ -1,39 +1,42 @@
 <form [formGroup]="riderForm">
   <div class="flexRow">
     <input-text
-      [error]="fus.isFieldInvalid('lastName')"
       name="lastName"
       type="Text"
       placeholder="Nom..."
       label="Nom"
       formControlName="lastName"
+      [error]="
+        touched &&
+        (fus.isFieldInvalid('lastName') ||
+          riderForm.get('lastName').value == '')
+      "
     ></input-text>
     <input-text
-      [error]="fus.isFieldInvalid('firstName')"
       name="firstName"
       type="Text"
       placeholder="Prénom..."
       label="Prénom"
       formControlName="firstName"
+      [error]="
+        touched &&
+        (fus.isFieldInvalid('firstName') ||
+          riderForm.get('firstName').value == '')
+      "
     ></input-text>
   </div>
   <input-text
-    [error]="fus.isFieldInvalid('birthDate')"
     name="birthDate"
     type="date"
     placeholder="jj/mm/aaaa"
     label="Date de naissance"
     formControlName="birthDate"
+    [error]="
+      touched &&
+      (fus.isFieldInvalid('birthDate') ||
+        riderForm.get('birthDate').value == '')
+    "
   ></input-text>
-  <!-- <div class="inputGroup">
-    <h4>Date de naissance</h4>
-    <p-calendar
-      placeholder="Date de naissance"
-      formControlName="birthDate"
-      [class.ng-dirty]="fus.isFieldInvalid('birthDate')"
-      [showIcon]="true"
-    ></p-calendar>
-  </div> -->
   <dropdown
     label="Nationalité"
     name="nationality"
@@ -41,7 +44,11 @@
     formControlName="nationality"
     [optionTemplate]="nationalityOptionTemplate"
     [options]="countries"
-    [error]="fus.isFieldInvalid('nationality')"
+    [error]="
+      touched &&
+      (fus.isFieldInvalid('nationality') ||
+        riderForm.get('nationality').value == '')
+    "
   >
   </dropdown>
   <ng-template #nationalityOptionTemplate let-option>
@@ -51,8 +58,11 @@
     </div>
   </ng-template>
   <input-text
-    [error]="fus.isFieldInvalid('birthDate')"
-    name="birthDate"
+    [error]="
+      touched &&
+      (fus.isFieldInvalid('city') || riderForm.get('city').value == '')
+    "
+    name="city"
     type="Text"
     label="Ville"
     placeholder="Ville..."
@@ -74,4 +84,5 @@
       Veuillez choisir au moins un sport !
     </small>
   </div>
+  <btn (click)="test()" label="S'inscrire"></btn>
 </form>

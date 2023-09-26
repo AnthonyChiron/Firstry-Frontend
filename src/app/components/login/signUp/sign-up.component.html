@@ -20,7 +20,10 @@
   </div>
 
   <div *ngIf="activeIndex === 1 && credentialsForm.value.role == 'rider'">
-    <signup-rider-form [riderForm]="riderForm"></signup-rider-form>
+    <signup-rider-form
+      [riderForm]="riderForm"
+      [touched]="riderFormTouched"
+    ></signup-rider-form>
     <div class="footer">
       <!-- <button pButton type="button" label="Prev" (click)="prev()"></button> -->
       <p class="step">Etape {{ activeIndex + 1 }} sur 3</p>
