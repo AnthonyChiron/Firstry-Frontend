@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class NoteComponent {
   @Input() text: string = '';
-  @Input() type: string = '';
+  @Input() type: string = 'primary';
 }

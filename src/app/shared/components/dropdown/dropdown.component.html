@@ -1,17 +1,29 @@
-<div class="dropdown-input-container">
-  <input
-    type="text"
-    [(ngModel)]="selected"
-    (input)="filterOptions()"
-    placeholder="Sélectionnez une option"
-  />
-  <button class="toggle-button" (click)="toggleDropdown()">
-    <i class="arrow down"></i>
-    <!-- Utilisez une icône de flèche vers le bas ici -->
-  </button>
-  <div *ngIf="showDropdown" class="dropdown-options">
-    <div *ngFor="let option of filteredOptions" (click)="selectOption(option)">
-      {{ option }}
+<div class="dropdown-input">
+  <label *ngIf="label != ''" [htmlFor]="name">{{ label }}</label>
+  <div class="input">
+    <input
+      [class.error]="error"
+      [name]="name"
+      [placeholder]="placeholder"
+      [(ngModel)]="input"
+      type="text"
+      (input)="filterOptions()"
+      placeholder="Sélectionnez une option"
+    />
+    <button class="toggle-button" (click)="toggleDropdown()">
+      <i class="fa-solid fa-arrow-down"></i>
+      <!-- Utilisez une icône de flèche vers le bas ici -->
+    </button>
+  </div>
+  <div [class.active]="showDropdown" class="dropdown-options">
+    <div
+      class="option"
+      *ngFor="let option of filteredOptions"
+      (click)="selectOption(option)"
+    >
+      <ng-container
+        *ngTemplateOutlet="optionTemplate; context: { $implicit: option }"
+      ></ng-container>
     </div>
   </div>
 </div>

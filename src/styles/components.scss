@@ -12,3 +12,14 @@
     rgba(0, 212, 255, 0) 100%
   );
 }
+
+.fadeBlackBg2 {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.897) 0%,
+    rgba(0, 0, 0, 0.192) 39%,
+    rgba(0, 0, 0, 0.068) 66%,
+    rgba(0, 212, 255, 0) 100%
+  );
+}

@@ -5,19 +5,27 @@ $scale: 1.15;
 $height: 250px;
 $width: 90vw;
 $info-height: 12vw * $scale;
+$width-info: 40vw;
 $width-photo: 55vw;
-$bottom-photo: 5vw;
-$bottom-infos: $bottom-photo * 4.6;
 
 .card {
   display: flex;
   height: $height;
-  width: 90vw;
+  width: $width;
   background-color: $firstry-white-2;
   border-radius: $border-radius-1;
 
   .content {
     display: flex;
+    align-items: flex-end;
+
+    .photoRider {
+      position: relative;
+      z-index: 1;
+      height: 105%;
+      max-width: $width-photo;
+      border-radius: $border-radius-1;
+    }
 
     .infos {
       position: relative;
@@ -29,7 +37,7 @@ $bottom-infos: $bottom-photo * 4.6;
       z-index: 5;
       padding-left: 8px;
       padding-right: 8px;
-      width: 40vw;
+      width: $width-info;
 
       .name {
         color: $firstry-white-1;
@@ -94,15 +102,20 @@ $bottom-infos: $bottom-photo * 4.6;
         }
       }
     }
+  }
 
-    .photoRider {
-      position: relative;
-      z-index: 1;
-      bottom: $bottom-photo;
-      height: fit-content;
-      width: $width-photo;
-      border-radius: $border-radius-1;
-    }
+  .asset {
+    align-self: center;
+    position: relative;
+    z-index: 5;
+    right: 88.2vw * 3 + 5vw;
+  }
+
+  .logo {
+    position: relative;
+    z-index: 5;
+    top: 2vw;
+    right: 90vw * 2 + 20vw;
   }
 
   .shadow {
@@ -117,6 +130,6 @@ $bottom-infos: $bottom-photo * 4.6;
   .quadrillage {
     position: relative;
     width: $width;
-    right: $width * 2;
+    right: $width * 2 + 5vw;
   }
 }

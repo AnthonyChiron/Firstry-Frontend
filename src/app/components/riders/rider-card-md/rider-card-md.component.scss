@@ -1,10 +1,10 @@
 @import "../../../../styles/components.scss";
 @import "../../../../styles/colors.scss";
 
-$scale: 1.15;
-$height: 150px * $scale;
-$width: 130px * $scale;
-$info-height: 12vw * $scale;
+$scale: 1;
+$height: 190px * $scale;
+$width: 40vw * $scale;
+$info-height: 14vw * $scale;
 $bottom-photo: 16px;
 $bottom-infos: $bottom-photo * 4.6;
 
@@ -15,68 +15,77 @@ $bottom-infos: $bottom-photo * 4.6;
   background-color: $firstry-white-2;
   border-radius: $border-radius-1;
 
-  .infos {
-    position: relative;
-    height: $info-height;
-    bottom: $bottom-infos;
-    z-index: 5;
-    padding-left: 8px;
-    padding-right: 8px;
-
-    .name {
-      color: $firstry-white-1;
-      border-radius: $border-radius-1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      .firstName {
-        font-variation-settings: "wght" 300;
-        font-size: 11px;
-      }
-
-      .lastName {
-        font-size: 13px;
-        font-variation-settings: "wght" 700;
-        position: relative;
-        bottom: 3px;
-      }
-    }
-
-    .sep {
-      height: 1px;
-      width: 20px;
-      background-color: white;
-      margin-bottom: 4px;
-    }
-
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin: 0;
-
-      .sports {
-        color: white;
-        font-size: 11px;
-        font-style: italic;
-        font-variation-settings: "wght" 100;
-      }
-
-      .nationality {
-        border-radius: 1px;
-        height: 0.8vh;
-      }
-    }
-  }
-
   .content {
+    display: flex;
+    align-items: flex-end;
+    width: $width;
+
     .photoRider {
       position: relative;
       z-index: 1;
-      bottom: $bottom-photo;
+      height: 210px;
       width: $width;
       border-radius: $border-radius-1;
+    }
+
+    .infos {
+      position: relative;
+      height: $info-height;
+      width: $width;
+      right: $width;
+      z-index: 5;
+      padding-left: 8px;
+      padding-right: 8px;
+      margin-bottom: 4px;
+
+      .name {
+        color: $firstry-white-1;
+        border-radius: $border-radius-1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .firstName {
+          font-variation-settings: "wght" 300;
+          font-size: 11px;
+        }
+
+        .lastName {
+          font-size: 13px;
+          font-variation-settings: "wght" 700;
+          position: relative;
+          bottom: 3px;
+        }
+      }
+
+      .sep {
+        height: 1px;
+        width: 20px;
+        background-color: white;
+        margin-bottom: 4px;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        width: $width;
+        margin: 0;
+
+        .sports {
+          color: white;
+          font-size: 11px;
+          font-style: italic;
+          font-variation-settings: "wght" 100;
+        }
+
+        .nationality {
+          position: relative;
+          border-radius: 1px;
+          height: 0.8vh;
+          right: 5vw;
+        }
+      }
     }
   }
 
@@ -91,7 +100,6 @@ $bottom-infos: $bottom-photo * 4.6;
 
   .quadrillage {
     position: relative;
-    width: $width;
     right: $width * 2;
   }
 }

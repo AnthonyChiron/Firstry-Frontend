@@ -1,14 +1,6 @@
 <form [formGroup]="riderForm">
   <div class="flexRow">
     <input-text
-      [error]="fus.isFieldInvalid('firstName')"
-      name="firstName"
-      type="Text"
-      placeholder="Prénom..."
-      label="Prénom"
-      formControlName="firstName"
-    ></input-text>
-    <input-text
       [error]="fus.isFieldInvalid('lastName')"
       name="lastName"
       type="Text"
@@ -16,12 +8,20 @@
       label="Nom"
       formControlName="lastName"
     ></input-text>
+    <input-text
+      [error]="fus.isFieldInvalid('firstName')"
+      name="firstName"
+      type="Text"
+      placeholder="Prénom..."
+      label="Prénom"
+      formControlName="firstName"
+    ></input-text>
   </div>
   <input-text
-    [error]="fus.isFieldInvalid('lastName')"
-    name="lastName"
-    type="Date"
-    placeholder="Nom..."
+    [error]="fus.isFieldInvalid('birthDate')"
+    name="birthDate"
+    type="date"
+    placeholder="jj/mm/aaaa"
     label="Date de naissance"
     formControlName="birthDate"
   ></input-text>
@@ -35,42 +35,29 @@
     ></p-calendar>
   </div> -->
   <dropdown
-    formControlName="ze"
-    [options]="['Option 1', 'Option 2', 'Option 3']"
-  ></dropdown>
-  <ng-template #optionTemplate let-option>
-    <option [value]="option.value">{{ option.label }} (custom)</option>
+    label="Nationalité"
+    name="nationality"
+    placeholder="Nationalité..."
+    formControlName="nationality"
+    [optionTemplate]="nationalityOptionTemplate"
+    [options]="countries"
+    [error]="fus.isFieldInvalid('nationality')"
+  >
+  </dropdown>
+  <ng-template #nationalityOptionTemplate let-option>
+    <div class="option flexRow">
+      <img [src]="option.value.flags.png" style="height: 10px" alt="" />
+      {{ option.label }}
+    </div>
   </ng-template>
-  <div class="inputGroup">
-    <h4>Nationalité</h4>
-    <p-autoComplete
-      placeholder="Nationalité"
-      formControlName="nationality"
-      [forceSelection]="true"
-      [suggestions]="filteredCountries"
-      (completeMethod)="filterCountry($event)"
-      field="name.common"
-      [class.ng-dirty]="fus.isFieldInvalid('nationality')"
-      [dropdown]="true"
-    >
-      <ng-template let-country pTemplate="item">
-        <div class="option">
-          <img src="{{ country.flags.png }}" />
-          <div>{{ country.name.common }}</div>
-        </div>
-      </ng-template>
-    </p-autoComplete>
-  </div>
-  <div class="inputGroup">
-    <h4>Ville</h4>
-    <input
-      pInputText
-      placeholder="Ville"
-      formControlName="city"
-      [class.ng-dirty]="fus.isFieldInvalid('city')"
-      required
-    />
-  </div>
+  <input-text
+    [error]="fus.isFieldInvalid('birthDate')"
+    name="birthDate"
+    type="Text"
+    label="Ville"
+    placeholder="Ville..."
+    formControlName="city"
+  ></input-text>
 
   <div class="inputGroup">
     <h4>Sports</h4>

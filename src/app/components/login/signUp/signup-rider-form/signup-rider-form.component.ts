@@ -32,6 +32,9 @@ export class SignupRiderFormComponent implements OnInit {
         }
         return 0;
       });
+      this.countries = this.countries.map((country) => {
+        return { label: country.name.common, value: country };
+      });
     });
     this.fus.setForm(this.riderForm);
   }

@@ -1,3 +1,5 @@
+@import "../../../../styles/colors.scss";
+
 button {
   display: flex;
   justify-content: center;
@@ -12,15 +14,15 @@ button {
 }
 
 .primary {
-  background-color: black;
-  color: white;
+  background-color: $firstry-black-2;
+  color: $firstry-white-1;
   border: 1px solid transparent;
 }
 
 .secondary {
-  color: black;
-  background-color: white;
-  border: 1px solid black;
+  color: $firstry-black-2;
+  background-color: $firstry-white-1;
+  border: 1px solid $firstry-black-2;
 }
 
 .third {

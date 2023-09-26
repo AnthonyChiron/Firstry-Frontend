@@ -42,6 +42,7 @@ export class ConnexionComponent implements OnInit {
         },
         error: (err) => {
           this.invalidCredentials = true;
+          console.log(this.invalidCredentials);
           console.log(err);
         },
       });

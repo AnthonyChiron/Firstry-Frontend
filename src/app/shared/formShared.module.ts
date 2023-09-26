@@ -10,6 +10,11 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextComponent } from './components/input/input.component';
 import { FormsModule } from '@angular/forms';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
+import {
+  NgxMaskDirective,
+  NgxMaskPipe,
+  provideEnvironmentNgxMask,
+} from 'ngx-mask';
 
 @NgModule({
   declarations: [InputTextComponent, DropdownComponent],
@@ -23,8 +28,10 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     TabViewModule,
     DropdownModule,
     FormsModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
   ],
-  providers: [],
+  providers: [provideEnvironmentNgxMask()],
   exports: [
     InputTextModule,
     SelectButtonModule,
