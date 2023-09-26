@@ -1,12 +1,22 @@
 <div class="inputGroup">
   <label *ngIf="label != ''" [htmlFor]="name">{{ label }}</label>
   <input
+    *ngIf="type !== 'date'"
     [name]="name"
     [type]="type"
     [ngModel]="value"
     [placeholder]="placeholder"
     (ngModelChange)="updateValue($event)"
     [class.error]="error"
+  />
+  <input
+    *ngIf="type === 'date'"
+    [name]="name"
+    [ngModel]="value"
+    [placeholder]="placeholder"
+    (ngModelChange)="updateValue($event)"
+    [class.error]="error"
+    mask="d0/M0/0000"
   />
   <ng-content></ng-content>
 </div>

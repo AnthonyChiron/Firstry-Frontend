@@ -44,5 +44,10 @@ body {
 .flexRow {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 2vw;
+}
+
+.spaceBetween {
+  justify-content: space-between;
 }

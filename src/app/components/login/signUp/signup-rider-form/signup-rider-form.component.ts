@@ -13,6 +13,7 @@ import { CountryService } from 'src/app/shared/services/CountryService/country.s
 })
 export class SignupRiderFormComponent implements OnInit {
   @Input() riderForm: FormGroup;
+  @Input() touched: boolean = false;
   filteredCountries: any[];
   countries: any[] = [];
 
@@ -20,6 +21,12 @@ export class SignupRiderFormComponent implements OnInit {
     private countryService: CountryService,
     protected fus: FormUtilityService
   ) {}
+
+  test() {
+    console.log(this.riderForm.get('city').value);
+    console.log(this.riderForm.touched);
+    console.log(this.fus.isFieldInvalid('city'));
+  }
 
   ngOnInit(): void {
     this.countryService.getAllCountry().subscribe((data: []) => {
@@ -31,6 +38,9 @@ export class SignupRiderFormComponent implements OnInit {
           return 1;
         }
         return 0;
+      });
+      this.countries = this.countries.map((country) => {
+        return { label: country.name.common, value: country };
       });
     });
     this.fus.setForm(this.riderForm);

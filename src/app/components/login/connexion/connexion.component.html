@@ -1,34 +1,32 @@
 <form [formGroup]="connexionForm">
-  <div class="inputGroup">
-    <h4 for="email">Email</h4>
-    <input
-      pInputText
-      type="email"
-      placeholder="Email"
-      formControlName="email"
-      required
-    />
-  </div>
-  <div class="inputGroup">
-    <h4>Mot de passe</h4>
+  <input-text
+    name="email"
+    type="Text"
+    placeholder="Email..."
+    label="Email"
+    formControlName="email"
+  ></input-text>
+  <input-text
+    name="password"
+    type="Text"
+    placeholder="Mot de passe..."
+    label="Mot de passe"
+    formControlName="password"
+  ></input-text>
 
-    <p-password
-      styleClass="p-password p-component p-inputwrapper p-input-icon-right"
-      [style]="{ width: '100%' }"
-      [inputStyle]="{ width: '100%' }"
-      minlength="6"
-      placeholder="Mot de passe"
-      [feedback]="false"
-      formControlName="password"
-      required
-    ></p-password>
-  </div>
-  <small *ngIf="invalidCredentials" class="p-error"
-    >Votre email ou votre mot de passe est incorrect</small
-  >
+  <note
+    *ngIf="invalidCredentials"
+    type="error"
+    text="Votre email ou votre mot de passe est incorrect"
+  ></note>
 
-  <div class="buttonsForm">
+  <div class="flexRow spaceBetween">
     <p>Mot de passe oublié ?</p>
-    <button (click)="submit()">Connexion</button>
+    <btn
+      (click)="submit()"
+      label="Connexion"
+      icon="fa-solid fa-check fa-2xs"
+      iconPos="right"
+    ></btn>
   </div>
 </form>
