@@ -8,6 +8,10 @@
       *ngFor="let rider of riders; let i = index"
       [style.--rider-index]="i"
       [rider]="rider"
+      [width]="40"
+      [widthPhoto]="40"
+      [heigth]="180"
+      [heigthPhoto]="110"
       class="rider"
       [routerLink]="['/riders', rider._id]"
     ></rider-card-md>

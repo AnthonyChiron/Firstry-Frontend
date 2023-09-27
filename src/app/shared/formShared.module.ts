@@ -7,9 +7,9 @@ import { CalendarModule } from 'primeng/calendar';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { TabViewModule } from 'primeng/tabview';
 import { DropdownModule } from 'primeng/dropdown';
-import { InputTextComponent } from './components/input/input.component';
+import { InputTextComponent } from './components/form/input/input.component';
 import { FormsModule } from '@angular/forms';
-import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { DropdownComponent } from './components/form/dropdown/dropdown.component';
 import {
   NgxMaskDirective,
   NgxMaskPipe,

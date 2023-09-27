@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavIconBtnComponent } from './components/nav-icon-btn/nav-icon-btn.component';
-import { ModalComponent } from './components/modal/modal.component';
+import { NavIconBtnComponent } from './components/basic/nav-icon-btn/nav-icon-btn.component';
+import { ModalComponent } from './components/basic/modal/modal.component';
 import { ScreenSizeService } from './services/screenSize/screen-size.service';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TabViewModule } from 'primeng/tabview';
 import { ToggleButtonModule } from 'primeng/togglebutton';
-import { ChipsGroupComponent } from './components/chips-group/chips-group.component';
-import { LoaderComponent } from './components/loader/loader.component';
-import { BtnComponent } from './components/btn/btn.component';
-import { NoteComponent } from './components/note/note.component';
+import { ChipsGroupComponent } from './components/form/chips-group/chips-group.component';
+import { LoaderComponent } from './components/basic/loader/loader.component';
+import { BtnComponent } from './components/basic/btn/btn.component';
+import { NoteComponent } from './components/basic/note/note.component';
 import { CapitalizeDirective } from './directives/capitalize.directive';
 import { QuadrillageComponent } from './components/quadrillage/quadrillage.component';
+import { CardComponent } from './components/basic/card/card.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { QuadrillageComponent } from './components/quadrillage/quadrillage.compo
     NoteComponent,
     CapitalizeDirective,
     QuadrillageComponent,
+    CardComponent,
   ],
   imports: [
     CommonModule,
@@ -47,6 +49,7 @@ import { QuadrillageComponent } from './components/quadrillage/quadrillage.compo
     NoteComponent,
     CapitalizeDirective,
     QuadrillageComponent,
+    CardComponent,
   ],
 })
 export class SharedModule {}

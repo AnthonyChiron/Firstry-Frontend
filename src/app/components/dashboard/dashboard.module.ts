@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SidebarSecondaryComponent } from 'src/app/shared/components/sidebar-secondary/sidebar-secondary.component';
+import { SidebarSecondaryComponent } from 'src/app/shared/components/basic/sidebar-secondary/sidebar-secondary.component';
 
 const dashboardRoutes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [IsAuthGuard] },
