@@ -1,0 +1,45 @@
+<div class="card" [ngStyle]="{ 'width.vw': width, 'height.px': heigth }">
+  <div class="content" [ngStyle]="{ 'width.vw': width }">
+    <img
+      *ngIf="!rider.photoUrl || rider.photoUrl == ''"
+      src="../../../../assets/riders/pnj.png"
+      alt="Rider"
+      class="photoRider"
+      [ngStyle]="{ 'width.vw': widthPhoto, 'height.%': heigthPhoto }"
+    />
+    <img
+      *ngIf="rider.photoUrl && rider.photoUrl != ''"
+      [src]="rider.photoUrl"
+      alt="Rider"
+      class="photoRider"
+      [ngStyle]="{ 'width.vw': widthPhoto, 'height.%': heigthPhoto }"
+    />
+    <div class="infos" [ngStyle]="{ 'width.vw': width }">
+      <div class="name">
+        <h3 class="firstName">{{ rider.firstName }}</h3>
+        <h3 class="lastName">{{ rider.lastName }}</h3>
+      </div>
+      <div *ngIf="!sample" class="sep"></div>
+      <div *ngIf="!sample" class="footer" [ngStyle]="{ 'width.vw': width }">
+        <p Capitalize class="sports">{{ rider.sports }}</p>
+        <img
+          *ngIf="rider.nationality"
+          [src]="rider.nationality.flags.png"
+          alt=""
+          class="nationality"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="shadow fadeBlackBg"
+    [ngStyle]="{ 'min-width.vw': width, 'height.px': heigth }"
+  ></div>
+  <quadrillage
+    class="quadrillage"
+    [heigth]="heigth"
+    [width]="width"
+    [nbRows]="6"
+    [nbColumns]="6"
+  ></quadrillage>
+</div>

@@ -1,0 +1,14 @@
+<card>
+  <div class="content">
+    <rider-card-md
+      *ngFor="let rider of riders; let i = index"
+      [style.--rider-index]="i"
+      [rider]="rider"
+      [width]="30"
+      [widthPhoto]="25"
+      [sample]="true"
+      class="rider"
+      [routerLink]="['/riders', rider._id]"
+    ></rider-card-md>
+  </div>
+</card>

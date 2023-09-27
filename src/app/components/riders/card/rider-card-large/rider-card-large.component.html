@@ -1,0 +1,64 @@
+<div class="card">
+  <loader *ngIf="isLoading"></loader>
+  <div *ngIf="rider" class="content">
+    <img
+      *ngIf="!rider.photoUrl || rider.photoUrl == ''"
+      src="../../../../assets/riders/pnj.png"
+      alt="Rider"
+      class="photoRider"
+    />
+    <img
+      *ngIf="rider.photoUrl && rider.photoUrl != ''"
+      [src]="rider.photoUrl"
+      alt="Rider"
+      class="photoRider"
+    />
+    <div class="infos">
+      <div class="name">
+        <h3 class="firstName">{{ rider.firstName }}</h3>
+        <h3 class="lastName">{{ rider.lastName }}</h3>
+      </div>
+      <div class="labels">
+        <div class="label">
+          <label for="sports">Discipline</label>
+          <p Capitalize class="sports">{{ rider.sports }}</p>
+        </div>
+        <div class="label">
+          <label for="nationality">Nationalité</label>
+          <div class="nationality">
+            <p>{{ rider.nationality.name.common }}</p>
+            <img
+              *ngIf="rider.nationality"
+              [src]="rider.nationality.flags.png"
+              alt=""
+              class="flag"
+            />
+          </div>
+        </div>
+        <div class="label">
+          <label for="category">Catégorie</label>
+          <p>Professionel</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="shadow fadeBlackBg2"></div>
+  <quadrillage
+    class="quadrillage"
+    [heigth]="250"
+    [width]="90"
+    [nbRows]="6"
+    [nbColumns]="9"
+  ></quadrillage>
+  <img
+    src="../../../../assets/riders/Inscription_cote_Fiche-rider.svg"
+    height="220"
+    class="asset"
+  />
+  <img
+    src="../../../../assets/logos/Globe_Blanc.png"
+    height="30"
+    class="logo"
+    alt="Logo"
+  />
+</div>
