@@ -15,6 +15,7 @@ import { NoteComponent } from './components/basic/note/note.component';
 import { CapitalizeDirective } from './directives/capitalize.directive';
 import { QuadrillageComponent } from './components/quadrillage/quadrillage.component';
 import { CardComponent } from './components/basic/card/card.component';
+import { ScrollingTextComponent } from './components/basic/scrolling-text/scrolling-text.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CardComponent } from './components/basic/card/card.component';
     CapitalizeDirective,
     QuadrillageComponent,
     CardComponent,
+    ScrollingTextComponent,
   ],
   imports: [
     CommonModule,
@@ -50,6 +52,7 @@ import { CardComponent } from './components/basic/card/card.component';
     CapitalizeDirective,
     QuadrillageComponent,
     CardComponent,
+    ScrollingTextComponent,
   ],
 })
 export class SharedModule {}

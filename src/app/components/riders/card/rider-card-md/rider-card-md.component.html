@@ -14,13 +14,13 @@
       class="photoRider"
       [ngStyle]="{ 'width.vw': widthPhoto, 'height.%': heigthPhoto }"
     />
-    <div class="infos" [ngStyle]="{ 'width.vw': width }">
+    <div class="infos" *ngIf="!sample" [ngStyle]="{ 'width.vw': width }">
       <div class="name">
         <h3 class="firstName">{{ rider.firstName }}</h3>
         <h3 class="lastName">{{ rider.lastName }}</h3>
       </div>
-      <div *ngIf="!sample" class="sep"></div>
-      <div *ngIf="!sample" class="footer" [ngStyle]="{ 'width.vw': width }">
+      <div class="sep"></div>
+      <div class="footer" [ngStyle]="{ 'width.vw': width }">
         <p Capitalize class="sports">{{ rider.sports }}</p>
         <img
           *ngIf="rider.nationality"
@@ -36,6 +36,7 @@
     [ngStyle]="{ 'min-width.vw': width, 'height.px': heigth }"
   ></div>
   <quadrillage
+    *ngIf="!sample"
     class="quadrillage"
     [heigth]="heigth"
     [width]="width"

@@ -1,0 +1,54 @@
+@import "../../../../../styles/components.scss";
+@import "../../../../../styles/colors.scss";
+
+$scale: 1;
+$height: 190px * $scale;
+$width: 40vw * $scale;
+$info-height: 14vw * $scale;
+$bottom-photo: 16px;
+$bottom-infos: $bottom-photo * 4.6;
+
+.card {
+  height: 130px;
+
+  .cardBg {
+    position: absolute;
+    width: $width;
+    background-color: $firstry-white-3;
+    border-radius: $border-radius-1;
+    bottom: 20px;
+  }
+}
+
+.photo {
+  display: flex;
+  justify-content: center;
+
+  .photoRider {
+    height: 120px;
+    position: absolute;
+    bottom: 20px;
+    z-index: 10;
+    border-radius: $border-radius-1;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25));
+  }
+}
+
+.infos {
+  display: flex;
+  margin-top: 1vw;
+  justify-content: space-between;
+  font-size: 12px;
+
+  .name {
+    font-weight: 800;
+    color: $firstry-black-1;
+  }
+
+  .category {
+    font-weight: 300;
+    color: $firstry-white-4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
