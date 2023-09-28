@@ -80,9 +80,14 @@
       ]"
       formControlName="sports"
     ></chips-group>
-    <small *ngIf="fus.isFieldInvalid('sports')" class="p-error">
+    <small
+      *ngIf="
+        touched &&
+        (fus.isFieldInvalid('sports') || riderForm.get('sports').value == '')
+      "
+      class="p-error"
+    >
       Veuillez choisir au moins un sport !
     </small>
   </div>
-  <btn (click)="test()" label="S'inscrire"></btn>
 </form>

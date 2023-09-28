@@ -1,10 +1,15 @@
 @import "../../../../../styles/components.scss";
 
+h3 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
 .content {
-  width: 85vw;
-  height: 100%;
+  width: 82vw;
   display: flex;
   align-items: center;
+  position: relative;
   overflow-x: scroll;
-  gap: 2vw;
+  gap: 4vw;
 }

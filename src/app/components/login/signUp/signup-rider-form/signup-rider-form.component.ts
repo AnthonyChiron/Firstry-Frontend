@@ -22,12 +22,6 @@ export class SignupRiderFormComponent implements OnInit {
     protected fus: FormUtilityService
   ) {}
 
-  test() {
-    console.log(this.riderForm.get('city').value);
-    console.log(this.riderForm.touched);
-    console.log(this.fus.isFieldInvalid('city'));
-  }
-
   ngOnInit(): void {
     this.countryService.getAllCountry().subscribe((data: []) => {
       this.countries = data.sort((a: any, b: any) => {
