@@ -1,0 +1,9 @@
+.scrolling-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.scrolling-text {
+  display: inline-block;
+  animation-iteration-count: infinite;
+}
