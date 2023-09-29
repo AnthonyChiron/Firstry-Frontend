@@ -1,31 +1,47 @@
-// scrolling-text.component.ts
-import { Component, Input, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  AnimationEvent,
+} from '@angular/animations';
 
 @Component({
   selector: 'scrolling-text',
-  template: `<span #text [ngStyle]="{ 'width.px': 100 }">{{ content }}</span>`,
-  styles: [
-    `
-      span {
-        overflow: hidden;
-      }
-    `,
+  templateUrl: './scrolling-text.component.html',
+  styleUrls: ['./scrolling-text.component.scss'],
+  animations: [
+    trigger('scrollAnimation', [
+      state('in', style({ transform: 'translateX(-100%)' })),
+      state('out', style({ transform: 'translateX(100%)' })),
+      transition('in => out', [animate('10s linear')]),
+      transition('out => in', [animate('0s')]),
+    ]),
   ],
 })
-export class ScrollingTextComponent implements AfterViewInit {
-  @Input() content: string;
-  offset = 0;
+export class ScrollingTextComponent {
+  @Input() text: string;
+  animationState = 'in';
 
-  constructor(private el: ElementRef) {}
+  constructor() {
+    this.animationState = 'out';
+    this.resetAnimation();
+  }
 
-  ngAfterViewInit() {
-    const text = this.el.nativeElement.querySelector('span');
+  resetAnimation() {
     setInterval(() => {
-      this.offset--;
-      if (-this.offset >= text.offsetWidth) {
-        this.offset = this.el.nativeElement.offsetWidth;
-      }
-      text.style.transform = `translateX(${this.offset}px)`;
-    }, 30);
+      this.animationState = 'in';
+      setTimeout(() => {
+        this.animationState = 'out';
+      });
+    }, 10000);
+  }
+
+  animationDone(event: AnimationEvent) {
+    if (event.toState === 'out') {
+      this.animationState = 'in';
+    }
   }
 }

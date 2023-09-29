@@ -8,6 +8,7 @@ import { RidersService } from 'src/app/shared/data/RidersService/riders.service'
   styleUrls: ['./riders.component.scss'],
 })
 export class RidersComponent implements OnInit {
+  isLoading: boolean = false;
   riders: RiderModel[] = [];
   sports = [
     { name: 'Roller' },
@@ -20,6 +21,10 @@ export class RidersComponent implements OnInit {
   constructor(private ridersService: RidersService) {}
 
   ngOnInit(): void {
-    this.ridersService.getAll().subscribe((riders) => (this.riders = riders));
+    this.isLoading = true;
+    this.ridersService.getAll().subscribe((riders) => {
+      this.riders = riders;
+      this.isLoading = false;
+    });
   }
 }
