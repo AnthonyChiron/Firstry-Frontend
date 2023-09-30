@@ -16,6 +16,8 @@ import { CapitalizeDirective } from './directives/capitalize.directive';
 import { QuadrillageComponent } from './components/quadrillage/quadrillage.component';
 import { CardComponent } from './components/basic/card/card.component';
 import { ScrollingTextComponent } from './components/basic/scrolling-text/scrolling-text.component';
+import { SocialsComponent } from './components/socials/socials.component';
+import { TableComponent } from './components/basic/table/table.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ScrollingTextComponent } from './components/basic/scrolling-text/scroll
     QuadrillageComponent,
     CardComponent,
     ScrollingTextComponent,
+    SocialsComponent,
+    TableComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +57,8 @@ import { ScrollingTextComponent } from './components/basic/scrolling-text/scroll
     QuadrillageComponent,
     CardComponent,
     ScrollingTextComponent,
+    SocialsComponent,
+    TableComponent,
   ],
 })
 export class SharedModule {}

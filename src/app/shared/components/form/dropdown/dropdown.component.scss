@@ -1,5 +1,5 @@
 @import "../../../../../styles/colors.scss";
-@import "../../../../../styles/mobile-dimension.scss";
+@import "../../../../../styles/variables.scss";
 
 .dropdown-input {
   display: flex;
@@ -28,7 +28,7 @@
       height: $mobile_inputHeight;
       width: 100%;
       color: $firstry-black-2;
-      font-size: $mobile_inputSize;
+      font-size: $mobile_fontInputSize;
       background-color: $firstry-white-1;
       font-variation-settings: "wght" 400;
       font-family: "HankenGrotesk";

@@ -3,6 +3,7 @@
   <!-- <div class="filters">
     <p-dropdown [options]="sports" optionLabel="name"></p-dropdown>
   </div> -->
+  <loader *ngIf="isLoading"></loader>
   <div class="riders">
     <rider-card-md
       *ngFor="let rider of riders; let i = index"

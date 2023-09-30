@@ -10,6 +10,12 @@ import { RiderModel } from 'src/app/models/rider.model';
 })
 export class RiderComponent implements OnInit {
   rider: RiderModel;
+  isLoading: boolean = false;
+  test: [
+    { id: 1; name: 'Rider 1'; discipline: 'Skateboard' },
+    { id: 2; name: 'Rider 2'; discipline: 'BMX' },
+    { id: 3; name: 'Rider 3'; discipline: 'Roller Freestyle' }
+  ];
 
   constructor(
     private ridersService: RidersService,
@@ -18,9 +24,11 @@ export class RiderComponent implements OnInit {
 
   ngOnInit(): void {
     // get rider by id from route
+    this.isLoading = true;
     this.activatedRoute.params.subscribe((params) => {
       this.ridersService.getById(params['id']).subscribe((rider) => {
         this.rider = rider;
+        this.isLoading = false;
       });
     });
   }

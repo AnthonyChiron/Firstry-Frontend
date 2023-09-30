@@ -6,7 +6,12 @@
   background-color: $firstry-white-2;
   border-radius: 10px;
   padding: 4vw;
-  padding-top: 3vw;
   display: flex;
   flex-direction: column;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 2vw;
 }
