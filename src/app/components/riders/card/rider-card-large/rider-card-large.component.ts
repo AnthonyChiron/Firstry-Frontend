@@ -1,4 +1,10 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RiderModel } from 'src/app/models/rider.model';
 import { RidersService } from 'src/app/shared/data/RidersService/riders.service';
@@ -8,26 +14,19 @@ import { RidersService } from 'src/app/shared/data/RidersService/riders.service'
   templateUrl: './rider-card-large.component.html',
   styleUrls: ['./rider-card-large.component.scss'],
 })
-export class RiderCardLargeComponent {
+export class RiderCardLargeComponent implements OnChanges, OnInit {
   @Input() rider!: RiderModel;
-  isLoading: boolean = false;
+  isLoading: boolean = true;
 
-  constructor(
-    private riderService: RidersService,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {
-    console.log(this.rider);
-    if (!this.rider) {
-      this.isLoading = true;
-      this.activatedRoute.params.subscribe((params) => {
-        this.riderService.getById(params['id']).subscribe((rider) => {
-          console.log(rider);
-          this.rider = rider;
-          this.isLoading = false;
-        });
-      });
+    if (this.rider) this.isLoading = false;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.rider) {
+      if (this.rider) this.isLoading = false;
     }
   }
 }

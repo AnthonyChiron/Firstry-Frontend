@@ -1,18 +1,19 @@
 import { GenericModel } from './generic.model';
 
 export interface RiderModel extends GenericModel {
-  firstName: String;
-  lastName: String;
-  photoUrl: String;
-  gender?: String;
+  firstName: string;
+  lastName: string;
+  photoUrl: string;
+  gender?: string;
   birthDate: Date;
   sports: [];
-  category?: String;
+  category?: string;
   nationality: any;
-  city: String;
+  city: string;
   socials?: {
-    instagram?: String;
-    twitter?: String;
-    youtube?: String;
+    instagram?: string;
+    twitter?: string;
+    youtube?: string;
+    website?: string;
   };
 }

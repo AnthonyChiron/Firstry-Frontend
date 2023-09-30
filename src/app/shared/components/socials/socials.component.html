@@ -1,0 +1,28 @@
+<card *ngIf="socials">
+  <div class="content">
+    <btn
+      type="secondary"
+      *ngIf="socials.instagram"
+      (click)="goToInstagram()"
+      icon="fa-brands fa-instagram fa-xl"
+    ></btn>
+    <btn
+      type="secondary"
+      *ngIf="socials.youtube"
+      (click)="goToYoutube()"
+      icon="fa-brands fa-youtube fa-xl"
+    ></btn>
+    <btn
+      type="secondary"
+      *ngIf="socials.twitter"
+      (click)="goToTwitter()"
+      icon="fa-brands fa-twitter fa-xl"
+    ></btn>
+    <btn
+      type="secondary"
+      *ngIf="socials.website"
+      (click)="goToWebsite()"
+      icon="fa-solid fa-globe fa-xl"
+    ></btn>
+  </div>
+</card>

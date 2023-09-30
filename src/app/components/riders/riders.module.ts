@@ -7,8 +7,9 @@ import { RidersComponent } from './riders.component';
 import { RidersService } from 'src/app/shared/data/RidersService/riders.service';
 import { RiderComponent } from './rider/rider.component';
 import { RiderCardLargeComponent } from './card/rider-card-large/rider-card-large.component';
-import { RiderSampleListComponent } from './list/rider-sample-list/rider-sample-list.component';
+import { RiderSampleListComponent } from './rider/rider-sample-list/rider-sample-list.component';
 import { RiderCardSampleComponent } from './card/rider-card-sample/rider-card-sample.component';
+import { RiderResultComponent } from './rider/rider-result/rider-result.component';
 
 const ridersRoutes: Routes = [
   { path: '', component: RidersComponent },
@@ -23,6 +24,7 @@ const ridersRoutes: Routes = [
     RiderCardSampleComponent,
     RiderComponent,
     RiderSampleListComponent,
+    RiderResultComponent,
   ],
   imports: [CommonModule, RouterModule.forChild(ridersRoutes), SharedModule],
   providers: [RidersService],

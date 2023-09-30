@@ -8,15 +8,13 @@
 </div>
 <div class="content">
   <rider-card-lg [rider]="rider" class="rider"></rider-card-lg>
-  <!-- <p-card class="photo">
-    <img *ngIf="rider && rider.photoUrl" [src]="rider.photoUrl" alt="" />
-  </p-card>
-  <p-card *ngIf="rider">
-    <div class="commonRiderInfo">
-      <h2 class="firstName">{{ rider.firstName }}</h2>
-      <h2 class="lastName">{{ rider.lastName }}</h2>
-    </div>
-  </p-card> -->
+  <div [class.flexRow]="rider.socials">
+    <rider-result class="fullWidth" [rider]="rider"></rider-result>
+    <socials
+      class="flexStart"
+      [socials]="rider ? rider.socials : undefined"
+    ></socials>
+  </div>
   <rider-sample-list></rider-sample-list>
 </div>
 <div class="footer"></div>
