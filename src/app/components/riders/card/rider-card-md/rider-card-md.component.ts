@@ -8,13 +8,14 @@ import { RiderModel } from 'src/app/models/rider.model';
 })
 export class RiderCardMediumComponent implements OnInit {
   @Input() rider!: RiderModel;
-  @Input() heigth: number = 120;
+  @Input() height: number = 13;
   @Input() width: number = 30;
-  @Input() heigthPhoto: number = 105;
-  @Input() widthPhoto: number = 20;
+  @Input() widthPhoto: number = 0;
   @Input() sample: boolean = false;
 
   ngOnInit(): void {
+    if (this.widthPhoto == 0) this.widthPhoto = this.width;
+
     console.log(this.rider);
   }
 }

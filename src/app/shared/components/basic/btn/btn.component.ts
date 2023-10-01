@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { ScreenSizeService } from './../../../services/screenSize/screen-size.service';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'btn',
@@ -17,6 +18,7 @@ export class BtnComponent {
   @Input() label: String = '';
   @Input() icon: String = '';
   @Input() iconPos: String = 'left';
+  isMobile: boolean = false;
 
   constructor() {}
 }

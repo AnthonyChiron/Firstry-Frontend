@@ -1,26 +1,21 @@
 <div class="card">
-  <div
-    class="cardBg"
-    [ngStyle]="{ 'width.vw': width, 'height.px': heigth }"
-  ></div>
+  <div class="cardBg"></div>
   <div class="photo">
     <img
       *ngIf="!rider.photoUrl || rider.photoUrl == ''"
       src="../../../../assets/riders/pnj.png"
       alt="Rider"
       class="photoRider"
-      [ngStyle]="{ 'width.vw': widthPhoto, 'height.%': heigthPhoto }"
     />
     <img
       *ngIf="rider.photoUrl && rider.photoUrl != ''"
       [src]="rider.photoUrl"
       alt="Rider"
       class="photoRider"
-      [ngStyle]="{ 'width.vw': widthPhoto }"
     />
   </div>
 </div>
-<div class="infos" [ngStyle]="{ 'width.vw': width }">
+<div class="infos">
   <h4 class="name">{{ rider.firstName + " " + rider.lastName[0] + "." }}</h4>
   <!-- <h4 class="category">
     <scrolling-text text="Categorie"></scrolling-text>

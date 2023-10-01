@@ -43,3 +43,18 @@
     }
   }
 }
+
+@media only screen and (min-width: 768px) {
+  .main {
+    h1 {
+      align-self: flex-start;
+      font-size: 4vw;
+    }
+
+    .riders {
+      align-self: center;
+      gap: 5vw;
+      width: 100%;
+    }
+  }
+}

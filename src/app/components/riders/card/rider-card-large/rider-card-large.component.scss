@@ -3,11 +3,11 @@
 @import "../../../../../styles/variables.scss";
 
 $scale: 1.15;
-$height: 250px;
+$height: 50vw;
 $width: 90vw;
 $info-height: 12vw * $scale;
 $width-info: 40vw;
-$width-photo: 55vw;
+$width-photo: 50vw;
 
 .card {
   display: flex;
@@ -25,35 +25,37 @@ $width-photo: 55vw;
 
   .content {
     display: flex;
+    width: 100%;
     align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
 
     .photoRider {
       position: relative;
       z-index: 1;
-      height: 105%;
       max-width: $width-photo;
+      max-height: 105%;
       border-radius: $border-radius-1;
     }
 
     .infos {
-      position: relative;
-      right: 9vw;
       display: flex;
       flex-direction: column;
+      align-self: flex-end;
       align-items: flex-start;
       justify-content: flex-end;
       z-index: 5;
       padding-left: 8px;
       padding-right: 8px;
-      width: $width-info;
+      height: 100%;
 
       .name {
         color: $firstry-white-1;
         border-radius: $border-radius-1;
         display: flex;
-        height: 70px;
         flex-direction: column;
         justify-content: center;
+        height: 30%;
 
         .firstName {
           font-variation-settings: "wght" 500;
@@ -72,11 +74,11 @@ $width-photo: 55vw;
         display: flex;
         justify-content: space-between;
         align-items: baseline;
-        height: 60px;
         margin: 0;
-        margin-bottom: 30px;
         color: white;
         flex-wrap: wrap;
+        height: 40%;
+        margin-bottom: 5vw;
 
         .label {
           display: flex;
@@ -129,7 +131,7 @@ $width-photo: 55vw;
   .shadow {
     position: absolute;
     z-index: 1;
-    height: $height;
+    height: 100%;
     min-width: $width;
     border-radius: $border-radius-1;
   }
@@ -137,5 +139,30 @@ $width-photo: 55vw;
   .quadrillage {
     position: absolute;
     width: $width;
+    height: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .card {
+    height: 30vw;
+    width: 90vw;
+  }
+
+  .infos {
+    .name {
+      height: 30%;
+    }
+
+    .labels {
+      height: 30%;
+
+      .label {
+        label {
+          font-size: 35px;
+          background-color: red;
+        }
+      }
+    }
   }
 }
