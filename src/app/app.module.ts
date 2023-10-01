@@ -7,19 +7,21 @@ import { AppComponent } from './app.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MobileSidebarComponent } from './components/sidebar/mobile-sidebar/mobile-sidebar.component';
 import { LoginModule } from './components/login/login.module';
 import { UsersService } from './shared/data/UsersService/users.service';
 import { ScreenSizeService } from './shared/services/screenSize/screen-size.service';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { SharedModule } from './shared/shared.module';
+import { DesktopSidebarComponent } from './components/sidebar/desktop-sidebar/desktop-sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
     NotFoundComponent,
-    SidebarComponent,
+    MobileSidebarComponent,
+    DesktopSidebarComponent,
     TopbarComponent,
   ],
   imports: [

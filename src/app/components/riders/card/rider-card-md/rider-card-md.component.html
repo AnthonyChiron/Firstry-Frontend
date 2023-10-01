@@ -1,26 +1,26 @@
-<div class="card" [ngStyle]="{ 'width.vw': width, 'height.px': heigth }">
+<div class="card" [ngStyle]="{ 'width.vw': width, 'height.vw': height }">
   <div class="content" [ngStyle]="{ 'width.vw': width }">
     <img
       *ngIf="!rider.photoUrl || rider.photoUrl == ''"
       src="../../../../assets/riders/pnj.png"
       alt="Rider"
       class="photoRider"
-      [ngStyle]="{ 'width.vw': widthPhoto, 'height.%': heigthPhoto }"
+      [ngStyle]="{ 'width.vw': widthPhoto }"
     />
     <img
       *ngIf="rider.photoUrl && rider.photoUrl != ''"
       [src]="rider.photoUrl"
       alt="Rider"
       class="photoRider"
-      [ngStyle]="{ 'width.vw': widthPhoto, 'height.%': heigthPhoto }"
+      [ngStyle]="{ 'width.vw': widthPhoto }"
     />
-    <div class="infos" *ngIf="!sample" [ngStyle]="{ 'width.vw': width }">
+    <div class="infos" *ngIf="!sample">
       <div class="name">
         <h3 class="firstName">{{ rider.firstName }}</h3>
         <h3 class="lastName">{{ rider.lastName }}</h3>
       </div>
       <div class="sep"></div>
-      <div class="footer" [ngStyle]="{ 'width.vw': width }">
+      <div class="footer">
         <p Capitalize class="sports">{{ rider.sports }}</p>
         <img
           *ngIf="rider.nationality"
@@ -33,13 +33,12 @@
   </div>
   <div
     class="shadow fadeBlackBg"
-    [ngStyle]="{ 'min-width.vw': width, 'height.px': heigth }"
+    [ngStyle]="{ 'min-width.vw': width, 'height.vw': height }"
   ></div>
   <quadrillage
     *ngIf="!sample"
     class="quadrillage"
-    [heigth]="heigth"
-    [width]="width"
+    [ngStyle]="{ 'width.vw': width, 'height.vw': height }"
     [nbRows]="6"
     [nbColumns]="6"
   ></quadrillage>

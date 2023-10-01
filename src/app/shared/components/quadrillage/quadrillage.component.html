@@ -1,11 +1,11 @@
-<div class="quadrillage" [ngStyle]="{ 'width.vw': width, 'height.px': heigth }">
+<div class="quadrillage">
   <div class="vertical">
     <div
       *ngFor="let item of [].constructor(nbColumns); let i = index"
       class="sepVertical"
     ></div>
   </div>
-  <div [ngStyle]="{ 'bottom.px': heigth }" class="horizontal">
+  <div class="horizontal">
     <div
       *ngFor="let item of [].constructor(nbRows); let i = index"
       class="sepHorizontal"

@@ -13,14 +13,14 @@ import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
 import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 
 @Component({
-  selector: 'sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss'],
+  selector: 'mobile-sidebar',
+  templateUrl: './mobile-sidebar.component.html',
+  styleUrls: ['./mobile-sidebar.component.scss'],
 })
-export class SidebarComponent {
+export class MobileSidebarComponent {
   rolesEnum = rolesEnum;
   showLoginModal = false;
-  @Input() toggleSidebar: boolean = false;
+  @Input() toggleSidebar: boolean = true;
   @Output() clickToggle = new EventEmitter();
   isLoggedIn: boolean = false;
 
@@ -28,7 +28,7 @@ export class SidebarComponent {
     protected authService: AuthService,
     protected screenSizeService: ScreenSizeService
   ) {
-    if (screenSizeService.isDesktop) this.toggleSidebar = true;
+    if (screenSizeService.isDesktop) this.toggleSidebar = false;
   }
 
   ngOnInit(): void {

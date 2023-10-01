@@ -2,12 +2,10 @@
   <loader *ngIf="isLoading"></loader>
   <div class="content">
     <rider-card-sample
+      ngClass="card"
       *ngFor="let rider of riders; let i = index"
       [style.--rider-index]="i"
       [rider]="rider"
-      [width]="30"
-      [heigth]="110"
-      [widthPhoto]="25"
       class="rider"
       [routerLink]="['/riders', rider._id]"
     ></rider-card-sample>

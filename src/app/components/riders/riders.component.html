@@ -4,17 +4,29 @@
     <p-dropdown [options]="sports" optionLabel="name"></p-dropdown>
   </div> -->
   <loader *ngIf="isLoading"></loader>
-  <div class="riders">
+  <div *ngIf="isMobile" class="riders">
     <rider-card-md
       *ngFor="let rider of riders; let i = index"
       [style.--rider-index]="i"
       [rider]="rider"
       [width]="40"
       [widthPhoto]="40"
-      [heigth]="180"
-      [heigthPhoto]="110"
+      [height]="45"
       class="rider"
       [routerLink]="['/riders', rider._id]"
     ></rider-card-md>
+  </div>
+  <div *ngIf="!isMobile" class="container">
+    <div class="riders">
+      <rider-card-md
+        *ngFor="let rider of riders; let i = index"
+        [style.--rider-index]="i"
+        [rider]="rider"
+        [width]="15"
+        [height]="17"
+        class="rider"
+        [routerLink]="['/riders', rider._id]"
+      ></rider-card-md>
+    </div>
   </div>
 </div>

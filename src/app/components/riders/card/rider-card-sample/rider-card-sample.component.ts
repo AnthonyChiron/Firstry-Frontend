@@ -8,8 +8,8 @@ import { RiderModel } from 'src/app/models/rider.model';
 })
 export class RiderCardSampleComponent implements OnInit {
   @Input() rider!: RiderModel;
-  @Input() heigth: number = 120;
   @Input() width: number = 30;
+  @Input() height: number = 12;
   @Input() heigthPhoto: number = 105;
   @Input() widthPhoto: number = 20;
 

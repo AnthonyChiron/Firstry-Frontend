@@ -12,3 +12,19 @@ loader {
   overflow-x: scroll;
   gap: 4vw;
 }
+
+.card {
+  height: 25vw;
+  width: 40vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .content {
+    height: 14vw;
+  }
+
+  .card {
+    width: 10vw;
+    height: 10vw;
+  }
+}

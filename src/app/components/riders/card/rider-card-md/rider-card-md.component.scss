@@ -12,6 +12,7 @@ $bottom-infos: $bottom-photo * 4.6;
 .card {
   display: flex;
   position: relative;
+  cursor: pointer;
   width: $width;
   background-color: $firstry-white-2;
   border-radius: $border-radius-1;
@@ -30,11 +31,11 @@ $bottom-infos: $bottom-photo * 4.6;
 
     .infos {
       position: absolute;
-      height: $info-height;
       z-index: 5;
       padding-left: 8px;
       padding-right: 8px;
       margin-bottom: 4px;
+      width: 100%;
 
       .name {
         color: $firstry-white-1;
@@ -66,8 +67,6 @@ $bottom-infos: $bottom-photo * 4.6;
       .footer {
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
-        margin: 0;
 
         .sports {
           color: white;
@@ -77,10 +76,9 @@ $bottom-infos: $bottom-photo * 4.6;
         }
 
         .nationality {
-          position: relative;
+          align-self: center;
           border-radius: 1px;
-          height: 0.8vh;
-          right: 5vw;
+          height: 8px;
         }
       }
     }
@@ -90,9 +88,11 @@ $bottom-infos: $bottom-photo * 4.6;
     position: absolute;
     z-index: 1;
     border-radius: $border-radius-1;
+    bottom: 0;
   }
 
   .quadrillage {
     position: absolute;
+    bottom: 0;
   }
 }

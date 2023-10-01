@@ -1,14 +1,12 @@
 <div class="main">
-  <topbar (clickToggle)="changeToggle()"></topbar>
-  <sidebar
+  <topbar *ngIf="isMobile" (clickToggle)="changeToggle()"></topbar>
+  <mobile-sidebar
+    *ngIf="isMobile"
     [toggleSidebar]="toggleSidebar"
     (clickToggle)="changeToggle()"
-  ></sidebar>
+  ></mobile-sidebar>
+  <desktop-sidebar *ngIf="!isMobile"></desktop-sidebar>
   <div class="content">
-    <div class="backgroundContent">
-      <div class="content">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>

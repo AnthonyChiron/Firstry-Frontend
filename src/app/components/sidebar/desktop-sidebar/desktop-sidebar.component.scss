@@ -1,0 +1,22 @@
+.navbar {
+  height: 100vh;
+  width: 6vw;
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 6vw;
+    padding: 1vw;
+    padding-top: 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vw;
+
+    .logo {
+      height: 3vw;
+    }
+  }
+}
