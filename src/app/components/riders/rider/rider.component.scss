@@ -1,5 +1,9 @@
 @import "../../../../styles/components.scss";
 
+:host {
+  width: 100%;
+}
+
 .header {
   padding: 2vh;
 }
@@ -7,6 +11,7 @@
 .content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 3vw;
 
   .photo {
@@ -14,10 +19,6 @@
       max-height: 35vh;
       border-radius: 10px;
     }
-  }
-
-  .rider {
-    width: 90vw;
   }
 }
 

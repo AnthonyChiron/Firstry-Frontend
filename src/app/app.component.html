@@ -7,6 +7,8 @@
   ></mobile-sidebar>
   <desktop-sidebar *ngIf="!isMobile"></desktop-sidebar>
   <div class="content">
-    <router-outlet></router-outlet>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

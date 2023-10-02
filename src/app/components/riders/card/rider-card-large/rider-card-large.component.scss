@@ -12,8 +12,6 @@ $width-photo: 50vw;
 .card {
   display: flex;
   position: relative;
-  height: $height;
-  width: $width;
   background-color: $firstry-white-2;
   border-radius: $border-radius-1;
 
@@ -132,13 +130,13 @@ $width-photo: 50vw;
     position: absolute;
     z-index: 1;
     height: 100%;
-    min-width: $width;
+    min-width: 100%;
     border-radius: $border-radius-1;
   }
 
   .quadrillage {
     position: absolute;
-    width: $width;
+    width: 100%;
     height: 100%;
   }
 }
@@ -146,12 +144,21 @@ $width-photo: 50vw;
 @media only screen and (min-width: 768px) {
   .card {
     height: 30vw;
-    width: 90vw;
   }
 
-  .infos {
+  .card .content .infos {
+    width: 45%;
+
     .name {
       height: 30%;
+
+      .firstName {
+        font-size: 40px;
+      }
+
+      .lastName {
+        font-size: 55px;
+      }
     }
 
     .labels {
@@ -159,8 +166,12 @@ $width-photo: 50vw;
 
       .label {
         label {
-          font-size: 35px;
-          background-color: red;
+          font-variation-settings: "wght" 800;
+          font-size: 25px;
+        }
+
+        p {
+          font-size: 20px;
         }
       }
     }

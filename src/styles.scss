@@ -56,7 +56,7 @@ body {
 }
 
 .container {
-  width: 100%;
+  width: 90%;
 }
 
 @media only screen and (min-width: 768px) {
@@ -66,10 +66,6 @@ body {
 
   .flexColumn {
     gap: 1vw;
-  }
-
-  .container {
-    width: 70vw;
   }
 }
 
