@@ -1,8 +1,8 @@
 <div class="main">
   <h1 class="title">RIDERS</h1>
   <!-- <div class="filters">
-    <p-dropdown [options]="sports" optionLabel="name"></p-dropdown>
-  </div> -->
+      <p-dropdown [options]="sports" optionLabel="name"></p-dropdown>
+    </div> -->
   <loader *ngIf="isLoading"></loader>
   <div *ngIf="isMobile" class="riders">
     <rider-card-md
@@ -16,7 +16,7 @@
       [routerLink]="['/riders', rider._id]"
     ></rider-card-md>
   </div>
-  <div *ngIf="!isMobile" class="container">
+  <div *ngIf="!isMobile">
     <div class="riders">
       <rider-card-md
         *ngFor="let rider of riders; let i = index"

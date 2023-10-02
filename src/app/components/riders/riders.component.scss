@@ -3,6 +3,7 @@
 .main {
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   h1 {
     align-self: center;
@@ -16,8 +17,7 @@
   .riders {
     margin-top: 5vh;
     display: flex;
-    width: 90vw;
-    gap: 10vw;
+    gap: 5vw;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -53,7 +53,8 @@
 
     .riders {
       align-self: center;
-      gap: 5vw;
+      justify-content: space-between;
+      gap: 3vw;
       width: 100%;
     }
   }

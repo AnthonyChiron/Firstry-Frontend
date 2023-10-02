@@ -77,7 +77,7 @@ $bottom-infos: $bottom-photo * 4.6;
 
         .nationality {
           align-self: center;
-          border-radius: 1px;
+          border-radius: 2px;
           height: 8px;
         }
       }
@@ -94,5 +94,33 @@ $bottom-infos: $bottom-photo * 4.6;
   .quadrillage {
     position: absolute;
     bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .card .content .infos .name {
+    .firstName {
+      position: relative;
+      top: 7px;
+      font-size: 23px;
+    }
+
+    .lastName {
+      font-size: 30px;
+    }
+  }
+
+  .card .content .infos .sep {
+    margin-bottom: 7px;
+  }
+
+  .card .content .infos .footer {
+    .sports {
+      font-size: 15px;
+    }
+
+    .nationality {
+      height: 10px;
+    }
   }
 }
