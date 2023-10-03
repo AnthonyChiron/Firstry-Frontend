@@ -8,11 +8,11 @@
 </div>
 <div class="content">
   <rider-card-lg [rider]="rider"></rider-card-lg>
-  <div [class.flexRow]="rider.socials">
+  <div [class.flexRow]="rider && rider.socials ? true : false">
     <rider-result class="fullWidth" [rider]="rider"></rider-result>
     <socials
       class="flexStart"
-      [socials]="rider ? rider.socials : undefined"
+      [socials]="rider && rider.socials ? rider.socials : undefined"
     ></socials>
   </div>
   <rider-sample-list></rider-sample-list>
