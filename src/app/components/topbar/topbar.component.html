@@ -2,25 +2,25 @@
   <div class="menu-toggle" id="mobile-menu" (click)="emit()">
     <i class="fa-solid fa-2x fa-bars"></i>
   </div>
-  <div class="account">
+  <div *ngIf="isLoggedIn" class="account">
     <div *ngIf="user.role == 'rider'">
       <h3 class="firstName">{{ user.rider.firstName }}</h3>
       <h3 class="lastName">{{ user.rider.lastName }}</h3>
     </div>
     <div *ngIf="user.role == 'contest'">
-      <h3>{{ user.firstName }}</h3>
-      <h3>{{ user.lastName }}</h3>
+      <h3>{{ user.name }}</h3>
     </div>
+    <img *ngIf="user.role == 'rider'" src="{{ user.rider.photoUrl }}" alt="" />
     <img
-      *ngIf="isLoggedIn && user.role == 'rider'"
-      src="{{ user.rider.photoUrl }}"
-      alt=""
-    />
-    <img
-      *ngIf="isLoggedIn && user.role == 'contest'"
+      *ngIf="user.role == 'contest'"
       src="{{ user.organizer.photoUrl }}"
       alt=""
     />
-    <i *ngIf="!isLoggedIn" class="fa-solid fa-2x fa-user"></i>
   </div>
+  <btn
+    *ngIf="!isLoggedIn"
+    type="secondary"
+    label="Connexion"
+    routerLink="/login"
+  ></btn>
 </div>
