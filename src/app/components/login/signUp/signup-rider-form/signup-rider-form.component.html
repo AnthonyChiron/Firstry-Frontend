@@ -37,7 +37,7 @@
         riderForm.get('birthDate').value == '')
     "
   ></input-text>
-  <dropdown
+  <dropdown-autocomplete
     label="Nationalité"
     name="nationality"
     placeholder="Nationalité..."
@@ -50,7 +50,7 @@
         riderForm.get('nationality').value == '')
     "
   >
-  </dropdown>
+  </dropdown-autocomplete>
   <ng-template #nationalityOptionTemplate let-option>
     <div class="option flexRow">
       <img [src]="option.value.flags.png" style="height: 10px" alt="" />

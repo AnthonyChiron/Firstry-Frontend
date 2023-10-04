@@ -21,8 +21,15 @@
       </div>
       <btn
         (click)="backHome()"
+        *ngIf="authService.isCurrentUserRider()"
         label="Retour à l'accueil"
         icon="fa-solid fa-paper-home"
+      ></btn>
+      <btn
+        (click)="backHome()"
+        *ngIf="authService.isCurrentUserContest()"
+        label="Je créé mon contest !"
+        icon="fa-regular fa-square-plus"
       ></btn>
     </div>
   </p-card>

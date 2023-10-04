@@ -5,6 +5,4 @@ import { Component, Input } from '@angular/core';
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss'],
 })
-export class LoaderComponent {
-  @Input() width: number = 15;
-}
+export class LoaderComponent {}

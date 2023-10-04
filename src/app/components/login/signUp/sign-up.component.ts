@@ -32,17 +32,15 @@ export class SignUpComponent implements OnInit {
   organizerForm: FormGroup;
   photoForm: FormGroup;
   riderFormTouched: boolean = false;
+  organizerFormTouched: boolean = false;
   photoFile: File;
   activeIndex: number = 0;
   emailAvailable: boolean = true;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-    private registerUserService: RegisterUserService,
     private authService: AuthService,
     private userService: UsersService,
-    private countryService: CountryService,
     private fb: FormBuilder
   ) {}
 
@@ -91,7 +89,10 @@ export class SignUpComponent implements OnInit {
       );
     }
     console.log(this.riderForm.value);
-    if (this.activeIndex == 1) this.riderFormTouched = true;
+    if (this.activeIndex == 1) {
+      this.organizerFormTouched = true;
+      this.riderFormTouched = true;
+    }
     if (form.invalid && !this.emailAvailable) form.markAllAsTouched;
     if (form.valid && this.emailAvailable) this.activeIndex++;
     // this.activeIndex++;

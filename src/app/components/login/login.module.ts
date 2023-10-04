@@ -34,7 +34,6 @@ const loginRoutes: Routes = [
     FormsModule,
     FormSharedModule,
     SharedModule,
-    ReactiveFormsModule,
     ImageCropperModule,
   ],
   exports: [LoginComponent],
