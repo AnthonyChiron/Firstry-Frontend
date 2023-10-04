@@ -4,13 +4,28 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SidebarSecondaryComponent } from 'src/app/shared/components/basic/sidebar-secondary/sidebar-secondary.component';
+import { CreateContestComponent } from './create-contest/create-contest.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule } from '@angular/forms';
+import { FormSharedModule } from 'src/app/shared/formShared.module';
+import { CreateCategoryComponent } from './create-category/create-category.component';
 
 const dashboardRoutes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [IsAuthGuard] },
 ];
 
 @NgModule({
-  declarations: [DashboardComponent, SidebarSecondaryComponent],
-  imports: [CommonModule, RouterModule.forChild(dashboardRoutes)],
+  declarations: [
+    DashboardComponent,
+    SidebarSecondaryComponent,
+    CreateContestComponent,
+    CreateCategoryComponent,
+  ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(dashboardRoutes),
+    SharedModule,
+    FormSharedModule,
+  ],
 })
 export class DashboardModule {}

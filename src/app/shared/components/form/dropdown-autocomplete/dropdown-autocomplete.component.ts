@@ -10,18 +10,18 @@ import {
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'dropdown',
-  templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss'],
+  selector: 'dropdown-autocomplete',
+  templateUrl: './dropdown-autocomplete.component.html',
+  styleUrls: ['./dropdown-autocomplete.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DropdownComponent),
+      useExisting: forwardRef(() => DropdownAutocompleteComponent),
       multi: true,
     },
   ],
 })
-export class DropdownComponent implements OnInit {
+export class DropdownAutocompleteComponent implements OnInit {
   @Input() options: any[] = [];
   @Input() optionTemplate: TemplateRef<any>;
   @Input() label: string = '';

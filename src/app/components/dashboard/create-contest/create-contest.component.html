@@ -1,0 +1,78 @@
+<card title="Création de votre contest">
+  <form [formGroup]="contestForm">
+    <input-text
+      name="name"
+      type="Text"
+      placeholder="Nom..."
+      label="Nom du contest"
+      formControlName="name"
+      [error]="
+        touched &&
+        (fus.isFieldInvalid('name') || contestForm.get('name').value == '')
+      "
+    ></input-text>
+
+    <div class="inputGroup">
+      <h4>Disciplines</h4>
+      <chips-group
+        [chips]="[
+          { value: 'roller', name: 'Roller' },
+          { value: 'trottinette', name: 'Trottinette' },
+          { value: 'skate', name: 'Skate' },
+          { value: 'quad', name: 'Quad' }
+        ]"
+        formControlName="sports"
+      ></chips-group>
+      <note
+        *ngIf="
+          touched &&
+          (fus.isFieldInvalid('sports') ||
+            contestForm.get('sports').value == '')
+        "
+        type="error"
+        text="Veuillez choisir au moins un sport !"
+      >
+      </note>
+    </div>
+
+    <div class="flexRow">
+      <input-text
+        name="startDate"
+        type="date"
+        placeholder="jj/mm/aaaa"
+        label="Date de début"
+        formControlName="startDate"
+        [error]="
+          touched &&
+          (fus.isFieldInvalid('startDate') ||
+            contestForm.get('startDate').value == '')
+        "
+      ></input-text>
+      <input-text
+        name="endDate"
+        type="date"
+        placeholder="jj/mm/aaaa"
+        label="Date de fin"
+        formControlName="endDate"
+        [error]="
+          touched &&
+          (fus.isFieldInvalid('endDate') ||
+            contestForm.get('endDate').value == '')
+        "
+      ></input-text>
+    </div>
+
+    <input-adress
+      label="Lieu"
+      (addressSelected)="onAddressSelected($event)"
+      formControlName="location"
+    ></input-adress>
+
+    <btn
+      (click)="submit()"
+      label="Valider"
+      icon="fa-solid fa-check"
+      iconPos="right"
+    ></btn>
+  </form>
+</card>

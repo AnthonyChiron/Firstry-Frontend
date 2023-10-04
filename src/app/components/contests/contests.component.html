@@ -1,3 +1,9 @@
 <div class="main">
   <h1 class="title">CONTESTS</h1>
+  <div class="content">
+    <div class="contestCard" *ngFor="let contest of contests">
+      {{ contest.name }}
+      {{ contest.sports }}
+    </div>
+  </div>
 </div>

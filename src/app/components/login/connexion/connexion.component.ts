@@ -37,7 +37,9 @@ export class ConnexionComponent implements OnInit {
             this.router.navigate(['/account/validateEmail']);
           else {
             let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-            this.router.navigate([returnUrl || '/']);
+            if (this.authService.getCurrentUser().role == 'contest')
+              this.router.navigate(['/dashboard']);
+            else this.router.navigate([returnUrl || '/']);
           }
         },
         error: (err) => {

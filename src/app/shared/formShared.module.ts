@@ -8,16 +8,21 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { TabViewModule } from 'primeng/tabview';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextComponent } from './components/form/input/input.component';
-import { FormsModule } from '@angular/forms';
-import { DropdownComponent } from './components/form/dropdown/dropdown.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DropdownAutocompleteComponent } from './components/form/dropdown-autocomplete/dropdown-autocomplete.component';
 import {
   NgxMaskDirective,
   NgxMaskPipe,
   provideEnvironmentNgxMask,
 } from 'ngx-mask';
+import { InputAdressComponent } from './components/form/input-adress/input-adress.component';
 
 @NgModule({
-  declarations: [InputTextComponent, DropdownComponent],
+  declarations: [
+    InputTextComponent,
+    DropdownAutocompleteComponent,
+    InputAdressComponent,
+  ],
   imports: [
     CommonModule,
     InputTextModule,
@@ -30,6 +35,7 @@ import {
     FormsModule,
     NgxMaskDirective,
     NgxMaskPipe,
+    ReactiveFormsModule,
   ],
   providers: [provideEnvironmentNgxMask()],
   exports: [
@@ -41,7 +47,9 @@ import {
     TabViewModule,
     DropdownModule,
     InputTextComponent,
-    DropdownComponent,
+    DropdownAutocompleteComponent,
+    ReactiveFormsModule,
+    InputAdressComponent,
   ],
 })
 export class FormSharedModule {}

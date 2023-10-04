@@ -10,6 +10,7 @@ import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-uti
 })
 export class SignupOrganizerFormComponent implements OnInit {
   @Input() organizerForm: FormGroup;
+  @Input() touched: boolean = false;
 
   constructor(protected fus: FormUtilityService) {}
 

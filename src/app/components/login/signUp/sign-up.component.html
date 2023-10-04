@@ -45,6 +45,7 @@
   <div *ngIf="activeIndex === 1 && credentialsForm.value.role == 'contest'">
     <signup-organizer-form
       [organizerForm]="organizerForm"
+      [touched]="organizerFormTouched"
     ></signup-organizer-form>
     <div class="footer">
       <!-- <button pButton type="button" label="Prev" (click)="prev()"></button> -->
@@ -63,6 +64,7 @@
   <signup-photo-form
     [photoForm]="photoForm"
     [photoFile]="photoFile"
+    [signupTypeRider]="credentialsForm.value.role == 'rider' ? true : false"
     (uploadPhoto)="uploadPhoto($event)"
   ></signup-photo-form>
   <div class="footer">

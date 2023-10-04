@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { CrudService } from '../CRUDService/crud.service';
 import { HttpClient } from '@angular/common/http';
 import { RulesModel } from 'src/app/models/rules.model';
+import { AuthService } from '../../services/AuthService/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RulesService extends CrudService<RulesModel> {
-  constructor(http: HttpClient) {
-    super(http, 'rules');
+  constructor(http: HttpClient, authService: AuthService) {
+    super(http, authService, 'rules');
   }
 }

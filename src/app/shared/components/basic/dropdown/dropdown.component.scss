@@ -1,0 +1,23 @@
+.dropdown {
+  .dropdown-button {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    background-color: white;
+    border: none;
+    font-family: "HankenGrotesk";
+    font-size: 1rem;
+    font-variation-settings: "wght" 700;
+  }
+
+  .dropdown-content {
+    position: absolute;
+    margin-top: 1vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+
+    a {
+    }
+  }
+}

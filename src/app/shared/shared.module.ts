@@ -18,6 +18,7 @@ import { CardComponent } from './components/basic/card/card.component';
 import { ScrollingTextComponent } from './components/basic/scrolling-text/scrolling-text.component';
 import { SocialsComponent } from './components/socials/socials.component';
 import { TableComponent } from './components/basic/table/table.component';
+import { DropdownComponent } from './components/basic/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { TableComponent } from './components/basic/table/table.component';
     ScrollingTextComponent,
     SocialsComponent,
     TableComponent,
+    DropdownComponent,
   ],
   imports: [
     CommonModule,
@@ -59,6 +61,7 @@ import { TableComponent } from './components/basic/table/table.component';
     ScrollingTextComponent,
     SocialsComponent,
     TableComponent,
+    DropdownComponent,
   ],
 })
 export class SharedModule {}

@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { CrudService } from '../CRUDService/crud.service';
 import { HttpClient } from '@angular/common/http';
 import { OrganizerModel } from 'src/app/models/organizer.model';
+import { AuthService } from '../../services/AuthService/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrganizersService extends CrudService<OrganizerModel> {
-  constructor(http: HttpClient) {
-    super(http, 'organizer');
+  constructor(http: HttpClient, authService: AuthService) {
+    super(http, authService, 'organizer');
   }
 }

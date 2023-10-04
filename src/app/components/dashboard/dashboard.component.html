@@ -1,4 +1,12 @@
 <div class="main">
-  <sidebar-secondary></sidebar-secondary>
-  <p>dashboard works!</p>
+  <card title="Bienvenue sur votre dashboard !">
+    <p>
+      C'est ici que vous pourrez administrer toute l'organisation de votre
+      contest.
+    </p>
+    <p>Commençons par créer une catégorie.</p>
+  </card>
+  <create-contest *ngIf="!contests"></create-contest>
+  <dropdown [options]="['test', 'test2']"></dropdown>
+  <create-category [contest]="contests[0]"></create-category>
 </div>

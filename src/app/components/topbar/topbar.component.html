@@ -4,11 +4,12 @@
   </div>
   <div *ngIf="isLoggedIn" class="account">
     <div *ngIf="user.role == 'rider'">
-      <h3 class="firstName">{{ user.rider.firstName }}</h3>
-      <h3 class="lastName">{{ user.rider.lastName }}</h3>
+      <h4 class="firstName">{{ user.rider.firstName }}</h4>
+      <h4 class="lastName">{{ user.rider.lastName }}</h4>
     </div>
     <div *ngIf="user.role == 'contest'">
-      <h3>{{ user.name }}</h3>
+      <h4 Capitalize>{{ user.organizer.name }}</h4>
+      <h4>{{ user.organizer.siretNumber }}</h4>
     </div>
     <img *ngIf="user.role == 'rider'" src="{{ user.rider.photoUrl }}" alt="" />
     <img

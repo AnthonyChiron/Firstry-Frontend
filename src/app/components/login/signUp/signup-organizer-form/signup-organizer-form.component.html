@@ -1,28 +1,31 @@
 <form [formGroup]="organizerForm">
-  <div class="inputGroup">
-    <h4>Nom de votre organisation</h4>
+  <input-text
+    name="name"
+    type="Text"
+    placeholder="Organisation..."
+    label="Organisation"
+    formControlName="name"
+    [error]="
+      touched &&
+      (fus.isFieldInvalid('name') || organizerForm.get('name').value == '')
+    "
+  >
+    <note
+      text="Attention : C'est le nom de votre organisation, pas de votre
+contest"
+    ></note
+  ></input-text>
 
-    <input
-      pInputText
-      placeholder="Organisation"
-      formControlName="name"
-      [class.ng-dirty]="fus.isFieldInvalid('name')"
-      required
-    />
-    <small
-      >Attention : C'est le nom de votre organisation, pas de votre
-      contest</small
-    >
-  </div>
-  <div class="inputGroup">
-    <h4>N° de SIRET</h4>
-
-    <input
-      pInputText
-      placeholder="Siret"
-      formControlName="siretNumber"
-      [class.ng-dirty]="fus.isFieldInvalid('siretNumber')"
-      required
-    />
-  </div>
+  <input-text
+    name="siretNumber"
+    type="Text"
+    placeholder="Siret..."
+    label="N° de SIRET"
+    formControlName="siretNumber"
+    [error]="
+      touched &&
+      (fus.isFieldInvalid('siretNumber') ||
+        organizerForm.get('siretNumber').value == '')
+    "
+  ></input-text>
 </form>

@@ -43,4 +43,8 @@ export class ValidEmailComponent implements OnInit {
   backHome() {
     this.router.navigate(['/']);
   }
+
+  backDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
 }

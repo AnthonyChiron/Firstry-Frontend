@@ -60,6 +60,10 @@ export class AuthService extends BaseHttpService {
     return !!localStorage.getItem('auth-token');
   }
 
+  getToken(): string {
+    return localStorage.getItem('auth-token') || '';
+  }
+
   isLoggedIn(): Observable<boolean> {
     return this.loggedInSubject.asObservable();
   }
@@ -73,6 +77,14 @@ export class AuthService extends BaseHttpService {
   // Récupère l'utilisateur actuel
   getCurrentUser(): any {
     return JSON.parse(localStorage.getItem('current-user') || '{}');
+  }
+
+  isCurrentUserRider(): boolean {
+    return this.getCurrentUser().role == 'rider';
+  }
+
+  isCurrentUserContest(): boolean {
+    return this.getCurrentUser().role == 'contest';
   }
 
   saveToken(token) {
