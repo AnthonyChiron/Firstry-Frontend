@@ -1,4 +1,21 @@
-<div class="card">
-  <h3 *ngIf="title != ''">{{ title }}</h3>
+<div *ngIf="!toggle" class="card">
+  <btn
+    *ngIf="close"
+    (click)="toggle = true"
+    icon="fa-solid fa-xmark fa-lg"
+    type="transparent"
+    class="btn"
+  ></btn>
+  <btn
+    *ngIf="redirect"
+    [routerLink]="redirectLink"
+    (click)="toggle = true"
+    icon="fa-solid fa-arrow-up-right-from-square"
+    type="transparent"
+    class="btn"
+  ></btn>
+  <div class="header">
+    <h3 *ngIf="title != ''">{{ title }}</h3>
+  </div>
   <ng-content></ng-content>
 </div>

@@ -1,4 +1,11 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Input,
+  ElementRef,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 @Component({
   selector: 'dropdown',
@@ -7,15 +14,26 @@ import { Component, Input } from '@angular/core';
 })
 export class DropdownComponent {
   @Input() options: any[] = [];
+  @Output() selected: EventEmitter<any> = new EventEmitter<any>();
   showDropdown = false;
-  selectedOption: string | null = null;
+  selectedOption: any = { label: '', value: '' };
+
+  constructor(private elementRef: ElementRef) {}
 
   toggleDropdown() {
     this.showDropdown = !this.showDropdown;
   }
 
-  selectOption(option: string) {
+  selectOption(option: any) {
     this.selectedOption = option;
+    this.selected.emit(option);
     this.showDropdown = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event): void {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.showDropdown = false;
+    }
   }
 }

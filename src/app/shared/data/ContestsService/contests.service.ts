@@ -20,4 +20,11 @@ export class ContestsService extends CrudService<ContestModel> {
       this.getHttpOptions()
     );
   }
+
+  getContestCategories(contestId: string): Observable<any> {
+    return this.http.get<ContestModel[]>(
+      this.baseUrl + '/getContestCategories/' + contestId,
+      this.getHttpOptions()
+    );
+  }
 }

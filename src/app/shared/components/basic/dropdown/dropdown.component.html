@@ -1,11 +1,11 @@
 <div class="dropdown">
   <button (click)="toggleDropdown()" class="dropdown-button">
-    <p Capitalize>{{ selectedOption || options[0] }}</p>
+    <p Capitalize>{{ selectedOption.label || options[0].label }}</p>
     <i class="fa-solid fa-angle-down"></i>
   </button>
   <div *ngIf="showDropdown" class="dropdown-content">
     <a *ngFor="let option of options" (click)="selectOption(option)">{{
-      option
+      option.label
     }}</a>
   </div>
 </div>

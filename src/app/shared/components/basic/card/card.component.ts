@@ -1,3 +1,4 @@
+import { ToggleButtonModule } from 'primeng/togglebutton';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -7,4 +8,8 @@ import { Component, Input } from '@angular/core';
 })
 export class CardComponent {
   @Input() title: string = '';
+  @Input() close: boolean = false;
+  @Input() redirect: boolean = false;
+  @Input() redirectLink: string = '';
+  toggle: boolean = false;
 }

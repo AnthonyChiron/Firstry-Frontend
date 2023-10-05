@@ -1,36 +1,13 @@
-<!-- <p class="title">ACCUEIL</p> -->
-
-<h1>Bienvenue {{ user.rider ? user.rider.firstName : "" }} !</h1>
-
-<btn [label]="'Test'" icon="fa-solid fa-check"></btn>
-<btn
-  [label]="'Test'"
-  type="secondary"
-  icon="fa-solid fa-check"
-  iconPos="right"
-></btn>
-
-<p-button
-  *ngIf="authService.getCurrentUser()"
-  (click)="logout()"
-  [label]="'Se déconnecté'"
-  [icon]="'person-running'"
-></p-button>
-
-<p-button
-  (click)="isLoggedInBtn()"
-  [label]="'is isLoggedIn ?'"
-  [icon]="'person-running'"
-></p-button>
-
-<p-button
-  (click)="getCurrentUser()"
-  [label]="'Current user'"
-  [icon]="'person-running'"
-></p-button>
-
-<p-button
-  (click)="isValid()"
-  [label]="'isValid()'"
-  [icon]="'person-running'"
-></p-button>
+<h1 class="title">FIRSTRY</h1>
+<card
+  title="Bienvenue {{
+    user.rider ? user.rider.firstName : user.organizer.name
+  }}"
+>
+  <p>Sur la version 2.0 de Firstry</p>
+  <btn
+    [label]="'Se déconnecté'"
+    icon="fa-solid fa-arrow-right-from-bracket"
+    (click)="logout()"
+  ></btn>
+</card>

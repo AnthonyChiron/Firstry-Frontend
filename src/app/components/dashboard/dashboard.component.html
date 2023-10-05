@@ -1,5 +1,7 @@
 <div class="main">
-  <card title="Bienvenue sur votre dashboard !">
+  <h1 class="title">Dashboard</h1>
+
+  <card title="Bienvenue sur votre dashboard !" [close]="true">
     <p>
       C'est ici que vous pourrez administrer toute l'organisation de votre
       contest.
@@ -7,6 +9,8 @@
     <p>Commençons par créer une catégorie.</p>
   </card>
   <create-contest *ngIf="!contests"></create-contest>
-  <dropdown [options]="['test', 'test2']"></dropdown>
-  <create-category [contest]="contests[0]"></create-category>
+  <dropdown [options]="contestsDdOptions"></dropdown>
+  <contest-info [contest]="contests[0]"></contest-info>
+  <list-category [contest]="contests[0]"></list-category>
+  <!-- <create-category [contest]="contests[0]"></create-category> -->
 </div>
