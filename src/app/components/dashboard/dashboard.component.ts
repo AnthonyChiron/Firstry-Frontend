@@ -9,12 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
   constructor(private contestsService: ContestsService) {}
   contests = [];
+  contestsDdOptions: any[] = [];
 
   ngOnInit(): void {
     this.contestsService.getOrganizerContests().subscribe((data) => {
       if (data) {
         this.contests = data;
-        console.log(this.contests);
+        this.contestsDdOptions = this.contests.map((contest) => {
+          return { label: contest.name, value: contest._id };
+        });
+        console.log(this.contestsDdOptions);
       }
     });
   }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesService } from 'src/app/shared/data/CategoriesService/categories.service';
 import { ContestsService } from 'src/app/shared/data/ContestsService/contests.service';
 import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
@@ -22,7 +22,8 @@ export class CreateCategoryComponent implements OnInit, OnChanges {
     private contestService: ContestsService,
     private categoriesService: CategoriesService,
     private fb: FormBuilder,
-    protected fus: FormUtilityService
+    protected fus: FormUtilityService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +35,15 @@ export class CreateCategoryComponent implements OnInit, OnChanges {
       maxCompetitorCount: ['', Validators.required],
       // rules: ['', Validators.required],
       sports: ['', Validators.required],
+    });
+
+    console.log('q');
+    // get contest by id from route params
+    this.activatedRoute.params.subscribe((params) => {
+      this.contestService.getById(params['contestId']).subscribe((data) => {
+        this.contest = data;
+        console.log(this.contest);
+      });
     });
 
     this.fus.setForm(this.categoryForm);

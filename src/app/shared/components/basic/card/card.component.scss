@@ -8,12 +8,24 @@
   padding: 4vw;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
-h3 {
-  font-size: 20px;
-  font-weight: 800;
-  margin-bottom: 2vw;
+.btn {
+  position: absolute;
+  right: 0vw;
+  top: 0vw;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 2vw;
+  }
 }
 
 @media only screen and (min-width: 768px) {

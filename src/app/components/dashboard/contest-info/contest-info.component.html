@@ -1,0 +1,23 @@
+<card
+  *ngIf="contest"
+  title="Informations générale"
+  [redirect]="true"
+  redirectLink="contest-info/{{ contest.id }}"
+>
+  <div class="infos">
+    <div class="flexRow">
+      <div class="info">
+        <h4>Nom</h4>
+        <p Capitalize>{{ contest.name }}</p>
+      </div>
+      <div *ngIf="contest.description" class="info">
+        <h4>Description</h4>
+        <p>{{ contest.description }}</p>
+      </div>
+    </div>
+    <div class="info">
+      <h4>Sports</h4>
+      <p Capitalize>{{ contest.sports }}</p>
+    </div>
+  </div>
+</card>

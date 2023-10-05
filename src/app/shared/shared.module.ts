@@ -19,6 +19,7 @@ import { ScrollingTextComponent } from './components/basic/scrolling-text/scroll
 import { SocialsComponent } from './components/socials/socials.component';
 import { TableComponent } from './components/basic/table/table.component';
 import { DropdownComponent } from './components/basic/dropdown/dropdown.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { DropdownComponent } from './components/basic/dropdown/dropdown.componen
     CheckboxModule,
     TabViewModule,
     ToggleButtonModule,
+    RouterModule,
   ],
   providers: [ScreenSizeService],
   exports: [

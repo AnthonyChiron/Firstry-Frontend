@@ -1,4 +1,4 @@
-<card title="Création de votre contest">
+<card title="Création de catégorie">
   <form *ngIf="contest" [formGroup]="categoryForm">
     <input-text
       name="name"
@@ -24,7 +24,7 @@
       "
     ></input-text>
 
-    <div *ngIf="sports.length > 1" class="inputGroup">
+    <div *ngIf="contest.sports.length > 1" class="inputGroup">
       <h4>Disciplines</h4>
       <chips-group [chips]="sports" formControlName="sports"></chips-group>
       <note

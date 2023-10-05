@@ -1,0 +1,19 @@
+<card
+  *ngIf="contest"
+  title="Catégories"
+  [redirect]="true"
+  redirectLink="categories/{{ contest._id }}"
+>
+  <div *ngIf="contest.categories.length == 0" class="isEmpty">
+    <p>Vous n'avez pas encore de catégories !</p>
+    <btn
+      label="Créer une catégorie"
+      icon="fa-solid fa-plus fa-xs"
+      iconPos="right"
+      [routerLink]="'create-category/' + contest._id"
+    ></btn>
+  </div>
+  <div *ngFor="let category of contest.categories" class="category">
+    <h3>category.name</h3>
+  </div>
+</card>

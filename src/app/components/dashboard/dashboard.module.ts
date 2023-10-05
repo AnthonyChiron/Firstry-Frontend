@@ -6,12 +6,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { SidebarSecondaryComponent } from 'src/app/shared/components/basic/sidebar-secondary/sidebar-secondary.component';
 import { CreateContestComponent } from './create-contest/create-contest.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormsModule } from '@angular/forms';
 import { FormSharedModule } from 'src/app/shared/formShared.module';
 import { CreateCategoryComponent } from './create-category/create-category.component';
+import { ListCategoryComponent } from './list-category/list-category.component';
+import { ContestInfoComponent } from './contest-info/contest-info.component';
 
 const dashboardRoutes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [IsAuthGuard] },
+  {
+    path: 'create-category/:contestId',
+    component: CreateCategoryComponent,
+    canActivate: [IsAuthGuard],
+  },
 ];
 
 @NgModule({
@@ -20,6 +26,8 @@ const dashboardRoutes: Routes = [
     SidebarSecondaryComponent,
     CreateContestComponent,
     CreateCategoryComponent,
+    ListCategoryComponent,
+    ContestInfoComponent,
   ],
   imports: [
     CommonModule,
