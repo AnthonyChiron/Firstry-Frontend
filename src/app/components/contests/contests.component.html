@@ -1,9 +1,12 @@
 <div class="main">
   <h1 class="title">CONTESTS</h1>
   <div class="content">
-    <div class="contestCard" *ngFor="let contest of contests">
-      {{ contest.name }}
-      {{ contest.sports }}
-    </div>
+    <contest-card
+      class="contest"
+      [routerLink]="['/contests', contest._id]"
+      [contest]="contest"
+      *ngFor="let contest of contests"
+    >
+    </contest-card>
   </div>
 </div>

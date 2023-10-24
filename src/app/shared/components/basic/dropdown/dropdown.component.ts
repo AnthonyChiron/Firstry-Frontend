@@ -5,6 +5,7 @@ import {
   ElementRef,
   Output,
   EventEmitter,
+  OnInit,
 } from '@angular/core';
 
 @Component({
@@ -12,13 +13,18 @@ import {
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
 })
-export class DropdownComponent {
+export class DropdownComponent implements OnInit {
   @Input() options: any[] = [];
   @Output() selected: EventEmitter<any> = new EventEmitter<any>();
   showDropdown = false;
   selectedOption: any = { label: '', value: '' };
 
   constructor(private elementRef: ElementRef) {}
+
+  ngOnInit(): void {
+    console.log(this.options);
+    console.log(this.selectedOption);
+  }
 
   toggleDropdown() {
     this.showDropdown = !this.showDropdown;

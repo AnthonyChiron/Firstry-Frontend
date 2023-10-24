@@ -16,13 +16,14 @@ export class ListCategoryComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
+    console.log(this.contest);
     this.getContestCategories();
   }
 
   getContestCategories() {
     // if (this.contest)
-    // this.contestsService
-    //   .getContestCategories(this.contest._id)
-    //   .subscribe((data) => {});
+    //   this.contestsService
+    //     .getContestCategories(this.contest._id)
+    //     .subscribe((data) => {});
   }
 }
