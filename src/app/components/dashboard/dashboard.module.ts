@@ -1,3 +1,4 @@
+import { ContestInfosSummaryComponent } from './infos/infos-summary/contest-infos-summary.component';
 import { IsAuthGuard } from './../../shared/guards/IsAuth/is-auth-guard.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,13 +10,18 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FormSharedModule } from 'src/app/shared/formShared.module';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
-import { ContestInfoComponent } from './contest-info/contest-info.component';
+import { ContestInfosDetailComponent } from './infos/infos-detail/contest-infos-detail.component';
 
 const dashboardRoutes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [IsAuthGuard] },
   {
-    path: 'create-category/:contestId',
+    path: ':contestId/create-category',
     component: CreateCategoryComponent,
+    canActivate: [IsAuthGuard],
+  },
+  {
+    path: ':contestId/infos',
+    component: ContestInfosDetailComponent,
     canActivate: [IsAuthGuard],
   },
 ];
@@ -27,7 +33,8 @@ const dashboardRoutes: Routes = [
     CreateContestComponent,
     CreateCategoryComponent,
     ListCategoryComponent,
-    ContestInfoComponent,
+    ContestInfosSummaryComponent,
+    ContestInfosDetailComponent,
   ],
   imports: [
     CommonModule,

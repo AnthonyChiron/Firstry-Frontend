@@ -20,6 +20,7 @@ import { SocialsComponent } from './components/socials/socials.component';
 import { TableComponent } from './components/basic/table/table.component';
 import { DropdownComponent } from './components/basic/dropdown/dropdown.component';
 import { RouterModule } from '@angular/router';
+import { FormatDateJJMMDirective } from './directives/format-date-jjmm.directive';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { RouterModule } from '@angular/router';
     LoaderComponent,
     NoteComponent,
     CapitalizeDirective,
+    FormatDateJJMMDirective,
     QuadrillageComponent,
     CardComponent,
     ScrollingTextComponent,
@@ -64,6 +66,7 @@ import { RouterModule } from '@angular/router';
     SocialsComponent,
     TableComponent,
     DropdownComponent,
+    FormatDateJJMMDirective,
   ],
 })
 export class SharedModule {}

@@ -10,7 +10,7 @@
   </card>
   <create-contest *ngIf="!contests"></create-contest>
   <dropdown [options]="contestsDdOptions"></dropdown>
-  <contest-info [contest]="contests[0]"></contest-info>
+  <contest-infos-summary [contest]="contests[0]"></contest-infos-summary>
   <list-category [contest]="contests[0]"></list-category>
   <!-- <create-category [contest]="contests[0]"></create-category> -->
 </div>

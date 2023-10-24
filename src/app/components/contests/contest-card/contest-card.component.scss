@@ -1,0 +1,15 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  .field {
+    display: flex;
+    flex-direction: column;
+
+    .date {
+      display: flex;
+      gap: 1vw;
+    }
+  }
+}

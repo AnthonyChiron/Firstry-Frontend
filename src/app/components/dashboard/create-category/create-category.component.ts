@@ -11,7 +11,7 @@ import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-uti
   templateUrl: './create-category.component.html',
   styleUrls: ['./create-category.component.scss'],
 })
-export class CreateCategoryComponent implements OnInit, OnChanges {
+export class CreateCategoryComponent implements OnInit {
   @Input() contest: any;
   categoryForm: FormGroup;
   touched: boolean = false;
@@ -35,30 +35,33 @@ export class CreateCategoryComponent implements OnInit, OnChanges {
       maxCompetitorCount: ['', Validators.required],
       // rules: ['', Validators.required],
       sports: ['', Validators.required],
+      contestId: ['', Validators.required],
     });
 
-    console.log('q');
+    console.log(this.contest);
     // get contest by id from route params
     this.activatedRoute.params.subscribe((params) => {
       this.contestService.getById(params['contestId']).subscribe((data) => {
         this.contest = data;
-        console.log(this.contest);
+        this.initForm(this.contest);
       });
     });
 
     this.fus.setForm(this.categoryForm);
   }
 
-  ngOnChanges(): void {
-    if (this.contest) {
-      this.sports = this.contest.sports.map((sport) => {
-        return { name: sport, value: sport[0].toUpperCase() + sport.slice(1) };
+  initForm(contest: any) {
+    this.categoryForm.patchValue({
+      contestId: contest._id,
+    });
+    this.sports = this.contest.sports.map((sport) => {
+      return { name: sport, value: sport[0].toUpperCase() + sport.slice(1) };
+    });
+    if (this.sports.length == 1) {
+      console.log(this.sports[0].value);
+      this.categoryForm.patchValue({
+        sports: [this.sports[0].value],
       });
-      if (this.sports.length == 1) {
-        this.categoryForm.patchValue({
-          sports: [this.sports[0].value],
-        });
-      }
     }
   }
 
