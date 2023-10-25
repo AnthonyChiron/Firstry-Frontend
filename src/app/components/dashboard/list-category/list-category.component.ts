@@ -11,19 +11,9 @@ export class ListCategoryComponent implements OnInit, OnChanges {
 
   constructor(private contestsService: ContestsService) {}
 
-  ngOnInit(): void {
-    this.getContestCategories();
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(): void {
     console.log(this.contest);
-    this.getContestCategories();
-  }
-
-  getContestCategories() {
-    // if (this.contest)
-    //   this.contestsService
-    //     .getContestCategories(this.contest._id)
-    //     .subscribe((data) => {});
   }
 }

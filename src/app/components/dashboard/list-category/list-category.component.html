@@ -10,7 +10,7 @@
       label="Créer une catégorie"
       icon="fa-solid fa-plus fa-xs"
       iconPos="right"
-      [routerLink]="'create-category/' + contest._id"
+      [routerLink]="contest._id + '/create-category/'"
     ></btn>
   </div>
   <div *ngFor="let category of contest.categories" class="category">
