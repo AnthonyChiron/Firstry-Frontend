@@ -14,6 +14,13 @@
     type="transparent"
     class="btn"
   ></btn>
+  <btn
+    *ngIf="btn"
+    (click)="emitBtnClicked()"
+    [icon]="btnIcon || 'fa-solid fa-pen-to-square'"
+    type="transparent"
+    class="btn"
+  ></btn>
   <div class="header">
     <h3 *ngIf="title != ''">{{ title }}</h3>
   </div>

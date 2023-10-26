@@ -1,8 +1,14 @@
 <div class="main">
   <loader *ngIf="isLoading"></loader>
   <h1 class="title">INFOS</h1>
-  <card *ngIf="!isLoading && contest" title="Informations générale">
-    <div class="infos" [formGroup]="infosForm">
+  <card
+    *ngIf="!isLoading && contest"
+    title="Informations générale"
+    [btn]="!edit"
+    btnIcon="fa-solid fa-pen-to-square fa-lg"
+    (btnClicked)="edit = !edit"
+  >
+    <div *ngIf="edit" class="infosForm" [formGroup]="infosForm">
       <input-text
         name="name"
         type="Text"
@@ -51,6 +57,22 @@
         ></input-text>
       </div>
       <input-adress label="Lieu" formControlName="location"></input-adress>
+      <div class="buttons">
+        <btn
+          *ngIf="edit"
+          (click)="edit = !edit"
+          type="secondary"
+          label="Annuler"
+          icon="fa-solid fa-xmark fa-lg"
+        ></btn>
+        <btn
+          *ngIf="edit"
+          (click)="edit = !edit"
+          type="primary"
+          label="Confirmer"
+          icon="fa-solid fa-check fa-lg"
+        ></btn>
+      </div>
     </div>
   </card>
   <card title="Branding"></card>
