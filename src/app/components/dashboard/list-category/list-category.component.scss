@@ -1,3 +1,5 @@
+@import "../../../../styles/colors.scss";
+
 .isEmpty {
   margin-top: 2vw;
   margin-bottom: 2vw;
@@ -6,4 +8,37 @@
   flex-direction: column;
   gap: 2vw;
   align-items: center;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vw;
+
+  .category {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: $firstry-white-3;
+    border-radius: 8px;
+    padding: 0.4vh 1.2vh;
+
+    .ridersCount {
+      display: flex;
+      align-items: center;
+      color: $firstry-black-3;
+      background-color: $firstry-white-1;
+      border-radius: 15px;
+      padding: 0.2vh 0.6vh;
+      font-weight: 700;
+      font-size: 12px;
+
+      i {
+        font-size: 10px;
+        margin-right: 1vw;
+      }
+    }
+  }
 }

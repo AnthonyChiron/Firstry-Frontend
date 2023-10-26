@@ -6,14 +6,22 @@
 >
   <div *ngIf="contest.categories.length == 0" class="isEmpty">
     <p>Vous n'avez pas encore de catégories !</p>
+  </div>
+  <div class="categories">
+    <div *ngFor="let category of contest.categories" class="category">
+      <h3>{{ category.name }}</h3>
+      <div class="ridersCount">
+        <i class="fa-solid fa-user fa-xs"></i>
+        <p>0</p>
+        <p>/</p>
+        <p>{{ category.maxCompetitorCount }}</p>
+      </div>
+    </div>
     <btn
       label="Créer une catégorie"
       icon="fa-solid fa-plus fa-xs"
       iconPos="right"
       [routerLink]="contest._id + '/create-category/'"
     ></btn>
-  </div>
-  <div *ngFor="let category of contest.categories" class="category">
-    <h3>category.name</h3>
   </div>
 </card>

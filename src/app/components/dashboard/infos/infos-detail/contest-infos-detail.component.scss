@@ -3,9 +3,14 @@
   flex-direction: column;
   gap: 5vw;
 
-  .infos {
+  .infosForm {
     display: flex;
     flex-direction: column;
     gap: 4vw;
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }

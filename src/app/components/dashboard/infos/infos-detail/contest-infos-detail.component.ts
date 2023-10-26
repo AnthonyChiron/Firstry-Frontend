@@ -1,6 +1,6 @@
 import { ContestsService } from './../../../../shared/data/ContestsService/contests.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-utility.service';
 
@@ -14,6 +14,7 @@ export class ContestInfosDetailComponent implements OnInit {
   isLoading: boolean = true;
   infosForm: any;
   touched: boolean = false;
+  edit: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,

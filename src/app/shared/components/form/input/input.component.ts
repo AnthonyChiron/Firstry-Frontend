@@ -1,4 +1,11 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  forwardRef,
+  Input,
+  OnChanges,
+  OnInit,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -13,16 +20,28 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     },
   ],
 })
-export class InputTextComponent implements ControlValueAccessor {
+export class InputTextComponent implements ControlValueAccessor, OnChanges {
   @Input() label: string = '';
+  initialValue: string = '';
   @Input() placeholder: string = '';
   @Input() name: string = '';
   @Input() type: string = '';
   @Input() error: boolean = false;
+  @Input() edit: boolean = false;
 
   value: any;
   onChange: (value: any) => void;
   onTouched: () => void;
+
+  constructor() {
+    this.initialValue = this.value;
+    console.log(this.initialValue);
+  }
+
+  ngOnChanges(): void {
+    console.log(this.initialValue);
+    this.value = this.initialValue;
+  }
 
   writeValue(value: string): void {
     this.value = value;
