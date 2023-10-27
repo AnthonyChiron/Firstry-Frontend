@@ -20,28 +20,17 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     },
   ],
 })
-export class InputTextComponent implements ControlValueAccessor, OnChanges {
+export class InputTextComponent implements ControlValueAccessor {
   @Input() label: string = '';
-  initialValue: string = '';
   @Input() placeholder: string = '';
   @Input() name: string = '';
   @Input() type: string = '';
   @Input() error: boolean = false;
-  @Input() edit: boolean = false;
+  @Input() edit: boolean = true;
 
   value: any;
   onChange: (value: any) => void;
   onTouched: () => void;
-
-  constructor() {
-    this.initialValue = this.value;
-    console.log(this.initialValue);
-  }
-
-  ngOnChanges(): void {
-    console.log(this.initialValue);
-    this.value = this.initialValue;
-  }
 
   writeValue(value: string): void {
     this.value = value;

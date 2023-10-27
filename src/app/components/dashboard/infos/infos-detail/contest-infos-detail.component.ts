@@ -57,4 +57,18 @@ export class ContestInfosDetailComponent implements OnInit {
     });
     this.fus.setForm(this.infosForm);
   }
+
+  cancel() {
+    this.edit = false;
+    this.initForm(this.contest);
+  }
+
+  save() {
+    this.edit = false;
+    this.touched = true;
+    // this.cs.update(this.infosForm.value).subscribe((contest) => {
+    //   this.contest = contest;
+    //   this.initForm(this.contest);
+    // });
+  }
 }

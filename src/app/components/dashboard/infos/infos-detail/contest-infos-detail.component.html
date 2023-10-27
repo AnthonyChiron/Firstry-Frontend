@@ -8,13 +8,14 @@
     btnIcon="fa-solid fa-pen-to-square fa-lg"
     (btnClicked)="edit = !edit"
   >
-    <div *ngIf="edit" class="infosForm" [formGroup]="infosForm">
+    <div class="infosForm" [formGroup]="infosForm">
       <input-text
         name="name"
         type="Text"
         placeholder="Nom..."
         label="Nom du contest"
         formControlName="name"
+        [edit]="edit"
         [error]="
           touched &&
           (fus.isFieldInvalid('name') || infosForm.get('name').value == '')
@@ -26,6 +27,7 @@
         placeholder="Description..."
         label="Description du contest"
         formControlName="description"
+        [edit]="edit"
         [error]="
           touched &&
           (fus.isFieldInvalid('description') ||
@@ -38,6 +40,8 @@
           type="Date"
           label="Date de début"
           formControlName="startDate"
+          class="fullWidth"
+          [edit]="edit"
           [error]="
             touched &&
             (fus.isFieldInvalid('startDate') ||
@@ -49,6 +53,8 @@
           type="Date"
           label="Date de fin"
           formControlName="endDate"
+          class="fullWidth"
+          [edit]="edit"
           [error]="
             touched &&
             (fus.isFieldInvalid('endDate') ||
@@ -60,14 +66,14 @@
       <div class="buttons">
         <btn
           *ngIf="edit"
-          (click)="edit = !edit"
+          (click)="cancel()"
           type="secondary"
           label="Annuler"
           icon="fa-solid fa-xmark fa-lg"
         ></btn>
         <btn
           *ngIf="edit"
-          (click)="edit = !edit"
+          (click)="save()"
           type="primary"
           label="Confirmer"
           icon="fa-solid fa-check fa-lg"

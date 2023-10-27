@@ -21,6 +21,10 @@
     font-family: "HankenGrotesk";
   }
 
+  p {
+    width: 100%;
+  }
+
   textarea:focus,
   input:focus {
     border: 1px solid $firstry-white-3;
