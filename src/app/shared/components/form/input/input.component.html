@@ -1,7 +1,7 @@
 <div class="inputGroup">
   <label *ngIf="label != ''" [htmlFor]="name">{{ label }}</label>
   <input
-    *ngIf="type !== 'date'"
+    *ngIf="edit && type !== 'date'"
     [name]="name"
     [type]="type"
     [ngModel]="value"
@@ -10,7 +10,7 @@
     [class.error]="error"
   />
   <input
-    *ngIf="type === 'date'"
+    *ngIf="edit && type === 'date'"
     [name]="name"
     [ngModel]="value"
     [placeholder]="placeholder"
@@ -18,5 +18,6 @@
     [class.error]="error"
     mask="d0/M0/0000"
   />
+  <p *ngIf="!edit">{{ value }}</p>
   <ng-content></ng-content>
 </div>

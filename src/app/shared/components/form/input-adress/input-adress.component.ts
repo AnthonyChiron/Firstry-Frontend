@@ -1,12 +1,10 @@
 import {
   Component,
   ElementRef,
-  EventEmitter,
   HostListener,
   Input,
   NgZone,
   OnInit,
-  Output,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -24,10 +22,12 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class InputAdressComponent implements OnInit {
   @Input() label: string = '';
+  @Input() edit: string = '';
   private onChange: any = () => {};
   private onTouched: any = () => {};
   input: string = '';
   isAddressSelected: boolean = false;
+  value: any;
 
   constructor(private ngZone: NgZone, private elementRef: ElementRef) {}
 
@@ -71,6 +71,7 @@ export class InputAdressComponent implements OnInit {
 
   writeValue(value: any): void {
     // Mettez à jour la valeur de votre composant
+    this.value = value;
   }
 
   registerOnChange(fn: any): void {
