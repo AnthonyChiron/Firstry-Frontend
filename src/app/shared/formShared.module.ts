@@ -16,10 +16,14 @@ import {
   provideEnvironmentNgxMask,
 } from 'ngx-mask';
 import { InputAdressComponent } from './components/form/input-adress/input-adress.component';
+import { InputDateComponent } from './components/form/input-date/input-date.component';
+import { InputTextareaComponent } from './components/form/input-textarea/input-textarea.component';
 
 @NgModule({
   declarations: [
     InputTextComponent,
+    InputDateComponent,
+    InputTextareaComponent,
     DropdownAutocompleteComponent,
     InputAdressComponent,
   ],
@@ -50,6 +54,8 @@ import { InputAdressComponent } from './components/form/input-adress/input-adres
     DropdownAutocompleteComponent,
     ReactiveFormsModule,
     InputAdressComponent,
+    InputDateComponent,
+    InputTextareaComponent,
   ],
 })
 export class FormSharedModule {}

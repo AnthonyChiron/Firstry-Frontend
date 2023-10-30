@@ -21,9 +21,9 @@
           (fus.isFieldInvalid('name') || infosForm.get('name').value == '')
         "
       ></input-text>
-      <input-text
+      <input-textarea
         name="description"
-        type="Text"
+        size="md"
         placeholder="Description..."
         label="Description du contest"
         formControlName="description"
@@ -33,9 +33,9 @@
           (fus.isFieldInvalid('description') ||
             infosForm.get('description').value == '')
         "
-      ></input-text>
+      ></input-textarea>
       <div class="flexRow">
-        <input-text
+        <input-date
           name="startDate"
           type="Date"
           label="Date de début"
@@ -47,8 +47,8 @@
             (fus.isFieldInvalid('startDate') ||
               infosForm.get('startDate').value == '')
           "
-        ></input-text>
-        <input-text
+        ></input-date>
+        <input-date
           name="endDate"
           type="Date"
           label="Date de fin"
@@ -60,9 +60,13 @@
             (fus.isFieldInvalid('endDate') ||
               infosForm.get('endDate').value == '')
           "
-        ></input-text>
+        ></input-date>
       </div>
-      <input-adress label="Lieu" formControlName="location"></input-adress>
+      <input-adress
+        [edit]="edit"
+        label="Lieu"
+        formControlName="location"
+      ></input-adress>
       <div class="buttons">
         <btn
           *ngIf="edit"

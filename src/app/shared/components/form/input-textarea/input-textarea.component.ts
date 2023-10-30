@@ -1,30 +1,23 @@
-import {
-  AfterContentInit,
-  Component,
-  forwardRef,
-  Input,
-  OnChanges,
-  OnInit,
-} from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'input-text',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
+  selector: 'input-textarea',
+  templateUrl: './input-textarea.component.html',
+  styleUrls: ['./input-textarea.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputTextComponent),
+      useExisting: forwardRef(() => InputTextareaComponent),
       multi: true,
     },
   ],
 })
-export class InputTextComponent implements ControlValueAccessor {
+export class InputTextareaComponent implements ControlValueAccessor {
   @Input() label: string = '';
   @Input() placeholder: string = '';
+  @Input() size: string = '';
   @Input() name: string = '';
-  @Input() type: string = '';
   @Input() error: boolean = false;
   @Input() edit: boolean = true;
 

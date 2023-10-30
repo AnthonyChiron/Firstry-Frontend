@@ -1,4 +1,10 @@
 <div class="inputGroup">
   <label *ngIf="label != ''">{{ label }}</label>
-  <input id="autocomplete" type="text" placeholder="Entrez une adresse" />
+  <input
+    *ngIf="edit"
+    id="autocomplete"
+    type="text"
+    placeholder="Entrez une adresse"
+  />
+  <p *ngIf="!edit">{{ value.address }}</p>
 </div>
