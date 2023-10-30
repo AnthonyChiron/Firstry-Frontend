@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-utility.service';
+import { ContestModel } from 'src/app/models/contest.model';
 
 @Component({
   selector: 'app-contest-infos-detail',
@@ -10,7 +11,7 @@ import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-uti
   styleUrls: ['./contest-infos-detail.component.scss'],
 })
 export class ContestInfosDetailComponent implements OnInit {
-  contest: any;
+  contest: ContestModel;
   isLoading: boolean = true;
   infosForm: any;
   touched: boolean = false;
@@ -36,8 +37,9 @@ export class ContestInfosDetailComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((params) => {
       this.cs.getById(params.contestId).subscribe((contest) => {
-        console.log(this.contest);
         this.contest = contest;
+        this.contest.startDate = new Date(this.contest.startDate);
+        this.contest.endDate = new Date(this.contest.endDate);
         this.initForm(this.contest);
         this.isLoading = false;
         console.log(this.infosForm.value);
@@ -49,8 +51,8 @@ export class ContestInfosDetailComponent implements OnInit {
     this.infosForm.patchValue({
       name: contest.name,
       description: contest.description,
-      startDate: new Date(contest.startDate).toISOString().slice(0, 10),
-      endDate: new Date(contest.endDate).toISOString().slice(0, 10),
+      startDate: contest.startDate,
+      endDate: contest.endDate,
       location: contest.location,
       branding: contest.branding,
       contestId: contest._id,

@@ -4,9 +4,11 @@ import {
   HostListener,
   Input,
   NgZone,
-  OnInit,
+  AfterViewInit,
+  ViewChild,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Address } from 'src/app/models/adress.model';
 
 @Component({
   selector: 'input-adress',
@@ -20,20 +22,23 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     },
   ],
 })
-export class InputAdressComponent implements OnInit {
+export class InputAdressComponent implements AfterViewInit {
   @Input() label: string = '';
-  @Input() edit: string = '';
+  @Input() edit: boolean = true;
+  @ViewChild('autocomplete') inputElement: ElementRef;
   private onChange: any = () => {};
   private onTouched: any = () => {};
-  input: string = '';
+
   isAddressSelected: boolean = false;
   value: any;
 
   constructor(private ngZone: NgZone, private elementRef: ElementRef) {}
 
-  ngOnInit(): void {
-    const input = document.getElementById('autocomplete') as HTMLInputElement;
-    const autocomplete = new google.maps.places.Autocomplete(input);
+  ngAfterViewInit(): void {
+    console.log(this.inputElement);
+    const autocomplete = new google.maps.places.Autocomplete(
+      this.inputElement.nativeElement
+    );
 
     autocomplete.addListener('place_changed', () => {
       this.ngZone.run(() => {
@@ -69,9 +74,13 @@ export class InputAdressComponent implements OnInit {
     });
   }
 
-  writeValue(value: any): void {
+  writeValue(value: Address): void {
     // Mettez à jour la valeur de votre composant
+    console.log(this.inputElement);
     this.value = value;
+    if (this.inputElement) {
+      this.inputElement.nativeElement.value = 'ok';
+    }
   }
 
   registerOnChange(fn: any): void {

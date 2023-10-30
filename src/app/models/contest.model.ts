@@ -1,3 +1,4 @@
+import { Address } from './adress.model';
 import { GenericModel } from './generic.model';
 
 export interface ContestModel extends GenericModel {
@@ -8,12 +9,7 @@ export interface ContestModel extends GenericModel {
   registrationEndDate: Date;
   sports: [];
   categories: [];
-  location: {
-    country: String;
-    postalCode: String;
-    city: String;
-    address: String;
-  };
+  location: Address;
   branding: {
     logo: String;
     banner: String;
