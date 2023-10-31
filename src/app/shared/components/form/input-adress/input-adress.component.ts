@@ -6,6 +6,8 @@ import {
   NgZone,
   AfterViewInit,
   ViewChild,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Address } from 'src/app/models/adress.model';
@@ -22,23 +24,38 @@ import { Address } from 'src/app/models/adress.model';
     },
   ],
 })
-export class InputAdressComponent implements AfterViewInit {
+export class InputAdressComponent implements AfterViewInit, OnChanges {
   @Input() label: string = '';
   @Input() edit: boolean = true;
-  @ViewChild('autocomplete') inputElement: ElementRef;
   private onChange: any = () => {};
   private onTouched: any = () => {};
+  isInit: boolean = false;
 
   isAddressSelected: boolean = false;
   value: any;
 
   constructor(private ngZone: NgZone, private elementRef: ElementRef) {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['edit'] && changes['edit'].currentValue == true) {
+      this.initAutoComplete();
+    }
+  }
+
   ngAfterViewInit(): void {
-    console.log(this.inputElement);
-    const autocomplete = new google.maps.places.Autocomplete(
-      this.inputElement.nativeElement
-    );
+    this.initAutoComplete();
+  }
+
+  initAutoComplete(): void {
+    const inputElement = document.getElementById(
+      'autocomplete'
+    ) as HTMLInputElement;
+    console.log(this.edit);
+    console.log(inputElement);
+
+    if (!inputElement) return;
+
+    const autocomplete = new google.maps.places.Autocomplete(inputElement);
 
     autocomplete.addListener('place_changed', () => {
       this.ngZone.run(() => {
@@ -76,11 +93,7 @@ export class InputAdressComponent implements AfterViewInit {
 
   writeValue(value: Address): void {
     // Mettez à jour la valeur de votre composant
-    console.log(this.inputElement);
     this.value = value;
-    if (this.inputElement) {
-      this.inputElement.nativeElement.value = 'ok';
-    }
   }
 
   registerOnChange(fn: any): void {
@@ -102,7 +115,7 @@ export class InputAdressComponent implements AfterViewInit {
     ) {
       this.isAddressSelected = false;
       this.onTouched();
-      inputElement.value = '';
+      if (inputElement) inputElement.value = '';
     }
   }
 }
