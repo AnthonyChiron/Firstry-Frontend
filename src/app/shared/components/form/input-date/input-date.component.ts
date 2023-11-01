@@ -25,7 +25,6 @@ export class InputDateComponent implements ControlValueAccessor {
   onTouched: () => void;
 
   writeValue(value: Date): void {
-    console.log(value);
     this.value = value;
   }
 

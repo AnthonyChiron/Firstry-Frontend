@@ -32,7 +32,6 @@ export class ContestInfosDetailComponent implements OnInit {
       endDate: ['', Validators.required],
       location: ['', Validators.required],
       branding: [{ logo: [''], banner: [''] }],
-      contestId: ['', Validators.required],
     });
 
     this.activatedRoute.params.subscribe((params) => {
@@ -55,7 +54,6 @@ export class ContestInfosDetailComponent implements OnInit {
       endDate: contest.endDate,
       location: contest.location,
       branding: contest.branding,
-      contestId: contest._id,
     });
     this.fus.setForm(this.infosForm);
   }
@@ -66,11 +64,18 @@ export class ContestInfosDetailComponent implements OnInit {
   }
 
   save() {
+    console.log(this.infosForm.value);
     this.edit = false;
     this.touched = true;
-    // this.cs.update(this.infosForm.value).subscribe((contest) => {
-    //   this.contest = contest;
-    //   this.initForm(this.contest);
-    // });
+    console.log(this.infosForm.value);
+    this.cs
+      .update(this.contest._id, this.infosForm.value)
+      .subscribe((contest) => {
+        this.contest = contest;
+        this.contest.startDate = new Date(contest.startDate);
+        this.contest.endDate = new Date(contest.endDate);
+
+        this.initForm(this.contest);
+      });
   }
 }

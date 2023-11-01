@@ -1,4 +1,5 @@
 <div *ngIf="!toggle" class="card">
+  <loader class="loader" *ngIf="isLoading"></loader>
   <btn
     *ngIf="close"
     (click)="toggle = true"

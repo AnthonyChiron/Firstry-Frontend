@@ -1,0 +1,40 @@
+.photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    border-radius: 11px;
+    height: 25vh;
+    object-fit: contain;
+  }
+}
+
+h4 {
+  text-align: center;
+}
+
+.addPhoto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .labelAddPhoto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    height: 5vh;
+    width: 5vh;
+    margin: 5vh;
+    background-color: white;
+
+    input {
+      display: none;
+    }
+  }
+}
+
+image-cropper {
+  max-height: 33vh;
+}

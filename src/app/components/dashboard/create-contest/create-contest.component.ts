@@ -40,8 +40,6 @@ export class CreateContestComponent implements OnInit {
 
   submit() {
     this.touched = true;
-    console.log(this.contestForm.value);
-    console.log(this.contestForm.valid);
     if (this.contestForm.valid) {
       this.contestService.create(this.contestForm.value).subscribe((res) => {
         console.log(res);

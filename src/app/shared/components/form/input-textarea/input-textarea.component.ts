@@ -21,7 +21,7 @@ export class InputTextareaComponent implements ControlValueAccessor {
   @Input() error: boolean = false;
   @Input() edit: boolean = true;
 
-  value: any;
+  value: any = '';
   onChange: (value: any) => void;
   onTouched: () => void;
 
