@@ -1,3 +1,6 @@
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { InputImageComponent } from './components/form/input-image/input-image.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
@@ -26,6 +29,7 @@ import { InputTextareaComponent } from './components/form/input-textarea/input-t
     InputTextareaComponent,
     DropdownAutocompleteComponent,
     InputAdressComponent,
+    InputImageComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +44,8 @@ import { InputTextareaComponent } from './components/form/input-textarea/input-t
     NgxMaskDirective,
     NgxMaskPipe,
     ReactiveFormsModule,
+    ImageCropperModule,
+    SharedModule,
   ],
   providers: [provideEnvironmentNgxMask()],
   exports: [
@@ -56,6 +62,7 @@ import { InputTextareaComponent } from './components/form/input-textarea/input-t
     InputAdressComponent,
     InputDateComponent,
     InputTextareaComponent,
+    InputImageComponent,
   ],
 })
 export class FormSharedModule {}

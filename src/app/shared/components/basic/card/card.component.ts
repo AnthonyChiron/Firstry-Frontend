@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class CardComponent {
   @Input() title: string = '';
+  @Input() isLoading: boolean = false;
   @Input() close: boolean = false;
   @Input() redirect: boolean = false;
   @Input() redirectLink: string = '';

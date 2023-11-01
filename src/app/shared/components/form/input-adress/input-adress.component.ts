@@ -8,6 +8,7 @@ import {
   ViewChild,
   OnChanges,
   SimpleChanges,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Address } from 'src/app/models/adress.model';
@@ -34,24 +35,29 @@ export class InputAdressComponent implements AfterViewInit, OnChanges {
   isAddressSelected: boolean = false;
   value: any;
 
-  constructor(private ngZone: NgZone, private elementRef: ElementRef) {}
+  constructor(
+    private ngZone: NgZone,
+    private elementRef: ElementRef,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['edit'] && changes['edit'].currentValue == true) {
+      this.cdr.detectChanges();
       this.initAutoComplete();
     }
   }
 
   ngAfterViewInit(): void {
-    this.initAutoComplete();
+    if (this.edit) {
+      this.initAutoComplete();
+    }
   }
 
   initAutoComplete(): void {
     const inputElement = document.getElementById(
       'autocomplete'
     ) as HTMLInputElement;
-    console.log(this.edit);
-    console.log(inputElement);
 
     if (!inputElement) return;
 
@@ -84,16 +90,16 @@ export class InputAdressComponent implements AfterViewInit, OnChanges {
             }
           }
         }
-        this.isAddressSelected = true;
 
         this.onChange(address);
+        this.writeValue(address);
       });
     });
   }
 
   writeValue(value: Address): void {
-    // Mettez à jour la valeur de votre composant
     this.value = value;
+    this.isAddressSelected = true;
   }
 
   registerOnChange(fn: any): void {

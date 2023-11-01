@@ -4,7 +4,7 @@
     *ngIf="edit"
     id="autocomplete"
     type="text"
-    [(ngModel)]="value.address"
+    [ngModel]="value.address"
     placeholder="Entrez une adresse"
   />
   <p *ngIf="!edit">{{ value.address }}</p>
