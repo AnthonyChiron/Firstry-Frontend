@@ -15,6 +15,11 @@ import { ContestInfosDetailComponent } from './infos/infos-detail/contest-infos-
 const dashboardRoutes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [IsAuthGuard] },
   {
+    path: 'create-contest',
+    component: CreateContestComponent,
+    canActivate: [IsAuthGuard],
+  },
+  {
     path: ':contestId/create-category',
     component: CreateCategoryComponent,
     canActivate: [IsAuthGuard],

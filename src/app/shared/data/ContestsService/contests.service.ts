@@ -27,4 +27,14 @@ export class ContestsService extends CrudService<ContestModel> {
       this.getHttpOptions()
     );
   }
+
+  uploadContestBrandImage(contestId: string, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('image', file);
+
+    return this.http.post(
+      this.baseUrl + '/uploadBrandImage/' + contestId,
+      formData
+    );
+  }
 }

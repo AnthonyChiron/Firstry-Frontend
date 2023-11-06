@@ -2,8 +2,8 @@ import { Address } from './adress.model';
 import { GenericModel } from './generic.model';
 
 export interface ContestModel extends GenericModel {
-  name: String;
-  description: String;
+  name: string;
+  description: string;
   startDate: Date;
   endDate: Date;
   registrationEndDate: Date;
@@ -11,14 +11,14 @@ export interface ContestModel extends GenericModel {
   categories: [];
   location: Address;
   branding: {
-    logo: String;
-    banner: String;
-    trailer: String;
+    logo: string;
+    banner: string;
+    trailer: string;
   };
   socials: {
-    instagram: String;
-    twitter: String;
-    youtube: String;
-    website: String;
+    instagram: string;
+    twitter: string;
+    youtube: string;
+    website: string;
   };
 }

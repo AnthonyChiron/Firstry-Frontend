@@ -1,4 +1,4 @@
 export interface GenericModel {
-  _id?: number;
+  _id?: string;
   __v?: number;
 }

@@ -1,15 +1,20 @@
 @import "../../../../../styles/colors.scss";
 
 .card {
+  display: flex;
   height: 100%;
   width: 100%;
   background-color: $firstry-white-2;
   border-radius: 10px;
-  padding: 4vw;
+  position: relative;
+}
+
+.content {
   display: flex;
   flex-direction: column;
-  position: relative;
   justify-content: center;
+  padding: 4vw;
+  flex: 1;
 }
 
 .loader {
@@ -34,12 +39,31 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .card {
-    padding: 2vw;
-  }
-
   h3 {
     font-size: 30px;
     margin-bottom: 0vw;
+  }
+
+  .sideImgCard {
+    height: 70vh;
+    width: 70vw;
+    flex: 1;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding: 2vw;
+  }
+
+  .sideImg {
+    img {
+      position: relative;
+      max-height: 100%;
+      width: 100%;
+      border-top-left-radius: 11px;
+      border-bottom-left-radius: 11px;
+      box-shadow: 10px 0px 20px rgb(196, 196, 196);
+    }
   }
 }

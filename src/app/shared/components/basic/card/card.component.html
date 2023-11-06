@@ -1,29 +1,34 @@
-<div *ngIf="!toggle" class="card">
-  <loader class="loader" *ngIf="isLoading"></loader>
-  <btn
-    *ngIf="close"
-    (click)="toggle = true"
-    icon="fa-solid fa-xmark fa-lg"
-    type="transparent"
-    class="btn"
-  ></btn>
-  <btn
-    *ngIf="redirect"
-    [routerLink]="redirectLink"
-    (click)="toggle = true"
-    icon="fa-solid fa-arrow-up-right-from-square"
-    type="transparent"
-    class="btn"
-  ></btn>
-  <btn
-    *ngIf="btn"
-    (click)="emitBtnClicked()"
-    [icon]="btnIcon || 'fa-solid fa-pen-to-square'"
-    type="transparent"
-    class="btn"
-  ></btn>
-  <div class="header">
-    <h3 *ngIf="title != ''">{{ title }}</h3>
+<div *ngIf="!toggle" class="card" [class.sideImgCard]="!isMobile && img != ''">
+  <div *ngIf="img != '' && !isMobile" class="sideImg">
+    <img [src]="img" alt="" />
   </div>
-  <ng-content></ng-content>
+  <div class="content">
+    <loader class="loader" *ngIf="isLoading"></loader>
+    <btn
+      *ngIf="close"
+      (click)="toggle = true"
+      icon="fa-solid fa-xmark fa-lg"
+      type="transparent"
+      class="btn"
+    ></btn>
+    <btn
+      *ngIf="redirect"
+      [routerLink]="redirectLink"
+      (click)="toggle = true"
+      icon="fa-solid fa-arrow-up-right-from-square"
+      type="transparent"
+      class="btn"
+    ></btn>
+    <btn
+      *ngIf="btn"
+      (click)="emitBtnClicked()"
+      [icon]="btnIcon || 'fa-solid fa-pen-to-square'"
+      type="transparent"
+      class="btn"
+    ></btn>
+    <div class="header">
+      <h3 *ngIf="title != ''">{{ title }}</h3>
+    </div>
+    <ng-content></ng-content>
+  </div>
 </div>

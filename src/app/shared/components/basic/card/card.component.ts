@@ -1,12 +1,13 @@
+import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 import { ToggleButtonModule } from 'primeng/togglebutton';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 
 @Component({
   selector: 'card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent {
+export class CardComponent implements OnInit {
   @Input() title: string = '';
   @Input() isLoading: boolean = false;
   @Input() close: boolean = false;
@@ -14,8 +15,20 @@ export class CardComponent {
   @Input() redirectLink: string = '';
   @Input() btn: boolean = false;
   @Input() btnIcon: string = '';
+  @Input() img: string = '';
   @Output() btnClicked: EventEmitter<any> = new EventEmitter();
   toggle: boolean = false;
+  isMobile: boolean;
+
+  constructor(private ssc: ScreenSizeService) {}
+
+  ngOnInit(): void {
+    this.isMobile = this.ssc.isMobile;
+    this.ssc.sizeChanged.subscribe((isMobile) => {
+      console.log(this.isMobile);
+      this.isMobile = isMobile;
+    });
+  }
 
   emitBtnClicked() {
     this.btnClicked.emit();
