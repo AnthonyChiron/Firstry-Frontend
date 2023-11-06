@@ -1,5 +1,6 @@
 <div class="main">
   <label *ngIf="label != ''" for="addPhoto">{{ label }}</label>
+  <img [src]="img" alt="" />
   <div class="addPhoto" *ngIf="!imgConfirmed">
     <label *ngIf="imageChangedEvent == '' && !isLoading" class="labelAddPhoto">
       <input

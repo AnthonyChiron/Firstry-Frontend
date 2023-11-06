@@ -63,6 +63,15 @@ export class ContestInfosDetailComponent implements OnInit {
     this.initForm(this.contest);
   }
 
+  async onUploadImage(event, type) {
+    console.log(event);
+    const blob = await fetch(event.objectUrl).then((r) => r.blob());
+    console.log(blob);
+    const logo = new File([blob], type + '.png', { type: 'image/png' });
+    console.log(logo);
+    this.cs.uploadContestBrandImage(this.contest._id, logo).subscribe();
+  }
+
   save() {
     console.log(this.infosForm.value);
     this.edit = false;

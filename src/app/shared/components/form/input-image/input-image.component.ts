@@ -13,7 +13,8 @@ export class InputImageComponent {
   @Input() ratio: number = 1;
   @Input() size: number;
   @Input() imgFile: File;
-  @Output() uploadPhoto = new EventEmitter<FileUploadEvent>();
+  @Input() img: string = null;
+  @Output() onUploadImage = new EventEmitter<FileUploadEvent>();
   imageChangedEvent: any = '';
   croppedImage: any = '';
   maxFileSize = 4000;
@@ -23,8 +24,6 @@ export class InputImageComponent {
   constructor(protected sanitizer: DomSanitizer) {}
 
   async fileChangeEvent(event: any): Promise<void> {
-    const file: File = event.target.files[0];
-
     this.isLoading = true;
     try {
       this.imageChangedEvent = event;
@@ -52,7 +51,7 @@ export class InputImageComponent {
   confirmImage() {
     // Ici, vous pouvez envoyer this.croppedImage au serveur ou quoi que ce soit.
     console.log(this.croppedImage);
-    this.uploadPhoto.emit(this.croppedImage);
+    this.onUploadImage.emit(this.croppedImage);
     this.imgConfirmed = true;
   }
 

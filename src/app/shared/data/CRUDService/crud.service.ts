@@ -42,19 +42,19 @@ export class CrudService<T> extends BaseHttpService {
   }
 
   // Récupérer une entité par ID
-  getById(id: number): Observable<T> {
+  getById(id: string): Observable<T> {
     const url = `${this.baseUrl}/getById/${id}`;
     return this.http.get<T>(url, this.getHttpOptions());
   }
 
   // Mettre à jour une entité
-  update(id: number, entity: T): Observable<T> {
+  update(id: string, entity: T): Observable<T> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.put<T>(url, entity, this.getHttpOptions());
   }
 
   // Supprimer une entité par ID
-  delete(id: number): Observable<void> {
+  delete(id: string): Observable<void> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<void>(url, this.getHttpOptions());
   }
