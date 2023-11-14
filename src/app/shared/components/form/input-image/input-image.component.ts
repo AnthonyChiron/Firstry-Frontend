@@ -10,6 +10,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class InputImageComponent {
   @Input() label: string;
+  @Input() btnLabel: string;
+  @Input() btnLabelDetail: string;
   @Input() ratio: number = 1;
   @Input() size: number;
   @Input() imgFile: File;

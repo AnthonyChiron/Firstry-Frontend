@@ -4,30 +4,30 @@
   </div>
   <div class="content">
     <loader class="loader" *ngIf="isLoading"></loader>
-    <btn
-      *ngIf="close"
-      (click)="toggle = true"
-      icon="fa-solid fa-xmark fa-lg"
-      type="transparent"
-      class="btn"
-    ></btn>
-    <btn
-      *ngIf="redirect"
-      [routerLink]="redirectLink"
-      (click)="toggle = true"
-      icon="fa-solid fa-arrow-up-right-from-square"
-      type="transparent"
-      class="btn"
-    ></btn>
-    <btn
-      *ngIf="btn"
-      (click)="emitBtnClicked()"
-      [icon]="btnIcon || 'fa-solid fa-pen-to-square'"
-      type="transparent"
-      class="btn"
-    ></btn>
     <div class="header">
       <h3 *ngIf="title != ''">{{ title }}</h3>
+      <btn
+        *ngIf="close"
+        (click)="toggle = true"
+        icon="fa-solid fa-xmark fa-lg"
+        type="transparent"
+        class="btn"
+      ></btn>
+      <btn
+        *ngIf="redirect"
+        [routerLink]="redirectLink"
+        (click)="toggle = true"
+        icon="fa-solid fa-arrow-up-right-from-square"
+        type="transparent"
+        class="btn"
+      ></btn>
+      <btn
+        *ngIf="btn"
+        (click)="emitBtnClicked()"
+        [icon]="btnIcon || 'fa-solid fa-pen-to-square'"
+        type="transparent"
+        class="btn"
+      ></btn>
     </div>
     <ng-content></ng-content>
   </div>

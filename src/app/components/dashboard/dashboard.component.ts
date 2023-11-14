@@ -10,6 +10,7 @@ export class DashboardComponent implements OnInit {
   constructor(private contestsService: ContestsService) {}
   contests = [];
   contestsDdOptions: any[] = [];
+  closePopup: boolean = true;
 
   ngOnInit(): void {
     this.contestsService.getOrganizerContests().subscribe((data) => {

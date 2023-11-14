@@ -1,4 +1,5 @@
 @import "../../../../../styles/colors.scss";
+@import "../../../../../styles/variables.scss";
 
 .card {
   display: flex;
@@ -12,7 +13,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   padding: 4vw;
   flex: 1;
 }
@@ -23,8 +24,8 @@
 
 .btn {
   position: absolute;
-  right: 0vw;
-  top: 0vw;
+  right: 2vw;
+  top: 2vw;
 }
 
 .header {
@@ -32,9 +33,12 @@
   justify-content: space-between;
 
   h3 {
-    font-size: 22px;
-    font-weight: 800;
-    margin-bottom: 2vw;
+    font-variation-settings: "wght" $mobile_fontCardTitleWeight;
+    font-family: "HankenGrotesk";
+    color: $firstry-black-2;
+    font-size: $mobile_fontCardTitleSize;
+    margin-bottom: 4vw;
+    width: 90%;
   }
 }
 

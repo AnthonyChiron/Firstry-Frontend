@@ -1,3 +1,6 @@
+@import "../../../../../styles/variables.scss";
+@import "../../../../../styles/colors.scss";
+
 .photo {
   display: flex;
   align-items: center;
@@ -20,27 +23,72 @@ h4 {
   text-align: center;
 }
 
-.addPhoto {
+.img {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
 
-  .labelAddPhoto {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  img {
+    height: 7vh;
+    width: 20%;
     border-radius: 11px;
-    height: 5vh;
-    width: 5vh;
-    margin: 5vh;
-    background-color: white;
+    margin: 1vh;
+  }
 
-    input {
-      display: none;
+  .addPhoto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    .labelAddPhoto {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 11px;
+      height: 7vh;
+      width: 100%;
+      margin: 1vh;
+      background-color: white;
+
+      i {
+        width: 7vh;
+        text-align: center;
+      }
+
+      .text {
+        flex: 5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .buttonLabel {
+          font-size: 0.9rem;
+          font-weight: bold;
+          color: black;
+        }
+
+        .detail {
+          font-size: 0.7rem;
+          font-variation-settings: "wght" 400;
+          font-family: "HankenGrotesk";
+          color: #a5a5a5;
+        }
+      }
+
+      input {
+        display: none;
+      }
     }
   }
 }
 
 image-cropper {
   max-height: 33vh;
+}
+
+label {
+  font-variation-settings: "wght" $mobile_fontLabelWeight;
+  font-family: "HankenGrotesk";
+  color: $firstry-black-2;
+  font-size: $mobile_fontLabelSize;
 }

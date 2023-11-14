@@ -1,19 +1,26 @@
 <div class="main">
   <h1 class="title">Dashboard</h1>
-
-  <card title="Bienvenue sur votre dashboard !" [close]="true">
+  <card
+    *ngIf="closePopup"
+    title="Bienvenue sur votre dashboard !"
+    [btn]="true"
+    [btnIcon]="'fa-solid fa-xmark fa-lg'"
+    (btnClicked)="closePopup = false"
+  >
     <p>
       C'est ici que vous pourrez administrer toute l'organisation de votre
       contest.
     </p>
     <p>Commençons par créer une catégorie.</p>
   </card>
-  <create-contest *ngIf="!contests"></create-contest>
   <div class="flexRow">
     <dropdown [options]="contestsDdOptions"></dropdown>
     <btn label="Créer un contest" routerLink="create-contest"></btn>
   </div>
-  <contest-infos-summary [contest]="contests[0]"></contest-infos-summary>
-  <list-category [contest]="contests[0]"></list-category>
-  <!-- <create-category [contest]="contests[0]"></create-category> -->
+  <create-contest *ngIf="!contests"></create-contest>
+  <div class="cards">
+    <contest-infos-summary [contest]="contests[0]"></contest-infos-summary>
+    <list-category [contest]="contests[0]"></list-category>
+    <!-- <create-category [contest]="contests[0]"></create-category> -->
+  </div>
 </div>
