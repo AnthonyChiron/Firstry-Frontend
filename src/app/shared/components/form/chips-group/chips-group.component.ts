@@ -25,6 +25,8 @@ export class ChipsGroupComponent implements ControlValueAccessor, OnInit {
   @Input() chips: Array<{ value: any; name: string }>;
   @Input() isBinary: boolean = false;
   @Input() preSelect: boolean = false;
+  @Input() edit: boolean = true;
+  @Input() label: string = '';
   selectedChips: string[] = [];
   onChange: any = () => {};
   onTouched: any = () => {};

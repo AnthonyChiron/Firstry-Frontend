@@ -1,11 +1,30 @@
 <div class="chips-group">
-  <btn
-    *ngFor="let chip of chips"
-    (click)="toggleSelection(chip)"
-    [label]="chip.name"
-    [type]="isSelected(chip) ? 'primary' : 'third'"
-    [icon]="isSelected(chip) ? 'fa-solid fa-check' : ''"
-    iconPos="left"
-  ></btn>
-  <ng-content></ng-content>
+  <div *ngIf="edit" class="edit">
+    <label *ngIf="label" for="chips">{{ label }}</label>
+    <div class="chips">
+      <btn
+        *ngFor="let chip of chips"
+        (click)="toggleSelection(chip)"
+        [label]="chip.name"
+        [type]="isSelected(chip) ? 'primary' : 'third'"
+        [icon]="isSelected(chip) ? 'fa-solid fa-check' : ''"
+        iconPos="left"
+        id="chips"
+      ></btn>
+    </div>
+    <ng-content></ng-content>
+  </div>
+  <div *ngIf="!edit" class="display">
+    <label *ngIf="label" for="chips">{{ label }}</label>
+    <div class="chips">
+      <btn
+        *ngFor="let chip of selectedChips"
+        [label]="chip"
+        [type]="'primary'"
+        [icon]="'fa-solid fa-check'"
+        iconPos="left"
+        id="chips"
+      ></btn>
+    </div>
+  </div>
 </div>

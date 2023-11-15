@@ -67,6 +67,18 @@
         label="Lieu"
         formControlName="location"
       ></input-adress>
+      <chips-group
+        [chips]="[
+          { value: 'roller', name: 'Roller' },
+          { value: 'trottinette', name: 'Trottinette' },
+          { value: 'skate', name: 'Skate' },
+          { value: 'quad', name: 'Quad' }
+        ]"
+        [edit]="edit"
+        label="Sports"
+        formControlName="sports"
+      ></chips-group>
+
       <div class="buttons">
         <btn
           *ngIf="edit"
@@ -85,17 +97,23 @@
       </div>
     </div>
   </card>
-  <card title="Branding"
-    ><input-image
-      label="Logo"
-      [img]="contest.branding.logo ? contest.branding.logo : null"
-      (onUploadImage)="onUploadImage($event, 'logo')"
-    ></input-image
-    ><input-image
-      label="Bannière"
-      [img]="contest.branding.banner ? contest.branding.banner : null"
-      (onUploadImage)="onUploadImage($event, 'logo')"
-    ></input-image
-  ></card>
+  <card title="Branding" *ngIf="!isLoading && contest">
+    <div class="form">
+      <input-image
+        label="Votre logo"
+        btnLabel="Ajoutez votre logo"
+        btnLabelDetail="(png, jpg, jpeg & < 3mo)"
+        [img]="contest.branding ? contest.branding.logo : null"
+        (onUploadImage)="onUploadImage($event, 'logo')"
+      ></input-image
+      ><input-image
+        label="Votre bannière"
+        btnLabel="Ajoutez votre bannière"
+        btnLabelDetail="(png, jpg, jpeg & < 3mo)"
+        [img]="contest.branding ? contest.branding.banner : null"
+        (onUploadImage)="onUploadImage($event, 'logo')"
+      ></input-image>
+    </div>
+  </card>
   <p *ngIf="!isLoading && !contest">Contest introuvable</p>
 </div>

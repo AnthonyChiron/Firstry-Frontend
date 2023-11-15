@@ -28,6 +28,7 @@ export class ContestInfosDetailComponent implements OnInit {
     this.infosForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
+      sports: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       location: ['', Validators.required],
@@ -36,6 +37,7 @@ export class ContestInfosDetailComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((params) => {
       this.cs.getById(params.contestId).subscribe((contest) => {
+        console.log(contest);
         this.contest = contest;
         this.contest.startDate = new Date(this.contest.startDate);
         this.contest.endDate = new Date(this.contest.endDate);
@@ -52,6 +54,7 @@ export class ContestInfosDetailComponent implements OnInit {
       description: contest.description,
       startDate: contest.startDate,
       endDate: contest.endDate,
+      sports: contest.sports,
       location: contest.location,
       branding: contest.branding,
     });

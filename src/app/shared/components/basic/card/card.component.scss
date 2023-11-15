@@ -1,30 +1,29 @@
 @import "../../../../../styles/colors.scss";
+@import "../../../../../styles/variables.scss";
 
 .card {
   display: flex;
-  height: 100%;
-  width: 100%;
   background-color: $firstry-white-2;
   border-radius: 10px;
-  position: relative;
 }
 
-.content {
+.main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: 4vw;
-  flex: 1;
+  width: 100%;
+  height: 100%;
 }
 
 .loader {
   align-self: center;
 }
 
-.btn {
-  position: absolute;
-  right: 0vw;
-  top: 0vw;
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
 .header {
@@ -32,34 +31,63 @@
   justify-content: space-between;
 
   h3 {
-    font-size: 22px;
-    font-weight: 800;
-    margin-bottom: 2vw;
+    font-variation-settings: "wght" $mobile_fontCardTitleWeight;
+    font-family: "HankenGrotesk";
+    color: $firstry-black-2;
+    font-size: $mobile_fontCardTitleSize;
+    margin-bottom: 4vw;
+    width: 90%;
+  }
+
+  .btn {
+    align-self: flex-start;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  h3 {
-    font-size: 30px;
-    margin-bottom: 0vw;
+  .card {
+    display: flex;
+    height: 100%;
   }
 
   .sideImgCard {
     height: 70vh;
-    width: 70vw;
-    flex: 1;
+    width: 80%;
+  }
+
+  .header {
+    h3 {
+      font-size: 30px;
+      margin-bottom: 2vw;
+    }
+  }
+
+  .sideImgCard > .header {
+    h3 {
+      text-align: center;
+    }
   }
 
   .content {
     display: flex;
     flex-direction: column;
-    padding: 2vw;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5vw;
+    height: 100%;
   }
 
   .sideImg {
+    height: 70vh;
+    width: 80%;
+
     img {
-      position: relative;
-      max-height: 100%;
+      height: 100%;
       width: 100%;
       border-top-left-radius: 11px;
       border-bottom-left-radius: 11px;
