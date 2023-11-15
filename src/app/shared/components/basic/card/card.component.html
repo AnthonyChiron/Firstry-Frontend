@@ -1,8 +1,8 @@
-<div *ngIf="!toggle" class="card" [class.sideImgCard]="!isMobile && img != ''">
+<div *ngIf="!toggle" class="card">
   <div *ngIf="img != '' && !isMobile" class="sideImg">
     <img [src]="img" alt="" />
   </div>
-  <div class="content">
+  <div class="main">
     <loader class="loader" *ngIf="isLoading"></loader>
     <div class="header">
       <h3 *ngIf="title != ''">{{ title }}</h3>
@@ -29,6 +29,8 @@
         class="btn"
       ></btn>
     </div>
-    <ng-content></ng-content>
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
   </div>
 </div>

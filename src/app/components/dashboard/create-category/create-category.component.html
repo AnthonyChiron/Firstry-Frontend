@@ -1,87 +1,89 @@
-<card title="Création de catégorie">
-  <form *ngIf="contest" [formGroup]="categoryForm">
-    <input-text
-      name="name"
-      type="Text"
-      placeholder="Nom..."
-      label="Nom de la catégorie"
-      formControlName="name"
-      [error]="
-        touched &&
-        (fus.isFieldInvalid('name') || categoryForm.get('name').value == '')
-      "
-    ></input-text>
-    <input-text
-      name="description"
-      type="Text"
-      placeholder="Description..."
-      label="Description de la catégorie"
-      formControlName="description"
-      [error]="
-        touched &&
-        (fus.isFieldInvalid('description') ||
-          categoryForm.get('description').value == '')
-      "
-    ></input-text>
-
-    <div *ngIf="contest.sports.length > 1" class="inputGroup">
-      <h4>Disciplines</h4>
-      <chips-group [chips]="sports" formControlName="sports"></chips-group>
-      <note
-        *ngIf="
-          touched &&
-          (fus.isFieldInvalid('sports') ||
-            categoryForm.get('sports').value == '')
-        "
-        type="error"
-        text="Veuillez choisir au moins un sport !"
-      >
-      </note>
-    </div>
-
-    <div class="flexRow">
+<div class="main">
+  <card title="Création de catégorie">
+    <form *ngIf="contest" [formGroup]="categoryForm">
       <input-text
-        name="startDate"
-        type="date"
-        placeholder="jj/mm/aaaa"
-        label="Date de début"
-        formControlName="startDate"
+        name="name"
+        type="Text"
+        placeholder="Nom..."
+        label="Nom de la catégorie"
+        formControlName="name"
         [error]="
           touched &&
-          (fus.isFieldInvalid('startDate') ||
-            categoryForm.get('startDate').value == '')
+          (fus.isFieldInvalid('name') || categoryForm.get('name').value == '')
         "
       ></input-text>
       <input-text
-        name="endDate"
-        type="date"
-        placeholder="jj/mm/aaaa"
-        label="Date de fin"
-        formControlName="endDate"
+        name="description"
+        type="Text"
+        placeholder="Description..."
+        label="Description de la catégorie"
+        formControlName="description"
         [error]="
           touched &&
-          (fus.isFieldInvalid('endDate') ||
-            categoryForm.get('endDate').value == '')
+          (fus.isFieldInvalid('description') ||
+            categoryForm.get('description').value == '')
         "
       ></input-text>
-    </div>
-    <input-text
-      name="maxCompetitorCount"
-      type="number"
-      placeholder="Nombre de participants maximum"
-      label="Nombre de participants maximum..."
-      formControlName="maxCompetitorCount"
-      [error]="
-        touched &&
-        (fus.isFieldInvalid('maxCompetitorCount') ||
-          categoryForm.get('maxCompetitorCount').value == '')
-      "
-    ></input-text>
-    <btn
-      (click)="submit()"
-      label="Valider"
-      icon="fa-solid fa-check"
-      iconPos="right"
-    ></btn>
-  </form>
-</card>
+
+      <div *ngIf="contest.sports.length > 1" class="inputGroup">
+        <h4>Disciplines</h4>
+        <chips-group [chips]="sports" formControlName="sports"></chips-group>
+        <note
+          *ngIf="
+            touched &&
+            (fus.isFieldInvalid('sports') ||
+              categoryForm.get('sports').value == '')
+          "
+          type="error"
+          text="Veuillez choisir au moins un sport !"
+        >
+        </note>
+      </div>
+
+      <div class="flexRow">
+        <input-text
+          name="startDate"
+          type="date"
+          placeholder="jj/mm/aaaa"
+          label="Date de début"
+          formControlName="startDate"
+          [error]="
+            touched &&
+            (fus.isFieldInvalid('startDate') ||
+              categoryForm.get('startDate').value == '')
+          "
+        ></input-text>
+        <input-text
+          name="endDate"
+          type="date"
+          placeholder="jj/mm/aaaa"
+          label="Date de fin"
+          formControlName="endDate"
+          [error]="
+            touched &&
+            (fus.isFieldInvalid('endDate') ||
+              categoryForm.get('endDate').value == '')
+          "
+        ></input-text>
+      </div>
+      <input-text
+        name="maxCompetitorCount"
+        type="number"
+        placeholder="Nombre de participants maximum"
+        label="Nombre de participants maximum..."
+        formControlName="maxCompetitorCount"
+        [error]="
+          touched &&
+          (fus.isFieldInvalid('maxCompetitorCount') ||
+            categoryForm.get('maxCompetitorCount').value == '')
+        "
+      ></input-text>
+      <btn
+        (click)="submit()"
+        label="Valider"
+        icon="fa-solid fa-check"
+        iconPos="right"
+      ></btn>
+    </form>
+  </card>
+</div>
