@@ -11,9 +11,26 @@ import { FormSharedModule } from 'src/app/shared/formShared.module';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
 import { ContestInfosDetailComponent } from './infos/infos-detail/contest-infos-detail.component';
+import { OverviewComponent } from './overview/overview.component';
 
 const dashboardRoutes: Routes = [
-  { path: '', component: DashboardComponent, canActivate: [IsAuthGuard] },
+  {
+    path: '',
+    component: DashboardComponent,
+    canActivate: [IsAuthGuard],
+    children: [
+      {
+        path: ':contestId/overview',
+        component: OverviewComponent,
+        canActivate: [IsAuthGuard],
+      },
+      {
+        path: ':contestId/infos',
+        component: ContestInfosDetailComponent,
+        canActivate: [IsAuthGuard],
+      },
+    ],
+  },
   {
     path: 'create-contest',
     component: CreateContestComponent,
@@ -22,11 +39,6 @@ const dashboardRoutes: Routes = [
   {
     path: ':contestId/create-category',
     component: CreateCategoryComponent,
-    canActivate: [IsAuthGuard],
-  },
-  {
-    path: ':contestId/infos',
-    component: ContestInfosDetailComponent,
     canActivate: [IsAuthGuard],
   },
 ];
@@ -40,6 +52,7 @@ const dashboardRoutes: Routes = [
     ListCategoryComponent,
     ContestInfosSummaryComponent,
     ContestInfosDetailComponent,
+    OverviewComponent,
   ],
   imports: [
     CommonModule,

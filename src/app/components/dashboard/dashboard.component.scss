@@ -1,10 +1,37 @@
 @import "../../../styles/variables.scss";
+@import "../../../styles/colors.scss";
 
 .main {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 7vw;
+}
+
+.dashboardNav {
+  display: flex;
+
+  .contestNav {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+  }
+
+  .cardNav {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2vw;
+
+    a {
+      font-size: $pc_fontNavSize;
+      color: $firstry-black-2;
+      font-variation-settings: "wght" $pc_fontNavWeight;
+      font-family: "HankenGrotesk";
+    }
+  }
 }
 
 .title {
@@ -30,18 +57,40 @@
     gap: 3vw;
   }
 
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 3vw;
-  }
+  .dashboardNav {
+    padding-bottom: 8px;
+    border-bottom: 1px solid $firstry-white-3;
 
-  contest-infos-summary {
-    flex: 1;
-  }
+    .contestNav {
+      gap: 1vw;
+    }
 
-  list-category {
-    flex: 3;
+    .cardNav {
+      flex: 3;
+      gap: 5vw;
+
+      a {
+        font-size: $pc_fontNavSize;
+        color: $firstry-black-2;
+        font-variation-settings: "wght" $pc_fontNavWeight;
+        font-family: "HankenGrotesk";
+        border-radius: 10px;
+        padding: 5px;
+        padding-left: 12px;
+        padding-right: 12px;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+      }
+
+      a:hover {
+        background-color: $firstry-white-2;
+      }
+
+      a.active {
+        text-decoration: underline;
+        font-variation-settings: "wght" $pc_fontNavActiveWeight;
+      }
+    }
   }
 }

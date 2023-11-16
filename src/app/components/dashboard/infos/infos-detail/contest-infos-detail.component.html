@@ -1,119 +1,121 @@
 <div class="main">
-  <loader *ngIf="isLoading"></loader>
-  <h1 class="title">INFOS</h1>
-  <card
-    *ngIf="!isLoading && contest"
-    title="Informations générale"
-    [btn]="!edit"
-    btnIcon="fa-solid fa-pen-to-square fa-lg"
-    (btnClicked)="edit = !edit"
-  >
-    <div class="infosForm" [formGroup]="infosForm">
-      <input-text
-        name="name"
-        type="Text"
-        placeholder="Nom..."
-        label="Nom du contest"
-        formControlName="name"
-        [edit]="edit"
-        [error]="
-          touched &&
-          (fus.isFieldInvalid('name') || infosForm.get('name').value == '')
-        "
-      ></input-text>
-      <input-textarea
-        name="description"
-        size="md"
-        placeholder="Description..."
-        label="Description du contest"
-        formControlName="description"
-        [edit]="edit"
-        [error]="
-          touched &&
-          (fus.isFieldInvalid('description') ||
-            infosForm.get('description').value == '')
-        "
-      ></input-textarea>
-      <div class="flexRow">
-        <input-date
-          name="startDate"
-          type="Date"
-          label="Date de début"
-          formControlName="startDate"
-          class="fullWidth"
+  <div class="cards">
+    <loader *ngIf="isLoading"></loader>
+    <p *ngIf="!isLoading && !contest">Contest introuvable</p>
+    <card
+      *ngIf="!isLoading && contest"
+      title="Informations générale"
+      [btn]="!edit"
+      btnIcon="fa-solid fa-pen-to-square fa-lg"
+      (btnClicked)="edit = !edit"
+      class="infosCard"
+    >
+      <div class="infosForm" [formGroup]="infosForm">
+        <input-text
+          name="name"
+          type="Text"
+          placeholder="Nom..."
+          label="Nom du contest"
+          formControlName="name"
           [edit]="edit"
           [error]="
             touched &&
-            (fus.isFieldInvalid('startDate') ||
-              infosForm.get('startDate').value == '')
+            (fus.isFieldInvalid('name') || infosForm.get('name').value == '')
           "
-        ></input-date>
-        <input-date
-          name="endDate"
-          type="Date"
-          label="Date de fin"
-          formControlName="endDate"
-          class="fullWidth"
+        ></input-text>
+        <input-textarea
+          name="description"
+          size="md"
+          placeholder="Description..."
+          label="Description du contest"
+          formControlName="description"
           [edit]="edit"
           [error]="
             touched &&
-            (fus.isFieldInvalid('endDate') ||
-              infosForm.get('endDate').value == '')
+            (fus.isFieldInvalid('description') ||
+              infosForm.get('description').value == '')
           "
-        ></input-date>
-      </div>
-      <input-adress
-        [edit]="edit"
-        label="Lieu"
-        formControlName="location"
-      ></input-adress>
-      <chips-group
-        [chips]="[
-          { value: 'roller', name: 'Roller' },
-          { value: 'trottinette', name: 'Trottinette' },
-          { value: 'skate', name: 'Skate' },
-          { value: 'quad', name: 'Quad' }
-        ]"
-        [edit]="edit"
-        label="Sports"
-        formControlName="sports"
-      ></chips-group>
+        ></input-textarea>
+        <div class="flexRow">
+          <input-date
+            name="startDate"
+            type="Date"
+            label="Date de début"
+            formControlName="startDate"
+            class="fullWidth"
+            [edit]="edit"
+            [error]="
+              touched &&
+              (fus.isFieldInvalid('startDate') ||
+                infosForm.get('startDate').value == '')
+            "
+          ></input-date>
+          <input-date
+            name="endDate"
+            type="Date"
+            label="Date de fin"
+            formControlName="endDate"
+            class="fullWidth"
+            [edit]="edit"
+            [error]="
+              touched &&
+              (fus.isFieldInvalid('endDate') ||
+                infosForm.get('endDate').value == '')
+            "
+          ></input-date>
+        </div>
+        <input-adress
+          [edit]="edit"
+          label="Lieu"
+          formControlName="location"
+        ></input-adress>
+        <chips-group
+          [chips]="[
+            { value: 'roller', name: 'Roller' },
+            { value: 'trottinette', name: 'Trottinette' },
+            { value: 'skate', name: 'Skate' },
+            { value: 'quad', name: 'Quad' }
+          ]"
+          [edit]="edit"
+          label="Sports"
+          formControlName="sports"
+        ></chips-group>
 
-      <div class="buttons">
-        <btn
-          *ngIf="edit"
-          (click)="cancel()"
-          type="secondary"
-          label="Annuler"
-          icon="fa-solid fa-xmark fa-lg"
-        ></btn>
-        <btn
-          *ngIf="edit"
-          (click)="save()"
-          type="primary"
-          label="Confirmer"
-          icon="fa-solid fa-check fa-lg"
-        ></btn>
+        <div class="buttons">
+          <btn
+            *ngIf="edit"
+            (click)="cancel()"
+            type="secondary"
+            label="Annuler"
+            icon="fa-solid fa-xmark fa-lg"
+          ></btn>
+          <btn
+            *ngIf="edit"
+            (click)="save()"
+            type="primary"
+            label="Confirmer"
+            icon="fa-solid fa-check fa-lg"
+          ></btn>
+        </div>
       </div>
-    </div>
-  </card>
-  <card title="Branding" *ngIf="!isLoading && contest">
-    <div class="form">
-      <input-image
-        label="Votre logo"
-        btnLabel="Ajoutez votre logo"
-        btnLabelDetail="(png, jpg, jpeg & < 3mo)"
-        [img]="contest.branding ? contest.branding.logo : null"
-        (onUploadImage)="onUploadImage($event, 'logo')"
-      ></input-image
-      ><input-image
-        label="Votre bannière"
-        btnLabel="Ajoutez votre bannière"
-        btnLabelDetail="(png, jpg, jpeg & < 3mo)"
-        [img]="contest.branding ? contest.branding.banner : null"
-        (onUploadImage)="onUploadImage($event, 'logo')"
-      ></input-image>
-    </div>
-  </card>
-  <p *ngIf="!isLoading && !contest">Contest introuvable</p>
+    </card>
+    <card title="Branding" *ngIf="!isLoading && contest" class="brandingCard">
+      <div class="form">
+        <input-image
+          label="Votre logo"
+          btnLabel="Ajoutez votre logo"
+          btnLabelDetail="(png, jpg, jpeg & < 3mo)"
+          [img]="contest.branding ? contest.branding.logo : null"
+          (onUploadImage)="onUploadImage($event, 'logo')"
+        ></input-image
+        ><input-image
+          label="Votre bannière"
+          btnLabel="Ajoutez votre bannière"
+          btnLabelDetail="(png, jpg, jpeg & < 3mo)"
+          [img]="contest.branding ? contest.branding.banner : null"
+          (onUploadImage)="onUploadImage($event, 'logo')"
+        ></input-image>
+      </div>
+    </card>
+  </div>
 </div>

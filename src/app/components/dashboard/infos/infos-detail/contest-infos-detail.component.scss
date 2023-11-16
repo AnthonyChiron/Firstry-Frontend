@@ -20,3 +20,34 @@
     gap: 4vw;
   }
 }
+
+@media only screen and (min-width: 768px) {
+  .main {
+    gap: 2vw;
+
+    .cards {
+      display: flex;
+      gap: 2vw;
+
+      .infosCard {
+        flex: 2;
+      }
+
+      .brandingCard {
+        flex: 2;
+      }
+
+      .infosForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+        flex: 1;
+      }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
