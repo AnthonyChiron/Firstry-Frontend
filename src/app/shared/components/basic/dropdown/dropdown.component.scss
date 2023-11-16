@@ -1,27 +1,65 @@
+@import "../../../../../styles/colors.scss";
+@import "../../../../../styles/variables.scss";
+
 .dropdown {
+  position: relative;
+  width: 100%;
+
   .dropdown-button {
     display: flex;
     align-items: center;
     gap: 1vw;
+    padding: 8px 10px;
     background-color: white;
     border: none;
+    border-radius: 10px;
     font-family: "HankenGrotesk";
     font-size: 1rem;
     font-variation-settings: "wght" 700;
+    cursor: pointer;
   }
 
   .dropdown-content {
+    cursor: pointer;
     position: absolute;
-    margin-top: 1vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1vw;
-    background-color: white;
+    background-color: $firstry-white-2;
     border-radius: 6px;
-    padding: 1.5vw;
     z-index: 20;
 
     a {
+      transition: 0.3s;
+      padding: 8px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .route {
+      background-color: $firstry-black-2;
+      color: $firstry-white-1;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .dropdown {
+    .dropdown-button {
+      font-size: $pc_fontNavSize - 3;
+      transition: 0.3s;
+    }
+
+    .dropdown-button:hover {
+      background-color: $firstry-white-2;
+    }
+
+    .dropdown-content {
+      margin-top: 5px;
+    }
+
+    a:hover {
+      background-color: $firstry-white-3;
     }
   }
 }

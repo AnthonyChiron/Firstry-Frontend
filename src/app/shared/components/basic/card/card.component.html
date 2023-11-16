@@ -1,4 +1,4 @@
-<div *ngIf="!toggle" class="card">
+<div *ngIf="!toggle" class="card" [class.sideImgCard]="!isMobile && img != ''">
   <div *ngIf="img != '' && !isMobile" class="sideImg">
     <img [src]="img" alt="" />
   </div>

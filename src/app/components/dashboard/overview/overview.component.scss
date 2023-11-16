@@ -1,0 +1,23 @@
+.cards {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 7vw;
+}
+
+@media (min-width: 768px) {
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 3vw;
+  }
+
+  contest-infos-summary {
+    flex: 1;
+  }
+
+  list-category {
+    flex: 3;
+  }
+}

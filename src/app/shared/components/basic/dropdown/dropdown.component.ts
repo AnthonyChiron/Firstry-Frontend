@@ -15,6 +15,7 @@ import {
 })
 export class DropdownComponent implements OnInit {
   @Input() options: any[] = [];
+  @Input() routes: any[] = [];
   @Output() selected: EventEmitter<any> = new EventEmitter<any>();
   showDropdown = false;
   selectedOption: any = { label: '', value: '' };

@@ -20,6 +20,7 @@
     font-variation-settings: "wght" 400;
     font-family: "HankenGrotesk";
     resize: vertical;
+    margin-top: $mobile_marginInput;
   }
 
   .xs {
@@ -51,5 +52,21 @@
 
   .error {
     border: 1px solid $firstry-red-1;
+  }
+}
+
+@media (min-width: 768px) {
+  .inputGroup {
+    .xs {
+      height: 5vw;
+    }
+
+    .md {
+      height: 7vw;
+    }
+
+    .lg {
+      height: 10vw;
+    }
   }
 }

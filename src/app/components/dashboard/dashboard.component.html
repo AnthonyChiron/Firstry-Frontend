@@ -13,14 +13,28 @@
     </p>
     <p>Commençons par créer une catégorie.</p>
   </card>
-  <div class="flexRow">
-    <dropdown [options]="contestsDdOptions"></dropdown>
-    <btn label="Créer un contest" routerLink="create-contest"></btn>
+  <div class="dashboardNav">
+    <div class="contestNav">
+      <dropdown
+        [options]="[{ label: contests[0].name, value: contests[0]._id }]"
+        [routes]="[{ label: 'Créer un contest', value: 'create-contest' }]"
+        (selected)="test($event)"
+      ></dropdown>
+      <btn label="Créer un contest" routerLink="create-contest"></btn>
+    </div>
+    <div class="cardNav" *ngIf="!isMobile && contests.length != 0">
+      <a routerLinkActive="active" routerLink="{{ contests[0]._id }}/overview"
+        >Aperçu</a
+      >
+      <a routerLinkActive="active" routerLink="{{ contests[0]._id }}/infos"
+        >Infos</a
+      >
+      <a>Poules</a>
+      <a>Résultats</a>
+    </div>
   </div>
-  <create-contest *ngIf="!contests"></create-contest>
-  <div class="cards">
-    <contest-infos-summary [contest]="contests[0]"></contest-infos-summary>
-    <list-category [contest]="contests[0]"></list-category>
-    <!-- <create-category [contest]="contests[0]"></create-category> -->
+  <div class="content">
+    <router-outlet></router-outlet>
+    <create-contest *ngIf="!contests"></create-contest>
   </div>
 </div>

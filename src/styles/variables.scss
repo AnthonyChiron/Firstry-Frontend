@@ -1,7 +1,7 @@
-// HEIGHTS
+//* HEIGHTS
 $mobile_inputHeight: 32px;
 
-// FONT_SIZE
+//* FONT_SIZE
 $mobile_fontInputSize: 15px;
 $mobile_fontLabelSize: 17px;
 $mobile_fontTableSize: 12px;
@@ -10,16 +10,24 @@ $mobile_fontTitleSize: 30px;
 
 $pc_fontInputSize: 15px;
 $pc_fontLabelSize: 17px;
+$pc_fontNavSize: 22px;
 $pc_fontTableSize: 12px;
 $pc_fontCardTitleSize: 22px;
 $pc_fontTitleSize: 60px;
 
-// WEIGHTS
+//* WEIGHTS
 $mobile_fontInputWeight: 400;
 $mobile_fontLabelWeight: 800;
 $mobile_fontCardTitleWeight: 900;
+$pc_fontNavActiveWeight: 900;
+$pc_fontNavWeight: 700;
 
-// BORDER RADIUS
+//* MARGINS
+$mobile_marginInput: 4px;
+
+$pc_marginLabel: 6px;
+
+//* BORDER RADIUS
 $border-radius-1: 12px;
 $border-radius-2: 10px;
 $border-radius-3: 8px;
