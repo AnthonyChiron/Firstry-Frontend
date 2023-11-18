@@ -3,11 +3,11 @@
     <p
       *ngIf="
         (selectedOption && selectedOption.label != '') ||
-        (options[0] && options[0].label != '')
+        (options && options[0] && options[0].label != '')
       "
       Capitalize
     >
-      {{ selectedOption.label || options[0].label }}
+      {{ selectedOption.label != "" ? selectedOption.label : options[0].label }}
     </p>
     <i class="fa-solid fa-angle-down"></i>
   </button>

@@ -12,7 +12,7 @@ import { ChipsGroupComponent } from './components/form/chips-group/chips-group.c
 import { LoaderComponent } from './components/basic/loader/loader.component';
 import { BtnComponent } from './components/basic/btn/btn.component';
 import { NoteComponent } from './components/basic/note/note.component';
-import { CapitalizeDirective } from './directives/capitalize.directive';
+import { CapitalizePipe } from './pipe/capitalize.pipe';
 import { QuadrillageComponent } from './components/quadrillage/quadrillage.component';
 import { CardComponent } from './components/basic/card/card.component';
 import { ScrollingTextComponent } from './components/basic/scrolling-text/scrolling-text.component';
@@ -30,7 +30,7 @@ import { FormatDateJJMMDirective } from './directives/format-date-jjmm.directive
     ChipsGroupComponent,
     LoaderComponent,
     NoteComponent,
-    CapitalizeDirective,
+    CapitalizePipe,
     FormatDateJJMMDirective,
     QuadrillageComponent,
     CardComponent,
@@ -59,7 +59,7 @@ import { FormatDateJJMMDirective } from './directives/format-date-jjmm.directive
     LoaderComponent,
     BtnComponent,
     NoteComponent,
-    CapitalizeDirective,
+    CapitalizePipe,
     QuadrillageComponent,
     CardComponent,
     ScrollingTextComponent,
