@@ -62,11 +62,16 @@
     border-bottom: 1px solid $firstry-white-3;
 
     .contestNav {
+      flex: 2;
       gap: 1vw;
+
+      dropdown {
+        min-width: 10vw;
+      }
     }
 
     .cardNav {
-      flex: 3;
+      flex: 4;
       gap: 5vw;
 
       a {
