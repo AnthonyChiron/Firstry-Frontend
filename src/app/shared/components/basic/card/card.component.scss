@@ -50,12 +50,7 @@
 @media only screen and (min-width: 768px) {
   .card {
     display: flex;
-    height: 100%;
-  }
-
-  .sideImgCard {
-    height: 70vh;
-    width: 80%;
+    width: 100%;
   }
 
   .header {
@@ -84,6 +79,7 @@
   }
 
   .main {
+    flex: 1;
     display: flex;
     flex-direction: column;
     padding: 1.5vw;
@@ -91,12 +87,10 @@
   }
 
   .sideImg {
-    height: 70vh;
-    width: 80%;
+    flex: 0 0 auto;
 
     img {
-      height: 100%;
-      width: 100%;
+      width: auto;
       border-top-left-radius: 11px;
       border-bottom-left-radius: 11px;
       box-shadow: 10px 0px 20px rgb(196, 196, 196);

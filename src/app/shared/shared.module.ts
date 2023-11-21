@@ -21,6 +21,7 @@ import { TableComponent } from './components/basic/table/table.component';
 import { DropdownComponent } from './components/basic/dropdown/dropdown.component';
 import { RouterModule } from '@angular/router';
 import { FormatDateJJMMDirective } from './directives/format-date-jjmm.directive';
+import { InfoTagComponent } from './components/basic/info-tag/info-tag.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FormatDateJJMMDirective } from './directives/format-date-jjmm.directive
     SocialsComponent,
     TableComponent,
     DropdownComponent,
+    InfoTagComponent,
   ],
   imports: [
     CommonModule,
@@ -67,6 +69,7 @@ import { FormatDateJJMMDirective } from './directives/format-date-jjmm.directive
     TableComponent,
     DropdownComponent,
     FormatDateJJMMDirective,
+    InfoTagComponent,
   ],
 })
 export class SharedModule {}

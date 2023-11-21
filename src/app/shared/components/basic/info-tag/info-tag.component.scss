@@ -1,0 +1,17 @@
+@import "../../../../../styles/colors.scss";
+
+.tag {
+  display: flex;
+  padding: 0.3rem 0.6rem;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  background-color: $firstry-white-1;
+  color: $firstry-black-3;
+  width: fit-content;
+
+  p {
+    margin-left: 8px;
+  }
+}

@@ -10,13 +10,18 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 export class CardComponent implements OnInit {
   @Input() title: string = '';
   @Input() isLoading: boolean = false;
+
   @Input() close: boolean = false;
   @Input() redirect: boolean = false;
   @Input() redirectLink: string = '';
   @Input() btn: boolean = false;
   @Input() btnIcon: string = '';
-  @Input() img: string = '';
   @Output() btnClicked: EventEmitter<any> = new EventEmitter();
+
+  @Input() img: string = '';
+  @Input() imgHeight: string = '50';
+  @Input() cardWidth: string = '100';
+
   toggle: boolean = false;
   isMobile: boolean;
 

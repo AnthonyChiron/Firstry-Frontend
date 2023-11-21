@@ -16,6 +16,10 @@ export class ContestsComponent implements OnInit {
       if (data) {
         console.log(data);
         this.contests = data;
+        this.contests.forEach((contest) => {
+          contest.startDate = new Date(contest.startDate);
+          contest.endDate = new Date(contest.endDate);
+        });
       }
     });
   }

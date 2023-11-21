@@ -1,15 +1,32 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/colors.scss";
+
 .card {
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  width: 30vw;
+  position: relative;
 
-  .field {
+  h1 {
+    font-variation-settings: "wght" 900;
+  }
+
+  .tags {
     display: flex;
     flex-direction: column;
+    margin-top: 1vw;
+    gap: 0.5vw;
+  }
 
-    .date {
-      display: flex;
-      gap: 1vw;
+  .footer {
+    position: absolute;
+    bottom: 1vw;
+    right: 1vw;
+
+    button {
+      border: none;
+      color: $firstry-black-3;
     }
   }
 }

@@ -13,6 +13,7 @@ export interface ContestModel extends GenericModel {
   branding: {
     logo: string;
     banner: string;
+    poster: string;
     trailer: string;
   };
   socials: {

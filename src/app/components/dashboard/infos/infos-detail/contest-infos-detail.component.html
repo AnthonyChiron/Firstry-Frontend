@@ -113,7 +113,15 @@
           btnLabel="Ajoutez votre bannière"
           btnLabelDetail="(png, jpg, jpeg & < 3mo)"
           [img]="contest.branding ? contest.branding.banner : null"
-          (onUploadImage)="onUploadImage($event, 'logo')"
+          (onUploadImage)="onUploadImage($event, 'banner')"
+        ></input-image
+        ><input-image
+          label="Votre poster"
+          btnLabel="Ajoutez votre poster"
+          btnLabelDetail="(png, jpg, jpeg & < 3mo)"
+          [img]="contest.branding ? contest.branding.poster : null"
+          [ratio]="21 / 29.7"
+          (onUploadImage)="onUploadImage($event, 'poster')"
         ></input-image>
       </div>
     </card>
