@@ -1,15 +1,24 @@
-<card class="card">
+<card
+  class="card"
+  [img]="contest.branding && contest.branding ? contest.branding.poster : ''"
+  imgHeight="15"
+>
   <h1>{{ contest.name }}</h1>
-  <div class="field">
-    <h4>Ville</h4>
-    <p>{{ contest.location.city }}</p>
+  <div class="tags">
+    <info-tag
+      icon="fa-solid fa-location-dot"
+      [label]="contest.location.city"
+    ></info-tag>
+    <info-tag
+      icon="fa-solid fa-calendar"
+      [label]="
+        (contest.startDate | date : 'dd/MM/yyyy') +
+        ' - ' +
+        (contest.endDate | date : 'dd/MM/yyyy')
+      "
+    ></info-tag>
   </div>
-  <div class="field">
-    <h4>Date</h4>
-    <div class="date">
-      <p FormatDateJJMM [date]="contest.startDate"></p>
-      <p>-</p>
-      <p FormatDateJJMM [date]="contest.endDate"></p>
-    </div>
+  <div class="footer">
+    <button>Details ></button>
   </div>
 </card>
