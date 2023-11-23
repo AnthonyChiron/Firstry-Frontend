@@ -13,9 +13,14 @@ import { ContestModel } from 'src/app/models/contest.model';
 export class ContestInfosDetailComponent implements OnInit {
   contest: ContestModel;
   isLoading: boolean = true;
+
   infosForm: any;
-  touched: boolean = false;
-  edit: boolean = false;
+  infosTouched: boolean = false;
+  infosEdit: boolean = false;
+
+  socialsForm: any;
+  socialsTouched: boolean = false;
+  socialsEdit: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -35,20 +40,30 @@ export class ContestInfosDetailComponent implements OnInit {
       branding: [{ logo: [''], banner: [''] }],
     });
 
+    this.socialsForm = this.fb.group({
+      instagram: [''],
+      twitter: [''],
+      youtube: [''],
+      website: [''],
+    });
+
     this.activatedRoute.params.subscribe((params) => {
       this.cs.getById(params.contestId).subscribe((contest) => {
-        console.log(contest);
         this.contest = contest;
         this.contest.startDate = new Date(this.contest.startDate);
         this.contest.endDate = new Date(this.contest.endDate);
-        this.initForm(this.contest);
+        this.initForms(this.contest);
         this.isLoading = false;
-        console.log(this.infosForm.value);
       });
     });
   }
 
-  initForm(contest: any) {
+  initForms(contest: any) {
+    this.initInfosForm(contest);
+    this.initSocialsForm(contest);
+  }
+
+  initInfosForm(contest: any) {
     this.infosForm.patchValue({
       name: contest.name,
       description: contest.description,
@@ -61,9 +76,37 @@ export class ContestInfosDetailComponent implements OnInit {
     this.fus.setForm(this.infosForm);
   }
 
-  cancel() {
-    this.edit = false;
-    this.initForm(this.contest);
+  initSocialsForm(contest: any) {
+    this.socialsForm.patchValue({
+      name: contest.name,
+      instagram:
+        contest.socials && contest.socials.instagram
+          ? contest.socials.instagram
+          : '',
+      twitter:
+        contest.socials && contest.socials.twitter
+          ? contest.socials.twitter
+          : '',
+      youtube:
+        contest.socials && contest.socials.youtube
+          ? contest.socials.youtube
+          : '',
+      website:
+        contest.socials && contest.socials.website
+          ? contest.socials.website
+          : '',
+    });
+    this.fus.setForm(this.socialsForm);
+  }
+
+  cancelInfos() {
+    this.infosEdit = false;
+    this.initInfosForm(this.contest);
+  }
+
+  cancelSocials() {
+    this.socialsEdit = false;
+    this.initSocialsForm(this.contest);
   }
 
   async onUploadImage(event, type) {
@@ -77,11 +120,9 @@ export class ContestInfosDetailComponent implements OnInit {
       });
   }
 
-  save() {
-    console.log(this.infosForm.value);
-    this.edit = false;
-    this.touched = true;
-    console.log(this.infosForm.value);
+  saveInfos() {
+    this.infosEdit = false;
+    this.infosTouched = true;
     this.cs
       .update(this.contest._id, this.infosForm.value)
       .subscribe((contest) => {
@@ -89,7 +130,37 @@ export class ContestInfosDetailComponent implements OnInit {
         this.contest.startDate = new Date(contest.startDate);
         this.contest.endDate = new Date(contest.endDate);
 
-        this.initForm(this.contest);
+        this.initInfosForm(this.contest);
       });
+  }
+
+  saveSocials() {
+    this.socialsEdit = false;
+    this.socialsTouched = true;
+    let contestForm = <ContestModel>{
+      name: this.contest.name,
+      description: this.contest.description,
+      sports: this.contest.sports,
+      startDate: this.contest.startDate,
+      endDate: this.contest.endDate,
+      location: this.contest.location,
+      branding: this.contest.branding,
+      socials: this.socialsForm.value,
+    };
+    console.log(contestForm);
+
+    this.cs.update(this.contest._id, contestForm).subscribe((contest) => {
+      console.log(contest);
+      this.contest = contest;
+
+      this.contest.startDate = new Date(contest.startDate);
+      this.contest.endDate = new Date(contest.endDate);
+
+      this.initSocialsForm(this.contest);
+    });
+  }
+
+  goToWebsite(url) {
+    window.open(url, '_blank');
   }
 }

@@ -25,6 +25,8 @@
 
   p {
     width: 100%;
+    max-width: 20vw;
+    overflow-wrap: break-word;
   }
 
   textarea:focus,

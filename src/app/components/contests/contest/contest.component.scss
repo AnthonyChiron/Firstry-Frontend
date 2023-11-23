@@ -2,6 +2,12 @@
 
 card {
   width: 100%;
+  height: fit-content;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
 }
 
 .main {
@@ -63,6 +69,7 @@ card {
 
     .rightPannel {
       display: flex;
+      height: 100%;
       flex: 1;
     }
   }
@@ -71,7 +78,7 @@ card {
 .flex {
   display: flex;
   width: 100%;
-  gap: 3vw;
+  gap: 2vw;
 }
 
 .flexColumn {
@@ -79,7 +86,7 @@ card {
   flex: 1;
   flex-direction: column;
   width: 100%;
-  gap: 3vw;
+  gap: 2vw;
 }
 
 @media screen and (min-width: 768px) {

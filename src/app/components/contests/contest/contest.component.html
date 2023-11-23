@@ -44,9 +44,10 @@
           <img class="galery" [src]="contest.branding.poster" alt="" />
         </div>
         <div class="flexColumn">
-          <card title="Lieu"
-            ><p>{{ contest.location.city }}</p></card
-          >
+          <maps-card
+            class="map"
+            [address]="contest.location.address"
+          ></maps-card>
           <card><h1>JE VEUX M'INSCRIRE</h1></card>
         </div>
       </div>
