@@ -1,15 +1,6 @@
-<div
-  *ngIf="!toggle"
-  class="card"
-  [class.sideImgCard]="!isMobile && img != ''"
-  [style.width.%]="cardWidth"
->
-  <div
-    [style.max-height.vw]="imgHeight"
-    *ngIf="img != '' && !isMobile"
-    class="sideImg"
-  >
-    <img [style.max-height.vw]="imgHeight" [src]="img" alt="" />
+<div *ngIf="!toggle" class="card" [class.sideImgCard]="img != ''">
+  <div *ngIf="img != ''" class="sideImg">
+    <img [src]="img" alt="" />
   </div>
   <div class="main">
     <loader class="loader" *ngIf="isLoading"></loader>

@@ -1,4 +1,59 @@
 <div class="main" *ngIf="contest">
-  <h1>{{ contest.name }}</h1>
-  <h3>{{ contest._id }}</h3>
+  <div class="header">
+    <div class="contestName">
+      <h1 class="title">{{ contest.name }}</h1>
+      <p class="subtitle">
+        Contest organisé par <b>{{ contest._id }}</b>
+      </p>
+    </div>
+    <div class="nav" *ngIf="!isMobile">
+      <btn label="Aperçu"></btn>
+      <btn label="Inscription"></btn>
+      <btn label="Résultats"></btn>
+    </div>
+  </div>
+  <div class="sep"></div>
+  <div class="content">
+    <div class="leftPannel">
+      <div class="flex">
+        <img
+          class="poster"
+          [src]="
+            contest.branding && contest.branding.poster
+              ? contest.branding.poster
+              : ''
+          "
+          alt=""
+        />
+        <card title="Description"
+          ><p>{{ contest.description }}</p></card
+        >
+      </div>
+      <div class="flex">
+        <socials *ngIf="contest.socials" [socials]="contest.socials"></socials>
+        <div class="flexColumn">
+          <card title="Dates"
+            ><p>
+              {{
+                (contest.startDate | date : "dd/MM/yyyy") +
+                  " - " +
+                  (contest.endDate | date : "dd/MM/yyyy")
+              }}
+            </p></card
+          >
+          <img class="galery" [src]="contest.branding.poster" alt="" />
+        </div>
+        <div class="flexColumn">
+          <maps-card
+            class="map"
+            [address]="contest.location.address"
+          ></maps-card>
+          <card><h1>JE VEUX M'INSCRIRE</h1></card>
+        </div>
+      </div>
+    </div>
+    <div class="rightPannel">
+      <card title="Planning"></card>
+    </div>
+  </div>
 </div>

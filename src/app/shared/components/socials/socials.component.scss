@@ -8,3 +8,9 @@ loader {
   width: 10vw;
   align-self: center;
 }
+
+@media screen and (min-width: 768px) {
+  .content {
+    gap: 1vw;
+  }
+}

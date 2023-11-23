@@ -10,6 +10,6 @@
     [class.error]="error"
   />
 
-  <p *ngIf="!edit">{{ value }}</p>
+  <p *ngIf="!edit">{{ value || "Non rempli" }}</p>
   <ng-content></ng-content>
 </div>

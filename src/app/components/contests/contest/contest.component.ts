@@ -1,3 +1,4 @@
+import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 import { ContestsService } from './../../../shared/data/ContestsService/contests.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -9,10 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ContestComponent implements OnInit {
   contest: any;
+  isMobile: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private cs: ContestsService
+    private cs: ContestsService,
+    private ss: ScreenSizeService
   ) {}
 
   ngOnInit(): void {
@@ -20,6 +23,11 @@ export class ContestComponent implements OnInit {
       this.cs.getById(params.id).subscribe((contest) => {
         this.contest = contest;
       });
+    });
+
+    this.isMobile = this.ss.isMobile;
+    this.ss.sizeChanged.subscribe((isMobile) => {
+      this.isMobile = isMobile;
     });
   }
 }

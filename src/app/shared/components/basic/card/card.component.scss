@@ -5,25 +5,19 @@
   display: flex;
   background-color: $firstry-white-2;
   border-radius: 10px;
+  height: 100%;
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  padding: 4vw;
+  padding: 3vw;
   width: 100%;
   height: 100%;
 }
 
 .loader {
   align-self: center;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
 }
 
 .header {
@@ -47,12 +41,20 @@
   }
 }
 
-@media only screen and (min-width: 768px) {
-  .card {
-    display: flex;
-    width: 100%;
-  }
+.sideImg {
+  flex: 0 0 auto;
+  height: 100%;
 
+  img {
+    height: 100%;
+    width: auto;
+    border-top-left-radius: 11px;
+    border-bottom-left-radius: 11px;
+    box-shadow: 10px 0px 20px rgb(196, 196, 196);
+  }
+}
+
+@media only screen and (min-width: 768px) {
   .header {
     h3 {
       font-size: 30px;
@@ -71,29 +73,10 @@
     }
   }
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-  }
-
   .main {
     flex: 1;
     display: flex;
     flex-direction: column;
     padding: 1.5vw;
-    height: 100%;
-  }
-
-  .sideImg {
-    flex: 0 0 auto;
-
-    img {
-      width: auto;
-      border-top-left-radius: 11px;
-      border-bottom-left-radius: 11px;
-      box-shadow: 10px 0px 20px rgb(196, 196, 196);
-    }
   }
 }

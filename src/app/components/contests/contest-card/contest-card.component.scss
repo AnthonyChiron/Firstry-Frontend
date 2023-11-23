@@ -5,10 +5,12 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  width: 30vw;
+  width: 80vw;
+  height: 20vh;
   position: relative;
 
   h1 {
+    font-size: 22px;
     font-variation-settings: "wght" 900;
   }
 
@@ -16,17 +18,23 @@
     display: flex;
     flex-direction: column;
     margin-top: 1vw;
-    gap: 0.5vw;
+    gap: 1.5vw;
   }
 
   .footer {
     position: absolute;
     bottom: 1vw;
     right: 1vw;
+  }
+}
 
-    button {
-      border: none;
-      color: $firstry-black-3;
+@media only screen and (min-width: 768px) {
+  .card {
+    width: 30vw;
+    height: 15vw;
+
+    .tags {
+      gap: 0.5vw;
     }
   }
 }

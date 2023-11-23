@@ -9,7 +9,7 @@ import { ContestsService } from 'src/app/shared/data/ContestsService/contests.se
 })
 export class ContestsComponent implements OnInit {
   constructor(private contestsService: ContestsService) {}
-  contests: ContestModel[] = [];
+  contests: ContestModel[] = null;
 
   ngOnInit(): void {
     this.contestsService.getAll().subscribe((data) => {

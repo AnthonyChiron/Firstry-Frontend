@@ -5,9 +5,9 @@
     <card
       *ngIf="!isLoading && contest"
       title="Informations générale"
-      [btn]="!edit"
+      [btn]="!infosEdit"
       btnIcon="fa-solid fa-pen-to-square fa-lg"
-      (btnClicked)="edit = !edit"
+      (btnClicked)="infosEdit = !infosEdit"
       class="infosCard"
     >
       <div class="infosForm" [formGroup]="infosForm">
@@ -17,9 +17,9 @@
           placeholder="Nom..."
           label="Nom du contest"
           formControlName="name"
-          [edit]="edit"
+          [edit]="infosEdit"
           [error]="
-            touched &&
+            infosTouched &&
             (fus.isFieldInvalid('name') || infosForm.get('name').value == '')
           "
         ></input-text>
@@ -29,9 +29,9 @@
           placeholder="Description..."
           label="Description du contest"
           formControlName="description"
-          [edit]="edit"
+          [edit]="infosEdit"
           [error]="
-            touched &&
+            infosTouched &&
             (fus.isFieldInvalid('description') ||
               infosForm.get('description').value == '')
           "
@@ -43,9 +43,9 @@
             label="Date de début"
             formControlName="startDate"
             class="fullWidth"
-            [edit]="edit"
+            [edit]="infosEdit"
             [error]="
-              touched &&
+              infosTouched &&
               (fus.isFieldInvalid('startDate') ||
                 infosForm.get('startDate').value == '')
             "
@@ -56,16 +56,16 @@
             label="Date de fin"
             formControlName="endDate"
             class="fullWidth"
-            [edit]="edit"
+            [edit]="infosEdit"
             [error]="
-              touched &&
+              infosTouched &&
               (fus.isFieldInvalid('endDate') ||
                 infosForm.get('endDate').value == '')
             "
           ></input-date>
         </div>
         <input-adress
-          [edit]="edit"
+          [edit]="infosEdit"
           label="Lieu"
           formControlName="location"
         ></input-adress>
@@ -76,22 +76,141 @@
             { value: 'skate', name: 'Skate' },
             { value: 'quad', name: 'Quad' }
           ]"
-          [edit]="edit"
+          [edit]="infosEdit"
           label="Sports"
           formControlName="sports"
         ></chips-group>
 
         <div class="buttons">
           <btn
-            *ngIf="edit"
-            (click)="cancel()"
+            *ngIf="infosEdit"
+            (click)="cancelInfos()"
             type="secondary"
             label="Annuler"
             icon="fa-solid fa-xmark fa-lg"
           ></btn>
           <btn
-            *ngIf="edit"
-            (click)="save()"
+            *ngIf="infosEdit"
+            (click)="saveInfos()"
+            type="primary"
+            label="Confirmer"
+            icon="fa-solid fa-check fa-lg"
+          ></btn>
+        </div>
+      </div>
+    </card>
+    <card
+      title="Réseaux sociaux"
+      *ngIf="!isLoading && contest"
+      [btn]="!socialsEdit"
+      btnIcon="fa-solid fa-pen-to-square fa-lg"
+      (btnClicked)="socialsEdit = !socialsEdit"
+    >
+      <div class="socialsForm" [formGroup]="socialsForm">
+        <div class="flexRow socialField">
+          <input-text
+            name="instagram"
+            type="Text"
+            placeholder="Instagram..."
+            label="Instagram"
+            formControlName="instagram"
+            [edit]="socialsEdit"
+            [error]="
+              socialsTouched &&
+              (fus.isFieldInvalid('instagram') ||
+                socialsForm.get('instagram').value == '')
+            "
+          ></input-text>
+          <btn
+            (click)="
+              goToWebsite(
+                'https://www.instagram.com/' +
+                  socialsForm.get('instagram').value
+              )
+            "
+            label="Test"
+            icon="fa-brands fa-instagram"
+          ></btn>
+        </div>
+        <div class="flexRow socialField">
+          <input-text
+            name="twitter"
+            type="Text"
+            placeholder="Twitter..."
+            label="Twitter"
+            formControlName="twitter"
+            [edit]="socialsEdit"
+            [error]="
+              socialsTouched &&
+              (fus.isFieldInvalid('twitter') ||
+                socialsForm.get('twitter').value == '')
+            "
+          ></input-text>
+          <btn
+            (click)="
+              goToWebsite(
+                'https://twitter.com/' + socialsForm.get('twitter').value
+              )
+            "
+            label="Test"
+            icon="fa-brands fa-twitter"
+          ></btn>
+        </div>
+        <div class="flexRow socialField">
+          <input-text
+            name="youtube"
+            type="Text"
+            placeholder="Youtube..."
+            label="Youtube"
+            formControlName="youtube"
+            [edit]="socialsEdit"
+            [error]="
+              socialsTouched &&
+              (fus.isFieldInvalid('youtube') ||
+                socialsForm.get('youtube').value == '')
+            "
+          ></input-text>
+          <btn
+            (click)="
+              goToWebsite(
+                'https://www.youtube.com/@' + socialsForm.get('youtube').value
+              )
+            "
+            label="Test"
+            icon="fa-brands fa-youtube"
+          ></btn>
+        </div>
+        <div class="flexRow socialField">
+          <input-text
+            name="website"
+            type="Text"
+            placeholder="Site internet..."
+            label="Site internet"
+            formControlName="website"
+            [edit]="socialsEdit"
+            [error]="
+              socialsTouched &&
+              (fus.isFieldInvalid('website') ||
+                socialsForm.get('website').value == '')
+            "
+          ></input-text>
+          <btn
+            (click)="goToWebsite(socialsForm.get('website').value)"
+            label="Test"
+            icon="fa-solid fa-link"
+          ></btn>
+        </div>
+        <div class="buttons">
+          <btn
+            *ngIf="socialsEdit"
+            (click)="cancelSocials()"
+            type="secondary"
+            label="Annuler"
+            icon="fa-solid fa-xmark fa-lg"
+          ></btn>
+          <btn
+            *ngIf="socialsEdit"
+            (click)="saveSocials()"
             type="primary"
             label="Confirmer"
             icon="fa-solid fa-check fa-lg"
