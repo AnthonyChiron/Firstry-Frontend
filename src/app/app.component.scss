@@ -29,4 +29,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
+  transition: 0.3s;
+  filter: brightness(1);
 }
+
+.container {
+  margin-top: 5vw;
+  margin-bottom: 5vw;
+  width: 90%;
+}
+
+.navbar:hover ~ .content {
+  filter: brightness(0.2);
+}
+
+// .navbar:hover ~ .content > .shadow {
+//   z-index: 1;
+//   background-color: rgba(0, 0, 0, 0.74);
+// }
+// .navbar:hover ~ .content {
+//   background-color: black;
+// }

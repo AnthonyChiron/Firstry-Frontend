@@ -5,9 +5,21 @@
       src="../../../../assets/logos/Globe_Blanc.png"
       alt="logo"
     />
-    <btn routerLink="/" icon="fa-solid fa-home fa-2xl"></btn>
-    <btn routerLink="/riders" icon="fa-solid fa-person-skating fa-2xl"></btn>
-    <btn routerLink="/contests" icon="fa-solid fa-calendar fa-2xl"></btn>
-    <btn routerLink="/dashboard" icon="fa-solid fa-gear fa-2xl"></btn>
+    <div routerLink="/" routerLinkActive="active" class="link">
+      <btn type="secondary" icon="fa-solid fa-home fa-2xl"></btn>
+      <p class="label">Accueil</p>
+    </div>
+    <div routerLink="/riders" routerLinkActive="active" class="link">
+      <btn icon="fa-solid fa-person-skating fa-2xl"></btn>
+      <p class="label">Riders</p>
+    </div>
+    <div routerLink="/contests" routerLinkActive="active" class="link">
+      <btn icon="fa-solid fa-calendar fa-2xl"></btn>
+      <p class="label">Contests</p>
+    </div>
+    <div routerLink="/dashboard" routerLinkActive="active" class="link">
+      <btn icon="fa-solid fa-gear fa-2xl"></btn>
+      <p class="label">Dashboard</p>
+    </div>
   </nav>
 </div>
