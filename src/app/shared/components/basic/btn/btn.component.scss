@@ -34,9 +34,20 @@ button {
   border: 1px solid transparent;
 }
 
+.primary:hover {
+  background-color: $firstry-black-3;
+  color: $firstry-white-1;
+  border: 1px solid transparent;
+}
+
 .secondary {
   color: $firstry-black-2;
   background-color: $firstry-white-1;
+}
+
+.secondary:hover {
+  color: $firstry-black-2;
+  background-color: $firstry-white-3;
 }
 
 .third {

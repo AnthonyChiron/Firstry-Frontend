@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './desktop-sidebar.component.html',
   styleUrls: ['./desktop-sidebar.component.scss'],
 })
-export class DesktopSidebarComponent {}
+export class DesktopSidebarComponent {
+  displayText: boolean = false;
+}

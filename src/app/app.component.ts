@@ -10,6 +10,7 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'firstry';
   toggleSidebar: boolean = false;
   isMobile: boolean = false;
+  shadow: boolean = false;
 
   constructor(private screenSizeService: ScreenSizeService) {}
 

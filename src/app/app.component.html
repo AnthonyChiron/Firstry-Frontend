@@ -5,7 +5,7 @@
     [toggleSidebar]="toggleSidebar"
     (clickToggle)="changeToggle()"
   ></mobile-sidebar>
-  <desktop-sidebar *ngIf="!isMobile"></desktop-sidebar>
+  <desktop-sidebar class="navbar" *ngIf="!isMobile"></desktop-sidebar>
   <div class="content">
     <div class="container">
       <router-outlet></router-outlet>
