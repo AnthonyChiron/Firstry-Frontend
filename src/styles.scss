@@ -1,6 +1,13 @@
 @import "src/styles/customTheme.css";
 @import "./styles/fonts.scss";
 @import "./styles/primeng.scss";
+/* angular-cli file: src/styles.css */
+@import "../node_modules/angular-calendar/scss/angular-calendar.scss";
+
+:root {
+  --cal-primary-color: #009688;
+  --cal-secondary-color: #d0e8e8;
+}
 
 @font-face {
   font-family: "HankenGrotesk";

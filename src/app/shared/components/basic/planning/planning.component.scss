@@ -1,0 +1,54 @@
+@import "../../../../../styles/colors.scss";
+
+:host ::ng-deep .cal-hour-segment {
+  background-color: transparent;
+}
+
+.cal-hour-segment {
+  display: flex;
+  height: 100%;
+  gap: 1vw;
+
+  .cal-time {
+    display: flex;
+    padding: 0;
+    height: 115%;
+    border-right: 1px solid $firstry-white-4;
+    font-variation-settings: "wght" 500;
+    font-size: 15px;
+    text-align: left;
+
+    .sep {
+      width: 5%;
+      margin-left: 70%;
+      height: 1px;
+      background-color: $firstry-white-4;
+      align-self: center;
+      justify-self: center;
+    }
+  }
+}
+
+:host ::ng-deep .cal-event {
+  background-color: $firstry-white-3;
+  border-radius: 10px;
+  border: none;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 5px 10px 5px;
+    height: 100%;
+
+    h2 {
+      font-size: 15px;
+      font-variation-settings: "wght" 800;
+    }
+
+    .tags {
+      display: flex;
+      gap: 1vw;
+    }
+  }
+}

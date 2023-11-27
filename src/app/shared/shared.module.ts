@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { NavIconBtnComponent } from './components/basic/nav-icon-btn/nav-icon-btn.component';
 import { ModalComponent } from './components/basic/modal/modal.component';
 import { ScreenSizeService } from './services/screenSize/screen-size.service';
@@ -23,10 +23,14 @@ import { RouterModule } from '@angular/router';
 import { FormatDateJJMMDirective } from './directives/format-date-jjmm.directive';
 import { InfoTagComponent } from './components/basic/info-tag/info-tag.component';
 import { MapsCardComponent } from './components/maps-card/maps-card.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { PlanningComponent } from './components/basic/planning/planning.component';
 
 @NgModule({
   declarations: [
     ModalComponent,
+    PlanningComponent,
     NavIconBtnComponent,
     BtnComponent,
     ChipsGroupComponent,
@@ -51,6 +55,10 @@ import { MapsCardComponent } from './components/maps-card/maps-card.component';
     TabViewModule,
     ToggleButtonModule,
     RouterModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   providers: [ScreenSizeService],
   exports: [
@@ -73,6 +81,7 @@ import { MapsCardComponent } from './components/maps-card/maps-card.component';
     FormatDateJJMMDirective,
     InfoTagComponent,
     MapsCardComponent,
+    PlanningComponent,
   ],
 })
 export class SharedModule {}
