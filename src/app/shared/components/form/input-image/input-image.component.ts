@@ -1,6 +1,5 @@
 import { DomSanitizer } from '@angular/platform-browser';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
-import { FileUploadEvent } from 'primeng/fileupload';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -16,7 +15,7 @@ export class InputImageComponent {
   @Input() size: number;
   @Input() imgFile: File;
   @Input() img: string = null;
-  @Output() onUploadImage = new EventEmitter<FileUploadEvent>();
+  @Output() onUploadImage = new EventEmitter<any>();
   imageChangedEvent: any = '';
   croppedImage: any = '';
   maxFileSize = 4000;

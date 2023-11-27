@@ -14,9 +14,7 @@ import {
   NgForm,
   Validators,
 } from '@angular/forms';
-import { MenuItem } from 'primeng/api';
 import { UsersService } from 'src/app/shared/data/UsersService/users.service';
-import { FileUploadEvent, UploadEvent } from 'primeng/fileupload';
 
 @Component({
   selector: 'sign-up',

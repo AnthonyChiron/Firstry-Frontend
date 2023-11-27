@@ -6,7 +6,6 @@ import { BaseHttpService } from '../../data/BaseHttpService/base-http.service';
 import { Router } from '@angular/router';
 import { SignUpModel } from 'src/app/models/signUp.model';
 import jwt_decode from 'jwt-decode';
-import { UploadEvent } from 'primeng/fileupload';
 
 @Injectable({
   providedIn: 'root',

@@ -3,11 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NavIconBtnComponent } from './components/basic/nav-icon-btn/nav-icon-btn.component';
 import { ModalComponent } from './components/basic/modal/modal.component';
 import { ScreenSizeService } from './services/screenSize/screen-size.service';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { CheckboxModule } from 'primeng/checkbox';
-import { TabViewModule } from 'primeng/tabview';
-import { ToggleButtonModule } from 'primeng/togglebutton';
 import { ChipsGroupComponent } from './components/form/chips-group/chips-group.component';
 import { LoaderComponent } from './components/basic/loader/loader.component';
 import { BtnComponent } from './components/basic/btn/btn.component';
@@ -43,22 +38,11 @@ import { MapsCardComponent } from './components/maps-card/maps-card.component';
     InfoTagComponent,
     MapsCardComponent,
   ],
-  imports: [
-    CommonModule,
-    ButtonModule,
-    CardModule,
-    CheckboxModule,
-    TabViewModule,
-    ToggleButtonModule,
-    RouterModule,
-  ],
+  imports: [CommonModule, RouterModule],
   providers: [ScreenSizeService],
   exports: [
     ModalComponent,
     NavIconBtnComponent,
-    ButtonModule,
-    CardModule,
-    TabViewModule,
     ChipsGroupComponent,
     LoaderComponent,
     BtnComponent,

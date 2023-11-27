@@ -1,5 +1,4 @@
 import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
-import { ToggleButtonModule } from 'primeng/togglebutton';
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 
 @Component({

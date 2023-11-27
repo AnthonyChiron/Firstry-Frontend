@@ -1,5 +1,4 @@
 import { RemoveBgService } from './../../../../shared/services/removeBg/remove-bg.service';
-import { FileUploadEvent, UploadEvent } from 'primeng/fileupload';
 import {
   Component,
   ViewEncapsulation,
@@ -22,7 +21,7 @@ export class SignupPhotoFormComponent implements OnInit {
   @Input() photoForm: FormGroup;
   @Input() photoFile: File;
   @Input() signupTypeRider: boolean = true;
-  @Output() uploadPhoto = new EventEmitter<FileUploadEvent>();
+  @Output() uploadPhoto = new EventEmitter<any>();
   imageChangedEvent: any = '';
   croppedImage: any = '';
   maxFileSize = 4000;
