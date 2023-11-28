@@ -1,5 +1,14 @@
 <div class="cards">
-  <contest-infos-summary [contest]="contest"></contest-infos-summary>
-  <list-category [contest]="contest"></list-category>
+  <div class="left">
+    <contest-infos-summary [contest]="contest"></contest-infos-summary>
+    <list-categories [contest]="contest"></list-categories>
+  </div>
+  <div class="right">
+    <planning
+      *ngIf="contest && contest.categories"
+      [categories]="contest.categories"
+      [edit]="true"
+    ></planning>
+  </div>
   <!-- <create-category [contest]="contests[0]"></create-category> -->
 </div>

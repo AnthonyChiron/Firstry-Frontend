@@ -26,6 +26,7 @@ import { MapsCardComponent } from './components/maps-card/maps-card.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { PlanningComponent } from './components/basic/planning/planning.component';
+import { NavBtnComponent } from './components/basic/nav-btn/nav-btn.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PlanningComponent } from './components/basic/planning/planning.componen
     TableComponent,
     DropdownComponent,
     InfoTagComponent,
+    NavBtnComponent,
     MapsCardComponent,
   ],
   imports: [
@@ -82,6 +84,7 @@ import { PlanningComponent } from './components/basic/planning/planning.componen
     InfoTagComponent,
     MapsCardComponent,
     PlanningComponent,
+    NavBtnComponent,
   ],
 })
 export class SharedModule {}

@@ -1,11 +1,4 @@
-<div class="header">
-  <btn
-    [routerLink]="['/riders']"
-    label="Retour"
-    icon="fa-solid fa-angles-left fa-2xs"
-    iconPos="left"
-  ></btn>
-</div>
+<div class="header"></div>
 <div class="content">
   <rider-card-lg [rider]="rider"></rider-card-lg>
   <div [class.flexRow]="rider && rider.socials ? true : false">

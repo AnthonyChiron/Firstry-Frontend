@@ -1,58 +1,71 @@
-<ng-template #hourSegmentTemplate let-segment="segment">
-  <div
-    class="cal-hour-segment"
-    [class.cal-hour-start]="segment.isStart"
-    [class.cal-after-hour-start]=""
-  >
-    <span class="cal-time" *ngIf="!segment.isStart">
-      <div class="sep"></div
-    ></span>
-    <span class="cal-time" *ngIf="segment.isStart">
-      {{ segment.date | date : "HH:mm" }}
-    </span>
-  </div>
-</ng-template>
-
-<ng-template
-  #eventTemplate
-  let-weekEvent="weekEvent"
-  let-tooltipPlacement="tooltipPlacement"
-  let-eventClicked="eventClicked"
-  let-tooltipTemplate="tooltipTemplate"
-  let-tooltipAppendToBody="tooltipAppendToBody"
-  let-tooltipDisabled="tooltipDisabled"
-  let-tooltipDelay="tooltipDelay"
-  let-column="column"
-  let-daysInWeek="daysInWeek"
->
-  <div class="cal-event">
-    <div class="content">
-      <h2>{{ weekEvent.event.title }}</h2>
-      <div class="tags">
-        <info-tag
-          size="s"
-          icon="fa-solid fa-clock"
-          [label]="
-            (weekEvent.event.start | date : 'HH:mm') +
-            ' - ' +
-            (weekEvent.event.end | date : 'HH:mm')
-          "
-        ></info-tag>
-      </div>
+<card>
+  <div class="header">
+    <h2>Planning</h2>
+    <div class="selector">
+      <button (click)="prevDate()" [disabled]="selectedDay == 0">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <p>Jour {{ selectedDay + 1 }}</p>
+      <button (click)="nextDate()" [disabled]="days.length == selectedDay + 1">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
     </div>
   </div>
-</ng-template>
 
-<mwl-calendar-day-view
-  [viewDate]="viewDate"
-  [events]="events"
-  [dayStartHour]="dayStartHour"
-  [dayEndHour]="dayEndHour"
-  [hourSegments]="4"
-  [hourSegmentHeight]="15"
-  [refresh]="refresh"
-  (eventTimesChanged)="eventTimesChanged($event)"
-  [hourSegmentTemplate]="hourSegmentTemplate"
-  [eventTemplate]="eventTemplate"
->
-</mwl-calendar-day-view>
+  <mwl-calendar-day-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [dayStartHour]="dayStartHour"
+    [dayEndHour]="dayEndHour"
+    [hourSegments]="4"
+    [hourSegmentHeight]="15"
+    [refresh]="refresh"
+    (eventTimesChanged)="eventTimesChanged($event)"
+    [hourSegmentTemplate]="hourSegmentTemplate"
+    [eventTemplate]="eventTemplate"
+  >
+  </mwl-calendar-day-view>
+
+  <ng-template #hourSegmentTemplate let-segment="segment">
+    <div
+      class="cal-hour-segment"
+      [class.cal-hour-start]="segment.isStart"
+      [class.cal-after-hour-start]=""
+    >
+      <span class="cal-time" *ngIf="!segment.isStart">
+        <div class="sep"></div
+      ></span>
+      <span class="cal-time" *ngIf="segment.isStart">
+        {{ segment.date | date : "HH:mm" }}
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template #eventTemplate let-weekEvent="weekEvent">
+    <div class="cal-event">
+      <div class="content">
+        <h3>
+          <b>{{ weekEvent.event.title }}</b> - {{ weekEvent.event.meta.sport }}
+        </h3>
+        <div class="tags">
+          <info-tag
+            size="s"
+            icon="fa-solid fa-clock"
+            [label]="
+              (weekEvent.event.start | date : 'HH:mm') +
+              ' - ' +
+              (weekEvent.event.end | date : 'HH:mm')
+            "
+          ></info-tag>
+          <info-tag
+            size="s"
+            icon="fa-solid fa-user"
+            [label]="
+              weekEvent.event.meta.nbInscrit + '/' + weekEvent.event.meta.nbMax
+            "
+          ></info-tag>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</card>

@@ -23,14 +23,54 @@
       <btn label="Créer un contest" routerLink="create-contest"></btn>
     </div>
     <div class="cardNav" *ngIf="!isMobile && contests.length != 0">
-      <a routerLinkActive="active" routerLink="{{ selectedContestId }}/overview"
-        >Aperçu</a
-      >
-      <a routerLinkActive="active" routerLink="{{ selectedContestId }}/infos"
+      <btn
+        type="third"
+        size="l"
+        label="Aperçu"
+        icon="fa-solid fa-globe"
+        routerLinkActive="active"
+        routerLink="{{ selectedContestId }}/overview"
+      ></btn>
+      <btn
+        type="third"
+        size="l"
+        label="Infos"
+        icon="fa-solid fa-info"
+        routerLinkActive="active"
+        routerLink="{{ selectedContestId }}/infos"
+      ></btn>
+      <btn
+        type="third"
+        size="l"
+        label="Planning"
+        icon="fa-solid fa-calendar"
+        routerLinkActive="active"
+        routerLink="{{ selectedContestId }}/planning"
+      ></btn>
+      <btn
+        type="third"
+        size="l"
+        label="Riders"
+        icon="fa-solid fa-person-snowboarding"
+        routerLinkActive="active"
+        routerLink="{{ selectedContestId }}/poules"
+      ></btn>
+      <btn
+        type="third"
+        size="l"
+        label="Résultats"
+        icon="fa-solid fa-list-ol"
+        routerLinkActive="active"
+        routerLink="{{ selectedContestId }}/results"
+      ></btn>
+      <!-- <a routerLinkActive="active" routerLink="{{ selectedContestId }}/infos"
         >Infos</a
       >
+      <a routerLinkActive="active" routerLink="{{ selectedContestId }}/infos"
+        >Planning</a
+      >
       <a>Poules</a>
-      <a>Résultats</a>
+      <a>Résultats</a> -->
     </div>
   </div>
   <div class="content">

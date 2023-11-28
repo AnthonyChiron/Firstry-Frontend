@@ -11,6 +11,18 @@
     flex-wrap: wrap;
     flex-direction: row;
     gap: 3vw;
+
+    .left {
+      flex: 2;
+      display: flex;
+      flex-direction: row;
+      height: fit-content;
+      gap: 3vw;
+    }
+
+    .right {
+      flex: 1;
+    }
   }
 
   contest-infos-summary {
@@ -18,6 +30,6 @@
   }
 
   list-category {
-    flex: 3;
+    flex: 1;
   }
 }

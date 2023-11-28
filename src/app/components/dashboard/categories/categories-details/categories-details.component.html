@@ -1,0 +1,4 @@
+<div class="main" *ngIf="contest">
+  <list-categories class="categories" [contest]="contest"> </list-categories>
+  <planning class="planning" [categories]="contest.categories"></planning>
+</div>
