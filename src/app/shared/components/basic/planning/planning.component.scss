@@ -1,0 +1,100 @@
+@import "../../../../../styles/colors.scss";
+@import "../../../../../styles/variables.scss";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2vw;
+
+  h2 {
+    font-size: 30px;
+    font-variation-settings: "wght" $mobile_fontCardTitleWeight;
+  }
+
+  .selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    background-color: $firstry-white-3;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 5px 12px 5px 12px;
+
+    button {
+      display: flex;
+      border-radius: 50px;
+      border: 1px solid black;
+      font-size: 8px;
+      height: 12px;
+      width: 12px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background-color: transparent;
+    }
+
+    button:disabled {
+      color: grey;
+      border-color: grey;
+    }
+
+    p {
+      font-size: 14px;
+      font-variation-settings: "wght" 600;
+    }
+  }
+}
+
+.cal-hour-segment {
+  display: flex;
+  height: 100%;
+  gap: 1vw;
+
+  .cal-time {
+    display: flex;
+    padding: 0;
+    height: 115%;
+    border-right: 1px solid $firstry-white-4;
+    font-variation-settings: "wght" 500;
+    font-size: 15px;
+    text-align: left;
+
+    .sep {
+      width: 5%;
+      margin-left: 70%;
+      height: 1px;
+      background-color: $firstry-white-4;
+      align-self: center;
+      justify-self: center;
+    }
+  }
+}
+
+:host ::ng-deep .cal-event {
+  background-color: $firstry-white-3;
+  border-radius: 10px;
+  border: none;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 5px 10px 5px;
+    height: 100%;
+
+    h3 {
+      font-size: 15px;
+      font-variation-settings: "wght" 500;
+
+      b {
+        font-variation-settings: "wght" 900;
+      }
+    }
+
+    .tags {
+      display: flex;
+      gap: 0.5vw;
+    }
+  }
+}

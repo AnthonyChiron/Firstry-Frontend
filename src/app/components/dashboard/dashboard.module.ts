@@ -8,10 +8,11 @@ import { SidebarSecondaryComponent } from 'src/app/shared/components/basic/sideb
 import { CreateContestComponent } from './create-contest/create-contest.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormSharedModule } from 'src/app/shared/formShared.module';
-import { CreateCategoryComponent } from './create-category/create-category.component';
-import { ListCategoryComponent } from './list-category/list-category.component';
+import { CreateCategoryComponent } from './categories/create-category/create-category.component';
 import { ContestInfosDetailComponent } from './infos/infos-detail/contest-infos-detail.component';
 import { OverviewComponent } from './overview/overview.component';
+import { CategoriesDetailsComponent } from './categories/categories-details/categories-details.component';
+import { ListCategoriesComponent } from './categories/list-categories/list-categories.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -29,16 +30,21 @@ const dashboardRoutes: Routes = [
         component: ContestInfosDetailComponent,
         canActivate: [IsAuthGuard],
       },
+      {
+        path: ':contestId/create-category',
+        component: CreateCategoryComponent,
+        canActivate: [IsAuthGuard],
+      },
+      {
+        path: ':contestId/planning',
+        component: CategoriesDetailsComponent,
+        canActivate: [IsAuthGuard],
+      },
     ],
   },
   {
     path: 'create-contest',
     component: CreateContestComponent,
-    canActivate: [IsAuthGuard],
-  },
-  {
-    path: ':contestId/create-category',
-    component: CreateCategoryComponent,
     canActivate: [IsAuthGuard],
   },
 ];
@@ -49,10 +55,11 @@ const dashboardRoutes: Routes = [
     SidebarSecondaryComponent,
     CreateContestComponent,
     CreateCategoryComponent,
-    ListCategoryComponent,
+    ListCategoriesComponent,
     ContestInfosSummaryComponent,
     ContestInfosDetailComponent,
     OverviewComponent,
+    CategoriesDetailsComponent,
   ],
   imports: [
     CommonModule,

@@ -29,47 +29,24 @@ button {
 }
 
 .primary {
-  background-color: $firstry-black-2;
-  color: $firstry-white-1;
-  border: 1px solid transparent;
-}
-
-.primary:hover {
-  background-color: $firstry-black-3;
-  color: $firstry-white-1;
-  border: 1px solid transparent;
-}
-
-.secondary {
-  color: $firstry-black-2;
-  background-color: $firstry-white-1;
-}
-
-.secondary:hover {
-  color: $firstry-black-2;
-  background-color: $firstry-white-3;
-}
-
-.third {
   background-color: $firstry-white-2;
   color: $firstry-black-2;
   font-variation-settings: "wght" 800;
   border: 1px solid transparent;
 }
 
-.third:hover {
+.primary:hover {
   background-color: $firstry-white-3;
-}
-
-.fourth {
-  background-color: transparent;
-  color: $firstry-black-4;
+  color: $firstry-black-2;
+  font-variation-settings: "wght" 800;
   border: 1px solid transparent;
 }
 
-.transparent {
-  background-color: transparent;
+.active {
+  background-color: $firstry-white-4;
   color: $firstry-black-2;
+  font-variation-settings: "wght" 800;
+  border: 1px solid transparent;
 }
 
 .left {

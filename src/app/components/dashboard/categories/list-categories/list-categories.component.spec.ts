@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListCategoryComponent } from './list-category.component';
+import { ListCategoryComponent } from './list-categories.component';
 
 describe('ListCategoryComponent', () => {
   let component: ListCategoryComponent;
@@ -8,7 +8,7 @@ describe('ListCategoryComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListCategoryComponent]
+      declarations: [ListCategoryComponent],
     });
     fixture = TestBed.createComponent(ListCategoryComponent);
     component = fixture.componentInstance;
