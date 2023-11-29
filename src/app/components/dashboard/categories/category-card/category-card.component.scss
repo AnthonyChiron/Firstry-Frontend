@@ -1,0 +1,58 @@
+@import "../../../../../styles/colors.scss";
+
+.main {
+  .category {
+    position: relative;
+
+    .editBtn {
+      position: absolute;
+      right: 1vw;
+      top: 1vw;
+      width: fit-content;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1vw;
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 0.5vw;
+
+        span,
+        p {
+          font-family: "HankenGrotesk";
+          font-variation-settings: "wght" 500;
+          font-size: 17px;
+          color: $firstry-black-2;
+          align-self: center;
+        }
+      }
+
+      .ridersCount {
+        display: flex;
+        align-items: center;
+        color: $firstry-black-3;
+        background-color: $firstry-white-1;
+        border-radius: 15px;
+        padding: 0.2vh 0.6vh;
+        font-weight: 700;
+        font-size: 12px;
+
+        i {
+          font-size: 10px;
+          margin-right: 1vw;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 2vw;
+      }
+    }
+  }
+}

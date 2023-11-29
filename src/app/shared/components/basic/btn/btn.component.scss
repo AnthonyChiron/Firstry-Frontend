@@ -26,6 +26,37 @@ button {
     width: 3vw;
     height: 3vw;
   }
+
+  .iconOnly.xl {
+    width: 3vw;
+    height: 3vw;
+    font-size: 25px;
+  }
+
+  .iconOnly.l {
+    width: 2vw;
+    height: 2vw;
+    font-size: 20px;
+  }
+
+  .iconOnly.m {
+    width: 1.5vw;
+    height: 1.5vw;
+    font-size: 15px;
+    padding: 12px 12px;
+  }
+
+  .iconOnly.s {
+    width: 1vw;
+    height: 1vw;
+    font-size: 10px;
+  }
+
+  .iconOnly.xs {
+    width: 1vw;
+    height: 1vw;
+    font-size: 10px;
+  }
 }
 
 .primary {

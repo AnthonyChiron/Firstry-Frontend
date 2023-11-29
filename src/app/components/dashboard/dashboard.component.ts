@@ -1,7 +1,9 @@
 import { ScreenSizeService } from './../../shared/services/screenSize/screen-size.service';
 import { ContestsService } from 'src/app/shared/data/ContestsService/contests.service';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { slider } from 'src/app/shared/transitions/slider';
+import { fadeAnimation } from 'src/app/shared/transitions/fade';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,6 +29,8 @@ export class DashboardComponent implements OnInit {
       if (data) {
         this.contests = data;
         this.selectedContestId = this.contests[0]._id;
+
+        // Mise en place du dropdown
         this.contestsDdOptions = this.contests.map((contest) => {
           return { label: contest.name, value: contest._id };
         });
@@ -34,9 +38,33 @@ export class DashboardComponent implements OnInit {
           label: contest.name,
           value: contest._id,
         }));
-        console.log(this.ddOptions);
-        this.router.navigate(['/dashboard', this.contests[0]._id, 'overview']);
-        console.log(this.contestsDdOptions);
+
+        // Vérifier si la route possède un contestId
+        // Si c'est le cas, vérifier que ce contestId appartient bien à l'organisateur
+        // Sinon, rediriger vers le premier contest
+        const url = this.router.url.split('/');
+        if (url.length > 2) {
+          const contestId = url[2];
+          const contest = this.contests.find(
+            (contest) => contest._id === contestId
+          );
+          if (!contest) {
+            this.router.navigate([
+              '/dashboard',
+              this.contests[0]._id,
+              'overview',
+            ]);
+          }
+        } else {
+          this.router.navigate([
+            '/dashboard',
+            this.contests[0]._id,
+            'overview',
+          ]);
+        }
+
+        // // Redirection vers le premier contest
+        // this.router.navigate(['/dashboard', this.contests[0]._id, 'overview']);
       }
     });
 

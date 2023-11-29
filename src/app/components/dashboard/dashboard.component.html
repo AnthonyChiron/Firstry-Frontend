@@ -1,6 +1,6 @@
 <div class="main">
   <h1 class="title">Dashboard</h1>
-  <card
+  <!-- <card
     *ngIf="closePopup"
     title="Bienvenue sur votre dashboard !"
     [btn]="true"
@@ -12,7 +12,7 @@
       contest.
     </p>
     <p>Commençons par créer une catégorie.</p>
-  </card>
+  </card> -->
   <div class="dashboardNav">
     <div class="contestNav">
       <dropdown
@@ -23,38 +23,38 @@
       <btn label="Créer un contest" routerLink="create-contest"></btn>
     </div>
     <div class="cardNav" *ngIf="!isMobile && contests.length != 0">
-      <btn
-        type="third"
+      <nav-btn
+        type="primary"
         size="l"
         label="Aperçu"
         icon="fa-solid fa-globe"
         routerLinkActive="active"
         routerLink="{{ selectedContestId }}/overview"
-      ></btn>
-      <btn
-        type="third"
+      ></nav-btn>
+      <nav-btn
+        type="primary"
         size="l"
         label="Infos"
         icon="fa-solid fa-info"
         routerLinkActive="active"
         routerLink="{{ selectedContestId }}/infos"
-      ></btn>
-      <btn
-        type="third"
+      ></nav-btn>
+      <nav-btn
+        type="primary"
         size="l"
         label="Planning"
         icon="fa-solid fa-calendar"
         routerLinkActive="active"
         routerLink="{{ selectedContestId }}/planning"
-      ></btn>
-      <btn
-        type="third"
+      ></nav-btn>
+      <nav-btn
+        type="primary"
         size="l"
         label="Riders"
         icon="fa-solid fa-person-snowboarding"
         routerLinkActive="active"
         routerLink="{{ selectedContestId }}/poules"
-      ></btn>
+      ></nav-btn>
       <btn
         type="third"
         size="l"

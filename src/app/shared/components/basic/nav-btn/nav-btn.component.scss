@@ -10,7 +10,8 @@ button {
   border: none;
   font-variation-settings: "wght" 500;
   font-family: "HankenGrotesk";
-  transition: 0.3s;
+  border: 1px solid transparent;
+  transition: 0.6s;
 }
 
 .iconOnly {
@@ -43,7 +44,7 @@ button {
 }
 
 .active {
-  background-color: $firstry-white-4;
+  background-color: $firstry-white-3;
   color: $firstry-black-2;
   font-variation-settings: "wght" 800;
   border: 1px solid transparent;

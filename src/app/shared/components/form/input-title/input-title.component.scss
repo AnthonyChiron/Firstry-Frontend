@@ -1,0 +1,46 @@
+@import "../../../../../styles/colors.scss";
+@import "../../../../../styles/variables.scss";
+
+.inputGroup {
+  h3 {
+    font-variation-settings: "wght" $mobile_fontCardTitleWeight;
+    font-family: "HankenGrotesk";
+    color: $firstry-black-2;
+    font-size: $mobile_fontCardTitleSize - 3;
+  }
+
+  input {
+    font-variation-settings: "wght" $mobile_fontCardTitleWeight;
+    font-family: "HankenGrotesk";
+    color: $firstry-black-2;
+    font-size: $mobile_fontCardTitleSize - 3;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    height: $mobile_inputHeight;
+    background-color: transparent;
+    margin-top: $mobile_marginInput;
+  }
+
+  textarea:focus,
+  input:focus {
+    border: 1px solid $firstry-white-3;
+    outline: none;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+  input[type="date"]::-moz-calendar-picker-indicator {
+    display: none;
+  }
+
+  input::placeholder {
+    color: $firstry-white-3;
+    opacity: 1; /* Firefox */
+  }
+
+  .error {
+    border: 1px solid $firstry-red-1;
+  }
+}
