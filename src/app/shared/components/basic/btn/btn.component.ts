@@ -8,7 +8,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
       <p>{{ label }}</p>
       <i *ngIf="icon != '' && iconPos == 'right'" class="right {{ icon }}"></i>
     </button>
-    <button *ngIf="label == ''" class="{{ type }} iconOnly">
+    <button *ngIf="label == ''" class="{{ type }} iconOnly {{ size }}">
       <i *ngIf="icon != ''" class="{{ icon }}"></i>
     </button>`,
   styleUrls: ['./btn.component.scss'],

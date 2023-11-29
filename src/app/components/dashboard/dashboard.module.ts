@@ -13,6 +13,8 @@ import { ContestInfosDetailComponent } from './infos/infos-detail/contest-infos-
 import { OverviewComponent } from './overview/overview.component';
 import { CategoriesDetailsComponent } from './categories/categories-details/categories-details.component';
 import { ListCategoriesComponent } from './categories/list-categories/list-categories.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CategoryCardComponent } from './categories/category-card/category-card.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -24,6 +26,7 @@ const dashboardRoutes: Routes = [
         path: ':contestId/overview',
         component: OverviewComponent,
         canActivate: [IsAuthGuard],
+        data: { animation: 'Menu1' },
       },
       {
         path: ':contestId/infos',
@@ -60,6 +63,7 @@ const dashboardRoutes: Routes = [
     ContestInfosDetailComponent,
     OverviewComponent,
     CategoriesDetailsComponent,
+    CategoryCardComponent,
   ],
   imports: [
     CommonModule,

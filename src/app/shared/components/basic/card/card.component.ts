@@ -21,6 +21,9 @@ export class CardComponent implements OnInit {
   @Input() img: string = '';
   @Input() imgHeight: string = '50';
   @Input() cardWidth: string = '100';
+  @Input() color: string = 'primary';
+
+  @Input() subCard: boolean = false;
 
   toggle: boolean = false;
   isMobile: boolean;

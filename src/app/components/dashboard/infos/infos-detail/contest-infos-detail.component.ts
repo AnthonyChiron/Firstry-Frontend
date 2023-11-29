@@ -4,11 +4,25 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-utility.service';
 import { ContestModel } from 'src/app/models/contest.model';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-contest-infos-detail',
   templateUrl: './contest-infos-detail.component.html',
   styleUrls: ['./contest-infos-detail.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({ opacity: 0 })),
+      transition('void <=> *', animate('500ms ease-in-out')),
+      transition('* <=> void', animate('500ms ease-in-out')),
+    ]),
+  ],
 })
 export class ContestInfosDetailComponent implements OnInit {
   contest: ContestModel;

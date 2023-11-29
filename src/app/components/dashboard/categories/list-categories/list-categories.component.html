@@ -9,13 +9,7 @@
   </div>
   <div class="categories">
     <div *ngFor="let category of contest.categories" class="category">
-      <h3>{{ category.name }}</h3>
-      <div class="ridersCount">
-        <i class="fa-solid fa-user fa-xs"></i>
-        <p>0</p>
-        <p>/</p>
-        <p>{{ category.maxCompetitorCount }}</p>
-      </div>
+      <category-card [contest]="contest" [category]="category"> </category-card>
     </div>
     <btn
       label="Créer une catégorie"

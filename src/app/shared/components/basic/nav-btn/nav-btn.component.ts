@@ -7,7 +7,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
       routerLink="{{ routerLink }}"
       routerLinkActive="active"
       *ngIf="label != ''"
-      class="{{ type }} {{ size }}"
+      [class]="type + ' ' + size"
     >
       <i *ngIf="icon != '' && iconPos != 'right'" class="left {{ icon }}"></i>
       <p>{{ label }}</p>

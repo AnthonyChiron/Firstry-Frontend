@@ -21,6 +21,7 @@ import {
 import { InputAdressComponent } from './components/form/input-adress/input-adress.component';
 import { InputDateComponent } from './components/form/input-date/input-date.component';
 import { InputTextareaComponent } from './components/form/input-textarea/input-textarea.component';
+import { InputTitleComponent } from './components/form/input-title/input-title.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { InputTextareaComponent } from './components/form/input-textarea/input-t
     DropdownAutocompleteComponent,
     InputAdressComponent,
     InputImageComponent,
+    InputTitleComponent,
   ],
   imports: [
     CommonModule,
@@ -63,6 +65,7 @@ import { InputTextareaComponent } from './components/form/input-textarea/input-t
     InputDateComponent,
     InputTextareaComponent,
     InputImageComponent,
+    InputTitleComponent,
   ],
 })
 export class FormSharedModule {}

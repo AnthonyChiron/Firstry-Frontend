@@ -1,10 +1,10 @@
-<div *ngIf="!toggle" class="card" [class.sideImgCard]="img != ''">
+<div *ngIf="!toggle" class="card {{ color }}" [class.sideImgCard]="img != ''">
   <div *ngIf="img != ''" class="sideImg">
     <img [src]="img" alt="" />
   </div>
-  <div class="main">
+  <div class="main" [class.subCard]="subCard">
     <loader class="loader" *ngIf="isLoading"></loader>
-    <div class="header">
+    <div class="header" *ngIf="title != '' || btn != false">
       <h3 *ngIf="title != ''">{{ title }}</h3>
       <btn
         *ngIf="close"
@@ -19,6 +19,7 @@
         (click)="toggle = true"
         icon="fa-solid fa-arrow-up-right-from-square"
         type="transparent"
+        size="m"
         class="btn"
       ></btn>
       <btn

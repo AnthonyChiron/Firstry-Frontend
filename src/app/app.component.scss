@@ -22,6 +22,11 @@
   }
 }
 
+.navbar {
+  z-index: 1000;
+  height: 100vh;
+}
+
 .content {
   width: 100%;
   background-color: white;
