@@ -1,0 +1,75 @@
+@import "../../../../../styles/colors.scss";
+@import "../../../../../styles/variables.scss";
+
+.input {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-variation-settings: "wght" $mobile_fontLabelWeight;
+    font-family: "HankenGrotesk";
+    color: $firstry-black-2;
+    font-size: $mobile_fontLabelSize;
+  }
+}
+
+.switch {
+  margin-top: $mobile_marginInput;
+  position: relative;
+  display: inline-block;
+  width: 2.4vw;
+  height: 1.4vw;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $firstry-white-4;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1vw;
+  width: 1vw;
+  left: 0.2vw;
+  bottom: 0.2vw;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: $firstry-black-2;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px transparent;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(1vw);
+  -ms-transform: translateX(1vw);
+  transform: translateX(1vw);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

@@ -1,21 +1,23 @@
-<card
-  *ngIf="contest"
-  title="Catégories"
-  [redirect]="true"
-  redirectLink="categories/{{ contest._id }}"
->
+<card *ngIf="contest">
+  <div class="header">
+    <h3>Catégories</h3>
+    <btn
+      label="Créer une catégorie"
+      icon="fa-solid fa-plus fa-xs"
+      iconPos="right"
+      (click)="createCategory()"
+    ></btn>
+  </div>
   <div *ngIf="contest.categories.length == 0" class="isEmpty">
     <p>Vous n'avez pas encore de catégories !</p>
   </div>
   <div class="categories">
     <div *ngFor="let category of contest.categories" class="category">
-      <category-card [contest]="contest" [category]="category"> </category-card>
+      <category-card
+        [contest]="contest"
+        [category]="category"
+        (delete)="deleteCategory($event)"
+      ></category-card>
     </div>
-    <btn
-      label="Créer une catégorie"
-      icon="fa-solid fa-plus fa-xs"
-      iconPos="right"
-      [routerLink]="'../create-category/'"
-    ></btn>
   </div>
 </card>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import {
   CalendarEvent,
   CalendarEventTimesChangedEvent,
@@ -10,10 +10,13 @@ import { Subject } from 'rxjs';
   templateUrl: './planning.component.html',
   styleUrls: ['./planning.component.scss'],
 })
-export class PlanningComponent implements OnInit {
+export class PlanningComponent implements OnInit, OnChanges {
+  @Input() categoriesToPlan: any[] = [];
   @Input() categories: any[] = [];
   @Input() edit: boolean = false;
+
   eventsCat: CalendarEvent[] = [];
+  eventsCatToPlan: CalendarEvent[] = [];
   dayStartHour = 8;
   dayEndHour = 18;
   refresh = new Subject<void>();
@@ -49,6 +52,21 @@ export class PlanningComponent implements OnInit {
           draggable: true, // permet de déplacer l'événement
         };
       });
+
+      this.categoriesToPlan = this.categoriesToPlan.map((category) => {
+        return {
+          ...category,
+          title: category.name,
+          start: new Date(category.startDate),
+          end: new Date(category.endDate),
+          meta: {
+            sport: category.sport,
+            nbInscrit: 12,
+            nbMax: category.maxCompetitorsCount,
+          },
+          draggable: true,
+        };
+      });
     }
 
     // A partir des categories, trouver les différentes jours et les mettre dans un tableau. Si un jour existe déjà, ne pas le rajouter
@@ -64,6 +82,8 @@ export class PlanningComponent implements OnInit {
     });
     console.log(this.days);
   }
+
+  ngOnChanges(): void {}
 
   prevDate() {
     this.selectedDay--;

@@ -4,10 +4,9 @@ import { GenericModel } from './generic.model';
 
 export interface PoolModel extends GenericModel {
   registration: String;
-  contest: String;
+  step: String;
   score: Number;
   rank: Number;
-  step: competitionStepEnum;
   isQualified: Boolean;
-  pool: Number;
+  poolNumber: Number;
 }
