@@ -20,7 +20,7 @@
         [routes]="[{ label: 'Créer un contest', value: 'create-contest' }]"
         (selected)="selectedContest($event)"
       ></dropdown>
-      <btn label="Créer un contest" routerLink="create-contest"></btn>
+      <!-- <btn label="Créer un contest" routerLink="create-contest"></btn> -->
     </div>
     <div class="cardNav" *ngIf="!isMobile && contests.length != 0">
       <nav-btn

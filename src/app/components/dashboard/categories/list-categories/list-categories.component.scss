@@ -1,4 +1,5 @@
 @import "../../../../../styles/colors.scss";
+@import "../../../../../styles/variables.scss";
 
 .isEmpty {
   margin-top: 2vw;
@@ -10,6 +11,24 @@
   align-items: center;
 }
 
+.header {
+  display: flex;
+  align-self: center;
+  gap: 2vw;
+  margin-bottom: 2vw;
+
+  h3 {
+    font-variation-settings: "wght" $mobile_fontCardTitleWeight;
+    font-family: "HankenGrotesk";
+    color: $firstry-black-2;
+    font-size: $mobile_fontCardTitleSize;
+  }
+
+  btn {
+    align-self: center;
+  }
+}
+
 .categories {
   display: flex;
   flex-direction: column;
@@ -18,5 +37,13 @@
 
   .category {
     width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    h3 {
+      font-size: 30px;
+    }
   }
 }

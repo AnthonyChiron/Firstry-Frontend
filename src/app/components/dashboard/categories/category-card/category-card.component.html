@@ -1,29 +1,70 @@
+<confirmation-modal
+  [isVisible]="showDeleteModal"
+  title="Voulez-vous vraiment supprimer la catégorie {{ this.category.name }} ?"
+  [message]="'Êtes-vous sûr de vouloir faire cela ?'"
+  (confirmed)="onDeleteConfirmed()"
+  (cancelled)="onDeleteCancelled()"
+></confirmation-modal>
 <div class="main">
-  <card class="category" [subCard]="true" color="secondary" *ngIf="category">
-    <btn
-      type="transparent"
-      icon="fa-solid fa-pen-to-square fa-lg"
-      (click)="edit = !edit"
-      class="editBtn"
-    ></btn>
+  <card
+    class="category"
+    [title]="isNew ? 'Création de catégorie' : ''"
+    [subCard]="true"
+    color="secondary"
+    *ngIf="category"
+  >
     <form [formGroup]="categoryForm">
-      <div class="title">
-        <input-title
-          name="name"
-          type="Text"
-          placeholder="Nom..."
-          label="Nom de la catégorie"
-          formControlName="name"
-          [edit]="edit"
-          [error]="
-            touched &&
-            (fus.isFieldInvalid('name') || categoryForm.get('name').value == '')
-          "
-        ></input-title>
+      <div class="header">
+        <div class="title" *ngIf="!isNew">
+          <input-title
+            name="name"
+            type="Text"
+            placeholder="Nom..."
+            label="Nom de la catégorie"
+            formControlName="name"
+            [edit]="edit"
+            [error]="
+              touched &&
+              (fus.isFieldInvalid('name') ||
+                categoryForm.get('name').value == '')
+            "
+          ></input-title>
 
-        <span *ngIf="!edit && category.sports">-</span>
-        <p *ngIf="!edit && category.sports">{{ category.sports }}</p>
+          <span *ngIf="!edit && category.sports">-</span>
+          <p *ngIf="!edit && category.sports">{{ category.sports }}</p>
+        </div>
+
+        <div class="topBtns" *ngIf="!isNew">
+          <btn
+            type="transparent"
+            *ngIf="edit"
+            label="Supprimer la catégorie"
+            (click)="deleteCategory()"
+            class="deleteBtn"
+          ></btn>
+          <btn
+            type="transparent"
+            icon="fa-solid fa-pen-to-square fa-lg"
+            (click)="edit = !edit"
+            class="editBtn"
+          ></btn>
+        </div>
       </div>
+
+      <input-text
+        *ngIf="isNew"
+        name="name"
+        type="Text"
+        placeholder="Nom..."
+        label="Nom de la catégorie"
+        formControlName="name"
+        [edit]="edit"
+        [error]="
+          touched &&
+          (fus.isFieldInvalid('name') || categoryForm.get('name').value == '')
+        "
+      ></input-text>
+
       <input-textarea
         name="description"
         type="Text"
@@ -36,7 +77,8 @@
           (fus.isFieldInvalid('description') ||
             categoryForm.get('description').value == '')
         "
-      ></input-textarea>
+      >
+      </input-textarea>
 
       <div *ngIf="contest.sports.length > 1" class="inputGroup">
         <h4>Disciplines</h4>
@@ -57,47 +99,45 @@
         </note>
       </div>
 
-      <div class="flexRow">
+      <div class="inscription flexRow">
         <input-text
-          name="startDate"
-          type="date"
-          placeholder="jj/mm/aaaa"
-          label="Date de début"
-          formControlName="startDate"
+          class="maxRiders"
+          name="maxRiders"
+          type="number"
+          placeholder="Nombre de riders maximum..."
+          label="Nombre de riders maximum"
+          formControlName="maxRiders"
           [edit]="edit"
           [error]="
             touched &&
-            (fus.isFieldInvalid('startDate') ||
-              categoryForm.get('startDate').value == '')
+            (fus.isFieldInvalid('maxRiders') ||
+              categoryForm.get('maxRiders').value == '')
           "
         ></input-text>
+
+        <!-- registerPrice input -->
         <input-text
-          name="endDate"
-          type="date"
-          placeholder="jj/mm/aaaa"
-          label="Date de fin"
-          formControlName="endDate"
+          class="registerPrice"
+          name="registerPrice"
+          type="number"
+          placeholder="Prix d'inscription..."
+          label="Prix d'inscription"
+          formControlName="registerPrice"
           [edit]="edit"
           [error]="
             touched &&
-            (fus.isFieldInvalid('endDate') ||
-              categoryForm.get('endDate').value == '')
+            (fus.isFieldInvalid('registerPrice') ||
+              categoryForm.get('registerPrice').value == '')
           "
         ></input-text>
+
+        <slide-input
+          class="qualificationStep"
+          name="isQualificationStep"
+          formControlName="isQualificationStep"
+          label="Qualification ?"
+        ></slide-input>
       </div>
-      <input-text
-        name="maxCompetitorCount"
-        type="number"
-        placeholder="Nombre de participants maximum..."
-        label="Nombre de participants maximum"
-        formControlName="maxCompetitorCount"
-        [edit]="edit"
-        [error]="
-          touched &&
-          (fus.isFieldInvalid('maxCompetitorCount') ||
-            categoryForm.get('maxCompetitorCount').value == '')
-        "
-      ></input-text>
 
       <div class="buttons" *ngIf="edit">
         <btn

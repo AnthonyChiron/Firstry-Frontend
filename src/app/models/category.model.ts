@@ -4,10 +4,9 @@ export interface CategoryModel extends GenericModel {
   name: String;
   description: String;
   cashprize: String;
-  startDate: Date;
-  endDate: Date;
   sports: [];
-  rules: String; // TODO: Mettre un id
-  maxCompetitorCount: Number;
+  maxRiders: Number;
+  registerPrice: Number;
+  isQualificationStep: boolean;
   contest: String; // TODO: Mettre un id
 }

@@ -1,0 +1,12 @@
+<div class="input">
+  <label [for]="name">{{ label }}</label>
+  <label class="switch">
+    <input
+      [name]="name"
+      type="checkbox"
+      [ngModel]="value"
+      (ngModelChange)="updateValue($event)"
+    />
+    <span class="slider round"></span>
+  </label>
+</div>
