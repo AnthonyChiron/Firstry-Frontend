@@ -1,4 +1,4 @@
-import { ContestInfosSummaryComponent } from './infos/infos-summary/contest-infos-summary.component';
+import { ContestInfosSummaryComponent } from './parameters/infos-summary/contest-infos-summary.component';
 import { IsAuthGuard } from './../../shared/guards/IsAuth/is-auth-guard.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,12 +9,16 @@ import { CreateContestComponent } from './create-contest/create-contest.componen
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormSharedModule } from 'src/app/shared/formShared.module';
 import { CreateCategoryComponent } from './categories/create-category/create-category.component';
-import { ContestInfosDetailComponent } from './infos/infos-detail/contest-infos-detail.component';
+import { ContestParametersDetailComponent } from './parameters/parameters-detail/contest-parameters-detail.component';
 import { OverviewComponent } from './overview/overview.component';
 import { CategoriesDetailsComponent } from './categories/categories-details/categories-details.component';
 import { ListCategoriesComponent } from './categories/list-categories/list-categories.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoryCardComponent } from './categories/category-card/category-card.component';
+import { ContestInfosCardComponent } from './parameters/contest-infos-card/contest-infos-card.component';
+import { ContestSocialsCardComponent } from './parameters/contest-socials-card/contest-socials-card.component';
+import { ContestBrandingCardComponent } from './parameters/contest-branding-card/contest-branding-card.component';
+import { ContestRulesCardComponent } from './parameters/contest-rules-card/contest-rules-card.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -29,11 +33,6 @@ const dashboardRoutes: Routes = [
         data: { animation: 'Menu1' },
       },
       {
-        path: ':contestId/infos',
-        component: ContestInfosDetailComponent,
-        canActivate: [IsAuthGuard],
-      },
-      {
         path: ':contestId/create-category',
         component: CreateCategoryComponent,
         canActivate: [IsAuthGuard],
@@ -41,6 +40,11 @@ const dashboardRoutes: Routes = [
       {
         path: ':contestId/planning',
         component: CategoriesDetailsComponent,
+        canActivate: [IsAuthGuard],
+      },
+      {
+        path: ':contestId/parameters',
+        component: ContestParametersDetailComponent,
         canActivate: [IsAuthGuard],
       },
     ],
@@ -60,10 +64,14 @@ const dashboardRoutes: Routes = [
     CreateCategoryComponent,
     ListCategoriesComponent,
     ContestInfosSummaryComponent,
-    ContestInfosDetailComponent,
+    ContestParametersDetailComponent,
     OverviewComponent,
     CategoriesDetailsComponent,
     CategoryCardComponent,
+    ContestInfosCardComponent,
+    ContestSocialsCardComponent,
+    ContestBrandingCardComponent,
+    ContestRulesCardComponent,
   ],
   imports: [
     CommonModule,

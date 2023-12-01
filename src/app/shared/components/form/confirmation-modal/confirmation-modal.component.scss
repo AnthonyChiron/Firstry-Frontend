@@ -2,30 +2,42 @@
 @import "../../../../../styles/colors";
 
 .modal-background {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.705);
   z-index: 1000;
 
-  .modal {
+  .container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    background: $firstry-black-2;
-    color: $firstry-white-1;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 
-    .buttons {
-      display: flex;
-      justify-content: space-around;
+    .modal {
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+      }
+
+      h2 {
+        font-size: 20px;
+        font-family: "HankenGrotesk";
+        font-variation-settings: "wght" 600;
+        margin-bottom: 20px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: space-around;
+      }
     }
   }
 }

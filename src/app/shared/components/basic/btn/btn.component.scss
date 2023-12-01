@@ -98,6 +98,17 @@ button {
   border: 1px solid transparent;
 }
 
+.danger {
+  background-color: $firstry-red-2;
+  color: $firstry-white-1;
+  font-variation-settings: "wght" 800;
+  border: 1px solid transparent;
+}
+
+.danger:hover {
+  background-color: $firstry-red-1;
+}
+
 .transparent {
   background-color: transparent;
   color: $firstry-black-2;

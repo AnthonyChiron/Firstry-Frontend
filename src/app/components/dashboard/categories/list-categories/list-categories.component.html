@@ -16,7 +16,8 @@
       <category-card
         [contest]="contest"
         [category]="category"
-        (delete)="deleteCategory($event)"
+        (submitCategory)="submitCategory($event)"
+        (deleteCategory)="deleteCategory($event)"
       ></category-card>
     </div>
   </div>

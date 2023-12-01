@@ -1,20 +1,17 @@
 <confirmation-modal
   [isVisible]="showDeleteModal"
-  title="Voulez-vous vraiment supprimer la catégorie {{ this.category.name }} ?"
-  [message]="'Êtes-vous sûr de vouloir faire cela ?'"
+  title="Danger zone !"
+  message="
+    Voulez-vous vraiment supprimer la catégorie {{ this.category.name }} ?
+  "
   (confirmed)="onDeleteConfirmed()"
   (cancelled)="onDeleteCancelled()"
 ></confirmation-modal>
 <div class="main">
-  <card
-    class="category"
-    [title]="isNew ? 'Création de catégorie' : ''"
-    [subCard]="true"
-    color="secondary"
-    *ngIf="category"
-  >
+  <card class="category" [subCard]="true" color="secondary" *ngIf="category">
     <form [formGroup]="categoryForm">
       <div class="header">
+        <h3 *ngIf="isNew">Création de catégorie</h3>
         <div class="title" *ngIf="!isNew">
           <input-title
             name="name"
@@ -39,10 +36,11 @@
             type="transparent"
             *ngIf="edit"
             label="Supprimer la catégorie"
-            (click)="deleteCategory()"
+            (click)="showDeleteModal = true"
             class="deleteBtn"
           ></btn>
           <btn
+            *ngIf="!edit"
             type="transparent"
             icon="fa-solid fa-pen-to-square fa-lg"
             (click)="edit = !edit"

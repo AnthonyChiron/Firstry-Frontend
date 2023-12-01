@@ -1,0 +1,93 @@
+<card
+  [btn]="!edit"
+  btnIcon="fa-solid fa-pen-to-square fa-lg"
+  (btnClicked)="edit = !edit"
+  [subCard]="true"
+  [fitContent]="true"
+  title="Informations générale"
+  color="secondary"
+>
+  <div class="infosForm" [formGroup]="form">
+    <input-text
+      name="name"
+      type="Text"
+      placeholder="Nom..."
+      label="Nom du contest"
+      formControlName="name"
+      [edit]="edit"
+      [error]="
+        touched && (fus.isFieldInvalid('name') || form.get('name').value == '')
+      "
+    ></input-text>
+    <input-textarea
+      name="description"
+      size="md"
+      placeholder="Description..."
+      label="Description du contest"
+      formControlName="description"
+      [edit]="edit"
+      [error]="
+        touched &&
+        (fus.isFieldInvalid('description') ||
+          form.get('description').value == '')
+      "
+    ></input-textarea>
+    <div class="flexRow">
+      <input-date
+        name="startDate"
+        type="Date"
+        label="Date de début"
+        formControlName="startDate"
+        class="fullWidth"
+        [edit]="edit"
+        [error]="
+          touched &&
+          (fus.isFieldInvalid('startDate') || form.get('startDate').value == '')
+        "
+      ></input-date>
+      <input-date
+        name="endDate"
+        type="Date"
+        label="Date de fin"
+        formControlName="endDate"
+        class="fullWidth"
+        [edit]="edit"
+        [error]="
+          touched &&
+          (fus.isFieldInvalid('endDate') || form.get('endDate').value == '')
+        "
+      ></input-date>
+    </div>
+    <input-adress
+      [edit]="edit"
+      label="Lieu"
+      formControlName="location"
+    ></input-adress>
+    <chips-group
+      [chips]="[
+        { value: 'roller', name: 'Roller' },
+        { value: 'trottinette', name: 'Trottinette' },
+        { value: 'skate', name: 'Skate' },
+        { value: 'quad', name: 'Quad' }
+      ]"
+      [edit]="edit"
+      label="Sports"
+      formControlName="sports"
+    ></chips-group>
+
+    <div class="buttons" *ngIf="edit">
+      <btn
+        (click)="cancelInfos()"
+        type="secondary"
+        label="Annuler"
+        icon="fa-solid fa-xmark fa-lg"
+      ></btn>
+      <btn
+        (click)="saveInfos()"
+        type="primary"
+        label="Confirmer"
+        icon="fa-solid fa-check fa-lg"
+      ></btn>
+    </div>
+  </div>
+</card>

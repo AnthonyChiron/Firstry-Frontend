@@ -14,7 +14,8 @@ import { CategoryModel } from 'src/app/models/category.model';
 export class CategoryCardComponent implements OnInit {
   @Input() category: CategoryModel;
   @Input() contest: any;
-  @Output() delete = new EventEmitter();
+  @Output() deleteCategory = new EventEmitter<CategoryModel>();
+  @Output() submitCategory = new EventEmitter<CategoryModel>();
 
   categoryForm: FormGroup;
   edit: boolean = false;
@@ -93,27 +94,25 @@ export class CategoryCardComponent implements OnInit {
             console.log(res);
           });
 
-      if (this.isNew)
+      if (this.isNew) {
         this.cs.create(this.categoryForm.value).subscribe((res) => {
           this.category = res;
           this.isNew = false;
+          this.submitCategory.emit(this.category);
         });
+      }
     }
   }
 
   cancel() {
     this.edit = false;
-    if (this.isNew) this.deleteCategory();
-    this.initForm(this.contest);
-  }
-
-  deleteCategory() {
-    this.showDeleteModal = true;
+    if (this.isNew) this.onDeleteConfirmed();
+    else this.initForm(this.contest);
   }
 
   onDeleteConfirmed() {
-    if (!this.isNew) this.delete.emit(this.category);
-    else this.delete.emit();
+    if (!this.isNew) this.deleteCategory.emit(this.category);
+    else this.deleteCategory.emit();
     this.showDeleteModal = false;
   }
 

@@ -1,0 +1,34 @@
+.socialsForm {
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+  flex: 1;
+}
+
+@media only screen and (min-width: 768px) {
+  .socialsForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+
+    .fields {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      gap: 1vw;
+
+      .socialField {
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1vw;
+      margin-top: 1vw;
+    }
+  }
+}

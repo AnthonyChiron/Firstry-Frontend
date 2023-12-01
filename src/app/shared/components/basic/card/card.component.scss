@@ -28,6 +28,10 @@
   height: 100%;
 }
 
+.fitContent {
+  height: fit-content;
+}
+
 .main.subCard {
   padding: 0.7vw;
 }
@@ -79,6 +83,16 @@
     .btn:hover {
       background-color: $firstry-white-3;
       border-radius: 8px;
+    }
+  }
+
+  .subCard {
+    .header {
+      margin-bottom: 1vw;
+
+      h3 {
+        font-size: 24px;
+      }
     }
   }
 

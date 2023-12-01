@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
   @Input() title: string = '';
+  @Input() titleGap: string = '';
   @Input() isLoading: boolean = false;
 
   @Input() close: boolean = false;
@@ -22,6 +23,7 @@ export class CardComponent implements OnInit {
   @Input() imgHeight: string = '50';
   @Input() cardWidth: string = '100';
   @Input() color: string = 'primary';
+  @Input() fitContent: boolean = false;
 
   @Input() subCard: boolean = false;
 
