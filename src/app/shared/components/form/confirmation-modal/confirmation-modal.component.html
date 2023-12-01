@@ -1,10 +1,15 @@
 <div class="modal-background" *ngIf="isVisible">
-  <div class="modal">
-    <h2>{{ title }}</h2>
-    <p>{{ message }}</p>
-    <div class="buttons">
-      <btn type="secondary" label="Annuler" (click)="cancel()"></btn>
-      <btn type="secondary" label="Confirmer" (click)="confirm()"></btn>
+  <div class="container">
+    <div class="modal">
+      <card [title]="title" titleGap="1">
+        <div class="content">
+          <p>{{ message }}</p>
+          <div class="buttons">
+            <btn type="primary" label="Annuler" (click)="cancel()"></btn>
+            <btn type="danger" label="Confirmer" (click)="confirm()"></btn>
+          </div>
+        </div>
+      </card>
     </div>
   </div>
 </div>

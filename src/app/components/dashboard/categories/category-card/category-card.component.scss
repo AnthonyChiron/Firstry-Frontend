@@ -14,6 +14,13 @@
         justify-content: space-between;
         align-items: center;
 
+        h3 {
+          font-family: "HankenGrotesk";
+          font-variation-settings: "wght" 900;
+          font-size: 23px;
+          color: $firstry-black-2;
+        }
+
         .title {
           display: flex;
           align-items: center;
@@ -54,7 +61,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-top: 2vw;
+        margin-top: 1.5vw;
       }
     }
   }

@@ -1,3 +1,4 @@
+import { competitionStepEnum } from './../../../../constants/competitionStepEnum';
 import { CategoriesService } from './../../../../shared/data/CategoriesService/categories.service';
 import { CategoryModel } from 'src/app/models/category.model';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
@@ -23,7 +24,15 @@ export class ListCategoriesComponent implements OnInit, OnChanges {
   }
 
   createCategory() {
-    this.contest.categories.unshift(<CategoryModel>{});
+    if (this.contest.categories.length == 0 || this.contest.categories[0]._id)
+      this.contest.categories.unshift(<CategoryModel>{});
+  }
+
+  submitCategory(category: CategoryModel) {
+    this.contest.categories.unshift(category);
+    this.contest.categories = this.contest.categories.filter(
+      (c) => c._id != undefined
+    );
   }
 
   deleteCategory(category: CategoryModel) {

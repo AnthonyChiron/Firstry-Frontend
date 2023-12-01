@@ -1,0 +1,124 @@
+<card
+  title="Réseaux sociaux"
+  *ngIf="contest"
+  [btn]="!socialsEdit"
+  [subCard]="true"
+  [fitContent]="true"
+  color="secondary"
+  btnIcon="fa-solid fa-pen-to-square fa-lg"
+  (btnClicked)="socialsEdit = !socialsEdit"
+>
+  <div class="socialsForm" [formGroup]="socialsForm">
+    <div class="fields">
+      <div class="socialField">
+        <input-text
+          name="instagram"
+          type="Text"
+          placeholder="Instagram..."
+          label="Instagram"
+          formControlName="instagram"
+          [edit]="socialsEdit"
+          [error]="
+            socialsTouched &&
+            (fus.isFieldInvalid('instagram') ||
+              socialsForm.get('instagram').value == '')
+          "
+        ></input-text>
+        <btn
+          (click)="
+            goToWebsite(
+              'https://www.instagram.com/' + socialsForm.get('instagram').value
+            )
+          "
+          label="Test"
+          icon="fa-brands fa-instagram"
+        ></btn>
+      </div>
+      <div class="socialField">
+        <input-text
+          name="twitter"
+          type="Text"
+          placeholder="Twitter..."
+          label="Twitter"
+          formControlName="twitter"
+          [edit]="socialsEdit"
+          [error]="
+            socialsTouched &&
+            (fus.isFieldInvalid('twitter') ||
+              socialsForm.get('twitter').value == '')
+          "
+        ></input-text>
+        <btn
+          (click)="
+            goToWebsite(
+              'https://twitter.com/' + socialsForm.get('twitter').value
+            )
+          "
+          label="Test"
+          icon="fa-brands fa-twitter"
+        ></btn>
+      </div>
+      <div class="socialField">
+        <input-text
+          name="youtube"
+          type="Text"
+          placeholder="Youtube..."
+          label="Youtube"
+          formControlName="youtube"
+          [edit]="socialsEdit"
+          [error]="
+            socialsTouched &&
+            (fus.isFieldInvalid('youtube') ||
+              socialsForm.get('youtube').value == '')
+          "
+        ></input-text>
+        <btn
+          (click)="
+            goToWebsite(
+              'https://www.youtube.com/@' + socialsForm.get('youtube').value
+            )
+          "
+          label="Test"
+          icon="fa-brands fa-youtube"
+        ></btn>
+      </div>
+      <div class="socialField">
+        <input-text
+          name="website"
+          type="Text"
+          placeholder="Site internet..."
+          label="Site internet"
+          formControlName="website"
+          [edit]="socialsEdit"
+          [error]="
+            socialsTouched &&
+            (fus.isFieldInvalid('website') ||
+              socialsForm.get('website').value == '')
+          "
+        ></input-text>
+        <btn
+          (click)="goToWebsite(socialsForm.get('website').value)"
+          label="Test"
+          icon="fa-solid fa-link"
+        ></btn>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <btn
+        *ngIf="socialsEdit"
+        (click)="cancelSocials()"
+        type="secondary"
+        label="Annuler"
+        icon="fa-solid fa-xmark fa-lg"
+      ></btn>
+      <btn
+        *ngIf="socialsEdit"
+        (click)="saveSocials()"
+        type="primary"
+        label="Confirmer"
+        icon="fa-solid fa-check fa-lg"
+      ></btn>
+    </div>
+  </div>
+</card>
