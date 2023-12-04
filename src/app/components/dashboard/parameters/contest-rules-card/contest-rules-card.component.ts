@@ -33,4 +33,8 @@ export class ContestRulesCardComponent implements OnInit {
       runTimer: ['', Validators.required],
     });
   }
+
+  selectedFormat(event: any) {
+    this.form.patchValue({ format: event.target.value });
+  }
 }

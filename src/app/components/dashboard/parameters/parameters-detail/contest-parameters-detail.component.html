@@ -2,7 +2,7 @@
   <div class="mainCards">
     <loader *ngIf="isLoading"></loader>
     <p *ngIf="!isLoading && !contest">Contest introuvable</p>
-    <card
+    <!-- <card
       *ngIf="!isLoading && contest"
       title="Informations du contest"
       class="infos"
@@ -14,13 +14,13 @@
         ></contest-infos-card>
         <contest-socials-card [contest]="contest"></contest-socials-card>
       </div>
-    </card>
-    <div class="flexCol">
-      <contest-rules-card></contest-rules-card>
-      <contest-branding-card
-        class="branding"
-        [contest]="contest"
-      ></contest-branding-card>
-    </div>
+    </card> -->
+    <!-- <div class="flexCol"> -->
+    <!-- <contest-branding-card
+      class="branding"
+      [contest]="contest"
+    ></contest-branding-card> -->
+    <!-- </div> -->
   </div>
+  <contest-list-rules-card></contest-list-rules-card>
 </div>

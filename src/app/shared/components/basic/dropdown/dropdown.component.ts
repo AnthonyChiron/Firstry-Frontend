@@ -30,10 +30,8 @@ export class DropdownComponent implements OnInit {
 
   selectOption(option: any) {
     this.selectedOption = option;
-    console.log(this.selectedOption);
     this.selected.emit(option);
     this.showDropdown = false;
-    if (this.selectedOption.label != '') console.log(this.selectedOption.label);
   }
 
   @HostListener('document:click', ['$event'])

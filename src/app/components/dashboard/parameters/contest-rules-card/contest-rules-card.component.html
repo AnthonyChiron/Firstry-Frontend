@@ -1,5 +1,12 @@
-<card title="Règles" [fitContent]="true">
-  <form class="form">
+<card
+  color="secondary"
+  [subCard]="true"
+  title="U14, U18, Amateurs"
+  [btn]="true"
+  btnIcon="fa-solid fa-pencil"
+  (btnClicked)="edit = !edit"
+>
+  <form class="rule">
     <input-text
       name="name"
       placeholder="Nom..."
@@ -22,5 +29,13 @@
           form.get('description').value == '')
       "
     ></input-textarea>
+    <dropdown
+      [options]="[
+        { label: 'Run', value: 'true' },
+        { label: 'Jam', value: 'false' },
+        { label: 'Best tricks', value: 'false' }
+      ]"
+      (selected)="selectedFormat($event)"
+    ></dropdown>
   </form>
 </card>
