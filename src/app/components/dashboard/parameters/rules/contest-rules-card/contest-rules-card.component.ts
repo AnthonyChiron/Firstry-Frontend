@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ContestsService } from 'src/app/shared/data/ContestsService/contests.service';
@@ -11,6 +11,7 @@ import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-uti
   styleUrls: ['./contest-rules-card.component.scss'],
 })
 export class ContestRulesCardComponent implements OnInit {
+  @Input() rules: any = null;
   edit: boolean = false;
   touched: boolean = false;
   form: any;
@@ -32,9 +33,19 @@ export class ContestRulesCardComponent implements OnInit {
       jamTimer: ['', Validators.required],
       runTimer: ['', Validators.required],
     });
+
+    if (!this.rules) {
+      this.edit = true;
+    }
   }
 
   selectedFormat(event: any) {
     this.form.patchValue({ format: event.target.value });
   }
+
+  cancel() {
+    this.edit = false;
+  }
+
+  submit() {}
 }

@@ -1,5 +1,33 @@
-.header {
+@import "../../../../../../styles/variables.scss";
+@import "../../../../../../styles/colors.scss";
+
+.format {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
   gap: 1vw;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+
+    h5 {
+      font-size: $pc_fontLabelSize;
+      font-variation-settings: "wght" $mobile_fontLabelWeight;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    gap: 0.5vw;
+
+    .noRules {
+      align-self: center;
+    }
+  }
 }

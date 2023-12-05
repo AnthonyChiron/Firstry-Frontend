@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1vw;
+  gap: 0.5vw;
 }
 
 .stepFormatDisplay {
@@ -11,4 +11,8 @@
   align-items: center;
   gap: 0.5vw;
   width: fit-content;
+}
+
+.dd {
+  width: 10vw;
 }

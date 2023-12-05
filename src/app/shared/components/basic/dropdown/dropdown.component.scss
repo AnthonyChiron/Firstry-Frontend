@@ -11,14 +11,15 @@
 
   .dropdown-button {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 4px;
+    padding: 6px 7px;
     gap: 1vw;
-    padding: 8px 10px;
     background-color: white;
     border: none;
     border-radius: 10px;
     font-family: "HankenGrotesk";
-    font-size: 1rem;
     font-variation-settings: "wght" 700;
     cursor: pointer;
   }
@@ -47,10 +48,19 @@
   }
 }
 
+.m {
+  font-size: 12px;
+}
+
+.s {
+  font-size: 10px;
+}
+
 @media (min-width: 768px) {
   .dropdown {
     .dropdown-button {
-      font-size: $pc_fontNavSize - 3;
+      font-size: $pc_fontInputSize;
+      width: 100%;
       transition: 0.3s;
     }
 
@@ -60,6 +70,10 @@
 
     .dropdown-content {
       margin-top: 5px;
+    }
+
+    a {
+      font-size: $pc_fontInputSize;
     }
 
     a:hover {

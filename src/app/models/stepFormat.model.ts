@@ -3,5 +3,5 @@ export interface StepFormatModel {
   format: String;
   jamTimer: Number;
   runTimer: Number;
-  bestTricksTryCount: Number;
+  bestTricksCount: Number;
 }

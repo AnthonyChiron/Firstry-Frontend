@@ -20,13 +20,20 @@ export class ContestRulesFormatFormComponent implements OnInit {
       format: '',
       jamTimer: 0,
       runTimer: 0,
-      bestTricksTryCount: 0,
+      bestTricksCount: 0,
     });
     console.log(this.stepFormats);
   }
 
   deleteStepFormat(index: number) {
     this.stepFormats.splice(index, 1);
+  }
+
+  updateStepFormat(stepFormat: StepFormatModel, index: number) {
+    this.stepFormats[index].runTimer = stepFormat.runTimer;
+    this.stepFormats[index].jamTimer = stepFormat.jamTimer;
+    this.stepFormats[index].bestTricksCount = stepFormat.bestTricksCount;
+    this.stepFormats[index].format = stepFormat.format;
   }
 
   test() {

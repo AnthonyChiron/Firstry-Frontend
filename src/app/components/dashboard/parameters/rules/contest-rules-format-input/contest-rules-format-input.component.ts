@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { StepFormatModel } from 'src/app/models/stepFormat.model';
 import { ContestsService } from 'src/app/shared/data/ContestsService/contests.service';
 import { RulesService } from 'src/app/shared/data/RulesService/rules.service';
 import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-utility.service';
@@ -18,12 +19,11 @@ import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-uti
   styleUrls: ['./contest-rules-format-input.component.scss'],
 })
 export class ContestRulesFormatInputComponent implements OnInit, OnDestroy {
-  @Input() stepFormat: any = null;
+  @Input() stepFormat: StepFormatModel = null;
+  @Output() stepFormatChange = new EventEmitter<any>();
   @Input() edit: boolean = false;
-  @Output() delete: EventEmitter<any> = new EventEmitter<any>();
-  selectedFormat: any = null;
-
-  form: any;
+  @Output() delete: EventEmitter<StepFormatModel> =
+    new EventEmitter<StepFormatModel>();
 
   formats = [
     { label: 'Run', value: 'RUN' },
@@ -31,6 +31,9 @@ export class ContestRulesFormatInputComponent implements OnInit, OnDestroy {
     { label: 'Best tricks', value: 'BEST_TRICKS' },
     // { label: 'Out', value: 'OUT' },
   ];
+  selectedFormat: any = this.formats[0];
+
+  form: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -45,19 +48,8 @@ export class ContestRulesFormatInputComponent implements OnInit, OnDestroy {
       format: ['', Validators.required],
       runTimer: ['', null],
       jamTimer: ['', null],
-      bestTricksTryCount: ['', null],
+      bestTricksCount: ['', null],
     });
-
-    if (this.stepFormat) {
-      this.form.patchValue({
-        format: this.stepFormat.format,
-        runTimer: this.stepFormat.runTimer,
-        jamTimer: this.stepFormat.jamTimer,
-        bestTricksCount: this.stepFormat.bestTricksCount,
-      });
-    } else {
-      this.selectedFormat = this.formats[0];
-    }
 
     // UPDATE VALIDATORS ON FORMAT CHANGE
     this.form.get('format').valueChanges.subscribe((selectedFormat) => {
@@ -76,22 +68,46 @@ export class ContestRulesFormatInputComponent implements OnInit, OnDestroy {
       this.form.get('runTimer').updateValueAndValidity();
 
       if (selectedFormat === 'BEST_TRICKS') {
-        this.form
-          .get('bestTricksTryCount')
-          .setValidators([Validators.required]);
+        this.form.get('bestTricksCount').setValidators([Validators.required]);
       } else {
-        this.form.get('bestTricksTryCount').setValidators(null);
+        this.form.get('bestTricksCount').setValidators(null);
       }
-      this.form.get('bestTricksTryCount').updateValueAndValidity();
+      this.form.get('bestTricksCount').updateValueAndValidity();
     });
+
+    this.form.valueChanges.subscribe((values) => {
+      if (this.form.valid) {
+        console.log('Formulaire rempli:', values);
+        this.stepFormatChange.emit(values);
+      }
+    });
+
+    if (this.stepFormat.format != '') {
+      this.form.patchValue({
+        format: this.stepFormat.format,
+        runTimer: this.stepFormat.runTimer,
+        jamTimer: this.stepFormat.jamTimer,
+        bestTricksCount: this.stepFormat.bestTricksCount,
+      });
+    } else {
+      this.form.patchValue({ format: this.formats[0] });
+    }
+  }
+
+  updateValue(newValue: StepFormatModel) {
+    this.stepFormat = newValue;
+    this.stepFormatChange.emit(newValue);
   }
 
   onSelectedFormat(event: any) {
     this.selectedFormat = event;
     this.form.patchValue({ format: event.value });
+    console.log(this.selectedFormat);
+    console.log(this.form.value);
   }
 
   ngOnDestroy(): void {
     this.form.get('format').valueChanges.unsubscribe();
+    this.form.valueChanges.unsubscribe();
   }
 }

@@ -1,11 +1,24 @@
 <card
   color="secondary"
   [subCard]="true"
-  title="U14, U18, Amateurs"
-  [btn]="true"
-  btnIcon="fa-solid fa-pen-to-square"
   (btnClicked)="edit = !edit"
+  class="main"
 >
+  <div class="header" *ngIf="rules">
+    <input-title></input-title>
+    <btn
+      *ngIf="!edit"
+      type="transparent"
+      icon="fa-solid fa-pen-to-square"
+      (click)="edit = !edit"
+    ></btn>
+    <btn
+      *ngIf="edit"
+      type="transparent"
+      label="Supprimer"
+      (click)="edit = !edit"
+    ></btn>
+  </div>
   <form [formGroup]="form" class="rule">
     <div class="infos">
       <input-text
@@ -32,8 +45,18 @@
         "
       ></input-textarea>
     </div>
+    <div class="sep"></div>
     <div class="format">
-      <contest-rules-format-form [edit]="true"></contest-rules-format-form>
+      <contest-rules-format-form [edit]="edit"></contest-rules-format-form>
     </div>
   </form>
+  <div class="footer" *ngIf="edit">
+    <btn
+      type="danger"
+      label="Annuler"
+      icon="fa-solid fa-xmark"
+      (click)="cancel()"
+    ></btn>
+    <btn label="Valider" icon="fa-solid fa-check" (click)="submit()"></btn>
+  </div>
 </card>

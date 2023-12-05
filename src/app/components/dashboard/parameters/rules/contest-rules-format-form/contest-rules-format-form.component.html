@@ -1,17 +1,25 @@
 <div class="format">
   <div class="header">
-    <h2>Format</h2>
+    <h5>Format</h5>
     <btn
       *ngIf="edit"
       icon="fa-solid fa-plus"
       label="Ajouter une étape"
       (click)="addStepFormat()"
     ></btn>
-    <btn label="test" (click)="test()"></btn>
+    <btn label="" (click)="test()"></btn>
   </div>
-  <contest-rules-format-input
-    *ngFor="let stepFormat of stepFormats; let i = index"
-    [edit]="edit"
-    (delete)="deleteStepFormat(i)"
-  ></contest-rules-format-input>
+  <div class="content">
+    <p class="noRules" *ngIf="stepFormats.length == 0">
+      Vous n'avez pas encore de format !
+    </p>
+    <contest-rules-format-input
+      *ngFor="let stepFormat of stepFormats; let i = index"
+      class="stepFormat"
+      [edit]="edit"
+      (delete)="deleteStepFormat(i)"
+      [stepFormat]="stepFormat"
+      (stepFormatChange)="updateStepFormat($event, i)"
+    ></contest-rules-format-input>
+  </div>
 </div>
