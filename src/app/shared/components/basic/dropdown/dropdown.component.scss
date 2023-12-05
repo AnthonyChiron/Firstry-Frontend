@@ -1,6 +1,10 @@
 @import "../../../../../styles/colors.scss";
 @import "../../../../../styles/variables.scss";
 
+.dropdown.fitContent {
+  width: fit-content;
+}
+
 .dropdown {
   position: relative;
   width: 100%;
