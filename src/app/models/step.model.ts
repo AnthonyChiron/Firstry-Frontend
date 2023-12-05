@@ -6,4 +6,6 @@ export interface StepModel extends GenericModel {
   startDate: Date;
   endDate: Date;
   category: String; // TODO: Mettre un id
+  ridersPerPool: Number;
+  ridersQualifiedCount: Number;
 }

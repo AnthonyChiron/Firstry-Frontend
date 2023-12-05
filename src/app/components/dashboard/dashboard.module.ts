@@ -18,8 +18,10 @@ import { CategoryCardComponent } from './categories/category-card/category-card.
 import { ContestInfosCardComponent } from './parameters/contest-infos-card/contest-infos-card.component';
 import { ContestSocialsCardComponent } from './parameters/contest-socials-card/contest-socials-card.component';
 import { ContestBrandingCardComponent } from './parameters/contest-branding-card/contest-branding-card.component';
-import { ContestRulesCardComponent } from './parameters/contest-rules-card/contest-rules-card.component';
-import { ContestListRulesCardComponent } from './parameters/contest-list-rules-card/contest-list-rules-card.component';
+import { ContestRulesCardComponent } from './parameters/rules/contest-rules-card/contest-rules-card.component';
+import { ContestListRulesCardComponent } from './parameters/rules/contest-list-rules-card/contest-list-rules-card.component';
+import { ContestRulesFormatInputComponent } from './parameters/rules/contest-rules-format-input/contest-rules-format-input.component';
+import { ContestRulesFormatFormComponent } from './parameters/rules/contest-rules-format-form/contest-rules-format-form.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -74,6 +76,8 @@ const dashboardRoutes: Routes = [
     ContestBrandingCardComponent,
     ContestRulesCardComponent,
     ContestListRulesCardComponent,
+    ContestRulesFormatInputComponent,
+    ContestRulesFormatFormComponent,
   ],
   imports: [
     CommonModule,

@@ -6,8 +6,7 @@ export interface RulesModel extends GenericModel {
   description: String;
   format: String;
   pointDistribution: pointDistributionModel[];
-  competitorPerPool: Number;
-  competitorQualifiedCount: Number;
   jamTimer: Number;
   runTimer: Number;
+  bestTricksTryCount: Number;
 }

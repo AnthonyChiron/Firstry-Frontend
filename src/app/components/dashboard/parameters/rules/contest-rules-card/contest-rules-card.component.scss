@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+}
+
+.rule {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2vw;
+
+  .infos {
+    flex: 1;
+  }
+
+  .format {
+    flex: 1;
+  }
+}
