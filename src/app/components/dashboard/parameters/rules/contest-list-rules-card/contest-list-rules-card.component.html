@@ -1,7 +1,13 @@
-<card [fitContent]="false">
+<card [fitContent]="true" class="main">
   <div class="header">
     <h2>Règles</h2>
-    <btn label="Créer une règle personnalisée"></btn>
+    <btn label="Créer une règle personnalisée" (click)="createRule()"></btn>
   </div>
-  <contest-rules-card></contest-rules-card>
+  <div class="content">
+    <contest-rules-card
+      [contest]="contest"
+      *ngFor="let rule of rules"
+      [rules]="rule"
+    ></contest-rules-card>
+  </div>
 </card>

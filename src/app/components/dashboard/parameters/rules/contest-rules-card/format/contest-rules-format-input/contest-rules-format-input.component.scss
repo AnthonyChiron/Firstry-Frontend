@@ -1,0 +1,38 @@
+@import "../../../../../../../../styles/variables.scss";
+@import "../../../../../../../../styles/colors.scss";
+
+.stepFormatForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5vw;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vw;
+
+  .stepFormatDisplay {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5vw;
+    width: fit-content;
+    background-color: white;
+    // border: $firstry-black-2 solid 1px;
+    border-radius: 10px;
+    padding: 4px 6px;
+    width: 60%;
+
+    h4 {
+      font-size: $pc_fontInputSize;
+    }
+  }
+}
+
+.input {
+  flex: 1;
+}

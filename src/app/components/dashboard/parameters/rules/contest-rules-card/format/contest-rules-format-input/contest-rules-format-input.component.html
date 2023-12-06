@@ -1,0 +1,49 @@
+<form *ngIf="edit" [formGroup]="form" class="stepFormatForm">
+  <div class="input">
+    <dropdown
+      [options]="formatsOptions"
+      formControlName="format"
+      name="format"
+    ></dropdown>
+  </div>
+  <div class="input">
+    <dropdown
+      *ngIf="form.value.format == 'JAM'"
+      formControlName="jamTimer"
+      name="jamTimer"
+      [options]="jamTimersOptions"
+    ></dropdown>
+    <dropdown
+      *ngIf="form.value.format == 'RUN'"
+      formControlName="runTimer"
+      name="runTimer"
+      [options]="runTimersOptions"
+    ></dropdown>
+    <dropdown
+      *ngIf="form.value.format == 'BEST_TRICKS'"
+      formControlName="bestTricksCount"
+      name="bestTricksCount"
+      [options]="bestTricksOptions"
+    ></dropdown>
+  </div>
+  <btn
+    class="delete"
+    type="danger"
+    icon="fa-solid fa-xmark"
+    (click)="delete.emit()"
+  ></btn>
+</form>
+
+<div class="display">
+  <div *ngIf="!edit" class="stepFormatDisplay">
+    <h4>
+      {{ getRunLabel() }}
+    </h4>
+    <span>-</span>
+    <h4 *ngIf="stepFormat.format == 'RUN'">{{ stepFormat.runTimer }}</h4>
+    <h4 *ngIf="stepFormat.format == 'JAM'">{{ stepFormat.jamTimer }}</h4>
+    <h4 *ngIf="stepFormat.format == 'BEST_TRICKS'">
+      {{ getBestTricksLabel() }}
+    </h4>
+  </div>
+</div>

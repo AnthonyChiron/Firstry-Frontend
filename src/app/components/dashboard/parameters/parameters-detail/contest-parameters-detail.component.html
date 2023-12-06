@@ -1,26 +1,18 @@
-<div class="main" [@fadeInOut]>
+<div class="main" [@fadeInOut] *ngIf="contest">
   <div class="mainCards">
     <loader *ngIf="isLoading"></loader>
     <p *ngIf="!isLoading && !contest">Contest introuvable</p>
-    <!-- <card
-      *ngIf="!isLoading && contest"
-      title="Informations du contest"
-      class="infos"
-    >
-      <div class="secondaryCards">
-        <contest-infos-card
-          class="infosCard"
-          [contest]="contest"
-        ></contest-infos-card>
-        <contest-socials-card [contest]="contest"></contest-socials-card>
-      </div>
-    </card> -->
-    <!-- <div class="flexCol"> -->
-    <!-- <contest-branding-card
-      class="branding"
-      [contest]="contest"
-    ></contest-branding-card> -->
-    <!-- </div> -->
+    <div class="infos">
+      <contest-infos-card [contest]="contest"></contest-infos-card>
+      <contest-socials-card [contest]="contest"></contest-socials-card>
+    </div>
+
+    <div class="others">
+      <contest-list-rules-card [contest]="contest"></contest-list-rules-card>
+      <contest-branding-card
+        class="branding"
+        [contest]="contest"
+      ></contest-branding-card>
+    </div>
   </div>
-  <contest-list-rules-card></contest-list-rules-card>
 </div>
