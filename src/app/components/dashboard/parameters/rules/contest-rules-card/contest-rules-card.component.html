@@ -4,50 +4,64 @@
   (btnClicked)="edit = !edit"
   class="main"
 >
-  <div class="header" *ngIf="rules">
-    <input-title></input-title>
-    <btn
-      *ngIf="!edit"
-      type="transparent"
-      icon="fa-solid fa-pen-to-square"
-      (click)="edit = !edit"
-    ></btn>
-    <btn
-      *ngIf="edit"
-      type="transparent"
-      label="Supprimer"
-      (click)="edit = !edit"
-    ></btn>
-  </div>
-  <form [formGroup]="form" class="rule">
-    <div class="infos">
-      <input-text
+  <form [formGroup]="form">
+    <div class="header" *ngIf="rules">
+      <input-title
         name="name"
-        placeholder="Nom..."
-        label="Nom"
         formControlName="name"
         [edit]="edit"
         [error]="
           touched &&
           (fus.isFieldInvalid('name') || form.get('name').value == '')
         "
-      ></input-text>
-      <input-textarea
-        name="description"
-        placeholder="Description..."
-        label="Description"
-        formControlName="description"
-        [edit]="edit"
-        [error]="
-          touched &&
-          (fus.isFieldInvalid('description') ||
-            form.get('description').value == '')
-        "
-      ></input-textarea>
+      ></input-title>
+      <btn
+        *ngIf="!edit"
+        type="transparent"
+        icon="fa-solid fa-pen-to-square"
+        (click)="edit = !edit"
+      ></btn>
+      <btn
+        *ngIf="edit"
+        type="transparent"
+        label="Supprimer"
+        (click)="edit = !edit"
+      ></btn>
     </div>
-    <div class="sep"></div>
-    <div class="format">
-      <contest-rules-format-form [edit]="edit"></contest-rules-format-form>
+    <div class="content">
+      <div class="infos">
+        <input-text
+          name="name"
+          formControlName="name"
+          placeholder="Nom..."
+          label="Nom"
+          [edit]="edit"
+          [error]="
+            touched &&
+            (fus.isFieldInvalid('name') || form.get('name').value == '')
+          "
+        ></input-text>
+        <input-textarea
+          name="description"
+          formControlName="description"
+          placeholder="Description..."
+          label="Description"
+          size="xs"
+          [edit]="edit"
+          [error]="
+            touched &&
+            (fus.isFieldInvalid('description') ||
+              form.get('description').value == '')
+          "
+        ></input-textarea>
+      </div>
+      <div class="sep"></div>
+      <div class="format">
+        <contest-rules-format-form
+          [edit]="edit"
+          [stepFormats]="form.value.format"
+        ></contest-rules-format-form>
+      </div>
     </div>
   </form>
   <div class="footer" *ngIf="edit">

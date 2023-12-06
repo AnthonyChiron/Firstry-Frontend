@@ -7,7 +7,29 @@ import { StepFormatModel } from 'src/app/models/stepFormat.model';
   styleUrls: ['./contest-rules-format-form.component.scss'],
 })
 export class ContestRulesFormatFormComponent implements OnInit {
-  @Input() stepFormats: StepFormatModel[] = [];
+  @Input() stepFormats: StepFormatModel[] = [
+    {
+      order: 1,
+      format: 'RUN',
+      jamTimer: 45,
+      runTimer: 45,
+      bestTricksCount: 1,
+    },
+    {
+      order: 2,
+      format: 'RUN',
+      jamTimer: 45,
+      runTimer: 50,
+      bestTricksCount: 1,
+    },
+    {
+      order: 3,
+      format: 'BEST_TRICKS',
+      jamTimer: 45,
+      runTimer: 45,
+      bestTricksCount: 3,
+    },
+  ];
   @Input() edit: boolean = false;
 
   constructor() {}

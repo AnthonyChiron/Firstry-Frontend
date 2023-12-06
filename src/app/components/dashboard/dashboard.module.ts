@@ -20,8 +20,8 @@ import { ContestSocialsCardComponent } from './parameters/contest-socials-card/c
 import { ContestBrandingCardComponent } from './parameters/contest-branding-card/contest-branding-card.component';
 import { ContestRulesCardComponent } from './parameters/rules/contest-rules-card/contest-rules-card.component';
 import { ContestListRulesCardComponent } from './parameters/rules/contest-list-rules-card/contest-list-rules-card.component';
-import { ContestRulesFormatInputComponent } from './parameters/rules/contest-rules-format-input/contest-rules-format-input.component';
-import { ContestRulesFormatFormComponent } from './parameters/rules/contest-rules-format-form/contest-rules-format-form.component';
+import { ContestRulesFormatInputComponent } from './parameters/rules/contest-rules-card/format/contest-rules-format-input/contest-rules-format-input.component';
+import { ContestRulesFormatFormComponent } from './parameters/rules/contest-rules-card/format/contest-rules-format-form/contest-rules-format-form.component';
 
 const dashboardRoutes: Routes = [
   {

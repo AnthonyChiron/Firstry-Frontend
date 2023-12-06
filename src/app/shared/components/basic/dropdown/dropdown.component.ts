@@ -31,11 +31,13 @@ export class DropdownComponent implements OnInit, ControlValueAccessor {
   showDropdown = false;
   selectedOption: any = { label: '', value: '' };
 
-  onChange: any = () => {};
-  onTouched: any = () => {};
+  value: any;
+  onChange: (value: any) => void;
+  onTouched: () => void;
 
-  writeValue(obj: any): void {
-    this.selectedOption = obj;
+  writeValue(value: string): void {
+    this.value = value;
+    this.selectedOption = this.options.find((option) => option.value === value);
   }
 
   registerOnChange(fn: any): void {
@@ -50,6 +52,7 @@ export class DropdownComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     console.log(this.options);
+    console.log(this.value);
   }
 
   toggleDropdown() {

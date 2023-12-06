@@ -25,13 +25,42 @@ export class ContestRulesFormatInputComponent implements OnInit, OnDestroy {
   @Output() delete: EventEmitter<StepFormatModel> =
     new EventEmitter<StepFormatModel>();
 
-  formats = [
+  formatsOptions = [
     { label: 'Run', value: 'RUN' },
     { label: 'Jam', value: 'JAM' },
     { label: 'Best tricks', value: 'BEST_TRICKS' },
     // { label: 'Out', value: 'OUT' },
   ];
-  selectedFormat: any = this.formats[0];
+
+  runTimersOptions = [
+    { label: '30s', value: 30 },
+    { label: '35s', value: 35 },
+    { label: '40s', value: 40 },
+    { label: '45s', value: 45 },
+    { label: '50s', value: 50 },
+    { label: '55s', value: 55 },
+    { label: '1 min', value: 60 },
+  ];
+
+  jamTimersOptions = [
+    { label: '45s', value: 45 },
+    { label: '1min', value: 60 },
+    { label: '1m 15s', value: 75 },
+    { label: '1m 30s', value: 90 },
+    { label: '2m', value: 105 },
+    { label: '2m 15s', value: 120 },
+    { label: '2m 30s', value: 135 },
+    { label: '2m 45s', value: 150 },
+    { label: '3m', value: 175 },
+  ];
+
+  bestTricksOptions = [
+    { label: '1 essai', value: 1 },
+    { label: '2 essais', value: 2 },
+    { label: '3 essais', value: 3 },
+    { label: '4 essais', value: 4 },
+    { label: '5 essais', value: 5 },
+  ];
 
   form: any;
 
@@ -90,7 +119,13 @@ export class ContestRulesFormatInputComponent implements OnInit, OnDestroy {
         bestTricksCount: this.stepFormat.bestTricksCount,
       });
     } else {
-      this.form.patchValue({ format: this.formats[0] });
+      this.form.patchValue({
+        format: this.formatsOptions[0].value,
+        runTimer: this.runTimersOptions[3].value,
+        jamTimer: this.jamTimersOptions[0].value,
+        bestTricksCount: this.bestTricksOptions[0].value,
+      });
+      console.log(this.form.value);
     }
   }
 
@@ -99,15 +134,20 @@ export class ContestRulesFormatInputComponent implements OnInit, OnDestroy {
     this.stepFormatChange.emit(newValue);
   }
 
-  onSelectedFormat(event: any) {
-    this.selectedFormat = event;
-    this.form.patchValue({ format: event.value });
-    console.log(this.selectedFormat);
-    console.log(this.form.value);
-  }
-
   ngOnDestroy(): void {
     this.form.get('format').valueChanges.unsubscribe();
     this.form.valueChanges.unsubscribe();
+  }
+
+  getRunLabel() {
+    return this.formatsOptions.find(
+      (option) => option.value === this.form.value.format
+    ).label;
+  }
+
+  getBestTricksLabel() {
+    return this.bestTricksOptions.find(
+      (option) => option.value === this.form.value.bestTricksCount
+    ).label;
   }
 }

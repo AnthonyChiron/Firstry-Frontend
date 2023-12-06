@@ -36,9 +36,9 @@ export class ListCategoriesComponent implements OnInit, OnChanges {
   }
 
   deleteCategory(category: CategoryModel) {
-    console.log(category);
     if (category && category._id) {
       console.log(category);
+
       // Delete category from contest.categories
       this.contest.categories = this.contest.categories.filter(
         (c) => c._id != category._id
