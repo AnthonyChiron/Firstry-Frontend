@@ -8,7 +8,7 @@
       Capitalize
     >
       {{
-        selectedOption && selectedOption.label.length == 0
+        selectedOption && selectedOption.label == ""
           ? options[0].label
           : selectedOption.label
       }}

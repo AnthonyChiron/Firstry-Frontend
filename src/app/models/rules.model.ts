@@ -5,7 +5,7 @@ import { StepFormatModel } from './stepFormat.model';
 export interface RulesModel extends GenericModel {
   name: String;
   description: String;
-  format: StepFormatModel[];
+  stepFormats: StepFormatModel[];
   pointDistribution: pointDistributionModel[];
   contestId: String;
 }

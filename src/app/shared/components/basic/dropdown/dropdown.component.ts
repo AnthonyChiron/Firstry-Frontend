@@ -36,15 +36,19 @@ export class DropdownComponent implements OnInit, ControlValueAccessor {
   onTouched: () => void;
 
   writeValue(value: string): void {
-    this.value = value;
     this.selectedOption = this.options.find((option) => option.value === value);
+    if (!this.selectedOption) {
+      this.selectedOption = this.options[0];
+    }
+    this.value = this.selectedOption.value;
+    console.log(this.value);
   }
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: (value: string) => void): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 
@@ -52,7 +56,11 @@ export class DropdownComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     console.log(this.options);
-    console.log(this.value);
+    if (
+      this.options.length > 0 &&
+      !this.options.find((option) => option.value === this.value)
+    )
+      this.registerOnChange(this.options[0].value);
   }
 
   toggleDropdown() {
@@ -61,7 +69,6 @@ export class DropdownComponent implements OnInit, ControlValueAccessor {
 
   selectOption(option: any) {
     this.selectedOption = option;
-    console.log(option);
     this.onChange(option.value); // Notifie Angular de la modification
     this.showDropdown = false;
   }

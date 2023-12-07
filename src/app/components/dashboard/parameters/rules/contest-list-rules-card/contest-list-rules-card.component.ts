@@ -22,7 +22,30 @@ export class ContestListRulesCardComponent implements OnInit {
   }
 
   createRule() {
-    this.rules.unshift({} as RulesModel);
+    if (this.rules[0]._id) {
+      this.rules.unshift({} as RulesModel);
+    }
+  }
+
+  updateRule(rule: RulesModel) {
+    if (rule && rule._id) {
+      this.rs
+        .update(rule._id, {
+          name: rule.name,
+          description: rule.description,
+          contestId: rule.contestId,
+          stepFormats: rule.stepFormats,
+          pointDistribution: rule.pointDistribution,
+        })
+        .subscribe((updatedRule) => {
+          let newRule = this.rules.find((c) => c._id == rule._id);
+          newRule = updatedRule;
+        });
+    } else {
+      this.rs.create(rule).subscribe((createdRule) => {
+        this.rules[0] = createdRule;
+      });
+    }
   }
 
   deleteRule(rule: RulesModel) {

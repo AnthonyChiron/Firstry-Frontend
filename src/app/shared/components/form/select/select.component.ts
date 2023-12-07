@@ -1,10 +1,50 @@
-import { Component } from '@angular/core';
+// custom-select.component.ts
+import { Component, Input, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
-  selector: 'app-select',
-  templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss']
+  selector: 'input-select',
+  template: `
+    <select [ngModel]="value" (ngModelChange)="onSelect($event)">
+      >
+      <option *ngFor="let option of options" [value]="option.value">
+        {{ option.label }}
+      </option>
+    </select>
+  `,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputSelectComponent),
+      multi: true,
+    },
+  ],
+  styleUrls: ['./select.component.scss'],
 })
-export class SelectComponent {
+export class InputSelectComponent implements ControlValueAccessor {
+  @Input() options: any[];
+  value: any;
 
+  private onChange: Function = (value: any) => {};
+  private onTouched: Function = () => {};
+
+  writeValue(value: any): void {
+    this.value = value;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  // Appelée lors de la sélection d'une nouvelle valeur
+  onSelect(value: any): void {
+    console.log(value);
+    this.value = value;
+    this.onChange(value);
+    this.onTouched();
+  }
 }

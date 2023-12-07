@@ -8,6 +8,8 @@
       [contest]="contest"
       *ngFor="let rule of rules"
       [rules]="rule"
+      (deleteRule)="deleteRule($event)"
+      (updateRule)="updateRule($event)"
     ></contest-rules-card>
   </div>
 </card>
