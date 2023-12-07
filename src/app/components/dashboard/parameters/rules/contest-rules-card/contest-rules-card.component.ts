@@ -1,6 +1,6 @@
 import { StepFormatModel } from './../../../../../models/stepFormat.model';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ContestModel } from 'src/app/models/contest.model';
 import { RulesModel } from 'src/app/models/rules.model';
@@ -17,6 +17,8 @@ export class ContestRulesCardComponent implements OnInit {
   @Input() contest: ContestModel;
   @Input() rules: RulesModel = {} as RulesModel;
   @Output() deleteRule: EventEmitter<RulesModel> =
+    new EventEmitter<RulesModel>();
+  @Output() updateRule: EventEmitter<RulesModel> =
     new EventEmitter<RulesModel>();
 
   private originalRules: RulesModel;
@@ -40,28 +42,50 @@ export class ContestRulesCardComponent implements OnInit {
       contestId: ['', Validators.required],
       name: ['', Validators.required],
       description: ['', Validators.required],
-      format: ['', Validators.required],
-      pointDistribution: ['', Validators.required],
+      stepFormats: this.fb.array([]),
+      pointDistribution: this.fb.array([]),
     });
 
-    if (this.rules) {
-      this.form.patchValue({ ...this.rules });
+    this.loadData();
+  }
+
+  loadData() {
+    if (this.rules._id) {
+      this.form.patchValue({
+        contestId: this.rules.contestId,
+        name: this.rules.name,
+        description: this.rules.description,
+      });
+
+      const stepFormatFormGroups = this.rules.stepFormats.map((stepFormat) =>
+        this.fb.group({
+          order: [stepFormat.order, Validators.required],
+          formatType: [stepFormat.formatType, Validators.required],
+          runTimer: [stepFormat.runTimer, Validators.required],
+          jamTimer: [stepFormat.jamTimer, Validators.required],
+          bestTricksCount: [stepFormat.bestTricksCount, Validators.required],
+        })
+      );
+
+      const stepFormatArray = this.fb.array(stepFormatFormGroups);
+      this.form.setControl('stepFormats', stepFormatArray);
     } else {
+      this.edit = true;
       this.form.patchValue({
         contestId: this.contest._id,
       });
     }
   }
 
-  test() {
-    console.log(this.originalRules.format);
-    console.log(this.rules.format);
+  get stepFormats(): FormArray {
+    return this.form.get('stepFormats') as FormArray;
   }
 
   cancel() {
     this.edit = false;
+
     if (!this.rules._id) {
-      this.deleteRule.emit(this.rules);
+      this.delete();
     } else {
       this.form.patchValue({ ...this.originalRules });
       console.log(this.form.value);
@@ -69,19 +93,13 @@ export class ContestRulesCardComponent implements OnInit {
   }
 
   submit() {
-    if (this.form.invalid) {
-      return;
-    }
+    if (this.form.invalid) return;
 
-    if (this.rules._id) {
-      this.rs.update(this.rules._id, this.form.value).subscribe((res) => {
-        console.log(res);
-      });
-    } else {
-      this.rs.create(this.form.value).subscribe((res) => {
-        console.log(res);
-      });
-    }
+    this.updateRule.emit({ _id: this.rules._id, ...this.form.value });
     this.edit = false;
+  }
+
+  delete() {
+    this.deleteRule.emit(this.rules);
   }
 }

@@ -1,6 +1,6 @@
 export interface StepFormatModel {
   order: Number;
-  format: String;
+  formatType: String;
   jamTimer: Number;
   runTimer: Number;
   bestTricksCount: Number;

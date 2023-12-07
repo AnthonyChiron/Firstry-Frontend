@@ -1,0 +1,76 @@
+@import "./../../../../../../../styles/variables.scss";
+@import "./../../../../../../../styles/colors.scss";
+
+.format {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  gap: 1vw;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+
+    h5 {
+      font-size: $pc_fontLabelSize;
+      font-variation-settings: "wght" $mobile_fontLabelWeight;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    gap: 0.5vw;
+
+    .noRules {
+      align-self: center;
+    }
+
+    .stepFormats {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 1vw;
+
+      .stepFormat {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5vw;
+      }
+    }
+
+    .display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1vw;
+
+      .stepFormatDisplay {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5vw;
+        width: fit-content;
+        background-color: white;
+        // border: $firstry-black-2 solid 1px;
+        border-radius: 10px;
+        padding: 4px 6px;
+        width: 60%;
+
+        h4 {
+          font-size: $pc_fontInputSize;
+        }
+      }
+    }
+
+    .input {
+      flex: 1;
+    }
+  }
+}

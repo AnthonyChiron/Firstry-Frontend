@@ -1,0 +1,80 @@
+<div class="format">
+  <div class="header">
+    <h5>Format</h5>
+    <btn
+      *ngIf="edit"
+      icon="fa-solid fa-plus"
+      label="Ajouter une étape"
+      (click)="addStepFormat()"
+    ></btn>
+  </div>
+  <div class="content">
+    <p class="noRules" *ngIf="stepFormatArray.length == 0">
+      Vous n'avez pas encore de format !
+    </p>
+
+    <div [formGroup]="parentForm">
+      <div class="stepFormats" formArrayName="stepFormats" *ngIf="edit">
+        <div
+          *ngFor="let stepFormat of stepFormatArray.controls; let i = index"
+          [formGroupName]="i"
+          class="stepFormat"
+        >
+          <div class="input">
+            <dropdown
+              [options]="formatsOptions"
+              formControlName="formatType"
+              name="format"
+            ></dropdown>
+          </div>
+          <div class="input">
+            <input-select
+              *ngIf="stepFormat.value.formatType == 'JAM'"
+              formControlName="jamTimer"
+              name="jamTimer"
+              [options]="jamTimersOptions"
+            ></input-select>
+            <input-select
+              *ngIf="stepFormat.value.formatType == 'RUN'"
+              formControlName="runTimer"
+              name="runTimer"
+              [options]="runTimersOptions"
+            ></input-select>
+            <input-select
+              *ngIf="stepFormat.value.formatType == 'BEST_TRICKS'"
+              formControlName="bestTricksCount"
+              name="bestTricksCount"
+              [options]="bestTricksOptions"
+            ></input-select>
+          </div>
+          <btn
+            class="delete"
+            type="danger"
+            icon="fa-solid fa-xmark"
+            (click)="deleteStepFormat(i)"
+          ></btn>
+        </div>
+      </div>
+      <div class="display" *ngIf="!edit">
+        <div
+          class="stepFormatDisplay"
+          *ngFor="let stepFormat of stepFormatArray.controls"
+        >
+          <h4>
+            {{ getRunLabel(stepFormat) }}
+          </h4>
+          <span>-</span>
+          <h4 *ngIf="stepFormat.value.formatType == 'RUN'">
+            {{ stepFormat.value.runTimer }}
+          </h4>
+          <h4 *ngIf="stepFormat.value.formatType == 'JAM'">
+            {{ stepFormat.value.jamTimer }}
+          </h4>
+          <h4 *ngIf="stepFormat.value.formatType == 'BEST_TRICKS'">
+            {{ getBestTricksLabel(stepFormat) }}
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

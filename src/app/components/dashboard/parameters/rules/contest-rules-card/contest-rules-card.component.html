@@ -5,7 +5,7 @@
   class="main"
 >
   <form [formGroup]="form">
-    <div class="header" *ngIf="rules">
+    <div class="header" *ngIf="rules && rules._id">
       <input-title
         name="name"
         formControlName="name"
@@ -25,12 +25,13 @@
         *ngIf="edit"
         type="transparent"
         label="Supprimer"
-        (click)="edit = !edit"
+        (click)="delete()"
       ></btn>
     </div>
     <div class="content">
       <div class="infos">
         <input-text
+          *ngIf="rules && !rules._id"
           name="name"
           formControlName="name"
           placeholder="Nom..."
@@ -56,12 +57,11 @@
         ></input-textarea>
       </div>
       <div class="sep"></div>
-      <div class="format">
-        <contest-rules-format-form
-          [edit]="edit"
-          [stepFormats]="form.value.format"
-        ></contest-rules-format-form>
-      </div>
+      <contest-rules-format-form
+        [edit]="edit"
+        [parentForm]="form"
+        class="format"
+      ></contest-rules-format-form>
     </div>
   </form>
   <div class="footer" *ngIf="edit">
