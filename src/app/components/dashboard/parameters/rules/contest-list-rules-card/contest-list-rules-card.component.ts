@@ -22,20 +22,21 @@ export class ContestListRulesCardComponent implements OnInit {
   }
 
   createRule() {
-    if (this.rules[0]._id) {
+    if (this.rules.length == 0 || this.rules[0]._id) {
       this.rules.unshift({} as RulesModel);
     }
   }
 
   updateRule(rule: RulesModel) {
     if (rule && rule._id) {
+      console.log(rule);
       this.rs
         .update(rule._id, {
           name: rule.name,
           description: rule.description,
           contestId: rule.contestId,
           stepFormats: rule.stepFormats,
-          pointDistribution: rule.pointDistribution,
+          pointCategories: rule.pointCategories,
         })
         .subscribe((updatedRule) => {
           let newRule = this.rules.find((c) => c._id == rule._id);

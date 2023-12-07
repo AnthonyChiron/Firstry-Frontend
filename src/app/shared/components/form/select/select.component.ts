@@ -5,6 +5,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 @Component({
   selector: 'input-select',
   template: `
+    <label *ngIf="label != ''">{{ label }}</label>
     <select [ngModel]="value" (ngModelChange)="onSelect($event)">
       >
       <option *ngFor="let option of options" [value]="option.value">
@@ -23,6 +24,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 })
 export class InputSelectComponent implements ControlValueAccessor {
   @Input() options: any[];
+  @Input() label: string;
   value: any;
 
   private onChange: Function = (value: any) => {};

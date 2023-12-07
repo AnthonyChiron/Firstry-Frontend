@@ -1,11 +1,11 @@
 import { GenericModel } from './generic.model';
-import { pointDistributionModel } from './pointDistribution.model';
+import { pointCategoryModel } from './pointCategory.model';
 import { StepFormatModel } from './stepFormat.model';
 
 export interface RulesModel extends GenericModel {
   name: String;
   description: String;
   stepFormats: StepFormatModel[];
-  pointDistribution: pointDistributionModel[];
+  pointCategories: pointCategoryModel[];
   contestId: String;
 }
