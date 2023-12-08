@@ -8,9 +8,9 @@
   (cancelled)="onDeleteCancelled()"
 ></confirmation-modal>
 <div class="main">
-  <card class="category" [subCard]="true" color="secondary" *ngIf="category">
+  <card class="category" type="secondary" [toggleBtn]="true" *ngIf="category">
     <form [formGroup]="categoryForm">
-      <div class="header">
+      <div header>
         <h3 *ngIf="isNew">Création de catégorie</h3>
         <div class="title" *ngIf="!isNew">
           <input-title

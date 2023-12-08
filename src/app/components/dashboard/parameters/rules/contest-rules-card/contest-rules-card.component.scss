@@ -17,23 +17,29 @@
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: row;
-    gap: 1.5vw;
+    flex-direction: column;
+    gap: 2vw;
 
-    .infos {
-      flex: 1;
+    .infosAndFormat {
       display: flex;
-      flex-direction: column;
-      gap: 1vw;
-    }
+      flex-direction: row;
+      gap: 1.5vw;
 
-    .sep {
-      width: 1px;
-      background-color: $firstry-white-4;
-    }
+      .infos {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+      }
 
-    .format {
-      flex: 1;
+      .sep {
+        width: 1px;
+        background-color: $firstry-white-4;
+      }
+
+      .format {
+        flex: 1;
+      }
     }
   }
 

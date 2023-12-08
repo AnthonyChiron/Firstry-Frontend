@@ -22,6 +22,7 @@ import {
 export class ContestRulesFormatFormComponent implements OnInit {
   @Input() parentForm: FormGroup;
   @Input() edit: boolean = false;
+  @Input() touched: boolean = false;
 
   stepFormatArray: FormArray;
 
@@ -34,10 +35,6 @@ export class ContestRulesFormatFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.stepFormatArray = this.parentForm.get('stepFormats') as FormArray;
-  }
-
-  test() {
-    console.log(this.stepFormatArray);
   }
 
   addStepFormat() {

@@ -27,6 +27,8 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { PlanningComponent } from './components/basic/planning/planning.component';
 import { NavBtnComponent } from './components/basic/nav-btn/nav-btn.component';
+import { NgChartsModule } from 'ng2-charts';
+import { FormatTimePipe } from './pipe/format-time.pipe';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { NavBtnComponent } from './components/basic/nav-btn/nav-btn.component';
     InfoTagComponent,
     NavBtnComponent,
     MapsCardComponent,
+    FormatTimePipe,
   ],
   imports: [
     CommonModule,
@@ -61,6 +64,7 @@ import { NavBtnComponent } from './components/basic/nav-btn/nav-btn.component';
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    NgChartsModule,
   ],
   providers: [ScreenSizeService],
   exports: [
@@ -85,6 +89,8 @@ import { NavBtnComponent } from './components/basic/nav-btn/nav-btn.component';
     MapsCardComponent,
     PlanningComponent,
     NavBtnComponent,
+    NgChartsModule,
+    FormatTimePipe,
   ],
 })
 export class SharedModule {}

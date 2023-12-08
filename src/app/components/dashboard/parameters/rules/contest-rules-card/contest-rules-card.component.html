@@ -1,9 +1,12 @@
-<card
-  color="secondary"
-  [subCard]="true"
-  (btnClicked)="edit = !edit"
-  class="main"
+<confirmation-modal
+  [isVisible]="showDeleteModal"
+  (confirmed)="delete()"
+  (cancelled)="showDeleteModal = false"
+  title="Attention !"
+  message="Êtes-vous sûr de vouloir supprimer cette règle ?"
 >
+</confirmation-modal>
+<card type="secondary" (btnClicked)="edit = !edit" class="main">
   <form [formGroup]="form">
     <div class="header" *ngIf="rules && rules._id">
       <input-title
@@ -25,43 +28,52 @@
         *ngIf="edit"
         type="transparent"
         label="Supprimer"
-        (click)="delete()"
+        (click)="showDeleteModal = true"
       ></btn>
     </div>
     <div class="content">
-      <div class="infos">
-        <input-text
-          *ngIf="rules && !rules._id"
-          name="name"
-          formControlName="name"
-          placeholder="Nom..."
-          label="Nom"
+      <div class="infosAndFormat">
+        <div class="infos">
+          <input-text
+            *ngIf="rules && !rules._id"
+            name="name"
+            formControlName="name"
+            placeholder="Nom..."
+            label="Nom"
+            [edit]="edit"
+            [error]="
+              touched &&
+              (fus.isFieldInvalid('name') || form.get('name').value == '')
+            "
+          ></input-text>
+          <input-textarea
+            name="description"
+            formControlName="description"
+            placeholder="Description..."
+            label="Description"
+            size="xs"
+            [edit]="edit"
+            [error]="
+              touched &&
+              (fus.isFieldInvalid('description') ||
+                form.get('description').value == '')
+            "
+          ></input-textarea>
+        </div>
+        <div class="sep"></div>
+        <contest-rules-format-form
           [edit]="edit"
-          [error]="
-            touched &&
-            (fus.isFieldInvalid('name') || form.get('name').value == '')
-          "
-        ></input-text>
-        <input-textarea
-          name="description"
-          formControlName="description"
-          placeholder="Description..."
-          label="Description"
-          size="xs"
-          [edit]="edit"
-          [error]="
-            touched &&
-            (fus.isFieldInvalid('description') ||
-              form.get('description').value == '')
-          "
-        ></input-textarea>
+          [touched]="touched"
+          [parentForm]="form"
+          class="format"
+        ></contest-rules-format-form>
       </div>
-      <div class="sep"></div>
-      <contest-rules-format-form
+      <contest-rules-points-form
         [edit]="edit"
+        [touched]="touched"
         [parentForm]="form"
-        class="format"
-      ></contest-rules-format-form>
+        class="points"
+      ></contest-rules-points-form>
     </div>
   </form>
   <div class="footer" *ngIf="edit">

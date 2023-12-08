@@ -21,6 +21,7 @@ import { ContestBrandingCardComponent } from './parameters/contest-branding-card
 import { ContestRulesCardComponent } from './parameters/rules/contest-rules-card/contest-rules-card.component';
 import { ContestListRulesCardComponent } from './parameters/rules/contest-list-rules-card/contest-list-rules-card.component';
 import { ContestRulesFormatFormComponent } from './parameters/rules/contest-rules-card/contest-rules-format-form/contest-rules-format-form.component';
+import { ContestRulesPointsFormComponent } from './parameters/rules/contest-rules-card/contest-rules-points-form/contest-rules-points-form.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -76,6 +77,7 @@ const dashboardRoutes: Routes = [
     ContestRulesCardComponent,
     ContestListRulesCardComponent,
     ContestRulesFormatFormComponent,
+    ContestRulesPointsFormComponent,
   ],
   imports: [
     CommonModule,

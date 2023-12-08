@@ -1,0 +1,92 @@
+<div class="format">
+  <div class="header">
+    <h5>Distribution des points</h5>
+    <btn
+      *ngIf="edit"
+      icon="fa-solid fa-plus"
+      label="Ajouter une catégorie de points"
+      (click)="addPointCategory()"
+    ></btn>
+  </div>
+  <div class="content">
+    <p class="noRules" *ngIf="pointCategoriesArray.length == 0">
+      Vous n'avez pas encore de catégories de point !
+    </p>
+
+    <div [formGroup]="parentForm">
+      <div class="pointCategories" formArrayName="pointCategories" *ngIf="edit">
+        <div
+          *ngFor="
+            let pointCategory of pointCategoriesArray.controls;
+            let i = index
+          "
+          [formGroupName]="i"
+          class="pointCategory"
+        >
+          <input-text
+            class="name"
+            name="name"
+            formControlName="name"
+            placeholder="Nom..."
+            [label]="i == 0 ? 'Nom' : ''"
+            [edit]="edit"
+            [error]="
+              touched &&
+              (fus.isFieldInvalid('name') || pointCategory.value.name == '')
+            "
+          ></input-text>
+          <input-text
+            class="description"
+            name="description"
+            formControlName="description"
+            placeholder="Description..."
+            [label]="i == 0 ? 'Description' : ''"
+            [edit]="edit"
+            [error]="
+              touched &&
+              (fus.isFieldInvalid('description') ||
+                pointCategory.value.description == '')
+            "
+          ></input-text>
+          <input-select
+            class="points"
+            name="points"
+            formControlName="points"
+            [label]="i == 0 ? 'Points' : ''"
+            [options]="pointsOptions"
+          ></input-select>
+          <btn
+            class="delete"
+            type="danger"
+            icon="fa-solid fa-xmark"
+            (click)="deletePointCategory(i)"
+          ></btn>
+        </div>
+      </div>
+      <div class="display" *ngIf="!edit">
+        <div class="pointCategories">
+          <div
+            class="pointCategoryDisplay"
+            *ngFor="let pointCategory of pointCategoriesArray.controls"
+          >
+            <h4>
+              <b>{{ pointCategory.value.name }} </b> -
+              {{ pointCategory.value.points + " points" }}
+            </h4>
+            <p>{{ pointCategory.value.description }}</p>
+          </div>
+        </div>
+        <div class="chart">
+          <canvas
+            baseChart
+            [labels]="chartsLabels"
+            [datasets]="chartDatasets"
+            [options]="chartOptions"
+            [type]="'doughnut'"
+          >
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

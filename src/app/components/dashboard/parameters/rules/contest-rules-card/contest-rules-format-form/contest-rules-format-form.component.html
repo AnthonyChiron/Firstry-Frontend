@@ -20,6 +20,7 @@
           [formGroupName]="i"
           class="stepFormat"
         >
+          <span>{{ i + 1 }} -</span>
           <div class="input">
             <dropdown
               [options]="formatsOptions"
@@ -64,11 +65,11 @@
             {{ getRunLabel(stepFormat) }}
           </h4>
           <span>-</span>
-          <h4 *ngIf="stepFormat.value.formatType == 'RUN'">
-            {{ stepFormat.value.runTimer }}
+          <h4 *ngIf="stepFormat.value.formatType == 'RUN'" formatTime>
+            {{ stepFormat.value.runTimer | formatTime }}
           </h4>
           <h4 *ngIf="stepFormat.value.formatType == 'JAM'">
-            {{ stepFormat.value.jamTimer }}
+            {{ stepFormat.value.jamTimer | formatTime }}
           </h4>
           <h4 *ngIf="stepFormat.value.formatType == 'BEST_TRICKS'">
             {{ getBestTricksLabel(stepFormat) }}
