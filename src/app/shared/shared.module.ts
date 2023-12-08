@@ -28,6 +28,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { PlanningComponent } from './components/basic/planning/planning.component';
 import { NavBtnComponent } from './components/basic/nav-btn/nav-btn.component';
 import { NgChartsModule } from 'ng2-charts';
+import { FormatTimePipe } from './pipe/format-time.pipe';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { NgChartsModule } from 'ng2-charts';
     InfoTagComponent,
     NavBtnComponent,
     MapsCardComponent,
+    FormatTimePipe,
   ],
   imports: [
     CommonModule,
@@ -88,6 +90,7 @@ import { NgChartsModule } from 'ng2-charts';
     PlanningComponent,
     NavBtnComponent,
     NgChartsModule,
+    FormatTimePipe,
   ],
 })
 export class SharedModule {}

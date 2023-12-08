@@ -1,31 +1,19 @@
 <div
-  *ngIf="!toggle"
-  class="card {{ color }}"
+  class="card"
   [class.fitContent]="fitContent"
   [class.sideImgCard]="img != ''"
 >
   <div *ngIf="img != ''" class="sideImg">
     <img [src]="img" alt="" />
   </div>
-  <div class="main" [class.subCard]="subCard">
+  <div class="main">
     <loader class="loader" *ngIf="isLoading"></loader>
-    <div
-      [ngStyle]="{ 'margin-bottom': titleGap + 'vw' }"
-      class="header"
-      *ngIf="title != '' || btn != false"
-    >
+    <div class="header" *ngIf="title != '' || btn != false">
       <h3 *ngIf="title != ''">{{ title }}</h3>
-      <btn
-        *ngIf="close"
-        (click)="toggle = true"
-        icon="fa-solid fa-xmark fa-lg"
-        type="transparent"
-        class="btn"
-      ></btn>
+      <ng-content select="header"></ng-content>
       <btn
         *ngIf="redirect"
         [routerLink]="redirectLink"
-        (click)="toggle = true"
         icon="fa-solid fa-arrow-up-right-from-square"
         type="transparent"
         size="m"
@@ -38,8 +26,15 @@
         type="transparent"
         class="btn"
       ></btn>
+      <btn
+        *ngIf="toggleBtn"
+        (click)="toggle = !toggle"
+        icon="fa-solid fa-chevron-down"
+        type="transparent"
+        class="btn"
+      ></btn>
     </div>
-    <div class="content">
+    <div *ngIf="!toggle" [@toggleAnimation] class="content">
       <ng-content></ng-content>
     </div>
   </div>

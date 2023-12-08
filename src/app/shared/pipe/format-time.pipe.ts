@@ -15,6 +15,9 @@ export class FormatTimePipe implements PipeTransform {
     const paddedMinutes = minutes.toString().padStart(2, '0');
     const paddedSeconds = remainingSeconds.toString().padStart(2, '0');
 
+    if (minutes == 0) {
+      return `${paddedSeconds}s`;
+    }
     return `${paddedMinutes}m:${paddedSeconds}s`;
   }
 }

@@ -22,6 +22,8 @@ export class ContestRulesCardComponent implements OnInit {
   @Output() updateRule: EventEmitter<RulesModel> =
     new EventEmitter<RulesModel>();
 
+  showDeleteModal: boolean = false;
+
   edit: boolean = false;
   touched: boolean = false;
   form: any;
@@ -105,6 +107,7 @@ export class ContestRulesCardComponent implements OnInit {
   }
 
   submit() {
+    this.touched = true;
     if (this.form.invalid) return;
 
     this.updateRule.emit({ _id: this.rules._id, ...this.form.value });

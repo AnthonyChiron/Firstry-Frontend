@@ -33,6 +33,17 @@ export class ContestRulesPointsFormComponent implements OnInit {
         top: 10, //set that fits the best
       },
     },
+    plugins: {
+      legend: {
+        labels: {
+          boxWidth: 15,
+          font: {
+            size: 14,
+            family: 'HankenGrotesk',
+          },
+        },
+      },
+    },
   };
 
   constructor(private fb: FormBuilder, public fus: FormUtilityService) {}
@@ -60,8 +71,8 @@ export class ContestRulesPointsFormComponent implements OnInit {
         ),
         backgroundColor: ['#202020', '#4b4b4b', '#585858', '#999999'],
         borderWidth: 0,
-        hoverOffset: 20,
-        offset: 10,
+        hoverOffset: 25,
+        offset: 15,
         weight: 20,
         borderRadius: 1000,
         label: 'Points',

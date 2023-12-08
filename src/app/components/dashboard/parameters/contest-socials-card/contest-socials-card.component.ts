@@ -31,6 +31,8 @@ export class ContestSocialsCardComponent implements OnInit {
       youtube: [''],
       website: [''],
     });
+
+    this.initSocialsForm(this.contest);
   }
 
   initSocialsForm(contest: any) {

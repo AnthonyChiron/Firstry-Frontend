@@ -1,9 +1,12 @@
-<card
-  color="secondary"
-  [subCard]="true"
-  (btnClicked)="edit = !edit"
-  class="main"
+<confirmation-modal
+  [isVisible]="showDeleteModal"
+  (confirmed)="delete()"
+  (cancelled)="showDeleteModal = false"
+  title="Attention !"
+  message="Êtes-vous sûr de vouloir supprimer cette règle ?"
 >
+</confirmation-modal>
+<card type="secondary" (btnClicked)="edit = !edit" class="main">
   <form [formGroup]="form">
     <div class="header" *ngIf="rules && rules._id">
       <input-title
@@ -25,7 +28,7 @@
         *ngIf="edit"
         type="transparent"
         label="Supprimer"
-        (click)="delete()"
+        (click)="showDeleteModal = true"
       ></btn>
     </div>
     <div class="content">
