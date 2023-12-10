@@ -1,5 +1,5 @@
 <div
-  class="card"
+  class="card color-{{ color }} {{ size }}"
   [class.fitContent]="fitContent"
   [class.sideImgCard]="img != ''"
 >
@@ -8,9 +8,14 @@
   </div>
   <div class="main">
     <loader class="loader" *ngIf="isLoading"></loader>
-    <div class="header" *ngIf="title != '' || btn != false">
+    <div
+      class="header"
+      [class.toggle]="toggle"
+      *ngIf="title != '' || btn != false || toggleBtn"
+    >
       <h3 *ngIf="title != ''">{{ title }}</h3>
-      <ng-content select="header"></ng-content>
+      <ng-content select="[header]"></ng-content>
+
       <btn
         *ngIf="redirect"
         [routerLink]="redirectLink"
@@ -31,7 +36,7 @@
         (click)="toggle = !toggle"
         icon="fa-solid fa-chevron-down"
         type="transparent"
-        class="btn"
+        class="btnToggle"
       ></btn>
     </div>
     <div *ngIf="!toggle" [@toggleAnimation] class="content">

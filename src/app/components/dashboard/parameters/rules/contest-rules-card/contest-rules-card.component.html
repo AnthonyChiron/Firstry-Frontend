@@ -6,36 +6,36 @@
   message="Êtes-vous sûr de vouloir supprimer cette règle ?"
 >
 </confirmation-modal>
-<card type="secondary" (btnClicked)="edit = !edit" class="main">
+<card
+  size="m"
+  color="2"
+  [title]="
+    form.get('name').value ? form.get('name').value : 'Création de règle'
+  "
+  [toggleBtn]="true"
+  [toggle]="true"
+  (btnClicked)="edit = !edit"
+  class="main"
+>
+  <div header>
+    <btn
+      *ngIf="!edit"
+      type="transparent"
+      icon="fa-solid fa-pen-to-square"
+      (click)="edit = !edit"
+    ></btn>
+    <btn
+      *ngIf="edit"
+      type="transparent"
+      label="Supprimer"
+      (click)="showDeleteModal = true"
+    ></btn>
+  </div>
   <form [formGroup]="form">
-    <div class="header" *ngIf="rules && rules._id">
-      <input-title
-        name="name"
-        formControlName="name"
-        [edit]="edit"
-        [error]="
-          touched &&
-          (fus.isFieldInvalid('name') || form.get('name').value == '')
-        "
-      ></input-title>
-      <btn
-        *ngIf="!edit"
-        type="transparent"
-        icon="fa-solid fa-pen-to-square"
-        (click)="edit = !edit"
-      ></btn>
-      <btn
-        *ngIf="edit"
-        type="transparent"
-        label="Supprimer"
-        (click)="showDeleteModal = true"
-      ></btn>
-    </div>
     <div class="content">
       <div class="infosAndFormat">
         <div class="infos">
           <input-text
-            *ngIf="rules && !rules._id"
             name="name"
             formControlName="name"
             placeholder="Nom..."
