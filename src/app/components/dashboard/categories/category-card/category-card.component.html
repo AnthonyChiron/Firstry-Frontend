@@ -8,47 +8,38 @@
   (cancelled)="onDeleteCancelled()"
 ></confirmation-modal>
 <div class="main">
-  <card class="category" type="secondary" [toggleBtn]="true" *ngIf="category">
-    <form [formGroup]="categoryForm">
-      <div header>
-        <h3 *ngIf="isNew">Création de catégorie</h3>
-        <div class="title" *ngIf="!isNew">
-          <input-title
-            name="name"
-            type="Text"
-            placeholder="Nom..."
-            label="Nom de la catégorie"
-            formControlName="name"
-            [edit]="edit"
-            [error]="
-              touched &&
-              (fus.isFieldInvalid('name') ||
-                categoryForm.get('name').value == '')
-            "
-          ></input-title>
-
-          <span *ngIf="!edit && category.sports">-</span>
-          <p *ngIf="!edit && category.sports">{{ category.sports }}</p>
-        </div>
-
-        <div class="topBtns" *ngIf="!isNew">
-          <btn
-            type="transparent"
-            *ngIf="edit"
-            label="Supprimer la catégorie"
-            (click)="showDeleteModal = true"
-            class="deleteBtn"
-          ></btn>
-          <btn
-            *ngIf="!edit"
-            type="transparent"
-            icon="fa-solid fa-pen-to-square fa-lg"
-            (click)="edit = !edit"
-            class="editBtn"
-          ></btn>
-        </div>
+  <card
+    [title]="
+      categoryForm.get('name').value && !isNew
+        ? categoryForm.get('name').value + ' - ' + category.sports
+        : 'Création de catégorie'
+    "
+    class="category"
+    color="2"
+    size="s"
+    [toggleBtn]="true"
+    *ngIf="category"
+  >
+    <div header>
+      <div class="topBtns" *ngIf="!isNew">
+        <btn
+          type="transparent"
+          *ngIf="edit"
+          label="Supprimer la catégorie"
+          (click)="showDeleteModal = true"
+          class="deleteBtn"
+        ></btn>
+        <btn
+          *ngIf="!edit"
+          type="transparent"
+          icon="fa-solid fa-pen-to-square fa-lg"
+          (click)="edit = !edit"
+          class="editBtn"
+        ></btn>
       </div>
+    </div>
 
+    <form [formGroup]="categoryForm">
       <input-text
         *ngIf="isNew"
         name="name"

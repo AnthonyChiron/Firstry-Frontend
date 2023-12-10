@@ -33,26 +33,28 @@ import {
   ],
 })
 export class CardComponent implements OnInit {
+  // CARD
   @Input() title: string = '';
-  @Input() titleGap: string = '';
   @Input() isLoading: boolean = false;
+  @Input() size: string = 'l';
+  @Input() color: string = '1';
+  @Input() fitContent: boolean = false;
 
+  // BUTTONS
   @Input() close: boolean = false;
   @Input() redirect: boolean = false;
   @Input() redirectLink: string = '';
   @Input() btn: boolean = false;
   @Input() btnIcon: string = '';
   @Output() btnClicked: EventEmitter<any> = new EventEmitter();
+  @Input() toggleBtn: boolean = false;
+  @Input() toggle: boolean = false;
 
+  // WIDTH & HEIGHT IMG
   @Input() img: string = '';
   @Input() imgHeight: string = '50';
   @Input() cardWidth: string = '100';
-  @Input() fitContent: boolean = false;
 
-  @Input() type: string = 'primary';
-
-  @Input() toggleBtn: boolean = false;
-  @Input() toggle: boolean = false;
   isMobile: boolean;
 
   constructor(private ssc: ScreenSizeService) {}
