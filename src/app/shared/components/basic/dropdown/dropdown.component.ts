@@ -7,6 +7,7 @@ import {
   Output,
   EventEmitter,
   OnInit,
+  OnChanges,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -22,11 +23,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     },
   ],
 })
-export class DropdownComponent implements OnInit, ControlValueAccessor {
+export class DropdownComponent
+  implements OnInit, OnChanges, ControlValueAccessor
+{
   @Input() options: any[] = [];
   @Input() routes: any[] = [];
   @Input() fitContent: boolean = false;
   @Input() width: string = '';
+  @Input() label: string = '';
+  @Input() edit: boolean = true;
   @Output() selected: EventEmitter<any> = new EventEmitter<any>();
   showDropdown = false;
   selectedOption: any = { label: '', value: '' };
@@ -40,8 +45,11 @@ export class DropdownComponent implements OnInit, ControlValueAccessor {
     if (!this.selectedOption) {
       this.selectedOption = this.options[0];
     }
+    if (!this.selectedOption) {
+      this.selectedOption = '';
+    }
     this.value = this.selectedOption.value;
-    console.log(this.value);
+    this.registerOnChange(this.value);
   }
 
   registerOnChange(fn: (value: string) => void): void {
@@ -55,12 +63,15 @@ export class DropdownComponent implements OnInit, ControlValueAccessor {
   constructor(private elementRef: ElementRef) {}
 
   ngOnInit(): void {
-    console.log(this.options);
     if (
       this.options.length > 0 &&
       !this.options.find((option) => option.value === this.value)
     )
       this.registerOnChange(this.options[0].value);
+  }
+
+  ngOnChanges(): void {
+    this.writeValue(this.value);
   }
 
   toggleDropdown() {

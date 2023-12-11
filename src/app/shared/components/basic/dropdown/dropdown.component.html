@@ -1,5 +1,6 @@
 <div class="dropdown" [class.fitContent]="fitContent">
-  <button (click)="toggleDropdown()" class="dropdown-button">
+  <label *ngIf="label.length > 0">{{ label }}</label>
+  <button *ngIf="edit" (click)="toggleDropdown()" class="dropdown-button">
     <p
       *ngIf="
         (selectedOption && selectedOption.label != '') ||
@@ -30,4 +31,7 @@
       >{{ route.label }}</a
     >
   </div>
+  <p *ngIf="!edit">
+    {{ this.selectedOption.label ? this.selectedOption.label : "-" }}
+  </p>
 </div>

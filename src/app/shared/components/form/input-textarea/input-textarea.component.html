@@ -10,6 +10,6 @@
     class="{{ size }}"
   ></textarea>
 
-  <p *ngIf="!edit">{{ value }}</p>
+  <p *ngIf="!edit">{{ value ? value : "-" }}</p>
   <ng-content></ng-content>
 </div>

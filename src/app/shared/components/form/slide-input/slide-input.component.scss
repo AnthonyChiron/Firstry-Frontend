@@ -65,6 +65,11 @@ input:checked + .slider:before {
   transform: translateX(1vw);
 }
 
+input:disabled + .slider {
+  background-color: $firstry-black-3;
+  cursor: default;
+}
+
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
