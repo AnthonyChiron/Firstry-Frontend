@@ -23,6 +23,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class SlideInputComponent implements ControlValueAccessor {
   @Input() label: string;
   @Input() name: string;
+  @Input() edit: boolean = true;
 
   value: any;
   onChange: (value: any) => void = () => {};
@@ -41,8 +42,8 @@ export class SlideInputComponent implements ControlValueAccessor {
   }
 
   updateValue(value: string): void {
-    console.log(value);
-    this.value = value;
+    if (!this.edit) return;
+    console.log(this.edit);
     this.onChange(this.value);
     this.onTouched();
   }

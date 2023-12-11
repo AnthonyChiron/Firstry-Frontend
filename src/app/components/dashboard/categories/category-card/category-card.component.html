@@ -18,6 +18,7 @@
     color="2"
     size="s"
     [toggleBtn]="true"
+    [toggle]="true"
     *ngIf="category"
   >
     <div header>
@@ -87,7 +88,6 @@
         >
         </note>
       </div>
-
       <div class="inscription flexRow">
         <input-text
           class="maxRiders"
@@ -125,7 +125,75 @@
           name="isQualificationStep"
           formControlName="isQualificationStep"
           label="Qualification ?"
+          [edit]="edit"
+          (click)="toggleQualificationStep()"
         ></slide-input>
+      </div>
+
+      <div class="steps">
+        <h4>Étapes</h4>
+        <div class="stepsList">
+          <card
+            *ngIf="categoryForm.value.isQualificationStep"
+            color="3"
+            size="s"
+            class="step"
+          >
+            <div formGroupName="stepQualif">
+              <h4>Qualification</h4>
+              <input-text
+                type="number"
+                label="Nombre de riders par poule"
+                formControlName="ridersPerPool"
+                [edit]="edit"
+                [error]="
+                  touched &&
+                  categoryForm.get('stepQualif').get('ridersPerPool').invalid
+                "
+              ></input-text>
+              <input-text
+                type="number"
+                label="Nombre de riders qualifié.es"
+                formControlName="ridersQualifiedCount"
+                [edit]="edit"
+                [error]="
+                  touched &&
+                  categoryForm.get('stepQualif').get('ridersQualifiedCount')
+                    .invalid
+                "
+              ></input-text>
+              <dropdown
+                name="rules"
+                formControlName="rules"
+                label="Règle de l'étape"
+                [options]="rulesOptions"
+                [edit]="edit"
+              ></dropdown>
+            </div>
+          </card>
+          <card color="3" size="s" class="step">
+            <div formGroupName="stepFinal">
+              <h4 *ngIf="categoryForm.value.isQualificationStep">Finale</h4>
+              <input-text
+                type="number"
+                label="Nombre de riders par poule"
+                formControlName="ridersPerPool"
+                [edit]="edit"
+                [error]="
+                  touched &&
+                  categoryForm.get('stepFinal').get('ridersPerPool').invalid
+                "
+              ></input-text>
+              <dropdown
+                name="rules"
+                formControlName="rules"
+                label="Règle de l'étape"
+                [options]="rulesOptions"
+                [edit]="edit"
+              ></dropdown>
+            </div>
+          </card>
+        </div>
       </div>
 
       <div class="buttons" *ngIf="edit">

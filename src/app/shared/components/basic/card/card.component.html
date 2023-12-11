@@ -39,8 +39,10 @@
         class="btnToggle"
       ></btn>
     </div>
-    <div *ngIf="!toggle" [@toggleAnimation] class="content">
-      <ng-content></ng-content>
+    <div *ngIf="!toggle" [@toggleAnimation]>
+      <div [@toggleAnimation] class="content">
+        <ng-content></ng-content>
+      </div>
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@
     <input
       [name]="name"
       type="checkbox"
+      [disabled]="!edit"
       [ngModel]="value"
       (ngModelChange)="updateValue($event)"
     />

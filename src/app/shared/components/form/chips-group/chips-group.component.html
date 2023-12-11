@@ -15,7 +15,7 @@
     <ng-content></ng-content>
   </div>
   <div *ngIf="!edit" class="display">
-    <label *ngIf="label" for="chips">{{ label }}</label>
+    <label *ngIf="label" for="chips">{{ label || "-" }}</label>
     <div class="chips">
       <btn
         *ngFor="let chip of selectedChips"
