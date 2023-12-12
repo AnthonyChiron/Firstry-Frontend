@@ -46,6 +46,16 @@
   }
 }
 
+.drag-over {
+  background-color: #eee;
+}
+
+.drag-active {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .cal-hour-segment {
   display: flex;
   height: 100%;
@@ -68,6 +78,15 @@
       align-self: center;
       justify-self: center;
     }
+  }
+}
+
+.main {
+  display: flex;
+  gap: 1vw;
+
+  .right {
+    flex: 1;
   }
 }
 

@@ -50,6 +50,7 @@ export class CategoryCardComponent implements OnInit {
       stepQualif: this.fb.group({
         _id: [''],
         name: ['QUALIFICATION'],
+        startDate: [''],
         ridersPerPool: [
           '4',
           [Validators.required, Validators.min(1), this.fus.numberValidator()],
@@ -63,6 +64,7 @@ export class CategoryCardComponent implements OnInit {
       stepFinal: this.fb.group({
         _id: [''],
         name: ['FINALE'],
+        startDate: [''],
         ridersPerPool: [
           '4',
           [Validators.required, Validators.min(1), this.fus.numberValidator()],
@@ -167,6 +169,8 @@ export class CategoryCardComponent implements OnInit {
           };
         }),
       };
+
+      console.log(newCategory);
 
       if (!this.isNew) {
         newCategory.steps = [
