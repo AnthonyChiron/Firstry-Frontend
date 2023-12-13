@@ -18,7 +18,7 @@
     color="2"
     size="s"
     [toggleBtn]="true"
-    [toggle]="true"
+    [toggle]="!this.isNew"
     *ngIf="category"
   >
     <div header>
@@ -49,10 +49,7 @@
         label="Nom de la catégorie"
         formControlName="name"
         [edit]="edit"
-        [error]="
-          touched &&
-          (fus.isFieldInvalid('name') || categoryForm.get('name').value == '')
-        "
+        [error]="fus.isFieldInvalid('name')"
       ></input-text>
 
       <input-textarea
@@ -62,11 +59,7 @@
         label="Description"
         formControlName="description"
         [edit]="edit"
-        [error]="
-          touched &&
-          (fus.isFieldInvalid('description') ||
-            categoryForm.get('description').value == '')
-        "
+        [error]="fus.isFieldInvalid('description')"
       >
       </input-textarea>
 
@@ -78,11 +71,7 @@
           [edit]="edit"
         ></chips-group>
         <note
-          *ngIf="
-            touched &&
-            (fus.isFieldInvalid('sports') ||
-              categoryForm.get('sports').value == '')
-          "
+          *ngIf="fus.isFieldInvalid('sports')"
           type="error"
           text="Veuillez choisir au moins un sport !"
         >
@@ -97,11 +86,7 @@
           label="Nombre de riders maximum"
           formControlName="maxRiders"
           [edit]="edit"
-          [error]="
-            touched &&
-            (fus.isFieldInvalid('maxRiders') ||
-              categoryForm.get('maxRiders').value == '')
-          "
+          [error]="fus.isFieldInvalid('maxRiders')"
         ></input-text>
 
         <!-- registerPrice input -->
@@ -113,20 +98,16 @@
           label="Prix d'inscription"
           formControlName="registerPrice"
           [edit]="edit"
-          [error]="
-            touched &&
-            (fus.isFieldInvalid('registerPrice') ||
-              categoryForm.get('registerPrice').value == '')
-          "
+          [error]="fus.isFieldInvalid('registerPrice')"
         ></input-text>
 
         <slide-input
+          *ngIf="isNew"
           class="qualificationStep"
           name="isQualificationStep"
           formControlName="isQualificationStep"
           label="Qualification ?"
           [edit]="edit"
-          (click)="toggleQualificationStep()"
         ></slide-input>
       </div>
 
@@ -141,20 +122,12 @@
           >
             <div formGroupName="stepQualif">
               <h4>Qualification</h4>
-              <p-calendar
-                dateFormat="dd.mm.yy"
-                formControlName="startDate"
-                [disabled]="true"
-              ></p-calendar>
               <input-text
                 type="number"
                 label="Nombre de riders par poule"
                 formControlName="ridersPerPool"
                 [edit]="edit"
-                [error]="
-                  touched &&
-                  categoryForm.get('stepQualif').get('ridersPerPool').invalid
-                "
+                [error]="isStepFieldInvalid('stepQualif', 'ridersPerPool')"
               ></input-text>
               <input-text
                 type="number"
@@ -162,9 +135,7 @@
                 formControlName="ridersQualifiedCount"
                 [edit]="edit"
                 [error]="
-                  touched &&
-                  categoryForm.get('stepQualif').get('ridersQualifiedCount')
-                    .invalid
+                  isStepFieldInvalid('stepQualif', 'ridersQualifiedCount')
                 "
               ></input-text>
               <dropdown
@@ -184,10 +155,7 @@
                 label="Nombre de riders par poule"
                 formControlName="ridersPerPool"
                 [edit]="edit"
-                [error]="
-                  touched &&
-                  categoryForm.get('stepFinal').get('ridersPerPool').invalid
-                "
+                [error]="isStepFieldInvalid('stepFinal', 'ridersPerPool')"
               ></input-text>
               <dropdown
                 name="rules"
