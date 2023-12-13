@@ -41,10 +41,9 @@ export class SlideInputComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  updateValue(value: string): void {
+  updateValue(value: boolean): void {
     if (!this.edit) return;
-    console.log(this.edit);
-    this.onChange(this.value);
+    this.onChange(value);
     this.onTouched();
   }
 }

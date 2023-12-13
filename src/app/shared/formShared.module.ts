@@ -25,6 +25,7 @@ import { InputTitleComponent } from './components/form/input-title/input-title.c
 import { SlideInputComponent } from './components/form/slide-input/slide-input.component';
 import { ConfirmationModalComponent } from './components/form/confirmation-modal/confirmation-modal.component';
 import { InputSelectComponent } from './components/form/select/select.component';
+import { InputChipsComponent } from './components/form/input-chips/input-chips.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { InputSelectComponent } from './components/form/select/select.component'
     SlideInputComponent,
     ConfirmationModalComponent,
     InputSelectComponent,
+    InputChipsComponent,
   ],
   imports: [
     CommonModule,
@@ -75,6 +77,7 @@ import { InputSelectComponent } from './components/form/select/select.component'
     SlideInputComponent,
     ConfirmationModalComponent,
     InputSelectComponent,
+    InputChipsComponent,
   ],
 })
 export class FormSharedModule {}

@@ -19,11 +19,16 @@ export class ChipsGroupComponent implements ControlValueAccessor, OnInit {
   @Input() preSelect: boolean = false;
   @Input() edit: boolean = true;
   @Input() label: string = '';
+
   selectedChips: string[] = [];
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.chips);
+    if (this.preSelect && this.chips.length > 0)
+      this.selectedChips.push(this.chips[0].value);
+  }
 
   toggleSelection(chip) {
     if (this.isBinary) {
@@ -47,12 +52,14 @@ export class ChipsGroupComponent implements ControlValueAccessor, OnInit {
   }
 
   writeValue(value: [] | string): void {
+    console.log(value);
+    console.log(this.chips);
     if (value && Array.isArray(value)) {
       this.selectedChips = value;
     } else if (value) {
       this.selectedChips = [<string>value];
     }
-    if (this.preSelect && !value) {
+    if (this.preSelect && !value && this.chips.length > 0) {
       this.toggleSelection(this.chips[0]);
     }
   }

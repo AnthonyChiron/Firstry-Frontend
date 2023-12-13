@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 @Injectable({
@@ -13,8 +13,7 @@ export class FormUtilityService {
   }
 
   public isFieldInvalid(field) {
-    const formField = this.form.get(field);
-    return formField?.invalid && formField?.touched;
+    return this.form.get(field).invalid && this.form.get(field).touched;
   }
 
   // Validateur personnalisé pour vérifier que le champ n'est pas vide
