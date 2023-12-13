@@ -5,7 +5,7 @@
       *ngIf="edit"
       icon="fa-solid fa-plus"
       label="Ajouter une étape"
-      (click)="addStepFormat()"
+      (click)="_formRulesService.addStepFormat(stepFormatArray)"
     ></btn>
   </div>
   <div class="content">
@@ -52,7 +52,7 @@
             class="delete"
             type="danger"
             icon="fa-solid fa-xmark"
-            (click)="deleteStepFormat(i)"
+            (click)="_formRulesService.deleteStepFormat(stepFormatArray, i)"
           ></btn>
         </div>
       </div>

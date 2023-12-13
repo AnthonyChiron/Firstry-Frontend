@@ -13,7 +13,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
     </button>`,
   styleUrls: ['./btn.component.scss'],
 })
-export class BtnComponent {
+export class BtnComponent implements OnInit {
   @Input() type: String = 'primary';
   @Input() label: String = '';
   @Input() icon: String = '';
@@ -23,4 +23,8 @@ export class BtnComponent {
   isMobile: boolean = false;
 
   constructor() {}
+
+  ngOnInit(): void {
+    console.log(this.label);
+  }
 }

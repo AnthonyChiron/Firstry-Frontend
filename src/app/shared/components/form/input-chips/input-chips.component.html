@@ -1,0 +1,11 @@
+<div class="chips">
+  <btn
+    *ngFor="let option of options"
+    [type]="isSelected(option.value) ? 'primary' : 'third'"
+    [icon]="isSelected(option.value) ? 'fa-solid fa-check' : ''"
+    iconPos="left"
+    [label]="option.label"
+    (click)="toggleChip(option.value)"
+  >
+  </btn>
+</div>

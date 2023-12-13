@@ -18,7 +18,7 @@
     color="2"
     size="s"
     [toggleBtn]="true"
-    [toggle]="!this.isNew"
+    [toggle]="!edit"
     *ngIf="category"
   >
     <div header>
@@ -66,7 +66,7 @@
       <div *ngIf="contest.sports.length > 1" class="inputGroup">
         <h4>Disciplines</h4>
         <chips-group
-          [chips]="sports"
+          [chips]="sportsOptions"
           formControlName="sports"
           [edit]="edit"
         ></chips-group>
@@ -122,6 +122,15 @@
           >
             <div formGroupName="stepQualif">
               <h4>Qualification</h4>
+              <input-chips
+                *ngIf="edit"
+                [options]="dateOptions"
+                formControlName="startDate"
+                [edit]="edit"
+                [isBinary]="true"
+                label="Date"
+                [isValueDate]="true"
+              ></input-chips>
               <input-text
                 type="number"
                 label="Nombre de riders par poule"
@@ -150,6 +159,15 @@
           <card color="3" size="s" class="step">
             <div formGroupName="stepFinal">
               <h4 *ngIf="categoryForm.value.isQualificationStep">Finale</h4>
+              <input-chips
+                *ngIf="edit"
+                [options]="dateOptions"
+                formControlName="startDate"
+                [edit]="edit"
+                [isBinary]="true"
+                label="Date"
+                [isValueDate]="true"
+              ></input-chips>
               <input-text
                 type="number"
                 label="Nombre de riders par poule"

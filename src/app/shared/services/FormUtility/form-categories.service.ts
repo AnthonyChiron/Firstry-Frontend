@@ -4,6 +4,8 @@ import { FormUtilityService } from './form-utility.service';
 import { CategoryModel, CategoryModelDTO } from 'src/app/models/category.model';
 import { ContestModel } from 'src/app/models/contest.model';
 import { RulesModel } from 'src/app/models/rules.model';
+import { format } from 'date-fns';
+import { FormatDateJJMMDirective } from '../../directives/format-date-jjmm.directive';
 
 @Injectable({
   providedIn: 'root',
@@ -38,7 +40,7 @@ export class FormCategoriesService extends FormUtilityService {
     let stepFormGroup = this.formBuilder.group({
       _id: [''],
       name: [type],
-      startDate: [new Date(), Validators.required],
+      startDate: ['', Validators.required],
       ridersPerPool: [
         '4',
         [Validators.required, Validators.min(1), this.numberValidator()],
@@ -83,6 +85,7 @@ export class FormCategoriesService extends FormUtilityService {
       if (category.isQualificationStep)
         categoryForm.get('stepQualif').patchValue({
           _id: stepQualif._id,
+          // startDate: stepQualif.startDate,
           ridersPerPool: stepQualif.ridersPerPool,
           ridersQualifiedCount: stepQualif.ridersQualifiedCount,
           rules: stepQualif.rules,
@@ -91,6 +94,7 @@ export class FormCategoriesService extends FormUtilityService {
 
       categoryForm.get('stepFinal').patchValue({
         _id: stepFinal._id,
+        // startDate: stepQualif.startDate,
         ridersPerPool: stepFinal.ridersPerPool,
         rules: stepFinal.rules,
       });
@@ -107,12 +111,15 @@ export class FormCategoriesService extends FormUtilityService {
       contestId: contest._id,
     });
 
+    let dates = this.getDatesFromContestAsOptions(contest);
     categoryForm.get('stepQualif').patchValue({
       rules: rule,
+      startDate: dates[0].value,
     });
 
     categoryForm.get('stepFinal').patchValue({
       rules: rule,
+      startDate: dates.length > 1 ? dates[1].value : dates[0].value,
     });
 
     return categoryForm;
@@ -158,5 +165,26 @@ export class FormCategoriesService extends FormUtilityService {
   addQualificationStep(categoryForm: FormGroup) {
     categoryForm.addControl('stepQualif', this.createStepForm('QUALIFICATION'));
     return categoryForm;
+  }
+
+  getDatesFromContestAsOptions(contest: ContestModel) {
+    // Récupère toutes les dates entre la date de début et la date de fin du contest
+    let dates = [];
+    let startDate = new Date(contest.startDate);
+    let endDate = new Date(contest.endDate);
+
+    while (startDate <= endDate) {
+      dates.push(new Date(startDate));
+      startDate.setDate(startDate.getDate() + 1);
+    }
+
+    let datesOptions = dates.map((date, index) => {
+      return {
+        value: date,
+        label: 'Jour ' + (index + 1),
+      };
+    });
+    console.log(datesOptions);
+    return datesOptions;
   }
 }

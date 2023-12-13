@@ -13,6 +13,7 @@ import {
   jamTimersOptions,
   formatsOptions,
 } from 'src/app/constants/rulesConstants';
+import { FormRulesService } from 'src/app/shared/services/FormUtility/form-rules.service';
 
 @Component({
   selector: 'contest-rules-format-form',
@@ -22,7 +23,6 @@ import {
 export class ContestRulesFormatFormComponent implements OnInit {
   @Input() parentForm: FormGroup;
   @Input() edit: boolean = false;
-  @Input() touched: boolean = false;
 
   stepFormatArray: FormArray;
 
@@ -31,34 +31,13 @@ export class ContestRulesFormatFormComponent implements OnInit {
   bestTricksOptions = bestTricksOptions;
   formatsOptions = formatsOptions;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    protected _formRulesService: FormRulesService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.stepFormatArray = this.parentForm.get('stepFormats') as FormArray;
-  }
-
-  addStepFormat() {
-    const stepFormatGroup = this.fb.group({
-      order: [this.stepFormatArray.length],
-      formatType: ['', Validators.required],
-      runTimer: [0],
-      jamTimer: [0],
-      bestTricksCount: [0],
-    });
-
-    stepFormatGroup.patchValue({
-      formatType: this.formatsOptions[0].value,
-      runTimer: this.runTimersOptions[0].value,
-      jamTimer: this.jamTimersOptions[0].value,
-      bestTricksCount: this.bestTricksOptions[0].value,
-    });
-
-    this.stepFormatArray.push(stepFormatGroup);
-    console.log(this.stepFormatArray);
-  }
-
-  deleteStepFormat(index: number) {
-    this.stepFormatArray.removeAt(index);
   }
 
   getRunLabel(stepFormat) {

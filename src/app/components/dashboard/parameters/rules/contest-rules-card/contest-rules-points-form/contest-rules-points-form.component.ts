@@ -1,3 +1,4 @@
+import { FormRulesService } from 'src/app/shared/services/FormUtility/form-rules.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-utility.service';
@@ -12,7 +13,6 @@ import { ChartConfiguration } from 'chart.js';
 export class ContestRulesPointsFormComponent implements OnInit {
   @Input() parentForm: FormGroup;
   @Input() edit: boolean = false;
-  @Input() touched: boolean = false;
 
   pointCategoriesArray: FormArray;
 
@@ -46,14 +46,18 @@ export class ContestRulesPointsFormComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder, public fus: FormUtilityService) {}
+  constructor(
+    protected _formRulesService: FormRulesService,
+    private fb: FormBuilder,
+    public fus: FormUtilityService
+  ) {}
 
   ngOnInit(): void {
     this.pointCategoriesArray = this.parentForm.get(
       'pointCategories'
     ) as FormArray;
 
-    this.pointCategoriesArray.valueChanges.subscribe((value) => {
+    this.pointCategoriesArray.valueChanges.subscribe(() => {
       this.loadDataChart();
     });
 
@@ -80,23 +84,7 @@ export class ContestRulesPointsFormComponent implements OnInit {
     ];
   }
 
-  addPointCategory() {
-    const pointCategoryGroup = this.fb.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      points: [0, Validators.required],
-    });
-
-    pointCategoryGroup.patchValue({
-      name: '',
-      description: '',
-      points: 10,
-    });
-
-    this.pointCategoriesArray.push(pointCategoryGroup);
-  }
-
-  deletePointCategory(index: number) {
-    this.pointCategoriesArray.removeAt(index);
+  isFieldInvalid(control, field) {
+    return control.touched && control.get(field).invalid;
   }
 }

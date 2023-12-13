@@ -24,9 +24,9 @@ export class CategoryCardComponent implements OnInit {
   edit: boolean = false;
   showDeleteModal: boolean = false;
 
-  sports: any[];
+  sportsOptions: any[];
   rulesOptions: any[] = [];
-  stepFormat: any[] = [];
+  dateOptions: any[] = [];
 
   isNew: boolean = false;
 
@@ -41,6 +41,10 @@ export class CategoryCardComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    this.dateOptions = this._formCategories.getDatesFromContestAsOptions(
+      this.contest
+    );
+
     this.categoryForm = this._formCategories.createCategoriesForm();
     this.fus.setForm(this.categoryForm);
 
@@ -121,14 +125,14 @@ export class CategoryCardComponent implements OnInit {
   }
 
   initSports() {
-    this.sports = this.sportsService.formatSportsOptionFormContest(
+    this.sportsOptions = this.sportsService.formatSportsOptionFormContest(
       this.contest
     );
 
     // Si le contest n'a qu'un seul sport, on le met par défaut
-    if (this.sports.length == 1) {
+    if (this.sportsOptions.length == 1) {
       this.categoryForm.patchValue({
-        sports: [this.sports[0].value],
+        sports: [this.sportsOptions[0].value],
       });
     }
   }

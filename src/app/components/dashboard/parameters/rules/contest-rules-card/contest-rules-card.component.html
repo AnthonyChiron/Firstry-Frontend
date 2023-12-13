@@ -10,10 +10,12 @@
   size="m"
   color="2"
   [title]="
-    form.get('name').value ? form.get('name').value : 'Création de règle'
+    rulesForm.get('name').value
+      ? rulesForm.get('name').value
+      : 'Création de règle'
   "
   [toggleBtn]="true"
-  [toggle]="true"
+  [toggle]="!edit"
   (btnClicked)="edit = !edit"
   class="main"
 >
@@ -31,7 +33,7 @@
       (click)="showDeleteModal = true"
     ></btn>
   </div>
-  <form [formGroup]="form">
+  <form [formGroup]="rulesForm">
     <div class="content">
       <div class="infosAndFormat">
         <div class="infos">
@@ -41,10 +43,7 @@
             placeholder="Nom..."
             label="Nom"
             [edit]="edit"
-            [error]="
-              touched &&
-              (fus.isFieldInvalid('name') || form.get('name').value == '')
-            "
+            [error]="fus.isFieldInvalid('name')"
           ></input-text>
           <input-textarea
             name="description"
@@ -53,25 +52,19 @@
             label="Description"
             size="xs"
             [edit]="edit"
-            [error]="
-              touched &&
-              (fus.isFieldInvalid('description') ||
-                form.get('description').value == '')
-            "
+            [error]="fus.isFieldInvalid('description')"
           ></input-textarea>
         </div>
         <div class="sep"></div>
         <contest-rules-format-form
           [edit]="edit"
-          [touched]="touched"
-          [parentForm]="form"
+          [parentForm]="rulesForm"
           class="format"
         ></contest-rules-format-form>
       </div>
       <contest-rules-points-form
         [edit]="edit"
-        [touched]="touched"
-        [parentForm]="form"
+        [parentForm]="rulesForm"
         class="points"
       ></contest-rules-points-form>
     </div>

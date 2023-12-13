@@ -5,7 +5,7 @@
       *ngIf="edit"
       icon="fa-solid fa-plus"
       label="Ajouter une catégorie de points"
-      (click)="addPointCategory()"
+      (click)="_formRulesService.addPointCategory(pointCategoriesArray)"
     ></btn>
   </div>
   <div class="content">
@@ -30,10 +30,7 @@
             placeholder="Nom..."
             [label]="i == 0 ? 'Nom' : ''"
             [edit]="edit"
-            [error]="
-              touched &&
-              (fus.isFieldInvalid('name') || pointCategory.value.name == '')
-            "
+            [error]="isFieldInvalid(pointCategory, 'name')"
           ></input-text>
           <input-text
             class="description"
@@ -42,11 +39,7 @@
             placeholder="Description..."
             [label]="i == 0 ? 'Description' : ''"
             [edit]="edit"
-            [error]="
-              touched &&
-              (fus.isFieldInvalid('description') ||
-                pointCategory.value.description == '')
-            "
+            [error]="isFieldInvalid(pointCategory, 'description')"
           ></input-text>
           <input-select
             class="points"
@@ -59,7 +52,9 @@
             class="delete"
             type="danger"
             icon="fa-solid fa-xmark"
-            (click)="deletePointCategory(i)"
+            (click)="
+              _formRulesService.deletePointCategory(pointCategoriesArray, i)
+            "
           ></btn>
         </div>
       </div>
