@@ -1,5 +1,6 @@
+import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 import { StepsService } from './../../../data/StepsService/steps-service.service';
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import {
   CalendarEvent,
   CalendarEventTimesChangedEvent,
@@ -13,10 +14,11 @@ import { StepModelDTO, stepModelToDTO } from 'src/app/models/step.model';
   templateUrl: './planning.component.html',
   styleUrls: ['./planning.component.scss'],
 })
-export class PlanningComponent implements OnInit, OnChanges {
+export class PlanningComponent implements OnInit, OnChanges, OnDestroy {
   @Input() categories: any[] = [];
   @Input() contest: ContestModel;
   @Input() edit: boolean = false;
+  @Input() height: string = '100';
 
   eventsCat: CalendarEvent[] = [];
 
@@ -27,16 +29,27 @@ export class PlanningComponent implements OnInit, OnChanges {
   days = [];
   viewDate: Date;
   selectedDay: number = 0;
+  isMobile: boolean = false;
 
-  constructor(private _stepsService: StepsService) {}
+  constructor(
+    private _stepsService: StepsService,
+    private _screenSizeService: ScreenSizeService
+  ) {}
 
   ngOnInit(): void {
     this.parseCategoriesIntoEvents();
     this.initDates();
+    this._screenSizeService.sizeChanged.subscribe((isMobile) => {
+      this.isMobile = isMobile;
+    });
   }
 
   ngOnChanges() {
     this.parseCategoriesIntoEvents();
+  }
+
+  ngOnDestroy() {
+    this._screenSizeService.sizeChanged.unsubscribe();
   }
 
   parseCategoriesIntoEvents() {

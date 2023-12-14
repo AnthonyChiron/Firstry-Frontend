@@ -2,13 +2,6 @@
 @import "../../../../../styles/variables.scss";
 
 .inputGroup {
-  label {
-    font-variation-settings: "wght" $mobile_fontLabelWeight;
-    font-family: "HankenGrotesk";
-    color: $firstry-black-2;
-    font-size: $mobile_fontLabelSize;
-  }
-
   textarea {
     border: 1px solid transparent;
     border-radius: 8px;

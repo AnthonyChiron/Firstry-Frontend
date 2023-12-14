@@ -25,18 +25,25 @@ card {
     justify-content: space-between;
     width: 100%;
     padding-bottom: 1vw;
-    border-bottom: 1px solid $firstry-white-4;
-    margin-bottom: 5vh;
+    margin-bottom: 3vw;
+    gap: 3vw;
+
+    .poster {
+      width: auto;
+      height: 25vw;
+      border-radius: 11px;
+    }
 
     .contestName {
+      flex: 1;
       margin-bottom: 1vh;
 
       .title {
-        font-size: 30px;
+        font-size: 25px;
       }
 
       .subtitle {
-        font-size: 15px;
+        font-size: 12px;
         font-variation-settings: "wght" 400;
 
         b {
@@ -49,18 +56,14 @@ card {
   .content {
     display: flex;
     width: 100%;
+    flex-direction: column;
+    gap: 3vw;
 
     .leftPannel {
       display: flex;
       flex-direction: column;
       flex: 4;
       width: 100%;
-
-      .poster {
-        width: auto;
-        height: 80vw;
-        border-radius: 11px;
-      }
 
       .galery {
         width: auto;
@@ -80,7 +83,7 @@ card {
 .flex {
   display: flex;
   width: 100%;
-  gap: 2vw;
+  gap: 3vw;
 }
 
 .flexColumn {
@@ -88,7 +91,7 @@ card {
   flex: 1;
   flex-direction: column;
   width: 100%;
-  gap: 2vw;
+  gap: 3vw;
 }
 
 @media screen and (min-width: 768px) {
@@ -122,6 +125,7 @@ card {
 
     .content {
       gap: 3vw;
+      flex-direction: row;
 
       .leftPannel {
         display: flex;

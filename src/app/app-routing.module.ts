@@ -1,3 +1,4 @@
+import { TestComponent } from './components/test/test.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -41,6 +42,10 @@ const routes: Routes = [
       import('./components/account/account.module').then(
         (m) => m.AccountModule
       ),
+  },
+  {
+    path: 'test',
+    component: TestComponent,
   },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: '/not-found' },

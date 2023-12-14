@@ -1,5 +1,16 @@
 <div class="main" *ngIf="contest">
   <div class="header">
+    <img
+      class="poster"
+      [src]="
+        contest.branding && contest.branding.poster
+          ? contest.branding.poster
+          : ''
+      "
+      alt=""
+      *ngIf="isMobile"
+    />
+    <p>TEST</p>
     <div class="contestName">
       <h1 class="title">{{ contest.name }}</h1>
       <p class="subtitle">
@@ -12,7 +23,6 @@
       <btn label="Résultats"></btn>
     </div>
   </div>
-  <div class="sep"></div>
   <div class="content">
     <div class="leftPannel">
       <div class="flex">
@@ -24,6 +34,7 @@
               : ''
           "
           alt=""
+          *ngIf="!isMobile"
         />
         <card title="Description"
           ><p>{{ contest.description }}</p></card
@@ -53,7 +64,11 @@
       </div>
     </div>
     <div class="rightPannel">
-      <planning class="planning" [categories]="contest.categories"></planning>
+      <planning
+        class="planning"
+        [contest]="contest"
+        [categories]="contest.categories"
+      ></planning>
     </div>
   </div>
 </div>

@@ -71,10 +71,8 @@ export class ContestSocialsCardComponent implements OnInit {
       branding: this.contest.branding,
       socials: this.socialsForm.value,
     };
-    console.log(contestForm);
 
     this.cs.update(this.contest._id, contestForm).subscribe((contest) => {
-      console.log(contest);
       this.contest = contest;
 
       this.contest.startDate = new Date(contest.startDate);
