@@ -18,7 +18,6 @@ export class ContestBrandingCardComponent {
     this.cs
       .uploadContestBrandImage(this.contest._id, img)
       .subscribe((contest) => {
-        console.log(contest);
         this.contest.branding = contest.branding;
       });
   }

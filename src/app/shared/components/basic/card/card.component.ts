@@ -62,7 +62,6 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
     this.isMobile = this.ssc.isMobile;
     this.ssc.sizeChanged.subscribe((isMobile) => {
-      console.log(this.isMobile);
       this.isMobile = isMobile;
     });
   }

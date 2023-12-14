@@ -21,7 +21,6 @@ export class MapsCardComponent {
       zoom: 8,
       center: { lat: -34.397, lng: 150.644 }, // Coordonnées par défaut
     });
-    console.log(this.address);
 
     const geocoder = new google.maps.Geocoder();
     this.geocodeAddress(geocoder, map);

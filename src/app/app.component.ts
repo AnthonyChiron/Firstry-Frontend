@@ -18,7 +18,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.isMobile = this.screenSizeService.isMobile;
     this.screenSizeService.sizeChanged.subscribe((isMobile) => {
       this.isMobile = isMobile;
-      console.log('isMobile', isMobile);
       if (isMobile) this.toggleSidebar = false;
     });
   }

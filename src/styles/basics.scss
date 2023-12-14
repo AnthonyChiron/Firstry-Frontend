@@ -1,0 +1,67 @@
+@import "variables.scss";
+@import "colors.scss";
+
+p,
+h2,
+h3,
+h4,
+label {
+  font-family: "HankenGrotesk";
+}
+
+p {
+  font-size: 13px;
+  font-variation-settings: "wght" 500;
+}
+
+.tag {
+  font-size: 10px;
+  font-variation-settings: "wght" 700;
+}
+
+h1 {
+  font-family: "Akira";
+  font-size: 25px;
+}
+
+h2 {
+  font-size: 25px;
+  font-variation-settings: "wght" 900;
+}
+
+h3 {
+  font-size: 20px;
+  font-variation-settings: "wght" 700;
+}
+
+h4 {
+  font-size: 20px;
+  font-variation-settings: "wght" 700;
+}
+
+label {
+  font-variation-settings: "wght" 900;
+  font-size: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  p {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 15px;
+  }
+}

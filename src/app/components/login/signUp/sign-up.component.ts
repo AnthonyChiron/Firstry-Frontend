@@ -88,7 +88,6 @@ export class SignUpComponent implements OnInit {
         )
       );
     }
-    console.log(this.riderForm.value);
     if (this.activeIndex == 1) {
       this.organizerFormTouched = true;
       this.riderFormTouched = true;

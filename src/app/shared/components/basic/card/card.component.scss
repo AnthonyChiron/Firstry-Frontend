@@ -22,48 +22,43 @@
   .color-4 {
     background-color: $firstry-black-4;
   }
+}
 
-  .xs {
-    .main {
-      padding: 0.5vw;
-    }
+.size-xs {
+  padding: 0vw;
 
-    h3 {
-      font-size: 20px;
-    }
+  .header h3 {
+    font-size: 20px;
   }
+}
 
-  .s {
-    .main {
-      padding: 0.8vw;
-    }
+.size-s {
+  padding: 0vw;
 
-    h3 {
-      font-size: 20px;
-    }
+  .header h3 {
+    font-size: 20px;
   }
+}
 
-  .m {
-    .main {
-      padding: 1vw;
-    }
+.size-m {
+  padding: 0.8vw;
 
-    h3 {
-      font-size: 20px;
-    }
+  .header h3 {
+    font-size: 0px;
   }
+}
 
-  .l {
-    h3 {
-      font-size: 20px;
-    }
+.size-l {
+  padding: 1.5vw;
+
+  .header h3 {
+    font-size: 20px;
   }
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  padding: 3vw;
   width: 100%;
   height: 100%;
 }
@@ -87,10 +82,7 @@
   margin-bottom: 4vw;
 
   h3 {
-    font-variation-settings: "wght" $mobile_fontCardTitleWeight;
-    font-family: "HankenGrotesk";
     color: $firstry-black-2;
-    font-size: $mobile_fontCardTitleSize;
     width: 90%;
   }
 
@@ -163,6 +155,5 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 1.5vw;
   }
 }

@@ -1,6 +1,6 @@
 <card>
   <div class="header">
-    <h2>Planning</h2>
+    <h3>Planning</h3>
     <div class="selector">
       <button (click)="prevDate()" [disabled]="selectedDay == 0">
         <i class="fa-solid fa-chevron-left"></i>
@@ -18,11 +18,11 @@
     [dayStartHour]="dayStartHour"
     [dayEndHour]="dayEndHour"
     [hourSegments]="4"
-    [hourSegmentHeight]="15"
     [refresh]="refresh"
     (eventTimesChanged)="eventTimesChanged($event)"
     [hourSegmentTemplate]="hourSegmentTemplate"
     [eventTemplate]="eventTemplate"
+    [hourSegmentHeight]="isMobile ? 10 : 15"
   >
   </mwl-calendar-day-view>
 
@@ -36,7 +36,9 @@
         <div class="sep"></div
       ></span>
       <span class="cal-time" *ngIf="segment.isStart">
-        {{ segment.date | date : "HH:mm" }}
+        <div class="time">
+          {{ segment.date | date : "HH:mm" }}
+        </div>
       </span>
     </div>
   </ng-template>

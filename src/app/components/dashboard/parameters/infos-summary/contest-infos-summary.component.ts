@@ -5,16 +5,10 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
   templateUrl: './contest-infos-summary.component.html',
   styleUrls: ['./contest-infos-summary.component.scss'],
 })
-export class ContestInfosSummaryComponent implements OnInit, OnChanges {
+export class ContestInfosSummaryComponent implements OnInit {
   @Input() contest: any;
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.contest);
-  }
-
-  ngOnChanges(): void {
-    console.log(this.contest);
-  }
+  ngOnInit(): void {}
 }

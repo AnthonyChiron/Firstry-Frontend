@@ -45,7 +45,6 @@ export class InputTitleComponent {
   }
 
   updateValue(value: string): void {
-    console.log(value);
     this.value = value;
     this.onChange(this.value);
     this.onTouched();
