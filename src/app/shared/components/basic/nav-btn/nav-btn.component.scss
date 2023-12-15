@@ -32,8 +32,11 @@ button {
 .primary {
   background-color: $firstry-white-2;
   color: $firstry-black-2;
-  font-variation-settings: "wght" 800;
   border: 1px solid transparent;
+
+  p {
+    font-variation-settings: "wght" 800;
+  }
 }
 
 .primary:hover {
