@@ -37,6 +37,8 @@ $width-photo: 50vw;
     }
 
     .infos {
+      position: relative;
+      right: 5vw;
       display: flex;
       flex-direction: column;
       align-self: flex-end;
@@ -46,6 +48,7 @@ $width-photo: 50vw;
       padding-left: 8px;
       padding-right: 8px;
       height: 100%;
+      width: 40vw;
 
       .name {
         color: $firstry-white-1;
@@ -147,7 +150,9 @@ $width-photo: 50vw;
   }
 
   .card .content .infos {
-    width: 45%;
+    position: relative;
+    right: 0vw;
+    width: 35vw;
 
     .name {
       height: 30%;

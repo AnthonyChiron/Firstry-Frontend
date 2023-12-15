@@ -23,3 +23,19 @@ export interface ContestModel extends GenericModel {
     website: string;
   };
 }
+
+export function parseContestModel(contest): ContestModel {
+  return {
+    _id: contest._id,
+    name: contest.name,
+    description: contest.description,
+    startDate: new Date(contest.startDate),
+    endDate: new Date(contest.endDate),
+    registrationEndDate: contest.registrationEndDate,
+    sports: contest.sports,
+    categories: contest.categories,
+    location: contest.location,
+    branding: contest.branding,
+    socials: contest.socials,
+  };
+}

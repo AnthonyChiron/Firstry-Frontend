@@ -2,13 +2,6 @@
 @import "../../../../../styles/variables.scss";
 
 .inputGroup {
-  h3 {
-    font-variation-settings: "wght" $mobile_fontCardTitleWeight;
-    font-family: "HankenGrotesk";
-    color: $firstry-black-2;
-    font-size: $mobile_fontCardTitleSize - 3;
-  }
-
   input {
     font-variation-settings: "wght" $mobile_fontCardTitleWeight;
     font-family: "HankenGrotesk";

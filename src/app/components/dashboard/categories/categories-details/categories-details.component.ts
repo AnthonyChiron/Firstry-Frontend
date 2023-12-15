@@ -10,6 +10,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ContestsService } from 'src/app/shared/data/ContestsService/contests.service';
 import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-utility.service';
+import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 
 @Component({
   selector: 'categories-details',
@@ -25,15 +26,19 @@ import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-uti
 })
 export class CategoriesDetailsComponent implements OnInit {
   contest: any;
+  isMobile: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private cs: ContestsService,
-    private fb: FormBuilder,
-    protected fus: FormUtilityService
+    private _screenSize: ScreenSizeService
   ) {}
 
   ngOnInit(): void {
+    this._screenSize.isMobile$.subscribe((result) => {
+      console.log(result);
+      this.isMobile = result;
+    });
     this.activatedRoute.params.subscribe((params) => {
       this.cs.getById(params.contestId).subscribe((contest) => {
         this.contest = contest;

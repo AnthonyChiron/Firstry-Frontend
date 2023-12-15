@@ -26,9 +26,11 @@ export class MobileSidebarComponent {
 
   constructor(
     protected authService: AuthService,
-    protected screenSizeService: ScreenSizeService
+    protected _screenSize: ScreenSizeService
   ) {
-    if (screenSizeService.isDesktop) this.toggleSidebar = false;
+    this._screenSize.isMobile$.subscribe((isMobile) => {
+      if (!isMobile) this.toggleSidebar = false;
+    });
   }
 
   ngOnInit(): void {

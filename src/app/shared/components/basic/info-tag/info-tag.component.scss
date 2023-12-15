@@ -10,10 +10,32 @@
   background-color: $firstry-white-1;
   color: $firstry-black-3;
   width: fit-content;
+  align-items: center;
 
   p {
     margin-left: 8px;
+    text-align: center;
   }
+}
+
+.xs p,
+.xs i {
+  font-size: 8px;
+}
+
+.s p,
+.s i {
+  font-size: 10px;
+}
+
+.m p,
+.m i {
+  font-size: 12px;
+}
+
+.l p,
+.l i {
+  font-size: 14px;
 }
 
 @media screen and (min-width: 768px) {
@@ -23,20 +45,24 @@
     border-radius: 10px;
     font-size: 14px;
   }
-}
 
-.xs {
-  font-size: 8px;
-}
+  .xs p,
+  .xs i {
+    font-size: 8px;
+  }
 
-.s {
-  font-size: 10px;
-}
+  .s p,
+  .xs i {
+    font-size: 10px;
+  }
 
-.m {
-  font-size: 12px;
-}
+  .m p,
+  .m i {
+    font-size: 12px;
+  }
 
-.l {
-  font-size: 14px;
+  .l p,
+  .l i {
+    font-size: 14px;
+  }
 }
