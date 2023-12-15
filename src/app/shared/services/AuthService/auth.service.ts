@@ -22,6 +22,7 @@ export class AuthService extends BaseHttpService {
   // Méthode pour enregistrer un utilisateur
   signUp(signUpForm: SignUpModel, photo) {
     const formData = new FormData();
+    console.log(photo);
     formData.append('photo', photo);
     formData.append('signUpForm', JSON.stringify(signUpForm));
     return this.http.post(`${this.baseUrl}auth/signup`, formData);

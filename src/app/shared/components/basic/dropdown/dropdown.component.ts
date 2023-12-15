@@ -36,10 +36,9 @@ export class DropdownComponent
   showDropdown = false;
   selectedOption: any = { label: '', value: '' };
 
-  @Input() value: any;
-
-  private onChange: Function = (value: any) => {};
-  onTouched: () => void = () => {};
+  value: any;
+  onChange: (value: any) => void;
+  onTouched: () => void;
 
   writeValue(value: string): void {
     this.selectedOption = this.options.find((option) => option.value === value);
@@ -50,7 +49,7 @@ export class DropdownComponent
       this.selectedOption = '';
     }
     this.value = this.selectedOption.value;
-    this.onChange(this.value);
+    this.registerOnChange(this.value);
   }
 
   registerOnChange(fn: (value: string) => void): void {
@@ -80,7 +79,6 @@ export class DropdownComponent
   }
 
   selectOption(option: any) {
-    this.selected.emit(option);
     this.selectedOption = option;
     this.onChange(option.value); // Notifie Angular de la modification
     this.showDropdown = false;

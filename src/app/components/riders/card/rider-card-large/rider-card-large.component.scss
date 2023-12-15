@@ -85,6 +85,11 @@ $width-photo: 50vw;
           height: 5vh;
           width: 15vw;
 
+          label {
+            font-size: 14px;
+            font-variation-settings: "wght" 700;
+          }
+
           p {
             font-size: 11px;
             font-style: italic;

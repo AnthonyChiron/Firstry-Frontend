@@ -9,6 +9,12 @@
   width: 100%;
   height: 100%;
 
+  label {
+    font-variation-settings: "wght" 700;
+    font-family: "HankenGrotesk";
+    color: $firstry-black-2;
+  }
+
   .input {
     display: flex;
     justify-content: center;

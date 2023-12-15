@@ -17,6 +17,7 @@ export class ContestListRulesCardComponent implements OnInit {
   ngOnInit(): void {
     this.rs.getAllByContestId(this.contest._id).subscribe((rules) => {
       this.rules = rules;
+      console.log(this.rules);
     });
   }
 
@@ -28,6 +29,7 @@ export class ContestListRulesCardComponent implements OnInit {
 
   updateRule(rule: RulesModel) {
     if (rule && rule._id) {
+      console.log(rule);
       this.rs
         .update(rule._id, {
           name: rule.name,

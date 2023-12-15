@@ -5,6 +5,13 @@
   display: flex;
 }
 
+label {
+  font-variation-settings: "wght" $mobile_fontLabelWeight;
+  font-family: "HankenGrotesk";
+  color: $firstry-black-2;
+  font-size: $mobile_fontLabelSize;
+}
+
 .chips {
   margin-top: $mobile_marginInput;
   display: flex;

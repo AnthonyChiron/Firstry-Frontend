@@ -14,7 +14,6 @@ import { ScreenSizeService } from './shared/services/screenSize/screen-size.serv
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { SharedModule } from './shared/shared.module';
 import { DesktopSidebarComponent } from './components/sidebar/desktop-sidebar/desktop-sidebar.component';
-import { TestComponent } from './components/test/test.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { TestComponent } from './components/test/test.component';
     MobileSidebarComponent,
     DesktopSidebarComponent,
     TopbarComponent,
-    TestComponent,
   ],
   imports: [
     AppRoutingModule,
