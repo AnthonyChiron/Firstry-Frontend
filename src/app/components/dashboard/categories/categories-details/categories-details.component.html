@@ -1,4 +1,8 @@
-<div [@fadeInOut] class="main" *ngIf="contest">
+<div
+  [@fadeInOut]
+  [class]="'main ' + (isMobile ? 'flexCardColumn' : 'flexCardRow')"
+  *ngIf="contest"
+>
   <list-categories class="categories" [contest]="contest"> </list-categories>
   <planning
     class="planning"

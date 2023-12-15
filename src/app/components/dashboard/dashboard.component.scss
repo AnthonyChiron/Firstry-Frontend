@@ -5,20 +5,15 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 7vw;
+  gap: $mobile_gap_card;
 }
 
-.dashboardNav {
+.navbarDasboard {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
 
-  .contestNav {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 5vw;
-  }
-
-  .cardNav {
+  .navBtns {
     flex: 3;
     display: flex;
     align-items: center;
@@ -37,42 +32,28 @@
 .title {
   align-self: center;
   margin: 0;
-  font-size: $mobile_fontTitleSize;
-}
-
-.cards {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 7vw;
 }
 
 @media (min-width: 768px) {
   .title {
-    font-size: $pc_fontTitleSize;
     align-self: start;
   }
 
   .main {
-    gap: 3vw;
+    gap: $pc_gap_card;
   }
 
-  .dashboardNav {
+  .navbarDasboard {
     padding-bottom: 8px;
     border-bottom: 1px solid $firstry-white-3;
 
-    .contestNav {
-      flex: 2;
-      gap: 1vw;
-
-      dropdown {
-        min-width: 10vw;
-      }
+    .contestDropDown {
+      min-width: 10vw;
     }
 
-    .cardNav {
+    .navBtns {
       flex: 4;
-      gap: 1.5vw;
+      gap: 1vw;
 
       .active {
         ::ng-deep .third {
@@ -81,8 +62,5 @@
         }
       }
     }
-  }
-
-  .content {
   }
 }

@@ -3,6 +3,8 @@
 @import "./styles/primeng.scss";
 @import "./styles/variables.scss";
 @import "./styles/colors.scss";
+@import "./styles/components.scss";
+@import "./styles/basics.scss";
 @import "../node_modules/angular-calendar/scss/angular-calendar.scss";
 
 @font-face {
@@ -52,23 +54,23 @@ form {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 3vw;
+  gap: $mobile_gap_card;
 }
 
 .flexColumn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3vw;
+  gap: $mobile_gap_card;
 }
 
 @media only screen and (min-width: 768px) {
   .flexRow {
-    gap: 1vw;
+    gap: $pc_gap_card;
   }
 
   .flexColumn {
-    gap: 1vw;
+    gap: $pc_gap_card;
   }
 }
 

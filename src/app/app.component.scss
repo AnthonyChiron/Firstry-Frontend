@@ -1,25 +1,9 @@
 @import "../styles/components.scss";
 @import "../styles/colors.scss";
 
-@media only screen and (min-width: 768px) {
-  .main {
-    display: flex;
-    background-color: black;
-  }
-
-  .content {
-    border-radius: 0px;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .main {
-    flex-direction: column;
-    background-color: $firstry-white-2;
-  }
-  .content {
-    border-radius: 15px;
-  }
+.main {
+  flex-direction: column;
+  background-color: $firstry-white-2;
 }
 
 .navbar {
@@ -37,6 +21,7 @@
   position: relative;
   transition: 0.3s;
   filter: brightness(1);
+  border-radius: 15px;
 }
 
 .container {
@@ -47,6 +32,24 @@
 
 .navbar:hover ~ .content {
   filter: brightness(0.2);
+}
+
+@media only screen and (min-width: 768px) {
+  .main {
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+  }
+
+  .content {
+    border-radius: 0px;
+  }
+
+  .container {
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    width: 90%;
+  }
 }
 
 // .navbar:hover ~ .content > .shadow {

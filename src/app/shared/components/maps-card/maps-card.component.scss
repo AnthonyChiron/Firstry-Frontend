@@ -1,6 +1,7 @@
 .map {
   border-radius: 11px;
   position: relative;
+  min-height: 40vw;
 
   h2 {
     position: absolute;
@@ -9,5 +10,15 @@
     color: black;
     z-index: 1;
     font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .map {
+    min-height: 10vw;
+
+    h2 {
+      font-size: 30px;
+    }
   }
 }

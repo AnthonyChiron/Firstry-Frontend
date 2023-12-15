@@ -36,7 +36,9 @@
         <div class="sep"></div
       ></span>
       <span class="cal-time" *ngIf="segment.isStart">
-        {{ segment.date | date : "HH:mm" }}
+        <div class="time">
+          {{ segment.date | date : "HH:mm" }}
+        </div>
       </span>
     </div>
   </ng-template>
@@ -44,9 +46,9 @@
   <ng-template #eventTemplate let-weekEvent="weekEvent">
     <div class="cal-event">
       <div class="content">
-        <h3>
+        <h4>
           <b>{{ weekEvent.event.title }}</b> - {{ weekEvent.event.meta.sport }}
-        </h3>
+        </h4>
         <div class="tags">
           <info-tag
             size="s"

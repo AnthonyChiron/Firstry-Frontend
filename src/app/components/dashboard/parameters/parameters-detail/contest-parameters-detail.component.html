@@ -1,18 +1,20 @@
-<div class="main" [@fadeInOut] *ngIf="contest">
-  <div class="mainCards">
-    <loader *ngIf="isLoading"></loader>
-    <p *ngIf="!isLoading && !contest">Contest introuvable</p>
-    <div class="infos">
-      <contest-infos-card [contest]="contest"></contest-infos-card>
-      <contest-socials-card [contest]="contest"></contest-socials-card>
-    </div>
+<div
+  [@fadeInOut]
+  [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'"
+  *ngIf="contest"
+>
+  <loader *ngIf="isLoading"></loader>
+  <p *ngIf="!isLoading && !contest">Contest introuvable</p>
+  <div class="flexCardColumn">
+    <contest-infos-card [contest]="contest"></contest-infos-card>
+    <contest-socials-card [contest]="contest"></contest-socials-card>
+  </div>
 
-    <div class="others">
-      <contest-list-rules-card [contest]="contest"></contest-list-rules-card>
-      <contest-branding-card
-        class="branding"
-        [contest]="contest"
-      ></contest-branding-card>
-    </div>
+  <div class="flexCardColumn">
+    <contest-list-rules-card [contest]="contest"></contest-list-rules-card>
+    <contest-branding-card
+      class="branding"
+      [contest]="contest"
+    ></contest-branding-card>
   </div>
 </div>

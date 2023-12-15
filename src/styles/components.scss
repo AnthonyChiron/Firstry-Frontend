@@ -23,3 +23,33 @@
     rgba(0, 212, 255, 0) 100%
   );
 }
+
+.flexCardRow {
+  display: flex;
+  flex-direction: row;
+  gap: $mobile_gap_card;
+}
+
+.flexCardColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $mobile_gap_card;
+}
+
+@media screen and (min-width: 768px) {
+  .flexCardRow {
+    display: flex;
+    flex-direction: row;
+    gap: $pc_gap_card;
+    width: 100%;
+    height: 100%;
+  }
+
+  .flexCardColumn {
+    display: flex;
+    flex-direction: column;
+    gap: $pc_gap_card;
+    width: 100%;
+    height: 100%;
+  }
+}
