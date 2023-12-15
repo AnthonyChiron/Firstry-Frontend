@@ -7,6 +7,11 @@
   justify-content: space-between;
   margin-bottom: 2vw;
 
+  h2 {
+    font-size: 30px;
+    font-variation-settings: "wght" $mobile_fontCardTitleWeight;
+  }
+
   .selector {
     display: flex;
     align-items: center;
@@ -64,21 +69,14 @@
     font-variation-settings: "wght" 500;
     font-size: 15px;
     text-align: left;
-    align-items: flex-start;
-    justify-content: flex-end;
-    padding-right: 1vw;
 
     .sep {
-      width: 5px;
+      width: 5%;
       margin-left: 70%;
       height: 1px;
       background-color: $firstry-white-4;
+      align-self: center;
       justify-self: center;
-    }
-
-    .time {
-      position: relative;
-      top: -8px;
     }
   }
 }
@@ -104,59 +102,18 @@
     padding: 5px 5px 10px 5px;
     height: 100%;
 
+    h3 {
+      font-size: 15px;
+      font-variation-settings: "wght" 500;
+
+      b {
+        font-variation-settings: "wght" 900;
+      }
+    }
+
     .tags {
       display: flex;
       gap: 0.5vw;
-    }
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .header {
-    margin-bottom: 5vw;
-
-    .selector {
-      gap: 0.5vw;
-      padding: 5px 12px 5px 12px;
-
-      button {
-        font-size: 8px;
-        height: 12px;
-        width: 12px;
-      }
-
-      p {
-        font-size: 14px;
-        font-variation-settings: "wght" 600;
-        padding: 0px 5px 0px 5px;
-      }
-    }
-  }
-
-  .cal-hour-segment {
-    position: relative;
-    left: 30px;
-
-    .cal-time {
-      font-size: 12px;
-    }
-
-    .sep {
-      width: 5px;
-    }
-  }
-
-  :host ::ng-deep .cal-event {
-    background-color: $firstry-white-3;
-    border-radius: 10px;
-    border: none;
-
-    .content {
-      padding: 5px 5px 10px 5px;
-
-      .tags {
-        gap: 1vw;
-      }
     }
   }
 }

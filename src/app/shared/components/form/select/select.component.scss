@@ -1,6 +1,13 @@
 @import "../../../../../styles/variables.scss";
 @import "../../../../../styles/colors.scss";
 
+label {
+  font-variation-settings: "wght" $mobile_fontLabelWeight;
+  font-family: "HankenGrotesk";
+  color: $firstry-black-2;
+  font-size: $mobile_fontLabelSize;
+}
+
 select {
   border: 1px solid transparent;
   border-radius: 8px;

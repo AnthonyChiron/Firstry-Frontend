@@ -19,7 +19,9 @@ export class ListCategoriesComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {}
 
-  ngOnChanges(): void {}
+  ngOnChanges(): void {
+    console.log(this.contest);
+  }
 
   createCategory() {
     if (this.contest.categories.length == 0 || this.contest.categories[0]._id)
@@ -35,6 +37,8 @@ export class ListCategoriesComponent implements OnInit, OnChanges {
 
   deleteCategory(category: CategoryModel) {
     if (category && category._id) {
+      console.log(category);
+
       // Delete category from contest.categories
       this.contest.categories = this.contest.categories.filter(
         (c) => c._id != category._id

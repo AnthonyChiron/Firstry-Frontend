@@ -35,6 +35,7 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.cs.getById(params.contestId).subscribe((contest) => {
+        console.log(contest);
         this.contest = contest;
         this.contest.startDate = new Date(this.contest.startDate);
         this.contest.endDate = new Date(this.contest.endDate);

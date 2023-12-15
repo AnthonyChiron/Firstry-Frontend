@@ -50,6 +50,7 @@ export class DropdownAutocompleteComponent implements OnInit {
       this.filteredOptions = this.options.filter((option) =>
         option.label.toLowerCase().includes(value)
       );
+      console.log(this.filteredOptions);
     }
   }
 

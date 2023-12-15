@@ -8,13 +8,10 @@ button {
   padding: 0.4vh 1.2vh;
   border-radius: 8px;
   border: none;
+  font-variation-settings: "wght" 500;
   font-family: "HankenGrotesk";
   border: 1px solid transparent;
   transition: 0.6s;
-
-  p {
-    font-variation-settings: "wght" 800;
-  }
 }
 
 .iconOnly {
@@ -35,18 +32,21 @@ button {
 .primary {
   background-color: $firstry-white-2;
   color: $firstry-black-2;
+  font-variation-settings: "wght" 800;
   border: 1px solid transparent;
 }
 
 .primary:hover {
   background-color: $firstry-white-3;
   color: $firstry-black-2;
+  font-variation-settings: "wght" 800;
   border: 1px solid transparent;
 }
 
 .active {
   background-color: $firstry-white-3;
   color: $firstry-black-2;
+  font-variation-settings: "wght" 800;
   border: 1px solid transparent;
 }
 

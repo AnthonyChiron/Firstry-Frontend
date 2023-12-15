@@ -45,6 +45,7 @@ export class InputTextComponent implements ControlValueAccessor {
   }
 
   updateValue(value: string): void {
+    console.log(value);
     this.value = value;
     this.onChange(this.value);
     this.onTouched();

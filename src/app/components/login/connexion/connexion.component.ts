@@ -27,6 +27,7 @@ export class ConnexionComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.connexionForm.value);
     try {
       this.authService.login(this.connexionForm.value).subscribe({
         next: (token) => {
@@ -43,6 +44,8 @@ export class ConnexionComponent implements OnInit {
         },
         error: (err) => {
           this.invalidCredentials = true;
+          console.log(this.invalidCredentials);
+          console.log(err);
         },
       });
     } catch (e) {
