@@ -13,16 +13,16 @@
     </p>
     <p>Commençons par créer une catégorie.</p>
   </card> -->
-  <div class="dashboardNav">
-    <div class="contestNav">
-      <dropdown
-        [options]="ddOptions"
-        [routes]="[{ label: 'Créer un contest', value: 'create-contest' }]"
-        (selected)="selectedContest($event)"
-      ></dropdown>
-      <!-- <btn label="Créer un contest" routerLink="create-contest"></btn> -->
-    </div>
-    <div class="cardNav" *ngIf="!isMobile && contests.length != 0">
+  <div class="navbarDasboard">
+    <dropdown
+      class="contestDropDown"
+      [options]="contestsDdOptions"
+      [routes]="[{ label: 'Créer un contest', value: 'create-contest' }]"
+      (selected)="selectedContest($event)"
+      [value]="selectedContestId"
+    ></dropdown>
+    <!-- <btn label="Créer un contest" routerLink="create-contest"></btn> -->
+    <div class="navBtns" *ngIf="!isMobile && contestsDdOptions.length != 0">
       <nav-btn
         type="primary"
         size="l"
@@ -76,6 +76,6 @@
   </div>
   <div class="content">
     <router-outlet></router-outlet>
-    <create-contest *ngIf="!contests"></create-contest>
+    <create-contest *ngIf="!contestsDdOptions"></create-contest>
   </div>
 </div>

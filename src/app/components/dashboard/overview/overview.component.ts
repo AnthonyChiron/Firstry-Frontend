@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ContestsService } from 'src/app/shared/data/ContestsService/contests.service';
 import { ContestModel } from 'src/app/models/contest.model';
 import {
@@ -9,8 +9,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { de } from 'date-fns/locale';
-import { delay } from 'rxjs';
+import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 
 @Component({
   selector: 'app-overview',
@@ -26,13 +25,19 @@ import { delay } from 'rxjs';
 })
 export class OverviewComponent implements OnInit {
   contest: ContestModel;
+  isMobile: boolean;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private cs: ContestsService
+    private cs: ContestsService,
+    private _screenSize: ScreenSizeService
   ) {}
 
   ngOnInit(): void {
+    this._screenSize.isMobile$.subscribe((isMobile) => {
+      this.isMobile = isMobile;
+    });
+
     this.activatedRoute.params.subscribe((params) => {
       this.cs.getById(params.contestId).subscribe((contest) => {
         console.log(contest);

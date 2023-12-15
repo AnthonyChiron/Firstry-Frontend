@@ -1,8 +1,6 @@
 import { ContestsService } from '../../../../shared/data/ContestsService/contests.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, EventEmitter, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-utility.service';
+import { Component, OnInit } from '@angular/core';
 import { ContestModel } from 'src/app/models/contest.model';
 import {
   animate,
@@ -11,6 +9,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 
 @Component({
   selector: 'contest-parameters-detail',
@@ -27,17 +26,21 @@ import {
 export class ContestParametersDetailComponent implements OnInit {
   contest: ContestModel;
   isLoading: boolean = true;
+  isMobile: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private cs: ContestsService,
-    private fb: FormBuilder,
-    protected fus: FormUtilityService
+    private _contestService: ContestsService,
+    private _screenSize: ScreenSizeService
   ) {}
 
   ngOnInit(): void {
+    this._screenSize.isMobile$.subscribe((result) => {
+      this.isMobile = result;
+    });
+
     this.activatedRoute.params.subscribe((params) => {
-      this.cs.getById(params.contestId).subscribe((contest) => {
+      this._contestService.getById(params.contestId).subscribe((contest) => {
         this.contest = contest;
         this.contest.startDate = new Date(this.contest.startDate);
         this.contest.endDate = new Date(this.contest.endDate);

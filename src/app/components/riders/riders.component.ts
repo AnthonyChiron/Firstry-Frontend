@@ -9,8 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './riders.component.html',
   styleUrls: ['./riders.component.scss'],
 })
-export class RidersComponent implements OnInit, OnDestroy {
-  private sizeChangedSubscription: Subscription;
+export class RidersComponent implements OnInit {
   isLoading: boolean = false;
   isMobile: boolean = false;
   riders: RiderModel[] = [];
@@ -23,25 +22,20 @@ export class RidersComponent implements OnInit, OnDestroy {
   ];
 
   constructor(
-    private ridersService: RidersService,
-    private screenSizeService: ScreenSizeService
+    private _ridersService: RidersService,
+    private _screenSize: ScreenSizeService
   ) {}
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.isMobile = this.screenSizeService.isMobile;
-    this.sizeChangedSubscription = this.screenSizeService.sizeChanged.subscribe(
-      (isMobile) => {
-        this.isMobile = isMobile;
-      }
-    );
-    this.ridersService.getAll().subscribe((riders) => {
+
+    this._screenSize.isMobile$.subscribe((isMobile) => {
+      this.isMobile = isMobile;
+    });
+
+    this._ridersService.getAll().subscribe((riders) => {
       this.riders = riders;
       this.isLoading = false;
     });
-  }
-
-  ngOnDestroy(): void {
-    this.sizeChangedSubscription.unsubscribe();
   }
 }

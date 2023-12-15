@@ -5,6 +5,12 @@ card {
   height: fit-content;
 }
 
+.poster {
+  height: 100%;
+  max-height: 30vw;
+  border-radius: 8px;
+}
+
 .planning {
   width: 100%;
 }
@@ -27,12 +33,14 @@ card {
     padding-bottom: 1vw;
     border-bottom: 1px solid $firstry-white-4;
     margin-bottom: 5vh;
+    height: fit-content;
+    gap: 4vw;
 
     .contestName {
       margin-bottom: 1vh;
 
       .title {
-        font-size: 30px;
+        font-size: 23px;
       }
 
       .subtitle {
@@ -51,20 +59,11 @@ card {
     width: 100%;
 
     .leftPannel {
-      display: flex;
-      flex-direction: column;
       flex: 4;
-      width: 100%;
 
       .poster {
         width: auto;
         height: 80vw;
-        border-radius: 11px;
-      }
-
-      .galery {
-        width: auto;
-        height: 10vh;
         border-radius: 11px;
       }
     }
@@ -75,20 +74,6 @@ card {
       flex: 1;
     }
   }
-}
-
-.flex {
-  display: flex;
-  width: 100%;
-  gap: 2vw;
-}
-
-.flexColumn {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  width: 100%;
-  gap: 2vw;
 }
 
 @media screen and (min-width: 768px) {
@@ -121,24 +106,15 @@ card {
     }
 
     .content {
-      gap: 3vw;
-
       .leftPannel {
         display: flex;
         flex-direction: column;
         flex: 4;
         width: 100%;
-        gap: 3vw;
 
         .poster {
           width: auto;
           height: 20vw;
-          border-radius: 11px;
-        }
-
-        .galery {
-          width: auto;
-          height: 10vh;
           border-radius: 11px;
         }
       }

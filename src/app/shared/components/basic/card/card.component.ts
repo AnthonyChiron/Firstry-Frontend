@@ -57,12 +57,10 @@ export class CardComponent implements OnInit {
 
   isMobile: boolean;
 
-  constructor(private ssc: ScreenSizeService) {}
+  constructor(private _screenSize: ScreenSizeService) {}
 
   ngOnInit(): void {
-    this.isMobile = this.ssc.isMobile;
-    this.ssc.sizeChanged.subscribe((isMobile) => {
-      console.log(this.isMobile);
+    this._screenSize.isMobile$.subscribe((isMobile) => {
       this.isMobile = isMobile;
     });
   }

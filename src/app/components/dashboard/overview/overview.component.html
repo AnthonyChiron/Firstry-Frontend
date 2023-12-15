@@ -1,5 +1,5 @@
-<div class="cards" [@fadeInOut]>
-  <div class="left">
+<div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'" [@fadeInOut]>
+  <div class="left" [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
     <contest-infos-summary [contest]="contest"></contest-infos-summary>
     <list-categories [contest]="contest"></list-categories>
   </div>
@@ -7,6 +7,7 @@
     <planning
       *ngIf="contest && contest.categories"
       [categories]="contest.categories"
+      [contest]="contest"
       [edit]="true"
     ></planning>
   </div>

@@ -1,0 +1,94 @@
+@import "variables.scss";
+@import "colors.scss";
+
+p,
+h2,
+h3,
+h4,
+label,
+input {
+  font-family: "HankenGrotesk";
+}
+
+p {
+  font-size: 13px;
+  font-variation-settings: "wght" 500;
+}
+
+b {
+  font-variation-settings: "wght" 900;
+}
+
+.tag {
+  font-size: 10px;
+  font-variation-settings: "wght" 700;
+}
+
+h1 {
+  font-family: "Akira";
+  font-size: 35px;
+}
+
+h2 {
+  font-size: 25px;
+  font-variation-settings: "wght" 900;
+}
+
+h3 {
+  font-size: 20px;
+  font-variation-settings: "wght" 700;
+}
+
+h4 {
+  font-size: 15px;
+  font-variation-settings: "wght" 600;
+}
+
+label {
+  font-variation-settings: "wght" 900;
+  font-size: 15px;
+}
+
+input {
+  font-variation-settings: "wght" $mobile_fontCardTitleWeight;
+  color: $firstry-black-2;
+  font-size: 13px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  height: $mobile_inputHeight;
+  background-color: transparent;
+  margin-top: $mobile_marginInput;
+}
+
+@media screen and (min-width: 768px) {
+  p {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 55px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 17px;
+  }
+
+  label {
+    font-variation-settings: "wght" 900;
+    font-size: 17px;
+  }
+
+  input {
+    font-size: 15px;
+    background-color: transparent;
+    margin-top: $mobile_marginInput;
+  }
+}
