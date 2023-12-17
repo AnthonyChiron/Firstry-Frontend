@@ -1,5 +1,6 @@
 import { ScreenSizeService } from './shared/services/screenSize/screen-size.service';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,8 @@ export class AppComponent implements OnInit {
     this._screenSize.isMobile$.subscribe((isMobile) => {
       this.isMobile = isMobile;
     });
+
+    console.log('Production : ' + environment.production);
   }
 
   changeToggle() {

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,5 +11,9 @@ export class BaseHttpService {
 
   protected baseUrl = this.baseUrlLocal;
 
-  constructor() {}
+  constructor() {
+    if (environment.production) {
+      this.baseUrl = this.baseUrlProd;
+    }
+  }
 }

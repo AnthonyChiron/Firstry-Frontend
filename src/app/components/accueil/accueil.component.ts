@@ -17,7 +17,6 @@ export class AccueilComponent implements OnInit {
     this.authService.isLoggedIn().subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
       this.user = this.authService.getCurrentUser();
-      console.log(this.user);
     });
   }
 
@@ -26,15 +25,9 @@ export class AccueilComponent implements OnInit {
     this.router.navigate(['./register']);
   }
 
-  isLoggedInBtn() {
-    console.log(this.authService.isLoggedIn());
-  }
+  isLoggedInBtn() {}
 
-  isValid() {
-    console.log(this.authService.isValid());
-  }
+  isValid() {}
 
-  getCurrentUser() {
-    console.log(this.authService.getCurrentUser());
-  }
+  getCurrentUser() {}
 }

@@ -1,5 +1,5 @@
 <div
-  class="card color-{{ color }} {{ size }}"
+  class="card color-{{ color }}  size-{{ size }}"
   [class.fitContent]="fitContent"
   [class.sideImgCard]="img != ''"
 >
@@ -13,31 +13,38 @@
       [class.toggle]="toggle"
       *ngIf="title != '' || btn != false || toggleBtn"
     >
-      <h3 *ngIf="title != ''">{{ title }}</h3>
-      <ng-content select="[header]"></ng-content>
+      <div class="title">
+        <h3 *ngIf="title != ''">{{ title }}</h3>
+        <p *ngIf="subTitle != ''">-</p>
+        <h5 *ngIf="subTitle != ''">{{ subTitle }}</h5>
+      </div>
 
-      <btn
-        *ngIf="redirect"
-        [routerLink]="redirectLink"
-        icon="fa-solid fa-arrow-up-right-from-square"
-        type="transparent"
-        size="m"
-        class="btn"
-      ></btn>
-      <btn
-        *ngIf="btn"
-        (click)="emitBtnClicked()"
-        [icon]="btnIcon || 'fa-solid fa-pen-to-square'"
-        type="transparent"
-        class="btn"
-      ></btn>
-      <btn
-        *ngIf="toggleBtn"
-        (click)="toggle = !toggle"
-        icon="fa-solid fa-chevron-down"
-        type="transparent"
-        class="btnToggle"
-      ></btn>
+      <div class="buttons">
+        <ng-content select="[header]"></ng-content>
+
+        <btn
+          *ngIf="redirect"
+          [routerLink]="redirectLink"
+          icon="fa-solid fa-arrow-up-right-from-square"
+          type="transparent"
+          size="m"
+          class="btn"
+        ></btn>
+        <btn
+          *ngIf="btn"
+          (click)="emitBtnClicked()"
+          [icon]="btnIcon || 'fa-solid fa-pen-to-square'"
+          type="transparent"
+          class="btn"
+        ></btn>
+        <btn
+          *ngIf="toggleBtn"
+          (click)="toggle = !toggle"
+          icon="fa-solid fa-chevron-down"
+          type="transparent"
+          class="btnToggle"
+        ></btn>
+      </div>
     </div>
     <div *ngIf="!toggle" [@toggleAnimation]>
       <div [@toggleAnimation] class="content">

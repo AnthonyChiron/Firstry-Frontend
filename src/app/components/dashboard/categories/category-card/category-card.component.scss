@@ -14,13 +14,6 @@
         justify-content: space-between;
         align-items: center;
 
-        h3 {
-          font-family: "HankenGrotesk";
-          font-variation-settings: "wght" 900;
-          font-size: 23px;
-          color: $firstry-black-2;
-        }
-
         .title {
           display: flex;
           align-items: center;
@@ -37,20 +30,6 @@
           display: flex;
           align-items: center;
           width: fit-content;
-        }
-      }
-
-      .inscription {
-        .maxRiders {
-          flex: 2;
-        }
-
-        .registerPrice {
-          flex: 1;
-        }
-
-        .qualificationStep {
-          flex: 1;
         }
       }
 

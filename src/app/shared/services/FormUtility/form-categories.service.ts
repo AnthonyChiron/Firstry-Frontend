@@ -85,7 +85,7 @@ export class FormCategoriesService extends FormUtilityService {
       if (category.isQualificationStep)
         categoryForm.get('stepQualif').patchValue({
           _id: stepQualif._id,
-          // startDate: stepQualif.startDate,
+          startDate: new Date(stepQualif.startDate),
           ridersPerPool: stepQualif.ridersPerPool,
           ridersQualifiedCount: stepQualif.ridersQualifiedCount,
           rules: stepQualif.rules,
@@ -94,7 +94,7 @@ export class FormCategoriesService extends FormUtilityService {
 
       categoryForm.get('stepFinal').patchValue({
         _id: stepFinal._id,
-        // startDate: stepQualif.startDate,
+        startDate: new Date(stepFinal.startDate),
         ridersPerPool: stepFinal.ridersPerPool,
         rules: stepFinal.rules,
       });
@@ -184,7 +184,6 @@ export class FormCategoriesService extends FormUtilityService {
         label: 'Jour ' + (index + 1),
       };
     });
-    console.log(datesOptions);
     return datesOptions;
   }
 }

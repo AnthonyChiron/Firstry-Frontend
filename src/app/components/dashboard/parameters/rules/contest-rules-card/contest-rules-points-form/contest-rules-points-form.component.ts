@@ -1,5 +1,5 @@
 import { FormRulesService } from 'src/app/shared/services/FormUtility/form-rules.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-utility.service';
 import { pointsOptions } from 'src/app/constants/rulesConstants';
@@ -10,7 +10,7 @@ import { ChartConfiguration } from 'chart.js';
   templateUrl: './contest-rules-points-form.component.html',
   styleUrls: ['./contest-rules-points-form.component.scss'],
 })
-export class ContestRulesPointsFormComponent implements OnInit {
+export class ContestRulesPointsFormComponent implements OnInit, OnChanges {
   @Input() parentForm: FormGroup;
   @Input() edit: boolean = false;
 
@@ -53,6 +53,14 @@ export class ContestRulesPointsFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.initPointCategory();
+  }
+
+  ngOnChanges() {
+    this.initPointCategory();
+  }
+
+  initPointCategory() {
     this.pointCategoriesArray = this.parentForm.get(
       'pointCategories'
     ) as FormArray;

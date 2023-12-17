@@ -14,7 +14,6 @@ export class ContestsComponent implements OnInit {
   ngOnInit(): void {
     this.contestsService.getAll().subscribe((data) => {
       if (data) {
-        console.log(data);
         this.contests = data;
         this.contests.forEach((contest) => {
           contest.startDate = new Date(contest.startDate);

@@ -1,7 +1,12 @@
 import { ScreenSizeService } from './../../shared/services/screenSize/screen-size.service';
 import { ContestsService } from 'src/app/shared/data/ContestsService/contests.service';
 import { Component, OnChanges, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterOutlet,
+} from '@angular/router';
 import { slider } from 'src/app/shared/transitions/slider';
 import { fadeAnimation } from 'src/app/shared/transitions/fade';
 import { filter } from 'rxjs';
@@ -15,7 +20,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private _contestsService: ContestsService,
     private _screenSize: ScreenSizeService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   contestsDdOptions: any[] = [];
@@ -24,6 +30,10 @@ export class DashboardComponent implements OnInit {
   selectedContestId: string;
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params) => {
+      console.log(params);
+    });
+
     this._contestsService.getOrganizerContests().subscribe((data) => {
       if (data) {
         // Mise en place du dropdown

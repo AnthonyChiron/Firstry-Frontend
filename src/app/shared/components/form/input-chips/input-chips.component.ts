@@ -1,4 +1,11 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  forwardRef,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -27,6 +34,7 @@ export class InputChipsComponent implements ControlValueAccessor, OnInit {
   onTouched: any = () => {};
 
   ngOnInit() {
+    console.log(this.value);
     if (Array.isArray(this.value) && this.value.length === 0) {
       this.value.push(this.options[0].value);
     }
@@ -49,6 +57,7 @@ export class InputChipsComponent implements ControlValueAccessor, OnInit {
   }
 
   writeValue(value: any): void {
+    console.log(value);
     if (this.isBinary) {
       this.value = value;
     } else {

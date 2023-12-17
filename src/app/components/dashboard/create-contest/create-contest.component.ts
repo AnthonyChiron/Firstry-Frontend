@@ -34,9 +34,7 @@ export class CreateContestComponent implements OnInit {
     this.fus.setForm(this.contestForm);
   }
 
-  onAddressSelected(address: any) {
-    console.log(address);
-  }
+  onAddressSelected(address: any) {}
 
   submit() {
     this.touched = true;

@@ -38,7 +38,6 @@ export class CreateCategoryComponent implements OnInit {
       contestId: ['', Validators.required],
     });
 
-    console.log(this.contest);
     // get contest by id from route params
     this.activatedRoute.params.subscribe((params) => {
       this.contestService.getById(params['contestId']).subscribe((data) => {
@@ -58,7 +57,6 @@ export class CreateCategoryComponent implements OnInit {
       return { name: sport, value: sport[0].toUpperCase() + sport.slice(1) };
     });
     if (this.sports.length == 1) {
-      console.log(this.sports[0].value);
       this.categoryForm.patchValue({
         sports: [this.sports[0].value],
       });
@@ -67,8 +65,6 @@ export class CreateCategoryComponent implements OnInit {
 
   submit() {
     this.touched = true;
-    console.log(this.categoryForm.value);
-    console.log(this.categoryForm.valid);
     if (this.categoryForm.valid) {
       this.categoriesService
         .create(this.categoryForm.value)
