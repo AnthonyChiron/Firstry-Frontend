@@ -56,8 +56,11 @@ export class ContestRulesCardComponent implements OnInit {
     if (!this.rules._id) {
       this.delete();
     } else {
-      this.rulesForm.patchValue({ ...this.rules });
-      console.log(this.rulesForm.value);
+      this.formRulesService.fillRulesForm(
+        this.rulesForm,
+        this.rules,
+        this.contest
+      );
     }
   }
 

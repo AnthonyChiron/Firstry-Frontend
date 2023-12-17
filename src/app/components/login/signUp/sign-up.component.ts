@@ -76,9 +76,7 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  test() {
-    console.log(this.riderForm.value);
-  }
+  test() {}
 
   async next(form: FormGroup) {
     if (this.activeIndex == 0) {
@@ -88,7 +86,6 @@ export class SignUpComponent implements OnInit {
         )
       );
     }
-    console.log(this.riderForm.value);
     if (this.activeIndex == 1) {
       this.organizerFormTouched = true;
       this.riderFormTouched = true;
@@ -103,16 +100,11 @@ export class SignUpComponent implements OnInit {
   }
 
   async uploadPhoto(event) {
-    console.log(event);
     const blob = await fetch(event.objectUrl).then((r) => r.blob());
-    console.log(blob);
     this.photoFile = new File([blob], 'test.png', { type: 'image/png' });
-    console.log(this.photoFile);
   }
 
   submit() {
-    console.log(this.photoFile);
-    console.log(this.signUpForm.value);
     this.authService.signUp(this.signUpForm.value, this.photoFile).subscribe({
       next: (token) => {
         this.authService.saveToken(token);

@@ -24,7 +24,5 @@ export class BtnComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.label);
-  }
+  ngOnInit(): void {}
 }

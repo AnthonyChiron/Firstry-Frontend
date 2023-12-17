@@ -91,8 +91,6 @@ export class CategoryCardComponent implements OnInit {
         this.isNew
       );
 
-      console.log(newCategory);
-
       if (this.isNew)
         this.cs.createCategory(newCategory).subscribe((res) => {
           this.category = res;

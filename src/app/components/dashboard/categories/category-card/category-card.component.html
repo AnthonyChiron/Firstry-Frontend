@@ -11,12 +11,13 @@
   <card
     [title]="
       categoryForm.get('name').value && !isNew
-        ? categoryForm.get('name').value + ' - ' + category.sports
+        ? categoryForm.get('name').value
         : 'Création de catégorie'
     "
+    [subTitle]="category.sports.join(', ')"
     class="category"
     color="2"
-    size="s"
+    size="m"
     [toggleBtn]="true"
     [toggle]="!edit"
     *ngIf="category"
@@ -79,7 +80,7 @@
       </div>
       <div class="inscription flexRow">
         <input-text
-          class="maxRiders"
+          class="flex1"
           name="maxRiders"
           type="number"
           placeholder="Nombre de riders maximum..."
@@ -91,7 +92,7 @@
 
         <!-- registerPrice input -->
         <input-text
-          class="registerPrice"
+          class="flex1"
           name="registerPrice"
           type="number"
           placeholder="Prix d'inscription..."
@@ -103,7 +104,7 @@
 
         <slide-input
           *ngIf="isNew"
-          class="qualificationStep"
+          class="flex1"
           name="isQualificationStep"
           formControlName="isQualificationStep"
           label="Qualification ?"

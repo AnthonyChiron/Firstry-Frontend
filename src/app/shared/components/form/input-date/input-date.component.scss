@@ -2,51 +2,7 @@
 @import "../../../../../styles/variables.scss";
 
 .inputGroup {
-  label {
-    font-variation-settings: "wght" $mobile_fontLabelWeight;
-    font-family: "HankenGrotesk";
-    color: $firstry-black-2;
-    font-size: $mobile_fontLabelSize;
-  }
-
-  input {
-    border: 1px solid transparent;
-    border-radius: 8px;
-    padding-left: 7px;
-    height: $mobile_inputHeight;
-    width: 100%;
-    color: $firstry-black-2;
-    background-color: $firstry-white-1;
-    font-size: $mobile_fontInputSize;
-    font-variation-settings: "wght" 400;
-    font-family: "HankenGrotesk";
-    margin-top: $mobile_marginInput;
-  }
-
   p {
     width: 100%;
-  }
-
-  textarea:focus,
-  input:focus {
-    border: 1px solid $firstry-white-3;
-    outline: none;
-  }
-
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-  }
-
-  input[type="date"]::-moz-calendar-picker-indicator {
-    display: none;
-  }
-
-  input::placeholder {
-    color: $firstry-white-3;
-    opacity: 1; /* Firefox */
-  }
-
-  .error {
-    border: 1px solid $firstry-red-1;
   }
 }

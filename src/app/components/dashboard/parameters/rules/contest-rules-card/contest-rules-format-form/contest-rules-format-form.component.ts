@@ -37,6 +37,14 @@ export class ContestRulesFormatFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.initStepFormat();
+  }
+
+  ngOnChanges() {
+    this.initStepFormat();
+  }
+
+  initStepFormat() {
     this.stepFormatArray = this.parentForm.get('stepFormats') as FormArray;
   }
 

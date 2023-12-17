@@ -75,6 +75,7 @@ export class FormRulesService extends FormUtilityService {
     rulesForm: FormGroup,
     pointCategories: pointCategoryModel[]
   ) {
+    console.log(pointCategories);
     const pointCategoriesFormGroups = pointCategories.map((pointCategory) =>
       this.formBuilder.group({
         name: [pointCategory.name, Validators.required],
@@ -82,10 +83,12 @@ export class FormRulesService extends FormUtilityService {
         points: [pointCategory.points, Validators.required],
       })
     );
+    console.log(pointCategoriesFormGroups);
 
     const pointCategoriesArray = this.formBuilder.array(
       pointCategoriesFormGroups
     );
+
     rulesForm.setControl('pointCategories', pointCategoriesArray);
   }
 

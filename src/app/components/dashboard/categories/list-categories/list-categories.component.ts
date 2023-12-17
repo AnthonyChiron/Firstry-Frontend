@@ -19,9 +19,7 @@ export class ListCategoriesComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {}
 
-  ngOnChanges(): void {
-    console.log(this.contest);
-  }
+  ngOnChanges(): void {}
 
   createCategory() {
     if (this.contest.categories.length == 0 || this.contest.categories[0]._id)

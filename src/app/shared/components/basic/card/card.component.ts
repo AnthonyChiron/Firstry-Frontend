@@ -35,6 +35,7 @@ import {
 export class CardComponent implements OnInit {
   // CARD
   @Input() title: string = '';
+  @Input() subTitle: string = '';
   @Input() isLoading: boolean = false;
   @Input() size: string = 'l';
   @Input() color: string = '1';
@@ -63,6 +64,7 @@ export class CardComponent implements OnInit {
     this._screenSize.isMobile$.subscribe((isMobile) => {
       this.isMobile = isMobile;
     });
+    console.log(this.size);
   }
 
   emitBtnClicked() {

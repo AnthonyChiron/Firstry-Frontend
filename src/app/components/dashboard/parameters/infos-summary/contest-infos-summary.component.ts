@@ -10,11 +10,7 @@ export class ContestInfosSummaryComponent implements OnInit, OnChanges {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.contest);
-  }
+  ngOnInit(): void {}
 
-  ngOnChanges(): void {
-    console.log(this.contest);
-  }
+  ngOnChanges(): void {}
 }

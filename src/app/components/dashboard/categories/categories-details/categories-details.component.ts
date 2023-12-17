@@ -36,7 +36,6 @@ export class CategoriesDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this._screenSize.isMobile$.subscribe((result) => {
-      console.log(result);
       this.isMobile = result;
     });
     this.activatedRoute.params.subscribe((params) => {
