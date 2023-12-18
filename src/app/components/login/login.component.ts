@@ -1,5 +1,14 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Output,
+  Input,
+  OnChanges,
+} from '@angular/core';
 import { Router } from '@angular/router';
+import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 
 @Component({
   selector: 'app-login',
@@ -7,12 +16,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  activeIndex: number = 0;
+  firstCall: boolean = false;
+  isMobile: boolean = false;
+  @Input() openTab: number = 0;
+  @Output() modalClosed: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private route: Router) {
-    if (route.url.includes('login')) this.activeIndex = 0;
-    else this.activeIndex = 1;
+  constructor(
+    private route: Router,
+    private elementRef: ElementRef,
+    private _screenSizeService: ScreenSizeService
+  ) {
+    this._screenSizeService.isMobile$.subscribe((result) => {
+      this.isMobile = result;
+    });
   }
 
-  closeModal() {}
+  closeModal() {
+    this.modalClosed.emit();
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event): void {
+    if (
+      this.firstCall &&
+      !this.elementRef.nativeElement.contains(event.target)
+    ) {
+      this.modalClosed.emit();
+    }
+    this.firstCall = true;
+  }
 }

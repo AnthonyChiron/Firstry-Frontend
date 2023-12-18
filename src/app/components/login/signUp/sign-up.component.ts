@@ -1,6 +1,12 @@
 import { Observable, firstValueFrom, map, startWith } from 'rxjs';
 import { CountryService } from './../../../shared/services/CountryService/country.service';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SignUpModel as SignUpModel } from 'src/app/models/signUp.model';
 import { rolesEnum } from 'src/app/constants/rolesEnum';
@@ -36,6 +42,7 @@ export class SignUpComponent implements OnInit {
   photoFile: File;
   activeIndex: number = 0;
   emailAvailable: boolean = true;
+  @Output() registered: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private router: Router,
@@ -108,6 +115,7 @@ export class SignUpComponent implements OnInit {
     this.authService.signUp(this.signUpForm.value, this.photoFile).subscribe({
       next: (token) => {
         this.authService.saveToken(token);
+        this.registered.emit();
         this.router.navigate(['/account/validateEmail']);
       },
       error: (err) => (this.invalidCredentials = true),

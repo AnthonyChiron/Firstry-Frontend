@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { IsValidGuard } from './shared/guards/isValid/is-valid.service';
+import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
         (m) => m.AccountModule
       ),
   },
+  { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: '/not-found' },
 ];

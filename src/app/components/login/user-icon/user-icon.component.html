@@ -1,0 +1,41 @@
+<div class="account">
+  <div *ngIf="isLoggedIn" class="flexRow spaceBetween">
+    <div *ngIf="user.role == 'rider'">
+      <h4 class="firstName">{{ user.rider.firstName }}</h4>
+      <h5>{{ user.rider.lastName }}</h5>
+    </div>
+    <div class="name" *ngIf="user.role == 'contest'">
+      <h4 Capitalize>{{ user.organizer.name }}</h4>
+      <h4>{{ user.organizer.siretNumber }}</h4>
+    </div>
+    <img *ngIf="user.role == 'rider'" src="{{ user.rider.photoUrl }}" alt="" />
+    <img
+      (click)="toggleAccountOption = !toggleAccountOption"
+      *ngIf="user.role == 'contest'"
+      src="{{ user.organizer.photoUrl }}"
+      alt=""
+    />
+  </div>
+  <div *ngIf="!isLoggedIn && !isMobile" class="btns">
+    <btn type="primary" label="Connexion" (click)="openModal(0)"></btn>
+    <btn type="primary" label="S'inscrire" (click)="openModal(1)"></btn>
+  </div>
+  <div *ngIf="!isLoggedIn && isMobile" class="btns">
+    <btn type="primary" label="Connexion" routerLink="login"></btn>
+    <btn type="primary" label="S'inscrire" routerLink="register"></btn>
+  </div>
+  <div *ngIf="!toggleAccountOption" class="accountOptions">
+    <a routerLink="/account">Mon compte</a>
+    <a routerLink="/dashboard">Mes contests</a>
+    <a (click)="logout()">Se déconnecté</a>
+  </div>
+</div>
+<modal
+  *ngIf="isModalOpen && !isMobile"
+  [isVisible]="isModalOpen"
+  (cancelled)="isModalOpen = false"
+  ><app-login
+    [openTab]="indexLogin"
+    (modalClosed)="isModalOpen = !isModalOpen"
+  ></app-login
+></modal>

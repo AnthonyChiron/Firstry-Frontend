@@ -5,10 +5,6 @@
   flex-direction: column;
   width: 100%;
 
-  h1 {
-    align-self: center;
-  }
-
   loader {
     margin-top: 10vw;
     align-self: center;
@@ -46,10 +42,6 @@
 
 @media only screen and (min-width: 768px) {
   .main {
-    h1 {
-      align-self: flex-start;
-    }
-
     .riders {
       align-self: center;
       justify-content: space-between;

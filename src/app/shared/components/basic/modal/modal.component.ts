@@ -15,7 +15,7 @@ import {
 } from '@angular/animations';
 
 @Component({
-  selector: 'app-modal',
+  selector: 'modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
   animations: [
@@ -31,20 +31,21 @@ import {
   ],
 })
 export class ModalComponent {
-  @Input() show = false;
-  @Output() onClose = new EventEmitter();
+  @Input() isVisible: boolean = false;
+  @Input() title: string = '';
+  @Input() message: string = '';
+  @Output() confirmed = new EventEmitter<void>();
+  @Output() cancelled = new EventEmitter<void>();
 
-  constructor(private _elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef) {}
 
-  // @HostListener('document:click', ['$event'])
-  // clickOutside(event: Event) {
-  //   if (!this._elementRef.nativeElement.contains(event.target)) {
-  //     this.show = false;
-  //   }
-  // }
+  confirm() {
+    this.confirmed.emit();
+    this.isVisible = false;
+  }
 
-  close() {
-    this.show = false;
-    this.onClose.emit();
+  cancel() {
+    this.cancelled.emit();
+    this.isVisible = false;
   }
 }

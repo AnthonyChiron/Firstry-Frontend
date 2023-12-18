@@ -5,8 +5,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { ValidEmailComponent } from './valid-email/valid-email.component';
 import { IsNotValidGuard } from 'src/app/shared/guards/IsNotValid/is-not-valid.service';
 import { IsAuthGuard } from 'src/app/shared/guards/IsAuth/is-auth-guard.service';
+import { UserIconComponent } from '../login/user-icon/user-icon.component';
+import { LoginModule } from '../login/login.module';
+import { AccountComponent } from './account.component';
 
-const dashboardRoutes: Routes = [
+const accountRoutes: Routes = [
+  {
+    path: '',
+    component: AccountComponent,
+    canActivate: [IsAuthGuard],
+  },
   {
     path: 'validateEmail',
     component: ValidEmailComponent,
@@ -20,7 +28,7 @@ const dashboardRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ValidEmailComponent],
-  imports: [CommonModule, RouterModule.forChild(dashboardRoutes), SharedModule],
+  declarations: [ValidEmailComponent, AccountComponent],
+  imports: [CommonModule, RouterModule.forChild(accountRoutes), SharedModule],
 })
 export class AccountModule {}
