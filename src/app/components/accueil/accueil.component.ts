@@ -17,6 +17,7 @@ export class AccueilComponent implements OnInit {
     this.authService.isLoggedIn().subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
       this.user = this.authService.getCurrentUser();
+      console.log(this.user);
     });
   }
 

@@ -53,7 +53,7 @@ export class CardComponent implements OnInit {
 
   // WIDTH & HEIGHT IMG
   @Input() img: string = '';
-  @Input() imgHeight: string = '50';
+  @Input() imgHeight: string = '30';
   @Input() cardWidth: string = '100';
 
   isMobile: boolean;

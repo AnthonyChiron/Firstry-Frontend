@@ -5,8 +5,10 @@
       ? contest.branding.poster
       : 'https://storage.googleapis.com/firstry-7e136.appspot.com/contests/651d9e4c0a6aa7dd67858861/FISE%20Montpellier_poster.png?GoogleAccessId=firebase-adminsdk-v4ylh%40firstry-7e136.iam.gserviceaccount.com&Expires=16447014000&Signature=aWFB0qxsXCsoBKbPlIoBj6Bdi2qB0gDzwQuXoETtQ%2BsM7XrNuszizcvmEJBqllS2IMBJqFJHCUfS6ZqP2qBJoDmmAMNJKcCdNwDEe9fOtc2DNIaCaTr0bomiN%2BNtXVHLMwTOYeNNpqSEIY%2FX%2B%2F8XH31kGSlAbWARUEm64lVsMsHnVqPUr0wMTMmQkFIM3ezaXPaTDWese7Z8ILPHRKNtn%2FGCnGARLgXzwrxDFHU8nWfFNnkI9nJVVRcKcXLLlQQmnKylNT253jyU3VPNbMGO6UgDDxlpeqbiXror6kCb7kGvS77bgDcxTYHQ1XufJpFD0RpXUPSA%2FmRTM7Nxv8XqWg%3D%3D'
   "
+  [imgHeight]="!isMobile ? '15' : '45'"
+  [fitContent]="true"
+  [title]="contest.name"
 >
-  <h1>{{ contest.name }}</h1>
   <div class="tags">
     <info-tag
       icon="fa-solid fa-location-dot"

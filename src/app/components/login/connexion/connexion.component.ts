@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
 export class ConnexionComponent implements OnInit {
   connexionForm: FormGroup;
   invalidCredentials: Boolean = false;
+  @Output() connected: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private authService: AuthService,
@@ -30,6 +31,7 @@ export class ConnexionComponent implements OnInit {
     try {
       this.authService.login(this.connexionForm.value).subscribe({
         next: (token) => {
+          this.connected.emit();
           this.authService.saveToken(token);
           if (!this.authService.getCurrentUser().isValid)
             this.router.navigate(['/account/validateEmail']);

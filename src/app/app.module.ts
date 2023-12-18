@@ -14,6 +14,9 @@ import { ScreenSizeService } from './shared/services/screenSize/screen-size.serv
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { SharedModule } from './shared/shared.module';
 import { DesktopSidebarComponent } from './components/sidebar/desktop-sidebar/desktop-sidebar.component';
+import { UserIconComponent } from './components/login/user-icon/user-icon.component';
+import { AccountModule } from './components/account/account.module';
+import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { DesktopSidebarComponent } from './components/sidebar/desktop-sidebar/de
     MobileSidebarComponent,
     DesktopSidebarComponent,
     TopbarComponent,
+    AccessDeniedComponent,
   ],
   imports: [
     AppRoutingModule,

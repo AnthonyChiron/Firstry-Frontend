@@ -1,5 +1,6 @@
-<h1 class="title">FIRSTRY</h1>
+<h1 class="mainTitle">FIRSTRY</h1>
 <card
+  *ngIf="user && user.role"
   title="Bienvenue {{
     user.rider ? user.rider.firstName : user.organizer.name
   }}"

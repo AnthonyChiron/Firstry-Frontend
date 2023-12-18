@@ -3,7 +3,7 @@
   [class.fitContent]="fitContent"
   [class.sideImgCard]="img != ''"
 >
-  <div *ngIf="img != ''" class="sideImg">
+  <div *ngIf="img != ''" class="sideImg" [ngStyle]="{ 'height.vw': imgHeight }">
     <img [src]="img" alt="" />
   </div>
   <div class="main">
@@ -12,6 +12,7 @@
       class="header"
       [class.toggle]="toggle"
       *ngIf="title != '' || btn != false || toggleBtn"
+      [@toggleAnimation]
     >
       <div class="title">
         <h3 *ngIf="title != ''">{{ title }}</h3>

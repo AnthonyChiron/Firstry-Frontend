@@ -5,7 +5,7 @@ button {
   cursor: pointer;
   justify-content: center;
   align-items: center;
-  padding: 0.4vh 1.2vh;
+  padding: 8px 15px;
   border-radius: 8px;
   border: none;
   font-variation-settings: "wght" 500;
@@ -19,6 +19,20 @@ button {
   align-items: center;
   width: 10vw;
   height: 10vw;
+}
+
+.s {
+  padding: 4px 10px;
+}
+
+.m {
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.l {
+  padding: 8px 15px;
+  border-radius: 8px;
 }
 
 @media only screen and (min-width: 768px) {

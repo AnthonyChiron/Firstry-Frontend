@@ -33,7 +33,6 @@ const dashboardRoutes: Routes = [
         path: ':contestId/overview',
         component: OverviewComponent,
         canActivate: [IsAuthGuard],
-        data: { animation: 'Menu1' },
       },
       {
         path: ':contestId/create-category',

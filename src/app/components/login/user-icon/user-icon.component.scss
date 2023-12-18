@@ -1,0 +1,82 @@
+@import "../../../../styles/colors.scss";
+
+.account {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 8vw;
+  gap: 2vw;
+
+  .name {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+
+    .firstName {
+      font-variation-settings: "wght" 200;
+      padding: 0;
+      margin-bottom: -5px;
+    }
+  }
+
+  img {
+    max-height: 50px;
+    object-fit: contain;
+    border-radius: 5000px;
+    cursor: pointer;
+  }
+}
+
+.accountOptions {
+  position: absolute;
+  top: 75px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: $firstry-white-2;
+  border-radius: 8px;
+  width: 40vw;
+  z-index: 999;
+  box-shadow: 0px 0px 5px 1px $firstry-white-3;
+
+  a {
+    padding: 8px 18px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.2s;
+    color: $firstry-black-2;
+  }
+
+  a:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  a:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  a:hover {
+    background-color: $firstry-black-3;
+    color: $firstry-white-1;
+  }
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .account {
+    img {
+      max-height: 3.5vw;
+    }
+  }
+
+  .accountOptions {
+    top: 6vw;
+    right: 0;
+    width: 10vw;
+  }
+}

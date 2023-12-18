@@ -5,6 +5,7 @@
 @import "./styles/colors.scss";
 @import "./styles/components.scss";
 @import "./styles/basics.scss";
+@import "./styles/text.scss";
 @import "../node_modules/angular-calendar/scss/angular-calendar.scss";
 
 @font-face {
@@ -34,10 +35,6 @@ body {
 * {
   margin: 0;
   padding: 0;
-}
-
-.title {
-  font-family: "Akira";
 }
 
 html,
@@ -92,10 +89,12 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-track {
   background: white; /* color of the tracking area */
+  z-index: 888;
 }
 
 body::-webkit-scrollbar-thumb {
   background-color: black; /* color of the scroll thumb */
   border-radius: 20px; /* roundness of the scroll thumb */
   border: 3px solid white; /* creates padding around scroll thumb */
+  z-index: 888;
 }
