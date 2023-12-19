@@ -3,11 +3,14 @@ import {
   ElementRef,
   HostListener,
   Input,
+  OnChanges,
   OnInit,
+  SimpleChanges,
   TemplateRef,
   forwardRef,
 } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { tr } from 'date-fns/locale';
 
 @Component({
   selector: 'dropdown-autocomplete',
@@ -21,24 +24,37 @@ import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
     },
   ],
 })
-export class DropdownAutocompleteComponent implements OnInit {
+export class DropdownAutocompleteComponent implements OnInit, OnChanges {
   @Input() options: any[] = [];
   @Input() optionTemplate: TemplateRef<any>;
   @Input() label: string = '';
   @Input() name: string = '';
   @Input() placeholder: string = '';
   @Input() error: boolean = false;
+  @Input() edit: boolean = true;
+
+  @Input() isCountry: boolean = true;
+
   input: string = '';
   value: any = {};
   filteredOptions: any[] = [];
   showDropdown = false;
-  onChange: (value: string) => void;
-  onTouched: () => void;
+  onChange: (value: any) => void = () => {};
+  onTouched: () => void = () => {};
 
   constructor(private elementRef: ElementRef) {}
 
   ngOnInit(): void {
     this.filteredOptions = [...this.options];
+  }
+
+  ngOnChanges(): void {
+    const correspondingOption = this.options.find(
+      (opt) => JSON.stringify(opt.value) === JSON.stringify(this.value)
+    );
+    if (correspondingOption) {
+      this.writeValue(this.value);
+    }
   }
 
   filterOptions(): void {
@@ -50,7 +66,6 @@ export class DropdownAutocompleteComponent implements OnInit {
       this.filteredOptions = this.options.filter((option) =>
         option.label.toLowerCase().includes(value)
       );
-      console.log(this.filteredOptions);
     }
   }
 
@@ -70,7 +85,7 @@ export class DropdownAutocompleteComponent implements OnInit {
   writeValue(value: any): void {
     if (value !== undefined) {
       const correspondingOption = this.options.find(
-        (opt) => opt.value === value
+        (opt) => JSON.stringify(opt.value) === JSON.stringify(this.value)
       );
       this.input = correspondingOption ? correspondingOption.label : '';
       this.value = value;

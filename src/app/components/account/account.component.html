@@ -1,5 +1,15 @@
 <h1 class="mainTitle">Mon compte</h1>
-<div class="flexCardRow">
-  <card class="flex1" title="Mes informations"></card>
-  <card class="flex1" title="Mes inscriptions"></card>
+<div class="{{ isMobile ? 'flexCardColumn' : 'flexCardRow' }}">
+  <div class="flexCardColumn flex1">
+    <rider-info-form
+      [riderId]="user.riderId"
+      [rider]="user.rider"
+    ></rider-info-form>
+    <rider-socials-form [riderId]="user.riderId" [rider]="user.rider">
+    </rider-socials-form>
+  </div>
+  <div class="flexCardColumn flex1">
+    <account-security [user]="user"></account-security>
+    <rider-registrations class="flex1"></rider-registrations>
+  </div>
 </div>

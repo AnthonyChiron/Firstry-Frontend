@@ -22,7 +22,6 @@ export class AuthService extends BaseHttpService {
   // Méthode pour enregistrer un utilisateur
   signUp(signUpForm: SignUpModel, photo) {
     const formData = new FormData();
-    console.log(photo);
     formData.append('photo', photo);
     formData.append('signUpForm', JSON.stringify(signUpForm));
     return this.http.post(`${this.baseUrl}auth/signup`, formData);
@@ -92,5 +91,12 @@ export class AuthService extends BaseHttpService {
     localStorage.setItem('auth-token', token);
     localStorage.setItem('current-user', JSON.stringify(jwt_decode(token)));
     this.loggedInSubject.next(true);
+  }
+
+  updateRider(rider) {
+    let newUser = JSON.parse(localStorage.getItem('current-user'));
+    newUser.rider = rider;
+    console.log(newUser);
+    localStorage.setItem('current-user', JSON.stringify(newUser));
   }
 }

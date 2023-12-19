@@ -11,4 +11,14 @@ export class SportsService {
       return { name: sport, value: sport[0].toUpperCase() + sport.slice(1) };
     });
   }
+
+  getSportsAsOption() {
+    return [
+      { label: 'Roller', value: 'roller' },
+      { label: 'Trottinette', value: 'trottinette' },
+      { label: 'Skate', value: 'skateboard' },
+      { label: 'BMX', value: 'bmx' },
+      { label: 'Quad', value: 'quad' },
+    ];
+  }
 }

@@ -15,6 +15,11 @@
     align-items: center;
     width: 100%;
 
+    input {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
     input:focus {
       outline: none;
     }
@@ -36,6 +41,7 @@
       padding-left: 7px;
       font-size: 15px;
       color: $firstry-black-2;
+      cursor: pointer;
     }
   }
 
@@ -55,6 +61,7 @@
 
   .toggle-button {
     background-color: $firstry-black-2;
+    cursor: pointer;
     border: none;
     color: white;
     border-radius: 0px 8px 8px 0px;

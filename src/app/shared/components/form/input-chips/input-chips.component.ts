@@ -25,6 +25,7 @@ export class InputChipsComponent implements ControlValueAccessor, OnInit {
   @Input() defaultValue: any;
   @Input() label: string = '';
   @Input() edit: boolean = true;
+  @Input() error: boolean = true;
   @Input() isBinary: boolean = false;
   @Input() isValueDate: boolean = false;
 

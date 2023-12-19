@@ -2,7 +2,6 @@
 @import "../../../../../styles/variables.scss";
 
 .inputGroup {
-  p {
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: column;
 }

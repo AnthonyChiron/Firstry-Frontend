@@ -37,18 +37,4 @@ export class SignupRiderFormComponent implements OnInit {
     });
     this.fus.setForm(this.riderForm);
   }
-
-  filterCountry(event: AutoCompleteCompleteEvent) {
-    let filtered: any[] = [];
-    let query = event.query;
-
-    for (let i = 0; i < (this.countries as any[]).length; i++) {
-      let country = (this.countries as any[])[i];
-      if (country.name.common.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-        filtered.push(country);
-      }
-    }
-
-    this.filteredCountries = filtered;
-  }
 }

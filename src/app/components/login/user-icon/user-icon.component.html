@@ -8,11 +8,11 @@
       <h4 Capitalize>{{ user.organizer.name }}</h4>
       <h4>{{ user.organizer.siretNumber }}</h4>
     </div>
-    <img *ngIf="user.role == 'rider'" src="{{ user.rider.photoUrl }}" alt="" />
     <img
       (click)="toggleAccountOption = !toggleAccountOption"
-      *ngIf="user.role == 'contest'"
-      src="{{ user.organizer.photoUrl }}"
+      src="{{
+        user.role == 'rider' ? user.rider.photoUrl : user.organizer.photoUrl
+      }}"
       alt=""
     />
   </div>

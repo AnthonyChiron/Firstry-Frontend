@@ -1,0 +1,16 @@
+.socialsForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .field {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    width: 10vw;
+
+    input-text {
+      width: 100%;
+    }
+  }
+}

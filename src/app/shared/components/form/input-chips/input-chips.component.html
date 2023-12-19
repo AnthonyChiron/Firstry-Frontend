@@ -1,11 +1,29 @@
 <div class="chips">
-  <btn
-    *ngFor="let option of options"
-    [type]="isSelected(option.value) ? 'primary' : 'third'"
-    [icon]="isSelected(option.value) ? 'fa-solid fa-check' : ''"
-    iconPos="left"
-    [label]="option.label"
-    (click)="toggleChip(option.value)"
-  >
-  </btn>
+  <label *ngIf="label != ''">{{ label }}</label>
+  <div *ngIf="edit" class="chips-group">
+    <btn
+      *ngFor="let option of options"
+      [type]="isSelected(option.value) ? 'primary' : 'third'"
+      [icon]="isSelected(option.value) ? 'fa-solid fa-check' : ''"
+      iconPos="left"
+      [label]="option.label"
+      (click)="toggleChip(option.value)"
+    >
+    </btn>
+  </div>
+  <ng-content *ngIf="edit && error"></ng-content>
+  <div *ngIf="!edit" class="tag-group">
+    <div *ngFor="let option of options">
+      <info-tag
+        *ngIf="isSelected(option.value)"
+        size="l"
+        type="primary"
+        [icon]="isSelected(option.value) ? 'fa-solid fa-check' : ''"
+        iconPos="left"
+        [label]="option.label"
+        (click)="toggleChip(option.value)"
+      >
+      </info-tag>
+    </div>
+  </div>
 </div>

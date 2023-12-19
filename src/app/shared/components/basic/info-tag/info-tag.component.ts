@@ -9,4 +9,5 @@ export class InfoTagComponent {
   @Input() label: string;
   @Input() icon: string;
   @Input() size: string = 'm';
+  @Input() type: string = 'secondary';
 }

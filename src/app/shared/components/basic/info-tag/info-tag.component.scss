@@ -38,6 +38,16 @@
   font-size: 14px;
 }
 
+.primary {
+  background-color: $firstry-black-2;
+  color: $firstry-white-1;
+}
+
+.secondary {
+  background-color: $firstry-white-1;
+  color: $firstry-black-2;
+}
+
 @media screen and (min-width: 768px) {
   .tag {
     display: flex;

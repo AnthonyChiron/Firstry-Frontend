@@ -81,6 +81,24 @@ a:hover {
   background-color: $firstry-white-3;
 }
 
+.error {
+  border: 1px solid $firstry-red-1;
+}
+
+.errorLabel {
+  color: $firstry-red-1;
+  font-size: 12px;
+  font-variation-settings: "wght" 400;
+  margin-top: 5px;
+}
+
+.mainTitle {
+  height: 8vw;
+  display: flex;
+  align-items: center;
+  margin-bottom: $mobile_gap_card;
+}
+
 @media screen and (min-width: 768px) {
   p {
     font-size: max(12px, 0.8vw);
@@ -105,12 +123,16 @@ a:hover {
   label {
     font-variation-settings: "wght" 900;
     font-size: max(13px, 0.9vw);
+    margin-bottom: 5px;
   }
 
   input,
   textarea {
     font-size: max(9px, 0.8vw);
-    margin-top: $mobile_marginInput;
+  }
+
+  .mainTitle {
+    margin-bottom: $pc_gap_card;
   }
 }
 
@@ -140,21 +162,4 @@ input::placeholder {
 input::placeholder {
   color: $firstry-white-3;
   opacity: 1; /* Firefox */
-}
-
-.error {
-  border: 1px solid $firstry-red-1;
-}
-
-.errorLabel {
-  color: $firstry-red-1;
-  font-size: 12px;
-  font-variation-settings: "wght" 400;
-  margin-top: 5px;
-}
-
-.mainTitle {
-  height: 8vw;
-  display: flex;
-  align-items: center;
 }

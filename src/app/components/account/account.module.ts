@@ -8,6 +8,11 @@ import { IsAuthGuard } from 'src/app/shared/guards/IsAuth/is-auth-guard.service'
 import { UserIconComponent } from '../login/user-icon/user-icon.component';
 import { LoginModule } from '../login/login.module';
 import { AccountComponent } from './account.component';
+import { RiderInfoFormComponent } from './rider-info-form/rider-info-form.component';
+import { FormSharedModule } from 'src/app/shared/formShared.module';
+import { RiderSocialsFormComponent } from './rider-socials-form/rider-socials-form.component';
+import { RiderRegistrationsComponent } from './rider-registrations/rider-registrations.component';
+import { AccountSecurityComponent } from './account-security/account-security.component';
 
 const accountRoutes: Routes = [
   {
@@ -28,7 +33,19 @@ const accountRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ValidEmailComponent, AccountComponent],
-  imports: [CommonModule, RouterModule.forChild(accountRoutes), SharedModule],
+  declarations: [
+    ValidEmailComponent,
+    AccountComponent,
+    RiderInfoFormComponent,
+    RiderSocialsFormComponent,
+    RiderRegistrationsComponent,
+    AccountSecurityComponent,
+  ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(accountRoutes),
+    SharedModule,
+    FormSharedModule,
+  ],
 })
 export class AccountModule {}

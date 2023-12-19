@@ -3,18 +3,24 @@
 
 .chips-group {
   display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: $mobile_marginInput;
 }
 
 .chips {
-  margin-top: $mobile_marginInput;
+  display: flex;
+  flex-direction: column;
+}
+
+.tag-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 3vw;
+  gap: 10px;
 }
 
 @media only screen and (min-width: 768px) {
   .chips {
     margin-top: $pc_marginLabel;
-    gap: 1vw;
   }
 }

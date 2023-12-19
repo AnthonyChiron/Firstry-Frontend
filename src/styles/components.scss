@@ -57,15 +57,11 @@
     display: flex;
     flex-direction: row;
     gap: $pc_gap_card;
-    width: 100%;
-    height: 100%;
   }
 
   .flexCardColumn {
     display: flex;
     flex-direction: column;
     gap: $pc_gap_card;
-    width: 100%;
-    height: 100%;
   }
 }

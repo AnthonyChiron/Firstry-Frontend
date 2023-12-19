@@ -1,6 +1,6 @@
 <div class="dropdown-input">
   <label *ngIf="label != ''" [htmlFor]="name">{{ label }}</label>
-  <div class="input">
+  <div class="input" *ngIf="edit">
     <input
       [class.error]="error"
       [name]="name"
@@ -26,4 +26,5 @@
       ></ng-container>
     </div>
   </div>
+  <ng-content *ngIf="!edit"></ng-content>
 </div>
