@@ -1,0 +1,81 @@
+<card
+  [btn]="true"
+  btnIcon="fa-solid fa-pen-to-square fa-lg"
+  (btnClicked)="edit = !edit"
+  title="Mes informations"
+  [fitContent]="true"
+>
+  <form [formGroup]="form">
+    <div class="flexRow">
+      <input-text
+        label="Nom"
+        [edit]="edit"
+        [error]="_fus.isFieldInvalid('lastName')"
+        formControlName="lastName"
+      ></input-text>
+      <input-text
+        label="Prénom"
+        [edit]="edit"
+        [error]="_fus.isFieldInvalid('firstName')"
+        formControlName="firstName"
+      ></input-text>
+    </div>
+    <input-textarea
+      label="Bio"
+      [edit]="edit"
+      size="s"
+      [error]="_fus.isFieldInvalid('bio')"
+      formControlName="bio"
+    >
+    </input-textarea>
+    <div class="flexRow">
+      <input-date
+        label="Date de naissance"
+        [edit]="edit"
+        [error]="_fus.isFieldInvalid('birthDate')"
+        formControlName="birthDate"
+      ></input-date>
+      <dropdown-autocomplete
+        label="Nationalité"
+        formControlName="nationality"
+        placeholder="Nationalité..."
+        [edit]="edit"
+        [optionTemplate]="nationalityOptionTemplate"
+        [options]="countries"
+      >
+        <div class="nationality">
+          <img [src]="form.get('nationality').value.flags.png" alt="" />
+          <p>{{ form.get("nationality").value.name.common }}</p>
+        </div>
+      </dropdown-autocomplete>
+      <ng-template #nationalityOptionTemplate let-option>
+        <div class="option flexRow">
+          <img [src]="option.value.flags.png" style="height: 10px" alt="" />
+          {{ option.label }}
+        </div>
+      </ng-template>
+      <input-text
+        label="Ville"
+        [edit]="edit"
+        [error]="_fus.isFieldInvalid('city')"
+        formControlName="city"
+      ></input-text>
+    </div>
+    <input-chips
+      label="Sports"
+      formControlName="sports"
+      [error]="_fus.isFieldInvalid('sports')"
+      [edit]="edit"
+      [options]="sports"
+    >
+      <note
+        text="Il faut sélectionner au moins un sport !"
+        type="errorLabel"
+      ></note>
+    </input-chips>
+    <div class="formButtons" *ngIf="edit">
+      <btn type="danger" label="Annuler" (click)="cancel()"></btn>
+      <btn type="primary" label="Enregistrer" (click)="submit()"></btn>
+    </div>
+  </form>
+</card>

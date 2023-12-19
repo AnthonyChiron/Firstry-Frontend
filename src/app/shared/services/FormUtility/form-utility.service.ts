@@ -13,7 +13,8 @@ export class FormUtilityService {
   }
 
   public isFieldInvalid(field) {
-    return null;
+    if (!this.form) return false;
+    if (!this.form.get(field)) return false;
     return this.form.get(field).invalid && this.form.get(field).touched;
   }
 

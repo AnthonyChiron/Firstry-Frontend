@@ -12,13 +12,18 @@ export class UsersService extends CrudService<UserModel> {
     super(http, authService, 'users');
   }
 
-  getByGoogleId(googleId) {
-    const url = `${this.baseUrl}/getUserByGoogleId/${googleId}`;
-    return this.http.get<UserModel>(url);
-  }
-
   isEmailAvailable(email) {
     const url = `${this.baseUrl}/isEmailAvailable`;
     return this.http.post(url, { email: email });
+  }
+
+  updateEmail(userId, newEmail) {
+    const url = `${this.baseUrl}/updateEmail/${userId}`;
+    return this.http.post(url, { newEmail: newEmail });
+  }
+
+  updatePassword(userId, password) {
+    const url = `${this.baseUrl}/updatePassword/${userId}`;
+    return this.http.post(url, { newPassword: password });
   }
 }

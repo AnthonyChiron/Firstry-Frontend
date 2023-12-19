@@ -34,15 +34,4 @@ export class LoginComponent {
   closeModal() {
     this.modalClosed.emit();
   }
-
-  @HostListener('document:click', ['$event'])
-  clickOutside(event: Event): void {
-    if (
-      this.firstCall &&
-      !this.elementRef.nativeElement.contains(event.target)
-    ) {
-      this.modalClosed.emit();
-    }
-    this.firstCall = true;
-  }
 }

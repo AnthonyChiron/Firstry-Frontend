@@ -1,0 +1,101 @@
+<card title="Sécurité" [fitContent]="true">
+  <div class="flexColumn">
+    <div class="field">
+      <div *ngIf="!changeEmailEdit">
+        <label>Email</label>
+        <p>{{ user.email }}</p>
+        <p
+          *ngIf="isEmailChanging || (user.newEmail && user.newEmail != '')"
+        ></p>
+      </div>
+      <card
+        title="Changement d'email"
+        size="m"
+        *ngIf="changeEmailEdit"
+        color="2"
+      >
+        <form [formGroup]="changeEmailForm">
+          <input-text
+            label="Email"
+            [edit]="changeEmailEdit"
+            formControlName="newEmail"
+            [error]="
+              changeEmailForm.get('newEmail').touched &&
+              changeEmailForm.get('newEmail').invalid
+            "
+          >
+            <note text="Veuillez entrer votre nouvel adresse email"></note
+          ></input-text>
+
+          <div class="formButtons">
+            <btn
+              label="Annuler"
+              type="danger"
+              icon="fa-solid fa-times"
+              (click)="cancelEmailForm()"
+            ></btn>
+            <btn
+              label="Valider"
+              icon="fa-solid fa-check"
+              (click)="submitEmailForm()"
+            ></btn>
+          </div>
+        </form>
+      </card>
+      <btn
+        label="Changer mon email"
+        icon="fa-solid fa-arrows-rotate"
+        (click)="changeEmailEdit = !changeEmailEdit"
+      ></btn>
+    </div>
+    <div class="field">
+      <div *ngIf="!changePasswordEdit">
+        <label>Password</label>
+        <p>On va pas vous montrer votre mot de passe hein</p>
+      </div>
+      <card
+        title="Changement de mot de passe"
+        size="m"
+        *ngIf="changePasswordEdit"
+        color="2"
+      >
+        <form [formGroup]="changePasswordForm">
+          <input-text
+            label="Nouveau mot de passe"
+            placeholder="Nouveau mot de passe..."
+            [edit]="changePasswordEdit"
+            formControlName="newPassword"
+          >
+          </input-text>
+          <input-text
+            label="Confirmer votre nouveau mot de passe"
+            placeholder="Nouveau mot de passe..."
+            [edit]="changePasswordEdit"
+            formControlName="newPassword2"
+          >
+          </input-text>
+
+          <div class="formButtons">
+            <btn
+              label="Annuler"
+              type="danger"
+              icon="fa-solid fa-times"
+              (click)="cancelPasswordForm()"
+            ></btn>
+            <btn
+              label="Valider"
+              icon="fa-solid fa-check"
+              (click)="submitEmailForm()"
+            ></btn>
+          </div>
+        </form>
+      </card>
+      <btn
+        class="btn"
+        label="Changer mon mot de passe"
+        icon="fa-solid fa-arrows-rotate"
+        (click)="changePasswordEdit = !changePasswordEdit"
+      ></btn>
+    </div>
+  </div>
+</card>

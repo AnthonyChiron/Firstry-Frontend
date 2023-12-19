@@ -1,0 +1,77 @@
+<card
+  title="Réseaux sociaux"
+  *ngIf="rider"
+  [btn]="true"
+  [fitContent]="true"
+  btnIcon="fa-solid fa-pen-to-square fa-lg"
+  (btnClicked)="edit = !edit"
+>
+  <form [formGroup]="form">
+    <div class="socialsForm">
+      <div class="field">
+        <input-text
+          placeholder="Instagram..."
+          label="Instagram"
+          formControlName="instagram"
+          [edit]="edit"
+          [error]="_fus.isFieldInvalid('instagram')"
+        ></input-text>
+        <btn
+          (click)="
+            goToWebsite(
+              'https://www.instagram.com/' + form.get('instagram').value
+            )
+          "
+          icon="fa-brands fa-instagram"
+        ></btn>
+      </div>
+      <div class="field">
+        <input-text
+          placeholder="Twitter..."
+          label="Twitter"
+          formControlName="twitter"
+          [edit]="edit"
+          [error]="_fus.isFieldInvalid('twitter')"
+        ></input-text>
+        <btn
+          (click)="
+            goToWebsite('https://twitter.com/' + form.get('twitter').value)
+          "
+          icon="fa-brands fa-twitter"
+        ></btn>
+      </div>
+      <div class="field">
+        <input-text
+          name="youtube"
+          type="Text"
+          placeholder="Youtube..."
+          label="Youtube"
+          formControlName="youtube"
+          [edit]="edit"
+          [error]="_fus.isFieldInvalid('youtube')"
+        ></input-text>
+        <btn
+          (click)="
+            goToWebsite('https://www.youtube.com/@' + form.get('youtube').value)
+          "
+          icon="fa-brands fa-youtube"
+        ></btn>
+      </div>
+    </div>
+
+    <div class="formButtons" *ngIf="edit">
+      <btn
+        (click)="cancel()"
+        type="danger"
+        label="Annuler"
+        icon="fa-solid fa-xmark fa-lg"
+      ></btn>
+      <btn
+        (click)="submit()"
+        type="primary"
+        label="Confirmer"
+        icon="fa-solid fa-check fa-lg"
+      ></btn>
+    </div>
+  </form>
+</card>

@@ -4,6 +4,10 @@
     [color]="isMobile ? '1' : 'white'"
     [img]="isMobile ? '' : '../../../assets/dashboard/DSC09103.jpg'"
     [fitContent]="isMobile ? true : false"
+    imgHeight="35"
+    [btn]="isMobile ? false : true"
+    btnIcon="fa-solid fa-xmark"
+    (btnClicked)="closeModal()"
   >
     <p-tabView [(activeIndex)]="openTab">
       <p-tabPanel header="Connexion">

@@ -6,6 +6,7 @@ export interface RiderModel extends GenericModel {
   photoUrl: string;
   gender?: string;
   birthDate: Date;
+  bio: string;
   sports: [];
   category?: string;
   nationality: any;
@@ -15,5 +16,18 @@ export interface RiderModel extends GenericModel {
     twitter?: string;
     youtube?: string;
     website?: string;
+  };
+}
+
+export function parseRiderToDTO(rider) {
+  return {
+    firstName: rider.firstName,
+    lastName: rider.lastName,
+    birthDate: rider.birthDate,
+    bio: rider.bio,
+    nationality: rider.nationality,
+    city: rider.city,
+    sports: rider.sports,
+    socials: rider.socials,
   };
 }

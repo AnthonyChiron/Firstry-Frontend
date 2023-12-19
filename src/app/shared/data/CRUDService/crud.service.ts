@@ -48,6 +48,7 @@ export class CrudService<T> extends BaseHttpService {
   // Mettre à jour une entité
   update(id: string, entity: T): Observable<T> {
     const url = `${this.baseUrl}/${id}`;
+    console.log(url);
     return this.http.put<T>(url, entity, this.getHttpOptions());
   }
 
