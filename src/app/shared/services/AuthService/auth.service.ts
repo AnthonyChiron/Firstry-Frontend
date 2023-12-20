@@ -99,4 +99,11 @@ export class AuthService extends BaseHttpService {
     console.log(newUser);
     localStorage.setItem('current-user', JSON.stringify(newUser));
   }
+
+  updateUserNewEmail(user) {
+    let newUser = JSON.parse(localStorage.getItem('current-user'));
+    newUser.email = user.email;
+    newUser.newEmail = null;
+    localStorage.setItem('current-user', JSON.stringify(newUser));
+  }
 }

@@ -4,7 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'nav-icon-btn',
   template: `
     <button class="{{ type }}">
-      <i class="fa-solid fa-2xl {{ class }}"></i>
+      <i class="fa-solid {{ class }}"></i>
     </button>
   `,
   styleUrls: ['./nav-icon-btn.component.scss'],

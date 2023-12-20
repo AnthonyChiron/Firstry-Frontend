@@ -20,6 +20,7 @@ export class AccountSecurityComponent implements OnInit {
 
   isEmailChanging: boolean = false;
   isPasswordChanging: boolean = false;
+  isPasswordsMatching: boolean = true;
 
   changeEmailForm: FormGroup;
   changePasswordForm: FormGroup;
@@ -73,12 +74,25 @@ export class AccountSecurityComponent implements OnInit {
 
   submitPasswordForm() {
     this.changePasswordForm.markAllAsTouched();
+    if (
+      this.changePasswordForm.value.newPassword !==
+      this.changePasswordForm.value.newPassword2
+    ) {
+      this.isPasswordsMatching = false;
+      return;
+    }
+
     if (this.changePasswordForm.valid) {
       this.changePasswordEdit = false;
-      this._userService.updatePassword(
-        this.user._id,
-        this.changePasswordForm.value.newEmail
-      );
+      this._userService
+        .updatePassword(
+          this.user._id,
+          this.changePasswordForm.value.newPassword
+        )
+        .subscribe((res) => {
+          console.log(res);
+          this.isPasswordChanging = true;
+        });
     }
   }
 }

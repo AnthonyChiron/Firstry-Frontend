@@ -16,7 +16,7 @@ export class SportsService {
     return [
       { label: 'Roller', value: 'roller' },
       { label: 'Trottinette', value: 'trottinette' },
-      { label: 'Skate', value: 'skateboard' },
+      { label: 'Skate', value: 'skate' },
       { label: 'BMX', value: 'bmx' },
       { label: 'Quad', value: 'quad' },
     ];
