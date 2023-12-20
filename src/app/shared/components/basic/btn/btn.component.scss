@@ -19,7 +19,7 @@ button {
   align-items: center;
   width: 10vw;
   height: 10vw;
-  font-size: 0.7vw;
+  font-size: max(15px, 1.2vw);
 }
 
 .xs {
@@ -32,7 +32,7 @@ button {
 }
 
 .m {
-  padding: 6px 12px;
+  padding: 5px 8px;
   border-radius: 6px;
 }
 
@@ -41,7 +41,81 @@ button {
   border-radius: 8px;
 }
 
+.primary {
+  background-color: $firstry-black-2;
+  color: $firstry-white-1;
+  border: 1px solid transparent;
+}
+
+.secondary {
+  color: $firstry-black-2;
+  background-color: $firstry-white-1;
+}
+
+.third {
+  background-color: $firstry-white-2;
+  color: $firstry-black-2;
+  font-variation-settings: "wght" 800;
+  border: 1px solid transparent;
+}
+
+.fourth {
+  background-color: transparent;
+  color: $firstry-black-4;
+  border: 1px solid transparent;
+}
+
+.danger {
+  background-color: $firstry-red-2;
+  color: $firstry-white-1;
+  font-variation-settings: "wght" 800;
+  border: 1px solid transparent;
+}
+
+.valid {
+  background-color: $firstry-red-2;
+  color: $firstry-white-1;
+  font-variation-settings: "wght" 800;
+  border: 1px solid transparent;
+}
+
+.transparent {
+  background-color: transparent;
+  color: $firstry-black-2;
+}
+
+.left {
+  margin-right: 8px;
+}
+
+.right {
+  margin-left: 8px;
+}
+
 @media only screen and (min-width: 768px) {
+  .primary:hover {
+    background-color: $firstry-black-3;
+    color: $firstry-white-1;
+    border: 1px solid transparent;
+  }
+
+  .secondary:hover {
+    color: $firstry-black-2;
+    background-color: $firstry-white-3;
+  }
+
+  .third:hover {
+    background-color: $firstry-white-3;
+  }
+
+  .danger:hover {
+    background-color: $firstry-red-1;
+  }
+
+  .transparent:hover {
+    background-color: $firstry-white-4;
+  }
+
   .iconOnly {
     width: 3vw;
     height: 3vw;
@@ -77,85 +151,23 @@ button {
     height: 1vw;
     font-size: 10px;
   }
-}
 
-.primary {
-  background-color: $firstry-black-2;
-  color: $firstry-white-1;
-  border: 1px solid transparent;
-}
-
-.primary:hover {
-  background-color: $firstry-black-3;
-  color: $firstry-white-1;
-  border: 1px solid transparent;
-}
-
-.secondary {
-  color: $firstry-black-2;
-  background-color: $firstry-white-1;
-}
-
-.secondary:hover {
-  color: $firstry-black-2;
-  background-color: $firstry-white-3;
-}
-
-.third {
-  background-color: $firstry-white-2;
-  color: $firstry-black-2;
-  font-variation-settings: "wght" 800;
-  border: 1px solid transparent;
-}
-
-.third:hover {
-  background-color: $firstry-white-3;
-}
-
-.fourth {
-  background-color: transparent;
-  color: $firstry-black-4;
-  border: 1px solid transparent;
-}
-
-.danger {
-  background-color: $firstry-red-2;
-  color: $firstry-white-1;
-  font-variation-settings: "wght" 800;
-  border: 1px solid transparent;
-}
-
-.danger:hover {
-  background-color: $firstry-red-1;
-}
-
-.transparent {
-  background-color: transparent;
-  color: $firstry-black-2;
-}
-
-.left {
-  margin-right: 0.7vh;
-}
-
-.right {
-  margin-left: 0.7vh;
-}
-
-.xl {
-  padding: 0.6vh 1.4vh;
-  font-size: 18px;
-}
-
-.l {
-  padding: 0.6vh 1.4vh;
-  font-size: 14px;
-
-  .left {
-    margin-right: 1.4vh;
+  .xs {
+    padding: 2px 6px;
+    font-size: max(9px, 0.7vw);
   }
 
-  .right {
-    margin-right: 1.4vh;
+  .s {
+    padding: 4px 10px;
+  }
+
+  .m {
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+
+  .l {
+    padding: 8px 15px;
+    border-radius: 8px;
   }
 }

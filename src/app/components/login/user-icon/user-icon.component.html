@@ -25,9 +25,19 @@
     <btn type="primary" label="S'inscrire" routerLink="register"></btn>
   </div>
   <div *ngIf="!toggleAccountOption" class="accountOptions">
-    <a routerLink="/account">Mon compte</a>
-    <a routerLink="/dashboard">Mes contests</a>
-    <a (click)="logout()">Se déconnecté</a>
+    <a
+      routerLink="/account"
+      (click)="toggleAccountOption = !toggleAccountOption"
+      >Mon compte</a
+    >
+    <a
+      routerLink="/dashboard"
+      (click)="toggleAccountOption = !toggleAccountOption"
+      >Mes contests</a
+    >
+    <a (click)="logout()" (click)="toggleAccountOption = !toggleAccountOption"
+      >Se déconnecté</a
+    >
   </div>
 </div>
 <modal

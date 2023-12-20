@@ -1,6 +1,6 @@
 img {
   border-radius: 10000px;
-  height: 13vw;
+  height: max(140px, 12vw);
   object-fit: contain;
 }
 
@@ -19,8 +19,8 @@ h4 {
     justify-content: center;
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='11' ry='11' stroke='%23333' stroke-width='5' stroke-dasharray='7%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
     border-radius: 11px;
-    height: 5vw;
-    width: 5vw;
+    height: max(80px, 5vw);
+    width: max(80px, 5vw);
     margin: 5vh;
     background-color: white;
     cursor: pointer;

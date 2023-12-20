@@ -32,7 +32,7 @@
     padding: 6vw;
 
     .header h3 {
-      font-size: 30px;
+      font-size: 25px;
     }
   }
 
@@ -103,11 +103,6 @@
     transition: 0.3s;
   }
 
-  .btn:hover {
-    background-color: $firstry-white-3;
-    border-radius: 8px;
-  }
-
   .btnToggle {
     transition: 0.15s;
   }
@@ -135,6 +130,13 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .header {
+    .btn:hover {
+      background-color: $firstry-white-3;
+      border-radius: 8px;
+    }
+  }
+
   .sideImgCard > .header {
     h3 {
       text-align: center;
