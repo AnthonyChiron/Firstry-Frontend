@@ -1,4 +1,4 @@
-<form [formGroup]="connexionForm">
+<form *ngIf="!isResetPassword" [formGroup]="connexionForm">
   <input-text
     name="email"
     type="Text"
@@ -21,7 +21,12 @@
   ></note>
 
   <div class="flexRow spaceBetween">
-    <p>Mot de passe oublié ?</p>
+    <btn
+      type="transparent"
+      label="Mot de passe oublié ?"
+      size="s"
+      (click)="isResetPassword = !isResetPassword"
+    ></btn>
     <btn
       (click)="submit()"
       label="Connexion"
@@ -30,3 +35,4 @@
     ></btn>
   </div>
 </form>
+<forget-password *ngIf="isResetPassword"></forget-password>

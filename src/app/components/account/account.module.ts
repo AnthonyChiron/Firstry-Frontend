@@ -15,6 +15,7 @@ import { RiderRegistrationsComponent } from './rider-registrations/rider-registr
 import { AccountSecurityComponent } from './account-security/account-security.component';
 import { ValidNewEmailComponent } from './valid-new-email/valid-new-email.component';
 import { ValidNewPasswordComponent } from './valid-new-password/valid-new-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const accountRoutes: Routes = [
   {
@@ -35,12 +36,14 @@ const accountRoutes: Routes = [
   {
     path: 'validateNewEmail/:token',
     component: ValidNewEmailComponent,
-    canActivate: [IsNotValidGuard, IsAuthGuard],
   },
   {
     path: 'validateNewPassword/:token',
     component: ValidNewPasswordComponent,
-    canActivate: [IsNotValidGuard, IsAuthGuard],
+  },
+  {
+    path: 'resetPassword/:token',
+    component: ResetPasswordComponent,
   },
 ];
 
@@ -54,6 +57,7 @@ const accountRoutes: Routes = [
     RiderRegistrationsComponent,
     AccountSecurityComponent,
     ValidNewPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,

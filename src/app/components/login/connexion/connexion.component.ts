@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
 export class ConnexionComponent implements OnInit {
   connexionForm: FormGroup;
   invalidCredentials: Boolean = false;
+  isResetPassword: Boolean = false;
   @Output() connected: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
