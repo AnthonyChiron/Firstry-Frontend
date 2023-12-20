@@ -11,4 +11,11 @@ export class RidersService extends CrudService<RiderModel> {
   constructor(http: HttpClient, authService: AuthService) {
     super(http, authService, 'riders');
   }
+
+  updatePhoto(riderId, photo) {
+    const formData = new FormData();
+    formData.append('photo', photo);
+    console.log(this.baseUrl);
+    return this.http.put(`${this.baseUrl}/updatePhoto/${riderId}`, formData);
+  }
 }

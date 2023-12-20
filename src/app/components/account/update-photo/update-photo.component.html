@@ -1,0 +1,46 @@
+<card title="Photo de profil">
+  <div class="flexRow spaceAround">
+    <img
+      *ngIf="imageChangedEvent == '' && !isLoading"
+      [src]="userPhoto"
+      alt=""
+    />
+    <div class="form">
+      <div class="addPhoto" *ngIf="!imgConfirmed">
+        <!-- <input type="file" accept="image/*" (change)="onUpload($event)" />
+                          <small>Votre photo ne doit pas dépasser les 4mo</small> -->
+        <label
+          *ngIf="imageChangedEvent == '' && !isLoading"
+          class="labelAddPhoto"
+        >
+          <input
+            class="inputAddPhoto"
+            type="file"
+            (change)="fileChangeEvent($event)"
+          />
+          <i class="fa-solid fa-rotate fa-xl"></i>
+        </label>
+        <loader *ngIf="isLoading"></loader>
+        <image-cropper
+          *ngIf="imageChangedEvent != ''"
+          [imageChangedEvent]="imageChangedEvent"
+          [maintainAspectRatio]="true"
+          [aspectRatio]="ratio"
+          [onlyScaleDown]="false"
+          format="png"
+          output="blob"
+          (imageCropped)="imageCropped($event)"
+        ></image-cropper>
+        <btn
+          *ngIf="imageChangedEvent != ''"
+          (click)="confirmImage()"
+          label="Confirmer"
+          icon="fa-solid fa-check fa-2xs"
+          iconPos="left"
+        ></btn>
+        <note text="Votre photo ne doit pas dépasser les 4mo"></note>
+        <note text="(Fichier .pnj / .jpg / .png)"></note>
+      </div>
+    </div>
+  </div>
+</card>

@@ -9,6 +9,15 @@ import { AuthService } from '../../services/AuthService/auth.service';
 })
 export class OrganizersService extends CrudService<OrganizerModel> {
   constructor(http: HttpClient, authService: AuthService) {
-    super(http, authService, 'organizer');
+    super(http, authService, 'organizers');
+  }
+
+  updatePhoto(organizerId, photo) {
+    const formData = new FormData();
+    formData.append('photo', photo);
+    return this.http.put(
+      `${this.baseUrl}/updatePhoto/${organizerId}`,
+      formData
+    );
   }
 }

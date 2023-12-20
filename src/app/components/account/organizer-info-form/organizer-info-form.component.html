@@ -1,0 +1,39 @@
+<card
+  title="Informations"
+  [btn]="true"
+  btnIcon="fa-solid fa-pen-to-square"
+  (btnClicked)="edit = !edit"
+>
+  <form [formGroup]="form">
+    <input-text
+      [edit]="edit"
+      label="Nom de l'organisateur"
+      placeholder="Nom de l'organisateur..."
+      formControlName="name"
+      [error]="_fus.isFieldInvalid('name')"
+    ></input-text>
+    <input-textarea
+      [edit]="edit"
+      label="Bio"
+      size="s"
+      placeholder="Bio..."
+      formControlName="bio"
+      [error]="_fus.isFieldInvalid('bio')"
+    ></input-textarea>
+    <div class="formButtons" *ngIf="edit">
+      <btn
+        (click)="cancel()"
+        label="Annuler"
+        type="danger"
+        icon="fa-solid fa-xmark"
+        iconPos="left"
+      ></btn>
+      <btn
+        (click)="submit()"
+        label="Enregistrer"
+        icon="fa-solid fa-check"
+        iconPos="left"
+      ></btn>
+    </div>
+  </form>
+</card>

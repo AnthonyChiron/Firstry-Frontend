@@ -17,7 +17,12 @@
       <btn size="nav" icon="fa-solid fa-calendar fa-2xl"></btn>
       <p class="label">Contests</p>
     </div>
-    <div routerLink="/dashboard" routerLinkActive="active" class="link">
+    <div
+      *ngIf="_authService.isCurrentUserOrganizer()"
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      class="link"
+    >
       <btn size="nav" icon="fa-solid fa-gear fa-2xl"></btn>
       <p class="label">Dashboard</p>
     </div>

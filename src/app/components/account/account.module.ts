@@ -16,6 +16,9 @@ import { AccountSecurityComponent } from './account-security/account-security.co
 import { ValidNewEmailComponent } from './valid-new-email/valid-new-email.component';
 import { ValidNewPasswordComponent } from './valid-new-password/valid-new-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { UpdatePhotoComponent } from './update-photo/update-photo.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { OrganizerInfoFormComponent } from './organizer-info-form/organizer-info-form.component';
 
 const accountRoutes: Routes = [
   {
@@ -58,12 +61,15 @@ const accountRoutes: Routes = [
     AccountSecurityComponent,
     ValidNewPasswordComponent,
     ResetPasswordComponent,
+    UpdatePhotoComponent,
+    OrganizerInfoFormComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(accountRoutes),
     SharedModule,
     FormSharedModule,
+    ImageCropperModule,
   ],
 })
 export class AccountModule {}

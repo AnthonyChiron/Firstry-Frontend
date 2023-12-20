@@ -83,7 +83,7 @@ export class AuthService extends BaseHttpService {
     return this.getCurrentUser().role == 'rider';
   }
 
-  isCurrentUserContest(): boolean {
+  isCurrentUserOrganizer(): boolean {
     return this.getCurrentUser().role == 'contest';
   }
 
@@ -96,7 +96,12 @@ export class AuthService extends BaseHttpService {
   updateRider(rider) {
     let newUser = JSON.parse(localStorage.getItem('current-user'));
     newUser.rider = rider;
-    console.log(newUser);
+    localStorage.setItem('current-user', JSON.stringify(newUser));
+  }
+
+  updateOrganizer(organizer) {
+    let newUser = JSON.parse(localStorage.getItem('current-user'));
+    newUser.organizer = organizer;
     localStorage.setItem('current-user', JSON.stringify(newUser));
   }
 
