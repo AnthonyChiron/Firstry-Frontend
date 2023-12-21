@@ -6,14 +6,47 @@ import { ContestsService } from 'src/app/shared/data/ContestsService/contests.se
 import { ContestCardComponent } from './contest-card/contest-card.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ContestComponent } from './contest/contest.component';
+import { ContestOverviewComponent } from './contest/contest-overview/contest-overview.component';
+import { IsAuthGuard } from 'src/app/shared/guards/IsAuth/is-auth-guard.service';
+import { ContestRegisterComponent } from './contest/contest-register/contest-register.component';
+import { ContestResultsComponent } from './contest/contest-results/contest-results.component';
 
 const contestsRoutes: Routes = [
   { path: '', component: ContestsComponent },
-  { path: ':id', component: ContestComponent },
+  {
+    path: ':id',
+    component: ContestComponent,
+    children: [
+      {
+        path: 'overview',
+        component: ContestOverviewComponent,
+      },
+      {
+        path: 'register',
+        component: ContestRegisterComponent,
+      },
+      {
+        path: 'results',
+        component: ContestResultsComponent,
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'overview',
+      },
+    ],
+  },
 ];
 
 @NgModule({
-  declarations: [ContestsComponent, ContestCardComponent, ContestComponent],
+  declarations: [
+    ContestsComponent,
+    ContestCardComponent,
+    ContestComponent,
+    ContestOverviewComponent,
+    ContestRegisterComponent,
+    ContestResultsComponent,
+  ],
   imports: [CommonModule, RouterModule.forChild(contestsRoutes), SharedModule],
   providers: [ContestsService],
 })

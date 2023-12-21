@@ -1,23 +1,9 @@
 @import "../../../../styles/colors.scss";
 
-card {
-  width: 100%;
-  height: fit-content;
-}
-
 .poster {
   height: 100%;
   max-height: 30vw;
   border-radius: 8px;
-}
-
-.planning {
-  width: 100%;
-}
-
-.map {
-  height: 100%;
-  width: 100%;
 }
 
 .main {
@@ -39,10 +25,6 @@ card {
     .contestName {
       margin-bottom: 1vh;
 
-      .title {
-        font-size: 23px;
-      }
-
       .subtitle {
         font-size: 15px;
         font-variation-settings: "wght" 400;
@@ -51,27 +33,6 @@ card {
           font-variation-settings: "wght" 600;
         }
       }
-    }
-  }
-
-  .content {
-    display: flex;
-    width: 100%;
-
-    .leftPannel {
-      flex: 4;
-
-      .poster {
-        width: auto;
-        height: 80vw;
-        border-radius: 11px;
-      }
-    }
-
-    .rightPannel {
-      display: flex;
-      height: 100%;
-      flex: 1;
     }
   }
 }
@@ -87,10 +48,6 @@ card {
         flex: 2;
         margin-bottom: 1vh;
 
-        .title {
-          font-size: 40px;
-        }
-
         .subtitle {
           font-size: 15px;
         }
@@ -102,26 +59,6 @@ card {
         align-items: flex-end;
         justify-content: flex-end;
         gap: 2vw;
-      }
-    }
-
-    .content {
-      .leftPannel {
-        display: flex;
-        flex-direction: column;
-        flex: 4;
-        width: 100%;
-
-        .poster {
-          width: auto;
-          height: 20vw;
-          border-radius: 11px;
-        }
-      }
-
-      .rightPannel {
-        display: flex;
-        flex: 2;
       }
     }
   }

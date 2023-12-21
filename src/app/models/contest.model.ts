@@ -8,7 +8,7 @@ export interface ContestModel extends GenericModel {
   endDate: Date;
   registrationEndDate: Date;
   sports: any[];
-  categories: [];
+  categories: any[];
   location: Address;
   branding: {
     logo: string;

@@ -17,60 +17,23 @@
       </p>
     </div>
     <div class="nav" *ngIf="!isMobile">
-      <nav-btn label="Aperçu"></nav-btn>
-      <nav-btn label="Inscription"></nav-btn>
-      <nav-btn label="Résultats"></nav-btn>
+      <nav-btn
+        label="Aperçu"
+        routerLinkActive="active"
+        routerLink="overview"
+      ></nav-btn>
+      <nav-btn
+        label="Inscription"
+        routerLinkActive="active"
+        routerLink="register"
+      ></nav-btn>
+      <nav-btn
+        label="Résultats"
+        routerLinkActive="active"
+        routerLink="results"
+      ></nav-btn>
     </div>
   </div>
   <div class="sep"></div>
-  <div [class]="'content ' + (isMobile ? 'flexCardColumn' : 'flexCardRow')">
-    <div class="leftPannel flexCardColumn">
-      <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
-        <img
-          class="poster"
-          [src]="
-            contest.branding && contest.branding.poster
-              ? contest.branding.poster
-              : ''
-          "
-          alt=""
-          *ngIf="!isMobile"
-        />
-        <card title="Description"
-          ><p>{{ contest.description }}</p></card
-        >
-      </div>
-      <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
-        <div [class]="'flexCardRow'">
-          <socials
-            *ngIf="contest.socials"
-            [socials]="contest.socials"
-          ></socials>
-          <card title="Dates"
-            ><p>
-              {{
-                (contest.startDate | date : "dd/MM/yyyy") +
-                  " - " +
-                  (contest.endDate | date : "dd/MM/yyyy")
-              }}
-            </p></card
-          >
-        </div>
-        <div [class]="!isMobile ? 'flexCardColumn' : 'flexCardRow'">
-          <maps-card
-            class="map"
-            [address]="contest.location.address"
-          ></maps-card>
-          <card><h2>JE VEUX M'INSCRIRE</h2></card>
-        </div>
-      </div>
-    </div>
-    <div class="rightPannel">
-      <planning
-        class="planning"
-        [contest]="contest"
-        [categories]="contest.categories"
-      ></planning>
-    </div>
-  </div>
+  <router-outlet class="fullWidth"></router-outlet>
 </div>

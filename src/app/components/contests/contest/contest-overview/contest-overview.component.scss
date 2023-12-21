@@ -1,0 +1,27 @@
+.planning {
+  width: 100%;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .leftPannel {
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+
+    .poster {
+      width: auto;
+      height: 20vw;
+      border-radius: 11px;
+    }
+  }
+
+  .rightPannel {
+    display: flex;
+    flex: 2;
+  }
+}

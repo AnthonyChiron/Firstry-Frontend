@@ -20,10 +20,64 @@
   justify-content: space-around;
 }
 
-.JflexEnd {
+.flexEnd {
   justify-content: flex-end;
 }
 
 .justifyCenter {
   justify-content: center;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.fullHeight {
+  height: 100%;
+}
+
+.flexCardRow {
+  display: flex;
+  flex-direction: row;
+  gap: $mobile_gap_card;
+}
+
+.flexCardColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $mobile_gap_card;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.flex2 {
+  flex: 2;
+}
+
+.flex3 {
+  flex: 3;
+}
+
+.flex4 {
+  flex: 4;
+}
+
+@media screen and (min-width: 768px) {
+  .flexCardRow {
+    display: flex;
+    flex-direction: row;
+    gap: $pc_gap_card;
+  }
+
+  .flexCardColumn {
+    display: flex;
+    flex-direction: column;
+    gap: $pc_gap_card;
+  }
 }

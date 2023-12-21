@@ -48,36 +48,7 @@ form {
   flex-direction: column;
 }
 
-.flexRow {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: $mobile_gap_card;
-}
-
-.flexColumn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $mobile_gap_card;
-}
-
 @media only screen and (min-width: 768px) {
-  .flexRow {
-    gap: $pc_gap_card;
-  }
-
-  .flexColumn {
-    gap: $pc_gap_card;
-  }
-}
-
-.spaceBetween {
-  justify-content: space-between;
-}
-
-.fullWidth {
-  width: 100%;
 }
 
 body {

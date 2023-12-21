@@ -96,12 +96,16 @@ a:hover {
   text-align: center;
 }
 
+.mainTitle {
+  margin-bottom: $mobile_gap_card;
+}
+
 @media screen and (min-width: 768px) {
   .mainTitle {
     height: 8vw;
     display: flex;
     align-items: center;
-    margin-bottom: $mobile_gap_card;
+    margin-bottom: $pc_gap_card;
   }
 
   p {
@@ -133,10 +137,6 @@ a:hover {
   input,
   textarea {
     font-size: max(9px, 0.8vw);
-  }
-
-  .mainTitle {
-    margin-bottom: $pc_gap_card;
   }
 }
 
