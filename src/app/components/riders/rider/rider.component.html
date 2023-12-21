@@ -1,7 +1,7 @@
 <div class="header"></div>
-<div class="content">
+<div class="flexCardColumn">
   <rider-card-lg [rider]="rider"></rider-card-lg>
-  <div [class.flexRow]="rider && rider.socials ? true : false">
+  <div [class.flexCardRow]="rider && rider.socials ? true : false">
     <rider-result class="fullWidth" [rider]="rider"></rider-result>
     <socials
       class="flexStart"

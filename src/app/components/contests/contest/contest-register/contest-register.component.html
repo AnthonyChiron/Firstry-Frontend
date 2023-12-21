@@ -1,40 +1,40 @@
-<div
-  *ngIf="contest"
-  [class]="'content ' + (isMobile ? 'flexCardColumn' : 'flexCardRow')"
->
-  <card class="flex1" title="Catégories"
+<div *ngIf="contest" [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
+  <card class="flex1 categories" title="Catégories"
     ><div class="flexCardColumn">
       <p *ngIf="contest.categories.length == 0">
         Ce contest n'a pas encore de catégories !
       </p>
-      <card *ngFor="let category of contest.categories" color="2" size="s"
+      <card
+        *ngFor="let category of contest.categories"
+        (click)="selectedCategory = category"
+        [class.active]="selectedCategory == category"
+        class="category"
+        color="{{ selectedCategory == category ? 'black' : '2' }}"
+        size="s"
         ><div class="flexRow alignCenter spaceBetween">
-          <div class="title">
+          <div class="titleCategory">
             <h3>{{ category.name }}</h3>
             <p>-</p>
             <p>{{ category.sports }}</p>
           </div>
-          <info-tag
-            icon="fa-solid fa-euro-sign"
-            label="{{ category.registerPrice }}"
-          ></info-tag>
-          <info-tag
-            icon="fa-solid fa-user"
-            label="0 / {{ category.maxRiders }}"
-          ></info-tag>
-          <btn
-            label="Sélectionner"
-            type="primary"
-            (click)="selectedCategory = category"
-          ></btn></div
+          <div class="tags">
+            <info-tag
+              icon="fa-solid fa-euro-sign"
+              label="{{ category.registerPrice }}"
+            ></info-tag>
+            <info-tag
+              icon="fa-solid fa-user"
+              label="0 / {{ category.maxRiders }}"
+            ></info-tag>
+          </div></div
       ></card></div
   ></card>
   <card
-    class="flex1"
+    class="flex1 registerCard"
     [title]="'Détails - ' + selectedCategory.name"
     [fitContent]="true"
   >
-    <div class="flexColumn gap">
+    <div class="flexColumn">
       <label>Description</label>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint

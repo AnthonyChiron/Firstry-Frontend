@@ -1,23 +1,8 @@
 @import "../../../../styles/components.scss";
 
-:host {
-  width: 100%;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 3vw;
-
-  .photo {
-    img {
-      max-height: 35vh;
-      border-radius: 10px;
-    }
+.photo {
+  img {
+    max-height: 35vh;
+    border-radius: 10px;
   }
-}
-
-.flexStart {
-  align-self: flex-start;
 }

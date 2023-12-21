@@ -8,7 +8,7 @@
           : ''
       "
       alt=""
-      *ngIf="isMobile"
+      *ngIf="isMobile || (!isMobile && !isOverview)"
     />
     <div class="contestName">
       <h1 class="mainTitle">{{ contest.name }}</h1>
@@ -18,22 +18,14 @@
     </div>
     <div class="nav" *ngIf="!isMobile">
       <nav-btn
-        label="Aperçu"
+        *ngFor="let link of links"
+        [label]="link.label"
         routerLinkActive="active"
-        routerLink="overview"
-      ></nav-btn>
-      <nav-btn
-        label="Inscription"
-        routerLinkActive="active"
-        routerLink="register"
-      ></nav-btn>
-      <nav-btn
-        label="Résultats"
-        routerLinkActive="active"
-        routerLink="results"
+        [routerLink]="link.route"
       ></nav-btn>
     </div>
   </div>
   <div class="sep"></div>
   <router-outlet class="fullWidth"></router-outlet>
 </div>
+<mobile-navbar *ngIf="isMobile" [links]="links"></mobile-navbar>

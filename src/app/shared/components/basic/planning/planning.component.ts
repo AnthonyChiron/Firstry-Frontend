@@ -53,7 +53,7 @@ export class PlanningComponent implements OnInit, OnChanges {
           meta: {
             sport: category.sports.join(', '),
             nbInscrit: 12,
-            nbMax: category.maxCompetitorsCount,
+            nbMax: category.maxRiders,
             step: step,
           },
         }))

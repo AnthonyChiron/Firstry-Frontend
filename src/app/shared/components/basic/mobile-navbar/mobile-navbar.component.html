@@ -1,0 +1,8 @@
+<div class="navbar">
+  <a
+    *ngFor="let link of links"
+    [routerLink]="link.route"
+    routerLinkActive="active"
+    >{{ link.label }}</a
+  >
+</div>

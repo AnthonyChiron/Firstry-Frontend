@@ -1,0 +1,25 @@
+@import "../../../../../styles/colors.scss";
+
+.navbar {
+  position: fixed;
+  bottom: 40px;
+  border-radius: 500px;
+  left: 10%;
+  width: 80%;
+  background-color: $firstry-black-2;
+  z-index: 100;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  a {
+    color: $firstry-white-1;
+    font-variation-settings: "wght" 200;
+    transition: 0.2s;
+  }
+
+  a.active {
+    font-variation-settings: "wght" 800;
+  }
+}

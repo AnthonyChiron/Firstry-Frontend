@@ -50,7 +50,6 @@
         </h4>
         <div class="tags">
           <info-tag
-            size="s"
             icon="fa-solid fa-clock"
             [label]="
               (weekEvent.event.start | date : 'HH:mm') +
@@ -59,7 +58,6 @@
             "
           ></info-tag>
           <info-tag
-            size="s"
             icon="fa-solid fa-user"
             [label]="
               weekEvent.event.meta.nbInscrit + '/' + weekEvent.event.meta.nbMax

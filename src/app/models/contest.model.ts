@@ -31,7 +31,7 @@ export function parseContestModel(contest): ContestModel {
     description: contest.description,
     startDate: new Date(contest.startDate),
     endDate: new Date(contest.endDate),
-    registrationEndDate: contest.registrationEndDate,
+    registrationEndDate: new Date(contest.registrationEndDate),
     sports: contest.sports,
     categories: contest.categories,
     location: contest.location,

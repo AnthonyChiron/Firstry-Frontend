@@ -18,24 +18,31 @@
   }
 }
 
-.xs p,
-.xs i {
-  font-size: 8px;
+.s {
+  padding: max(3px, 0.6vw) max(6px, 1.2vw);
+
+  p,
+  i {
+    font-size: max(8px, 2vw);
+  }
 }
 
-.s p,
-.s i {
-  font-size: 10px;
+.m {
+  padding: max(3px, 0.6vw) max(6px, 1.2vw);
+
+  p,
+  i {
+    font-size: max(8px, 2vw);
+  }
 }
 
-.m p,
-.m i {
-  font-size: 12px;
-}
+.l {
+  padding: max(5px, 0.8vw) max(8px, 1.6vw);
 
-.l p,
-.l i {
-  font-size: 14px;
+  p,
+  i {
+    font-size: max(10px, 3vw);
+  }
 }
 
 .primary {
@@ -61,18 +68,30 @@
     font-size: 8px;
   }
 
-  .s p,
-  .xs i {
-    font-size: 10px;
+  .s {
+    padding: max(3px, 0.2vw) max(6px, 0.4vw);
+
+    p,
+    i {
+      font-size: max(10px, 0.6vw);
+    }
   }
 
-  .m p,
-  .m i {
-    font-size: 12px;
+  .m {
+    padding: max(3px, 0.2vw) max(6px, 0.4vw);
+
+    p,
+    i {
+      font-size: max(10px, 0.6vw);
+    }
   }
 
-  .l p,
-  .l i {
-    font-size: 14px;
+  .l {
+    padding: max(6px, 0.3vw) max(10px, 0.6vw);
+
+    p,
+    i {
+      font-size: max(12px, 0.7vw);
+    }
   }
 }
