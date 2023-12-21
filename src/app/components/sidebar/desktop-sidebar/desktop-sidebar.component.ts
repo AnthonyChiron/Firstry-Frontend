@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
 
 @Component({
   selector: 'desktop-sidebar',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class DesktopSidebarComponent {
   displayText: boolean = false;
+
+  constructor(protected _authService: AuthService) {}
 }

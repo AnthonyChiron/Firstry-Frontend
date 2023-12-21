@@ -14,7 +14,7 @@ export class AccountComponent implements OnInit {
 
   constructor(
     private _screenSizeService: ScreenSizeService,
-    private _authService: AuthService
+    protected _authService: AuthService
   ) {}
 
   ngOnInit(): void {

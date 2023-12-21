@@ -1,0 +1,31 @@
+<h1 class="mainTitle">Validation de votre email</h1>
+<div class="container">
+  <card
+    *ngIf="isEmailValidated"
+    class="card"
+    title="Votre email a bien été validé !"
+    [fitContent]="true"
+  >
+    <div class="content">
+      <p>
+        Lors de votre prochaine connexion, il faudra utiliser votre nouvel
+        email.
+      </p>
+      <btn
+        label="Retour à l'accueil"
+        icon="fa-solid fa-paper-home"
+        routerLink="/"
+      ></btn>
+    </div>
+  </card>
+  <card *ngIf="!isTokenValid" class="card" title="Oups !" [fitContent]="true">
+    <div class="content">
+      <p>Votre lien est incorrect ou votre email a déjà été validé !</p>
+      <btn
+        label="Retour à mon compte"
+        icon="fa-solid fa-paper-home"
+        routerLink="/account"
+      ></btn>
+    </div>
+  </card>
+</div>

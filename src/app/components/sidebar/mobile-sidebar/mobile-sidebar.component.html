@@ -28,7 +28,7 @@
           <p>CONTESTS</p></a
         >
       </li>
-      <li *ngIf="authService.isCurrentUserContest()">
+      <li *ngIf="authService.isCurrentUserOrganizer()">
         <a routerLink="/dashboard" (click)="emitClickToggle()">
           <i class="fa-solid fa-xs fa-globe"></i>
           <p>DASHBOARD</p>

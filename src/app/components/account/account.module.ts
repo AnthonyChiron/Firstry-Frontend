@@ -13,6 +13,12 @@ import { FormSharedModule } from 'src/app/shared/formShared.module';
 import { RiderSocialsFormComponent } from './rider-socials-form/rider-socials-form.component';
 import { RiderRegistrationsComponent } from './rider-registrations/rider-registrations.component';
 import { AccountSecurityComponent } from './account-security/account-security.component';
+import { ValidNewEmailComponent } from './valid-new-email/valid-new-email.component';
+import { ValidNewPasswordComponent } from './valid-new-password/valid-new-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { UpdatePhotoComponent } from './update-photo/update-photo.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { OrganizerInfoFormComponent } from './organizer-info-form/organizer-info-form.component';
 
 const accountRoutes: Routes = [
   {
@@ -30,22 +36,40 @@ const accountRoutes: Routes = [
     component: ValidEmailComponent,
     canActivate: [IsNotValidGuard, IsAuthGuard],
   },
+  {
+    path: 'validateNewEmail/:token',
+    component: ValidNewEmailComponent,
+  },
+  {
+    path: 'validateNewPassword/:token',
+    component: ValidNewPasswordComponent,
+  },
+  {
+    path: 'resetPassword/:token',
+    component: ResetPasswordComponent,
+  },
 ];
 
 @NgModule({
   declarations: [
     ValidEmailComponent,
+    ValidNewEmailComponent,
     AccountComponent,
     RiderInfoFormComponent,
     RiderSocialsFormComponent,
     RiderRegistrationsComponent,
     AccountSecurityComponent,
+    ValidNewPasswordComponent,
+    ResetPasswordComponent,
+    UpdatePhotoComponent,
+    OrganizerInfoFormComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(accountRoutes),
     SharedModule,
     FormSharedModule,
+    ImageCropperModule,
   ],
 })
 export class AccountModule {}

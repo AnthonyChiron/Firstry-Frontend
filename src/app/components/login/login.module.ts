@@ -14,6 +14,7 @@ import { SignupPhotoFormComponent } from './signUp/signup-photo-form/signup-phot
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { FormSharedModule } from 'src/app/shared/formShared.module';
 import { UserIconComponent } from './user-icon/user-icon.component';
+import { ForgetPasswordComponent } from './connexion/forget-password/forget-password.component';
 
 const loginRoutes: Routes = [
   { path: '', component: LoginComponent, canActivate: [IsNotAuthGuard] },
@@ -29,6 +30,7 @@ const loginRoutes: Routes = [
     SignupOrganizerFormComponent,
     SignupPhotoFormComponent,
     UserIconComponent,
+    ForgetPasswordComponent,
   ],
   imports: [
     CommonModule,

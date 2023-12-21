@@ -14,9 +14,8 @@ import { ScreenSizeService } from './shared/services/screenSize/screen-size.serv
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { SharedModule } from './shared/shared.module';
 import { DesktopSidebarComponent } from './components/sidebar/desktop-sidebar/desktop-sidebar.component';
-import { UserIconComponent } from './components/login/user-icon/user-icon.component';
-import { AccountModule } from './components/account/account.module';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 @NgModule({
   declarations: [
@@ -35,6 +34,9 @@ import { AccessDeniedComponent } from './components/access-denied/access-denied.
     BrowserAnimationsModule,
     LoginModule,
     SharedModule,
+    NgxStripeModule.forRoot(
+      'pk_test_51OPhx3ExeV2TEn3k0EWYu7LkqusSy8cewkqOMeV6ydwt6ICp84mIxzw2oPzyh8v3awLSP9ymlJqrx2ysjS00TKlU00yuzgNMzN'
+    ),
   ],
   providers: [UsersService, ScreenSizeService],
   bootstrap: [AppComponent],

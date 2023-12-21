@@ -2,11 +2,22 @@
 <div class="{{ isMobile ? 'flexCardColumn' : 'flexCardRow' }}">
   <div class="flexCardColumn flex1">
     <rider-info-form
+      *ngIf="_authService.isCurrentUserRider()"
       [riderId]="user.riderId"
       [rider]="user.rider"
     ></rider-info-form>
-    <rider-socials-form [riderId]="user.riderId" [rider]="user.rider">
+    <rider-socials-form
+      *ngIf="_authService.isCurrentUserRider()"
+      [riderId]="user.riderId"
+      [rider]="user.rider"
+    >
     </rider-socials-form>
+    <organizer-info-form
+      *ngIf="_authService.isCurrentUserOrganizer()"
+      [organizerId]="user.organizerId"
+      [organizer]="user.organizer"
+    ></organizer-info-form>
+    <update-photo></update-photo>
   </div>
   <div class="flexCardColumn flex1">
     <account-security [user]="user"></account-security>

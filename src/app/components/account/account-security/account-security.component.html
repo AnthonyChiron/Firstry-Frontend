@@ -7,6 +7,10 @@
         <p
           *ngIf="isEmailChanging || (user.newEmail && user.newEmail != '')"
         ></p>
+        <p *ngIf="isEmailChanging">
+          Un email vous a été envoyé à votre nouvelle adresse email pour
+          confirmer le changement.
+        </p>
       </div>
       <card
         title="Changement d'email"
@@ -16,17 +20,17 @@
       >
         <form [formGroup]="changeEmailForm">
           <input-text
-            label="Email"
+            label="Nouvelle adresse email"
             [edit]="changeEmailEdit"
+            placeholder="Nouvelle adresse email..."
             formControlName="newEmail"
             [error]="
               changeEmailForm.get('newEmail').touched &&
               changeEmailForm.get('newEmail').invalid
             "
           >
-            <note text="Veuillez entrer votre nouvel adresse email"></note
+            <note text="Veuillez entrer votre nouvelle adresse email"></note
           ></input-text>
-
           <div class="formButtons">
             <btn
               label="Annuler"
@@ -42,6 +46,7 @@
           </div>
         </form>
       </card>
+
       <btn
         label="Changer mon email"
         icon="fa-solid fa-arrows-rotate"
@@ -51,8 +56,14 @@
     <div class="field">
       <div *ngIf="!changePasswordEdit">
         <label>Password</label>
-        <p>On va pas vous montrer votre mot de passe hein</p>
+        <p *ngIf="!isPasswordChanging">
+          On va pas vous montrer votre mot de passe hein
+        </p>
+        <p *ngIf="isPasswordChanging">
+          Un email vous a été envoyé pour confirmer votre nouveau mot de passe.
+        </p>
       </div>
+
       <card
         title="Changement de mot de passe"
         size="m"
@@ -61,6 +72,7 @@
       >
         <form [formGroup]="changePasswordForm">
           <input-text
+            type="password"
             label="Nouveau mot de passe"
             placeholder="Nouveau mot de passe..."
             [edit]="changePasswordEdit"
@@ -68,13 +80,18 @@
           >
           </input-text>
           <input-text
+            type="password"
             label="Confirmer votre nouveau mot de passe"
             placeholder="Nouveau mot de passe..."
             [edit]="changePasswordEdit"
             formControlName="newPassword2"
           >
+            <note
+              *ngIf="!isPasswordsMatching"
+              type="errorLabel"
+              text="Les mots de passes ne sont pas identiques !"
+            ></note>
           </input-text>
-
           <div class="formButtons">
             <btn
               label="Annuler"
@@ -85,7 +102,7 @@
             <btn
               label="Valider"
               icon="fa-solid fa-check"
-              (click)="submitEmailForm()"
+              (click)="submitPasswordForm()"
             ></btn>
           </div>
         </form>

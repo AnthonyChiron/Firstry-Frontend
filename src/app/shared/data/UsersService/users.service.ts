@@ -22,8 +22,34 @@ export class UsersService extends CrudService<UserModel> {
     return this.http.post(url, { newEmail: newEmail });
   }
 
-  updatePassword(userId, password) {
+  updatePassword(userId, newPassword) {
     const url = `${this.baseUrl}/updatePassword/${userId}`;
-    return this.http.post(url, { newPassword: password });
+    return this.http.post(url, { newPassword: newPassword });
+  }
+
+  validateNewEmail(token) {
+    const url = `${this.baseUrl}/validateNewEmail/${token}`;
+    console.log(url);
+    return this.http.post(url, {});
+  }
+
+  validateNewPassword(token) {
+    const url = `${this.baseUrl}/validateNewPassword/${token}`;
+    return this.http.post(url, {});
+  }
+
+  resetPassword(email) {
+    const url = `${this.baseUrl}/resetPassword/`;
+    return this.http.post(url, { email: email });
+  }
+
+  checkResetPasswordToken(token) {
+    const url = `${this.baseUrl}/checkResetPasswordToken/${token}`;
+    return this.http.post(url, {});
+  }
+
+  updateResetPassword(token, newPassword) {
+    const url = `${this.baseUrl}/resetPassword/${token}`;
+    return this.http.post(url, { newPassword: newPassword });
   }
 }

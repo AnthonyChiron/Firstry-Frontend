@@ -1,4 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
@@ -11,6 +17,7 @@ import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
 export class ConnexionComponent implements OnInit {
   connexionForm: FormGroup;
   invalidCredentials: Boolean = false;
+  isResetPassword: Boolean = false;
   @Output() connected: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
@@ -50,6 +57,13 @@ export class ConnexionComponent implements OnInit {
       });
     } catch (e) {
       console.log(e);
+    }
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.submit();
     }
   }
 }

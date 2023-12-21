@@ -1,0 +1,63 @@
+<div
+  *ngIf="contest"
+  [class]="'content ' + (isMobile ? 'flexCardColumn' : 'flexCardRow')"
+>
+  <card class="flex1" title="Catégories"
+    ><div class="flexCardColumn">
+      <p *ngIf="contest.categories.length == 0">
+        Ce contest n'a pas encore de catégories !
+      </p>
+      <card *ngFor="let category of contest.categories" color="2" size="s"
+        ><div class="flexRow alignCenter spaceBetween">
+          <div class="title">
+            <h3>{{ category.name }}</h3>
+            <p>-</p>
+            <p>{{ category.sports }}</p>
+          </div>
+          <info-tag
+            icon="fa-solid fa-euro-sign"
+            label="{{ category.registerPrice }}"
+          ></info-tag>
+          <info-tag
+            icon="fa-solid fa-user"
+            label="0 / {{ category.maxRiders }}"
+          ></info-tag>
+          <btn
+            label="Sélectionner"
+            type="primary"
+            (click)="selectedCategory = category"
+          ></btn></div
+      ></card></div
+  ></card>
+  <card
+    class="flex1"
+    [title]="'Détails - ' + selectedCategory.name"
+    [fitContent]="true"
+  >
+    <div class="flexColumn gap">
+      <label>Description</label>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
+        reprehenderit aut doloribus. Perspiciatis aperiam placeat alias
+        consectetur saepe ipsum sapiente ratione dolorum debitis voluptatibus?
+        Omnis et veritatis corporis accusantium dicta?
+      </p>
+      <!-- <p>{{ selectedCategory.description }}</p> -->
+      <div class="flexCardRow spaceAround">
+        <card class="flex1" color="2" size="s"
+          ><div class="flexColumn">
+            <h4>Qualification</h4>
+          </div></card
+        >
+        <card class="flex1" color="2" size="s"
+          ><div class="flexColumn">
+            <h4>Finale</h4>
+          </div></card
+        >
+      </div>
+      <div class="footer">
+        <btn label="S'inscrire" type="primary" (click)="register()"></btn>
+      </div>
+    </div>
+  </card>
+</div>

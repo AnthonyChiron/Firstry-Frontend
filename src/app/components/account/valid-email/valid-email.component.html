@@ -31,7 +31,7 @@
         ></btn>
         <btn
           (click)="backHome()"
-          *ngIf="authService.isCurrentUserContest()"
+          *ngIf="authService.isCurrentUserOrganizer()"
           label="Je créé mon contest !"
           icon="fa-regular fa-square-plus"
         ></btn>
