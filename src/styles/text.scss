@@ -14,7 +14,7 @@ a {
 }
 
 p {
-  font-size: 13px;
+  font-size: max(10px, 3vw);
   font-variation-settings: "wght" 500;
 }
 
@@ -38,7 +38,7 @@ h2 {
 }
 
 h3 {
-  font-size: 20px;
+  font-size: max(13px, 4vw);
   font-variation-settings: "wght" 700;
 }
 
@@ -75,10 +75,6 @@ a {
   text-decoration: none;
   color: $firstry-black-2;
   padding: 5px 8px;
-}
-
-a:hover {
-  background-color: $firstry-white-3;
 }
 
 .error {
@@ -137,6 +133,10 @@ a:hover {
   input,
   textarea {
     font-size: max(9px, 0.8vw);
+  }
+
+  a:hover {
+    background-color: $firstry-white-3;
   }
 }
 

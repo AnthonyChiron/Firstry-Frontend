@@ -55,6 +55,18 @@
           (fus.isFieldInvalid('endDate') || form.get('endDate').value == '')
         "
       ></input-date>
+      <input-date
+        type="Date"
+        label="Date limite d'inscription"
+        formControlName="registrationEndDate"
+        class="fullWidth"
+        [edit]="edit"
+        [error]="
+          touched &&
+          (fus.isFieldInvalid('registrationEndDate') ||
+            form.get('registrationEndDate').value == '')
+        "
+      ></input-date>
     </div>
     <input-adress
       [edit]="edit"

@@ -8,6 +8,7 @@
   width: 100%;
   height: 100%;
   align-items: center;
+  transition: 0.3s;
 
   &.color-1 {
     background-color: $firstry-white-2;
@@ -29,16 +30,20 @@
     background-color: $firstry-white-1;
   }
 
+  &.color-black {
+    background-color: $firstry-black-2;
+  }
+
   &.size-l .main {
     padding: 6vw;
 
     .header h3 {
-      font-size: 25px;
+      font-size: max(17px, 6vw);
     }
   }
 
   &.size-m .main {
-    padding: 3vw;
+    padding: 4vw;
 
     .header h3 {
       font-size: 20px;
@@ -46,7 +51,7 @@
   }
 
   &.size-s .main {
-    padding: 0.5vw;
+    padding: 2vw;
 
     .header h3 {
       font-size: 20px;
@@ -81,7 +86,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1vw;
+  margin-bottom: 5vw;
 
   .title {
     display: flex;
@@ -132,6 +137,8 @@
 
 @media only screen and (min-width: 768px) {
   .header {
+    margin-bottom: 1vw;
+
     .btn:hover {
       background-color: $firstry-white-3;
       border-radius: 8px;

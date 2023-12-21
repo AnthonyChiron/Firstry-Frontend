@@ -10,6 +10,7 @@ import { ContestOverviewComponent } from './contest/contest-overview/contest-ove
 import { IsAuthGuard } from 'src/app/shared/guards/IsAuth/is-auth-guard.service';
 import { ContestRegisterComponent } from './contest/contest-register/contest-register.component';
 import { ContestResultsComponent } from './contest/contest-results/contest-results.component';
+import { ContestPlanningComponent } from './contest/contest-planning/contest-planning.component';
 
 const contestsRoutes: Routes = [
   { path: '', component: ContestsComponent },
@@ -30,6 +31,10 @@ const contestsRoutes: Routes = [
         component: ContestResultsComponent,
       },
       {
+        path: 'planning',
+        component: ContestPlanningComponent,
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'overview',
@@ -46,6 +51,7 @@ const contestsRoutes: Routes = [
     ContestOverviewComponent,
     ContestRegisterComponent,
     ContestResultsComponent,
+    ContestPlanningComponent,
   ],
   imports: [CommonModule, RouterModule.forChild(contestsRoutes), SharedModule],
   providers: [ContestsService],

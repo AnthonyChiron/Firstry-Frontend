@@ -75,7 +75,7 @@
   }
 }
 
-:host ::ng-deep .cal-event {
+.cal-event {
   background-color: $firstry-white-3;
   border-radius: 10px;
   border: none;
@@ -87,6 +87,11 @@
     padding: 5px 5px 10px 5px;
     height: 100%;
 
+    h4 {
+      font-size: max(15px, 0.9vw);
+      text-wrap: wrap;
+    }
+
     .tags {
       display: flex;
       gap: 0.5vw;
@@ -97,22 +102,22 @@
 @media screen and (max-width: 768px) {
   .header {
     margin-bottom: 5vw;
+  }
 
-    .selector {
-      gap: 0.5vw;
-      padding: 5px 12px 5px 12px;
+  .selector {
+    gap: 1.7vw;
+    padding: 5px 12px 5px 12px;
 
-      button {
-        font-size: 8px;
-        height: 12px;
-        width: 12px;
-      }
+    button {
+      font-size: 8px;
+      height: 12px;
+      width: 12px;
+    }
 
-      p {
-        font-size: 14px;
-        font-variation-settings: "wght" 600;
-        padding: 0px 5px 0px 5px;
-      }
+    p {
+      font-size: 14px;
+      font-variation-settings: "wght" 600;
+      padding: 0px 5px 0px 5px;
     }
   }
 
@@ -133,16 +138,17 @@
     }
   }
 
-  :host ::ng-deep .cal-event {
-    position: relative;
+  .cal-event {
     background-color: $firstry-white-3;
     border-radius: 10px;
     border: none;
-    width: 110% !important;
-    left: -10% !important;
 
     .content {
       padding: 5px 5px 10px 5px;
+
+      h4 {
+        font-size: max(12px, 2.5vw);
+      }
 
       .tags {
         gap: 1vw;

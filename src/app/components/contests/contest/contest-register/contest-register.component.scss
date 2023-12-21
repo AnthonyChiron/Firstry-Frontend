@@ -1,29 +1,38 @@
-p {
-  width: 100%;
-}
-
-.title {
-  display: flex;
-  align-items: center;
-  width: 50%;
-  gap: 10px;
-
-  h3,
-  p {
-    width: fit-content;
+.categories {
+  .active {
+    color: white;
   }
 
-  h3,
-  p {
-    text-align: center;
+  .category {
+    cursor: pointer;
+
+    .titleCategory {
+      display: flex;
+      align-items: center;
+      width: 50%;
+      gap: 10px;
+
+      h3,
+      p {
+        width: fit-content;
+      }
+
+      h3,
+      p {
+        text-align: center;
+      }
+    }
+
+    .tags {
+      display: flex;
+      gap: 10px;
+    }
   }
 }
 
-.footer {
-  align-self: flex-end;
-  display: flex;
-}
-
-.gap {
-  gap: 10px;
+.registerCard {
+  .footer {
+    align-self: flex-end;
+    display: flex;
+  }
 }

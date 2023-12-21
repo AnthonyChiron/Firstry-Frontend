@@ -37,7 +37,7 @@
       </div>
     </div>
   </div>
-  <div class="rightPannel">
+  <div class="rightPannel" *ngIf="!isMobile">
     <planning
       class="planning"
       [contest]="contest"

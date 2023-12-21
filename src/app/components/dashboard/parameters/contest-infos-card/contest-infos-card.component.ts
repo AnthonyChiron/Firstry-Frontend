@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ContestModel } from 'src/app/models/contest.model';
+import { ContestModel, parseContestModel } from 'src/app/models/contest.model';
 import { ContestsService } from 'src/app/shared/data/ContestsService/contests.service';
 import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-utility.service';
 
@@ -30,6 +30,7 @@ export class ContestInfosCardComponent implements OnInit {
       sports: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
+      registrationEndDate: ['', Validators.required],
       location: ['', Validators.required],
       branding: [{ logo: [''], banner: [''] }],
     });
@@ -41,8 +42,11 @@ export class ContestInfosCardComponent implements OnInit {
     this.form.patchValue({
       name: contest.name,
       description: contest.description,
-      startDate: contest.startDate,
-      endDate: contest.endDate,
+      startDate: new Date(contest.startDate),
+      endDate: new Date(contest.endDate),
+      registrationEndDate: new Date(contest.registrationEndDate)
+        ? new Date(contest.registrationEndDate)
+        : '',
       sports: contest.sports,
       location: contest.location,
       branding: contest.branding,
@@ -59,10 +63,7 @@ export class ContestInfosCardComponent implements OnInit {
     this.edit = false;
     this.touched = true;
     this.cs.update(this.contest._id, this.form.value).subscribe((contest) => {
-      this.contest = contest;
-      this.contest.startDate = new Date(contest.startDate);
-      this.contest.endDate = new Date(contest.endDate);
-
+      this.contest = parseContestModel(contest);
       this.form(this.contest);
     });
   }
