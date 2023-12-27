@@ -11,10 +11,7 @@ import { StepModelDTO, stepModelToDTO } from 'src/app/models/step.model';
 @Component({
   selector: 'planning',
   templateUrl: './planning.component.html',
-  styleUrls: [
-    '../../../../../../node_modules/angular-calendar/css/angular-calendar.css',
-    './planning.component.scss',
-  ],
+  styleUrls: ['./planning.component.scss'],
 })
 export class PlanningComponent implements OnInit, OnChanges {
   @Input() categories: any[] = [];

@@ -1,4 +1,6 @@
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 @import "src/styles/customTheme.css";
+@import "./styles/angular-calendar.scss";
 @import "./styles/fonts.scss";
 @import "./styles/primeng.scss";
 @import "./styles/variables.scss";
@@ -7,7 +9,6 @@
 @import "./styles/form.scss";
 @import "./styles/basics.scss";
 @import "./styles/text.scss";
-@import "../node_modules/angular-calendar/scss/angular-calendar.scss";
 
 @font-face {
   font-family: "HankenGrotesk";

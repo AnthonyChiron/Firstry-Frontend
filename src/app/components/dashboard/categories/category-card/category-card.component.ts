@@ -82,6 +82,7 @@ export class CategoryCardComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.categoryForm.value);
     this.categoryForm.markAllAsTouched();
     if (this.categoryForm.valid) {
       this.edit = false;

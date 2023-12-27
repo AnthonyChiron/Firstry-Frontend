@@ -29,7 +29,7 @@ b {
 
 h1 {
   font-family: "Akira";
-  font-size: 35px;
+  font-size: max(28px, 7.5vw);
 }
 
 h2 {
@@ -48,7 +48,7 @@ h4 {
 }
 
 h5 {
-  font-size: 15px;
+  font-size: max(13px, 4vw);
   font-variation-settings: "wght" 300;
 }
 
@@ -94,6 +94,7 @@ a {
 
 .mainTitle {
   margin-bottom: $mobile_gap_card;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -101,6 +102,7 @@ a {
     height: 8vw;
     display: flex;
     align-items: center;
+    text-align: left;
     margin-bottom: $pc_gap_card;
   }
 
@@ -109,7 +111,7 @@ a {
   }
 
   h1 {
-    font-size: 55px;
+    font-size: max(40px, 3.2vw);
   }
 
   h2 {
@@ -122,6 +124,10 @@ a {
 
   h4 {
     font-size: 17px;
+  }
+
+  h5 {
+    font-size: 14px;
   }
 
   label {

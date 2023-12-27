@@ -28,7 +28,8 @@
               "src/styles.scss",
               "src/styles/customTheme.css",
               "src/styles/variables.scss",
-              "src/styles/colors.scss"
+              "src/styles/colors.scss",
+              "src/styles/angular-calendar.scss"
             ],
 
             "scripts": []

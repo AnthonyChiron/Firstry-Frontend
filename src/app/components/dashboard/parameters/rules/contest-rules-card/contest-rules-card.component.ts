@@ -14,6 +14,7 @@ import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-uti
   selector: 'contest-rules-card',
   templateUrl: './contest-rules-card.component.html',
   styleUrls: ['./contest-rules-card.component.scss'],
+  providers: [FormUtilityService],
 })
 export class ContestRulesCardComponent implements OnInit {
   @Input() contest: ContestModel;
