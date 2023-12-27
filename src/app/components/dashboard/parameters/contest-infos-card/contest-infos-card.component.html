@@ -5,55 +5,38 @@
   [fitContent]="true"
   title="Informations générale"
 >
-  <div class="infosForm" [formGroup]="form">
+  <form class="infosForm" [formGroup]="form">
     <input-text
-      name="name"
-      type="Text"
       placeholder="Nom..."
       label="Nom du contest"
       formControlName="name"
       [edit]="edit"
-      [error]="
-        touched && (fus.isFieldInvalid('name') || form.get('name').value == '')
-      "
+      [error]="_fus.isFieldInvalid('name')"
     ></input-text>
     <input-textarea
-      name="description"
-      size="md"
+      size="m"
       placeholder="Description..."
       label="Description du contest"
       formControlName="description"
       [edit]="edit"
-      [error]="
-        touched &&
-        (fus.isFieldInvalid('description') ||
-          form.get('description').value == '')
-      "
+      [error]="_fus.isFieldInvalid('description')"
     ></input-textarea>
-    <div class="flexRow">
+    <div class="flexRow spaceBetween">
       <input-date
-        name="startDate"
         type="Date"
         label="Date de début"
         formControlName="startDate"
         class="fullWidth"
         [edit]="edit"
-        [error]="
-          touched &&
-          (fus.isFieldInvalid('startDate') || form.get('startDate').value == '')
-        "
+        [error]="_fus.isFieldInvalid('startDate')"
       ></input-date>
       <input-date
-        name="endDate"
         type="Date"
         label="Date de fin"
         formControlName="endDate"
         class="fullWidth"
         [edit]="edit"
-        [error]="
-          touched &&
-          (fus.isFieldInvalid('endDate') || form.get('endDate').value == '')
-        "
+        [error]="_fus.isFieldInvalid('endDate')"
       ></input-date>
       <input-date
         type="Date"
@@ -61,11 +44,7 @@
         formControlName="registrationEndDate"
         class="fullWidth"
         [edit]="edit"
-        [error]="
-          touched &&
-          (fus.isFieldInvalid('registrationEndDate') ||
-            form.get('registrationEndDate').value == '')
-        "
+        [error]="_fus.isFieldInvalid('registrationEndDate')"
       ></input-date>
     </div>
     <input-adress
@@ -73,22 +52,23 @@
       label="Lieu"
       formControlName="location"
     ></input-adress>
-    <chips-group
-      [chips]="[
-        { value: 'roller', name: 'Roller' },
-        { value: 'trottinette', name: 'Trottinette' },
-        { value: 'skate', name: 'Skate' },
-        { value: 'quad', name: 'Quad' }
+    <input-chips
+      [options]="[
+        { value: 'roller', label: 'Roller' },
+        { value: 'trottinette', label: 'Trottinette' },
+        { value: 'skate', label: 'Skate' },
+        { value: 'quad', label: 'Quad' }
       ]"
       [edit]="edit"
+      [error]="_fus.isFieldInvalid('sports')"
       label="Sports"
       formControlName="sports"
-    ></chips-group>
+    ></input-chips>
 
-    <div class="buttons" *ngIf="edit">
+    <div class="formButtons" *ngIf="edit">
       <btn
         (click)="cancelInfos()"
-        type="secondary"
+        type="danger"
         label="Annuler"
         icon="fa-solid fa-xmark fa-lg"
       ></btn>
@@ -99,5 +79,5 @@
         icon="fa-solid fa-check fa-lg"
       ></btn>
     </div>
-  </div>
+  </form>
 </card>

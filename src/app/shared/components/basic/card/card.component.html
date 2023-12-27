@@ -6,7 +6,12 @@
   <div *ngIf="img != ''" class="sideImg" [ngStyle]="{ 'height.vw': imgHeight }">
     <img [src]="img" alt="" />
   </div>
-  <div class="main">
+  <div
+    class="main"
+    [ngStyle]="
+      imgHeight != '' ? { 'height.vw': imgHeight } : { height: '100%' }
+    "
+  >
     <loader class="loader" *ngIf="isLoading"></loader>
     <div
       class="header"

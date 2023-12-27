@@ -9,18 +9,18 @@
 ></confirmation-modal>
 <div class="main">
   <card
+    *ngIf="category"
     [title]="
       categoryForm.get('name').value && !isNew
         ? categoryForm.get('name').value
         : 'Création de catégorie'
     "
-    [subTitle]="category.sports.join(', ')"
+    [subTitle]="category.sports ? category.sports.join(', ') : ''"
     class="category"
     color="2"
     size="m"
     [toggleBtn]="true"
     [toggle]="!edit"
-    *ngIf="category"
   >
     <div header>
       <div class="topBtns" *ngIf="!isNew">

@@ -21,6 +21,7 @@
     justify-content: center;
     cursor: pointer;
     background-color: transparent;
+    color: $firstry-black-2;
   }
 
   button:disabled {
@@ -38,8 +39,11 @@
   display: flex;
   height: 100%;
   gap: 1vw;
+  position: relative;
 
   .cal-time {
+    position: relative;
+    left: -1vw;
     display: flex;
     padding: 0;
     height: 115%;
@@ -78,7 +82,6 @@
 .cal-event {
   background-color: $firstry-white-3;
   border-radius: 10px;
-  border: none;
 
   .content {
     display: flex;
@@ -88,8 +91,8 @@
     height: 100%;
 
     h4 {
+      color: $firstry-black-2;
       font-size: max(15px, 0.9vw);
-      text-wrap: wrap;
     }
 
     .tags {
@@ -122,11 +125,8 @@
   }
 
   .cal-hour-segment {
-    position: relative;
-
     .cal-time {
-      position: relative;
-      left: 6vw;
+      left: -6vw;
       font-size: 12px;
     }
 

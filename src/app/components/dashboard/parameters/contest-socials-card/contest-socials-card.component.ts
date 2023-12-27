@@ -9,6 +9,7 @@ import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-uti
   selector: 'contest-socials-card',
   templateUrl: './contest-socials-card.component.html',
   styleUrls: ['./contest-socials-card.component.scss'],
+  providers: [FormUtilityService],
 })
 export class ContestSocialsCardComponent implements OnInit {
   @Input() contest: ContestModel;

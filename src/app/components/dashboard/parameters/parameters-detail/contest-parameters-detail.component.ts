@@ -1,7 +1,7 @@
 import { ContestsService } from '../../../../shared/data/ContestsService/contests.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ContestModel } from 'src/app/models/contest.model';
+import { ContestModel, parseContestModel } from 'src/app/models/contest.model';
 import {
   animate,
   state,
@@ -41,9 +41,7 @@ export class ContestParametersDetailComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((params) => {
       this._contestService.getById(params.contestId).subscribe((contest) => {
-        this.contest = contest;
-        this.contest.startDate = new Date(this.contest.startDate);
-        this.contest.endDate = new Date(this.contest.endDate);
+        this.contest = parseContestModel(contest);
         this.isLoading = false;
       });
     });
