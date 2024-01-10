@@ -1,8 +1,14 @@
 <div class="main">
   <label *ngIf="label != ''" for="addPhoto">{{ label }}</label>
   <div class="img">
-    <img *ngIf="img" [src]="img" alt="" />
-    <div class="addPhoto" *ngIf="!imgConfirmed">
+    <img *ngIf="img && !isImageCroppring" [src]="img" alt="" />
+    <img
+      *ngIf="croppedImage && !isImageCroppring"
+      [src]="sanitizer.bypassSecurityTrustUrl(croppedImage.objectUrl)"
+      alt=""
+    />
+
+    <div class="addPhoto">
       <label
         *ngIf="imageChangedEvent == '' && !isLoading"
         class="labelAddPhoto"
@@ -10,6 +16,7 @@
         <input
           class="inputAddPhoto"
           type="file"
+          accept=".png, .jpg, .jpeg"
           (change)="fileChangeEvent($event)"
         />
         <i class="fa-solid fa-add fa-xl"></i>
@@ -19,7 +26,7 @@
         </div>
       </label>
       <image-cropper
-        *ngIf="imageChangedEvent != ''"
+        *ngIf="imageChangedEvent != '' && !imgFailed && isImageCroppring"
         [imageChangedEvent]="imageChangedEvent"
         [maintainAspectRatio]="true"
         [aspectRatio]="ratio"
@@ -31,18 +38,16 @@
         (loadImageFailed)="loadImageFailed()"
       ></image-cropper>
       <btn
-        *ngIf="imageChangedEvent != ''"
+        *ngIf="imageChangedEvent != '' && !imgFailed && isImageCroppring"
         (click)="confirmImage()"
         label="Confirmer"
         icon="fa-solid fa-check fa-2xs"
         iconPos="left"
       ></btn>
-    </div>
-    <div class="photo" *ngIf="imgConfirmed">
-      <img
-        [src]="sanitizer.bypassSecurityTrustUrl(croppedImage.objectUrl)"
-        alt=""
-      />
+      <note
+        *ngIf="imgFailed"
+        text="Erreur avec votre image, veuillez rafraichir la page."
+      ></note>
     </div>
   </div>
 </div>

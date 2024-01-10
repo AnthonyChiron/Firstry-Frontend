@@ -1,20 +1,6 @@
 <card title="Branding" [fitContent]="true" *ngIf="contest" class="branding">
   <div class="form">
     <input-image
-      label="Votre logo"
-      btnLabel="Ajoutez votre logo"
-      btnLabelDetail="(png, jpg, jpeg & < 3mo)"
-      [img]="contest.branding ? contest.branding.logo : null"
-      (onUploadImage)="onUploadImage($event, 'logo')"
-    ></input-image
-    ><input-image
-      label="Votre bannière"
-      btnLabel="Ajoutez votre bannière"
-      btnLabelDetail="(png, jpg, jpeg & < 3mo)"
-      [img]="contest.branding ? contest.branding.banner : null"
-      (onUploadImage)="onUploadImage($event, 'banner')"
-    ></input-image
-    ><input-image
       label="Votre poster"
       btnLabel="Ajoutez votre poster"
       btnLabelDetail="(png, jpg, jpeg & < 3mo)"

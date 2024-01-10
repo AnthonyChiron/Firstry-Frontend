@@ -2,6 +2,7 @@
   class="card color-{{ color }}  size-{{ size }}"
   [class.fitContent]="fitContent"
   [class.sideImgCard]="img != ''"
+  [ngStyle]="{ 'width.%': cardWidth }"
 >
   <div *ngIf="img != ''" class="sideImg" [ngStyle]="{ 'height.vw': imgHeight }">
     <img [src]="img" alt="" />

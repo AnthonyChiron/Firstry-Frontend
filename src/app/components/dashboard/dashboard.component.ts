@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
     });
 
     this._contestsService.getOrganizerContests().subscribe((data) => {
-      if (data) {
+      if (data && data.length > 0) {
         // Mise en place du dropdown
         this.contestsDdOptions = data.map((contest) => {
           return { label: contest.name, value: contest._id };

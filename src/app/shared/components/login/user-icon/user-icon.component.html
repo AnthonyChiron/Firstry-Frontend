@@ -1,12 +1,11 @@
 <div class="account">
   <div *ngIf="isLoggedIn" class="flexRow spaceBetween alignCenter">
-    <div *ngIf="user.role == 'rider'">
+    <div *ngIf="user.role == 'rider'" class="name">
       <h4 class="firstName">{{ user.rider.firstName }}</h4>
       <h5>{{ user.rider.lastName }}</h5>
     </div>
-    <div *ngIf="user.role == 'contest'">
+    <div *ngIf="user.role == 'contest'" class="name">
       <h4 class="firstName" Capitalize>{{ user.organizer.name }}</h4>
-      <h5>{{ user.organizer.siretNumber }}</h5>
     </div>
     <img
       (click)="toggleAccountOption = !toggleAccountOption"

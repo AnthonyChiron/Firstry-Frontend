@@ -1,4 +1,4 @@
-import { RemoveBgService } from './../../../../shared/services/removeBg/remove-bg.service';
+import { RemoveBgService } from '../../../../services/removeBg/remove-bg.service';
 import { FileUploadEvent, UploadEvent } from 'primeng/fileupload';
 import {
   Component,

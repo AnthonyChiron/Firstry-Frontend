@@ -1,4 +1,7 @@
-<div class="tag {{ size }} {{ type }}">
+<div *ngIf="icon.length > 0" class="tag {{ size }} {{ type }}">
   <i class="{{ icon }}"></i>
+  <p>{{ label }}</p>
+</div>
+<div *ngIf="icon.length == 0" class="tag {{ size }} {{ type }}">
   <p>{{ label }}</p>
 </div>

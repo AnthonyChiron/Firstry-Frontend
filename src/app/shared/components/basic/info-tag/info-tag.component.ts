@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class InfoTagComponent {
   @Input() label: string;
-  @Input() icon: string;
+  @Input() icon: string = '';
   @Input() size: string = 'm';
   @Input() type: string = 'secondary';
 }

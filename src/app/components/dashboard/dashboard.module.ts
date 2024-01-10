@@ -22,6 +22,9 @@ import { ContestRulesCardComponent } from './parameters/rules/contest-rules-card
 import { ContestListRulesCardComponent } from './parameters/rules/contest-list-rules-card/contest-list-rules-card.component';
 import { ContestRulesFormatFormComponent } from './parameters/rules/contest-rules-card/contest-rules-format-form/contest-rules-format-form.component';
 import { ContestRulesPointsFormComponent } from './parameters/rules/contest-rules-card/contest-rules-points-form/contest-rules-points-form.component';
+import { ResultsComponent } from './results/results.component';
+import { RidersComponent } from './riders/riders.component';
+import { DangerZoneComponent } from './parameters/danger-zone/danger-zone.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -42,6 +45,16 @@ const dashboardRoutes: Routes = [
       {
         path: ':contestId/planning',
         component: CategoriesDetailsComponent,
+        canActivate: [IsAuthGuard],
+      },
+      {
+        path: ':contestId/riders',
+        component: RidersComponent,
+        canActivate: [IsAuthGuard],
+      },
+      {
+        path: ':contestId/results',
+        component: ResultsComponent,
         canActivate: [IsAuthGuard],
       },
       {
@@ -77,6 +90,9 @@ const dashboardRoutes: Routes = [
     ContestListRulesCardComponent,
     ContestRulesFormatFormComponent,
     ContestRulesPointsFormComponent,
+    ResultsComponent,
+    RidersComponent,
+    DangerZoneComponent,
   ],
   imports: [
     CommonModule,
