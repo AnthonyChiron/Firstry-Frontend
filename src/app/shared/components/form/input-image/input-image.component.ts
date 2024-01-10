@@ -1,4 +1,4 @@
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { FileUploadEvent } from 'primeng/fileupload';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
@@ -14,18 +14,19 @@ export class InputImageComponent {
   @Input() btnLabelDetail: string;
   @Input() ratio: number = 1;
   @Input() size: number;
-  @Input() imgFile: File;
-  @Input() img: string = null;
+  @Input() img: string = '';
   @Output() onUploadImage = new EventEmitter<FileUploadEvent>();
   imageChangedEvent: any = '';
   croppedImage: any = '';
   maxFileSize = 4000;
-  imgConfirmed: boolean = false;
   isLoading: boolean = false;
+  isImageCroppring: boolean = false;
+  imgFailed: boolean = false;
 
   constructor(protected sanitizer: DomSanitizer) {}
 
   async fileChangeEvent(event: any): Promise<void> {
+    this.isImageCroppring = true;
     this.isLoading = true;
     try {
       this.imageChangedEvent = event;
@@ -48,13 +49,16 @@ export class InputImageComponent {
 
   loadImageFailed() {
     // afficher un message d'erreur
+    this.imgFailed = true;
   }
 
   confirmImage() {
     // Ici, vous pouvez envoyer this.croppedImage au serveur ou quoi que ce soit.
     console.log(this.croppedImage);
+    this.isImageCroppring = false;
+    this.imageChangedEvent = '';
+    this.img = '';
     this.onUploadImage.emit(this.croppedImage);
-    this.imgConfirmed = true;
   }
 
   onUpload(event) {

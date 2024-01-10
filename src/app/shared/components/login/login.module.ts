@@ -16,10 +16,6 @@ import { FormSharedModule } from 'src/app/shared/formShared.module';
 import { UserIconComponent } from './user-icon/user-icon.component';
 import { ForgetPasswordComponent } from './connexion/forget-password/forget-password.component';
 
-const loginRoutes: Routes = [
-  { path: '', component: LoginComponent, canActivate: [IsNotAuthGuard] },
-];
-
 @NgModule({
   declarations: [
     LoginComponent,
@@ -34,12 +30,12 @@ const loginRoutes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(loginRoutes),
     FormsModule,
     FormSharedModule,
     SharedModule,
     ImageCropperModule,
+    RouterModule,
   ],
-  exports: [UserIconComponent],
+  exports: [UserIconComponent, LoginComponent],
 })
 export class LoginModule {}

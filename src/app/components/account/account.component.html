@@ -21,6 +21,13 @@
   </div>
   <div class="flexCardColumn flex1">
     <account-security [user]="user"></account-security>
-    <rider-registrations class="flex1"></rider-registrations>
+    <rider-registrations
+      *ngIf="_authService.isCurrentUserRider()"
+      class="flex1"
+    ></rider-registrations>
+    <stripe-account
+      *ngIf="!_authService.isCurrentUserRider()"
+      [user]="user"
+    ></stripe-account>
   </div>
 </div>

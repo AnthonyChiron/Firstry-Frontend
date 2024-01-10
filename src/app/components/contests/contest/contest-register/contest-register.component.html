@@ -1,5 +1,5 @@
 <div *ngIf="contest" [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
-  <card class="flex1 categories" title="Catégories"
+  <card class="flex1 categories" title="Catégories" [fitContent]="true"
     ><div class="flexCardColumn">
       <p *ngIf="contest.categories.length == 0">
         Ce contest n'a pas encore de catégories !
@@ -19,45 +19,112 @@
           </div>
           <div class="tags">
             <info-tag
+              size="l"
               icon="fa-solid fa-euro-sign"
               label="{{ category.registerPrice }}"
             ></info-tag>
             <info-tag
+              size="l"
               icon="fa-solid fa-user"
               label="0 / {{ category.maxRiders }}"
             ></info-tag>
           </div></div
-      ></card></div
-  ></card>
+      ></card>
+    </div>
+  </card>
+  <i class="fa-solid fa-chevron-right fa-2xl"></i>
   <card
+    *ngIf="isLoggedin && !isPaymentStep"
     class="flex1 registerCard"
-    [title]="'Détails - ' + selectedCategory.name"
+    [title]="'Inscription - ' + selectedCategory.name"
     [fitContent]="true"
   >
-    <div class="flexColumn">
-      <label>Description</label>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
-        reprehenderit aut doloribus. Perspiciatis aperiam placeat alias
-        consectetur saepe ipsum sapiente ratione dolorum debitis voluptatibus?
-        Omnis et veritatis corporis accusantium dicta?
-      </p>
-      <!-- <p>{{ selectedCategory.description }}</p> -->
+    <div class="flexColumn content">
+      <div class="description">
+        <label>Description</label>
+        <p>
+          {{
+            selectedCategory.description
+              ? selectedCategory.description
+              : "Aucune description"
+          }}
+        </p>
+      </div>
       <div class="flexCardRow spaceAround">
-        <card class="flex1" color="2" size="s"
-          ><div class="flexColumn">
-            <h4>Qualification</h4>
-          </div></card
-        >
-        <card class="flex1" color="2" size="s"
-          ><div class="flexColumn">
-            <h4>Finale</h4>
-          </div></card
-        >
+        <card
+          *ngFor="let step of selectedCategory.steps"
+          class="flex1"
+          color="2"
+          size="s"
+          ><div class="stepCard">
+            <div class="stepTitle spaceBetween">
+              <h3>{{ step.name }}</h3>
+              <p class="italic">
+                {{ step.startDate | date : "dd/MM/yyyy - hh:mm" }}
+              </p>
+            </div>
+            <div class="stepContent">
+              <div class="flexColumn spaceAround alignCenter flex1">
+                <info-tag
+                  size="l"
+                  icon="fa-solid fa-user"
+                  label="Poules de {{ step.ridersPerPool }}"
+                ></info-tag>
+                <info-tag
+                  *ngIf="step.ridersQualifiedCount > 0"
+                  size="l"
+                  icon="fa-solid fa-check"
+                  label="Qualifié.es {{ step.ridersPerPool }}"
+                ></info-tag>
+              </div>
+              <div class="sep"></div>
+              <div class="format flex1">
+                <h4 class="textCenter">Format</h4>
+                <div
+                  *ngFor="let stepFormat of step.rules.stepFormats"
+                  class="stepFormat"
+                >
+                  <info-tag size="l" [label]="getRunLabel(stepFormat)">
+                  </info-tag>
+                  <div class="sep"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </card>
       </div>
       <div class="footer">
-        <btn label="S'inscrire" type="primary" (click)="register()"></btn>
+        <div class="price">
+          <h4><b>Prix de l'inscription</b></h4>
+          <h4>
+            <b>{{ selectedCategory.registerPrice }} €</b>
+          </h4>
+        </div>
+        <btn
+          label="Passer au paiement"
+          type="primary"
+          (click)="register()"
+        ></btn>
       </div>
     </div>
   </card>
+  <card *ngIf="!isLoggedin" class="flex1 connectCard" [fitContent]="true"
+    ><h2 class="textCenter">Veuillez vous connecter pour vous inscrire</h2>
+    <div class="flexRow spaceAround buttons">
+      <btn label="Je me connecte" (click)="isLoginModalOpen = true"></btn>
+      <btn label="Je créer un compte" (click)="isLoginModalOpen = true"></btn>
+    </div>
+  </card>
+  <card title="Paiement" class="flex1" *ngIf="isLoggedin && isPaymentStep">
+    <paiement [amount]="selectedCategory.registerPrice"></paiement>
+  </card>
 </div>
+<modal
+  *ngIf="isLoginModalOpen && !isMobile"
+  [isVisible]="isLoginModalOpen"
+  (cancelled)="isLoginModalOpen = false"
+  ><app-login
+    [openTab]="0"
+    (modalClosed)="isLoginModalOpen = !isLoginModalOpen"
+  ></app-login
+></modal>

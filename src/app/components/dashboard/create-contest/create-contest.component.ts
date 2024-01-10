@@ -42,7 +42,9 @@ export class CreateContestComponent implements OnInit {
       this.contestService.create(this.contestForm.value).subscribe((res) => {
         console.log(res);
       });
-      this.router.navigate(['/dashboard']);
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/dashboard']);
+      });
     }
   }
 }

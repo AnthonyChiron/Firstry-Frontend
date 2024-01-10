@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.alignSelfEnd {
+  align-self: flex-end;
+}
+
 .spaceBetween {
   justify-content: space-between;
 }

@@ -1,5 +1,5 @@
 import { Observable, firstValueFrom, map, startWith } from 'rxjs';
-import { CountryService } from './../../../shared/services/CountryService/country.service';
+import { CountryService } from '../../../services/CountryService/country.service';
 import {
   Component,
   EventEmitter,
@@ -69,7 +69,6 @@ export class SignUpComponent implements OnInit {
 
     this.organizerForm = this.fb.group({
       name: ['', Validators.required],
-      siretNumber: ['', Validators.required],
     });
 
     this.photoForm = this.fb.group({
@@ -116,6 +115,7 @@ export class SignUpComponent implements OnInit {
       next: (token) => {
         this.authService.saveToken(token);
         this.registered.emit();
+
         this.router.navigate(['/account/validateEmail']);
       },
       error: (err) => (this.invalidCredentials = true),

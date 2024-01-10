@@ -1,0 +1,23 @@
+<!-- <ngx-stripe-elements
+  *ngIf="isInit"
+  [stripe]="stripe"
+  [elementsOptions]="elementsOptions"
+>
+  <ngx-stripe-payment />
+</ngx-stripe-elements>
+<btn label="Payer"></btn> -->
+
+<div class="flexColumn">
+  <ngx-stripe-elements
+    *ngIf="isInit"
+    [stripe]="stripe"
+    [elementsOptions]="elementsOptions"
+  >
+    <ngx-stripe-payment [options]="paymentElementOptions" />
+  </ngx-stripe-elements>
+  <btn
+    class="alignSelfEnd payBtn"
+    [label]="'Payer ' + amount + '€'"
+    (click)="pay()"
+  ></btn>
+</div>

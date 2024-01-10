@@ -1,0 +1,13 @@
+<card title="Attention - zone dangereuse !" [fitContent]="true">
+  <btn
+    label="Supprimer le contest"
+    type="danger"
+    (click)="isConfirmationModalOpen = true"
+  ></btn>
+</card>
+<confirmation-modal
+  [isVisible]="isConfirmationModalOpen"
+  title="Attention ! Etes-vous sûr de vouloir supprimer ce contest ?"
+  (cancelled)="isConfirmationModalOpen = false"
+  (confirmed)="deleteContest()"
+></confirmation-modal>

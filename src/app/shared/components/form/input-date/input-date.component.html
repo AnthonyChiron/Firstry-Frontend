@@ -1,13 +1,13 @@
 <div class="inputGroup">
   <label *ngIf="label != ''" [htmlFor]="name">{{ label }}</label>
   <input
+    type="date"
     *ngIf="edit"
     [name]="name"
-    [ngModel]="value.toLocaleDateString()"
+    [ngModel]="value | date : 'yyyy-MM-dd'"
     [placeholder]="placeholder"
     (ngModelChange)="updateValue($event)"
     [class.error]="error"
-    mask="d0/M0/0000"
   />
   <p *ngIf="!edit">{{ value.toLocaleDateString() }}</p>
   <ng-content></ng-content>

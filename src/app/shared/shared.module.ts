@@ -29,9 +29,8 @@ import { PlanningComponent } from './components/basic/planning/planning.componen
 import { NavBtnComponent } from './components/basic/nav-btn/nav-btn.component';
 import { NgChartsModule } from 'ng2-charts';
 import { FormatTimePipe } from './pipe/format-time.pipe';
-import { UserIconComponent } from '../components/login/user-icon/user-icon.component';
-import { LoginComponent } from '../components/login/login.component';
-import { LoginModule } from '../components/login/login.module';
+import { UserIconComponent } from './components/login/user-icon/user-icon.component';
+import { LoginModule } from './components/login/login.module';
 import { MobileNavbarComponent } from './components/basic/mobile-navbar/mobile-navbar.component';
 
 @NgModule({

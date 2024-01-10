@@ -1,3 +1,5 @@
+@import "../../../../../styles/colors.scss";
+
 .categories {
   .active {
     color: white;
@@ -5,12 +7,17 @@
 
   .category {
     cursor: pointer;
+    flex: 1;
 
     .titleCategory {
       display: flex;
       align-items: center;
       width: 50%;
       gap: 10px;
+
+      h3 {
+        font-size: max(20px, 1.2vw);
+      }
 
       h3,
       p {
@@ -30,9 +37,72 @@
   }
 }
 
+.sep {
+  width: 1px;
+  background-color: $firstry-white-4;
+}
+
+i {
+  align-self: center;
+}
+
 .registerCard {
-  .footer {
-    align-self: flex-end;
+  .stepCard {
     display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .stepTitle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      p {
+        font-size: max(10px, 0.7vw);
+      }
+    }
+
+    .stepContent {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+
+      .format {
+        h4 {
+          margin-bottom: 10px;
+        }
+
+        .stepFormat {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+      }
+    }
+  }
+
+  .content {
+    gap: 20px;
+  }
+
+  .footer {
+    margin-top: 15px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    gap: 10px;
+
+    .price {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}
+
+.connectCard {
+  .buttons {
+    margin-top: 20px;
   }
 }

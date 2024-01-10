@@ -39,7 +39,7 @@ h2 {
 
 h3 {
   font-size: max(13px, 4vw);
-  font-variation-settings: "wght" 700;
+  font-variation-settings: "wght" 800;
 }
 
 h4 {
@@ -100,6 +100,7 @@ a {
 @media screen and (min-width: 768px) {
   .mainTitle {
     height: 8vw;
+    width: 60vw;
     display: flex;
     align-items: center;
     text-align: left;
@@ -138,7 +139,7 @@ a {
 
   input,
   textarea {
-    font-size: max(9px, 0.8vw);
+    font-size: max(12px, 0.8vw);
   }
 
   a:hover {
@@ -172,4 +173,8 @@ input::placeholder {
 input::placeholder {
   color: $firstry-white-3;
   opacity: 1; /* Firefox */
+}
+
+.italic {
+  font-style: italic;
 }

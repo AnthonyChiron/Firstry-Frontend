@@ -26,6 +26,8 @@
     </div>
   </div>
   <div class="sep"></div>
-  <router-outlet class="fullWidth"></router-outlet>
+  <div class="fullWidth">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 <mobile-navbar *ngIf="isMobile" [links]="links"></mobile-navbar>

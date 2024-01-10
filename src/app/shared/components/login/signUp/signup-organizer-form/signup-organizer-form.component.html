@@ -15,17 +15,4 @@
 contest"
     ></note
   ></input-text>
-
-  <input-text
-    name="siretNumber"
-    type="Text"
-    placeholder="Siret..."
-    label="N° de SIRET"
-    formControlName="siretNumber"
-    [error]="
-      touched &&
-      (fus.isFieldInvalid('siretNumber') ||
-        organizerForm.get('siretNumber').value == '')
-    "
-  ></input-text>
 </form>

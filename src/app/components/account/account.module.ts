@@ -5,8 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ValidEmailComponent } from './valid-email/valid-email.component';
 import { IsNotValidGuard } from 'src/app/shared/guards/IsNotValid/is-not-valid.service';
 import { IsAuthGuard } from 'src/app/shared/guards/IsAuth/is-auth-guard.service';
-import { UserIconComponent } from '../login/user-icon/user-icon.component';
-import { LoginModule } from '../login/login.module';
+import { UserIconComponent } from '../../shared/components/login/user-icon/user-icon.component';
+import { LoginModule } from '../../shared/components/login/login.module';
 import { AccountComponent } from './account.component';
 import { RiderInfoFormComponent } from './rider-info-form/rider-info-form.component';
 import { FormSharedModule } from 'src/app/shared/formShared.module';
@@ -19,6 +19,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { UpdatePhotoComponent } from './update-photo/update-photo.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { OrganizerInfoFormComponent } from './organizer-info-form/organizer-info-form.component';
+import { StripeAccountComponent } from './stripe-account/stripe-account.component';
 
 const accountRoutes: Routes = [
   {
@@ -63,6 +64,7 @@ const accountRoutes: Routes = [
     ResetPasswordComponent,
     UpdatePhotoComponent,
     OrganizerInfoFormComponent,
+    StripeAccountComponent,
   ],
   imports: [
     CommonModule,

@@ -11,6 +11,8 @@ import { IsAuthGuard } from 'src/app/shared/guards/IsAuth/is-auth-guard.service'
 import { ContestRegisterComponent } from './contest/contest-register/contest-register.component';
 import { ContestResultsComponent } from './contest/contest-results/contest-results.component';
 import { ContestPlanningComponent } from './contest/contest-planning/contest-planning.component';
+import { LoginModule } from '../../shared/components/login/login.module';
+import { PaiementModule } from 'src/app/shared/components/paiement/paiement.module';
 
 const contestsRoutes: Routes = [
   { path: '', component: ContestsComponent },
@@ -53,7 +55,13 @@ const contestsRoutes: Routes = [
     ContestResultsComponent,
     ContestPlanningComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(contestsRoutes), SharedModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(contestsRoutes),
+    SharedModule,
+    LoginModule,
+    PaiementModule,
+  ],
   providers: [ContestsService],
 })
 export class ContestsModule {}

@@ -13,7 +13,7 @@
     </p>
     <p>Commençons par créer une catégorie.</p>
   </card> -->
-  <div class="navbarDasboard">
+  <div class="navbarDasboard" *ngIf="contestsDdOptions.length > 0">
     <dropdown
       class="contestDropDown"
       [options]="contestsDdOptions"
@@ -45,7 +45,7 @@
         label="Riders"
         icon="fa-solid fa-person-snowboarding"
         routerLinkActive="active"
-        routerLink="{{ selectedContestId }}/poules"
+        routerLink="{{ selectedContestId }}/riders"
       ></nav-btn>
       <nav-btn
         type="primary"
@@ -67,6 +67,6 @@
   </div>
   <div class="content">
     <router-outlet></router-outlet>
-    <create-contest *ngIf="!contestsDdOptions"></create-contest>
+    <create-contest *ngIf="contestsDdOptions.length == 0"></create-contest>
   </div>
 </div>
