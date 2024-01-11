@@ -18,9 +18,15 @@
       class="contestDropDown"
       [options]="contestsDdOptions"
       [routes]="[{ label: 'Créer un contest', value: 'create-contest' }]"
-      (selected)="selectedContest($event)"
+      (selected)="selectContest($event)"
       [value]="selectedContestId"
     ></dropdown>
+    <btn
+      label="Voir la page du contest"
+      [routerLink]="['/contests/preview/' + selectedContest._id]"
+    ></btn>
+    <p *ngIf="selectedContest && selectedContest.isPublished">Publié</p>
+    <p *ngIf="selectedContest && !selectedContest.isPublished">Non publié</p>
     <!-- <btn label="Créer un contest" routerLink="create-contest"></btn> -->
     <div class="navBtns" *ngIf="!isMobile && contestsDdOptions.length != 0">
       <nav-btn

@@ -25,7 +25,6 @@ export class ChipsGroupComponent implements ControlValueAccessor, OnInit {
   onTouched: any = () => {};
 
   ngOnInit() {
-    console.log(this.chips);
     if (this.preSelect && this.chips.length > 0)
       this.selectedChips.push(this.chips[0].value);
   }
@@ -52,8 +51,6 @@ export class ChipsGroupComponent implements ControlValueAccessor, OnInit {
   }
 
   writeValue(value: [] | string): void {
-    console.log(value);
-    console.log(this.chips);
     if (value && Array.isArray(value)) {
       this.selectedChips = value;
     } else if (value) {

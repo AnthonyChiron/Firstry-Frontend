@@ -21,7 +21,7 @@
       [edit]="edit"
       [error]="_fus.isFieldInvalid('description')"
     ></input-textarea>
-    <div class="flexRow spaceBetween">
+    <div class="flexRow spaceBetween gap10">
       <input-date
         type="Date"
         label="Date de début"
@@ -29,7 +29,13 @@
         class="fullWidth"
         [edit]="edit"
         [error]="_fus.isFieldInvalid('startDate')"
-      ></input-date>
+      >
+        <note
+          type="errorLabel"
+          *ngIf="_fus.isFieldInvalid('startDate')"
+          text="La date de début doit être antérieure à la date de fin et à la date limite d'inscription"
+        ></note>
+      </input-date>
       <input-date
         type="Date"
         label="Date de fin"
@@ -64,7 +70,17 @@
       label="Sports"
       formControlName="sports"
     ></input-chips>
-
+    <slide-input
+      [edit]="edit"
+      label="Inscription payante ?"
+      formControlName="enablePayment"
+    ></slide-input>
+    <note
+      *ngIf="form.errors?.dateOrderInvalid && (form.submitted || form.dirty)"
+      type="errorLabel"
+      text="La date de début doit être antérieure à la date de fin et supérieure à la date limite d'inscription."
+    >
+    </note>
     <div class="formButtons" *ngIf="edit">
       <btn
         (click)="cancelInfos()"
@@ -74,7 +90,7 @@
       ></btn>
       <btn
         (click)="saveInfos()"
-        type="primary"
+        type="valid"
         label="Confirmer"
         icon="fa-solid fa-check fa-lg"
       ></btn>

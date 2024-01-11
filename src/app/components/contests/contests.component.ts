@@ -14,10 +14,11 @@ export class ContestsComponent implements OnInit {
   ngOnInit(): void {
     this.contestsService.getAll().subscribe((data) => {
       if (data) {
-        this.contests = data;
-        this.contests.forEach((contest) => {
+        data.forEach((contest) => {
           contest.startDate = new Date(contest.startDate);
           contest.endDate = new Date(contest.endDate);
+
+          if (contest.isPublished) this.contests.push(contest);
         });
       }
     });

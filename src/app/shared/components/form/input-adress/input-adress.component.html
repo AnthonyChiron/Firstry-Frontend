@@ -6,6 +6,7 @@
     type="text"
     [ngModel]="value.address"
     placeholder="Entrez une adresse"
+    [class.error]="error"
   />
   <p *ngIf="!edit">{{ value.address }}</p>
 </div>

@@ -40,10 +40,9 @@
       </note>
     </div>
 
-    <div class="flexRow">
-      <input-text
+    <div class="flexRow gap10">
+      <input-date
         name="startDate"
-        type="date"
         placeholder="jj/mm/aaaa"
         label="Date de début"
         formControlName="startDate"
@@ -52,10 +51,19 @@
           (fus.isFieldInvalid('startDate') ||
             contestForm.get('startDate').value == '')
         "
-      ></input-text>
-      <input-text
+      >
+        <note
+          *ngIf="
+            touched &&
+            (fus.isFieldInvalid('startDate') ||
+              contestForm.get('startDate').value == '')
+          "
+          type="errorLabel"
+          text="La date de début doit être supérieur à la date du jour."
+        ></note>
+      </input-date>
+      <input-date
         name="endDate"
-        type="date"
         placeholder="jj/mm/aaaa"
         label="Date de fin"
         formControlName="endDate"
@@ -64,14 +72,33 @@
           (fus.isFieldInvalid('endDate') ||
             contestForm.get('endDate').value == '')
         "
-      ></input-text>
+      ></input-date>
     </div>
 
     <input-adress
       label="Lieu"
-      (addressSelected)="onAddressSelected($event)"
       formControlName="location"
+      [error]="
+        touched &&
+        (fus.isFieldInvalid('endDate') ||
+          contestForm.get('endDate').value == '')
+      "
     ></input-adress>
+
+    <slide-input label="Inscription payante ?" formControlName="enablePayment">
+      <note
+        *ngIf="contestForm.get('enablePayment').value"
+        text="Dans le cas d'un contest payant, des informations fiscales seront
+  demandées."
+      ></note>
+    </slide-input>
+
+    <note
+      *ngIf="contestForm.errors?.dateOrderInvalid"
+      type="errorLabel"
+      text="La date de début doit être antérieure à la date de fin et supérieure à la date limite d'inscription."
+    >
+    </note>
 
     <btn
       (click)="submit()"

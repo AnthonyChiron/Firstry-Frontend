@@ -54,7 +54,7 @@
       .label {
         width: 3vw;
         color: white;
-        font-size: 17px;
+        font-size: max(15px, 0.9vw);
         font-variation-settings: "wght" 600;
       }
     }

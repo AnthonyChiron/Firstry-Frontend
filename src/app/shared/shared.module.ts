@@ -32,6 +32,7 @@ import { FormatTimePipe } from './pipe/format-time.pipe';
 import { UserIconComponent } from './components/login/user-icon/user-icon.component';
 import { LoginModule } from './components/login/login.module';
 import { MobileNavbarComponent } from './components/basic/mobile-navbar/mobile-navbar.component';
+import { BadgeComponent } from './components/basic/badge/badge.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { MobileNavbarComponent } from './components/basic/mobile-navbar/mobile-n
     MapsCardComponent,
     FormatTimePipe,
     MobileNavbarComponent,
+    BadgeComponent,
   ],
   imports: [
     CommonModule,
@@ -96,6 +98,7 @@ import { MobileNavbarComponent } from './components/basic/mobile-navbar/mobile-n
     NgChartsModule,
     FormatTimePipe,
     MobileNavbarComponent,
+    BadgeComponent,
   ],
 })
 export class SharedModule {}

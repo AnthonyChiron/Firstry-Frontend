@@ -73,7 +73,7 @@ button {
 }
 
 .valid {
-  background-color: $firstry-red-2;
+  background-color: $firstry-green-2;
   color: $firstry-white-1;
   font-variation-settings: "wght" 800;
   border: 1px solid transparent;
@@ -110,6 +110,10 @@ button {
 
   .danger:hover {
     background-color: $firstry-red-1;
+  }
+
+  .valid:hover {
+    background-color: $firstry-green-1;
   }
 
   .transparent:hover {

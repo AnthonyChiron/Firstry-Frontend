@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.alignSelfCenter {
+  align-self: center;
+}
+
 .alignSelfEnd {
   align-self: flex-end;
 }
@@ -78,6 +82,10 @@
 
 .flexWrap {
   flex-wrap: wrap;
+}
+
+.gap10 {
+  gap: 10px;
 }
 
 @media screen and (min-width: 768px) {

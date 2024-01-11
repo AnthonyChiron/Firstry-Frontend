@@ -92,6 +92,7 @@
 
         <!-- registerPrice input -->
         <input-text
+          *ngIf="contest.enablePayment && contest.enablePayment === true"
           class="flex1"
           name="registerPrice"
           type="number"
@@ -109,7 +110,8 @@
           formControlName="isQualificationStep"
           label="Qualification ?"
           [edit]="edit"
-        ></slide-input>
+        >
+        </slide-input>
       </div>
 
       <div class="steps">

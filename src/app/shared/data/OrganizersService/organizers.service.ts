@@ -20,4 +20,16 @@ export class OrganizersService extends CrudService<OrganizerModel> {
       formData
     );
   }
+
+  isContestPaymentEnabledByOrganizerId(organizerId) {
+    return this.http.get(
+      `${this.baseUrl}/isContestPaymentEnabledByOrganizerId/${organizerId}`
+    );
+  }
+
+  isOrganizerContest(organizerId, contestId) {
+    return this.http.get(
+      `${this.baseUrl}/isOrganizerContest/${organizerId}/${contestId}`
+    );
+  }
 }

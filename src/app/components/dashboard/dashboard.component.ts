@@ -10,6 +10,7 @@ import {
 import { slider } from 'src/app/shared/transitions/slider';
 import { fadeAnimation } from 'src/app/shared/transitions/fade';
 import { filter } from 'rxjs';
+import { ContestModel } from 'src/app/models/contest.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,6 +28,8 @@ export class DashboardComponent implements OnInit {
   contestsDdOptions: any[] = [];
   closePopup: boolean = true;
   isMobile: boolean;
+  contests: ContestModel[] = [];
+  selectedContest: ContestModel;
   selectedContestId: string;
 
   ngOnInit(): void {
@@ -37,11 +40,12 @@ export class DashboardComponent implements OnInit {
     this._contestsService.getOrganizerContests().subscribe((data) => {
       if (data && data.length > 0) {
         // Mise en place du dropdown
+        this.contests = data;
         this.contestsDdOptions = data.map((contest) => {
           return { label: contest.name, value: contest._id };
         });
 
-        this.selectedContest(this.contestsDdOptions[0]);
+        this.selectContest(this.contestsDdOptions[0]);
 
         this.router.events
           .pipe(filter((event) => event instanceof NavigationEnd))
@@ -56,7 +60,7 @@ export class DashboardComponent implements OnInit {
               dashboardIndex === urlSegments.length - 1
             ) {
               // Aucun ID après 'dashboard/', ajoutez l'ID du premier contest
-              this.selectedContest(this.contestsDdOptions[0]);
+              this.selectContest(this.contestsDdOptions[0]);
             }
           });
       }
@@ -67,8 +71,12 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  selectedContest(event) {
+  selectContest(event) {
+    console.log(event);
     this.selectedContestId = event.value;
+    this.selectedContest = this.contests.find(
+      (contest) => contest._id === event.value
+    );
     this.router.navigate(['/dashboard', event.value, 'overview']);
   }
 }

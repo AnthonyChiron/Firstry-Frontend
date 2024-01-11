@@ -1,5 +1,5 @@
-<div class="account">
-  <div *ngIf="isLoggedIn" class="flexRow spaceBetween alignCenter">
+<div class="main">
+  <div *ngIf="isLoggedIn" class="flexRow spaceBetween alignCenter account">
     <div *ngIf="user.role == 'rider'" class="name">
       <h4 class="firstName">{{ user.rider.firstName }}</h4>
       <h5>{{ user.rider.lastName }}</h5>
@@ -14,6 +14,7 @@
       }}"
       alt=""
     />
+    <badge *ngIf="alert" class="notification" type="danger">!!</badge>
   </div>
   <div *ngIf="!isLoggedIn && !isMobile" class="btns">
     <btn type="primary" label="Connexion" (click)="openModal(0)"></btn>
@@ -25,9 +26,10 @@
   </div>
   <div *ngIf="!toggleAccountOption" class="accountOptions">
     <a
+      class="flexRow alignCenter gap10"
       routerLink="/account"
       (click)="toggleAccountOption = !toggleAccountOption"
-      >Mon compte</a
+      >Mon compte <badge type="danger" *ngIf="alert">!!</badge></a
     >
     <a
       routerLink="/dashboard"

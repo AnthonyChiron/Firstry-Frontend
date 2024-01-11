@@ -64,7 +64,6 @@ export class CardComponent implements OnInit {
     this._screenSize.isMobile$.subscribe((isMobile) => {
       this.isMobile = isMobile;
     });
-    console.log(this.size);
   }
 
   emitBtnClicked() {

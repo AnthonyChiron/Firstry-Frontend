@@ -1,0 +1,21 @@
+@import "../../../../../styles/colors.scss";
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  font-size: 12px;
+  border-radius: 100%;
+}
+
+.primary {
+  background-color: $firstry-black-2;
+  color: $firstry-white-1;
+}
+
+.danger {
+  background-color: $firstry-red-3;
+  color: $firstry-white-1;
+}
