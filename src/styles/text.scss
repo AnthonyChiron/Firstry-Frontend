@@ -100,7 +100,7 @@ a {
 @media screen and (min-width: 768px) {
   .mainTitle {
     height: 8vw;
-    width: 60vw;
+    width: 45vw;
     display: flex;
     align-items: center;
     text-align: left;
@@ -108,7 +108,7 @@ a {
   }
 
   p {
-    font-size: max(12px, 0.8vw);
+    font-size: max(12px, 0.85vw);
   }
 
   h1 {
@@ -116,7 +116,7 @@ a {
   }
 
   h2 {
-    font-size: 30px;
+    font-size: max(23px, 1.6vw);
   }
 
   h3 {
@@ -124,7 +124,7 @@ a {
   }
 
   h4 {
-    font-size: 17px;
+    font-size: max(14px, 0.9vw);
   }
 
   h5 {

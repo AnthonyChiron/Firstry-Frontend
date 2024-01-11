@@ -1,3 +1,5 @@
+import { is } from 'date-fns/locale';
+import { OrganizersService } from 'src/app/shared/data/OrganizersService/organizers.service';
 import { Router } from '@angular/router';
 import { PaymentService } from './../../../shared/data/PaymentService/payment.service';
 import { Component, Input, OnInit } from '@angular/core';
@@ -9,13 +11,32 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class StripeAccountComponent implements OnInit {
   @Input() user: any;
+  displayStripeAccount: boolean = false;
   urlStripeAccount = '';
-  constructor(private PaymentService: PaymentService, private router: Router) {}
+  isStripeAccountUsable: boolean = false;
+
+  constructor(
+    private paymentService: PaymentService,
+    private router: Router,
+    private organizersService: OrganizersService
+  ) {}
 
   ngOnInit(): void {
-    this.PaymentService.createLoginLink().subscribe((data) => {
-      console.log(data);
-    });
+    this.organizersService
+      .isContestPaymentEnabledByOrganizerId(this.user.organizer._id)
+      .subscribe((res: boolean) => {
+        this.displayStripeAccount = res;
+        if (res) {
+          this.paymentService
+            .isStripeAccountUsable()
+            .subscribe((res: boolean) => {
+              this.isStripeAccountUsable = res;
+            });
+          this.paymentService.createLoginLink().subscribe((data: string) => {
+            this.urlStripeAccount = data;
+          });
+        }
+      });
   }
 
   test() {

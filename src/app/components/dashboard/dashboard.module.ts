@@ -25,6 +25,9 @@ import { ContestRulesPointsFormComponent } from './parameters/rules/contest-rule
 import { ResultsComponent } from './results/results.component';
 import { RidersComponent } from './riders/riders.component';
 import { DangerZoneComponent } from './parameters/danger-zone/danger-zone.component';
+import { IsOrganizerContestGuard } from 'src/app/shared/guards/IsOrganizerContest/is-organizer-contest-guard.service';
+import { ContestComponent } from '../contests/contest/contest.component';
+import { ContestsModule } from '../contests/contests.module';
 
 const dashboardRoutes: Routes = [
   {
@@ -63,6 +66,11 @@ const dashboardRoutes: Routes = [
         canActivate: [IsAuthGuard],
       },
     ],
+  },
+  {
+    path: 'preview/:contestId',
+    component: ContestComponent,
+    canActivate: [IsOrganizerContestGuard, IsAuthGuard],
   },
   {
     path: 'create-contest',

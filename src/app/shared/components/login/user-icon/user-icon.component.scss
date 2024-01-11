@@ -1,11 +1,15 @@
 @import "../../../../../styles/colors.scss";
 
-.account {
+.main {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   height: 8vw;
   gap: 2vw;
+
+  .account {
+    position: relative;
+  }
 
   .name {
     display: flex;
@@ -61,13 +65,19 @@
   }
 }
 
+.notification {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .btns {
   display: flex;
   gap: 10px;
 }
 
 @media screen and (min-width: 768px) {
-  .account {
+  .main {
     img {
       max-height: 3.5vw;
     }
@@ -76,6 +86,6 @@
   .accountOptions {
     top: 6vw;
     right: 0;
-    width: 10vw;
+    width: 14vw;
   }
 }

@@ -1,9 +1,48 @@
-<card title="Attention - zone dangereuse !" [fitContent]="true">
-  <btn
-    label="Supprimer le contest"
-    type="danger"
-    (click)="isConfirmationModalOpen = true"
-  ></btn>
+<card title="Publication / Suppression" [fitContent]="true">
+  <div class="flexColumn spaceAround gap10">
+    <card
+      *ngIf="!contest.isPublished && contestPublishableStatus"
+      color="2"
+      size="m"
+    >
+      <div *ngIf="contestPublishableStatus.isValid" class="flexRow alignCenter">
+        <btn
+          class="flex1"
+          label="Publier"
+          type="valid"
+          (click)="isConfirmationModalOpen = true"
+        ></btn>
+        <div class="flexColumn flex3">
+          <p>Publier votre contest le rendra visible à tous les utilisateurs</p>
+          <note
+            text="Attention ! Vous ne pourrez plus modifier les informations principals de votre contest une fois publié."
+          >
+          </note>
+        </div>
+      </div>
+      <div *ngIf="!contestPublishableStatus.isValid" class="flexColumn gap10">
+        <h3 class="alignSelfCenter">Votre contest ne peut pas être publié !</h3>
+        <div>
+          <p *ngFor="let error of contestPublishableStatus.errors">
+            • {{ error }}
+          </p>
+        </div>
+      </div>
+    </card>
+    <card color="2" size="m">
+      <div class="flexRow alignCenter">
+        <btn
+          class="flex1"
+          label="Supprimer"
+          type="danger"
+          (click)="isConfirmationModalOpen = true"
+        ></btn>
+        <div class="flexColumn flex3">
+          <p><b>ATTENTION :</b> Supprimer votre contest est irréversible</p>
+        </div>
+      </div>
+    </card>
+  </div>
 </card>
 <confirmation-modal
   [isVisible]="isConfirmationModalOpen"

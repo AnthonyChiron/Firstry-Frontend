@@ -24,17 +24,19 @@ export class CreateContestComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.contestForm = this.fb.group({
-      name: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-      location: ['', Validators.required],
-      sports: ['', Validators.required],
-    });
+    this.contestForm = this.fb.group(
+      {
+        name: ['', Validators.required],
+        startDate: ['', [Validators.required, this.fus.startDateValidator]],
+        endDate: ['', Validators.required],
+        location: ['', Validators.required],
+        sports: ['', Validators.required],
+        enablePayment: ['', Validators.required],
+      },
+      { validators: [this.fus.startEndDateValidator] }
+    );
     this.fus.setForm(this.contestForm);
   }
-
-  onAddressSelected(address: any) {}
 
   submit() {
     this.touched = true;

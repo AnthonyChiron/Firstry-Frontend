@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ValidationErrors } from '@angular/forms';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 @Injectable({
@@ -35,4 +35,35 @@ export class FormUtilityService {
       return !isNumber ? { notNumber: { value: control.value } } : null;
     };
   }
+
+  public startDateValidator(
+    control: AbstractControl
+  ): { [key: string]: any } | null {
+    if (!control.value) {
+      return null; // Si aucune date n'est définie, on ne valide pas
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Réinitialiser l'heure pour la comparaison des dates uniquement
+
+    const startDate = new Date(control.value);
+    startDate.setHours(0, 0, 0, 0); // Assurez-vous de réinitialiser l'heure pour la date de début également
+
+    return startDate >= today ? null : { startDateInvalid: true };
+  }
+
+  public startEndDateValidator = (
+    formGroup: FormGroup
+  ): ValidationErrors | null => {
+    const startDate = formGroup.get('startDate')?.value;
+    const endDate = formGroup.get('endDate')?.value;
+
+    // Vérifie si les deux dates sont présentes et si la startDate est antérieure à la endDate
+    if (!startDate || !endDate) return null;
+
+    if (new Date(startDate) > new Date(endDate))
+      return { dateOrderInvalid: true };
+
+    return null;
+  };
 }

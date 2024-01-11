@@ -13,12 +13,41 @@ import { ContestResultsComponent } from './contest/contest-results/contest-resul
 import { ContestPlanningComponent } from './contest/contest-planning/contest-planning.component';
 import { LoginModule } from '../../shared/components/login/login.module';
 import { PaiementModule } from 'src/app/shared/components/paiement/paiement.module';
+import { IsOrganizerContestGuard } from 'src/app/shared/guards/IsOrganizerContest/is-organizer-contest-guard.service';
 
 const contestsRoutes: Routes = [
   { path: '', component: ContestsComponent },
   {
     path: ':id',
     component: ContestComponent,
+    children: [
+      {
+        path: 'overview',
+        component: ContestOverviewComponent,
+      },
+      {
+        path: 'register',
+        component: ContestRegisterComponent,
+      },
+      {
+        path: 'results',
+        component: ContestResultsComponent,
+      },
+      {
+        path: 'planning',
+        component: ContestPlanningComponent,
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'overview',
+      },
+    ],
+  },
+  {
+    path: 'preview/:id',
+    component: ContestComponent,
+    canActivate: [IsAuthGuard, IsOrganizerContestGuard],
     children: [
       {
         path: 'overview',

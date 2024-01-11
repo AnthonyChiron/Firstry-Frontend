@@ -28,6 +28,14 @@ export class PaymentService extends BaseHttpService {
       }`
     );
   }
+
+  isStripeAccountUsable() {
+    return this.http.get(
+      `${this.baseUrl}/isStripeAccountUsable/${
+        this.authService.getCurrentUser().organizer.stripeAccountId
+      }`
+    );
+  }
 }
 
 interface PaymentInterface {

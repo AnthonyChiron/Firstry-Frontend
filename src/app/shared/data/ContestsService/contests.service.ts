@@ -37,4 +37,17 @@ export class ContestsService extends CrudService<ContestModel> {
       formData
     );
   }
+
+  publish(contestId: string): Observable<any> {
+    return this.http.get(this.baseUrl + '/publish/' + contestId);
+  }
+
+  isContestPublishable(contestId: string): Observable<any> {
+    return this.http.get(this.baseUrl + '/isContestPublishable/' + contestId);
+  }
+}
+
+export interface ContestPublishableStatus {
+  isValid: boolean;
+  errors: [string];
 }

@@ -1,3 +1,4 @@
+import { PaymentService } from './../../../data/PaymentService/payment.service';
 import {
   Component,
   EventEmitter,
@@ -5,6 +6,8 @@ import {
   ElementRef,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { th } from 'date-fns/locale';
+import { OrganizersService } from 'src/app/shared/data/OrganizersService/organizers.service';
 import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
 import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 
@@ -20,12 +23,15 @@ export class UserIconComponent {
   isModalOpen: boolean = false;
   indexLogin: number = 0;
   isMobile: boolean = false;
+  alert: boolean = false;
 
   constructor(
     private authService: AuthService,
     private elementRef: ElementRef,
     private router: Router,
-    private _screenSizeService: ScreenSizeService
+    private _screenSizeService: ScreenSizeService,
+    private paymentService: PaymentService,
+    private organizerService: OrganizersService
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +41,17 @@ export class UserIconComponent {
     this.authService.isLoggedIn().subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
       this.user = this.authService.getCurrentUser();
+      if (this.authService.isCurrentUserOrganizer())
+        this.organizerService
+          .isContestPaymentEnabledByOrganizerId(this.user.organizer._id)
+          .subscribe((res) => {
+            console.log(res);
+            if (res)
+              this.paymentService.isStripeAccountUsable().subscribe((res) => {
+                console.log(res);
+                this.alert = !res;
+              });
+          });
     });
   }
 

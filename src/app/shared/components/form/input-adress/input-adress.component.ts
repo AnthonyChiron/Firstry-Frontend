@@ -28,6 +28,8 @@ import { Address } from 'src/app/models/adress.model';
 export class InputAdressComponent implements AfterViewInit, OnChanges {
   @Input() label: string = '';
   @Input() edit: boolean = true;
+  @Input() error: boolean = false;
+
   private onChange: any = () => {};
   private onTouched: any = () => {};
   isInit: boolean = false;

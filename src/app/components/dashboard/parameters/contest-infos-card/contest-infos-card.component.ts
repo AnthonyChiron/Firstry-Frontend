@@ -39,6 +39,8 @@ export class ContestInfosCardComponent implements OnInit {
 
   saveInfos() {
     this.form.markAllAsTouched();
+
+    console.log(this.form.value);
     if (this.form.invalid) return;
 
     this.edit = false;

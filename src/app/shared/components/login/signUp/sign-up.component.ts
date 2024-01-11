@@ -69,6 +69,7 @@ export class SignUpComponent implements OnInit {
 
     this.organizerForm = this.fb.group({
       name: ['', Validators.required],
+      location: ['', Validators.required],
     });
 
     this.photoForm = this.fb.group({

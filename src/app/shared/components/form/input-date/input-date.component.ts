@@ -37,15 +37,7 @@ export class InputDateComponent implements ControlValueAccessor {
   }
 
   updateValue(value: string): void {
-    console.log(value);
-    if (value.length > 7)
-      this.value = new Date(
-        Number(value.slice(4, 8)),
-        Number(value.slice(2, 4)),
-        Number(value.slice(0, 2))
-      );
-    console.log(this.value);
-    this.onChange(this.value);
+    this.onChange(new Date(value));
     this.onTouched();
   }
 }
