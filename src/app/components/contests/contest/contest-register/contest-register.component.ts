@@ -19,6 +19,8 @@ export class ContestRegisterComponent implements OnInit {
   isLoginModalOpen: boolean = false;
   isLoggedin: boolean = false;
   isPaymentStep: boolean = false;
+  isPaymentSucceeded: boolean = false;
+  isPaymentFailed: boolean = false;
 
   formatsOptions = formatsOptions;
 
@@ -66,5 +68,15 @@ export class ContestRegisterComponent implements OnInit {
     if (stepFormat.formatType == 'JAM')
       return 'Best tricks - ' + stepFormat.jamTimer + 's';
     return 'Best tricks - ' + stepFormat.runTimer + 's';
+  }
+
+  paymentSucceeded() {
+    this.isPaymentStep = false;
+    this.isPaymentSucceeded = true;
+  }
+
+  paymentFailed() {
+    this.isPaymentStep = false;
+    this.isPaymentFailed = true;
   }
 }

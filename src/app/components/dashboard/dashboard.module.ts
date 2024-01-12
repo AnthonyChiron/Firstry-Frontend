@@ -8,12 +8,10 @@ import { SidebarSecondaryComponent } from 'src/app/shared/components/basic/sideb
 import { CreateContestComponent } from './create-contest/create-contest.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormSharedModule } from 'src/app/shared/formShared.module';
-import { CreateCategoryComponent } from './categories/create-category/create-category.component';
 import { ContestParametersDetailComponent } from './parameters/parameters-detail/contest-parameters-detail.component';
 import { OverviewComponent } from './overview/overview.component';
 import { CategoriesDetailsComponent } from './categories/categories-details/categories-details.component';
 import { ListCategoriesComponent } from './categories/list-categories/list-categories.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoryCardComponent } from './categories/category-card/category-card.component';
 import { ContestInfosCardComponent } from './parameters/contest-infos-card/contest-infos-card.component';
 import { ContestSocialsCardComponent } from './parameters/contest-socials-card/contest-socials-card.component';
@@ -27,7 +25,6 @@ import { RidersComponent } from './riders/riders.component';
 import { DangerZoneComponent } from './parameters/danger-zone/danger-zone.component';
 import { IsOrganizerContestGuard } from 'src/app/shared/guards/IsOrganizerContest/is-organizer-contest-guard.service';
 import { ContestComponent } from '../contests/contest/contest.component';
-import { ContestsModule } from '../contests/contests.module';
 
 const dashboardRoutes: Routes = [
   {
@@ -38,11 +35,6 @@ const dashboardRoutes: Routes = [
       {
         path: ':contestId/overview',
         component: OverviewComponent,
-        canActivate: [IsAuthGuard],
-      },
-      {
-        path: ':contestId/create-category',
-        component: CreateCategoryComponent,
         canActivate: [IsAuthGuard],
       },
       {
@@ -84,7 +76,6 @@ const dashboardRoutes: Routes = [
     DashboardComponent,
     SidebarSecondaryComponent,
     CreateContestComponent,
-    CreateCategoryComponent,
     ListCategoriesComponent,
     ContestInfosSummaryComponent,
     ContestParametersDetailComponent,

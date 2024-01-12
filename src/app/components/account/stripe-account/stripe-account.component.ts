@@ -13,7 +13,8 @@ export class StripeAccountComponent implements OnInit {
   @Input() user: any;
   displayStripeAccount: boolean = false;
   urlStripeAccount = '';
-  isStripeAccountUsable: boolean = false;
+  isStripeAccountUsable: boolean = true;
+  isLoading: boolean = false;
 
   constructor(
     private paymentService: PaymentService,
@@ -22,6 +23,7 @@ export class StripeAccountComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.organizersService
       .isContestPaymentEnabledByOrganizerId(this.user.organizer._id)
       .subscribe((res: boolean) => {
@@ -31,15 +33,27 @@ export class StripeAccountComponent implements OnInit {
             .isStripeAccountUsable()
             .subscribe((res: boolean) => {
               this.isStripeAccountUsable = res;
+
+              if (res) {
+                this.paymentService.createLoginLink().subscribe((data: any) => {
+                  console.log(data);
+                  this.urlStripeAccount = data.url;
+                  this.isLoading = false;
+                });
+              } else {
+                this.paymentService
+                  .createOnboardingLink()
+                  .subscribe((data: any) => {
+                    this.urlStripeAccount = data.url;
+                    this.isLoading = false;
+                  });
+              }
             });
-          this.paymentService.createLoginLink().subscribe((data: string) => {
-            this.urlStripeAccount = data;
-          });
-        }
+        } else this.isLoading = false;
       });
   }
 
   test() {
-    this.router.navigateByUrl(this.urlStripeAccount);
+    window.open(this.urlStripeAccount, '_blank');
   }
 }

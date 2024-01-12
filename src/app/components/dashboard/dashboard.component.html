@@ -14,19 +14,22 @@
     <p>Commençons par créer une catégorie.</p>
   </card> -->
   <div class="navbarDasboard" *ngIf="contestsDdOptions.length > 0">
-    <dropdown
-      class="contestDropDown"
-      [options]="contestsDdOptions"
-      [routes]="[{ label: 'Créer un contest', value: 'create-contest' }]"
-      (selected)="selectContest($event)"
-      [value]="selectedContestId"
-    ></dropdown>
-    <btn
-      label="Voir la page du contest"
-      [routerLink]="['/contests/preview/' + selectedContest._id]"
-    ></btn>
-    <p *ngIf="selectedContest && selectedContest.isPublished">Publié</p>
-    <p *ngIf="selectedContest && !selectedContest.isPublished">Non publié</p>
+    <div class="flexRow alignCenter gap10">
+      <dropdown
+        class="contestDropDown"
+        [options]="contestsDdOptions"
+        [routes]="[{ label: 'Créer un contest', value: 'create-contest' }]"
+        (selected)="selectContest($event)"
+        [value]="selectedContestId"
+      ></dropdown>
+      <btn
+        label="Voir la page du contest"
+        type="third"
+        [routerLink]="['/contests/preview/' + selectedContest._id]"
+      ></btn>
+    </div>
+    <!-- <p *ngIf="selectedContest && selectedContest.isPublished">Publié</p>
+    <p *ngIf="selectedContest && !selectedContest.isPublished">Non publié</p> -->
     <!-- <btn label="Créer un contest" routerLink="create-contest"></btn> -->
     <div class="navBtns" *ngIf="!isMobile && contestsDdOptions.length != 0">
       <nav-btn

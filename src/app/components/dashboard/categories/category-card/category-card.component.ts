@@ -50,6 +50,9 @@ export class CategoryCardComponent implements OnInit {
 
     this.initSports();
     await this.initRules();
+
+    console.log(this.rulesOptions);
+
     this.fillForm();
 
     this.categoryForm

@@ -50,11 +50,7 @@ export class ContestComponent implements OnInit {
   }
 
   getMobileNavbarLinks() {
-    console.log(this.contest.registrationEndDate);
-    console.log(new Date());
-    console.log(new Date(this.contest.registrationEndDate) < new Date());
-
-    if (this.contest.registrationEndDate < new Date()) {
+    if (this.contest.registrationEndDate > new Date()) {
       this.links = [
         { label: 'Aperçu', route: 'overview' },
         { label: 'Planning', route: 'planning' },

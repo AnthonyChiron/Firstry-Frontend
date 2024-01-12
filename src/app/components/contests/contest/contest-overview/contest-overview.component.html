@@ -14,7 +14,7 @@
         alt=""
         *ngIf="!isMobile"
       />
-      <card title="Description"
+      <card class="flex1" title="Description"
         ><p>{{ contest.description }}</p></card
       >
     </div>
@@ -31,7 +31,7 @@
           </p></card
         >
       </div>
-      <div [class]="!isMobile ? 'flexCardColumn' : 'flexCardRow'">
+      <div [class]="!isMobile ? 'flexCardColumn flex1' : 'flexCardRow'">
         <maps-card class="map" [address]="contest.location.address"></maps-card>
         <card><h2>JE VEUX M'INSCRIRE</h2></card>
       </div>

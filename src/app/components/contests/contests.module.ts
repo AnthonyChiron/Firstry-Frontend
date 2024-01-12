@@ -14,12 +14,14 @@ import { ContestPlanningComponent } from './contest/contest-planning/contest-pla
 import { LoginModule } from '../../shared/components/login/login.module';
 import { PaiementModule } from 'src/app/shared/components/paiement/paiement.module';
 import { IsOrganizerContestGuard } from 'src/app/shared/guards/IsOrganizerContest/is-organizer-contest-guard.service';
+import { IsContestPublishedGuard } from 'src/app/shared/guards/IsContestPublished/is-contest-published-guard.service';
 
 const contestsRoutes: Routes = [
   { path: '', component: ContestsComponent },
   {
     path: ':id',
     component: ContestComponent,
+    canActivate: [IsContestPublishedGuard],
     children: [
       {
         path: 'overview',

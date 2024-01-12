@@ -11,12 +11,18 @@ import { RulesService } from 'src/app/shared/data/RulesService/rules.service';
 export class ContestListRulesCardComponent implements OnInit {
   @Input() contest: ContestModel;
   rules: RulesModel[] = [];
+  defaultsRules: RulesModel[] = [];
+  displayDefaultRules: boolean = false;
 
   constructor(private rs: RulesService) {}
 
   ngOnInit(): void {
     this.rs.getAllByContestId(this.contest._id).subscribe((rules) => {
       this.rules = rules;
+
+      // Map rules in 2 arrays : default rules and custom rules
+      this.defaultsRules = this.rules.filter((rule) => rule.isDefault);
+      this.rules = this.rules.filter((rule) => !rule.isDefault);
     });
   }
 
@@ -27,6 +33,7 @@ export class ContestListRulesCardComponent implements OnInit {
   }
 
   updateRule(rule: RulesModel) {
+    console.log(rule._id);
     if (rule && rule._id) {
       this.rs
         .update(rule._id, {
@@ -35,6 +42,7 @@ export class ContestListRulesCardComponent implements OnInit {
           contestId: rule.contestId,
           stepFormats: rule.stepFormats,
           pointCategories: rule.pointCategories,
+          isDefault: false,
         })
         .subscribe((updatedRule) => {
           let newRule = this.rules.find((c) => c._id == rule._id);
@@ -57,5 +65,11 @@ export class ContestListRulesCardComponent implements OnInit {
     } else {
       this.rules = this.rules.filter((c) => c._id != undefined);
     }
+  }
+
+  duplicateRule(rule: RulesModel) {
+    let newRule = { ...rule };
+    delete newRule._id;
+    this.rules.unshift(newRule);
   }
 }

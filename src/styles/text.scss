@@ -9,6 +9,7 @@ h5,
 label,
 input,
 textarea,
+select,
 a {
   font-family: "HankenGrotesk";
 }
@@ -38,7 +39,7 @@ h2 {
 }
 
 h3 {
-  font-size: max(13px, 4vw);
+  font-size: max(12px, 3.5vw);
   font-variation-settings: "wght" 800;
 }
 
@@ -58,7 +59,8 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
   font-variation-settings: "wght" 500;
   color: $firstry-black-2;
   font-size: $mobile_fontInputSize;
@@ -138,7 +140,8 @@ a {
   }
 
   input,
-  textarea {
+  textarea,
+  select {
     font-size: max(12px, 0.8vw);
   }
 
