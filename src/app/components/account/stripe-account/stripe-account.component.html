@@ -1,13 +1,25 @@
 <card *ngIf="displayStripeAccount" title="Paramêtre du compte stripe">
-  <div class="flexColumn alignCenter gap10">
-    <div class="flexColumn alignCenter">
-      <h3 class="flexRow alignCenter gap10">
-        IMPORTANT <badge type="danger">!!</badge>
-      </h3>
-      <p>
-        Veuillez remplir vos informations de paiement sur le lien ci-dessous
-      </p>
+  <div class="flexColumn alignCenter">
+    <loader *ngIf="isLoading"></loader>
+    <div
+      *ngIf="!isLoading && !isStripeAccountUsable"
+      class="flexColumn alignCenter gap10"
+    >
+      <div class="flexColumn alignCenter">
+        <h3 class="flexRow alignCenter gap10">
+          IMPORTANT <badge type="danger">!!</badge>
+        </h3>
+        <p>
+          Veuillez remplir vos informations de paiement sur le lien ci-dessous
+        </p>
+      </div>
+      <btn label="Se connecter à Stripe" (click)="test()"></btn>
     </div>
-    <btn label="Se connecter à Stripe" (click)="test()"></btn>
+    <div
+      *ngIf="!isLoading && isStripeAccountUsable"
+      class="flexColumn alignCenter gap10"
+    >
+      <btn label="Lien vers votre dashboard Stripe" (click)="test()"></btn>
+    </div>
   </div>
 </card>

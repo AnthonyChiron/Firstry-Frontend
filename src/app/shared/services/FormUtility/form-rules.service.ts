@@ -40,23 +40,18 @@ export class FormRulesService extends FormUtilityService {
     rules: RulesModel,
     contest: ContestModel
   ) {
-    if (rules._id) {
-      rulesForm.patchValue({
-        contestId: rules.contestId,
-        name: rules.name,
-        description: rules.description,
-      });
+    rulesForm.patchValue({
+      contestId: rules.contestId || contest._id,
+      name: rules.name,
+      description: rules.description,
+    });
 
-      this.loadStepFormats(rulesForm, rules.stepFormats);
-      this.loadPointCategories(rulesForm, rules.pointCategories);
-    } else {
-      rulesForm.patchValue({
-        contestId: contest._id,
-      });
-    }
+    this.loadStepFormats(rulesForm, rules.stepFormats);
+    this.loadPointCategories(rulesForm, rules.pointCategories);
   }
 
   loadStepFormats(rulesForm: FormGroup, stepFormats) {
+    if (!stepFormats) return;
     const stepFormatFormGroups = stepFormats.map((stepFormat) =>
       this.formBuilder.group({
         order: [stepFormat.order, Validators.required],
@@ -75,7 +70,7 @@ export class FormRulesService extends FormUtilityService {
     rulesForm: FormGroup,
     pointCategories: pointCategoryModel[]
   ) {
-    console.log(pointCategories);
+    if (!pointCategories) return;
     const pointCategoriesFormGroups = pointCategories.map((pointCategory) =>
       this.formBuilder.group({
         name: [pointCategory.name, Validators.required],

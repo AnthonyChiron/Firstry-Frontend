@@ -7,5 +7,6 @@ export interface RulesModel extends GenericModel {
   description: String;
   stepFormats: StepFormatModel[];
   pointCategories: pointCategoryModel[];
+  isDefault: Boolean;
   contestId: String;
 }

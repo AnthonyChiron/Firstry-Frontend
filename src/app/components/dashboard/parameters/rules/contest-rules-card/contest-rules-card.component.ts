@@ -19,9 +19,12 @@ import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-uti
 export class ContestRulesCardComponent implements OnInit {
   @Input() contest: ContestModel;
   @Input() rules: RulesModel = {} as RulesModel;
+  @Input() canEdit: boolean = true;
   @Output() deleteRule: EventEmitter<RulesModel> =
     new EventEmitter<RulesModel>();
   @Output() updateRule: EventEmitter<RulesModel> =
+    new EventEmitter<RulesModel>();
+  @Output() duplicateRule: EventEmitter<RulesModel> =
     new EventEmitter<RulesModel>();
 
   showDeleteModal: boolean = false;
@@ -63,6 +66,10 @@ export class ContestRulesCardComponent implements OnInit {
         this.contest
       );
     }
+  }
+
+  duplicate() {
+    this.duplicateRule.emit(this.rules);
   }
 
   submit() {

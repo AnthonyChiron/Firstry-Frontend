@@ -1,4 +1,12 @@
-import { Component, ViewChild, OnInit, Input, signal } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  OnInit,
+  Input,
+  signal,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import {
   StripeService,
   StripeCardComponent,
@@ -32,6 +40,9 @@ export class PaiementComponent implements OnInit {
   @Input()
   amount: number;
   isInit: boolean = false;
+  @Output() paymentSucceeded: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
+  @Output() paymentFailed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   stripe = this.factoryService.create(
     'pk_test_51OPhx3ExeV2TEn3k0EWYu7LkqusSy8cewkqOMeV6ydwt6ICp84mIxzw2oPzyh8v3awLSP9ymlJqrx2ysjS00TKlU00yuzgNMzN'
@@ -89,8 +100,9 @@ export class PaiementComponent implements OnInit {
         } else {
           // The payment has been processed!
           if (result.paymentIntent.status === 'succeeded') {
-            // Show a success message to your customer
-            alert({ success: true });
+            this.paymentSucceeded.emit(true);
+          } else {
+            this.paymentFailed.emit(true);
           }
         }
       });

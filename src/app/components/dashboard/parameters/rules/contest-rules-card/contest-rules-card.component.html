@@ -19,15 +19,22 @@
   (btnClicked)="edit = !edit"
   class="main"
 >
-  <div header>
+  <div header class="flexRow">
     <btn
-      *ngIf="!edit"
+      name="Dupliquer"
+      *ngIf="!edit && canEdit"
+      type="transparent"
+      icon="fa-solid fa-clone"
+      (click)="duplicate()"
+    ></btn>
+    <btn
+      *ngIf="!edit && canEdit"
       type="transparent"
       icon="fa-solid fa-pen-to-square"
       (click)="edit = !edit"
     ></btn>
     <btn
-      *ngIf="edit"
+      *ngIf="edit && canEdit"
       type="transparent"
       label="Supprimer"
       (click)="showDeleteModal = true"
@@ -76,6 +83,11 @@
       icon="fa-solid fa-xmark"
       (click)="cancel()"
     ></btn>
-    <btn label="Valider" icon="fa-solid fa-check" (click)="submit()"></btn>
+    <btn
+      label="Valider"
+      type="valid"
+      icon="fa-solid fa-check"
+      (click)="submit()"
+    ></btn>
   </div>
 </card>

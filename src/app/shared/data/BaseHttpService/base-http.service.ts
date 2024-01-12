@@ -9,7 +9,7 @@ export class BaseHttpService {
     'https://us-central1-firstry-7e136.cloudfunctions.net/api/';
   protected baseUrlLocal = 'http://localhost:3000/api/';
 
-  protected baseUrl = this.baseUrlLocal;
+  protected baseUrl = this.baseUrlProd;
 
   constructor() {
     if (environment.production) {

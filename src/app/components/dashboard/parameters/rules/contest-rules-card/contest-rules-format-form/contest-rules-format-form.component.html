@@ -1,6 +1,6 @@
 <div class="format">
   <div class="header">
-    <h5>Format</h5>
+    <label>Format</label>
     <btn
       *ngIf="edit"
       icon="fa-solid fa-plus"
@@ -61,19 +61,19 @@
           class="stepFormatDisplay"
           *ngFor="let stepFormat of stepFormatArray.controls"
         >
-          <h4>
+          <p>
             {{ getRunLabel(stepFormat) }}
-          </h4>
+          </p>
           <span>-</span>
-          <h4 *ngIf="stepFormat.value.formatType == 'RUN'" formatTime>
+          <p *ngIf="stepFormat.value.formatType == 'RUN'" formatTime>
             {{ stepFormat.value.runTimer | formatTime }}
-          </h4>
-          <h4 *ngIf="stepFormat.value.formatType == 'JAM'">
+          </p>
+          <p *ngIf="stepFormat.value.formatType == 'JAM'">
             {{ stepFormat.value.jamTimer | formatTime }}
-          </h4>
-          <h4 *ngIf="stepFormat.value.formatType == 'BEST_TRICKS'">
+          </p>
+          <p *ngIf="stepFormat.value.formatType == 'BEST_TRICKS'">
             {{ getBestTricksLabel(stepFormat) }}
-          </h4>
+          </p>
         </div>
       </div>
     </div>

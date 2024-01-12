@@ -21,6 +21,14 @@ export class PaymentService extends BaseHttpService {
     });
   }
 
+  createOnboardingLink() {
+    return this.http.get(
+      `${this.baseUrl}/createOnboardingLink/${
+        this.authService.getCurrentUser().organizer.stripeAccountId
+      }`
+    );
+  }
+
   createLoginLink() {
     return this.http.get(
       `${this.baseUrl}/createLoginLink/${

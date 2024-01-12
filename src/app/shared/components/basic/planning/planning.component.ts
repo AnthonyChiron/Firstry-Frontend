@@ -20,7 +20,7 @@ export class PlanningComponent implements OnInit, OnChanges {
 
   eventsCat: CalendarEvent[] = [];
 
-  dayStartHour = 7;
+  dayStartHour = 8;
   dayEndHour = 21;
   refresh = new Subject<void>();
 

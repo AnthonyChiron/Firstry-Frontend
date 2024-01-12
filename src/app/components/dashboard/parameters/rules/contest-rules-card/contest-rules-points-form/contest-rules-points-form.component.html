@@ -1,6 +1,6 @@
 <div class="format">
   <div class="header">
-    <h5>Distribution des points</h5>
+    <label>Distribution des points</label>
     <btn
       *ngIf="edit"
       icon="fa-solid fa-plus"
@@ -64,10 +64,10 @@
             class="pointCategoryDisplay"
             *ngFor="let pointCategory of pointCategoriesArray.controls"
           >
-            <h4>
+            <p>
               <b>{{ pointCategory.value.name }} </b> -
               {{ pointCategory.value.points + " points" }}
-            </h4>
+            </p>
             <p>{{ pointCategory.value.description }}</p>
           </div>
         </div>

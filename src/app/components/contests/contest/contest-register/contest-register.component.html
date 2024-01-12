@@ -1,4 +1,7 @@
-<div *ngIf="contest" [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
+<div
+  *ngIf="contest && !isPaymentFailed && !isPaymentSucceeded"
+  [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'"
+>
   <card class="flex1 categories" title="Catégories" [fitContent]="true"
     ><div class="flexCardColumn">
       <p *ngIf="contest.categories.length == 0">
@@ -32,9 +35,12 @@
       ></card>
     </div>
   </card>
-  <i class="fa-solid fa-chevron-right fa-2xl"></i>
+  <i
+    *ngIf="selectedCategory"
+    class="fa-solid fa-chevron-{{ isMobile ? 'down' : 'right' }} fa-2xl"
+  ></i>
   <card
-    *ngIf="isLoggedin && !isPaymentStep"
+    *ngIf="isLoggedin && !isPaymentStep && selectedCategory"
     class="flex1 registerCard"
     [title]="'Inscription - ' + selectedCategory.name"
     [fitContent]="true"
@@ -116,9 +122,30 @@
     </div>
   </card>
   <card title="Paiement" class="flex1" *ngIf="isLoggedin && isPaymentStep">
-    <paiement [amount]="selectedCategory.registerPrice"></paiement>
+    <paiement
+      [amount]="selectedCategory.registerPrice"
+      (paymentSucceeded)="paymentSucceeded()"
+      (paymentFailed)="paymentFailed()"
+    ></paiement>
   </card>
 </div>
+<card class="success" *ngIf="!isPaymentStep && isPaymentSucceeded && contest">
+  <div class="flexColumn alignCenter gap10">
+    <h2>
+      Merci pour votre inscription au contest {{ contest.name }} !
+      <i class="fa-solid fa-check"></i>
+    </h2>
+    <p>
+      Rendez-vous le {{ contest.startDate | date : "dd/MM" }} à
+      {{ selectedCategory.steps[0].startDate | date : "hh" }}h !
+    </p>
+    <p>Vous pouvez retrouver toutes vos inscriptions dans votre compte.</p>
+    <div class="flexRow gap10">
+      <btn label="Mon compte" type="secondary" routerLink="/account"></btn>
+      <btn label="Retour à l'accueil" routerLink=""></btn>
+    </div>
+  </div>
+</card>
 <modal
   *ngIf="isLoginModalOpen && !isMobile"
   [isVisible]="isLoginModalOpen"
