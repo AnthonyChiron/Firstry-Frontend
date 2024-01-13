@@ -14,11 +14,16 @@ export class PaymentService extends BaseHttpService {
     this.baseUrl += 'payment';
   }
 
-  createPayment(amount) {
-    return this.http.post<PaymentInterface>(`${this.baseUrl}/createPayment`, {
-      user: this.authService.getCurrentUser(),
-      amount: amount,
-    });
+  createRegistrationPayment(amount, organizer, categoryId) {
+    return this.http.post<PaymentInterface>(
+      `${this.baseUrl}/createRegistrationPayment`,
+      {
+        user: this.authService.getCurrentUser(),
+        amount: amount,
+        organizer: organizer,
+        categoryId: categoryId,
+      }
+    );
   }
 
   createOnboardingLink() {

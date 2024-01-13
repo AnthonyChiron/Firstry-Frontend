@@ -1,3 +1,18 @@
 <card title="Mes inscriptions" [fitContent]="true">
-  <p>Vous n'êtes pour l'instant inscris à aucuns contests !</p>
+  <p *ngIf="registrations.length == 0">
+    Vous n'êtes pour l'instant inscris à aucuns contests !
+  </p>
+  <card color="2" *ngFor="let registration of registrations">
+    <div class="flexColumn gap10">
+      <div class="flexRow alignCenter gap10">
+        <h3>{{ registration.contest.name }}</h3>
+        <span>-</span>
+        <p class="italic">{{ getState(registration.registrationState) }}</p>
+      </div>
+      <div class="flexRow spaceBetween">
+        <btn label="Voir le contest"></btn>
+        <btn label="Annuler son inscription" type="danger"></btn>
+      </div>
+    </div>
+  </card>
 </card>

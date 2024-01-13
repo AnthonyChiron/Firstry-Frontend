@@ -2,6 +2,7 @@ import {
   Component,
   ViewChild,
   OnInit,
+  OnChanges,
   Input,
   signal,
   Output,
@@ -34,12 +35,11 @@ import { PaymentService } from '../../data/PaymentService/payment.service';
   templateUrl: './paiement.component.html',
   styleUrls: ['./paiement.component.scss'],
 })
-export class PaiementComponent implements OnInit {
+export class PaiementComponent implements OnInit, OnChanges {
   @ViewChild(StripePaymentElementComponent)
   paymentElement!: StripePaymentElementComponent;
-  @Input()
-  amount: number;
-  isInit: boolean = false;
+  @Input() amount: number;
+  @Input() clientSecret: string;
   @Output() paymentSucceeded: EventEmitter<boolean> =
     new EventEmitter<boolean>();
   @Output() paymentFailed: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -72,16 +72,17 @@ export class PaiementComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.paymentService.createPayment(this.amount * 10).subscribe((result) => {
-      console.log(result);
+    this.elementsOptions = {
+      // passing the client secret obtained from the server
+      clientSecret: this.clientSecret,
+    };
+  }
 
-      this.elementsOptions = {
-        // passing the client secret obtained from the server
-        clientSecret: result.clientSecret,
-      };
-      this.isInit = true;
-      console.log(this.elementsOptions);
-    });
+  ngOnChanges(): void {
+    this.elementsOptions = {
+      // passing the client secret obtained from the server
+      clientSecret: this.clientSecret,
+    };
   }
 
   pay() {

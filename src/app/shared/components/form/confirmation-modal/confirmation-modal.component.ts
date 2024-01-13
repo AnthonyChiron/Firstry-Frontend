@@ -9,6 +9,8 @@ export class ConfirmationModalComponent {
   @Input() isVisible: boolean = false;
   @Input() title: string = '';
   @Input() message: string = '';
+  @Input() cancelledBtnType: string = 'danger';
+  @Input() confirmedBtnType: string = 'valid';
   @Output() confirmed = new EventEmitter<void>();
   @Output() cancelled = new EventEmitter<void>();
 

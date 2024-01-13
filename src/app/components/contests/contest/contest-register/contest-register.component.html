@@ -1,5 +1,7 @@
 <div
-  *ngIf="contest && !isPaymentFailed && !isPaymentSucceeded"
+  *ngIf="
+    contest && !isPaymentFailed && !isPaymentSucceeded && !isAlreadyRegistered
+  "
   [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'"
 >
   <card class="flex1 categories" title="Catégories" [fitContent]="true"
@@ -8,7 +10,7 @@
         Ce contest n'a pas encore de catégories !
       </p>
       <card
-        *ngFor="let category of contest.categories"
+        *ngFor="let category of categories"
         (click)="selectedCategory = category"
         [class.active]="selectedCategory == category"
         class="category"
@@ -29,7 +31,7 @@
             <info-tag
               size="l"
               icon="fa-solid fa-user"
-              label="0 / {{ category.maxRiders }}"
+              label="{{ category.NbRegistration }} / {{ category.maxRiders }}"
             ></info-tag>
           </div></div
       ></card>
@@ -56,7 +58,7 @@
           }}
         </p>
       </div>
-      <div class="flexCardRow spaceAround">
+      <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
         <card
           *ngFor="let step of selectedCategory.steps"
           class="flex1"
@@ -101,9 +103,10 @@
       </div>
       <div class="footer">
         <div class="price">
-          <h4><b>Prix de l'inscription</b></h4>
           <h4>
-            <b>{{ selectedCategory.registerPrice }} €</b>
+            <b
+              >Prix de l'inscription : {{ selectedCategory.registerPrice }} €</b
+            >
           </h4>
         </div>
         <btn
@@ -124,6 +127,7 @@
   <card title="Paiement" class="flex1" *ngIf="isLoggedin && isPaymentStep">
     <paiement
       [amount]="selectedCategory.registerPrice"
+      [clientSecret]="clientSecret"
       (paymentSucceeded)="paymentSucceeded()"
       (paymentFailed)="paymentFailed()"
     ></paiement>
@@ -146,6 +150,19 @@
     </div>
   </div>
 </card>
+<card *ngIf="isAlreadyRegistered">
+  <div class="flexColumn alignCenter gap10">
+    <h2>Vous êtes déjà inscrit au contest {{ contest.name }} !</h2>
+    <p>
+      Rendez-vous le {{ contest.startDate | date : "dd/MM" }} à
+      {{ selectedCategory.steps[0].startDate | date : "hh" }}h !
+    </p>
+    <p>Vous pouvez retrouver toutes vos inscriptions dans votre compte.</p>
+    <div class="flexRow gap10">
+      <btn label="Mon compte" type="secondary" routerLink="/account"></btn>
+      <btn label="Retour à l'accueil" routerLink=""></btn>
+    </div></div
+></card>
 <modal
   *ngIf="isLoginModalOpen && !isMobile"
   [isVisible]="isLoginModalOpen"

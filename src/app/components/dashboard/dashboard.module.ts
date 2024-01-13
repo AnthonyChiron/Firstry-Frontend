@@ -25,12 +25,13 @@ import { RidersComponent } from './riders/riders.component';
 import { DangerZoneComponent } from './parameters/danger-zone/danger-zone.component';
 import { IsOrganizerContestGuard } from 'src/app/shared/guards/IsOrganizerContest/is-organizer-contest-guard.service';
 import { ContestComponent } from '../contests/contest/contest.component';
+import { IsOrganizerGuard } from 'src/app/shared/guards/IsOrganizer/is-organizer-guard.service';
 
 const dashboardRoutes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    canActivate: [IsAuthGuard],
+    canActivate: [IsAuthGuard, IsOrganizerGuard],
     children: [
       {
         path: ':contestId/overview',

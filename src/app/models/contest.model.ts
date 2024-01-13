@@ -1,5 +1,6 @@
 import { Address } from './adress.model';
 import { GenericModel } from './generic.model';
+import { OrganizerModel } from './organizer.model';
 
 export interface ContestModel extends GenericModel {
   name: string;
@@ -12,6 +13,7 @@ export interface ContestModel extends GenericModel {
   location: Address;
   enablePayment: boolean;
   isPublished: boolean;
+  organizer: OrganizerModel;
   branding: {
     logo: string;
     banner: string;
@@ -41,5 +43,6 @@ export function parseContestModel(contest): ContestModel {
     isPublished: contest.isPublished,
     branding: contest.branding,
     socials: contest.socials,
+    organizer: contest.organizer,
   };
 }

@@ -25,3 +25,15 @@ export interface CategoryModelDTO {
   steps: any[];
   stepsId: String[];
 }
+
+export interface CategoryRegistrationModelDTO {
+  name: String;
+  description: String;
+  sports: [];
+  maxRiders: Number;
+  NbRegistration: Number;
+  registerPrice: Number;
+  isQualificationStep: boolean;
+  contestId: String;
+  steps: any[];
+}
