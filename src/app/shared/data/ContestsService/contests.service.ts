@@ -39,7 +39,7 @@ export class ContestsService extends CrudService<ContestModel> {
   }
 
   publish(contestId: string): Observable<any> {
-    return this.http.get(this.baseUrl + '/publish/' + contestId);
+    return this.http.get(this.baseUrl + '/publishContest/' + contestId);
   }
 
   isContestPublishable(contestId: string): Observable<any> {

@@ -13,7 +13,8 @@ import {
 })
 export class DangerZoneComponent implements OnInit {
   @Input() contest: ContestModel;
-  isConfirmationModalOpen: boolean = false;
+  isPublishConfirmationModalOpen: boolean = false;
+  isDeleteConfirmationModalOpen: boolean = false;
   contestPublishableStatus: ContestPublishableStatus = null;
   isContestPublished: boolean = false;
 

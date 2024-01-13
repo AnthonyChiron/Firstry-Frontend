@@ -10,7 +10,7 @@
           class="flex1"
           label="Publier"
           type="valid"
-          (click)="isConfirmationModalOpen = true"
+          (click)="isPublishConfirmationModalOpen = true"
         ></btn>
         <div class="flexColumn flex3">
           <p>Publier votre contest le rendra visible à tous les utilisateurs</p>
@@ -35,7 +35,7 @@
           class="flex1"
           label="Supprimer"
           type="danger"
-          (click)="isConfirmationModalOpen = true"
+          (click)="isDeleteConfirmationModalOpen = true"
         ></btn>
         <div class="flexColumn flex3">
           <p><b>ATTENTION :</b> Supprimer votre contest est irréversible</p>
@@ -45,8 +45,16 @@
   </div>
 </card>
 <confirmation-modal
-  [isVisible]="isConfirmationModalOpen"
+  [isVisible]="isPublishConfirmationModalOpen"
+  title="Vous êtes sur le point de publier votre contest !"
+  (cancelled)="isPublishConfirmationModalOpen = false"
+  (confirmed)="publishContest()"
+></confirmation-modal>
+<confirmation-modal
+  [isVisible]="isDeleteConfirmationModalOpen"
   title="Attention ! Etes-vous sûr de vouloir supprimer ce contest ?"
-  (cancelled)="isConfirmationModalOpen = false"
+  cancelledBtnType="primary"
+  confirmedBtnType="danger"
+  (cancelled)="isDeleteConfirmationModalOpen = false"
   (confirmed)="deleteContest()"
 ></confirmation-modal>

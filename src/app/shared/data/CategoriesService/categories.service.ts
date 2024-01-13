@@ -2,7 +2,10 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { CrudService } from '../CRUDService/crud.service';
 import { HttpClient } from '@angular/common/http';
-import { CategoryModel } from 'src/app/models/category.model';
+import {
+  CategoryModel,
+  CategoryRegistrationModelDTO,
+} from 'src/app/models/category.model';
 import { AuthService } from '../../services/AuthService/auth.service';
 
 @Injectable({
@@ -17,6 +20,15 @@ export class CategoriesService extends CrudService<CategoryModel> {
   getAllByContestId(contestId): Observable<CategoryModel[]> {
     return this.http.get<CategoryModel[]>(
       this.baseUrl + '/getAllByContestId/' + contestId,
+      this.getHttpOptions()
+    );
+  }
+
+  getAllCategoriesForRegistrations(
+    contestId
+  ): Observable<CategoryRegistrationModelDTO[]> {
+    return this.http.get<CategoryRegistrationModelDTO[]>(
+      this.baseUrl + '/getAllCategoriesForRegistrations/' + contestId,
       this.getHttpOptions()
     );
   }

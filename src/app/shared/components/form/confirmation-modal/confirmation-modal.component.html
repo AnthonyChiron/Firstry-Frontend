@@ -5,8 +5,16 @@
         <div class="content">
           <p>{{ message }}</p>
           <div class="buttons">
-            <btn type="primary" label="Annuler" (click)="cancel()"></btn>
-            <btn type="danger" label="Confirmer" (click)="confirm()"></btn>
+            <btn
+              [type]="cancelledBtnType"
+              label="Annuler"
+              (click)="cancel()"
+            ></btn>
+            <btn
+              [type]="confirmedBtnType"
+              label="Confirmer"
+              (click)="confirm()"
+            ></btn>
           </div>
         </div>
       </card>

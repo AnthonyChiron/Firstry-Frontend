@@ -15,10 +15,12 @@ export class ContestsComponent implements OnInit {
     this.contestsService.getAll().subscribe((data) => {
       if (data) {
         data.forEach((contest) => {
+          this.contests = [];
           contest.startDate = new Date(contest.startDate);
           contest.endDate = new Date(contest.endDate);
 
           if (contest.isPublished) this.contests.push(contest);
+          console.log(this.contests);
         });
       }
     });
