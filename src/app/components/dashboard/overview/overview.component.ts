@@ -28,7 +28,7 @@ export class OverviewComponent implements OnInit {
   isMobile: boolean;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute,
     private cs: ContestsService,
     private _screenSize: ScreenSizeService
   ) {}
@@ -38,7 +38,7 @@ export class OverviewComponent implements OnInit {
       this.isMobile = isMobile;
     });
 
-    this.activatedRoute.params.subscribe((params) => {
+    this._activatedRoute.parent.params.subscribe((params) => {
       this.cs.getById(params.contestId).subscribe((contest) => {
         this.contest = contest;
         this.contest.startDate = new Date(this.contest.startDate);

@@ -29,7 +29,7 @@ export class ContestParametersDetailComponent implements OnInit {
   isMobile: boolean = false;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute,
     private _contestService: ContestsService,
     private _screenSize: ScreenSizeService
   ) {}
@@ -39,7 +39,7 @@ export class ContestParametersDetailComponent implements OnInit {
       this.isMobile = result;
     });
 
-    this.activatedRoute.params.subscribe((params) => {
+    this._activatedRoute.parent.params.subscribe((params) => {
       this._contestService.getById(params.contestId).subscribe((contest) => {
         this.contest = parseContestModel(contest);
         this.isLoading = false;

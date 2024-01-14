@@ -40,4 +40,8 @@ export class RiderRegistrationsComponent implements OnInit {
         return 'En attente';
     }
   }
+
+  cancelRegistration(registrationId) {
+    console.log(registrationId);
+  }
 }

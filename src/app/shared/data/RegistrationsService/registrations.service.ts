@@ -12,6 +12,12 @@ export class RegistrationsService extends CrudService<RegistrationModel> {
     super(http, authService, 'registrations');
   }
 
+  getRegistrationsByContestId(contestId) {
+    return this.http.get(
+      `${this.baseUrl}/getRegistrationsByContestId/${contestId}`
+    );
+  }
+
   isRiderRegisteredToContest(riderId, contestId) {
     return this.http.get(
       `${this.baseUrl}/isRiderRegisteredToContest/${riderId}/${contestId}`

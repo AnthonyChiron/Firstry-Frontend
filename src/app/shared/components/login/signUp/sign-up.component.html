@@ -60,7 +60,7 @@
   </div>
 </div>
 
-<div *ngIf="activeIndex === 2">
+<div *ngIf="activeIndex === 2 && !isLoading">
   <signup-photo-form
     [photoForm]="photoForm"
     [photoFile]="photoFile"
@@ -76,4 +76,8 @@
       iconPos="right"
     ></btn>
   </div>
+</div>
+
+<div *ngIf="isLoading" class="flexRow justifyCenter">
+  <loader></loader>
 </div>

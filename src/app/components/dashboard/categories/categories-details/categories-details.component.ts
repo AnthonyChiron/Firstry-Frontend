@@ -29,7 +29,7 @@ export class CategoriesDetailsComponent implements OnInit {
   isMobile: boolean = false;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute,
     private cs: ContestsService,
     private _screenSize: ScreenSizeService
   ) {}
@@ -38,7 +38,7 @@ export class CategoriesDetailsComponent implements OnInit {
     this._screenSize.isMobile$.subscribe((result) => {
       this.isMobile = result;
     });
-    this.activatedRoute.params.subscribe((params) => {
+    this._activatedRoute.parent.params.subscribe((params) => {
       this.cs.getById(params.contestId).subscribe((contest) => {
         this.contest = contest;
         this.contest.startDate = new Date(this.contest.startDate);

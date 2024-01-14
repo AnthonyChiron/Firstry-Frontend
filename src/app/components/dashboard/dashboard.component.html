@@ -19,7 +19,7 @@
         class="contestDropDown"
         [options]="contestsDdOptions"
         [routes]="[{ label: 'Créer un contest', value: 'create-contest' }]"
-        (selected)="selectContest($event)"
+        (selected)="selectContest($event.value)"
         [value]="selectedContestId"
       ></dropdown>
       <btn
@@ -38,7 +38,7 @@
         label="Aperçu"
         icon="fa-solid fa-globe"
         routerLinkActive="active"
-        routerLink="{{ selectedContestId }}/overview"
+        routerLink="overview"
       ></nav-btn>
       <nav-btn
         type="primary"
@@ -46,7 +46,7 @@
         label="Planning"
         icon="fa-solid fa-calendar"
         routerLinkActive="active"
-        routerLink="{{ selectedContestId }}/planning"
+        routerLink="planning"
       ></nav-btn>
       <nav-btn
         type="primary"
@@ -54,7 +54,7 @@
         label="Riders"
         icon="fa-solid fa-person-snowboarding"
         routerLinkActive="active"
-        routerLink="{{ selectedContestId }}/riders"
+        routerLink="riders"
       ></nav-btn>
       <nav-btn
         type="primary"
@@ -62,7 +62,7 @@
         label="Résultats"
         icon="fa-solid fa-list-ol"
         routerLinkActive="active"
-        routerLink="{{ selectedContestId }}/results"
+        routerLink="results"
       ></nav-btn>
       <nav-btn
         type="primary"
@@ -70,11 +70,12 @@
         label="Paramêtres"
         icon="fa-solid fa-gear"
         routerLinkActive="active"
-        routerLink="{{ selectedContestId }}/parameters"
+        routerLink="parameters"
       ></nav-btn>
     </div>
   </div>
-  <div class="content">
+  <loader class="flexRow alignSelfCenter" *ngIf="isLoading"></loader>
+  <div *ngIf="!isLoading" class="content">
     <router-outlet></router-outlet>
     <create-contest *ngIf="contestsDdOptions.length == 0"></create-contest>
   </div>

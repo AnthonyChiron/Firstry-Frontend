@@ -10,8 +10,15 @@
         <p class="italic">{{ getState(registration.registrationState) }}</p>
       </div>
       <div class="flexRow spaceBetween">
-        <btn label="Voir le contest"></btn>
-        <btn label="Annuler son inscription" type="danger"></btn>
+        <btn
+          label="Voir le contest"
+          routerLink="/contests/{{ registration.contest._id }}"
+        ></btn>
+        <btn
+          label="Annuler son inscription"
+          type="danger"
+          (click)="cancelRegistration(registration._id)"
+        ></btn>
       </div>
     </div>
   </card>
