@@ -18,6 +18,7 @@ export class ConnexionComponent implements OnInit {
   connexionForm: FormGroup;
   invalidCredentials: Boolean = false;
   isResetPassword: Boolean = false;
+  isLoading: Boolean = false;
   @Output() connected: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
@@ -35,11 +36,13 @@ export class ConnexionComponent implements OnInit {
   }
 
   submit() {
+    this.isLoading = true;
     try {
       this.authService.login(this.connexionForm.value).subscribe({
         next: (token) => {
           this.connected.emit();
           this.authService.saveToken(token);
+          this.isLoading = false;
           if (!this.authService.getCurrentUser().isValid)
             this.router.navigate(['/account/validateEmail']);
           else {

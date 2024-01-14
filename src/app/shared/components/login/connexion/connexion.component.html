@@ -1,38 +1,43 @@
-<form *ngIf="!isResetPassword" [formGroup]="connexionForm">
-  <input-text
-    name="email"
-    type="Text"
-    placeholder="Email..."
-    label="Email"
-    formControlName="email"
-  ></input-text>
-  <input-text
-    name="password"
-    type="password"
-    placeholder="Mot de passe..."
-    label="Mot de passe"
-    formControlName="password"
-  ></input-text>
+<div *ngIf="!isLoading">
+  <form *ngIf="!isResetPassword" [formGroup]="connexionForm">
+    <input-text
+      name="email"
+      type="Text"
+      placeholder="Email..."
+      label="Email"
+      formControlName="email"
+    ></input-text>
+    <input-text
+      name="password"
+      type="password"
+      placeholder="Mot de passe..."
+      label="Mot de passe"
+      formControlName="password"
+    ></input-text>
 
-  <note
-    *ngIf="invalidCredentials"
-    type="errorLabel"
-    text="Votre email ou votre mot de passe est incorrect"
-  ></note>
+    <note
+      *ngIf="invalidCredentials"
+      type="errorLabel"
+      text="Votre email ou votre mot de passe est incorrect"
+    ></note>
 
-  <div class="flexRow spaceBetween">
-    <btn
-      type="transparent"
-      label="Mot de passe oublié ?"
-      size="s"
-      (click)="isResetPassword = !isResetPassword"
-    ></btn>
-    <btn
-      (click)="submit()"
-      label="Connexion"
-      icon="fa-solid fa-check fa-2xs"
-      iconPos="right"
-    ></btn>
-  </div>
-</form>
-<forget-password *ngIf="isResetPassword"></forget-password>
+    <div class="flexRow spaceBetween">
+      <btn
+        type="transparent"
+        label="Mot de passe oublié ?"
+        size="s"
+        (click)="isResetPassword = !isResetPassword"
+      ></btn>
+      <btn
+        (click)="submit()"
+        label="Connexion"
+        icon="fa-solid fa-check fa-2xs"
+        iconPos="right"
+      ></btn>
+    </div>
+  </form>
+  <forget-password *ngIf="isResetPassword"></forget-password>
+</div>
+<div *ngIf="isLoading" class="flexRow justifyCenter">
+  <loader></loader>
+</div>

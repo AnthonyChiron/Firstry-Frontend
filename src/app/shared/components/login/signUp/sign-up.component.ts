@@ -42,6 +42,7 @@ export class SignUpComponent implements OnInit {
   photoFile: File;
   activeIndex: number = 0;
   emailAvailable: boolean = true;
+  isLoading: boolean = false;
   @Output() registered: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
@@ -112,14 +113,19 @@ export class SignUpComponent implements OnInit {
   }
 
   submit() {
+    this.isLoading = true;
     this.authService.signUp(this.signUpForm.value, this.photoFile).subscribe({
       next: (token) => {
+        this.isLoading = false;
         this.authService.saveToken(token);
         this.registered.emit();
 
         this.router.navigate(['/account/validateEmail']);
       },
-      error: (err) => (this.invalidCredentials = true),
+      error: (err) => {
+        this.isLoading = false;
+        this.invalidCredentials = true;
+      },
     });
   }
 }

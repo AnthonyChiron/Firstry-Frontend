@@ -26,37 +26,48 @@ import { DangerZoneComponent } from './parameters/danger-zone/danger-zone.compon
 import { IsOrganizerContestGuard } from 'src/app/shared/guards/IsOrganizerContest/is-organizer-contest-guard.service';
 import { ContestComponent } from '../contests/contest/contest.component';
 import { IsOrganizerGuard } from 'src/app/shared/guards/IsOrganizer/is-organizer-guard.service';
+import { RiderStateHandlerComponent } from './riders/rider-state-handler/rider-state-handler.component';
 
 const dashboardRoutes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     canActivate: [IsAuthGuard, IsOrganizerGuard],
+  },
+  {
+    path: ':contestId',
+    component: DashboardComponent,
+    canActivate: [IsAuthGuard, IsOrganizerGuard],
     children: [
       {
-        path: ':contestId/overview',
+        path: 'overview',
         component: OverviewComponent,
         canActivate: [IsAuthGuard],
       },
       {
-        path: ':contestId/planning',
+        path: 'planning',
         component: CategoriesDetailsComponent,
         canActivate: [IsAuthGuard],
       },
       {
-        path: ':contestId/riders',
+        path: 'riders',
         component: RidersComponent,
         canActivate: [IsAuthGuard],
       },
       {
-        path: ':contestId/results',
+        path: 'results',
         component: ResultsComponent,
         canActivate: [IsAuthGuard],
       },
       {
-        path: ':contestId/parameters',
+        path: 'parameters',
         component: ContestParametersDetailComponent,
         canActivate: [IsAuthGuard],
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'overview',
       },
     ],
   },
@@ -93,6 +104,7 @@ const dashboardRoutes: Routes = [
     ResultsComponent,
     RidersComponent,
     DangerZoneComponent,
+    RiderStateHandlerComponent,
   ],
   imports: [
     CommonModule,

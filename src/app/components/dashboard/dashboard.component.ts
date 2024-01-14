@@ -22,21 +22,19 @@ export class DashboardComponent implements OnInit {
     private _contestsService: ContestsService,
     private _screenSize: ScreenSizeService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   contestsDdOptions: any[] = [];
   closePopup: boolean = true;
   isMobile: boolean;
+  isLoading: boolean = true;
   contests: ContestModel[] = [];
   selectedContest: ContestModel;
   selectedContestId: string;
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      console.log(params);
-    });
-
+    this.isLoading = true;
     this._contestsService.getOrganizerContests().subscribe((data) => {
       if (data && data.length > 0) {
         // Mise en place du dropdown
@@ -45,22 +43,19 @@ export class DashboardComponent implements OnInit {
           return { label: contest.name, value: contest._id };
         });
 
-        this.selectContest(this.contestsDdOptions[0]);
-
-        this.router.events
-          .pipe(filter((event) => event instanceof NavigationEnd))
-          .subscribe((event: NavigationEnd) => {
-            const urlSegments = event.urlAfterRedirects.split('/');
-            const dashboardIndex = urlSegments.findIndex(
-              (segment) => segment === 'dashboard'
-            );
-
-            if (
-              dashboardIndex !== -1 &&
-              dashboardIndex === urlSegments.length - 1
-            ) {
-              // Aucun ID après 'dashboard/', ajoutez l'ID du premier contest
-              this.selectContest(this.contestsDdOptions[0]);
+        if (this.contestsDdOptions.length > 0)
+          this._activatedRoute.params.subscribe((params) => {
+            const contestId = params.contestId;
+            console.log(contestId);
+            if (contestId) {
+              this.selectContest(contestId);
+            } else {
+              this.selectContest(this.contestsDdOptions[0].value);
+              this.router.navigate([
+                '/dashboard',
+                this.contestsDdOptions[0].value,
+                'overview',
+              ]);
             }
           });
       }
@@ -71,12 +66,11 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  selectContest(event) {
-    console.log(event);
-    this.selectedContestId = event.value;
+  selectContest(eventId) {
+    this.selectedContestId = eventId;
     this.selectedContest = this.contests.find(
-      (contest) => contest._id === event.value
+      (contest) => contest._id == eventId
     );
-    this.router.navigate(['/dashboard', event.value, 'overview']);
+    this.isLoading = false;
   }
 }

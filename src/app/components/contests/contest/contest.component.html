@@ -13,7 +13,7 @@
     <div class="contestName">
       <h1 class="mainTitle">{{ contest.name | removeAccents }}</h1>
       <p>
-        Contest organisé par <b>{{ contest._id }}</b>
+        Contest organisé par <b>{{ contest.organizer.name }}</b>
       </p>
     </div>
     <div class="nav" *ngIf="!isMobile">
