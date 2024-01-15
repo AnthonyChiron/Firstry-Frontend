@@ -1,0 +1,23 @@
+# Utilisez l'image Node.js en tant qu'image de base
+FROM node:18
+
+# Définissez le répertoire de travail dans le conteneur
+WORKDIR ./src/app
+
+# Copiez le fichier package.json et package-lock.json
+COPY package*.json ./
+
+# Installez les dépendances
+RUN npm install
+
+# Installez Angular CLI globalement
+RUN npm install -g @angular/cli
+
+# Copiez le code source dans le conteneur
+COPY . .
+
+# Exposez le port sur lequel Angular écoute (par défaut : 4200)
+EXPOSE 4200
+
+# Commande pour exécuter l'application Angular en mode développement
+CMD ["ng", "serve", "--host", "0.0.0.0", "--disable-host-check"]
