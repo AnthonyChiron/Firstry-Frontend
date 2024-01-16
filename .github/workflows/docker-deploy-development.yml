@@ -8,7 +8,7 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    environment: production
+    environment: development
     steps:
       - uses: actions/checkout@v2
 
@@ -20,8 +20,8 @@ jobs:
 
       - name: Build and Push Frontend Image
         run: |
-          docker build -t sprinkiv/firstry-production-front:latest .
-          docker push sprinkiv/firstry-production-front:latest
+          docker build -t sprinkiv/firstry-front:latest .
+          docker push sprinkiv/firstry-front:latest
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
@@ -31,7 +31,6 @@ jobs:
           password: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd FIRSTRY
-
-            docker compose pull
-            docker compose up -d
+            docker compose -f docker-compose.dev.yml pull
+            docker compose -f docker-compose.dev.yml up -d
             docker system prune -f
