@@ -19,5 +19,5 @@ jobs:
 
       - name: Build and Push Frontend Image
         run: |
-          docker build -t sprinkiv/firstry-frontend:latest .
-          docker push sprinkiv/firstry-frontend:latest
+          docker build -t sprinkiv/firstry-front:latest .
+          docker push sprinkiv/firstry-front:latest
