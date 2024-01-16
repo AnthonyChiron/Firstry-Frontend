@@ -1,9 +1,9 @@
-name: Deploy Docker Images
+name: Deploy App to Development Server
 
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
   build-and-push:
@@ -31,6 +31,7 @@ jobs:
           password: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd FIRSTRY
+
             docker compose -f docker-compose.dev.yml pull
             docker compose -f docker-compose.dev.yml up -d
             docker system prune -f
