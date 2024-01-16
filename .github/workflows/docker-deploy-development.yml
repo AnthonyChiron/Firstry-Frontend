@@ -20,8 +20,8 @@ jobs:
 
       - name: Build and Push Frontend Image
         run: |
-          docker build -t sprinkiv/firstry-front:latest .
-          docker push sprinkiv/firstry-front:latest
+          docker build -t sprinkiv/firstry-development-front:latest .
+          docker push sprinkiv/firstry-development-front:latest
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
