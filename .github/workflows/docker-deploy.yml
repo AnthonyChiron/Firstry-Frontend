@@ -21,3 +21,14 @@ jobs:
         run: |
           docker build -t sprinkiv/firstry-front:latest .
           docker push sprinkiv/firstry-front:latest
+
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /Firstry-Compose
+            docker-compose pull
+            docker-compose up -d
