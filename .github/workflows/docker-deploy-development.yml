@@ -33,5 +33,5 @@ jobs:
             cd FIRSTRY
 
             docker compose -f docker-compose.dev.yml pull
-            docker compose -f docker-compose.dev.yml up -d
+            docker compose -f docker-compose.dev.yml -p firstry-dev up -d
             docker system prune -f
