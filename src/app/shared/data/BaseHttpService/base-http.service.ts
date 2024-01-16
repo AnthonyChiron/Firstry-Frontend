@@ -5,7 +5,7 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root',
 })
 export class BaseHttpService {
-  protected baseUrlProd = 'http://localhost:3000/api/';
+  protected baseUrlProd = 'http://back:3000/api/';
   protected baseUrlLocal = 'http://localhost:3000/api/';
 
   protected baseUrl = this.baseUrlProd;
