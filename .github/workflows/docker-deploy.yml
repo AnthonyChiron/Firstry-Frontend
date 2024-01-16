@@ -32,3 +32,4 @@ jobs:
             cd Firstry-Compose
             docker compose pull
             docker compose up -d
+            docker system prune -f
