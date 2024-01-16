@@ -29,6 +29,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /Firstry-Compose
+            cd Firstry-Compose
             docker-compose pull
             docker-compose up -d
