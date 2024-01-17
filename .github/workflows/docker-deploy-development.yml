@@ -20,7 +20,7 @@ jobs:
 
       - name: Build and Push Frontend Image
         run: |
-          docker build --build-arg ENV=development -t ${{ secrets.DOCKER_HUB_USERNAME }}/firstry-production-front:latest .
+          docker build --build-arg ENV=development -t ${{ secrets.DOCKER_HUB_USERNAME }}/firstry-development-front:latest .
           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/firstry-development-front:latest
 
       - name: Deploy to Server
