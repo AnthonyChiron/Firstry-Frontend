@@ -16,8 +16,7 @@ export class RulesService extends CrudService<RulesModel> {
   // Récupérer toutes les entités
   getAllByContestId(contestId): Observable<RulesModel[]> {
     return this.http.get<RulesModel[]>(
-      this.baseUrl + '/getAllByContestId/' + contestId,
-      this.getHttpOptions()
+      this.baseUrl + '/getAllByContestId/' + contestId
     );
   }
 }

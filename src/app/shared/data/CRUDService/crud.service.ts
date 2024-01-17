@@ -18,43 +18,32 @@ export class CrudService<T> extends BaseHttpService {
     this.baseUrl += route;
   }
 
-  getHttpOptions() {
-    const token = this.authService.getToken();
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `${token}`,
-      }),
-    };
-    return httpOptions;
-  }
-
   // Créer une nouvelle entité
   create(entity: T): Observable<T> {
-    return this.http.post<T>(this.baseUrl, entity, this.getHttpOptions());
+    return this.http.post<T>(this.baseUrl, entity);
   }
 
   // Récupérer toutes les entités
   getAll(): Observable<T[]> {
-    return this.http.get<T[]>(this.baseUrl, this.getHttpOptions());
+    return this.http.get<T[]>(this.baseUrl);
   }
 
   // Récupérer une entité par ID
   getById(id: string): Observable<T> {
     const url = `${this.baseUrl}/getById/${id}`;
-    return this.http.get<T>(url, this.getHttpOptions());
+    return this.http.get<T>(url);
   }
 
   // Mettre à jour une entité
   update(id: string, entity: T): Observable<T> {
     const url = `${this.baseUrl}/${id}`;
     console.log(url);
-    return this.http.put<T>(url, entity, this.getHttpOptions());
+    return this.http.put<T>(url, entity);
   }
 
   // Supprimer une entité par ID
   delete(id: string): Observable<void> {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<void>(url, this.getHttpOptions());
+    return this.http.delete<void>(url);
   }
 }

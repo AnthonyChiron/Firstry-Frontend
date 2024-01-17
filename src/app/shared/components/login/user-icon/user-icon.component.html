@@ -4,7 +4,7 @@
       <h4 class="firstName">{{ user.rider.firstName }}</h4>
       <h5>{{ user.rider.lastName }}</h5>
     </div>
-    <div *ngIf="user.role == 'contest'" class="name">
+    <div *ngIf="user.role == 'organizer'" class="name">
       <h4 class="firstName" Capitalize>{{ user.organizer.name }}</h4>
     </div>
     <img

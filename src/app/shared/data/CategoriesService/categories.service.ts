@@ -19,8 +19,7 @@ export class CategoriesService extends CrudService<CategoryModel> {
   // Récupérer toutes les entités
   getAllByContestId(contestId): Observable<CategoryModel[]> {
     return this.http.get<CategoryModel[]>(
-      this.baseUrl + '/getAllByContestId/' + contestId,
-      this.getHttpOptions()
+      this.baseUrl + '/getAllByContestId/' + contestId
     );
   }
 
@@ -28,24 +27,15 @@ export class CategoriesService extends CrudService<CategoryModel> {
     contestId
   ): Observable<CategoryRegistrationModelDTO[]> {
     return this.http.get<CategoryRegistrationModelDTO[]>(
-      this.baseUrl + '/getAllCategoriesForRegistrations/' + contestId,
-      this.getHttpOptions()
+      this.baseUrl + '/getAllCategoriesForRegistrations/' + contestId
     );
   }
 
   createCategory(category: any): Observable<CategoryModel> {
-    return this.http.post<CategoryModel>(
-      this.baseUrl + '/',
-      category,
-      this.getHttpOptions()
-    );
+    return this.http.post<CategoryModel>(this.baseUrl + '/', category);
   }
 
   updateCategory(id: string, category: any): Observable<CategoryModel> {
-    return this.http.put<CategoryModel>(
-      this.baseUrl + '/' + id,
-      category,
-      this.getHttpOptions()
-    );
+    return this.http.put<CategoryModel>(this.baseUrl + '/' + id, category);
   }
 }

@@ -16,15 +16,13 @@ export class ContestsService extends CrudService<ContestModel> {
   // Récupérer toutes les entités
   getOrganizerContests(): Observable<ContestModel[]> {
     return this.http.get<ContestModel[]>(
-      this.baseUrl + '/getOrganizerContests',
-      this.getHttpOptions()
+      this.baseUrl + '/getOrganizerContests'
     );
   }
 
   getContestCategories(contestId: string): Observable<any> {
     return this.http.get<ContestModel[]>(
-      this.baseUrl + '/getContestCategories/' + contestId,
-      this.getHttpOptions()
+      this.baseUrl + '/getContestCategories/' + contestId
     );
   }
 

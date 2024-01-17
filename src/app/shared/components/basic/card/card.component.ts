@@ -61,6 +61,8 @@ export class CardComponent implements OnInit {
   constructor(private _screenSize: ScreenSizeService) {}
 
   ngOnInit(): void {
+    if (this.img != '') this.img = "url('" + this.img + "')";
+
     this._screenSize.isMobile$.subscribe((isMobile) => {
       this.isMobile = isMobile;
     });
