@@ -29,6 +29,7 @@ import {
 import { inject } from '@angular/core/testing';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PaymentService } from '../../data/PaymentService/payment.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'paiement',
@@ -44,9 +45,7 @@ export class PaiementComponent implements OnInit, OnChanges {
     new EventEmitter<boolean>();
   @Output() paymentFailed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  stripe = this.factoryService.create(
-    'pk_test_51OPhx3ExeV2TEn3k0EWYu7LkqusSy8cewkqOMeV6ydwt6ICp84mIxzw2oPzyh8v3awLSP9ymlJqrx2ysjS00TKlU00yuzgNMzN'
-  );
+  stripe = this.factoryService.create(environment.stripe_public_key);
 
   elementsOptions: StripeElementsOptions = {
     locale: 'fr',
