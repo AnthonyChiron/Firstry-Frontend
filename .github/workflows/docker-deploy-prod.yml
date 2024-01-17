@@ -33,5 +33,5 @@ jobs:
             cd FIRSTRY
 
             docker compose pull
-            docker compose -p PRODUCTION up -d
+            docker compose -p firstry-prod up -d
             docker system prune -f
