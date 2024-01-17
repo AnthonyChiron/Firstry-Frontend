@@ -43,21 +43,22 @@ export class DashboardComponent implements OnInit {
           return { label: contest.name, value: contest._id };
         });
 
-        if (this.contestsDdOptions.length > 0)
-          this._activatedRoute.params.subscribe((params) => {
-            const contestId = params.contestId;
-            console.log(contestId);
-            if (contestId) {
-              this.selectContest(contestId);
-            } else {
-              this.selectContest(this.contestsDdOptions[0].value);
-              this.router.navigate([
-                '/dashboard',
-                this.contestsDdOptions[0].value,
-                'overview',
-              ]);
-            }
-          });
+        this._activatedRoute.params.subscribe((params) => {
+          const contestId = params.contestId;
+          console.log(contestId);
+          if (contestId) {
+            this.selectContest(contestId);
+          } else {
+            this.selectContest(this.contestsDdOptions[0].value);
+            this.router.navigate([
+              '/dashboard',
+              this.contestsDdOptions[0].value,
+              'overview',
+            ]);
+          }
+        });
+      } else {
+        this.isLoading = false;
       }
     });
 

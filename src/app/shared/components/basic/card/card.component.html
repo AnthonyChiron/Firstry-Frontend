@@ -1,18 +1,13 @@
 <div
   class="card color-{{ color }}  size-{{ size }}"
-  [class.fitContent]="fitContent"
   [class.sideImgCard]="img != ''"
-  [ngStyle]="{ 'width.%': cardWidth }"
 >
-  <div *ngIf="img != ''" class="sideImg" [ngStyle]="{ 'height.vw': imgHeight }">
-    <img [src]="img" alt="" />
-  </div>
   <div
-    class="main"
-    [ngStyle]="
-      imgHeight != '' ? { 'height.vw': imgHeight } : { height: '100%' }
-    "
-  >
+    *ngIf="img != ''"
+    class="sideImg"
+    [ngStyle]="{ 'background-image': img }"
+  ></div>
+  <div class="main">
     <loader class="loader" *ngIf="isLoading"></loader>
     <div
       class="header"

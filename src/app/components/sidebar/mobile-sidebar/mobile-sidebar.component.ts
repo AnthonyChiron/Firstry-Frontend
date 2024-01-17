@@ -8,7 +8,6 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { rolesEnum } from 'src/app/constants/rolesEnum';
 import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
 import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 
@@ -18,7 +17,6 @@ import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-siz
   styleUrls: ['./mobile-sidebar.component.scss'],
 })
 export class MobileSidebarComponent {
-  rolesEnum = rolesEnum;
   showLoginModal = false;
   @Input() toggleSidebar: boolean = true;
   @Output() clickToggle = new EventEmitter();

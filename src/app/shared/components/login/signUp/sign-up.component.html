@@ -42,7 +42,7 @@
     </div>
   </div>
 
-  <div *ngIf="activeIndex === 1 && credentialsForm.value.role == 'contest'">
+  <div *ngIf="activeIndex === 1 && credentialsForm.value.role == 'organizer'">
     <signup-organizer-form
       [organizerForm]="organizerForm"
       [touched]="organizerFormTouched"

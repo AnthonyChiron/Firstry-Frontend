@@ -84,7 +84,7 @@ export class AuthService extends BaseHttpService {
   }
 
   isCurrentUserOrganizer(): boolean {
-    return this.getCurrentUser().role == 'contest';
+    return this.getCurrentUser().role == 'organizer';
   }
 
   saveToken(token) {

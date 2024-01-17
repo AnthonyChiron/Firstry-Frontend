@@ -1,5 +1,5 @@
 export enum rolesEnum {
   RIDER = 'rider',
-  CONTEST = 'contest',
+  ORGANIZER = 'organizer',
   ADMIN = 'admin',
 }
