@@ -10,7 +10,8 @@ RUN npm install
 COPY . /src/app
 
 # Utiliser l'argument ENV pour spécifier l'environnement de build
-RUN npm run build --configuration=${ENV}
+RUN npm run build -- --configuration=${ENV}
+
 
 # Etape 2: Préparer l'image de production
 FROM nginx:alpine
