@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { SharedModule } from './shared/shared.module';
 import { DesktopSidebarComponent } from './components/sidebar/desktop-sidebar/desktop-sidebar.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+import { AuthInterceptor } from './shared/data/InterceptorHttp/interceptorHttp.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,11 @@ import { AccessDeniedComponent } from './components/access-denied/access-denied.
     LoginModule,
     SharedModule,
   ],
-  providers: [UsersService, ScreenSizeService],
+  providers: [
+    UsersService,
+    ScreenSizeService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
