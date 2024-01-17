@@ -5,14 +5,10 @@ import { PaiementComponent } from './paiement.component';
 import {
   NgxStripeModule,
   StripeCardComponent,
-  StripeElementsService,
   StripePaymentElementComponent,
 } from 'ngx-stripe';
-import {
-  StripeCardElementOptions,
-  StripeElementsOptions,
-} from '@stripe/stripe-js';
 import { FormSharedModule } from '../../formShared.module';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [PaiementComponent],
@@ -22,9 +18,7 @@ import { FormSharedModule } from '../../formShared.module';
     StripeCardComponent,
     SharedModule,
     FormSharedModule,
-    NgxStripeModule.forRoot(
-      'pk_test_51OPhx3ExeV2TEn3k0EWYu7LkqusSy8cewkqOMeV6ydwt6ICp84mIxzw2oPzyh8v3awLSP9ymlJqrx2ysjS00TKlU00yuzgNMzN'
-    ),
+    NgxStripeModule.forRoot(environment.stripe_public_key),
   ],
   exports: [PaiementComponent],
 })
