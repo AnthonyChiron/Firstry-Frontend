@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  backendUrl: 'http://localhost:3000/api/',
+  backendUrl: 'http://195.35.3.129:3001',
   firebaseConfig: {
     apiKey: 'FIREBASE_API_KEY',
     authDomain: 'AUTH_DOMAIN',

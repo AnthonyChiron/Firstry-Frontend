@@ -5,14 +5,8 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root',
 })
 export class BaseHttpService {
-  protected baseUrlProd = 'http://195.35.3.129:3000/api/';
-  protected baseUrlLocal = 'http://localhost:3000/api/';
-
-  protected baseUrl = this.baseUrlProd;
-
+  protected baseUrl = environment.backendUrl;
   constructor() {
-    if (environment.production) {
-      this.baseUrl = this.baseUrlProd;
-    }
+    console.log(this.baseUrl);
   }
 }
