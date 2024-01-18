@@ -26,12 +26,16 @@ export class ContestsService extends CrudService<ContestModel> {
     );
   }
 
-  uploadContestBrandImage(contestId: string, file: File): Observable<any> {
+  uploadContestBrandImage(
+    contestId: string,
+    file: File,
+    type
+  ): Observable<any> {
     const formData = new FormData();
     formData.append('image', file);
 
     return this.http.post(
-      this.baseUrl + '/uploadBrandImage/' + contestId,
+      this.baseUrl + '/uploadBrandImage/' + contestId + '/' + type,
       formData
     );
   }

@@ -12,11 +12,9 @@ export class ContestBrandingCardComponent {
 
   constructor(private cs: ContestsService) {}
 
-  async onUploadImage(event, type) {
-    const blob = await fetch(event.objectUrl).then((r) => r.blob());
-    const img = new File([blob], type + '.png', { type: 'image/png' });
+  async onUploadImage(photo, type) {
     this.cs
-      .uploadContestBrandImage(this.contest._id, img)
+      .uploadContestBrandImage(this.contest._id, photo, type)
       .subscribe((contest) => {
         console.log(contest);
         this.contest.branding = contest.branding;
