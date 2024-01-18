@@ -9,7 +9,7 @@
     />
     <img
       *ngIf="rider.photoUrl && rider.photoUrl != ''"
-      src="../../../../../assets/riders/pnj.webp"
+      [src]="rider.photoUrl"
       alt="Rider"
       class="photoRider"
       [ngStyle]="{ 'width.vw': widthPhoto }"
