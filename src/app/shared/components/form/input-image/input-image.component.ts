@@ -2,6 +2,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { FileUploadEvent } from 'primeng/fileupload';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ImageUtilityService } from 'src/app/shared/services/ImageUtility/image-utility.service';
 
 @Component({
   selector: 'input-image',
@@ -15,7 +16,7 @@ export class InputImageComponent {
   @Input() ratio: number = 1;
   @Input() size: number;
   @Input() img: string = '';
-  @Output() onUploadImage = new EventEmitter<FileUploadEvent>();
+  @Output() onUploadImage = new EventEmitter<File>();
   imageChangedEvent: any = '';
   croppedImage: any = '';
   maxFileSize = 4000;
@@ -23,28 +24,31 @@ export class InputImageComponent {
   isImageCroppring: boolean = false;
   imgFailed: boolean = false;
 
-  constructor(protected sanitizer: DomSanitizer) {}
+  constructor(
+    protected sanitizer: DomSanitizer,
+    private _imgUtility: ImageUtilityService
+  ) {}
 
   async fileChangeEvent(event: any): Promise<void> {
-    this.isImageCroppring = true;
     this.isLoading = true;
-    try {
-      this.imageChangedEvent = event;
-      this.isLoading = false;
-    } catch (error) {
-      console.error(
-        "Erreur lors de la suppression de l'arrière-plan : ",
-        error
-      );
-    }
+    this.isImageCroppring = true;
+    let file = await this._imgUtility.prepareImgForUpload(
+      event.target.files[0]
+    );
+    this.isLoading = false;
+
+    const newEvent = {
+      target: {
+        files: [file],
+        value: file.name,
+        type: 'file',
+      },
+    };
+    this.imageChangedEvent = newEvent;
   }
 
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event;
-  }
-
-  imageLoaded() {
-    // afficher un message si nécessaire
   }
 
   loadImageFailed() {
@@ -52,16 +56,15 @@ export class InputImageComponent {
     this.imgFailed = true;
   }
 
-  confirmImage() {
-    // Ici, vous pouvez envoyer this.croppedImage au serveur ou quoi que ce soit.
-    console.log(this.croppedImage);
-    this.isImageCroppring = false;
+  async confirmImage() {
+    const blob = await fetch(this.croppedImage.objectUrl).then((r) => r.blob());
+    let photoFile = new File([blob], 'test.png', { type: 'image/png' });
+
+    photoFile = await this._imgUtility.compressImg(photoFile);
+
     this.imageChangedEvent = '';
     this.img = '';
-    this.onUploadImage.emit(this.croppedImage);
-  }
-
-  onUpload(event) {
-    console.log(event);
+    this.onUploadImage.emit(photoFile);
+    this.isImageCroppring = false;
   }
 }

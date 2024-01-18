@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { RidersService } from 'src/app/shared/data/RidersService/riders.service';
 import { OrganizersService } from 'src/app/shared/data/OrganizersService/organizers.service';
+import { ImageUtilityService } from 'src/app/shared/services/ImageUtility/image-utility.service';
 
 @Component({
   selector: 'update-photo',
@@ -24,7 +25,8 @@ export class UpdatePhotoComponent implements OnInit {
     protected _sanitizer: DomSanitizer,
     private _authService: AuthService,
     private _riderService: RidersService,
-    private _organizerService: OrganizersService
+    private _organizerService: OrganizersService,
+    private _imageCompressor: ImageUtilityService
   ) {}
 
   ngOnInit(): void {
@@ -37,31 +39,14 @@ export class UpdatePhotoComponent implements OnInit {
     else this.userPhoto = this._authService.getCurrentUser().rider.photoUrl;
   }
 
-  async fileChangeEvent(event: any): Promise<void> {
-    this.imageChangedEvent = event;
-    console.log(this.imageChangedEvent.target.files[0]);
-  }
-
-  imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = event;
-  }
-
-  test() {
-    this._riderService.updatePhoto(
-      this._authService.getCurrentUser().rider._id,
-      'photoFile'
-    );
-  }
-
-  async confirmImage() {
+  async uploadImage(photo) {
     // Ici, vous pouvez envoyer this.croppedImage au serveur ou quoi que ce soit.
     this.imgConfirmed = true;
     this.isLoading = true;
-    const blob = await fetch(this.croppedImage.objectUrl).then((r) => r.blob());
-    let photoFile = new File([blob], 'test.png', { type: 'image/png' });
+
     if (this._authService.isCurrentUserRider())
       this._riderService
-        .updatePhoto(this._authService.getCurrentUser().riderId, photoFile)
+        .updatePhoto(this._authService.getCurrentUser().riderId, photo)
         .subscribe((res) => {
           this.isLoading = false;
           this._authService.updateRider(res);
@@ -71,7 +56,7 @@ export class UpdatePhotoComponent implements OnInit {
         });
     else
       this._organizerService
-        .updatePhoto(this._authService.getCurrentUser().organizerId, photoFile)
+        .updatePhoto(this._authService.getCurrentUser().organizerId, photo)
         .subscribe((res) => {
           this.isLoading = false;
           this._authService.updateOrganizer(res);
