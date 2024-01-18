@@ -108,8 +108,7 @@ export class SignUpComponent implements OnInit {
   }
 
   async uploadPhoto(event) {
-    const blob = await fetch(event.objectUrl).then((r) => r.blob());
-    this.photoFile = new File([blob], 'test.png', { type: 'image/png' });
+    this.photoFile = event;
   }
 
   submit() {

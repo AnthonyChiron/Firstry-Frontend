@@ -39,54 +39,14 @@ export class UpdatePhotoComponent implements OnInit {
     else this.userPhoto = this._authService.getCurrentUser().rider.photoUrl;
   }
 
-  async fileChangeEvent(event: any): Promise<void> {
-    let file: File = event.target.files[0];
-    // Vérifiez si le fichier est au format HEIC
-
-    this.isLoading = true;
-    console.log(file);
-    if (file.name.endsWith('.heic'))
-      file = await this._imageCompressor.convertHeicToPng(file);
-    console.log(file);
-
-    file = await this._imageCompressor.compressImg(file);
-    console.log(file);
-    this.isLoading = false;
-
-    const newEvent = {
-      target: {
-        files: [file],
-        value: file.name,
-        type: 'file',
-      },
-    };
-    this.imageChangedEvent = newEvent;
-  }
-
-  imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = event;
-  }
-
-  test() {
-    this._riderService.updatePhoto(
-      this._authService.getCurrentUser().rider._id,
-      'photoFile'
-    );
-  }
-
-  async confirmImage() {
+  async uploadImage(photo) {
     // Ici, vous pouvez envoyer this.croppedImage au serveur ou quoi que ce soit.
     this.imgConfirmed = true;
     this.isLoading = true;
-    const blob = await fetch(this.croppedImage.objectUrl).then((r) => r.blob());
-    let photoFile = new File([blob], 'test.png', { type: 'image/png' });
-    console.log(photoFile);
-    photoFile = await this._imageCompressor.compressImg(photoFile);
 
-    console.log(photoFile);
     if (this._authService.isCurrentUserRider())
       this._riderService
-        .updatePhoto(this._authService.getCurrentUser().riderId, photoFile)
+        .updatePhoto(this._authService.getCurrentUser().riderId, photo)
         .subscribe((res) => {
           this.isLoading = false;
           this._authService.updateRider(res);
@@ -96,7 +56,7 @@ export class UpdatePhotoComponent implements OnInit {
         });
     else
       this._organizerService
-        .updatePhoto(this._authService.getCurrentUser().organizerId, photoFile)
+        .updatePhoto(this._authService.getCurrentUser().organizerId, photo)
         .subscribe((res) => {
           this.isLoading = false;
           this._authService.updateOrganizer(res);

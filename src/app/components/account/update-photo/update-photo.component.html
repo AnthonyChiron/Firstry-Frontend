@@ -2,51 +2,12 @@
   <div class="flexColumn alignCenter">
     <loader *ngIf="isLoading"></loader>
   </div>
-  <div class="flexRow spaceAround">
-    <img
-      *ngIf="imageChangedEvent == '' && !isLoading"
-      [src]="userPhoto"
-      alt=""
-    />
-    <div class="form">
-      <div class="addPhoto" *ngIf="!imgConfirmed">
-        <!-- <input type="file" accept="image/*" (change)="onUpload($event)" />
-                            <small>Votre photo ne doit pas dépasser les 4mo</small> -->
-        <label
-          *ngIf="imageChangedEvent == '' && !isLoading"
-          class="labelAddPhoto"
-        >
-          <input
-            class="inputAddPhoto"
-            accept=".png, .jpg, .jpeg, .heic"
-            type="file"
-            (change)="fileChangeEvent($event)"
-          />
-          <i class="fa-solid fa-rotate fa-xl"></i>
-        </label>
-        <image-cropper
-          *ngIf="imageChangedEvent != ''"
-          [imageChangedEvent]="imageChangedEvent"
-          [maintainAspectRatio]="true"
-          [aspectRatio]="ratio"
-          [onlyScaleDown]="false"
-          format="png"
-          output="blob"
-          (imageCropped)="imageCropped($event)"
-        ></image-cropper>
-        <btn
-          *ngIf="imageChangedEvent != ''"
-          (click)="confirmImage()"
-          label="Confirmer"
-          icon="fa-solid fa-check fa-2xs"
-          iconPos="left"
-        ></btn>
-        <note
-          class="textCenter"
-          text="Votre photo ne doit pas dépasser les 4mo"
-        ></note>
-        <note class="textCenter" text="(Fichier .pnj / .jpg / .png)"></note>
-      </div>
-    </div>
-  </div>
+  <input-image
+    *ngIf="!isLoading"
+    btnLabel="Nouvelle photo de profil ?"
+    btnLabelDetail="(png, jpg, jpeg & < 3mo)"
+    [img]="userPhoto ? userPhoto : null"
+    [ratio]="ratio"
+    (onUploadImage)="uploadImage($event)"
+  ></input-image>
 </card>
