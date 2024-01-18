@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { RidersService } from 'src/app/shared/data/RidersService/riders.service';
 import { OrganizersService } from 'src/app/shared/data/OrganizersService/organizers.service';
+import heic2any from 'heic2any';
 
 @Component({
   selector: 'update-photo',
@@ -38,8 +39,41 @@ export class UpdatePhotoComponent implements OnInit {
   }
 
   async fileChangeEvent(event: any): Promise<void> {
-    this.imageChangedEvent = event;
-    console.log(this.imageChangedEvent.target.files[0]);
+    const file: File = event.target.files[0];
+    // Vérifiez si le fichier est au format HEIC
+    if (file.name.endsWith('.heic')) {
+      try {
+        // Convertissez le fichier HEIC en PNG
+        const convertedBlob = <Blob>await heic2any({
+          blob: file,
+          toType: 'image/png',
+          quality: 0.8, // vous pouvez ajuster la qualité ici
+        });
+
+        // Créez un nouvel objet File à partir du Blob
+        const newFile = new File([convertedBlob], 'converted-image.png', {
+          type: 'image/png',
+        });
+
+        const newEvent = {
+          target: {
+            files: [newFile],
+            value: newFile.name,
+            type: 'file',
+          },
+        };
+
+        this.imageChangedEvent = newEvent;
+
+        // Vous pouvez maintenant utiliser newFile avec image-cropper
+        // Exemple : this.imageChangedEvent = { target: { files: [newFile] } };
+      } catch (error) {
+        console.error('Erreur lors de la conversion du fichier HEIC', error);
+      }
+    } else {
+      // Traiter les fichiers non HEIC normalement
+      console.log(file);
+    }
   }
 
   imageCropped(event: ImageCroppedEvent) {
