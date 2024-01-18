@@ -72,6 +72,7 @@ export class UpdatePhotoComponent implements OnInit {
       }
     } else {
       // Traiter les fichiers non HEIC normalement
+      this.imageChangedEvent = event;
       console.log(file);
     }
   }
