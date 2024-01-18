@@ -19,7 +19,8 @@ export class ContestsComponent implements OnInit {
           contest.startDate = new Date(contest.startDate);
           contest.endDate = new Date(contest.endDate);
 
-          if (contest.isPublished) this.contests.push(contest);
+          // if (contest.isPublished) this.contests.push(contest);
+          this.contests.push(contest);
           console.log(this.contests);
         });
       }

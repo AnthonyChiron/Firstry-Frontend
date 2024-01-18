@@ -16,12 +16,17 @@ export class AuthInterceptor implements HttpInterceptor {
     if (!authToken) {
       return next.handle(req);
     }
-    const authReq = req.clone({
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'x-auth-token': authToken,
-      }),
-    });
-    return next.handle(authReq);
+    if (!(req.body instanceof FormData)) {
+      req = req.clone({
+        headers: req.headers
+          .set('Content-Type', 'application/json')
+          .set('x-auth-token', authToken),
+      });
+    } else {
+      req = req.clone({
+        headers: req.headers.set('x-auth-token', authToken),
+      });
+    }
+    return next.handle(req);
   }
 }
