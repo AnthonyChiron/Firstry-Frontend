@@ -80,6 +80,10 @@ export class UpdatePhotoComponent implements OnInit {
     this.isLoading = true;
     const blob = await fetch(this.croppedImage.objectUrl).then((r) => r.blob());
     let photoFile = new File([blob], 'test.png', { type: 'image/png' });
+    console.log(photoFile);
+    photoFile = await this._imageCompressor.compressImg(photoFile);
+
+    console.log(photoFile);
     if (this._authService.isCurrentUserRider())
       this._riderService
         .updatePhoto(this._authService.getCurrentUser().riderId, photoFile)
