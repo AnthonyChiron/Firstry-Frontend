@@ -9,6 +9,10 @@
 
   .account {
     position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 15px;
+    transition: 0.4s;
   }
 
   .name {
@@ -16,6 +20,7 @@
     flex-direction: column;
     text-align: right;
     margin-right: 20px;
+    margin-left: 20px;
 
     .firstName {
       padding: 0;
@@ -27,6 +32,7 @@
     object-fit: contain;
     border-radius: 5000px;
     cursor: pointer;
+    background-color: $firstry-white-2;
   }
 }
 
@@ -80,6 +86,10 @@
   .main {
     img {
       max-height: 3.5vw;
+    }
+
+    .account:hover {
+      background-color: $firstry-white-2;
     }
   }
 
