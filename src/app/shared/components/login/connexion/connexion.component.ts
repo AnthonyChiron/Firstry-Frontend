@@ -56,6 +56,7 @@ export class ConnexionComponent implements OnInit {
           this.invalidCredentials = true;
           console.log(this.invalidCredentials);
           console.log(err);
+          this.isLoading = false;
         },
       });
     } catch (e) {
