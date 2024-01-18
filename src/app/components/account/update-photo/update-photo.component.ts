@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { RidersService } from 'src/app/shared/data/RidersService/riders.service';
 import { OrganizersService } from 'src/app/shared/data/OrganizersService/organizers.service';
-import heic2any from 'heic2any';
+import { ImageUtilityService } from 'src/app/shared/services/ImageUtility/image-utility.service';
 
 @Component({
   selector: 'update-photo',
@@ -25,7 +25,8 @@ export class UpdatePhotoComponent implements OnInit {
     protected _sanitizer: DomSanitizer,
     private _authService: AuthService,
     private _riderService: RidersService,
-    private _organizerService: OrganizersService
+    private _organizerService: OrganizersService,
+    private _imageCompressor: ImageUtilityService
   ) {}
 
   ngOnInit(): void {
@@ -39,42 +40,27 @@ export class UpdatePhotoComponent implements OnInit {
   }
 
   async fileChangeEvent(event: any): Promise<void> {
-    const file: File = event.target.files[0];
+    let file: File = event.target.files[0];
     // Vérifiez si le fichier est au format HEIC
-    if (file.name.endsWith('.heic')) {
-      try {
-        // Convertissez le fichier HEIC en PNG
-        const convertedBlob = <Blob>await heic2any({
-          blob: file,
-          toType: 'image/png',
-          quality: 0.8, // vous pouvez ajuster la qualité ici
-        });
 
-        // Créez un nouvel objet File à partir du Blob
-        const newFile = new File([convertedBlob], 'converted-image.png', {
-          type: 'image/png',
-        });
+    this.isLoading = true;
+    console.log(file);
+    if (file.name.endsWith('.heic'))
+      file = await this._imageCompressor.convertHeicToPng(file);
+    console.log(file);
 
-        const newEvent = {
-          target: {
-            files: [newFile],
-            value: newFile.name,
-            type: 'file',
-          },
-        };
+    file = await this._imageCompressor.compressImg(file);
+    console.log(file);
+    this.isLoading = false;
 
-        this.imageChangedEvent = newEvent;
-
-        // Vous pouvez maintenant utiliser newFile avec image-cropper
-        // Exemple : this.imageChangedEvent = { target: { files: [newFile] } };
-      } catch (error) {
-        console.error('Erreur lors de la conversion du fichier HEIC', error);
-      }
-    } else {
-      // Traiter les fichiers non HEIC normalement
-      this.imageChangedEvent = event;
-      console.log(file);
-    }
+    const newEvent = {
+      target: {
+        files: [file],
+        value: file.name,
+        type: 'file',
+      },
+    };
+    this.imageChangedEvent = newEvent;
   }
 
   imageCropped(event: ImageCroppedEvent) {
