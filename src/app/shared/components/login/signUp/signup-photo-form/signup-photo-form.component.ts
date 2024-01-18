@@ -1,4 +1,3 @@
-import { RemoveBgService } from '../../../../services/removeBg/remove-bg.service';
 import { FileUploadEvent, UploadEvent } from 'primeng/fileupload';
 import {
   Component,
@@ -30,10 +29,7 @@ export class SignupPhotoFormComponent implements OnInit {
   isLoading: boolean = false;
   ratio: number = 4 / 5;
 
-  constructor(
-    protected sanitizer: DomSanitizer,
-    private removebg: RemoveBgService
-  ) {}
+  constructor(protected sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     if (!this.signupTypeRider) {
@@ -44,48 +40,7 @@ export class SignupPhotoFormComponent implements OnInit {
   async fileChangeEvent(event: any): Promise<void> {
     const file: File = event.target.files[0];
     // this.imageChangedEvent = event;
-    this.isLoading = true;
-    try {
-      if (this.signupTypeRider) {
-        this.removebg
-          .removeBg(file)
-          .then((response) => response.arrayBuffer())
-          .then((buffer) => {
-            console.log(buffer);
-
-            // Créer un Blob à partir de l'ArrayBuffer
-            const blob = new Blob([new Uint8Array(buffer)], {
-              type: 'image/png',
-            });
-
-            // Créer un File à partir du Blob
-            const fileFromBlob = new File([blob], 'imageWithNoBackground.png', {
-              type: 'image/png',
-            });
-
-            // Créer un objet Event
-            const newEvent = {
-              target: {
-                files: [fileFromBlob],
-                value: fileFromBlob.name,
-                type: 'file',
-              },
-            };
-
-            // Appliquer cet événement à ngx-image-cropper
-            this.imageChangedEvent = newEvent;
-            this.isLoading = false;
-          });
-      } else {
-        this.imageChangedEvent = event;
-        this.isLoading = false;
-      }
-    } catch (error) {
-      console.error(
-        "Erreur lors de la suppression de l'arrière-plan : ",
-        error
-      );
-    }
+    this.imageChangedEvent = event;
   }
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event;

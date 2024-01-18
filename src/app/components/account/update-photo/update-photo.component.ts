@@ -1,7 +1,6 @@
 import { AuthService } from 'src/app/shared/services/AuthService/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { RemoveBgService } from 'src/app/shared/services/removeBg/remove-bg.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { RidersService } from 'src/app/shared/data/RidersService/riders.service';
 import { OrganizersService } from 'src/app/shared/data/OrganizersService/organizers.service';
@@ -23,7 +22,6 @@ export class UpdatePhotoComponent implements OnInit {
 
   constructor(
     protected _sanitizer: DomSanitizer,
-    private _removebgService: RemoveBgService,
     private _authService: AuthService,
     private _riderService: RidersService,
     private _organizerService: OrganizersService
@@ -40,50 +38,8 @@ export class UpdatePhotoComponent implements OnInit {
   }
 
   async fileChangeEvent(event: any): Promise<void> {
-    const file: File = event.target.files[0];
-    // this.imageChangedEvent = event;
-    this.isLoading = true;
-    try {
-      if (this._authService.isCurrentUserRider()) {
-        this._removebgService
-          .removeBg(file)
-          .then((response) => response.arrayBuffer())
-          .then((buffer) => {
-            console.log(buffer);
-
-            // Créer un Blob à partir de l'ArrayBuffer
-            const blob = new Blob([new Uint8Array(buffer)], {
-              type: 'image/png',
-            });
-
-            // Créer un File à partir du Blob
-            const fileFromBlob = new File([blob], 'imageWithNoBackground.png', {
-              type: 'image/png',
-            });
-
-            // Créer un objet Event
-            const newEvent = {
-              target: {
-                files: [fileFromBlob],
-                value: fileFromBlob.name,
-                type: 'file',
-              },
-            };
-
-            // Appliquer cet événement à ngx-image-cropper
-            this.imageChangedEvent = newEvent;
-            this.isLoading = false;
-          });
-      } else {
-        this.imageChangedEvent = event;
-        this.isLoading = false;
-      }
-    } catch (error) {
-      console.error(
-        "Erreur lors de la suppression de l'arrière-plan : ",
-        error
-      );
-    }
+    this.imageChangedEvent = event;
+    console.log(this.imageChangedEvent.target.files[0]);
   }
 
   imageCropped(event: ImageCroppedEvent) {
@@ -100,12 +56,14 @@ export class UpdatePhotoComponent implements OnInit {
   async confirmImage() {
     // Ici, vous pouvez envoyer this.croppedImage au serveur ou quoi que ce soit.
     this.imgConfirmed = true;
+    this.isLoading = true;
     const blob = await fetch(this.croppedImage.objectUrl).then((r) => r.blob());
     let photoFile = new File([blob], 'test.png', { type: 'image/png' });
     if (this._authService.isCurrentUserRider())
       this._riderService
         .updatePhoto(this._authService.getCurrentUser().riderId, photoFile)
         .subscribe((res) => {
+          this.isLoading = false;
           this._authService.updateRider(res);
           this.userPhoto = this._authService.getCurrentUser().rider.photoUrl;
           this.imageChangedEvent = '';
@@ -115,6 +73,7 @@ export class UpdatePhotoComponent implements OnInit {
       this._organizerService
         .updatePhoto(this._authService.getCurrentUser().organizerId, photoFile)
         .subscribe((res) => {
+          this.isLoading = false;
           this._authService.updateOrganizer(res);
           this.userPhoto =
             this._authService.getCurrentUser().organizer.photoUrl;
