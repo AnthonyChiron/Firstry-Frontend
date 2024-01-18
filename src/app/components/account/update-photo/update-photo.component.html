@@ -1,4 +1,7 @@
 <card title="Photo de profil">
+  <div class="flexColumn alignCenter">
+    <loader *ngIf="isLoading"></loader>
+  </div>
   <div class="flexRow spaceAround">
     <img
       *ngIf="imageChangedEvent == '' && !isLoading"
@@ -6,9 +9,13 @@
       alt=""
     />
     <div class="form">
-      <div class="addPhoto" *ngIf="!imgConfirmed">
+      <div
+        class="addPhoto"
+        accept=".png, .jpg, .jpeg, .heic"
+        *ngIf="!imgConfirmed"
+      >
         <!-- <input type="file" accept="image/*" (change)="onUpload($event)" />
-                          <small>Votre photo ne doit pas dépasser les 4mo</small> -->
+                            <small>Votre photo ne doit pas dépasser les 4mo</small> -->
         <label
           *ngIf="imageChangedEvent == '' && !isLoading"
           class="labelAddPhoto"
@@ -20,7 +27,6 @@
           />
           <i class="fa-solid fa-rotate fa-xl"></i>
         </label>
-        <loader *ngIf="isLoading"></loader>
         <image-cropper
           *ngIf="imageChangedEvent != ''"
           [imageChangedEvent]="imageChangedEvent"
