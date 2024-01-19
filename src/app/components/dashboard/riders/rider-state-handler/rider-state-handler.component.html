@@ -1,3 +1,42 @@
-<div class="rider" *ngFor="let registration of registrations">
-  {{ registration._id }}
-</div>
+<card class="main" title="Demande d'inscription en attente">
+  <!-- <btn label="Test" (click)="test()"></btn> -->
+
+  <div class="scroll flexRow" [class.overflowx]="registrations.length > 6">
+    <p *ngIf="registrations.length == 0">
+      Pas d'inscriptions en attente pour le moment.
+    </p>
+    <card
+      color="2"
+      class="rider"
+      size="xs"
+      [fitContent]="true"
+      *ngFor="let registration of registrations"
+    >
+      <div class="rider">
+        <img class="photo" [src]="registration.rider.photoUrl" alt="" />
+        <div class="flexRow spaceBetween">
+          <div class="name">
+            <h4>{{ registration.rider.firstName }}</h4>
+            <h3>{{ registration.rider.lastName }}</h3>
+          </div>
+          <div class="cat">
+            <h4>{{ registration.category.name }}</h4>
+          </div>
+        </div>
+        <div class="flexRow spaceBetween">
+          <btn
+            type="danger"
+            label="Refuser"
+            (click)="refuseRider(registration._id)"
+          ></btn>
+          <btn
+            type="valid"
+            label="Valider"
+            (click)="validRider(registration._id)"
+          ></btn>
+        </div>
+      </div>
+    </card>
+    <div class="shadow" *ngIf="registrations.length > 6"></div>
+  </div>
+</card>

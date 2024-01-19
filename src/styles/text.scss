@@ -109,7 +109,8 @@ a {
     margin-bottom: $pc_gap_card;
   }
 
-  p {
+  p,
+  a {
     font-size: max(12px, 0.85vw);
   }
 

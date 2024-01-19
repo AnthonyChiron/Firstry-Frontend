@@ -28,15 +28,15 @@ export class RegistrationsService extends CrudService<RegistrationModel> {
     return this.http.get(`${this.baseUrl}/getRiderRegistrations/${riderId}`);
   }
 
-  refuseRiderRegistration(riderId, categoryId) {
+  refuseRiderRegistration(registrationId) {
     return this.http.get(
-      `${this.baseUrl}/refuseRiderRegistration/${riderId}/${categoryId}`
+      `${this.baseUrl}/refuseRiderRegistration/${registrationId}`
     );
   }
 
-  validRiderRegistration(riderId, categoryId) {
+  validRiderRegistration(registrationId) {
     return this.http.get(
-      `${this.baseUrl}/validRiderRegistration/${riderId}/${categoryId}`
+      `${this.baseUrl}/validRiderRegistration/${registrationId}`
     );
   }
 
@@ -46,9 +46,9 @@ export class RegistrationsService extends CrudService<RegistrationModel> {
     );
   }
 
-  cancelRiderRegistration(riderId, categoryId) {
+  cancelRiderRegistration(registrationId) {
     return this.http.get(
-      `${this.baseUrl}/pendingApprovalRiderRegistration/${riderId}/${categoryId}`
+      `${this.baseUrl}/cancelRiderRegistration/${registrationId}`
     );
   }
 

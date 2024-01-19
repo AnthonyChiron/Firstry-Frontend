@@ -1,9 +1,4 @@
-<card
-  *ngIf="!displayDefaultRules"
-  title="Règles"
-  [fitContent]="true"
-  class="main"
->
+<card *ngIf="!displayDefaultRules" title="Règles" class="main">
   <div header class="flexRow gap10">
     <btn
       label="Règles par défaults"
@@ -23,12 +18,7 @@
     ></contest-rules-card>
   </div>
 </card>
-<card
-  *ngIf="displayDefaultRules"
-  title="Règles par défault"
-  [fitContent]="true"
-  class="main"
->
+<card *ngIf="displayDefaultRules" title="Règles par défault" class="main">
   <div header class="flexRow gap10">
     <btn
       label="Règles personnalisées"
