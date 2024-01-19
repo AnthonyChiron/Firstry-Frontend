@@ -1,4 +1,4 @@
-<card title="Mes inscriptions" [fitContent]="true">
+<card title="Mes inscriptions">
   <p *ngIf="registrations.length == 0">
     Vous n'êtes pour l'instant inscris à aucuns contests !
   </p>
@@ -17,6 +17,10 @@
         <btn
           label="Annuler son inscription"
           type="danger"
+          *ngIf="
+            registration.registrationState != 'refused' &&
+            registration.registrationState != 'canceled'
+          "
           (click)="cancelRegistration(registration._id)"
         ></btn>
       </div>

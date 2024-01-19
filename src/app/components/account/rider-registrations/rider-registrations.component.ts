@@ -28,7 +28,7 @@ export class RiderRegistrationsComponent implements OnInit {
     switch (state) {
       case 'pending_approval':
         return 'En attente de validation du contest';
-      case 'approved':
+      case 'validated':
         return 'Validée';
       case 'refused':
         return 'Refusée';

@@ -13,6 +13,7 @@ import { RegistrationsService } from 'src/app/shared/data/RegistrationsService/r
 export class RidersComponent implements OnInit {
   contest: ContestModel;
   registrations: RegistrationModel[] = [];
+  pendingApprovalRegistrations: RegistrationModel[] = [];
 
   constructor(
     private _registrationService: RegistrationsService,
@@ -30,6 +31,10 @@ export class RidersComponent implements OnInit {
           .getRegistrationsByContestId(contest._id)
           .subscribe((result: any) => {
             this.registrations = result;
+            this.pendingApprovalRegistrations = this.registrations.filter(
+              (registration) =>
+                registration.registrationState === 'pending_approval'
+            );
           });
       });
     });
