@@ -1,7 +1,7 @@
 @import "../../../../styles/colors.scss";
 
 .navbar {
-  width: 7vw;
+  width: 6vw;
   background-color: black;
   transition: 0.5s;
 
@@ -10,7 +10,7 @@
     top: 0;
     left: 0;
     height: 100vh;
-    width: 7vw;
+    width: 6vw;
     padding: 1vw;
     padding-top: 2vw;
     display: flex;
@@ -19,11 +19,12 @@
     transition: 0.5s;
 
     .logo {
-      height: 4vw;
+      height: 3vw;
       align-self: center;
     }
 
     .link {
+      color: white;
       display: flex;
       margin-left: 1vw;
       width: 3vw;
@@ -37,16 +38,44 @@
         color: transparent;
         transition: 0.3s;
         margin-left: 1.5vw;
+        font-variation-settings: "wght" 300;
       }
     }
   }
 }
 
+.activeTab {
+  position: absolute;
+  left: 0;
+  background-color: black;
+  height: 3vw;
+  width: 5px;
+  transition: 0.4s;
+}
+
+.active .activeTab {
+  background-color: white;
+}
+
+.icon {
+  height: 2vw;
+  width: 2vw;
+}
+
+.icon-property {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 20px;
+  transition: 0.3s;
+}
+
 .navbar:hover {
-  width: 15vw;
+  width: 12vw;
 
   nav {
-    width: 15vw;
+    width: 12vw;
 
     .link {
       width: 10vw;
@@ -55,14 +84,17 @@
         width: 3vw;
         color: white;
         font-size: max(15px, 0.9vw);
-        font-variation-settings: "wght" 600;
       }
     }
 
     .link:hover {
       .label {
         color: white;
-        font-variation-settings: "wght" 900;
+        font-variation-settings: "wght" 700;
+      }
+
+      .icon-property {
+        stroke-width: 30px;
       }
     }
   }
