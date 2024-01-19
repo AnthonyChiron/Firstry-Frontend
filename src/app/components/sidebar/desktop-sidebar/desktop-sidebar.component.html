@@ -5,16 +5,101 @@
       src="../../../../assets/logos/Globe_Blanc.png"
       alt="logo"
     />
-    <div routerLink="/" routerLinkActive="active" class="link">
-      <btn type="secondary" size="nav" icon="fa-solid fa-home"></btn>
+    <div
+      routerLink="/"
+      routerLinkActive="active"
+      class="link"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <div class="activeTab"></div>
+      <div class="icon">
+        <svg
+          id="home-icon"
+          class="icon"
+          data-name="home-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 355.4 356.4"
+        >
+          <g id="Calque_1-2" data-name="Calque 1">
+            <g>
+              <path
+                class="icon-property"
+                d="m304.6,107.6l-94.2-67.4c-18.9-13.5-44.3-13.6-63.3-.2L51.1,107.6c-13.3,9.3-21.1,24.6-21.1,40.8v134.9c0,23.8,19.3,43.1,43.1,43.1h209.2c23.8,0,43.1-19.3,43.1-43.1v-135.2c0-16.1-7.8-31.2-20.9-40.6Z"
+              />
+              <path
+                class="icon-property"
+                d="m232.6,326.4v-87c0-29.5-23.9-53.4-53.4-53.4h0c-29.5,0-53.4,23.9-53.4,53.4v87"
+              />
+            </g>
+          </g>
+        </svg>
+      </div>
       <p class="label">Accueil</p>
     </div>
-    <div routerLink="/riders" routerLinkActive="active" class="link">
-      <btn size="nav" icon="fa-solid fa-person-skating"></btn>
+    <div
+      routerLink="/riders"
+      routerLinkActive="active"
+      class="link"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <div class="activeTab"></div>
+      <div class="icon">
+        <svg
+          id="user_icon"
+          class="icon"
+          data-name="user_icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 348.8 377"
+        >
+          <g id="Calque_1-2" data-name="Calque 1">
+            <path
+              class="icon-property"
+              d="m316.5,325.3c-5.4,12.7-17.9,21.7-32.6,21.7H64.9c-14.6,0-27.2-9-32.6-21.7-2.8-6.4-2.8-13.7-1.4-20.5l1.1-5.4c9.4-46.5,46.7-81.4,92.4-88.5-23.2-17.8-38.5-47.8-38.5-81.6,0-54.9,39.9-99.3,89.2-99.3s89.1,44.5,89.1,99.3-15.4,64-38.7,81.7c45.1,7.6,81.9,42.3,91.2,88.4l1.1,5.4c1.3,6.8,1.3,14.1-1.4,20.5Z"
+            />
+          </g>
+        </svg>
+      </div>
       <p class="label">Riders</p>
     </div>
-    <div routerLink="/contests" routerLinkActive="active" class="link">
-      <btn size="nav" icon="fa-solid fa-calendar "></btn>
+    <div
+      routerLink="/contests"
+      routerLinkActive="active"
+      class="link"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <div class="activeTab"></div>
+      <div class="icon">
+        <svg
+          id="home-icon"
+          class="icon"
+          data-name="home-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 355.4 356.4"
+        >
+          <g id="Calque_1-2" data-name="Calque 1">
+            <g>
+              <path
+                class="icon-property"
+                d="m285.2,309.1h-79.1c-3.8,0-7.6-.9-11-2.6l-38.8-19.5c-3.4-1.7-7.2-2.6-11-2.6h-72.5c-18.1,0-32.8-14.7-32.8-32.7V72.8c0-18.1,14.7-32.7,32.7-32.8h76.8c3.7,0,7.4.8,10.8,2.5l40.5,19.8c3.4,1.6,7,2.5,10.8,2.5h73.6c18.1,0,32.8,14.7,32.8,32.8v178.8c0,18.1-14.7,32.8-32.8,32.8Z"
+              />
+              <line
+                class="icon-property"
+                x1="134.4"
+                y1="43.7"
+                x2="134.4"
+                y2="281.6"
+              />
+              <line
+                class="icon-property"
+                x1="224.1"
+                y1="67.9"
+                x2="224.1"
+                y2="306.2"
+              />
+            </g>
+          </g>
+        </svg>
+      </div>
       <p class="label">Contests</p>
     </div>
     <div
@@ -23,7 +108,26 @@
       routerLinkActive="active"
       class="link"
     >
-      <btn size="nav" icon="fa-solid fa-gear "></btn>
+      <div class="activeTab"></div>
+      <div class="icon">
+        <svg
+          id="home-icon"
+          class="icon"
+          data-name="home-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 402.3 360"
+        >
+          <g id="Calque_1-2" data-name="Calque 1">
+            <g>
+              <path
+                class="icon-property"
+                d="m277.6,40H124.7c-2.9,0-5.7,1.6-7.1,4.1L41.1,175.8c-1.5,2.6-1.5,5.7,0,8.3l76.4,131.7c1.5,2.5,4.2,4.1,7.1,4.1h152.9c2.9,0,5.7-1.6,7.1-4.1l76.4-131.7c1.5-2.6,1.5-5.7,0-8.3l-76.4-131.7c-1.5-2.5-4.2-4.1-7.1-4.1Z"
+              />
+              <circle class="icon-property" cx="201.1" cy="180" r="54.1" />
+            </g>
+          </g>
+        </svg>
+      </div>
       <p class="label">Dashboard</p>
     </div>
   </nav>
