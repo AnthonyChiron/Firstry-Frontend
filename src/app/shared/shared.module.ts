@@ -35,6 +35,7 @@ import { MobileNavbarComponent } from './components/basic/mobile-navbar/mobile-n
 import { BadgeComponent } from './components/basic/badge/badge.component';
 import { RemoveAccentsPipe } from './pipe/remove-accents.pipe';
 import { ProgressBarComponent } from './components/basic/progress-bar/progress-bar.component';
+import { RiderCardMediumComponent } from './components/riders/rider-card-md/rider-card-md.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ProgressBarComponent } from './components/basic/progress-bar/progress-b
     BadgeComponent,
     RemoveAccentsPipe,
     ProgressBarComponent,
+    RiderCardMediumComponent,
   ],
   imports: [
     CommonModule,
@@ -105,6 +107,7 @@ import { ProgressBarComponent } from './components/basic/progress-bar/progress-b
     BadgeComponent,
     RemoveAccentsPipe,
     ProgressBarComponent,
+    RiderCardMediumComponent,
   ],
 })
 export class SharedModule {}

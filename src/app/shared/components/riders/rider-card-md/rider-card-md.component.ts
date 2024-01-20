@@ -12,6 +12,7 @@ export class RiderCardMediumComponent implements OnInit {
   @Input() width: number = 30;
   @Input() widthPhoto: number = 0;
   @Input() sample: boolean = false;
+  @Input() bgColor: string = '2';
 
   ngOnInit(): void {
     if (this.widthPhoto == 0) this.widthPhoto = this.width;
