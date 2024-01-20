@@ -15,5 +15,7 @@ RUN npm run build -- --configuration=${ENV}
 
 # Etape 2: Préparer l'image de production
 FROM nginx:alpine
+RUN echo "gzip on;" >> /etc/nginx/conf.d/default.conf
+RUN echo "gzip_types text/html text/css text/javascript application/javascript application/x-javascript;" >> /etc/nginx/conf.d/default.conf
 COPY --from=build-step /src/app/dist/firstry /usr/share/nginx/html
 COPY default.conf /etc/nginx/conf.d/default.conf
