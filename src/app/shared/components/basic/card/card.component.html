@@ -2,14 +2,29 @@
   class="card color-{{ color }}  size-{{ size }}"
   [class.sideImgCard]="img != ''"
   [class.fitContent]="fitContent"
+  [class.noPadding]="padding == false"
 >
   <div
     *ngIf="img != ''"
     class="sideImg"
     [ngStyle]="{ 'background-image': img }"
-  >
-    o
-  </div>
+  ></div>
+  <div
+    *ngIf="backgroundImg != ''"
+    class="fullHeight fullWidth absolute backgroundImg"
+    [ngStyle]="{
+    'background-image': backgroundImg != '' ? backgroundImg : '',
+    'background-size': backgroundImg != '' ? backgroundSize : '',
+    'background-position': backgroundImg != '' ? backgroundPosition : '',
+    'background-repeat': backgroundImg != '' ? backgroundRepeat : '',
+  }"
+  ></div>
+  <quadrillage
+    *ngIf="quadrillage"
+    class="fullHeight fullWidth absolute test"
+    [nbRows]="nbLines"
+    [nbColumns]="nbColumns"
+  ></quadrillage>
   <div class="main">
     <div
       class="header"
@@ -57,5 +72,21 @@
         <ng-content></ng-content>
       </div>
     </div>
+    <ng-content select="[footer]"></ng-content>
   </div>
+  <div
+    class="shadow"
+    *ngIf="shadow"
+    [ngStyle]="{
+      background:
+        'linear-gradient(' +
+        shadowDeg +
+        'deg, rgba(0, 0, 0, ' +
+        shadowColor +
+        ') 0%, rgba(0, 0, 0, 0) ' +
+        shadowLength +
+        '%, rgba(0, 0, 0, 0) 100%)',
+      'z-index': shadowIndex
+    }"
+  ></div>
 </div>

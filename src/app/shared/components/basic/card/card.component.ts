@@ -40,6 +40,25 @@ export class CardComponent implements OnInit {
   @Input() size: string = 'l';
   @Input() color: string = '1';
   @Input() fitContent: boolean = false;
+  @Input() padding: boolean = true;
+
+  // QUADRILLAGE
+  @Input() quadrillage: boolean = false;
+  @Input() nbLines: number = 6;
+  @Input() nbColumns: number = 6;
+
+  // BACKGROUND
+  @Input() backgroundImg: string = '';
+  @Input() backgroundSize: string = '';
+  @Input() backgroundPosition: string = '';
+  @Input() backgroundRepeat: string = 'no-repeat';
+
+  // SHADOW
+  @Input() shadow: boolean = false;
+  @Input() shadowColor: string = '0.2';
+  @Input() shadowDeg: string = '90';
+  @Input() shadowIndex: string = '0';
+  @Input() shadowLength: string = '25';
 
   // BUTTONS
   @Input() close: boolean = false;
@@ -62,6 +81,8 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.img != '') this.img = "url('" + this.img + "')";
+    if (this.backgroundImg != '')
+      this.backgroundImg = "url('" + this.backgroundImg + "')";
 
     this._screenSize.isMobile$.subscribe((isMobile) => {
       this.isMobile = isMobile;
