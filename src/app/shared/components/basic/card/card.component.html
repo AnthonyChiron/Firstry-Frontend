@@ -11,7 +11,6 @@
     o
   </div>
   <div class="main">
-    <loader class="loader" *ngIf="isLoading"></loader>
     <div
       class="header"
       [class.toggle]="toggle"
@@ -51,6 +50,8 @@
         ></btn>
       </div>
     </div>
+    <loader class="loader" *ngIf="isLoading"></loader>
+
     <div *ngIf="!toggle" [@toggleAnimation]>
       <div [@toggleAnimation] class="content">
         <ng-content></ng-content>

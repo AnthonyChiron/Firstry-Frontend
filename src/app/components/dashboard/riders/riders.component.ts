@@ -32,8 +32,7 @@ export class RidersComponent implements OnInit {
           .subscribe((result: any) => {
             this.registrations = result;
             this.pendingApprovalRegistrations = this.registrations.filter(
-              (registration) =>
-                registration.registrationState === 'pending_approval'
+              (registration) => registration.state === 'pending_approval'
             );
           });
       });

@@ -27,6 +27,7 @@ import { IsOrganizerContestGuard } from 'src/app/shared/guards/IsOrganizerContes
 import { ContestComponent } from '../contests/contest/contest.component';
 import { IsOrganizerGuard } from 'src/app/shared/guards/IsOrganizer/is-organizer-guard.service';
 import { RiderStateHandlerComponent } from './riders/rider-state-handler/rider-state-handler.component';
+import { OverviewRegistrationsComponent } from './overview/overview-registrations/overview-registrations.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -105,6 +106,7 @@ const dashboardRoutes: Routes = [
     RidersComponent,
     DangerZoneComponent,
     RiderStateHandlerComponent,
+    OverviewRegistrationsComponent,
   ],
   imports: [
     CommonModule,

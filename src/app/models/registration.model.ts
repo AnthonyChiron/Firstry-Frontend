@@ -3,5 +3,5 @@ import { GenericModel } from './generic.model';
 export interface RegistrationModel extends GenericModel {
   rider: String;
   category: String;
-  registrationState: String;
+  state: String;
 }

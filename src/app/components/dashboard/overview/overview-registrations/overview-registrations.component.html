@@ -1,0 +1,17 @@
+<card title="Riders inscrits" [isLoading]="contest == null">
+  <div *ngIf="contest && registrations">
+    <h3 class="nbRider">{{ registrations.length }}</h3>
+    <div class="flexColumn gap10">
+      <btn
+        type="third"
+        label="8 demandes en attentes"
+        icon="fa-solid fa-hourglass-half"
+        [routerLink]="['/dashboard', contest._id, 'riders']"
+      ></btn>
+      <progress-bar
+        [percentage]="100 / (nbMaxRegistrations / registrations.length)"
+      ></progress-bar>
+      <p class="max">Max {{ nbMaxRegistrations }}</p>
+    </div>
+  </div>
+</card>
