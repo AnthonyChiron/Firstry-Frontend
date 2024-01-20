@@ -1,3 +1,10 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContestModel, parseContestModel } from 'src/app/models/contest.model';
@@ -9,6 +16,13 @@ import { RegistrationsService } from 'src/app/shared/data/RegistrationsService/r
   selector: 'app-riders',
   templateUrl: './riders.component.html',
   styleUrls: ['./riders.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({ opacity: 0 })),
+      transition('void <=> *', animate('500ms ease-in-out')),
+      transition('* <=> void', animate('500ms ease-in-out')),
+    ]),
+  ],
 })
 export class RidersComponent implements OnInit {
   contest: ContestModel;
