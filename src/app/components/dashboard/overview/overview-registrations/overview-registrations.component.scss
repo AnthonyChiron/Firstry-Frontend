@@ -1,0 +1,15 @@
+@import "../../../../../styles/colors.scss";
+
+.nbRider {
+  font-size: 110px;
+  text-align: left;
+  line-height: 90px;
+  font-variation-settings: "wght" 900;
+  letter-spacing: -5px;
+}
+
+.max {
+  align-self: flex-end;
+  font-size: 13px;
+  color: $firstry-black-4;
+}

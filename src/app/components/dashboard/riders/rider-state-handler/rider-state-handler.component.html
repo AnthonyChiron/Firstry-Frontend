@@ -5,38 +5,39 @@
     <p *ngIf="registrations.length == 0">
       Pas d'inscriptions en attente pour le moment.
     </p>
-    <card
-      color="2"
-      class="rider"
-      size="xs"
-      [fitContent]="true"
+    <rider-card-md
       *ngFor="let registration of registrations"
+      [rider]="registration.rider"
+      [width]="10"
+      [height]="11"
+      [sample]="true"
+      bgColor="3"
+      class="rider"
     >
-      <div class="rider">
-        <img class="photo" [src]="registration.rider.photoUrl" alt="" />
-        <div class="flexRow spaceBetween">
-          <div class="name">
-            <h4>{{ registration.rider.firstName }}</h4>
-            <h3>{{ registration.rider.lastName }}</h3>
-          </div>
-          <div class="cat">
-            <h4>{{ registration.category.name }}</h4>
-          </div>
-        </div>
-        <div class="flexRow spaceBetween">
-          <btn
-            type="danger"
-            label="Refuser"
-            (click)="refuseRider(registration._id)"
-          ></btn>
-          <btn
-            type="valid"
-            label="Valider"
-            (click)="validRider(registration._id)"
-          ></btn>
-        </div>
+      <div class="infos">
+        <p class="name">
+          {{ registration.rider.firstName | Capitalize }}
+          {{ registration.rider.lastName[0] + "." | uppercase }}
+        </p>
+        <p class="cat">{{ registration.category.name }}</p>
       </div>
-    </card>
+      <div class="btns">
+        <btn
+          type="danger"
+          [size]="screenWidth > 1300 ? 's' : 'm'"
+          [label]="screenWidth > 1300 ? 'Refuser' : ''"
+          [icon]="screenWidth > 1300 ? '' : 'fa-solid fa-xmark'"
+          (click)="refuseRider(registration._id)"
+        ></btn>
+        <btn
+          type="valid"
+          [size]="screenWidth > 1300 ? 's' : 'm'"
+          [label]="screenWidth > 1300 ? 'Valider' : ''"
+          [icon]="screenWidth > 1300 ? '' : 'fa-solid fa-check'"
+          (click)="validRider(registration._id)"
+        ></btn>
+      </div>
+    </rider-card-md>
     <div class="shadow" *ngIf="registrations.length > 6"></div>
   </div>
 </card>

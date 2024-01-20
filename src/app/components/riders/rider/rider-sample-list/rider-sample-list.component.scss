@@ -5,7 +5,7 @@ loader {
 }
 
 .content {
-  width: 82vw;
+  width: 80vw;
   display: flex;
   align-items: center;
   position: relative;
@@ -14,17 +14,13 @@ loader {
 }
 
 .card {
-  height: 25vw;
-  width: 40vw;
+  height: 21vw;
+  width: 20vw;
 }
 
 @media only screen and (min-width: 768px) {
-  .content {
-    height: 14vw;
-  }
-
   .card {
     width: 10vw;
-    height: 10vw;
+    height: 12vw;
   }
 }

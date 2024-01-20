@@ -1,7 +1,7 @@
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RiderCardMediumComponent } from './card/rider-card-md/rider-card-md.component';
+import { RiderCardMediumComponent } from '../../shared/components/riders/rider-card-md/rider-card-md.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RidersComponent } from './riders.component';
 import { RidersService } from 'src/app/shared/data/RidersService/riders.service';
@@ -19,7 +19,6 @@ const ridersRoutes: Routes = [
 @NgModule({
   declarations: [
     RidersComponent,
-    RiderCardMediumComponent,
     RiderCardLargeComponent,
     RiderCardSampleComponent,
     RiderComponent,
@@ -28,5 +27,6 @@ const ridersRoutes: Routes = [
   ],
   imports: [CommonModule, RouterModule.forChild(ridersRoutes), SharedModule],
   providers: [RidersService],
+  exports: [RiderCardMediumComponent],
 })
 export class RidersModule {}

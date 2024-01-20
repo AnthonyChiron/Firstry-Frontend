@@ -6,6 +6,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { RegistrationsService } from 'src/app/shared/data/RegistrationsService/registrations.service';
+import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 
 @Component({
   selector: 'rider-state-handler',
@@ -15,10 +16,19 @@ import { RegistrationsService } from 'src/app/shared/data/RegistrationsService/r
 export class RiderStateHandlerComponent implements OnInit, OnChanges {
   @Input() registrations: any[] = [];
   @Input() contest: any;
+  screenWidth: number = 0;
 
-  constructor(private _registrationService: RegistrationsService) {}
+  constructor(
+    private _registrationService: RegistrationsService,
+    private _screenSize: ScreenSizeService
+  ) {}
 
   ngOnInit(): void {
+    this._screenSize.screenWidth$.subscribe((screenWidth) => {
+      this.screenWidth = screenWidth;
+      console.log(this.screenWidth);
+    });
+
     console.log(this.registrations);
   }
 
@@ -35,25 +45,31 @@ export class RiderStateHandlerComponent implements OnInit, OnChanges {
   }
 
   validRider(registrationId) {
-    this._registrationService
-      .validRiderRegistration(registrationId)
-      .subscribe((res) => {
-        console.log(res);
-        this.registrations = this.registrations.filter(
-          (registration) => registration._id != registrationId
-        );
-      });
+    this.registrations = this.registrations.filter(
+      (registration) => registration._id != registrationId
+    );
+    // this._registrationService
+    //   .validRiderRegistration(registrationId)
+    //   .subscribe((res) => {
+    //     console.log(res);
+    //     this.registrations = this.registrations.filter(
+    //       (registration) => registration._id != registrationId
+    //     );
+    //   });
   }
 
   refuseRider(registrationId) {
-    this._registrationService
-      .refuseRiderRegistration(registrationId)
-      .subscribe((res) => {
-        console.log(res);
-        // Remove registration from registrations
-        this.registrations = this.registrations.filter(
-          (registration) => registration._id != registrationId
-        );
-      });
+    this.registrations = this.registrations.filter(
+      (registration) => registration._id != registrationId
+    );
+    // this._registrationService
+    //       .refuseRiderRegistration(registrationId)
+    //       .subscribe((res) => {
+    //         console.log(res);
+    //         // Remove registration from registrations
+    //         this.registrations = this.registrations.filter(
+    //           (registration) => registration._id != registrationId
+    //         );
+    //       });
   }
 }

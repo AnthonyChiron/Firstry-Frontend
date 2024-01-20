@@ -1,6 +1,6 @@
 <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'" [@fadeInOut]>
   <div class="left" [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
-    <contest-infos-summary [contest]="contest"></contest-infos-summary>
+    <overview-registrations [contest]="contest"></overview-registrations>
     <list-categories [contest]="contest"></list-categories>
   </div>
   <div class="right">

@@ -1,14 +1,116 @@
 <h1 class="mainTitle">FIRSTRY</h1>
-<card
-  *ngIf="user && user.role"
-  title="Bienvenue {{
-    user.rider ? user.rider.firstName : user.organizer.name
-  }}"
->
-  <p>Sur la version 2.0 de Firstry</p>
-  <btn
-    [label]="'Se déconnecté'"
-    icon="fa-solid fa-arrow-right-from-bracket"
-    (click)="logout()"
-  ></btn>
-</card>
+<div class="main flexCardRow">
+  <div class="flexCardColumn fullHeight flex3 gapCard">
+    <div class="flexCardRow fullHeight flex2">
+      <card
+        class="flex2"
+        [quadrillage]="true"
+        [shadow]="true"
+        shadowDeg="340"
+        shadowColor="0.5"
+        shadowLength="40"
+        shadowIndex="2"
+      >
+        <h2 class="title">
+          Toute la compétition extrême à portée de mains !
+        </h2></card
+      ><card
+        class="flex1 cursorPointer"
+        backgroundImg="../../../assets/accueil/Carlla ecran.webp"
+        backgroundSize="140%"
+        backgroundRepeat="no-repeat"
+        backgroundPosition="50% 20%"
+        [shadow]="true"
+        shadowDeg="0"
+        shadowColor="0.9"
+        shadowLength="30"
+        shadowIndex="2"
+        [quadrillage]="true"
+      >
+        <div class="youtube">
+          <h2>Youtube</h2>
+          <p>Viens découvrir notre dernière vidéo sur Carla et Armelle !</p>
+        </div>
+      </card>
+    </div>
+    <div class="flexCardRow fullHeight flex1">
+      <card
+        class="flex1 cursorPointer"
+        backgroundImg="../../../assets/accueil/Cup.webp"
+        backgroundSize="12vw"
+        backgroundPosition="19vw 1vw"
+        [quadrillage]="true"
+        [nbColumns]="6"
+        [nbLines]="4"
+        [shadow]="true"
+        shadowDeg="327"
+        shadowColor="0.6"
+        routerLink="/contests"
+      >
+        <div class="contest_rider">
+          <h2>Voir les contests</h2>
+          <p>
+            Parcourez la liste des contests proche de chez vous. <br />
+            Et inscrivez-vous !
+          </p>
+        </div> </card
+      ><card
+        class="flex1 cursorPointer"
+        backgroundImg="../../../assets/accueil/casque copie.webp"
+        backgroundSize="12vw"
+        backgroundPosition="19vw 1vw"
+        [quadrillage]="true"
+        [nbColumns]="6"
+        [nbLines]="4"
+        [shadow]="true"
+        shadowDeg="327"
+        shadowColor="0.6"
+        routerLink="/riders"
+      >
+        <div class="contest_rider">
+          <h2>Voir les riders</h2>
+          <p>
+            Parcourez la liste de tous les riders et suivez leurs résultats !
+          </p>
+        </div></card
+      >
+    </div>
+  </div>
+  <div class="flexCardColumn flex1">
+    <card
+      class="flex1 cursorPointer"
+      backgroundImg="../../../assets/accueil/DSC04967 copie.webp"
+      backgroundSize="cover 150%"
+      [shadow]="true"
+      shadowDeg="180"
+      shadowLength="50"
+      shadowColor="0.7"
+      shadowIndex="2"
+    >
+      <div class="inscription">
+        <h3>Inscription</h3>
+        <h2>Rider</h2>
+      </div>
+    </card>
+    <card
+      class="flex1 cursorPointer"
+      backgroundImg="../../../assets/accueil/gerson-repreza-OXZSLlx-GzU-unsplash.webp"
+      backgroundSize="300%"
+      [shadow]="true"
+      shadowDeg="180"
+      shadowLength="50"
+      shadowColor="0.7"
+      shadowIndex="2"
+    >
+      <div class="inscription">
+        <h3>Inscription</h3>
+        <h2>Contest</h2>
+      </div></card
+    >
+  </div>
+</div>
+<div class="down">
+  <i class="fa-solid fa-arrow-down"></i>
+  <p>SCROLL</p>
+  <i class="fa-solid fa-arrow-down"></i>
+</div>

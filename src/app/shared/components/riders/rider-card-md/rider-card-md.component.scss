@@ -1,0 +1,157 @@
+@import "../../../../../styles/components.scss";
+@import "../../../../../styles/colors.scss";
+@import "../../../../../styles/variables.scss";
+
+$scale: 1;
+$height: 190px * $scale;
+$width: 40vw * $scale;
+$info-height: 14vw * $scale;
+$bottom-photo: 16px;
+$bottom-infos: $bottom-photo * 4.6;
+
+.card {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  width: $width;
+  background-color: $firstry-white-2;
+  border-radius: $border-radius-1;
+  margin: 0;
+  transition: 0.3s;
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    .photoRider {
+      position: relative;
+      z-index: 1;
+      border-radius: $border-radius-1;
+      -webkit-filter: drop-shadow(0px 0px 15px #8c8c8c);
+      filter: drop-shadow(0px 0px 15px #8c8c8c);
+    }
+
+    .ngContent {
+      position: absolute;
+      z-index: 6;
+      padding-left: 8px;
+      padding-right: 8px;
+      margin-bottom: 4px;
+      width: 100%;
+    }
+
+    .infos {
+      position: absolute;
+      z-index: 5;
+      padding-left: 8px;
+      padding-right: 8px;
+      margin-bottom: 4px;
+      width: 100%;
+
+      .name {
+        color: $firstry-white-1;
+        border-radius: $border-radius-1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .firstName {
+          font-variation-settings: "wght" 300;
+          font-size: max(11px);
+        }
+
+        .lastName {
+          font-size: 13px;
+          font-variation-settings: "wght" 700;
+          position: relative;
+          bottom: 3px;
+        }
+      }
+
+      .sep {
+        height: 1px;
+        width: 20px;
+        background-color: white;
+        margin-bottom: 4px;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+
+        .sports {
+          color: white;
+          font-size: 11px;
+          font-style: italic;
+          font-variation-settings: "wght" 100;
+        }
+
+        .nationality {
+          align-self: center;
+          border-radius: 2px;
+          height: 8px;
+        }
+      }
+    }
+  }
+
+  .shadow {
+    position: absolute;
+    z-index: 1;
+    border-radius: $border-radius-1;
+    bottom: 0;
+  }
+
+  .quadrillage {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.bgTransparent {
+  background-color: transparent;
+}
+
+.bg2 {
+  background-color: $firstry-white-2;
+}
+
+.bg3 {
+  background-color: $firstry-white-3;
+}
+
+@media only screen and (min-width: 768px) {
+  .card .content .infos .name {
+    .firstName {
+      position: relative;
+      top: 0.4vw;
+      font-size: max(15px, 1.5vw);
+    }
+
+    .lastName {
+      font-size: max(17px, 1.7vw);
+    }
+  }
+
+  .card .content .infos .sep {
+    margin-bottom: 7px;
+  }
+
+  .card .content .infos .footer {
+    .sports {
+      font-size: max(10px, 1vw);
+    }
+
+    .nationality {
+      height: 10px;
+    }
+  }
+
+  // .card:hover {
+  //   transform: scale(1.04);
+  //   -webkit-filter: drop-shadow(0px 0px 15px #a4a4a461);
+  //   filter: drop-shadow(0px 0px 15px #a4a4a461);
+  // }
+}

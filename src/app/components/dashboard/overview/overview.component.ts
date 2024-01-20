@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ContestsService } from 'src/app/shared/data/ContestsService/contests.service';
-import { ContestModel } from 'src/app/models/contest.model';
+import { ContestModel, parseContestModel } from 'src/app/models/contest.model';
 import {
   animate,
   state,
@@ -40,9 +40,8 @@ export class OverviewComponent implements OnInit {
 
     this._activatedRoute.parent.params.subscribe((params) => {
       this.cs.getById(params.contestId).subscribe((contest) => {
-        this.contest = contest;
-        this.contest.startDate = new Date(this.contest.startDate);
-        this.contest.endDate = new Date(this.contest.endDate);
+        this.contest = parseContestModel(contest);
+        console.log(this.contest);
       });
     });
   }
