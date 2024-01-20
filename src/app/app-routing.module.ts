@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { AccueilComponent } from './components/accueil/accueil.component';
-import { IsValidGuard } from './shared/guards/isValid/is-valid.service';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { IsNotAuthGuard } from './shared/guards/IsNotAuth/is-not-auth.service';
 
 const routes: Routes = [
-  { path: '', component: AccueilComponent },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./components/accueil/accueil.module').then(
+        (m) => m.AccueilModule
+      ),
+  },
   {
     path: 'riders',
     loadChildren: () =>

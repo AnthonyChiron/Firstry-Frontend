@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AccueilComponent } from './components/accueil/accueil.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MobileSidebarComponent } from './components/sidebar/mobile-sidebar/mobile-sidebar.component';
@@ -20,7 +19,6 @@ import { AuthInterceptor } from './shared/data/InterceptorHttp/interceptorHttp.s
 @NgModule({
   declarations: [
     AppComponent,
-    AccueilComponent,
     NotFoundComponent,
     MobileSidebarComponent,
     DesktopSidebarComponent,
