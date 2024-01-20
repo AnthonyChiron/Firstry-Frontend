@@ -11,11 +11,25 @@ import { slider } from 'src/app/shared/transitions/slider';
 import { fadeAnimation } from 'src/app/shared/transitions/fade';
 import { filter } from 'rxjs';
 import { ContestModel } from 'src/app/models/contest.model';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({ opacity: 0 })),
+      transition('void <=> *', animate('500ms ease-in-out')),
+      transition('* <=> void', animate('500ms ease-in-out')),
+    ]),
+  ],
 })
 export class DashboardComponent implements OnInit {
   constructor(

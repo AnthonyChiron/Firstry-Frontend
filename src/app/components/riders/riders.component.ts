@@ -3,11 +3,25 @@ import { RiderModel } from 'src/app/models/rider.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RidersService } from 'src/app/shared/data/RidersService/riders.service';
 import { Subscription } from 'rxjs';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'riders',
   templateUrl: './riders.component.html',
   styleUrls: ['./riders.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({ opacity: 0 })),
+      transition('void <=> *', animate('500ms ease-in-out')),
+      transition('* <=> void', animate('500ms ease-in-out')),
+    ]),
+  ],
 })
 export class RidersComponent implements OnInit {
   isLoading: boolean = false;
