@@ -13,10 +13,10 @@
     <img
       *ngIf="rider.photoUrl && rider.photoUrl != ''"
       [ngSrc]="rider.photoUrl"
-      width="100"
-      height="100"
-      alt="Rider"
+      rel="preload"
+      as="image"
       class="photoRider"
+      fill
       priority
     />
 
