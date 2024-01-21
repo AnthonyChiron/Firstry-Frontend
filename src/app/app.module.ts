@@ -15,6 +15,7 @@ import { SharedModule } from './shared/shared.module';
 import { DesktopSidebarComponent } from './components/sidebar/desktop-sidebar/desktop-sidebar.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { AuthInterceptor } from './shared/data/InterceptorHttp/interceptorHttp.service';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [

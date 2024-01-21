@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, registerLocaleData } from '@angular/common';
+import {
+  CommonModule,
+  NgOptimizedImage,
+  registerLocaleData,
+} from '@angular/common';
 import { NavIconBtnComponent } from './components/basic/nav-icon-btn/nav-icon-btn.component';
 import { ModalComponent } from './components/basic/modal/modal.component';
 import { ScreenSizeService } from './services/screenSize/screen-size.service';
@@ -77,6 +81,7 @@ import { RiderCardMediumComponent } from './components/riders/rider-card-md/ride
       useFactory: adapterFactory,
     }),
     NgChartsModule,
+    NgOptimizedImage,
   ],
   providers: [ScreenSizeService],
   exports: [
