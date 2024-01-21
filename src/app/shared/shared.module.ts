@@ -81,7 +81,6 @@ import { RiderCardMediumComponent } from './components/riders/rider-card-md/ride
       useFactory: adapterFactory,
     }),
     NgChartsModule,
-    NgOptimizedImage,
   ],
   providers: [ScreenSizeService],
   exports: [

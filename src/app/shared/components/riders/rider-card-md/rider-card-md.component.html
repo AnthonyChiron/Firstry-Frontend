@@ -12,12 +12,10 @@
     />
     <img
       *ngIf="rider.photoUrl && rider.photoUrl != ''"
-      [ngSrc]="rider.photoUrl"
+      [src]="rider.photoUrl"
       rel="preload"
       as="image"
       class="photoRider"
-      fill
-      priority
     />
 
     <div class="infos">
