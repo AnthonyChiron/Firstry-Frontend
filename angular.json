@@ -35,7 +35,7 @@
               "src/styles/variables.scss",
               "src/styles/colors.scss",
               "src/styles/angular-calendar.scss",
-              "src/assets/font-awesome/css/all.css"
+              "src/assets/font-awesome/css/all.min.css"
             ],
 
             "scripts": []
