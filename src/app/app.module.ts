@@ -31,7 +31,6 @@ import { AuthInterceptor } from './shared/data/InterceptorHttp/interceptorHttp.s
     HttpClientModule,
     BrowserAnimationsModule,
     LoginModule,
-    SharedModule,
   ],
   providers: [
     UsersService,
