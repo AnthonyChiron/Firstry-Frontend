@@ -37,12 +37,18 @@
               "src/styles/angular-calendar.scss",
               "src/assets/font-awesome/css/all.min.css"
             ],
-            "optimization": true,
-            "buildOptimizer": true,
             "scripts": []
           },
           "configurations": {
             "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -60,10 +66,17 @@
                   "maximumWarning": "2kb",
                   "maximumError": "12kb"
                 }
-              ],
-              "outputHashing": "all"
+              ]
             },
             "development": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
