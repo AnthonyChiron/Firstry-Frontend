@@ -37,7 +37,8 @@
               "src/styles/angular-calendar.scss",
               "src/assets/font-awesome/css/all.min.css"
             ],
-
+            "optimization": true,
+            "buildOptimizer": true,
             "scripts": []
           },
           "configurations": {
