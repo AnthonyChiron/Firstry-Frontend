@@ -1,6 +1,15 @@
-<div class="flexColumn alignCenter" [@fadeInOut]>
-  <rider-state-handler
-    class="fullWidth"
-    [registrations]="pendingApprovalRegistrations"
-  ></rider-state-handler>
+<div class="flexCardRow" [@fadeInOut] *ngIf="contest && registrations">
+  <categories-navigation
+    class="flex1"
+    [categories]="contest.categories"
+    [registrations]="registrations"
+    [selectedCategory]="selectedCategory"
+    (categorySelected)="onSelectedCategory($event)"
+  ></categories-navigation>
+  <pools-handler
+    class="flex2"
+    [category]="selectedCategory"
+    [registrations]="selectedRegistrations"
+  >
+  </pools-handler>
 </div>

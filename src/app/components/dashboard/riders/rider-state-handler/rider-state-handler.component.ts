@@ -34,6 +34,14 @@ export class RiderStateHandlerComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.registrations.currentValue.length != 0) {
+      this.registrations.push(this.registrations[0]);
+      this.registrations.push(this.registrations[0]);
+      this.registrations.push(this.registrations[0]);
+      this.registrations.push(this.registrations[0]);
+      this.registrations.push(this.registrations[0]);
+      this.registrations.push(this.registrations[0]);
+      this.registrations.push(this.registrations[0]);
+      this.registrations.push(this.registrations[0]);
       console.log(this.registrations);
     }
   }

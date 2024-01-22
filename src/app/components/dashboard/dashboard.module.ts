@@ -28,7 +28,10 @@ import { ContestComponent } from '../contests/contest/contest.component';
 import { IsOrganizerGuard } from 'src/app/shared/guards/IsOrganizer/is-organizer-guard.service';
 import { RiderStateHandlerComponent } from './riders/rider-state-handler/rider-state-handler.component';
 import { OverviewRegistrationsComponent } from './overview/overview-registrations/overview-registrations.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CategoriesNavigationComponent } from './riders/categories-navigation/categories-navigation.component';
+import { PoolsHandlerComponent } from './riders/pools-handler/pools-handler.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 const dashboardRoutes: Routes = [
   {
@@ -47,12 +50,12 @@ const dashboardRoutes: Routes = [
         canActivate: [IsAuthGuard],
       },
       {
-        path: 'planning',
+        path: 'categories',
         component: CategoriesDetailsComponent,
         canActivate: [IsAuthGuard],
       },
       {
-        path: 'riders',
+        path: 'pools',
         component: RidersComponent,
         canActivate: [IsAuthGuard],
       },
@@ -77,11 +80,6 @@ const dashboardRoutes: Routes = [
     path: 'preview/:contestId',
     component: ContestComponent,
     canActivate: [IsOrganizerContestGuard, IsAuthGuard],
-  },
-  {
-    path: 'create-contest',
-    component: CreateContestComponent,
-    canActivate: [IsAuthGuard],
   },
 ];
 
@@ -108,12 +106,15 @@ const dashboardRoutes: Routes = [
     DangerZoneComponent,
     RiderStateHandlerComponent,
     OverviewRegistrationsComponent,
+    CategoriesNavigationComponent,
+    PoolsHandlerComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(dashboardRoutes),
     SharedModule,
     FormSharedModule,
+    DragDropModule,
   ],
 })
 export class DashboardModule {}

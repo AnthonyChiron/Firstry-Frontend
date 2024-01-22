@@ -1,7 +1,18 @@
 <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'" [@fadeInOut]>
-  <div class="left" [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
-    <overview-registrations [contest]="contest"></overview-registrations>
-    <list-categories [contest]="contest"></list-categories>
+  <div class="left flexCardColumn">
+    <div class="flexCardRow">
+      <overview-registrations
+        [nbMaxRegistrations]="nbMaxRegistrations"
+        [registrations]="registrations"
+        [pendingRegistrations]="pendingRegistrations"
+        [contest]="contest"
+      ></overview-registrations>
+      <list-categories class="flex1" [contest]="contest"></list-categories>
+    </div>
+    <rider-state-handler
+      [registrations]="registrations"
+      class="flex1 test"
+    ></rider-state-handler>
   </div>
   <div class="right">
     <planning

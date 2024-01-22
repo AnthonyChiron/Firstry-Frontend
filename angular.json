@@ -30,6 +30,7 @@
               "src/assets/font-awesome/webfonts"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
               "src/styles/customTheme.css",
               "src/styles/variables.scss",
@@ -124,6 +125,7 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
               "src/styles/customTheme.css",
               "src/styles/variables.scss",

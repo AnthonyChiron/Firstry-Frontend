@@ -1,0 +1,49 @@
+<card *ngIf="category && registrations" title="Poules - {{ category.name }}">
+  <div class="flexColumn spaceBetween gap10">
+    <div class="header">
+      <div class="flexRow alignCenter gap10">
+        <p>Riders par poule</p>
+        <dropdown
+          [options]="perPoolOptions"
+          (selected)="selectPerPool($event.value)"
+          [value]="ridersPerPool"
+        ></dropdown>
+      </div>
+    </div>
+    <div class="content">
+      <div class="flexColumn alignCenter" *ngIf="pools.length == 0">
+        <h3>Il n'y a pour l'instant pas d'incrit dans cette poule.</h3>
+      </div>
+      <div class="flexColumn spaceBetween gap10">
+        <!-- ...autres éléments... -->
+        <div
+          *ngIf="pools.length > 0"
+          class="pools flexRow flexWrap spaceAround"
+        >
+          <card color="2 flex1" *ngFor="let pool of pools; index as i">
+            <h3>Poule {{ i + 1 }}</h3>
+            <div
+              class="flexColumn flex1 fullHeight gap10"
+              cdkDropList
+              [cdkDropListData]="pool"
+              [cdkDropListConnectedTo]="poolsIds"
+              (cdkDropListDropped)="drop($event)"
+              [id]="'pool-' + i"
+            >
+              <div
+                class="rider flexRow cursorPointer"
+                size="s"
+                color="3"
+                cdkDrag
+                *ngFor="let rider of pool"
+              >
+                {{ rider.firstName | lowercase | Capitalize }} -
+                {{ rider.lastName | uppercase }}
+              </div>
+            </div>
+          </card>
+        </div>
+      </div>
+    </div>
+  </div></card
+>

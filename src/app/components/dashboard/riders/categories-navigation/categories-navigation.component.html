@@ -1,0 +1,29 @@
+<card title="Catégories" *ngIf="categories && registrations">
+  <div class="flexColumn gap10">
+    <card
+      class="category"
+      size="s"
+      [class.active]="selectedCategory == category"
+      *ngFor="let category of categories"
+      (click)="onCategorySelected(category)"
+      color="{{ selectedCategory == category ? 'black' : '2' }}"
+    >
+      <div class="flexRow alignCenter spaceBetween cursorPointer">
+        <div class="titleCategory">
+          <h3>{{ category.name }}</h3>
+          <p>-</p>
+          <p>{{ category.sports }}</p>
+        </div>
+        <div class="tags">
+          <info-tag
+            size="l"
+            icon="fa-solid fa-user"
+            label="{{ getNbRegistrations(category._id) }} / {{
+              category.maxRiders
+            }}"
+          ></info-tag>
+        </div>
+      </div>
+    </card>
+  </div>
+</card>

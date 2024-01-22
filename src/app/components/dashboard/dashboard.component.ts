@@ -46,6 +46,7 @@ export class DashboardComponent implements OnInit {
   contests: ContestModel[] = [];
   selectedContest: ContestModel;
   selectedContestId: string;
+  isCreateContest: boolean = false;
 
   ngOnInit(): void {
     this.isLoading = true;
