@@ -11,4 +11,28 @@ export class PoolsService extends CrudService<PoolModel> {
   constructor(http: HttpClient, authService: AuthService) {
     super(http, authService, 'pools');
   }
+
+  getPoolsByStepId(stepId: string) {
+    return this.http.get<PoolModel[]>(
+      `${this.baseUrl}/getPoolsByStepId/${stepId}`
+    );
+  }
+
+  createPools(stepId: string, pools: any[]) {
+    return this.http.post<PoolModel[]>(
+      `${this.baseUrl}/createPoolsByStepId/${stepId}`,
+      {
+        poolsEntries: pools,
+      }
+    );
+  }
+
+  updatePools(stepId: string, pools: any[]) {
+    return this.http.post<PoolModel[]>(
+      `${this.baseUrl}/updatePoolsByStepId/${stepId}`,
+      {
+        poolsEntries: pools,
+      }
+    );
+  }
 }

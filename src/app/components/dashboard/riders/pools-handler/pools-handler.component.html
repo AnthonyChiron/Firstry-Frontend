@@ -1,49 +1,107 @@
-<card *ngIf="category && registrations" title="Poules - {{ category.name }}">
+<card
+  *ngIf="category && registrations"
+  title="Poules - {{ category.name }}"
+  [btn]="pools.length > 0 && !edit"
+  (btnClicked)="edit = !edit"
+>
   <div class="flexColumn spaceBetween gap10">
-    <div class="header">
-      <div class="flexRow alignCenter gap10">
-        <p>Riders par poule</p>
-        <dropdown
-          [options]="perPoolOptions"
-          (selected)="selectPerPool($event.value)"
-          [value]="ridersPerPool"
-        ></dropdown>
-      </div>
-    </div>
     <div class="content">
       <div class="flexColumn alignCenter" *ngIf="pools.length == 0">
         <h3>Il n'y a pour l'instant pas d'incrit dans cette poule.</h3>
       </div>
-      <div class="flexColumn spaceBetween gap10">
-        <!-- ...autres éléments... -->
-        <div
-          *ngIf="pools.length > 0"
-          class="pools flexRow flexWrap spaceAround"
-        >
-          <card color="2 flex1" *ngFor="let pool of pools; index as i">
-            <h3>Poule {{ i + 1 }}</h3>
-            <div
-              class="flexColumn flex1 fullHeight gap10"
-              cdkDropList
-              [cdkDropListData]="pool"
-              [cdkDropListConnectedTo]="poolsIds"
-              (cdkDropListDropped)="drop($event)"
-              [id]="'pool-' + i"
-            >
+      <div *ngIf="isLoading" class="flexRow alignCenter"><loader></loader></div>
+      <div
+        *ngIf="pools.length > 0 && edit && !isLoading"
+        class="flexColumn gap10"
+      >
+        <div class="flexRow alignCenter gap10">
+          <p>Riders par poule</p>
+          <dropdown
+            [options]="perPoolOptions"
+            (selected)="selectPerPool($event.value)"
+            [value]="ridersPerPool"
+          ></dropdown>
+        </div>
+        <p>
+          Vous pouvez déplacer les riders d'une poule à une autre. <br />
+          Pensez à sauvegarder en validant en bas !
+        </p>
+        <div class="pools flexRow flexWrap">
+          <card color="2 flex1" size="m" *ngFor="let pool of pools; index as i">
+            <div class="flexColumn alignCenter spaceBetween">
+              <h3>Poule {{ i + 1 }}</h3>
               <div
-                class="rider flexRow cursorPointer"
-                size="s"
-                color="3"
-                cdkDrag
-                *ngFor="let rider of pool"
+                class="flexColumn alignCenter flex1 fullHeight gap10"
+                cdkDropList
+                [cdkDropListData]="pool"
+                [cdkDropListConnectedTo]="poolsIds"
+                (cdkDropListDropped)="drop($event)"
+                [id]="'pool-' + i"
+                [ngStyle]="{
+                  'min-height': ridersPerPool * 3 + 'vw',
+                  width: '10vw'
+                }"
               >
-                {{ rider.firstName | lowercase | Capitalize }} -
-                {{ rider.lastName | uppercase }}
+                <div
+                  class="rider flexRow alignCenter cursorGrab gap10"
+                  size="s"
+                  color="3"
+                  cdkDrag
+                  [ngStyle]="{
+                    width: '10vw'
+                  }"
+                  *ngFor="let registrations of pool"
+                >
+                  <!-- <i class="fa-solid fa-grip-vertical"></i> -->
+                  <div class="grip">
+                    <div class="lign">
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                    </div>
+                    <div class="lign">
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                    </div>
+                    <div class="lign">
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                    </div>
+                  </div>
+                  {{ registrations.rider.firstName | lowercase | Capitalize }} -
+                  {{ registrations.rider.lastName | uppercase }}
+                </div>
               </div>
             </div>
           </card>
         </div>
       </div>
+      <div *ngIf="!edit && !isLoading" class="pools flexRow flexWrap">
+        <card color="2 flex1" size="m" *ngFor="let pool of pools; index as i">
+          <div class="flexColumn alignCenter spaceBetween">
+            <h3>Poule {{ i + 1 }}</h3>
+            <div class="flexColumn alignCenter flex1 fullHeight gap10">
+              <div
+                class="rider flexRow"
+                size="s"
+                color="3"
+                [ngStyle]="{
+                  width: '10vw'
+                }"
+                *ngFor="let registrations of pool"
+              >
+                {{ registrations.rider.firstName | lowercase | Capitalize }} -
+                {{ registrations.rider.lastName | uppercase }}
+              </div>
+            </div>
+          </div>
+        </card>
+      </div>
     </div>
-  </div></card
->
+    <note [text]="errorMessage" *ngIf="isError" type="errorLabel"></note>
+    <div class="footer">
+      <div *ngIf="edit" class="flexRow spaceBetween">
+        <btn type="danger" label="Annuler" (click)="cancel()"></btn>
+        <btn type="valid" label="Valider" (click)="submit()"></btn>
+      </div>
+    </div></div
+></card>
