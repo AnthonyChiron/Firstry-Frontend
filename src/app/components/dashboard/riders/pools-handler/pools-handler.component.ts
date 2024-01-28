@@ -58,15 +58,13 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     this.currentStepId = this.category.steps[0]._id;
     await this.getPoolFromDb();
 
-    console.log(this.isNewPools);
-    console.log(this.registrations);
     if (this.registrations && this.isNewPools)
       this.formatPoolsFromRegistrations(this.registrations);
   }
 
   selectPerPool(event) {
     this.ridersPerPool = event;
-    this.formatPoolsFromRegistrations(this.registrations);
+    this.formatPoolsOnRiderPerPoolChange();
   }
 
   updatePoolsIds() {
@@ -74,7 +72,6 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
   }
 
   drop(event: CdkDragDrop<any>) {
-    console.log(event.container.data);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -133,7 +130,12 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
 
       return acc;
     }, []);
-    console.log(this.pools);
+  }
+
+  formatPoolsOnRiderPerPoolChange() {
+    // Format pools by rider per pool
+    const riders = this.pools.flat();
+    this.formatPoolsFromRegistrations(riders);
   }
 
   cancel() {
@@ -177,8 +179,6 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
       this._poolsService
         .createPools(this.currentStepId, pools)
         .subscribe((pools) => {
-          console.log(pools);
-
           this.originalPools = [...pools];
           this.isNewPools = false;
           this.isLoading = false;
@@ -187,8 +187,6 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
       this._poolsService
         .updatePools(this.currentStepId, pools)
         .subscribe((pools) => {
-          console.log(pools);
-
           this.originalPools = [...pools];
           this.isNewPools = false;
           this.isLoading = false;

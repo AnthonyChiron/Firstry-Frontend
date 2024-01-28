@@ -2,10 +2,14 @@
   display: flex;
   align-items: center;
   width: 50%;
-  gap: 10px;
+  gap: 12px;
 
   h3 {
     font-size: max(20px, 1.2vw);
+  }
+
+  p {
+    font-variation-settings: "wght" 400;
   }
 
   h3,

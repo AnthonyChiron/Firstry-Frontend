@@ -1,9 +1,19 @@
 <card
   *ngIf="category && registrations"
-  title="Poules - {{ category.name }}"
+  [title]="'Poules - ' + category.name"
   [btn]="pools.length > 0 && !edit"
   (btnClicked)="edit = !edit"
 >
+  <div header>
+    <div *ngIf="edit" class="flexRow alignCenter gap10">
+      <p>Riders par poule</p>
+      <dropdown
+        [options]="perPoolOptions"
+        (selected)="selectPerPool($event.value)"
+        [value]="ridersPerPool"
+      ></dropdown>
+    </div>
+  </div>
   <div class="flexColumn spaceBetween gap10">
     <div class="content">
       <div class="flexColumn alignCenter" *ngIf="pools.length == 0">
@@ -14,87 +24,91 @@
         *ngIf="pools.length > 0 && edit && !isLoading"
         class="flexColumn gap10"
       >
-        <div class="flexRow alignCenter gap10">
-          <p>Riders par poule</p>
-          <dropdown
-            [options]="perPoolOptions"
-            (selected)="selectPerPool($event.value)"
-            [value]="ridersPerPool"
-          ></dropdown>
-        </div>
         <p>
           Vous pouvez déplacer les riders d'une poule à une autre. <br />
           Pensez à sauvegarder en validant en bas !
         </p>
         <div class="pools flexRow flexWrap">
-          <card color="2 flex1" size="m" *ngFor="let pool of pools; index as i">
-            <div class="flexColumn alignCenter spaceBetween">
-              <h3>Poule {{ i + 1 }}</h3>
-              <div
-                class="flexColumn alignCenter flex1 fullHeight gap10"
-                cdkDropList
-                [cdkDropListData]="pool"
-                [cdkDropListConnectedTo]="poolsIds"
-                (cdkDropListDropped)="drop($event)"
-                [id]="'pool-' + i"
-                [ngStyle]="{
-                  'min-height': ridersPerPool * 3 + 'vw',
-                  width: '10vw'
-                }"
-              >
+          <div class="pool" *ngFor="let pool of pools; index as i">
+            <h3 class="poolTitle">Poule {{ i + 1 }}</h3>
+            <div class="poolRiders">
+              <div class="flexColumn alignCenter spaceBetween">
                 <div
-                  class="rider flexRow alignCenter cursorGrab gap10"
-                  size="s"
-                  color="3"
-                  cdkDrag
+                  class="flexColumn alignCenter flex1 fullHeight gap10"
+                  cdkDropList
+                  [cdkDropListData]="pool"
+                  [cdkDropListConnectedTo]="poolsIds"
+                  (cdkDropListDropped)="drop($event)"
+                  [id]="'pool-' + i"
                   [ngStyle]="{
-                    width: '10vw'
+                    'min-height': ridersPerPool * 3 + 'vw',
+                    width: '13vw'
                   }"
-                  *ngFor="let registrations of pool"
                 >
-                  <!-- <i class="fa-solid fa-grip-vertical"></i> -->
-                  <div class="grip">
-                    <div class="lign">
-                      <div class="dot"></div>
-                      <div class="dot"></div>
+                  <div
+                    class="rider flexRow alignCenter cursorGrab gap10"
+                    size="s"
+                    color="3"
+                    cdkDrag
+                    [ngStyle]="{
+                      width: '13vw'
+                    }"
+                    *ngFor="let registrations of pool"
+                  >
+                    <!-- <i class="fa-solid fa-grip-vertical"></i> -->
+                    <div class="grip">
+                      <div class="lign">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                      </div>
+                      <div class="lign">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                      </div>
+                      <div class="lign">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                      </div>
                     </div>
-                    <div class="lign">
-                      <div class="dot"></div>
-                      <div class="dot"></div>
-                    </div>
-                    <div class="lign">
-                      <div class="dot"></div>
-                      <div class="dot"></div>
-                    </div>
+                    <p class="firstName">
+                      {{
+                        registrations.rider.firstName | lowercase | Capitalize
+                      }}
+                    </p>
+                    <p class="lastName">
+                      {{ registrations.rider.lastName | uppercase }}
+                    </p>
                   </div>
-                  {{ registrations.rider.firstName | lowercase | Capitalize }} -
-                  {{ registrations.rider.lastName | uppercase }}
                 </div>
               </div>
             </div>
-          </card>
+          </div>
         </div>
       </div>
       <div *ngIf="!edit && !isLoading" class="pools flexRow flexWrap">
-        <card color="2 flex1" size="m" *ngFor="let pool of pools; index as i">
-          <div class="flexColumn alignCenter spaceBetween">
-            <h3>Poule {{ i + 1 }}</h3>
+        <div class="pool" *ngFor="let pool of pools; index as i">
+          <h3 class="poolTitle">Poule {{ i + 1 }}</h3>
+          <div class="poolRiders">
             <div class="flexColumn alignCenter flex1 fullHeight gap10">
               <div
-                class="rider flexRow"
+                class="rider flexRow gap10"
                 size="s"
                 color="3"
                 [ngStyle]="{
-                  width: '10vw'
+                  width: '13vw'
                 }"
                 *ngFor="let registrations of pool"
               >
-                {{ registrations.rider.firstName | lowercase | Capitalize }} -
-                {{ registrations.rider.lastName | uppercase }}
+                <p class="firstName">
+                  {{ registrations.rider.firstName | lowercase | Capitalize }}
+                </p>
+                <p class="lastName">
+                  {{ registrations.rider.lastName | uppercase }}
+                </p>
               </div>
             </div>
           </div>
-        </card>
+        </div>
       </div>
     </div>
     <note [text]="errorMessage" *ngIf="isError" type="errorLabel"></note>
