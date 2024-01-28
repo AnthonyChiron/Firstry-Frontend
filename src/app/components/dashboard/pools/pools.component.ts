@@ -15,9 +15,9 @@ import { ContestsService } from 'src/app/shared/data/ContestsService/contests.se
 import { RegistrationsService } from 'src/app/shared/data/RegistrationsService/registrations.service';
 
 @Component({
-  selector: 'app-riders',
-  templateUrl: './riders.component.html',
-  styleUrls: ['./riders.component.scss'],
+  selector: 'pools',
+  templateUrl: './pools.component.html',
+  styleUrls: ['./pools.component.scss'],
   animations: [
     trigger('fadeInOut', [
       state('void', style({ opacity: 0 })),
@@ -26,7 +26,7 @@ import { RegistrationsService } from 'src/app/shared/data/RegistrationsService/r
     ]),
   ],
 })
-export class RidersComponent implements OnInit {
+export class PoolsComponent implements OnInit {
   contest: ContestModel;
   registrations: any[] = [];
   pendingApprovalRegistrations: RegistrationModel[] = [];

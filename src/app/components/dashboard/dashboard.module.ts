@@ -1,3 +1,4 @@
+import { PoolsComponent } from './pools/pools.component';
 import { ContestInfosSummaryComponent } from './parameters/infos-summary/contest-infos-summary.component';
 import { IsAuthGuard } from './../../shared/guards/IsAuth/is-auth-guard.service';
 import { NgModule } from '@angular/core';
@@ -21,17 +22,17 @@ import { ContestListRulesCardComponent } from './parameters/rules/contest-list-r
 import { ContestRulesFormatFormComponent } from './parameters/rules/contest-rules-card/contest-rules-format-form/contest-rules-format-form.component';
 import { ContestRulesPointsFormComponent } from './parameters/rules/contest-rules-card/contest-rules-points-form/contest-rules-points-form.component';
 import { ResultsComponent } from './results/results.component';
-import { RidersComponent } from './riders/riders.component';
 import { DangerZoneComponent } from './parameters/danger-zone/danger-zone.component';
 import { IsOrganizerContestGuard } from 'src/app/shared/guards/IsOrganizerContest/is-organizer-contest-guard.service';
 import { ContestComponent } from '../contests/contest/contest.component';
 import { IsOrganizerGuard } from 'src/app/shared/guards/IsOrganizer/is-organizer-guard.service';
-import { RiderStateHandlerComponent } from './riders/rider-state-handler/rider-state-handler.component';
+import { RiderStateHandlerComponent } from './pools/rider-state-handler/rider-state-handler.component';
 import { OverviewRegistrationsComponent } from './overview/overview-registrations/overview-registrations.component';
-import { CategoriesNavigationComponent } from './riders/categories-navigation/categories-navigation.component';
-import { PoolsHandlerComponent } from './riders/pools-handler/pools-handler.component';
+import { CategoriesNavigationComponent } from './pools/categories-navigation/categories-navigation.component';
+import { PoolsHandlerComponent } from './pools/pools-handler/pools-handler.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ResultsHandlerComponent } from './results/results-handler/results-handler.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -56,7 +57,7 @@ const dashboardRoutes: Routes = [
       },
       {
         path: 'pools',
-        component: RidersComponent,
+        component: PoolsComponent,
         canActivate: [IsAuthGuard],
       },
       {
@@ -102,12 +103,13 @@ const dashboardRoutes: Routes = [
     ContestRulesFormatFormComponent,
     ContestRulesPointsFormComponent,
     ResultsComponent,
-    RidersComponent,
     DangerZoneComponent,
     RiderStateHandlerComponent,
     OverviewRegistrationsComponent,
     CategoriesNavigationComponent,
     PoolsHandlerComponent,
+    PoolsComponent,
+    ResultsHandlerComponent,
   ],
   imports: [
     CommonModule,

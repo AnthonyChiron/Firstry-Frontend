@@ -1,0 +1,26 @@
+<card
+  title="Résultats"
+  [btn]="currentStep && !edit"
+  (btnClicked)="edit = !edit"
+>
+  <div header></div>
+  <div *ngIf="currentStep" class="flexCardRow">
+    <card class="flex3" color="2" size="m" title="Poules"></card>
+    <card class="flex2" color="2" size="m" title="Aperçu">
+      <app-table
+        [headers]="['Rank', 'Name', 'Points']"
+        [data]="[
+          { Rank: 1, Name: 'Anthony CHIRON', Points: 99 },
+          { Rank: 2, Name: 'Clémence BRULLON', Points: 60 }
+        ]"
+      ></app-table>
+    </card>
+  </div>
+  <div *ngIf="!currentStep" class="flexColumn alignCenter gap10">
+    <p>Les poules de cette catégorie n'ont pas encore été créées.</p>
+    <btn
+      label="Créer les poules"
+      [routerLink]="['/dashboard', contest._id, 'pools']"
+    ></btn>
+  </div>
+</card>

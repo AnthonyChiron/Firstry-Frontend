@@ -1,6 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { CategoryModel } from 'src/app/models/category.model';
-import { RegistrationModel } from 'src/app/models/registration.model';
 
 @Component({
   selector: 'categories-navigation',

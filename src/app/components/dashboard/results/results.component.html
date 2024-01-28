@@ -1,8 +1,13 @@
-<div class="flexColumn alignCenter">
-  <h2>
-    <i class="fa-solid fa-person-digging"></i> La gestion des résultats arrive !
-  </h2>
-  <p>
-    Cette page est en cours de construction, elle sera disponible prochainement.
-  </p>
+<div class="flexCardRow" [@fadeInOut] *ngIf="contest && registrations">
+  <categories-navigation
+    class="flex1"
+    [categories]="contest.categories"
+    [selectedCategory]="selectedCategory"
+    (categorySelected)="onSelectedCategory($event)"
+  ></categories-navigation>
+  <results-handler
+    class="flex3"
+    [contest]="contest"
+    [category]="selectedCategory"
+  ></results-handler>
 </div>

@@ -1,4 +1,4 @@
-<card title="Catégories" *ngIf="categories && registrations">
+<card title="Catégories" *ngIf="categories">
   <div class="flexColumn gap10">
     <card
       class="category"
@@ -15,6 +15,7 @@
         </div>
         <div class="tags">
           <info-tag
+            *ngIf="registrations"
             size="l"
             icon="fa-solid fa-user"
             label="{{ getNbRegistrations(category._id) }} / {{
