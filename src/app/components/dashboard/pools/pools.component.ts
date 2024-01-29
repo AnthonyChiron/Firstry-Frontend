@@ -50,12 +50,8 @@ export class PoolsComponent implements OnInit {
           .subscribe((result: any) => {
             console.log(result);
             this.registrations = result;
-            // this.registrations.push(...this.registrations);
-            // this.registrations.push(...this.registrations);
-            // this.registrations.push(...this.registrations);
-            // this.registrations.push(...this.registrations);
             this.pendingApprovalRegistrations = this.registrations.filter(
-              (registration) => registration.state === 'pending_approval'
+              (registration) => registration.state === 'validated'
             );
             this.getRegistrations();
           });

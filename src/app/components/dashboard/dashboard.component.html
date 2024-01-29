@@ -26,7 +26,7 @@
       <dropdown
         class="contestDropDown"
         [options]="contestsDdOptions"
-        (selected)="selectContest($event.value)"
+        (selected)="selectContest($event.value, true)"
         [value]="selectedContestId"
       ></dropdown>
       <btn
