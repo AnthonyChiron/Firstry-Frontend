@@ -33,6 +33,7 @@ import { PoolsHandlerComponent } from './pools/pools-handler/pools-handler.compo
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ResultsHandlerComponent } from './results/results-handler/results-handler.component';
+import { FormsModule } from '@angular/forms';
 
 const dashboardRoutes: Routes = [
   {
@@ -117,6 +118,7 @@ const dashboardRoutes: Routes = [
     SharedModule,
     FormSharedModule,
     DragDropModule,
+    FormsModule,
   ],
 })
 export class DashboardModule {}

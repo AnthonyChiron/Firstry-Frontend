@@ -1,18 +1,61 @@
-<card
-  title="Résultats"
-  [btn]="currentStep && !edit"
-  (btnClicked)="edit = !edit"
->
+<card title="Résultats">
   <div header></div>
   <div *ngIf="currentStep" class="flexCardRow">
-    <card class="flex3" color="2" size="m" title="Poules"></card>
-    <card class="flex2" color="2" size="m" title="Aperçu">
+    <div class="flex3 flexColumn gap10">
+      <div class="pool" *ngFor="let pool of pools; index as i">
+        <card
+          color="2"
+          size="m"
+          class="riders"
+          [title]="'Poule ' + (i + 1)"
+          [btn]="!edit"
+          (btnClicked)="editPool(i)"
+        >
+          <div class="flexColumn gap10">
+            <div class="header">
+              <p>Riders</p>
+              <p>Points</p>
+              <!-- <p *ngIf="edit && editPoolIndex == i">Options</p> -->
+            </div>
+            <div
+              class="rider flexRow alignCenter spaceBetween"
+              *ngFor="let rider of pool"
+            >
+              <div class="flexRow gap10 flex4">
+                <p class="firstName">
+                  {{ rider.registration.rider.firstName }}
+                </p>
+                <p class="lastName">{{ rider.registration.rider.lastName }}</p>
+              </div>
+              <input
+                *ngIf="edit && editPoolIndex == i"
+                [(ngModel)]="rider.score"
+                placeholder="Points"
+                type="number"
+                class="flex1"
+              />
+              <p *ngIf="!edit">{{ rider.score }}</p>
+              <!-- <div *ngIf="edit && editPoolIndex == i">
+                <btn type="warning" label="Abandon"></btn>
+              </div> -->
+            </div>
+            <div
+              class="flexRow spaceBetween"
+              *ngIf="edit && editPoolIndex == i"
+            >
+              <btn type="danger" label="Annuler" (click)="edit = !edit"></btn>
+              <btn type="valid" label="Confirmer" (click)="validResult()"></btn>
+            </div>
+          </div>
+        </card>
+      </div>
+    </div>
+    <card class="flex2" color="2" size="m" title="Aperçu du classement">
       <app-table
-        [headers]="['Rank', 'Name', 'Points']"
-        [data]="[
-          { Rank: 1, Name: 'Anthony CHIRON', Points: 99 },
-          { Rank: 2, Name: 'Clémence BRULLON', Points: 60 }
-        ]"
+        [headers]="['#', 'Nom & prénom', 'Score']"
+        [columns]="['rank', 'name', 'score']"
+        [data]="table"
+        sortColumn="rank"
       ></app-table>
     </card>
   </div>

@@ -79,6 +79,13 @@ button {
   border: 1px solid transparent;
 }
 
+.warning {
+  background-color: $firstry-yellow-2;
+  color: $firstry-white-1;
+  font-variation-settings: "wght" 800;
+  border: 1px solid transparent;
+}
+
 .transparent {
   background-color: transparent;
   color: $firstry-black-2;
@@ -114,6 +121,10 @@ button {
 
   .valid:hover {
     background-color: $firstry-green-1;
+  }
+
+  .warning:hover {
+    background-color: $firstry-yellow-1;
   }
 
   .transparent:hover {

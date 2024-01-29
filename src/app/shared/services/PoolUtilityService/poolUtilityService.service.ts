@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PoolModel } from 'src/app/models/pool.model';
+import { PoolModel, PoolResultDTOModel } from 'src/app/models/pool.model';
 import { StepModel } from 'src/app/models/step.model';
 
 @Injectable({
@@ -16,11 +16,11 @@ export class PoolUtilityService {
     );
   }
 
-  formatPoolsFromDb(pools: any[]): PoolModel[][] {
+  formatPoolsFromDb(pools: any[]): PoolResultDTOModel[][] {
     return pools.reduce((acc, pool) => {
       const poolNumber = pool.poolNumber - 1;
       if (!acc[poolNumber]) acc[poolNumber] = [];
-      acc[poolNumber].push(pool.registration);
+      acc[poolNumber].push(pool);
 
       return acc;
     }, []);

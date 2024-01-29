@@ -35,4 +35,13 @@ export class PoolsService extends CrudService<PoolModel> {
       }
     );
   }
+
+  updatePoolResult(pools: any[], stepId) {
+    return this.http.post<PoolModel[]>(
+      `${this.baseUrl}/updatePoolResult/${stepId}`,
+      {
+        poolsEntries: pools,
+      }
+    );
+  }
 }
