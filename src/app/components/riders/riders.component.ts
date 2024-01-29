@@ -2,7 +2,6 @@ import { ScreenSizeService } from './../../shared/services/screenSize/screen-siz
 import { RiderModel } from 'src/app/models/rider.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RidersService } from 'src/app/shared/data/RidersService/riders.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'riders',

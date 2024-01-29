@@ -1,0 +1,28 @@
+.titleCategory {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  gap: 12px;
+
+  h3 {
+    font-size: max(20px, 1.2vw);
+  }
+
+  p {
+    font-variation-settings: "wght" 400;
+  }
+
+  h3,
+  p {
+    width: fit-content;
+  }
+
+  h3,
+  p {
+    text-align: center;
+  }
+}
+
+.active {
+  color: white;
+}

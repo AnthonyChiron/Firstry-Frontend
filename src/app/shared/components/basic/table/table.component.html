@@ -1,19 +1,12 @@
 <table>
-  <!-- Header -->
   <thead>
     <tr>
-      <th *ngFor="let header of headers">
-        {{ header }}
-      </th>
+      <th *ngFor="let header of headers">{{ header }}</th>
     </tr>
   </thead>
-
-  <!-- Lignes -->
   <tbody>
-    <tr *ngFor="let item of data">
-      <td *ngFor="let key of getObjectKeys(item)">
-        {{ item[key] }}
-      </td>
+    <tr *ngFor="let row of data">
+      <td *ngFor="let column of columns">{{ row[column] }}</td>
     </tr>
   </tbody>
 </table>

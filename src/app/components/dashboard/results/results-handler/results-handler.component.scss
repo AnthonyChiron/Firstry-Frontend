@@ -1,0 +1,26 @@
+@import "../../../../../styles/colors.scss";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  border-bottom: 1px solid $firstry-white-4;
+
+  p {
+    font-variation-settings: "wght" 800;
+  }
+}
+
+.pool {
+  display: flex;
+  flex-direction: column;
+}
+
+.firstName {
+  font-variation-settings: "wght" 600;
+}
+
+.lastName {
+  font-variation-settings: "wght" 800;
+}

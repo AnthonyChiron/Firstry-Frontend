@@ -4,12 +4,11 @@
 table {
   background-color: $firstry-white-3;
   border-radius: $border-radius-2;
-  padding: 1vw;
-  font-size: $mobile_fontTableSize;
+  padding: 0.5vw;
   width: 100%;
 
   thead {
-    padding: 1vw;
+    padding: 0.5vw;
     text-align: left;
     font-weight: bold;
     color: $firstry-black-1;
@@ -18,7 +17,7 @@ table {
   tbody {
     tr {
       border-radius: $border-radius-2;
-      padding: 1vw;
+      padding: 0.5vw;
       color: $firstry-black-1;
     }
   }

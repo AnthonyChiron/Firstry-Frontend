@@ -10,6 +10,8 @@ import {
   trigger,
 } from '@angular/animations';
 import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
+import { RegistrationsService } from 'src/app/shared/data/RegistrationsService/registrations.service';
+import { RegistrationModel } from 'src/app/models/registration.model';
 
 @Component({
   selector: 'app-overview',
@@ -26,11 +28,15 @@ import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-siz
 export class OverviewComponent implements OnInit {
   contest: ContestModel;
   isMobile: boolean;
+  registrations: RegistrationModel[] = [];
+  pendingRegistrations: RegistrationModel[] = [];
+  nbMaxRegistrations: number = 0;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
     private cs: ContestsService,
-    private _screenSize: ScreenSizeService
+    private _screenSize: ScreenSizeService,
+    private _registrationsService: RegistrationsService
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +48,28 @@ export class OverviewComponent implements OnInit {
       this.cs.getById(params.contestId).subscribe((contest) => {
         this.contest = parseContestModel(contest);
         console.log(this.contest);
+        this._registrationsService
+          .getRegistrationsByContestId(this.contest._id)
+          .subscribe((registrations: RegistrationModel[]) => {
+            this.registrations = registrations;
+            console.log(this.registrations);
+            this.registrations = this.registrations.filter(
+              (registration) =>
+                registration.state === 'pending_approval' ||
+                registration.state === 'validated'
+            );
+            this.pendingRegistrations = this.registrations.filter(
+              (registration) => registration.state === 'pending_approval'
+            );
+
+            console.log(this.registrations);
+            console.log(this.pendingRegistrations.length);
+          });
+
+        this.contest.categories.forEach((category) => {
+          this.nbMaxRegistrations += category.maxRiders;
+        });
+        console.log(this.nbMaxRegistrations);
       });
     });
   }

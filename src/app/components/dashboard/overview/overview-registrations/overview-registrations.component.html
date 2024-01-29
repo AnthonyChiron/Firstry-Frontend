@@ -7,7 +7,6 @@
         *ngIf="pendingRegistrations.length > 0"
         [label]="pendingRegistrations.length + ' demandes en attentes'"
         icon="fa-solid fa-hourglass-half"
-        [routerLink]="['/dashboard', contest._id, 'riders']"
       ></btn>
       <progress-bar
         [percentage]="100 / (nbMaxRegistrations / registrations.length)"

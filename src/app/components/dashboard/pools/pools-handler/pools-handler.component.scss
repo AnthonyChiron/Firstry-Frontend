@@ -1,0 +1,90 @@
+@import "../../../../../styles/colors.scss";
+
+.content {
+  flex: 1;
+}
+
+.pools {
+  gap: 2vw;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: $firstry-white-4;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-preview:hover {
+  cursor: grab;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.grip {
+  width: 8px;
+  height: 15px;
+  margin-right: 10px;
+  cursor: grab;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: 4px;
+
+  .lign {
+    display: flex;
+    justify-content: space-between;
+
+    .dot {
+      width: 2px;
+      height: 2px;
+      background-color: $firstry-black-1;
+    }
+  }
+}
+
+.cursorGrab {
+  cursor: grabbing;
+}
+
+.pool {
+  .poolRiders {
+    background-color: $firstry-white-3;
+    border-radius: 10px;
+    padding: 20px;
+  }
+}
+
+.rider {
+  background-color: $firstry-white-4;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+.poolTitle {
+  font-size: 20px;
+  font-variation-settings: "wght" 900;
+}
+
+.firstName {
+  font-variation-settings: "wght" 600;
+}
+
+.lastName {
+  font-variation-settings: "wght" 800;
+}

@@ -11,11 +11,25 @@ import { slider } from 'src/app/shared/transitions/slider';
 import { fadeAnimation } from 'src/app/shared/transitions/fade';
 import { filter } from 'rxjs';
 import { ContestModel } from 'src/app/models/contest.model';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({ opacity: 0 })),
+      transition('void <=> *', animate('500ms ease-in-out')),
+      transition('* <=> void', animate('500ms ease-in-out')),
+    ]),
+  ],
 })
 export class DashboardComponent implements OnInit {
   constructor(
@@ -32,6 +46,7 @@ export class DashboardComponent implements OnInit {
   contests: ContestModel[] = [];
   selectedContest: ContestModel;
   selectedContestId: string;
+  isCreateContest: boolean = false;
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -47,14 +62,9 @@ export class DashboardComponent implements OnInit {
           const contestId = params.contestId;
           console.log(contestId);
           if (contestId) {
-            this.selectContest(contestId);
+            this.selectContest(contestId, false);
           } else {
-            this.selectContest(this.contestsDdOptions[0].value);
-            this.router.navigate([
-              '/dashboard',
-              this.contestsDdOptions[0].value,
-              'overview',
-            ]);
+            this.selectContest(this.contestsDdOptions[0].value, true);
           }
         });
       } else {
@@ -67,11 +77,14 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  selectContest(eventId) {
+  selectContest(eventId, redirect) {
     this.selectedContestId = eventId;
     this.selectedContest = this.contests.find(
       (contest) => contest._id == eventId
     );
+    if (redirect) {
+      this.router.navigate(['/dashboard', this.selectedContestId, 'overview']);
+    }
     this.isLoading = false;
   }
 }

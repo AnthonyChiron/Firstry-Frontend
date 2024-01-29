@@ -8,8 +8,16 @@
   flex-direction: row;
 }
 
+.flexWrap {
+  flex-wrap: wrap;
+}
+
 .alignCenter {
   align-items: center;
+}
+
+.alignEnd {
+  align-items: flex-end;
 }
 
 .alignSelfCenter {
@@ -94,6 +102,16 @@
 
 .cursorPointer {
   cursor: pointer;
+}
+
+.card-hover {
+  transition: 0.2s;
+}
+
+.card-hover:hover {
+  transform: scale(1.01);
+  -webkit-filter: drop-shadow(0px 0px 15px #8c8c8c46);
+  filter: drop-shadow(0px 0px 15px #8c8c8c46);
 }
 
 @media screen and (min-width: 768px) {

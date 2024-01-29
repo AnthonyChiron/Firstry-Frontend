@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" [@fadeInOut]>
   <h1 class="mainTitle">Dashboard</h1>
   <!-- <card
     *ngIf="closePopup"
@@ -13,13 +13,20 @@
     </p>
     <p>Commençons par créer une catégorie.</p>
   </card> -->
-  <div class="navbarDasboard" *ngIf="contestsDdOptions.length > 0">
+  <div
+    class="navbarDasboard"
+    *ngIf="contestsDdOptions.length > 0 && !isCreateContest"
+  >
     <div class="flexRow alignCenter gap10">
+      <btn
+        icon="fa-solid fa-plus"
+        type="third"
+        (click)="isCreateContest = true"
+      ></btn>
       <dropdown
         class="contestDropDown"
         [options]="contestsDdOptions"
-        [routes]="[{ label: 'Créer un contest', value: 'create-contest' }]"
-        (selected)="selectContest($event.value)"
+        (selected)="selectContest($event.value, true)"
         [value]="selectedContestId"
       ></dropdown>
       <btn
@@ -43,18 +50,18 @@
       <nav-btn
         type="primary"
         size="l"
-        label="Planning"
+        label="Catégories"
         icon="fa-solid fa-calendar"
         routerLinkActive="active"
-        routerLink="planning"
+        routerLink="categories"
       ></nav-btn>
       <nav-btn
         type="primary"
         size="l"
-        label="Riders"
+        label="Poules"
         icon="fa-solid fa-person-snowboarding"
         routerLinkActive="active"
-        routerLink="riders"
+        routerLink="pools"
       ></nav-btn>
       <nav-btn
         type="primary"
@@ -76,7 +83,18 @@
   </div>
   <loader class="flexRow alignSelfCenter" *ngIf="isLoading"></loader>
   <div *ngIf="!isLoading" class="content">
-    <router-outlet></router-outlet>
-    <create-contest *ngIf="contestsDdOptions.length == 0"></create-contest>
+    <router-outlet *ngIf="!isCreateContest"></router-outlet>
+    <div
+      class="flexColumn gap10"
+      *ngIf="contestsDdOptions.length == 0 || isCreateContest"
+    >
+      <btn
+        icon="fa-solid fa-chevron-left"
+        type="primary"
+        label="Retour"
+        (click)="isCreateContest = false"
+      ></btn>
+      <create-contest></create-contest>
+    </div>
   </div>
 </div>

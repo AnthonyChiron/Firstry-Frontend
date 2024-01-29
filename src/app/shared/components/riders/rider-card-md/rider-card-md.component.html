@@ -13,7 +13,8 @@
     <img
       *ngIf="rider.photoUrl && rider.photoUrl != ''"
       [src]="rider.photoUrl"
-      alt="Rider"
+      rel="preload"
+      as="image"
       class="photoRider"
       [ngStyle]="{ 'width.vw': widthPhoto }"
     />
