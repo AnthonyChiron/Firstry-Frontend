@@ -26,10 +26,7 @@ export class RiderStateHandlerComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this._screenSize.screenWidth$.subscribe((screenWidth) => {
       this.screenWidth = screenWidth;
-      console.log(this.screenWidth);
     });
-
-    console.log(this.registrations);
   }
 
   ngOnChanges(changes: SimpleChanges): void {}

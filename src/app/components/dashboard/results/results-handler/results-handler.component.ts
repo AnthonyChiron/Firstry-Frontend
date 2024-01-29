@@ -18,6 +18,7 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
   editPoolIndex: number = 0;
   currentStep: any;
   table: any[];
+  stepsOptions: any[] = [];
 
   constructor(
     private _poolsService: PoolsService,
@@ -25,19 +26,31 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
-    this.getPools();
-  }
+    this.stepsOptions = this.category.steps.map((step) => {
+      return { label: step.name, value: step._id };
+    });
 
-  ngOnChanges() {
-    this.getPools();
-  }
-
-  getPools() {
     this.currentStep = this._poolUtilityService.getResultCurrentStep(
       this.category.steps
     );
 
+    this.getPools();
+  }
+
+  ngOnChanges() {
+    this.stepsOptions = this.category.steps.map((step) => {
+      return { label: step.name, value: step._id };
+    });
+
+    this.currentStep = this._poolUtilityService.getResultCurrentStep(
+      this.category.steps
+    );
     console.log(this.currentStep);
+
+    this.getPools();
+  }
+
+  getPools() {
     if (!this.currentStep) return;
 
     this._poolsService
@@ -51,6 +64,13 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
   editPool(editPoolIndex: number) {
     this.edit = true;
     this.editPoolIndex = editPoolIndex;
+  }
+
+  selectStep(event) {
+    console.log(this.category.steps);
+    this.currentStep = this.category.steps.find((step) => step._id === event);
+
+    this.getPools();
   }
 
   poolsTable() {
@@ -82,4 +102,16 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
         this.poolsTable();
       });
   }
+
+  publishResult() {
+    this._poolsService
+      .publishResult(this.currentStep._id)
+      .subscribe((result) => {
+        console.log(result);
+        this.pools = this._poolUtilityService.formatPoolsFromDb(result);
+        this.poolsTable();
+      });
+  }
+
+  unpublishResult() {}
 }

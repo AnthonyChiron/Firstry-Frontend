@@ -40,6 +40,7 @@ export class PlanningComponent implements OnInit, OnChanges {
   }
 
   parseCategoriesIntoEvents() {
+    console.log(this.categories);
     this.eventsCat = this.categories.flatMap((category) =>
       category.steps
         .filter((step) => step.startDate)

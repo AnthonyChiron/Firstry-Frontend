@@ -15,20 +15,89 @@
     </div>
   </div>
   <div class="flexColumn spaceBetween gap10">
-    <div class="content">
+    <div *ngIf="isLoading" class="flexRow alignCenter justifyCenter">
+      <loader></loader>
+    </div>
+    <div class="content" *ngIf="!isLoading">
       <div class="flexColumn alignCenter" *ngIf="pools.length == 0">
         <h3>Il n'y a pour l'instant pas d'incrit dans cette poule.</h3>
       </div>
-      <div *ngIf="isLoading" class="flexRow alignCenter"><loader></loader></div>
       <div
-        *ngIf="pools.length > 0 && edit && !isLoading"
-        class="flexColumn gap10"
+        class="flexColumn alignCenter gap10"
+        *ngIf="
+          !originalPools ||
+          (registrations.length != originalPools.length && !edit)
+        "
       >
+        <h3>
+          Les poules de la catégorie {{ category.name }} ne sont pas encore
+          créées.
+        </h3>
+        <btn label="Créer les poules" (click)="edit = true"></btn>
+      </div>
+      <div *ngIf="edit" class="flexColumn gap10">
         <p>
           Vous pouvez déplacer les riders d'une poule à une autre. <br />
           Pensez à sauvegarder en validant en bas !
         </p>
         <div class="pools flexRow flexWrap">
+          <div class="pool">
+            <div class="flexRow alignCenter gap10">
+              <i class="fa-solid fa-ghost fa-sm"></i>
+              <h3 class="poolTitle">Absents</h3>
+            </div>
+            <div class="poolRiders">
+              <div class="flexColumn alignCenter spaceBetween">
+                <div
+                  class="flexColumn alignCenter flex1 fullHeight gap10"
+                  cdkDropList
+                  [cdkDropListData]="missing"
+                  [cdkDropListConnectedTo]="poolsIds"
+                  (cdkDropListDropped)="drop($event)"
+                  id="missing"
+                  [ngStyle]="{
+                    'min-height': ridersPerPool * 3 + 'vw',
+                    width: '13vw'
+                  }"
+                >
+                  <div
+                    class="rider flexRow alignCenter cursorGrab gap10"
+                    size="s"
+                    color="3"
+                    cdkDrag
+                    [ngStyle]="{
+                      width: '13vw'
+                    }"
+                    *ngFor="let registrations of missing"
+                  >
+                    <!-- <i class="fa-solid fa-grip-vertical"></i> -->
+                    <div class="grip">
+                      <div class="lign">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                      </div>
+                      <div class="lign">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                      </div>
+                      <div class="lign">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                      </div>
+                    </div>
+                    <p class="firstName">
+                      {{
+                        registrations.rider.firstName | lowercase | Capitalize
+                      }}
+                    </p>
+                    <p class="lastName">
+                      {{ registrations.rider.lastName | uppercase }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="pool" *ngFor="let pool of pools; index as i">
             <h3 class="poolTitle">Poule {{ i + 1 }}</h3>
             <div class="poolRiders">
@@ -47,8 +116,6 @@
                 >
                   <div
                     class="rider flexRow alignCenter cursorGrab gap10"
-                    size="s"
-                    color="3"
                     cdkDrag
                     [ngStyle]="{
                       width: '13vw'
@@ -85,7 +152,49 @@
           </div>
         </div>
       </div>
-      <div *ngIf="!edit && !isLoading" class="pools flexRow flexWrap">
+      <div
+        *ngIf="
+          registrations.length > 0 &&
+          originalPools &&
+          !edit &&
+          !isLoading &&
+          registrations.length == originalPools.length
+        "
+        class="pools flexRow flexWrap"
+      >
+        <div class="pool" *ngIf="missing.length != 0">
+          <div class="flexRow alignCenter gap10">
+            <i class="fa-solid fa-ghost fa-sm"></i>
+            <h3 class="poolTitle">Absents</h3>
+          </div>
+          <div class="poolRiders">
+            <div class="flexColumn alignCenter spaceBetween">
+              <div
+                class="flexColumn alignCenter flex1 fullHeight gap10"
+                [ngStyle]="{
+                  width: '13vw'
+                }"
+              >
+                <div
+                  class="rider flexRow alignCenter cursorGrab gap10"
+                  size="s"
+                  color="3"
+                  [ngStyle]="{
+                    width: '13vw'
+                  }"
+                  *ngFor="let registrations of missing"
+                >
+                  <p class="firstName">
+                    {{ registrations.rider.firstName | lowercase | Capitalize }}
+                  </p>
+                  <p class="lastName">
+                    {{ registrations.rider.lastName | uppercase }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="pool" *ngFor="let pool of pools; index as i">
           <h3 class="poolTitle">Poule {{ i + 1 }}</h3>
           <div class="poolRiders">

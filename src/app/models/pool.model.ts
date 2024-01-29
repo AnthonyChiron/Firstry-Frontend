@@ -7,6 +7,7 @@ export interface PoolModel extends GenericModel {
   step: String;
   score: Number;
   rank: Number;
+  isMissing: Boolean;
   isQualified: Boolean;
   poolNumber: Number;
 }
@@ -16,6 +17,7 @@ export interface PoolResultDTOModel {
   step: String;
   score: Number;
   rank: Number;
+  isMissing: Boolean;
   isQualified: Boolean;
   poolNumber: Number;
 }

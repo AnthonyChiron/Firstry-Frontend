@@ -11,6 +11,12 @@ export class PoolUtilityService {
   }
 
   getResultCurrentStep(steps: StepModel[]) {
+    console.log(steps);
+    console.log(
+      steps.find(
+        (step) => step.state === 'POOL_READY' || step.state === 'RESULT_PENDING'
+      )
+    );
     return steps.find(
       (step) => step.state === 'POOL_READY' || step.state === 'RESULT_PENDING'
     );
@@ -24,5 +30,9 @@ export class PoolUtilityService {
 
       return acc;
     }, []);
+  }
+
+  checkIfAllPoolsHaveResults(pools: PoolResultDTOModel[]): boolean {
+    return pools.every((pool) => pool.score);
   }
 }

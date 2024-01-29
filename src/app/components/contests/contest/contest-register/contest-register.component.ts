@@ -61,7 +61,6 @@ export class ContestRegisterComponent implements OnInit {
             if (result && user.rider) {
               this.isLoggedin = true;
               this.rider = user.rider;
-              console.log(user);
               this._registrationService
                 .isRiderRegisteredToContest(user.rider._id, this.contest._id)
                 .subscribe((result: boolean) => {
@@ -74,8 +73,10 @@ export class ContestRegisterComponent implements OnInit {
           this._categoriesService
             .getAllCategoriesForRegistrations(this.contest._id)
             .subscribe((categories) => {
-              this.categories = categories;
-              console.log(this.categories);
+              categories.forEach((category) => {
+                if (category.NbRegistration < category.maxRiders)
+                  this.categories.push(category);
+              });
 
               if (this.categories.length > 0)
                 this.selectedCategory = this.categories[0];

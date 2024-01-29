@@ -18,20 +18,22 @@ export class PoolsService extends CrudService<PoolModel> {
     );
   }
 
-  createPools(stepId: string, pools: any[]) {
+  createPools(stepId: string, pools: any[], missing: any[]) {
     return this.http.post<PoolModel[]>(
       `${this.baseUrl}/createPoolsByStepId/${stepId}`,
       {
         poolsEntries: pools,
+        missingEntries: missing,
       }
     );
   }
 
-  updatePools(stepId: string, pools: any[]) {
+  updatePools(stepId: string, pools: any[], missing: any[]) {
     return this.http.post<PoolModel[]>(
       `${this.baseUrl}/updatePoolsByStepId/${stepId}`,
       {
         poolsEntries: pools,
+        missingEntries: missing,
       }
     );
   }
@@ -42,6 +44,13 @@ export class PoolsService extends CrudService<PoolModel> {
       {
         poolsEntries: pools,
       }
+    );
+  }
+
+  publishResult(stepId: string) {
+    return this.http.post<PoolModel[]>(
+      `${this.baseUrl}/publishResult/${stepId}`,
+      {}
     );
   }
 }

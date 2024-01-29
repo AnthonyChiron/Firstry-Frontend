@@ -52,6 +52,7 @@ export class OverviewComponent implements OnInit {
           .getRegistrationsByContestId(this.contest._id)
           .subscribe((registrations: RegistrationModel[]) => {
             this.registrations = registrations;
+            console.log(this.registrations);
             this.registrations = this.registrations.filter(
               (registration) =>
                 registration.state === 'pending_approval' ||

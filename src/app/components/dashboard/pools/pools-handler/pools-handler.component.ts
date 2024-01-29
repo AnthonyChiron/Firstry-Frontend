@@ -1,3 +1,4 @@
+import { filter } from 'rxjs';
 import {
   Component,
   Input,
@@ -14,6 +15,8 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { PoolsService } from 'src/app/shared/data/PoolsService/pools.service';
+import { PoolUtilityService } from 'src/app/shared/services/PoolUtilityService/poolUtilityService.service';
+import { compilePipeFromMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'pools-handler',
@@ -23,6 +26,7 @@ import { PoolsService } from 'src/app/shared/data/PoolsService/pools.service';
 export class PoolsHandlerComponent implements OnInit, OnChanges {
   @Input() category: CategoryModel;
   @Input() registrations: RegistrationModel[];
+  missing: any[] = [];
   isNewPools: boolean = true;
   originalPools: any;
   pools: any[][] = [];
@@ -44,7 +48,10 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     { label: '7', value: 7 },
   ];
 
-  constructor(private _poolsService: PoolsService) {}
+  constructor(
+    private _poolsService: PoolsService,
+    private _poolUtilityService: PoolUtilityService
+  ) {}
 
   async ngOnInit() {
     this.isLoading = true;
@@ -58,7 +65,11 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     this.currentStepId = this.category.steps[0]._id;
     await this.getPoolFromDb();
 
-    if (this.registrations && this.isNewPools)
+    if (
+      (this.registrations && this.isNewPools) ||
+      (this.registrations &&
+        this.registrations.length !== this.originalPools.length)
+    )
       this.formatPoolsFromRegistrations(this.registrations);
   }
 
@@ -69,6 +80,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
 
   updatePoolsIds() {
     this.poolsIds = this.pools.map((_, index) => `pool-${index}`);
+    this.poolsIds.push('missing');
   }
 
   drop(event: CdkDragDrop<any>) {
@@ -86,6 +98,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
         event.currentIndex
       );
     }
+    console.log(this.missing);
   }
 
   formatPoolsFromRegistrations(registrations: RegistrationModel[]): void {
@@ -123,7 +136,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
   }
 
   formatPoolsFromDb(pools: any[]) {
-    this.pools = pools.reduce((acc, pool) => {
+    return pools.reduce((acc, pool) => {
       const poolNumber = pool.poolNumber - 1;
       if (!acc[poolNumber]) acc[poolNumber] = [];
       acc[poolNumber].push(pool.registration);
@@ -142,13 +155,24 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     this.edit = false;
     this.isError = false;
 
+    console.log(this.isNewPools);
+
     if (this.isNewPools) this.formatPoolsFromRegistrations(this.registrations);
-    else this.formatPoolsFromDb(this.originalPools);
+    else {
+      this.missing = this.originalPools.filter((pool) => pool.isMissing);
+      this.missing = this.missing.map((pool) => pool.registration);
+
+      console.log(this.originalPools);
+
+      this.pools = this.formatPoolsFromDb(
+        this.originalPools.filter((pool) => pool.isMissing === false)
+      );
+    }
   }
 
   submit() {
     // Parcourir les pools et créer un tableau avec numéro de pool, registrationId
-    const pools = [];
+    let pools = [];
 
     // Check si une pool est vide
     for (let i = 0; i < this.pools.length; i++) {
@@ -162,6 +186,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
       }
     }
 
+    this.isError = false;
     this.edit = false;
     this.isLoading = true;
 
@@ -175,9 +200,11 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
       });
     });
 
+    pools = <any[]>pools.concat(this.formatMissing());
+
     if (this.isNewPools)
       this._poolsService
-        .createPools(this.currentStepId, pools)
+        .createPools(this.currentStepId, pools, this.missing)
         .subscribe((pools) => {
           this.originalPools = [...pools];
           this.isNewPools = false;
@@ -185,7 +212,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
         });
     else
       this._poolsService
-        .updatePools(this.currentStepId, pools)
+        .updatePools(this.currentStepId, pools, this.missing)
         .subscribe((pools) => {
           this.originalPools = [...pools];
           this.isNewPools = false;
@@ -194,16 +221,18 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
   }
 
   async getPoolFromDb() {
+    this.isLoading = true;
     this._poolsService
       .getPoolsByStepId(this.currentStepId)
       .subscribe((pools: any) => {
         this.originalPools = [...pools];
-        console.log(pools);
+        this.missing = pools.filter((pool) => pool.isMissing);
+        this.missing = this.missing.map((pool) => pool.registration);
 
-        if (pools.length > 0) {
-          this.pools = pools.map((pool) => pool.riders);
+        if (pools.length > 0 && pools.length === this.registrations.length) {
+          pools = pools.filter((pool) => pool.isMissing === false);
           this.isNewPools = false;
-          this.formatPoolsFromDb(pools);
+          this.pools = this.formatPoolsFromDb(pools);
           this.updatePoolsIds();
         } else {
           this.isNewPools = true;
@@ -211,5 +240,16 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
 
         this.isLoading = false;
       });
+  }
+
+  formatMissing() {
+    return this.missing.map((registration) => {
+      return {
+        poolNumber: 0,
+        registrationId: registration._id,
+        stepId: this.currentStepId,
+        isMissing: true,
+      };
+    });
   }
 }
