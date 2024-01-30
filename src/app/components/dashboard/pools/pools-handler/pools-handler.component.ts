@@ -38,6 +38,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
   originalPoolsEntries: any;
   currentStep: any;
   stepsOptions: any[] = [];
+  displayStepDropdown: boolean = false;
 
   missing: any[] = [];
   pools: any[][] = [];
@@ -112,7 +113,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     this.isError = false;
 
     if (this.isNewPools) this.createPoolsFromRegistrations(this.registrations);
-    else this.formatPoolsEntriesToRegistrations();
+    else this.formatPoolsEntriesToRegistrations(this.originalPoolsEntries);
   }
 
   submit() {
@@ -162,16 +163,17 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
               )._id
             )
             .subscribe((pools: any) => {
-              console.log('a');
               console.log(pools);
+              this.isNewPools = false;
+              this.formatPoolsEntriesToRegistrations(pools);
             });
         } else {
-          if (pools.length > 0 && pools.length === this.registrations.length) {
+          if (pools.length > 0) {
             this.isNewPools = false;
-            this.formatPoolsEntriesToRegistrations();
+            this.formatPoolsEntriesToRegistrations(pools);
           } else this.isNewPools = true;
         }
-
+        this.isStepFinaleAvailable();
         this.isLoading = false;
       });
   }
@@ -221,12 +223,12 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     }, []);
   }
 
-  formatPoolsEntriesToRegistrations() {
+  formatPoolsEntriesToRegistrations(pools) {
     this.missing = this.originalPoolsEntries.filter((pool) => pool.isMissing);
     this.missing = this.missing.map((pool) => pool.registration);
 
     this.pools = this.formatPoolsEntriesInDoubleTable(
-      this.originalPoolsEntries.filter((pool) => pool.isMissing === false)
+      pools.filter((pool) => pool.isMissing === false)
     );
     this.updatePoolsIds();
   }
@@ -267,8 +269,9 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     const qualifStep = this.category.steps.find(
       (step) => step.name === 'QUALIFICATION'
     );
-    if (qualifStep.isResultPublished === false) return false;
-    return true;
+    if (qualifStep.isResultPublished === false)
+      this.displayStepDropdown = false;
+    return (this.displayStepDropdown = true);
   }
 
   async selectStep(event) {

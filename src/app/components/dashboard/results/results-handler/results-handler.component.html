@@ -63,7 +63,7 @@
                   type="number"
                   class="flex1"
                 />
-                <p *ngIf="!edit">{{ rider.score }}</p>
+                <p *ngIf="editPoolIndex != i">{{ rider.score }}</p>
                 <!-- <div *ngIf="edit && editPoolIndex == i">
                   <btn type="warning" label="Abandon"></btn>
                 </div> -->
@@ -72,7 +72,7 @@
                 class="flexRow spaceBetween"
                 *ngIf="edit && editPoolIndex == i"
               >
-                <btn type="danger" label="Annuler" (click)="edit = !edit"></btn>
+                <btn type="danger" label="Annuler" (click)="cancel()"></btn>
                 <btn
                   type="valid"
                   label="Confirmer"

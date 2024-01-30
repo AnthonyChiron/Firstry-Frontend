@@ -13,9 +13,10 @@ import { PoolModel, PoolResultDTOModel } from 'src/app/models/pool.model';
 export class ResultsHandlerComponent implements OnInit, OnChanges {
   @Input() category: CategoryModel;
   @Input() contest: ContestModel;
+  originalPools: any[] = [];
   pools: PoolResultDTOModel[][] = [];
   edit: boolean = false;
-  editPoolIndex: number = 0;
+  editPoolIndex: number = -1;
 
   isLoading: boolean = false;
 
@@ -61,8 +62,9 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
     this.isLoading = true;
     this._poolsService
       .getPoolsByStepId(this.currentStep._id)
-      .subscribe((result: any[]) => {
-        this.pools = this._poolUtilityService.formatPoolsFromDb(result);
+      .subscribe((result: any) => {
+        this.originalPools = result.map((pool) => ({ ...pool }));
+        this.pools = this._poolUtilityService.formatPoolsFromDb([...result]);
         this.poolsTable();
         this.isLoading = false;
       });
@@ -99,16 +101,28 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
     });
   }
 
+  cancel() {
+    this.edit = false;
+    this.editPoolIndex = -1;
+    this.pools = this._poolUtilityService.formatPoolsFromDb(
+      this.originalPools.map((pool) => ({ ...pool }))
+    );
+    this.poolsTable();
+    console.log(this.pools);
+  }
+
   validResult() {
     this.isLoading = true;
     this.edit = false;
+    console.log(this.pools[this.editPoolIndex]);
     this._poolsService
       .updatePoolResult(this.pools[this.editPoolIndex], this.currentStep._id)
       .subscribe((result) => {
-        console.log(result);
+        this.originalPools = result.map((pool) => ({ ...pool }));
         this.pools = this._poolUtilityService.formatPoolsFromDb(result);
         this.poolsTable();
         this.isLoading = false;
+        this.editPoolIndex = -1;
       });
   }
 
