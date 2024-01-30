@@ -6,7 +6,15 @@
   </thead>
   <tbody>
     <tr *ngFor="let row of data">
-      <td *ngFor="let column of columns">{{ row[column] }}</td>
+      <td *ngFor="let column of columns">
+        <div *ngIf="isBoolean(row[column])" class="boolean-true">
+          <div *ngIf="row[column]" class="greenCircle"></div>
+          <div *ngIf="!row[column]" class="redCircle"></div>
+        </div>
+        <div *ngIf="!isBoolean(row[column])">
+          {{ row[column] }}
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>

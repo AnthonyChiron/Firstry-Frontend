@@ -15,6 +15,7 @@ import { LoginModule } from '../../shared/components/login/login.module';
 import { PaiementModule } from 'src/app/shared/components/paiement/paiement.module';
 import { IsOrganizerContestGuard } from 'src/app/shared/guards/IsOrganizerContest/is-organizer-contest-guard.service';
 import { IsContestPublishedGuard } from 'src/app/shared/guards/IsContestPublished/is-contest-published-guard.service';
+import { ResultTableComponent } from './contest/contest-results/result-table/result-table.component';
 
 const contestsRoutes: Routes = [
   { path: '', component: ContestsComponent },
@@ -85,6 +86,7 @@ const contestsRoutes: Routes = [
     ContestRegisterComponent,
     ContestResultsComponent,
     ContestPlanningComponent,
+    ResultTableComponent,
   ],
   imports: [
     CommonModule,

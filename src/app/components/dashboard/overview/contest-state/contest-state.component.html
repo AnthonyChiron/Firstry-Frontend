@@ -1,0 +1,41 @@
+<card title="Aperçu général">
+  <div *ngIf="isLoading" class="flexRow justifyCenter">
+    <loader></loader>
+  </div>
+
+  <div *ngIf="!isLoading" class="flexColumn gap10">
+    <div *ngIf="contest" class="flexRow alignCenter gap10">
+      <h3>Status du contest :</h3>
+      <div *ngIf="contest.isPublished" class="flexRow alignCenter gap10">
+        <p>Publié</p>
+        <div class="greenDot"></div>
+      </div>
+      <div *ngIf="!contest.isPublished" class="flexRow alignCenter gap10">
+        <p>Non publié</p>
+        <div class="redDot"></div>
+      </div>
+    </div>
+
+    <div class="flexRow alignCenter gap10">
+      <h3>Status de votre compte stripe :</h3>
+      <div *ngIf="isStripeAccountUsable" class="flexRow alignCenter gap10">
+        <p>Valide</p>
+        <div class="greenDot"></div>
+      </div>
+      <div *ngIf="!isStripeAccountUsable" class="flexRow alignCenter gap10">
+        <p>Non valide</p>
+        <div class="redDot"></div>
+      </div>
+      <btn
+        icon="fa-solid fa-link"
+        label="Dashboard stripe"
+        (click)="goToStripeDashboard()"
+      ></btn>
+    </div>
+    <div class="justifySelfEnd flexRow alignCenter gap10">
+      <p>
+        Plus que <b>{{ 8 }} jours</b> avant le début du contest !
+      </p>
+    </div>
+  </div>
+</card>

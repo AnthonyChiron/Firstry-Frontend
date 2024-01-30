@@ -1,0 +1,30 @@
+@import "../../../../../../styles/colors.scss";
+
+img {
+  height: 50px;
+  width: auto;
+  border-radius: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead tr {
+  height: 50px;
+  border-bottom: 1px solid $firstry-black-3;
+}
+
+tbody {
+  padding-top: 20px;
+}
+
+tr {
+  height: 65px;
+  border-bottom: 1px solid $firstry-white-3;
+}
+
+td {
+  text-align: center;
+}

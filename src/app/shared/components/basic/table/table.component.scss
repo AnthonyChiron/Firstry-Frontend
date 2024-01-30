@@ -22,3 +22,23 @@ table {
     }
   }
 }
+
+.boolean-true {
+  display: flex;
+  // align-items: center;
+  // justify-content: center;
+}
+
+.greenCircle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: $firstry-green-2;
+}
+
+.redCircle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: $firstry-red-2;
+}

@@ -16,3 +16,17 @@ $firstry-green-2: #69b758;
 
 $firstry-yellow-1: #ffe134;
 $firstry-yellow-2: #f2bc18;
+
+.greenDot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: $firstry-green-2;
+}
+
+.redDot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: $firstry-red-2;
+}

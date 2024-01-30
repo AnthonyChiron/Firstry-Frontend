@@ -42,4 +42,8 @@ export class TableComponent implements OnInit, OnChanges {
       return 0;
     });
   }
+
+  isBoolean(value: any): boolean {
+    return typeof value === 'boolean';
+  }
 }

@@ -1,1 +1,9 @@
-<p>contest-results works!</p>
+<div class="flexCardRow" *ngIf="contest">
+  <categories-navigation
+    class="flex1"
+    [categories]="contest.categories"
+    [selectedCategory]="selectedCategory"
+    (categorySelected)="onSelectedCategory($event)"
+  ></categories-navigation>
+  <result-table class="flex2" [category]="selectedCategory"></result-table>
+</div>

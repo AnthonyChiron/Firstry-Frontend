@@ -1,4 +1,8 @@
-<div class="flexCardRow" [@fadeInOut] *ngIf="contest && registrations">
+<div
+  class="flexCardRow"
+  [@fadeInOut]
+  *ngIf="contest && registrations && contest.categories.length != 0"
+>
   <categories-navigation
     class="flex1"
     [categories]="contest.categories"
@@ -12,4 +16,15 @@
     [registrations]="selectedRegistrations"
   >
   </pools-handler>
+</div>
+<div
+  *ngIf="contest && registrations && contest.categories.length == 0"
+  class="flexColumn alignCenter justifyCenter gap10"
+>
+  <h2>Vous n'avez pas encore de catégories pour pouvoir gérer vos poules !</h2>
+  <p>Allez dans la section catégorie pour créer une catégorie</p>
+  <btn
+    label="Créer une catégorie"
+    [routerLink]="['/dashboard', contest._id, 'categories']"
+  ></btn>
 </div>

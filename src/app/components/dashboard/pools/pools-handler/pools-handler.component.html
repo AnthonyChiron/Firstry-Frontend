@@ -4,7 +4,14 @@
   [btn]="pools.length > 0 && !edit"
   (btnClicked)="edit = !edit"
 >
-  <div header>
+  <div header class="flexRow alignCenter gap10">
+    <dropdown
+      *ngIf="displayStepDropdown && !edit"
+      [options]="stepsOptions"
+      (selected)="selectStep($event.value)"
+      [value]="currentStep._id"
+      [ngStyle]="{ width: '10vw' }"
+    ></dropdown>
     <div *ngIf="edit" class="flexRow alignCenter gap10">
       <p>Riders par poule</p>
       <dropdown
@@ -19,20 +26,21 @@
       <loader></loader>
     </div>
     <div class="content" *ngIf="!isLoading">
-      <div class="flexColumn alignCenter" *ngIf="pools.length == 0">
+      <div
+        class="flexColumn alignCenter"
+        *ngIf="pools.length == 0 && registrations.length == 0"
+      >
         <h3>Il n'y a pour l'instant pas d'incrit dans cette poule.</h3>
       </div>
       <div
         class="flexColumn alignCenter gap10"
-        *ngIf="
-          !originalPools ||
-          (registrations.length != originalPools.length && !edit)
-        "
+        *ngIf="registrations.length != 0 && originalPoolsEntries == 0 && !edit"
       >
-        <h3>
+        <p>
           Les poules de la catégorie {{ category.name }} ne sont pas encore
-          créées.
-        </h3>
+          créées pour l'étape <b>{{ currentStep.name | lowercase }}</b
+          >.
+        </p>
         <btn label="Créer les poules" (click)="edit = true"></btn>
       </div>
       <div *ngIf="edit" class="flexColumn gap10">
@@ -153,13 +161,7 @@
         </div>
       </div>
       <div
-        *ngIf="
-          registrations.length > 0 &&
-          originalPools &&
-          !edit &&
-          !isLoading &&
-          registrations.length == originalPools.length
-        "
+        *ngIf="originalPoolsEntries.length > 0 && !edit && !isLoading"
         class="pools flexRow flexWrap"
       >
         <div class="pool" *ngIf="missing.length != 0">
