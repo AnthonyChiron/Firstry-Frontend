@@ -7,19 +7,21 @@ import { StepModel } from 'src/app/models/step.model';
 })
 export class PoolUtilityService {
   getPoolCurrentStep(steps: StepModel[]) {
-    return steps.find((step) => step.state === 'POOL_PENDING');
+    if (steps.find((step) => step.isResultPublished) && steps.length > 1)
+      return steps[1];
+
+    if (steps.find((step) => !step.isResultPublished)) return steps[0];
+
+    return steps[steps.length - 1];
   }
 
   getResultCurrentStep(steps: StepModel[]) {
-    console.log(steps);
-    console.log(
-      steps.find(
-        (step) => step.state === 'POOL_READY' || step.state === 'RESULT_PENDING'
-      )
-    );
-    return steps.find(
-      (step) => step.state === 'POOL_READY' || step.state === 'RESULT_PENDING'
-    );
+    if (steps.find((step) => step.isResultPublished) && steps.length > 1)
+      return steps[1];
+
+    if (steps.find((step) => !step.isResultPublished)) return steps[0];
+
+    return steps[steps.length - 1];
   }
 
   formatPoolsFromDb(pools: any[]): PoolResultDTOModel[][] {

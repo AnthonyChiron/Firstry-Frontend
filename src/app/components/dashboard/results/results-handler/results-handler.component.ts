@@ -16,9 +16,15 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
   pools: PoolResultDTOModel[][] = [];
   edit: boolean = false;
   editPoolIndex: number = 0;
+
+  isLoading: boolean = false;
+
   currentStep: any;
   table: any[];
   stepsOptions: any[] = [];
+
+  isUnpublishConfirmationModalOpen: boolean = false;
+  isPublishConfirmationModalOpen: boolean = false;
 
   constructor(
     private _poolsService: PoolsService,
@@ -52,12 +58,13 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
 
   getPools() {
     if (!this.currentStep) return;
-
+    this.isLoading = true;
     this._poolsService
       .getPoolsByStepId(this.currentStep._id)
       .subscribe((result: any[]) => {
         this.pools = this._poolUtilityService.formatPoolsFromDb(result);
         this.poolsTable();
+        this.isLoading = false;
       });
   }
 
@@ -67,7 +74,7 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
   }
 
   selectStep(event) {
-    console.log(this.category.steps);
+    this.edit = false;
     this.currentStep = this.category.steps.find((step) => step._id === event);
 
     this.getPools();
@@ -87,12 +94,13 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
           pool.registration.rider.lastName,
         score: pool.score ? pool.score : 0,
         rank: pool.rank ? pool.rank : '-',
+        isQualified: pool.isQualified ? pool.isQualified : false,
       };
     });
   }
 
   validResult() {
-    console.log(this.pools[this.editPoolIndex]);
+    this.isLoading = true;
     this.edit = false;
     this._poolsService
       .updatePoolResult(this.pools[this.editPoolIndex], this.currentStep._id)
@@ -100,18 +108,58 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
         console.log(result);
         this.pools = this._poolUtilityService.formatPoolsFromDb(result);
         this.poolsTable();
+        this.isLoading = false;
       });
   }
 
   publishResult() {
+    this.isLoading = true;
+
     this._poolsService
       .publishResult(this.currentStep._id)
       .subscribe((result) => {
         console.log(result);
-        this.pools = this._poolUtilityService.formatPoolsFromDb(result);
+        this.isPublishConfirmationModalOpen = false;
+        this.category.steps.find(
+          (step) => step._id === this.currentStep._id
+        ).isResultPublished = true;
+
+        this.currentStep = this._poolUtilityService.getResultCurrentStep(
+          this.category.steps
+        );
+
+        this.getPools();
         this.poolsTable();
+        this.isLoading = false;
       });
   }
 
-  unpublishResult() {}
+  unpublishResult() {
+    this.isLoading = true;
+    this._poolsService
+      .unpublishResult(this.currentStep._id)
+      .subscribe((result) => {
+        console.log(result);
+        this.isUnpublishConfirmationModalOpen = false;
+        this.category.steps.find(
+          (step) => step._id === this.currentStep._id
+        ).isResultPublished = false;
+
+        this.currentStep = this._poolUtilityService.getResultCurrentStep(
+          this.category.steps
+        );
+
+        this.pools = this._poolUtilityService.formatPoolsFromDb(result);
+        this.poolsTable();
+        this.isLoading = false;
+      });
+  }
+
+  isResultPublishable() {
+    return (
+      this.pools.length > 0 &&
+      this._poolUtilityService.checkIfAllPoolsHaveResults(this.pools.flat()) &&
+      !this.currentStep.isResultPublished
+    );
+  }
 }

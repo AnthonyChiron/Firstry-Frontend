@@ -1,3 +1,4 @@
+import { OrganizerInfoFormComponent } from './../../../account/organizer-info-form/organizer-info-form.component';
 import { filter } from 'rxjs';
 import {
   Component,
@@ -17,6 +18,7 @@ import {
 import { PoolsService } from 'src/app/shared/data/PoolsService/pools.service';
 import { PoolUtilityService } from 'src/app/shared/services/PoolUtilityService/poolUtilityService.service';
 import { compilePipeFromMetadata } from '@angular/compiler';
+import { th } from 'date-fns/locale';
 
 @Component({
   selector: 'pools-handler',
@@ -26,18 +28,21 @@ import { compilePipeFromMetadata } from '@angular/compiler';
 export class PoolsHandlerComponent implements OnInit, OnChanges {
   @Input() category: CategoryModel;
   @Input() registrations: RegistrationModel[];
-  missing: any[] = [];
-  isNewPools: boolean = true;
-  originalPools: any;
-  pools: any[][] = [];
-  ridersPerPool: number = 3;
-  poolsIds = [];
-  currentStepId: string;
+
   edit: boolean = false;
   isLoading: boolean = false;
   isError: boolean = false;
   errorMessage: string = '';
 
+  isNewPools: boolean = true;
+  originalPoolsEntries: any;
+  currentStep: any;
+  stepsOptions: any[] = [];
+
+  missing: any[] = [];
+  pools: any[][] = [];
+  poolsIds = [];
+  ridersPerPool: number = 3;
   perPoolOptions = [
     { label: '1', value: 1 },
     { label: '2', value: 2 },
@@ -55,32 +60,34 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
 
   async ngOnInit() {
     this.isLoading = true;
-    this.currentStepId = this.category.steps[0]._id;
+
+    this.initCurrentStep();
     await this.getPoolFromDb();
   }
 
   async ngOnChanges(changes: SimpleChanges) {
     this.pools = [];
     this.edit = false;
-    this.currentStepId = this.category.steps[0]._id;
+
+    this.initCurrentStep();
     await this.getPoolFromDb();
 
     if (
       (this.registrations && this.isNewPools) ||
       (this.registrations &&
-        this.registrations.length !== this.originalPools.length)
+        this.registrations.length !== this.originalPoolsEntries.length)
     )
-      this.formatPoolsFromRegistrations(this.registrations);
+      this.createPoolsFromRegistrations(this.registrations);
   }
 
-  selectPerPool(event) {
-    this.ridersPerPool = event;
-    this.formatPoolsOnRiderPerPoolChange();
-  }
+  initCurrentStep() {
+    this.stepsOptions = this.category.steps.map((step) => {
+      return { label: step.name, value: step._id };
+    });
 
-  updatePoolsIds() {
-    this.poolsIds = this.pools.map((_, index) => `pool-${index}`);
-    this.poolsIds.push('missing');
+    this.currentStep = this._poolUtilityService.getPoolCurrentStep(
+      this.category.steps
+    );
   }
 
   drop(event: CdkDragDrop<any>) {
@@ -98,10 +105,78 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
         event.currentIndex
       );
     }
-    console.log(this.missing);
   }
 
-  formatPoolsFromRegistrations(registrations: RegistrationModel[]): void {
+  cancel() {
+    this.edit = false;
+    this.isError = false;
+
+    if (this.isNewPools) this.createPoolsFromRegistrations(this.registrations);
+    else this.formatPoolsEntriesToRegistrations();
+  }
+
+  submit() {
+    this.isLoading = true;
+
+    // Check si une pool est vide && afficher un message d'erreur
+    if (this.checkEmptyPool() === true) return;
+
+    this.isError = false;
+    this.edit = false;
+
+    if (this.isNewPools)
+      this._poolsService
+        .createPools(this.currentStep._id, this.formatIntoPoolsEntries())
+        .subscribe((pools) => {
+          this.originalPoolsEntries = [...pools];
+          this.isNewPools = false;
+          this.isLoading = false;
+        });
+    else
+      this._poolsService
+        .updatePools(this.currentStep._id, this.formatIntoPoolsEntries())
+        .subscribe((pools) => {
+          this.originalPoolsEntries = [...pools];
+          this.isNewPools = false;
+          this.isLoading = false;
+        });
+  }
+
+  async getPoolFromDb() {
+    this.isLoading = true;
+    this._poolsService
+      .getPoolsByStepId(this.currentStep._id)
+      .subscribe((pools: any) => {
+        this.originalPoolsEntries = [...pools];
+
+        if (
+          this.category.steps.find((step) => step.isResultPublished === true) &&
+          pools.length === 0
+        ) {
+          this._poolsService
+            .getFinalPoolsByStepId(
+              this.category.steps.find(
+                (step) =>
+                  step.isResultPublished === true &&
+                  step.name == 'QUALIFICATION'
+              )._id
+            )
+            .subscribe((pools: any) => {
+              console.log('a');
+              console.log(pools);
+            });
+        } else {
+          if (pools.length > 0 && pools.length === this.registrations.length) {
+            this.isNewPools = false;
+            this.formatPoolsEntriesToRegistrations();
+          } else this.isNewPools = true;
+        }
+
+        this.isLoading = false;
+      });
+  }
+
+  createPoolsFromRegistrations(registrations: RegistrationModel[]): void {
     const riders = registrations.map((registration) => registration);
 
     if (riders.length === 0) return;
@@ -132,10 +207,11 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     }
 
     this.pools = [...pools];
+    console.log(this.pools);
     this.updatePoolsIds(); // Mise à jour des identifiants si nécessaire
   }
 
-  formatPoolsFromDb(pools: any[]) {
+  formatPoolsEntriesInDoubleTable(pools: any[]) {
     return pools.reduce((acc, pool) => {
       const poolNumber = pool.poolNumber - 1;
       if (!acc[poolNumber]) acc[poolNumber] = [];
@@ -145,36 +221,70 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     }, []);
   }
 
-  formatPoolsOnRiderPerPoolChange() {
-    // Format pools by rider per pool
-    const riders = this.pools.flat();
-    this.formatPoolsFromRegistrations(riders);
+  formatPoolsEntriesToRegistrations() {
+    this.missing = this.originalPoolsEntries.filter((pool) => pool.isMissing);
+    this.missing = this.missing.map((pool) => pool.registration);
+
+    this.pools = this.formatPoolsEntriesInDoubleTable(
+      this.originalPoolsEntries.filter((pool) => pool.isMissing === false)
+    );
+    this.updatePoolsIds();
   }
 
-  cancel() {
-    this.edit = false;
-    this.isError = false;
-
-    console.log(this.isNewPools);
-
-    if (this.isNewPools) this.formatPoolsFromRegistrations(this.registrations);
-    else {
-      this.missing = this.originalPools.filter((pool) => pool.isMissing);
-      this.missing = this.missing.map((pool) => pool.registration);
-
-      console.log(this.originalPools);
-
-      this.pools = this.formatPoolsFromDb(
-        this.originalPools.filter((pool) => pool.isMissing === false)
-      );
-    }
-  }
-
-  submit() {
-    // Parcourir les pools et créer un tableau avec numéro de pool, registrationId
+  formatIntoPoolsEntries() {
     let pools = [];
+    let missing = [];
 
-    // Check si une pool est vide
+    // Format pools
+    this.pools.forEach((pool, index) => {
+      pool.forEach((registration) => {
+        pools.push({
+          isMissing: false,
+          poolNumber: index + 1,
+          registrationId: registration._id,
+          stepId: this.currentStep._id,
+        });
+      });
+    });
+
+    // Format missing
+    missing = this.missing.map((registration) => {
+      return {
+        isMissing: true,
+        poolNumber: 0,
+        registrationId: registration._id,
+        stepId: this.currentStep._id,
+      };
+    });
+
+    pools = pools.concat(missing);
+
+    return pools;
+  }
+
+  isStepFinaleAvailable() {
+    // Check if qualif step is published
+    const qualifStep = this.category.steps.find(
+      (step) => step.name === 'QUALIFICATION'
+    );
+    if (qualifStep.isResultPublished === false) return false;
+    return true;
+  }
+
+  async selectStep(event) {
+    this.edit = false;
+    this.currentStep = this.category.steps.find((step) => step._id === event);
+
+    await this.getPoolFromDb();
+  }
+
+  selectPerPool(event) {
+    this.ridersPerPool = event;
+    const pools = this.pools.flat();
+    this.createPoolsFromRegistrations(pools);
+  }
+
+  checkEmptyPool() {
     for (let i = 0; i < this.pools.length; i++) {
       if (this.pools[i].length === 0) {
         this.isError = true;
@@ -182,74 +292,14 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
           i + 1
         } est vide. Vous ne pouvez pas soumettre de poules vides.`;
         this.isLoading = false;
-        return;
+        return true;
       }
     }
-
-    this.isError = false;
-    this.edit = false;
-    this.isLoading = true;
-
-    this.pools.forEach((pool, index) => {
-      pool.forEach((rider) => {
-        pools.push({
-          poolNumber: index + 1,
-          registrationId: rider._id,
-          stepId: this.currentStepId,
-        });
-      });
-    });
-
-    pools = <any[]>pools.concat(this.formatMissing());
-
-    if (this.isNewPools)
-      this._poolsService
-        .createPools(this.currentStepId, pools, this.missing)
-        .subscribe((pools) => {
-          this.originalPools = [...pools];
-          this.isNewPools = false;
-          this.isLoading = false;
-        });
-    else
-      this._poolsService
-        .updatePools(this.currentStepId, pools, this.missing)
-        .subscribe((pools) => {
-          this.originalPools = [...pools];
-          this.isNewPools = false;
-          this.isLoading = false;
-        });
+    return false;
   }
 
-  async getPoolFromDb() {
-    this.isLoading = true;
-    this._poolsService
-      .getPoolsByStepId(this.currentStepId)
-      .subscribe((pools: any) => {
-        this.originalPools = [...pools];
-        this.missing = pools.filter((pool) => pool.isMissing);
-        this.missing = this.missing.map((pool) => pool.registration);
-
-        if (pools.length > 0 && pools.length === this.registrations.length) {
-          pools = pools.filter((pool) => pool.isMissing === false);
-          this.isNewPools = false;
-          this.pools = this.formatPoolsFromDb(pools);
-          this.updatePoolsIds();
-        } else {
-          this.isNewPools = true;
-        }
-
-        this.isLoading = false;
-      });
-  }
-
-  formatMissing() {
-    return this.missing.map((registration) => {
-      return {
-        poolNumber: 0,
-        registrationId: registration._id,
-        stepId: this.currentStepId,
-        isMissing: true,
-      };
-    });
+  updatePoolsIds() {
+    this.poolsIds = this.pools.map((_, index) => `pool-${index}`);
+    this.poolsIds.push('missing');
   }
 }

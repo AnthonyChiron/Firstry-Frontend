@@ -1,29 +1,32 @@
 <card title="Résultats">
-  <div header *ngIf="currentStep" class="flexRow alignCenter gap10">
-    <div class="flexRow alignEnd gap10">
-      <h3 *ngIf="currentStep.state == 'RESULT_PENDING'">Non publié</h3>
-      <h3 *ngIf="currentStep.state == 'RESULT_PUBLISHED'">Publié</h3>
-    </div>
+  <div *ngIf="isLoading" class="flexRow alignCenter justifyCenter">
+    <loader></loader>
+  </div>
+  <div header class="flexRow alignCenter gap10">
     <btn
-      *ngIf="currentStep.state == 'RESULT_PENDING'"
+      *ngIf="isResultPublishable()"
       type="valid"
       label="Publier"
-      (click)="publishResult()"
+      (click)="isPublishConfirmationModalOpen = true"
     ></btn>
     <btn
-      *ngIf="currentStep.state == 'RESULT_PUBLISHED'"
+      *ngIf="currentStep.isResultPublished == true"
       type="danger"
       label="Dépublier"
-      (click)="unpublishResult()"
+      (click)="isUnpublishConfirmationModalOpen = true"
     ></btn>
     <dropdown
       class="contestDropDown"
       [options]="stepsOptions"
       (selected)="selectStep($event.value)"
-      [value]="currentStep"
+      [value]="currentStep._id"
+      [ngStyle]="{ width: '10vw' }"
     ></dropdown>
   </div>
-  <div *ngIf="currentStep" class="flexCardColumn">
+  <div
+    *ngIf="!isLoading && currentStep && pools.length != 0"
+    class="flexCardColumn"
+  >
     <div class="flexCardRow">
       <div class="flex3 flexColumn gap10">
         <div class="pool" *ngFor="let pool of pools; index as i">
@@ -82,19 +85,39 @@
       </div>
       <card class="flex2" color="2" size="m" title="Aperçu du classement">
         <app-table
-          [headers]="['#', 'Nom & prénom', 'Score']"
-          [columns]="['rank', 'name', 'score']"
+          [headers]="['#', 'Nom & prénom', 'Score', 'Qualifié ?']"
+          [columns]="['rank', 'name', 'score', 'isQualified']"
           [data]="table"
           sortColumn="rank"
         ></app-table>
       </card>
     </div>
   </div>
-  <div *ngIf="!currentStep" class="flexColumn alignCenter gap10">
-    <p>Les poules de cette catégorie n'ont pas encore été créées.</p>
+  <div
+    *ngIf="!isLoading && (!currentStep || pools.length == 0)"
+    class="flexColumn alignCenter gap10"
+  >
+    <p>
+      Les poules de cette catégorie n'ont pas encore été créées pour l'étape
+      <b>{{ currentStep.name | lowercase }}</b>
+    </p>
     <btn
       label="Créer les poules"
       [routerLink]="['/dashboard', contest._id, 'pools']"
     ></btn>
   </div>
 </card>
+<confirmation-modal
+  [isVisible]="isPublishConfirmationModalOpen"
+  title="Vous êtes sur le point de publier les résultats de {{ category.name }}"
+  (cancelled)="isPublishConfirmationModalOpen = false"
+  (confirmed)="publishResult()"
+></confirmation-modal>
+<confirmation-modal
+  [isVisible]="isUnpublishConfirmationModalOpen"
+  title="Vous êtes sur le point de dépublier les résultats de {{
+    category.name
+  }}"
+  (cancelled)="isUnpublishConfirmationModalOpen = false"
+  (confirmed)="unpublishResult()"
+></confirmation-modal>
