@@ -1,0 +1,33 @@
+@import "../../../../../../styles/colors.scss";
+
+img {
+  height: 60px;
+  width: auto;
+  border-radius: 30px;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  border-bottom: 1px solid $firstry-white-3;
+}
+
+td {
+  text-align: center;
+}
+
+.greenDot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: $firstry-green-2;
+}
+
+.redDot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: $firstry-red-2;
+}

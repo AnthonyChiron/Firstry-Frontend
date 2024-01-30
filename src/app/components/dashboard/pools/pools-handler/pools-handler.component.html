@@ -26,12 +26,15 @@
       <loader></loader>
     </div>
     <div class="content" *ngIf="!isLoading">
-      <div class="flexColumn alignCenter" *ngIf="pools.length == 0">
+      <div
+        class="flexColumn alignCenter"
+        *ngIf="pools.length == 0 && registrations.length == 0"
+      >
         <h3>Il n'y a pour l'instant pas d'incrit dans cette poule.</h3>
       </div>
       <div
         class="flexColumn alignCenter gap10"
-        *ngIf="originalPoolsEntries == 0 && !edit"
+        *ngIf="registrations.length != 0 && originalPoolsEntries == 0 && !edit"
       >
         <p>
           Les poules de la catégorie {{ category.name }} ne sont pas encore

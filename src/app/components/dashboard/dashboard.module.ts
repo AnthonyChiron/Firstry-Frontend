@@ -28,7 +28,6 @@ import { ContestComponent } from '../contests/contest/contest.component';
 import { IsOrganizerGuard } from 'src/app/shared/guards/IsOrganizer/is-organizer-guard.service';
 import { RiderStateHandlerComponent } from './pools/rider-state-handler/rider-state-handler.component';
 import { OverviewRegistrationsComponent } from './overview/overview-registrations/overview-registrations.component';
-import { CategoriesNavigationComponent } from './pools/categories-navigation/categories-navigation.component';
 import { PoolsHandlerComponent } from './pools/pools-handler/pools-handler.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -107,7 +106,6 @@ const dashboardRoutes: Routes = [
     DangerZoneComponent,
     RiderStateHandlerComponent,
     OverviewRegistrationsComponent,
-    CategoriesNavigationComponent,
     PoolsHandlerComponent,
     PoolsComponent,
     ResultsHandlerComponent,

@@ -9,7 +9,7 @@ export interface ContestModel extends GenericModel {
   endDate: Date;
   registrationEndDate: Date;
   sports: any[];
-  categories: any[];
+  categories: any;
   location: Address;
   enablePayment: boolean;
   isPublished: boolean;

@@ -46,20 +46,29 @@ export class ContestComponent implements OnInit {
 
     this._screenSize.isMobile$.subscribe((isMobile) => {
       this.isMobile = isMobile;
+      this.getMobileNavbarLinks();
     });
   }
 
   getMobileNavbarLinks() {
-    if (this.contest.registrationEndDate > new Date()) {
-      this.links = [
-        { label: 'Aperçu', route: 'overview' },
-        { label: 'Planning', route: 'planning' },
-        { label: 'Inscription', route: 'register' },
-      ];
+    if (this.isMobile) {
+      if (this.contest && this.contest.registrationEndDate > new Date()) {
+        this.links = [
+          { label: 'Aperçu', route: 'overview' },
+          { label: 'Planning', route: 'planning' },
+          { label: 'Inscription', route: 'register' },
+        ];
+      } else {
+        this.links = [
+          { label: 'Aperçu', route: 'overview' },
+          { label: 'Planning', route: 'planning' },
+          { label: 'Résultats', route: 'results' },
+        ];
+      }
     } else {
       this.links = [
         { label: 'Aperçu', route: 'overview' },
-        { label: 'Planning', route: 'planning' },
+        { label: 'Inscription', route: 'register' },
         { label: 'Résultats', route: 'results' },
       ];
     }

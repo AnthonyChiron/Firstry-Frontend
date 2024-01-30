@@ -1,0 +1,37 @@
+<card [title]="'Résultat ' + category.name">
+  <div *ngIf="results.length == 0">
+    <p>Il n'y a pas encore de résultats disponibles pour cette catégorie !</p>
+  </div>
+  <table *ngIf="results.length != 0">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th></th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Points</th>
+        <th>Qualifié ?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let result of results; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>
+          <img
+            [src]="result.rider.photoUrl"
+            alt="Photo de {{ result.rider.firstName }}"
+          />
+        </td>
+        <td>{{ result.rider.lastName | uppercase }}</td>
+        <td>{{ result.rider.firstName | lowercase | Capitalize }}</td>
+        <td>{{ result.score }}</td>
+        <td>
+          <div class="flexRow justifyCenter">
+            <div *ngIf="result.isQualified" class="greenDot"></div>
+            <div *ngIf="!result.isQualified" class="redDot"></div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</card>

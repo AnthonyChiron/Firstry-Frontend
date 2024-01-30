@@ -40,6 +40,7 @@ import { BadgeComponent } from './components/basic/badge/badge.component';
 import { RemoveAccentsPipe } from './pipe/remove-accents.pipe';
 import { ProgressBarComponent } from './components/basic/progress-bar/progress-bar.component';
 import { RiderCardMediumComponent } from './components/riders/rider-card-md/rider-card-md.component';
+import { CategoriesNavigationComponent } from './components/categories-navigation/categories-navigation.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { RiderCardMediumComponent } from './components/riders/rider-card-md/ride
     RemoveAccentsPipe,
     ProgressBarComponent,
     RiderCardMediumComponent,
+    CategoriesNavigationComponent,
   ],
   imports: [
     CommonModule,
@@ -112,6 +114,7 @@ import { RiderCardMediumComponent } from './components/riders/rider-card-md/ride
     RemoveAccentsPipe,
     ProgressBarComponent,
     RiderCardMediumComponent,
+    CategoriesNavigationComponent,
   ],
 })
 export class SharedModule {}
