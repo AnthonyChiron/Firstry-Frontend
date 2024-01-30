@@ -33,7 +33,6 @@ export class ContestResultsComponent implements OnInit {
           this.contest = parseContestModel(contest);
           if (this.contest.categories.length > 0)
             this.selectedCategory = this.contest.categories[0];
-          this.getResults();
         });
       }
     });
@@ -41,31 +40,5 @@ export class ContestResultsComponent implements OnInit {
 
   onSelectedCategory(category: any) {
     this.selectedCategory = category;
-    this.getResults();
-  }
-
-  getResults() {
-    this.results = [];
-    this._poolsService
-      .getPoolsByStepId(this.selectedCategory.steps[0]._id)
-      .subscribe((pools) => {
-        this.results = this.formatPoolsToResults(pools);
-      });
-  }
-
-  formatPoolsToResults(poolsEntries: any[]) {
-    let results = [];
-
-    poolsEntries.forEach((pool) => {
-      results.push({
-        rider: pool.registration.rider,
-        score: pool.score,
-        isQualified: pool.isQualified,
-        isMissing: pool.isMissing,
-        rank: pool.rank,
-      });
-    });
-
-    return results;
   }
 }

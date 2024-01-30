@@ -5,9 +5,5 @@
     [selectedCategory]="selectedCategory"
     (categorySelected)="onSelectedCategory($event)"
   ></categories-navigation>
-  <result-table
-    class="flex2"
-    [results]="results"
-    [category]="selectedCategory"
-  ></result-table>
+  <result-table class="flex2" [category]="selectedCategory"></result-table>
 </div>

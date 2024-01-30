@@ -33,6 +33,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ResultsHandlerComponent } from './results/results-handler/results-handler.component';
 import { FormsModule } from '@angular/forms';
+import { ContestStateComponent } from './overview/contest-state/contest-state.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -109,6 +110,7 @@ const dashboardRoutes: Routes = [
     PoolsHandlerComponent,
     PoolsComponent,
     ResultsHandlerComponent,
+    ContestStateComponent,
   ],
   imports: [
     CommonModule,
