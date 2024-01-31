@@ -31,7 +31,10 @@ export class FormContestInfosService extends FormUtilityService {
     return this.formBuilder.group(
       {
         name: [contest.name, Validators.required],
-        description: [contest.description, Validators.required],
+        description: [
+          contest.description,
+          [Validators.required, Validators.minLength(30)],
+        ],
         sports: [contest.sports, Validators.required],
         startDate: [
           contest.startDate,

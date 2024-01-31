@@ -3,9 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FormUtilityService } from './form-utility.service';
 import { CategoryModel, CategoryModelDTO } from 'src/app/models/category.model';
 import { ContestModel } from 'src/app/models/contest.model';
-import { RulesModel } from 'src/app/models/rules.model';
-import { format } from 'date-fns';
-import { FormatDateJJMMDirective } from '../../directives/format-date-jjmm.directive';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +16,6 @@ export class FormCategoriesService extends FormUtilityService {
     return this.formBuilder.group({
       _id: [''],
       name: ['', Validators.required],
-      description: ['', Validators.required],
       maxRiders: [
         '0',
         [Validators.required, Validators.min(1), this.numberValidator()],
@@ -41,10 +37,6 @@ export class FormCategoriesService extends FormUtilityService {
       _id: [''],
       name: [type],
       startDate: ['', Validators.required],
-      ridersPerPool: [
-        '4',
-        [Validators.required, Validators.min(1), this.numberValidator()],
-      ],
       ridersQualifiedCount: [
         '8',
         [Validators.required, Validators.min(1), this.numberValidator()],
@@ -74,7 +66,6 @@ export class FormCategoriesService extends FormUtilityService {
       categoryForm.patchValue({
         _id: category._id,
         name: category.name,
-        description: category.description,
         maxRiders: category.maxRiders,
         sports: category.sports,
         registerPrice: category.registerPrice,
@@ -132,7 +123,6 @@ export class FormCategoriesService extends FormUtilityService {
     let categoryDTO: CategoryModelDTO = {
       category: {
         name: categoryForm.get('name').value,
-        description: categoryForm.get('description').value,
         maxRiders: Number(categoryForm.get('maxRiders').value),
         sports: categoryForm.get('sports').value,
         registerPrice: Number(categoryForm.get('registerPrice').value),

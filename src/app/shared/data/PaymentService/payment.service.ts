@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { OrganizerModel } from 'src/app/models/organizer.model';
 import { AuthService } from '../../services/AuthService/auth.service';
 import { BaseHttpService } from '../BaseHttpService/base-http.service';
+import { RegistrationModel } from 'src/app/models/registration.model';
 
 @Injectable({
   providedIn: 'root',
@@ -53,4 +54,5 @@ export class PaymentService extends BaseHttpService {
 
 interface PaymentInterface {
   clientSecret: string;
+  registration: RegistrationModel;
 }

@@ -53,17 +53,6 @@
         [error]="fus.isFieldInvalid('name')"
       ></input-text>
 
-      <input-textarea
-        name="description"
-        type="Text"
-        placeholder="Description..."
-        label="Description"
-        formControlName="description"
-        [edit]="edit"
-        [error]="fus.isFieldInvalid('description')"
-      >
-      </input-textarea>
-
       <div *ngIf="contest.sports.length > 1" class="inputGroup">
         <h4>Disciplines</h4>
         <chips-group
@@ -78,7 +67,7 @@
         >
         </note>
       </div>
-      <div class="inscription flexRow">
+      <div class="inscription flexRow gap10">
         <input-text
           class="flex1"
           name="maxRiders"
@@ -115,7 +104,7 @@
       </div>
 
       <div class="steps">
-        <h4>Étapes</h4>
+        <h3>Étapes</h3>
         <div class="stepsList">
           <card
             *ngIf="categoryForm.value.isQualificationStep"
@@ -123,8 +112,8 @@
             size="s"
             class="step"
           >
-            <div formGroupName="stepQualif">
-              <h4>Qualification</h4>
+            <div formGroupName="stepQualif" class="flexColumn gap10">
+              <h3 class="textCenter">Qualification</h3>
               <input-chips
                 *ngIf="edit"
                 [options]="dateOptions"
@@ -134,13 +123,6 @@
                 label="Date"
                 [isValueDate]="true"
               ></input-chips>
-              <input-text
-                type="number"
-                label="Nombre de riders par poule"
-                formControlName="ridersPerPool"
-                [edit]="edit"
-                [error]="isStepFieldInvalid('stepQualif', 'ridersPerPool')"
-              ></input-text>
               <input-text
                 type="number"
                 label="Nombre de riders qualifié.es"
@@ -160,8 +142,13 @@
             </div>
           </card>
           <card color="3" size="s" class="step">
-            <div formGroupName="stepFinal">
-              <h4 *ngIf="categoryForm.value.isQualificationStep">Finale</h4>
+            <div formGroupName="stepFinal" class="flexColumn gap10">
+              <h3
+                class="textCenter"
+                *ngIf="categoryForm.value.isQualificationStep"
+              >
+                Finale
+              </h3>
               <input-chips
                 *ngIf="edit"
                 [options]="dateOptions"
@@ -171,13 +158,6 @@
                 label="Date"
                 [isValueDate]="true"
               ></input-chips>
-              <input-text
-                type="number"
-                label="Nombre de riders par poule"
-                formControlName="ridersPerPool"
-                [edit]="edit"
-                [error]="isStepFieldInvalid('stepFinal', 'ridersPerPool')"
-              ></input-text>
               <dropdown
                 name="rules"
                 formControlName="rules"
