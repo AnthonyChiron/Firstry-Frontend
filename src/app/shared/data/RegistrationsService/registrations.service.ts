@@ -40,9 +40,9 @@ export class RegistrationsService extends CrudService<RegistrationModel> {
     );
   }
 
-  pendingApprovalRiderRegistration(riderId, categoryId) {
+  pendingApprovalRiderRegistration(registrationId) {
     return this.http.get(
-      `${this.baseUrl}/pendingApprovalRiderRegistration/${riderId}/${categoryId}`
+      `${this.baseUrl}/pendingApprovalRiderRegistration/${registrationId}`
     );
   }
 

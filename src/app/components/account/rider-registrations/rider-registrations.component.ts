@@ -20,7 +20,9 @@ export class RiderRegistrationsComponent implements OnInit {
       .getRiderRegistrations(this._authService.getCurrentUser().rider._id)
       .subscribe((result: any) => {
         console.log(result);
-        this.registrations = result;
+        this.registrations = result.filter(
+          (registration) => registration.state != 'cancelled_before_payment'
+        );
       });
   }
 
@@ -32,16 +34,12 @@ export class RiderRegistrationsComponent implements OnInit {
         return 'Validée';
       case 'refused':
         return 'Refusée';
-      case 'paymentFailed':
+      case 'payment_failed':
         return 'Paiement échoué';
-      case 'canceled':
-        return 'Annulée';
       default:
         return 'En attente';
     }
   }
 
-  cancelRegistration(registrationId) {
-    console.log(registrationId);
-  }
+  cancelRegistration(registrationId) {}
 }

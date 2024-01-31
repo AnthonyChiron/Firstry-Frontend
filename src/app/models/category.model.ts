@@ -3,7 +3,6 @@ import { StepModel } from './step.model';
 
 export interface CategoryModel extends GenericModel {
   name: String;
-  description: String;
   sports: [];
   maxRiders: Number;
   registerPrice: Number;
@@ -15,7 +14,6 @@ export interface CategoryModel extends GenericModel {
 export interface CategoryModelDTO {
   category: {
     name: String;
-    description: String;
     sports: [];
     maxRiders: Number;
     registerPrice: Number;
@@ -28,7 +26,6 @@ export interface CategoryModelDTO {
 
 export interface CategoryRegistrationModelDTO {
   name: String;
-  description: String;
   sports: [];
   maxRiders: Number;
   NbRegistration: Number;

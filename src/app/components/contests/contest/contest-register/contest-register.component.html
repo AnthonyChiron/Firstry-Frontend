@@ -11,7 +11,7 @@
       </p>
       <card
         *ngFor="let category of categories"
-        (click)="selectedCategory = category"
+        (click)="selectCategory(category)"
         [class.active]="selectedCategory == category"
         class="category"
         color="{{ selectedCategory == category ? 'black' : '2' }}"
@@ -45,19 +45,8 @@
     *ngIf="isLoggedin && !isPaymentStep && selectedCategory"
     class="flex1 registerCard"
     [title]="'Inscription - ' + selectedCategory.name"
-    [fitContent]="true"
   >
     <div class="flexColumn content">
-      <div class="description">
-        <label>Description</label>
-        <p>
-          {{
-            selectedCategory.description
-              ? selectedCategory.description
-              : "Aucune description"
-          }}
-        </p>
-      </div>
       <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
         <card
           *ngFor="let step of selectedCategory.steps"

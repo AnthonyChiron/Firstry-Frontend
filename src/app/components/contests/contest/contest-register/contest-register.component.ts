@@ -1,6 +1,6 @@
 import { formatsOptions } from './../../../../constants/rulesConstants';
 import { is } from 'date-fns/locale';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 import { ContestsService } from 'src/app/shared/data/ContestsService/contests.service';
 import { ActivatedRoute } from '@angular/router';
@@ -17,11 +17,12 @@ import { CategoriesService } from 'src/app/shared/data/CategoriesService/categor
   templateUrl: './contest-register.component.html',
   styleUrls: ['./contest-register.component.scss'],
 })
-export class ContestRegisterComponent implements OnInit {
+export class ContestRegisterComponent implements OnInit, OnDestroy {
   isMobile: boolean = false;
   contest: ContestModel = null;
   categories: CategoryRegistrationModelDTO[] = [];
   selectedCategory: any = null;
+  registration: any = null;
 
   isLoginModalOpen: boolean = false;
   isLoggedin: boolean = false;
@@ -86,6 +87,28 @@ export class ContestRegisterComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(): void {
+    if (!this.isPaymentSucceeded && !this.isPaymentFailed)
+      this.cancelRegistration();
+  }
+
+  selectCategory(category) {
+    this.selectedCategory = category;
+    if (this.isPaymentStep) {
+      this.cancelRegistration();
+      this.isPaymentStep = false;
+    }
+  }
+
+  cancelRegistration() {
+    if (this.registration)
+      this._registrationService
+        .cancelRiderRegistration(this.registration._id)
+        .subscribe((result) => {
+          console.log(result);
+        });
+  }
+
   register() {
     this._paymentService
       .createRegistrationPayment(
@@ -93,7 +116,8 @@ export class ContestRegisterComponent implements OnInit {
         this.contest.organizer,
         this.selectedCategory._id
       )
-      .subscribe(({ clientSecret }) => {
+      .subscribe(({ clientSecret, registration }) => {
+        this.registration = registration;
         this.isPaymentStep = true;
         this.clientSecret = clientSecret;
         console.log(clientSecret);
@@ -120,10 +144,7 @@ export class ContestRegisterComponent implements OnInit {
 
     // Update rider registration
     this._registrationService
-      .pendingApprovalRiderRegistration(
-        this.rider._id,
-        this.selectedCategory._id
-      )
+      .pendingApprovalRiderRegistration(this.registration._id)
       .subscribe((result) => {
         console.log(result);
       });

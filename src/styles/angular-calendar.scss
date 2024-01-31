@@ -1,33 +1,27 @@
 .cal-week-view {
   border: none;
   background-color: transparent;
-  z-index: 1;
 }
 
 .cal-hour-segment {
   background-color: transparent;
   border: none;
-  z-index: 1;
 }
 
 .cal-week-view .cal-hour {
   background-color: transparent;
   border: none;
-  z-index: 1;
 }
 
 .cal-week-view .cal-hour:not(:last-child) .cal-hour-segment,
 .cal-week-view .cal-hour:last-child :not(:last-child) .cal-hour-segment {
   border-bottom: none;
-  z-index: 1;
 }
 
 .cal-week-view .cal-time-events {
   border: none;
-  z-index: 1;
 }
 
 .cal-week-view .cal-event {
   border: none;
-  z-index: 1;
 }
