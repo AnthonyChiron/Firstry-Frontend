@@ -7,6 +7,21 @@
   width: 100%;
 }
 
+.inscriptionCard {
+  color: white;
+
+  h2 {
+    text-align: start;
+    word-wrap: normal;
+    font-size: 40px;
+    font-variation-settings: "wght" 200;
+
+    b {
+      font-size: 50px;
+    }
+  }
+}
+
 @media screen and (min-width: 768px) {
   .leftPannel {
     display: flex;
@@ -15,7 +30,7 @@
 
     .poster {
       width: auto;
-      height: 20vw;
+      height: 17vw;
       border-radius: 11px;
     }
   }

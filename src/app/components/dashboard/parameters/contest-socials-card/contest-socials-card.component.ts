@@ -65,6 +65,7 @@ export class ContestSocialsCardComponent implements OnInit {
     let contestForm = <ContestModel>{
       name: this.contest.name,
       description: this.contest.description,
+      enablePayment: this.contest.enablePayment,
       sports: this.contest.sports,
       startDate: this.contest.startDate,
       endDate: this.contest.endDate,

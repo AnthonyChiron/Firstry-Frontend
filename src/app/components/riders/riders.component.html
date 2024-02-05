@@ -1,5 +1,5 @@
+<h1 class="mainTitle">RIDERS</h1>
 <div class="main" [@fadeInOut]>
-  <h1 class="mainTitle">RIDERS</h1>
   <!-- <div class="filters">
       <p-dropdown [options]="sports" optionLabel="name"></p-dropdown>
     </div> -->
@@ -29,4 +29,10 @@
       ></rider-card-md>
     </div>
   </div>
+  <pagination-handler
+    class="pagination"
+    [totalPages]="totalPages"
+    [currentPage]="currentPage"
+    (pageChanged)="pageChanged($event)"
+  ></pagination-handler>
 </div>

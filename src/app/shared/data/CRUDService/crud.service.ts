@@ -28,6 +28,13 @@ export class CrudService<T> extends BaseHttpService {
     return this.http.get<T[]>(this.baseUrl);
   }
 
+  // Récupérer par page
+  getByPage(pageIndex, limit): Observable<T[]> {
+    return this.http.get<T[]>(
+      this.baseUrl + '/getByPage/' + pageIndex + '/' + limit
+    );
+  }
+
   // Récupérer une entité par ID
   getById(id: string): Observable<T> {
     const url = `${this.baseUrl}/getById/${id}`;

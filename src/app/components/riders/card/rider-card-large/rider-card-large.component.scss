@@ -51,7 +51,7 @@ $width-photo: 50vw;
       width: 40vw;
 
       .name {
-        color: $firstry-white-1;
+        color: $firstry-black-1;
         border-radius: $border-radius-1;
         display: flex;
         flex-direction: column;
@@ -76,7 +76,7 @@ $width-photo: 50vw;
         justify-content: space-between;
         align-items: baseline;
         margin: 0;
-        color: white;
+        color: $firstry-black-1;
         flex-wrap: wrap;
         height: 40%;
         margin-bottom: 5vw;
