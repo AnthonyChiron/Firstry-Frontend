@@ -21,19 +21,30 @@
     <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
       <div [class]="'flexCardRow'">
         <socials *ngIf="contest.socials" [socials]="contest.socials"></socials>
-        <card title="Dates"
-          ><p>
-            {{
-              (contest.startDate | date : "dd/MM/yyyy") +
-                " - " +
-                (contest.endDate | date : "dd/MM/yyyy")
-            }}
-          </p></card
-        >
       </div>
-      <div [class]="!isMobile ? 'flexCardColumn flex1' : 'flexCardRow'">
+      <div [class]="'flexCardColumn flex1'">
         <maps-card class="map" [address]="contest.location.address"></maps-card>
-        <card><h2>JE VEUX M'INSCRIRE</h2></card>
+        <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
+          <card class="flex1" title="Dates" size="s"
+            ><p>
+              {{
+                (contest.startDate | date : "dd/MM/yyyy") +
+                  " - " +
+                  (contest.endDate | date : "dd/MM/yyyy")
+              }}
+            </p></card
+          >
+          <card
+            class="flex1 cursorPointer"
+            size="s"
+            color="black"
+            routerLink="/contests/{{ contest._id }}/register"
+          >
+            <div class="inscriptionCard flexRow alignCenter gap10">
+              <h2>JE VEUX <b>M'INSCRIRE</b></h2>
+            </div>
+          </card>
+        </div>
       </div>
     </div>
   </div>

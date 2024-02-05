@@ -20,6 +20,7 @@
       <nav-btn
         *ngFor="let link of links"
         [label]="link.label"
+        [icon]="link.icon"
         routerLinkActive="active"
         [routerLink]="link.route"
       ></nav-btn>

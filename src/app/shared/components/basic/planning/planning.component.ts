@@ -93,11 +93,12 @@ export class PlanningComponent implements OnInit, OnChanges {
     event.meta.step.startDate = newStart;
     event.meta.step.endDate = newEnd;
 
-    this._stepsService
-      .update(event.meta.step._id, stepModelToDTO(event.meta.step))
-      .subscribe((res) => {
-        console.log(res);
-      });
+    let step = stepModelToDTO(event.meta.step);
+    step.rules = event.meta.step.rules._id;
+
+    this._stepsService.update(event.meta.step._id, step).subscribe((res) => {
+      console.log(res);
+    });
     this.refresh.next();
   }
 

@@ -41,6 +41,7 @@ import { RemoveAccentsPipe } from './pipe/remove-accents.pipe';
 import { ProgressBarComponent } from './components/basic/progress-bar/progress-bar.component';
 import { RiderCardMediumComponent } from './components/riders/rider-card-md/rider-card-md.component';
 import { CategoriesNavigationComponent } from './components/categories-navigation/categories-navigation.component';
+import { PaginationHandlerComponent } from './components/basic/pagination-handler/pagination-handler.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { CategoriesNavigationComponent } from './components/categories-navigatio
     ProgressBarComponent,
     RiderCardMediumComponent,
     CategoriesNavigationComponent,
+    PaginationHandlerComponent,
   ],
   imports: [
     CommonModule,
@@ -115,6 +117,7 @@ import { CategoriesNavigationComponent } from './components/categories-navigatio
     ProgressBarComponent,
     RiderCardMediumComponent,
     CategoriesNavigationComponent,
+    PaginationHandlerComponent,
   ],
 })
 export class SharedModule {}

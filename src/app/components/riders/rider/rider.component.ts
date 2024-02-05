@@ -2,6 +2,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { RidersService } from './../../../shared/data/RidersService/riders.service';
 import { Component, OnInit } from '@angular/core';
 import { RiderModel } from 'src/app/models/rider.model';
+import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 
 @Component({
   selector: 'app-rider',
@@ -11,6 +12,7 @@ import { RiderModel } from 'src/app/models/rider.model';
 export class RiderComponent implements OnInit {
   rider: RiderModel;
   isLoading: boolean = false;
+  isMobile: boolean = false;
   test: [
     { id: 1; name: 'Rider 1'; discipline: 'Skateboard' },
     { id: 2; name: 'Rider 2'; discipline: 'BMX' },
@@ -19,10 +21,14 @@ export class RiderComponent implements OnInit {
 
   constructor(
     private ridersService: RidersService,
+    private _screenSizeService: ScreenSizeService,
     private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this._screenSizeService.isMobile$.subscribe((isMobile) => {
+      this.isMobile = isMobile;
+    });
     // get rider by id from route
     this.isLoading = true;
     this.activatedRoute.params.subscribe((params) => {

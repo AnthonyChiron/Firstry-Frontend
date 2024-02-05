@@ -13,7 +13,7 @@ import { filter } from 'rxjs';
 export class ContestComponent implements OnInit {
   contest: ContestModel;
   isMobile: boolean = false;
-  links: { label: string; route: string }[] = [];
+  links: { label: string; route: string; icon: string }[] = [];
   isOverview: boolean = true;
 
   constructor(
@@ -54,22 +54,30 @@ export class ContestComponent implements OnInit {
     if (this.isMobile) {
       if (this.contest && this.contest.registrationEndDate > new Date()) {
         this.links = [
-          { label: 'Aperçu', route: 'overview' },
-          { label: 'Planning', route: 'planning' },
-          { label: 'Inscription', route: 'register' },
+          { label: 'Aperçu', route: 'overview', icon: 'fa-solid fa-home' },
+          {
+            label: 'Planning',
+            route: 'planning',
+            icon: 'fa-solid fa-calendar',
+          },
+          { label: 'Inscription', route: 'register', icon: 'fa-solid fa-plus' },
         ];
       } else {
         this.links = [
-          { label: 'Aperçu', route: 'overview' },
-          { label: 'Planning', route: 'planning' },
-          { label: 'Résultats', route: 'results' },
+          { label: 'Aperçu', route: 'overview', icon: 'fa-solid fa-home' },
+          {
+            label: 'Planning',
+            route: 'planning',
+            icon: 'fa-solid fa-calendar',
+          },
+          { label: 'Résultats', route: 'results', icon: 'fa-solid fa-list-ol' },
         ];
       }
     } else {
       this.links = [
-        { label: 'Aperçu', route: 'overview' },
-        { label: 'Inscription', route: 'register' },
-        { label: 'Résultats', route: 'results' },
+        { label: 'Aperçu', route: 'overview', icon: 'fa-solid fa-home' },
+        { label: 'Inscription', route: 'register', icon: 'fa-solid fa-plus' },
+        { label: 'Résultats', route: 'results', icon: 'fa-solid fa-list-ol' },
       ];
     }
   }

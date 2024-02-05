@@ -1,25 +1,32 @@
 <div class="main" [@fadeInOut]>
   <h1 class="mainTitle">CONTESTS</h1>
   <div class="content" *ngIf="contests">
-    <div class="section">
+    <div
+      class="section"
+      *ngIf="nextWeekContests && nextWeekContests.length > 0"
+    >
       <h2>Dans une semaine <i class="fa-solid fa-chevron-down fa-2xs"></i></h2>
       <div class="flexCardRow flexWrap spaceBetween">
         <contest-card
           class="contest"
           [routerLink]="['/contests', contests[0]._id]"
           [contest]="contests[0]"
+          *ngFor="let contest of nextWeekContests"
         >
         </contest-card>
       </div>
     </div>
-    <div class="section">
+    <div
+      class="section"
+      *ngIf="nextMonthContests && nextMonthContests.length > 0"
+    >
       <h2>Le mois prochain <i class="fa-solid fa-chevron-down fa-2xs"></i></h2>
       <div class="flexCardRow flexWrap spaceBetween">
         <contest-card
           class="contest"
           [routerLink]="['/contests', contest._id]"
           [contest]="contest"
-          *ngFor="let contest of contests"
+          *ngFor="let contest of nextMonthContests"
         >
         </contest-card>
       </div>

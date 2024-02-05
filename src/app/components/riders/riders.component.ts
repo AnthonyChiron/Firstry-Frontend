@@ -1,3 +1,4 @@
+import { is } from 'date-fns/locale';
 import { ScreenSizeService } from './../../shared/services/screenSize/screen-size.service';
 import { RiderModel } from 'src/app/models/rider.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -20,6 +21,10 @@ export class RidersComponent implements OnInit {
     { name: 'BMX' },
   ];
 
+  currentPage: number = 1;
+  limit: number = 16;
+  totalPages: number = 0;
+
   constructor(
     private _ridersService: RidersService,
     private _screenSize: ScreenSizeService
@@ -32,9 +37,28 @@ export class RidersComponent implements OnInit {
       this.isMobile = isMobile;
     });
 
-    this._ridersService.getAll().subscribe((riders) => {
-      this.riders = riders;
-      this.isLoading = false;
-    });
+    this._ridersService
+      .getByPage(this.currentPage, this.limit)
+      .subscribe((result: any) => {
+        this.riders = <RiderModel[]>result.data;
+        this.isLoading = false;
+        this.totalPages = result.totalPages;
+        console.log(result);
+      });
+  }
+
+  pageChanged(page: number): void {
+    console.log(page);
+    this.isLoading = true;
+    this.currentPage = page;
+    this._ridersService
+      .getByPage(this.currentPage, this.limit)
+      .subscribe((result: any) => {
+        this.riders = <RiderModel[]>result.data;
+        this.isLoading = false;
+        this.totalPages = result.totalPages;
+        this.isLoading = false;
+        console.log(result);
+      });
   }
 }

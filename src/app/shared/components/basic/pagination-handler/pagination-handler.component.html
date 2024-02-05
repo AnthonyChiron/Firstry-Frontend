@@ -1,0 +1,36 @@
+<nav class="pagination">
+  <ul class="flexRow alignCenter spaceBetween">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <btn
+        icon="fa-solid fa-chevron-left"
+        label="Page précédente"
+        type="transparent"
+        (click)="navigateTo(currentPage - 1)"
+        [disabled]="currentPage === 1"
+        >Précédent</btn
+      >
+    </li>
+    <li
+      class="page-item"
+      *ngFor="let page of [].constructor(totalPages); let i = index"
+      [class.active]="currentPage === i + 1"
+    >
+      <btn
+        class="page-link"
+        type="transparent"
+        label="{{ i + 1 }}"
+        (click)="navigateTo(i + 1)"
+      ></btn>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <btn
+        type="transparent"
+        label="Page suivante"
+        iconPos="right"
+        icon="fa-solid fa-chevron-right"
+        (click)="navigateTo(currentPage + 1)"
+        >Suivant</btn
+      >
+    </li>
+  </ul>
+</nav>

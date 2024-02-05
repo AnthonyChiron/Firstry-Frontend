@@ -12,6 +12,12 @@ export class PoolsService extends CrudService<PoolModel> {
     super(http, authService, 'pools');
   }
 
+  getRiderResults(riderId: string) {
+    return this.http.get<PoolModel[]>(
+      `${this.baseUrl}/getRiderResults/${riderId}`
+    );
+  }
+
   getPoolsByStepId(stepId: string) {
     return this.http.get<PoolModel[]>(
       `${this.baseUrl}/getPoolsByStepId/${stepId}`
