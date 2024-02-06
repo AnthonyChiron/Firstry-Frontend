@@ -2,55 +2,29 @@
 
 <div class="content">
   <div *ngIf="activeIndex === 0">
-    <signup-credentials-form
-      [userForm]="credentialsForm"
-      [emailAvailable]="emailAvailable"
-    ></signup-credentials-form>
-    <div class="footer">
-      <!-- <button pButton type="button" label="Test" (click)="test()"></button> -->
-      <p class="signUpStep">Etape {{ activeIndex + 1 }} sur 3</p>
-
-      <btn
-        (click)="next(credentialsForm)"
-        label="Suivant"
-        icon="fa-solid fa-angles-right fa-2xs"
-        iconPos="right"
-      ></btn>
-    </div>
+    <form onsubmit="next(credentialsForm)">
+      <signup-credentials-form
+        [userForm]="credentialsForm"
+        [emailAvailable]="emailAvailable"
+        (nextStep)="next(credentialsForm)"
+      ></signup-credentials-form>
+    </form>
   </div>
 
   <div *ngIf="activeIndex === 1 && credentialsForm.value.role == 'rider'">
     <signup-rider-form
       [riderForm]="riderForm"
       [touched]="riderFormTouched"
+      (nextStep)="next(riderForm)"
     ></signup-rider-form>
-    <div class="footer">
-      <!-- <button pButton type="button" label="Prev" (click)="prev()"></button> -->
-      <p class="signUpStep">Etape {{ activeIndex + 1 }} sur 3</p>
-      <btn
-        (click)="next(riderForm)"
-        label="Suivant"
-        icon="fa-solid fa-angles-right fa-2xs"
-        iconPos="right"
-      ></btn>
-    </div>
   </div>
 
   <div *ngIf="activeIndex === 1 && credentialsForm.value.role == 'organizer'">
     <signup-organizer-form
       [organizerForm]="organizerForm"
       [touched]="organizerFormTouched"
+      (nextStep)="next(organizerForm)"
     ></signup-organizer-form>
-    <div class="footer">
-      <!-- <button pButton type="button" label="Prev" (click)="prev()"></button> -->
-      <p class="signUpStep">Etape {{ activeIndex + 1 }} sur 3</p>
-      <btn
-        (click)="next(organizerForm)"
-        label="Suivant"
-        icon="fa-solid fa-angles-right fa-2xs"
-        iconPos="right"
-      ></btn>
-    </div>
   </div>
 </div>
 
@@ -61,15 +35,6 @@
     [signupTypeRider]="credentialsForm.value.role == 'rider' ? true : false"
     (uploadPhoto)="uploadPhoto($event)"
   ></signup-photo-form>
-  <div class="footer">
-    <p class="step">Etape {{ activeIndex + 1 }} sur 3</p>
-    <btn
-      (click)="submit()"
-      label="Valider"
-      icon="fa-solid fa-angles-check fa-2xs"
-      iconPos="right"
-    ></btn>
-  </div>
 </div>
 
 <div *ngIf="isLoading" class="flexRow justifyCenter">

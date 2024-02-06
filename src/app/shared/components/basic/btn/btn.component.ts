@@ -7,7 +7,8 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
       [name]="name"
       *ngIf="label != ''"
       class="{{ type }} {{ size }}"
-      disabled="{{ disabled }}"
+      [type]="inputType"
+      [disabled]="disabled"
     >
       <i *ngIf="icon != '' && iconPos != 'right'" class="left {{ icon }}"></i>
       <p>{{ label }}</p>
@@ -17,7 +18,8 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
       [name]="name"
       *ngIf="label == ''"
       class="{{ type }} iconOnly {{ size }}"
-      disabled="{{ disabled }}"
+      [type]="inputType"
+      [disabled]="disabled"
     >
       <i *ngIf="icon != ''" class="{{ icon }}"></i>
     </button>`,
@@ -26,6 +28,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 export class BtnComponent implements OnInit {
   @Input() name: String = '';
   @Input() type: String = 'primary';
+  @Input() inputType: String = 'button';
   @Input() label: String = '';
   @Input() icon: String = '';
   @Input() iconPos: String = 'left';

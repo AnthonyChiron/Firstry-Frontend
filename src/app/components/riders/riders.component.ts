@@ -37,6 +37,10 @@ export class RidersComponent implements OnInit {
       this.isMobile = isMobile;
     });
 
+    if (this.isMobile) {
+      this.limit = 8;
+    }
+
     this._ridersService
       .getByPage(this.currentPage, this.limit)
       .subscribe((result: any) => {

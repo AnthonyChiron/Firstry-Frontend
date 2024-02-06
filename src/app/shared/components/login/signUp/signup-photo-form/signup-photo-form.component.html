@@ -4,7 +4,10 @@
   <div class="addPhoto" *ngIf="!imgConfirmed">
     <!-- <input type="file" accept="image/*" (change)="onUpload($event)" />
     <small>Votre photo ne doit pas dépasser les 4mo</small> -->
-    <label *ngIf="imageChangedEvent == '' && !isLoading" class="labelAddPhoto">
+    <label
+      *ngIf="imageChangedEvent == '' && !isLoading"
+      class="labelAddPhoto cursorPointer"
+    >
       <input
         class="inputAddPhoto"
         type="file"

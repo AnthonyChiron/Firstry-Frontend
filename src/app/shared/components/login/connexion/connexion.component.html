@@ -1,5 +1,9 @@
 <div *ngIf="!isLoading">
-  <form *ngIf="!isResetPassword" [formGroup]="connexionForm">
+  <form
+    *ngIf="!isResetPassword"
+    [formGroup]="connexionForm"
+    onsubmit="submit()"
+  >
     <input-text
       name="email"
       type="Text"
@@ -27,12 +31,14 @@
         label="Mot de passe oublié ?"
         size="s"
         (click)="isResetPassword = !isResetPassword"
+        inputType="button"
       ></btn>
       <btn
         (click)="submit()"
         label="Connexion"
         icon="fa-solid fa-check fa-2xs"
         iconPos="right"
+        inputType="submit"
       ></btn>
     </div>
   </form>

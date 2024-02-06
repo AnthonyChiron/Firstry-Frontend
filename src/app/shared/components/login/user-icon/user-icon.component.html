@@ -20,11 +20,11 @@
     <badge *ngIf="alert" class="notification" type="danger">!!</badge>
   </div>
   <div *ngIf="!isLoggedIn && !isMobile" class="btns">
-    <btn type="primary" label="Connexion" (click)="openModal(0)"></btn>
+    <btn type="transparent" label="Connexion" (click)="openModal(0)"></btn>
     <btn type="primary" label="S'inscrire" (click)="openModal(1)"></btn>
   </div>
   <div *ngIf="!isLoggedIn && isMobile" class="btns">
-    <btn type="primary" label="Connexion" routerLink="login"></btn>
+    <btn type="transparent" label="Connexion" routerLink="login"></btn>
     <btn type="primary" label="S'inscrire" routerLink="register"></btn>
   </div>
   <div *ngIf="!toggleAccountOption" class="accountOptions">

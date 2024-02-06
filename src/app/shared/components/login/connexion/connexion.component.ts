@@ -63,11 +63,4 @@ export class ConnexionComponent implements OnInit {
       console.log(e);
     }
   }
-
-  @HostListener('window:keydown', ['$event'])
-  handleKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
-      this.submit();
-    }
-  }
 }
