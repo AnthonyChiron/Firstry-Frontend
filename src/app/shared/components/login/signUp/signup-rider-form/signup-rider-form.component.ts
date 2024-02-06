@@ -1,5 +1,5 @@
 import { FormUtilityService } from '../../../../services/FormUtility/form-utility.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { CountryService } from 'src/app/shared/services/CountryService/country.service';
@@ -12,6 +12,7 @@ import { CountryService } from 'src/app/shared/services/CountryService/country.s
 export class SignupRiderFormComponent implements OnInit {
   @Input() riderForm: FormGroup;
   @Input() touched: boolean = false;
+  @Output() nextStep: EventEmitter<any> = new EventEmitter();
   filteredCountries: any[];
   countries: any[] = [];
 
@@ -36,5 +37,9 @@ export class SignupRiderFormComponent implements OnInit {
       });
     });
     this.fus.setForm(this.riderForm);
+  }
+
+  next() {
+    this.nextStep.emit();
   }
 }

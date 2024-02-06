@@ -1,6 +1,11 @@
 <div class="dropdown" [class.fitContent]="fitContent">
   <label *ngIf="label.length > 0">{{ label }}</label>
-  <button *ngIf="edit" (click)="toggleDropdown()" class="dropdown-button">
+  <button
+    type="button"
+    *ngIf="edit"
+    (click)="toggleDropdown()"
+    class="dropdown-button"
+  >
     <p
       *ngIf="
         (selectedOption && selectedOption.label != '') ||

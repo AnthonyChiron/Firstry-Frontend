@@ -109,6 +109,7 @@ export class SignUpComponent implements OnInit {
 
   async uploadPhoto(event) {
     this.photoFile = event;
+    this.submit();
   }
 
   submit() {

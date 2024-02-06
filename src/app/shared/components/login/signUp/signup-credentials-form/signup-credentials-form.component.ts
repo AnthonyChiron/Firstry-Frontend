@@ -1,4 +1,11 @@
-import { Component, ViewEncapsulation, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  ViewEncapsulation,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-utility.service';
 
@@ -11,6 +18,7 @@ import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-uti
 export class SignupCredentialsFormComponent implements OnInit {
   @Input() userForm: FormGroup;
   @Input() emailAvailable: boolean;
+  @Output() nextStep: EventEmitter<any> = new EventEmitter();
 
   constructor(protected fus: FormUtilityService) {}
 
@@ -24,5 +32,9 @@ export class SignupCredentialsFormComponent implements OnInit {
         this.userForm.value.password == this.userForm.value.confirmPassword
       );
     return true;
+  }
+
+  next() {
+    this.nextStep.emit();
   }
 }
