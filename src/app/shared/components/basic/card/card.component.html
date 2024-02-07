@@ -51,6 +51,7 @@
         ></btn>
         <btn
           *ngIf="btn"
+          [label]="btnLabel"
           (click)="emitBtnClicked()"
           [icon]="btnIcon || 'fa-solid fa-pen-to-square'"
           type="transparent"

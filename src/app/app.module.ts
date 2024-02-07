@@ -16,6 +16,7 @@ import { DesktopSidebarComponent } from './components/sidebar/desktop-sidebar/de
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { AuthInterceptor } from './shared/data/InterceptorHttp/interceptorHttp.service';
 import { NgOptimizedImage } from '@angular/common';
+import { MentionsLegalComponent } from './components/mentions-legal/mentions-legal.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NgOptimizedImage } from '@angular/common';
     DesktopSidebarComponent,
     TopbarComponent,
     AccessDeniedComponent,
+    MentionsLegalComponent,
   ],
   imports: [
     AppRoutingModule,

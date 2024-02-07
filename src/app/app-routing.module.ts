@@ -4,6 +4,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { IsNotAuthGuard } from './shared/guards/IsNotAuth/is-not-auth.service';
+import { MentionsLegalComponent } from './components/mentions-legal/mentions-legal.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
       import('./components/account/account.module').then(
         (m) => m.AccountModule
       ),
+  },
+  {
+    path: 'mentions-legal',
+    component: MentionsLegalComponent,
   },
   {
     path: 'login',

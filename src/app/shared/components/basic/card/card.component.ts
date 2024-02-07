@@ -65,6 +65,7 @@ export class CardComponent implements OnInit {
   @Input() redirect: boolean = false;
   @Input() redirectLink: string = '';
   @Input() btn: boolean = false;
+  @Input() btnLabel: string = '';
   @Input() btnIcon: string = '';
   @Output() btnClicked: EventEmitter<any> = new EventEmitter();
   @Input() toggleBtn: boolean = false;

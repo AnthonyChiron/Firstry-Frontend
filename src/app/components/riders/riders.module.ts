@@ -10,6 +10,7 @@ import { RiderCardLargeComponent } from './card/rider-card-large/rider-card-larg
 import { RiderSampleListComponent } from './rider/rider-sample-list/rider-sample-list.component';
 import { RiderCardSampleComponent } from './card/rider-card-sample/rider-card-sample.component';
 import { RiderResultComponent } from './rider/rider-result/rider-result.component';
+import { FormSharedModule } from 'src/app/shared/formShared.module';
 
 const ridersRoutes: Routes = [
   { path: '', component: RidersComponent },
@@ -25,7 +26,12 @@ const ridersRoutes: Routes = [
     RiderSampleListComponent,
     RiderResultComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(ridersRoutes), SharedModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(ridersRoutes),
+    SharedModule,
+    FormSharedModule,
+  ],
   providers: [RidersService],
   exports: [RiderCardMediumComponent],
 })

@@ -1,8 +1,42 @@
 <h1 class="mainTitle">RIDERS</h1>
 <div class="main" [@fadeInOut]>
-  <!-- <div class="filters">
-      <p-dropdown [options]="sports" optionLabel="name"></p-dropdown>
-    </div> -->
+  <card
+    title="Rechercher un rider par filtres"
+    size="m"
+    [toggle]="true"
+    [toggleBtn]="true"
+    class="fullWidth"
+    [btn]="
+      currentNameFilter != '' ||
+      (currentSportsFilter && currentSportsFilter.length > 0)
+    "
+    btnLabel="Réinitialiser les filtres"
+    btnIcon="fa-solid fa-xmark"
+    (btnClicked)="resetFilters()"
+  >
+    <form [formGroup]="filtersForm" class="flexRow alignEnd spaceBetween">
+      <chips-group
+        label="Sports"
+        [chips]="sportsOptions"
+        formControlName="sports"
+        [edit]="true"
+      ></chips-group>
+      <input-text
+        label="Recherche par nom"
+        placeholder="Entrer le nom"
+        formControlName="name"
+        [edit]="true"
+      ></input-text>
+      <div class="buttons">
+        <btn
+          class="alignSelfEnd"
+          label="Rechercher"
+          icon="fa-solid fa-magnifying-glass"
+          (click)="searchRiders()"
+        ></btn>
+      </div>
+    </form>
+  </card>
   <loader *ngIf="isLoading"></loader>
   <div *ngIf="isMobile" class="riders">
     <rider-card-md
