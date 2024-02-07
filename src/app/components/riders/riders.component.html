@@ -14,7 +14,10 @@
     btnIcon="fa-solid fa-xmark"
     (btnClicked)="resetFilters()"
   >
-    <form [formGroup]="filtersForm" class="flexRow alignEnd spaceBetween">
+    <form
+      [formGroup]="filtersForm"
+      [class]="isMobile ? 'flexColumn ' : 'flexRow alignEnd spaceBetween'"
+    >
       <chips-group
         label="Sports"
         [chips]="sportsOptions"
@@ -38,30 +41,21 @@
     </form>
   </card>
   <loader *ngIf="isLoading"></loader>
-  <div *ngIf="isMobile" class="riders">
+  <div class="riders">
     <rider-card-md
       *ngFor="let rider of riders; let i = index"
       [style.--rider-index]="i"
       [rider]="rider"
-      [width]="40"
-      [widthPhoto]="40"
-      [height]="45"
+      [width]="isMobile ? 40 : 15"
+      [height]="isMobile ? 45 : 17"
       class="rider"
       [routerLink]="['/riders', rider._id]"
     ></rider-card-md>
-  </div>
-  <div *ngIf="!isMobile">
-    <div class="riders">
-      <rider-card-md
-        *ngFor="let rider of riders; let i = index"
-        [style.--rider-index]="i"
-        [rider]="rider"
-        [width]="15"
-        [height]="17"
-        class="rider"
-        [routerLink]="['/riders', rider._id]"
-      ></rider-card-md>
-    </div>
+    <div
+      class="empty"
+      *ngFor="let item of emptyItems"
+      [ngStyle]="{ 'width.vw': isMobile ? 40 : 15 }"
+    ></div>
   </div>
   <pagination-handler
     class="pagination"
