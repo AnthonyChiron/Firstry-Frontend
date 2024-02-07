@@ -12,6 +12,7 @@ import { AdminService } from 'src/app/shared/services/AdminServices/admin.servic
 export class AdminOverviewComponent implements OnInit {
   ridersStats: any = null;
   organizersStats: any = null;
+  contestsStats: any = null;
 
   constructor(private _adminService: AdminService) {}
 
@@ -33,6 +34,9 @@ export class AdminOverviewComponent implements OnInit {
     this.ridersStats = await this._adminService.getRidersStats().toPromise();
     this.organizersStats = await this._adminService
       .getOrganizersStats()
+      .toPromise();
+    this.contestsStats = await this._adminService
+      .getContestsStats()
       .toPromise();
     console.log(this.organizersStats);
     const labels = Object.keys(this.ridersStats.resultsByDay);

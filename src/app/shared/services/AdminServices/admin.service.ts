@@ -25,4 +25,8 @@ export class AdminService extends BaseHttpService {
   getOrganizersStats() {
     return this.http.get(`${this.baseUrl}organizers/getAdminStats`);
   }
+
+  getContestsStats() {
+    return this.http.get(`${this.baseUrl}contests/getAdminStats`);
+  }
 }
