@@ -1,12 +1,77 @@
-<div class="header"></div>
+<h1 class="mainTitle" *ngIf="!isMobile">Riders</h1>
 <div class="flexCardColumn">
-  <rider-card-lg [rider]="rider"></rider-card-lg>
   <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
-    <rider-result class="fullWidth" [rider]="rider"></rider-result>
-    <socials
-      class="flexStart"
-      [socials]="rider && rider.socials ? rider.socials : undefined"
-    ></socials>
+    <!-- <rider-card-lg [rider]="rider"></rider-card-lg> -->
+    <card
+      class="flex2"
+      size="no"
+      [shadow]="true"
+      shadowDeg="330"
+      shadowColor="0.8"
+      shadowLength="70"
+      shadowIndex="2"
+      [quadrillage]="true"
+      [nbLines]="isMobile ? 4 : 9"
+      [nbColumns]="isMobile ? 7 : 12"
+      [ngStyle]="{ 'height.vw': isMobile ? 50 : 32 }"
+      id="rider-card"
+    >
+      <div class="rider">
+        <img
+          class="asset"
+          src="../../../../assets/riders/Inscription_cote_Fiche-rider.svg"
+        />
+        <img class="photo" [src]="rider.photoUrl" alt="" />
+        <img
+          class="logo"
+          src="../../../../assets/logos/Globe_Blanc.png"
+          alt=""
+        />
+        <div class="infos">
+          <div class="name">
+            <h2 class="firstName">{{ rider.firstName | Capitalize }}</h2>
+            <h2 class="lastName">{{ rider.lastName | uppercase }}</h2>
+          </div>
+          <div class="flexColumn gap10">
+            <div class="flexRow spaceBetween">
+              <div class="flex1 label">
+                <label>Discipline</label>
+                <p>{{ rider.sports.toString() | Capitalize }}</p>
+              </div>
+              <div class="flex1 label">
+                <label>Nationnalité</label>
+                <div class="flexRow flexRow alignCenter">
+                  <p>{{ rider.nationality.name.common }}</p>
+                  <img [src]="rider.nationality.flags.png" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="flexRow spaceBetween">
+              <div class="flex1 label">
+                <label for="sports">Age</label>
+                <p Capitalize class="sports">{{ rider.birthDate | age }} ans</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <btn
+          class="share"
+          type="transparentWhite"
+          label="Partager"
+          icon="fa-solid fa-share"
+          (click)="test()"
+        ></btn>
+      </div>
+    </card>
+    <div [class]="'flex1 flexCardColumn'">
+      <rider-result class="fullWidth" [rider]="rider"></rider-result>
+      <socials
+        class="flexStart"
+        size="m"
+        title="Réseaux sociaux"
+        [socials]="rider && rider.socials ? rider.socials : undefined"
+      ></socials>
+    </div>
   </div>
   <rider-sample-list></rider-sample-list>
 </div>

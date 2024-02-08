@@ -1,18 +1,112 @@
 @import "../../../../styles/components.scss";
 
-.header {
-  height: 8vw;
-}
-
-@media screen and (max-width: 768px) {
-  .header {
-    height: 0vw;
-  }
+.rider {
+  position: relative;
 }
 
 .photo {
-  img {
-    max-height: 35vh;
-    border-radius: 10px;
+  position: absolute;
+  top: -3vw;
+  left: 0px;
+  height: 35vw;
+  width: auto;
+  border-radius: 10px;
+}
+
+.logo {
+  position: absolute;
+  top: 1.5vw;
+  right: 1.5vw;
+  width: 50px;
+  z-index: 3;
+}
+
+.asset {
+  position: absolute;
+  left: 1vw;
+  top: 1vw;
+  height: 30vw;
+  z-index: 2;
+}
+
+.infos {
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+  width: 25vw;
+  z-index: 3;
+
+  .name {
+    margin-bottom: 2vw;
+
+    h2 {
+      font-size: min(3.8vw, 75px);
+      color: white;
+      text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .label {
+    img {
+      height: 15px;
+      margin-left: 10px;
+      border-radius: 2px;
+    }
+
+    label,
+    p {
+      color: white;
+      text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+      font-size: 22px;
+    }
+
+    label {
+      font-size: 27px;
+    }
+  }
+}
+
+.share {
+  position: absolute;
+  top: 28.5vw;
+  right: 2vw;
+  z-index: 3;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    height: 30px;
+    right: 3vw;
+    width: auto;
+  }
+
+  .photo {
+    bottom: -1vw;
+    height: 50vw;
+  }
+
+  .asset {
+    height: 40vw;
+  }
+
+  .infos {
+    top: 5vw;
+    width: 40vw;
+  }
+
+  .infos .name h2 {
+    font-size: 25px;
+  }
+
+  .infos .label p {
+    font-size: 12px;
+  }
+
+  .infos .label img {
+    height: 10px;
+  }
+
+  .infos .label label {
+    font-size: 14px;
   }
 }

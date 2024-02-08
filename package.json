@@ -29,6 +29,7 @@
     "chart.js": "^4.4.1",
     "date-fns": "^2.30.0",
     "heic2any": "^0.0.4",
+    "html2canvas": "^1.4.1",
     "jwt-decode": "^3.1.2",
     "ng2-charts": "^5.0.4",
     "ngx-image-cropper": "^7.0.2",

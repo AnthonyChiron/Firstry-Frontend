@@ -149,6 +149,12 @@ $width-photo: 50vw;
     height: 30vw;
   }
 
+  .card .content .photoRider {
+    position: relative;
+    z-index: 1;
+    border-radius: $border-radius-1;
+  }
+
   .card .content .infos {
     position: relative;
     right: 0vw;

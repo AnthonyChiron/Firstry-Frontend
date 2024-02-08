@@ -8,6 +8,8 @@ import { socialsModel } from 'src/app/models/socials.model';
 })
 export class SocialsComponent implements OnInit, OnChanges {
   @Input() socials: socialsModel;
+  @Input() size: string = 'l';
+  @Input() title: string = '';
   isLoading: boolean = true;
 
   constructor() {}
