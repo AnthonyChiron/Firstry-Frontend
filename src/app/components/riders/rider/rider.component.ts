@@ -80,8 +80,11 @@ export class RiderComponent implements OnInit {
         var link = document.createElement('a');
         link.download = 'fiche-rider.png';
         link.href = image;
-
-        link.click();
+        navigator.share({
+          title: 'Fiche rider',
+          text: 'Fiche rider',
+          url: link.href,
+        });
       });
     });
   }
