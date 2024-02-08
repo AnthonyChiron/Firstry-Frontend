@@ -13,10 +13,9 @@
       [quadrillage]="true"
       [nbLines]="isMobile ? 4 : 9"
       [nbColumns]="isMobile ? 7 : 12"
-      [ngStyle]="{ 'height.vw': isMobile ? 50 : 32 }"
       id="rider-card"
     >
-      <div class="rider">
+      <div class="rider" [ngStyle]="{ 'height.vw': isMobile ? 50 : 32 }">
         <img
           class="asset"
           src="../../../../assets/riders/Inscription_cote_Fiche-rider.svg"
