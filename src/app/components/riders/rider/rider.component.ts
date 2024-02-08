@@ -80,7 +80,34 @@ export class RiderComponent implements OnInit {
         var link = document.createElement('a');
         link.download = 'fiche-rider.png';
         link.href = image;
-        link.click();
+
+        // URL de partage générique
+        let urlPartage = 'https://example.com'; // Remplace example.com par l'URL que tu veux partager
+        let legende = 'Ajoute ta légende ici'; // Légende pour la publication sur Instagram
+
+        // URL spécifique à chaque réseau social
+        let urlsSpecifiques = {
+          facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+            urlPartage
+          )}`,
+          twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+            urlPartage
+          )}`,
+          linkedin: `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(
+            urlPartage
+          )}`,
+          instagram: `https://www.instagram.com/create/ios/?url=${encodeURIComponent(
+            urlPartage
+          )}&caption=${encodeURIComponent(legende)}`,
+          // Ajoute d'autres réseaux sociaux ici avec leur URL de partage spécifique
+        };
+
+        // Ouvre une nouvelle fenêtre de navigateur avec l'URL de partage spécifique au réseau social sélectionné
+        window.open(
+          urlsSpecifiques['instagram'],
+          '_blank',
+          'width=600,height=400'
+        );
       });
     });
   }
