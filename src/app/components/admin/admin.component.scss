@@ -1,0 +1,12 @@
+.navBtns {
+  margin-left: 40vw;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-bottom: 20px;
+
+  button {
+    width: 100%;
+    margin-right: 10px;
+  }
+}

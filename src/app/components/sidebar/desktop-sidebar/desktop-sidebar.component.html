@@ -130,6 +130,34 @@
       </div>
       <p class="label">Dashboard</p>
     </div>
+    <div
+      *ngIf="_authService.getCurrentUser().role == 'admin'"
+      routerLink="/admin"
+      routerLinkActive="active"
+      class="link"
+    >
+      <div class="activeTab"></div>
+      <div class="icon">
+        <svg
+          id="home-icon"
+          class="icon"
+          data-name="home-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 402.3 360"
+        >
+          <g id="Calque_1-2" data-name="Calque 1">
+            <g>
+              <path
+                class="icon-property"
+                d="m277.6,40H124.7c-2.9,0-5.7,1.6-7.1,4.1L41.1,175.8c-1.5,2.6-1.5,5.7,0,8.3l76.4,131.7c1.5,2.5,4.2,4.1,7.1,4.1h152.9c2.9,0,5.7-1.6,7.1-4.1l76.4-131.7c1.5-2.6,1.5-5.7,0-8.3l-76.4-131.7c-1.5-2.5-4.2-4.1-7.1-4.1Z"
+              />
+              <circle class="icon-property" cx="201.1" cy="180" r="54.1" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <p class="label">ADMIN</p>
+    </div>
   </nav>
   <div class="footer">
     <p class="version">v0.1.0</p>

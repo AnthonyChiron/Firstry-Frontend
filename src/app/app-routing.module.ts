@@ -34,6 +34,11 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'admin',
+    loadChildren: () =>
+      import('./components/admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
     path: 'register',
     loadChildren: () =>
       import('./shared/components/login/login.module').then(
@@ -56,7 +61,6 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate: [IsNotAuthGuard],
   },
-
   { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: '/not-found' },

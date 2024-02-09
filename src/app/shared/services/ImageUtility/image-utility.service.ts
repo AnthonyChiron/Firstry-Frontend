@@ -33,7 +33,7 @@ export class ImageUtilityService {
     // Options de compression
     const options = {
       maxSizeMB: 0.5, // (Max size in MB)
-      maxWidthOrHeight: 1000, // (Compressed files are resized to these dimensions)
+      maxWidthOrHeight: 1400, // (Compressed files are resized to these dimensions)
       useWebWorker: true, // (Optionally enable Web Worker for performance)
     };
 

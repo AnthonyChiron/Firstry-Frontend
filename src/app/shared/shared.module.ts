@@ -42,6 +42,7 @@ import { ProgressBarComponent } from './components/basic/progress-bar/progress-b
 import { RiderCardMediumComponent } from './components/riders/rider-card-md/rider-card-md.component';
 import { CategoriesNavigationComponent } from './components/categories-navigation/categories-navigation.component';
 import { PaginationHandlerComponent } from './components/basic/pagination-handler/pagination-handler.component';
+import { AgePipe } from './pipe/age.pipe';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { PaginationHandlerComponent } from './components/basic/pagination-handle
     RiderCardMediumComponent,
     CategoriesNavigationComponent,
     PaginationHandlerComponent,
+    AgePipe,
   ],
   imports: [
     CommonModule,
@@ -118,6 +120,7 @@ import { PaginationHandlerComponent } from './components/basic/pagination-handle
     RiderCardMediumComponent,
     CategoriesNavigationComponent,
     PaginationHandlerComponent,
+    AgePipe,
   ],
 })
 export class SharedModule {}

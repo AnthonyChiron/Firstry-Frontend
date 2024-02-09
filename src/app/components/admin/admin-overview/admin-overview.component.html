@@ -1,0 +1,94 @@
+<div class="flexCardRow">
+  <card
+    class="flex1"
+    title="Statistiques utilisateurs"
+    *ngIf="ridersStats && organizersStats"
+  >
+    <div class="flexColumn gap10">
+      <h3>Stats riders</h3>
+      <div class="flexRow spaceAround gap10">
+        <card color="2" class="flex1">
+          <h2 class="bigNumber">{{ ridersStats.totalRiders }}</h2>
+          <p>Total Riders</p>
+        </card>
+        <card color="2" class="flex1">
+          <h2 class="bigNumber">{{ ridersStats.totalRidersLastMonth }}</h2>
+          <p>
+            Nouveaux inscrits <br />
+            (31j)
+          </p>
+        </card>
+        <card color="2" class="flex1">
+          <h2 class="bigNumber">{{ ridersStats.totalRidersLastWeek }}</h2>
+          <p>
+            Nouveaux inscrits <br />
+            (7j)
+          </p>
+        </card>
+      </div>
+      <h3>Stats organisateurs</h3>
+      <div class="flexRow spaceAround gap10">
+        <card color="2" class="flex1">
+          <h2 class="bigNumber">{{ organizersStats.totalOrganizers }}</h2>
+          <p>Total Organisateurs</p>
+        </card>
+        <card color="2" class="flex1">
+          <h2 class="bigNumber">
+            {{ organizersStats.totalOrganizersLastMonth }}
+          </h2>
+          <p>
+            Nouveaux inscrits <br />
+            (31j)
+          </p>
+        </card>
+        <card color="2" class="flex1">
+          <h2 class="bigNumber">
+            {{ organizersStats.totalOrganizersLastWeek }}
+          </h2>
+          <p>
+            Nouveaux inscrits <br />
+            (7j)
+          </p>
+        </card>
+      </div>
+      <div class="lastWeek">
+        <h3>Inscription par jour - 7j</h3>
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          type="bar"
+        >
+        </canvas>
+      </div>
+    </div>
+  </card>
+  <card class="flex1" title="Statistiques contests">
+    <div class="flexColumn gap10">
+      <h3>Totaux</h3>
+      <div class="flexRow spaceAround gap10" *ngIf="contestsStats">
+        <card color="2" class="flex1">
+          <h2 class="bigNumber">{{ contestsStats.totalContests }}</h2>
+          <p>Total contests</p>
+        </card>
+        <card color="2" class="flex1">
+          <h2 class="bigNumber">{{ contestsStats.publishedContests }}</h2>
+          <p>Contests publiés</p>
+        </card>
+      </div>
+      <h3>Contests publiés</h3>
+      <div class="flexRow spaceAround gap10" *ngIf="contestsStats">
+        <card color="2" class="flex1">
+          <h2 class="bigNumber">
+            {{ contestsStats.publishedUpcomingContests }}
+          </h2>
+          <p>Contests à venir</p>
+        </card>
+        <card color="2" class="flex1">
+          <h2 class="bigNumber">{{ contestsStats.publishedPastContests }}</h2>
+          <p>Contests passés</p>
+        </card>
+      </div>
+    </div>
+  </card>
+</div>

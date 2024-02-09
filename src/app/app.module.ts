@@ -17,6 +17,7 @@ import { AccessDeniedComponent } from './components/access-denied/access-denied.
 import { AuthInterceptor } from './shared/data/InterceptorHttp/interceptorHttp.service';
 import { NgOptimizedImage } from '@angular/common';
 import { MentionsLegalComponent } from './components/mentions-legal/mentions-legal.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [

@@ -32,10 +32,17 @@ export class RidersComponent implements OnInit {
 
   filtersForm: any;
   currentNameFilter: string = '';
-  currentSportsFilter: string[] = [];
+  currentSportsFilter: string[] = [
+    'roller',
+    'trottinette',
+    'skate',
+    'quad',
+    'bmx',
+  ];
   currentPage: number = 1;
   limit: number = 16;
   totalPages: number = 0;
+  emptyItems: any[] = [];
 
   constructor(
     private _ridersService: RidersService,
@@ -75,6 +82,7 @@ export class RidersComponent implements OnInit {
         this.riders = <RiderModel[]>result.riders;
         this.isLoading = false;
         this.totalPages = result.totalPages;
+        this.adjustEmptyItems();
         console.log(result);
       });
   }
@@ -93,6 +101,7 @@ export class RidersComponent implements OnInit {
         this.isLoading = false;
         this.totalPages = result.totalPages;
         this.isLoading = false;
+        this.adjustEmptyItems();
         console.log(result);
       });
   }
@@ -111,6 +120,7 @@ export class RidersComponent implements OnInit {
             page: this.currentPage,
           },
         });
+        this.adjustEmptyItems();
       });
   }
 
@@ -125,10 +135,21 @@ export class RidersComponent implements OnInit {
         sports: [],
       })
       .subscribe((result: any) => {
+        this.adjustEmptyItems();
         this.riders = <RiderModel[]>result.riders;
         this.isLoading = false;
         this.totalPages = result.totalPages;
         console.log(result);
       });
+  }
+
+  adjustEmptyItems() {
+    const itemsPerRow = 4; // Nombre d'items par ligne
+    const totalItems = this.riders.length;
+    const numberOfRows = Math.ceil(totalItems / itemsPerRow);
+    const totalRequiredItems = numberOfRows * itemsPerRow;
+    const emptyItemsCount = totalRequiredItems - totalItems;
+
+    this.emptyItems = new Array(emptyItemsCount).fill(null); // Crée un tableau des éléments vides
   }
 }

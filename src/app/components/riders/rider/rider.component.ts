@@ -3,6 +3,7 @@ import { RidersService } from './../../../shared/data/RidersService/riders.servi
 import { Component, OnInit } from '@angular/core';
 import { RiderModel } from 'src/app/models/rider.model';
 import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-rider',
@@ -13,11 +14,6 @@ export class RiderComponent implements OnInit {
   rider: RiderModel;
   isLoading: boolean = false;
   isMobile: boolean = false;
-  test: [
-    { id: 1; name: 'Rider 1'; discipline: 'Skateboard' },
-    { id: 2; name: 'Rider 2'; discipline: 'BMX' },
-    { id: 3; name: 'Rider 3'; discipline: 'Roller Freestyle' }
-  ];
 
   constructor(
     private ridersService: RidersService,
@@ -35,6 +31,60 @@ export class RiderComponent implements OnInit {
       this.ridersService.getById(params['id']).subscribe((rider) => {
         this.rider = rider;
         this.isLoading = false;
+      });
+    });
+  }
+
+  convertImagesToDataURLs(selector, callback) {
+    const images = document.querySelectorAll(`${selector} img`);
+    let imagesToLoad = images.length; // Compteur pour les images à charger
+
+    // Fonction pour charger une image et la convertir en Data URL
+    const loadImageAsDataURL = (imgElement) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = function () {
+        const reader = new FileReader();
+        reader.onloadend = function () {
+          imgElement.src = reader.result;
+          imagesToLoad--; // Décrémenter le compteur
+          if (imagesToLoad === 0) {
+            // Toutes les images sont chargées, appeler le callback
+            callback();
+          }
+        };
+        reader.readAsDataURL(xhr.response);
+      };
+      xhr.open('GET', imgElement.src);
+      xhr.responseType = 'blob';
+      xhr.send();
+    };
+
+    if (imagesToLoad === 0) {
+      callback(); // S'il n'y a pas d'images, appeler le callback immédiatement
+    } else {
+      // Convertir toutes les images
+      images.forEach((img) => {
+        loadImageAsDataURL(img);
+      });
+    }
+  }
+
+  test() {
+    this.convertImagesToDataURLs('#rider-card', () => {
+      // Une fois toutes les images converties en Data URLs
+      html2canvas(document.querySelector('#rider-card')).then((canvas) => {
+        // Convertir le canvas en Data URL
+        var image = canvas.toDataURL('image/png');
+
+        // Créer un élément a pour déclencher le téléchargement
+        var link = document.createElement('a');
+        link.download = 'fiche-rider.png';
+        link.href = image;
+        navigator.share({
+          title: 'Fiche rider',
+          text: 'Fiche rider',
+          url: link.href,
+        });
       });
     });
   }

@@ -1,25 +1,29 @@
-<card *ngIf="socials">
+<card *ngIf="socials" [size]="size" [title]="title">
   <div class="content">
     <btn
       type="secondary"
+      size="xl"
       *ngIf="socials.instagram"
       (click)="goToInstagram()"
       icon="fa-brands fa-instagram fa-xl"
     ></btn>
     <btn
       type="secondary"
+      size="xl"
       *ngIf="socials.youtube"
       (click)="goToYoutube()"
       icon="fa-brands fa-youtube fa-xl"
     ></btn>
     <btn
       type="secondary"
+      size="xl"
       *ngIf="socials.twitter"
       (click)="goToTwitter()"
       icon="fa-brands fa-twitter fa-xl"
     ></btn>
     <btn
       type="secondary"
+      size="xl"
       *ngIf="socials.website"
       (click)="goToWebsite()"
       icon="fa-solid fa-globe fa-xl"
