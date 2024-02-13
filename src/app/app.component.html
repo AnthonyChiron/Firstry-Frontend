@@ -8,7 +8,7 @@
   <desktop-sidebar class="navbar" *ngIf="!isMobile"></desktop-sidebar>
   <div class="content">
     <user-icon *ngIf="!isMobile" class="user"></user-icon>
-    <div class="container">
+    <div [class.container]="container">
       <router-outlet></router-outlet>
     </div>
   </div>

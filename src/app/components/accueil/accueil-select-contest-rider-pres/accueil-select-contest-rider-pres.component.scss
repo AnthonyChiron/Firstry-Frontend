@@ -1,0 +1,56 @@
+@import "../../../../styles/colors.scss";
+
+.positionRelative {
+  position: relative;
+}
+
+.band {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 20vh;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  font-family: "HankenGrotesk";
+  font-weight: 400;
+  border: 2px solid transparent;
+  padding: 5px 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 25px;
+  transition: 0.2s;
+}
+
+button:hover {
+  font-weight: 700;
+}
+
+button.active {
+  font-weight: 700;
+  border: 2px solid black;
+}
+
+.sep {
+  height: 100%;
+  width: 1px;
+  background-color: black;
+}
+
+@media (max-width: 768px) {
+  .band {
+    height: 15vh;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  button {
+    font-size: 20px;
+  }
+}

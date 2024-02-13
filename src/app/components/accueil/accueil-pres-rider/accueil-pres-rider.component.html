@@ -1,0 +1,63 @@
+<div class="flexColumn">
+  <div class="section" [ngStyle]="{ 'height.vh': 30 }">
+    <div class="content flexColumn alignCenter">
+      <h2 class="sectionTitle textCenter">Créez ton compte rider</h2>
+      <div class="flexRow gap30">
+        <btn label="Créer mon compte"></btn>
+        <div class="sep"></div>
+        <btn type="border" label="Se connecter"></btn>
+      </div>
+    </div>
+  </div>
+  <div class="section greyBg" [ngStyle]="{ 'height.vh': 40 }">
+    <div class="content">
+      <h2 class="sectionTitle">
+        <i class="fa-regular fa-credit-card icon"></i>
+        Paiement des inscriptions sécurisé avec
+        <span class="stripe">Stripe</span>
+      </h2>
+      <p class="sectionP">
+        Les riders peuvent payer l'inscription à votre contest via notre site,
+        le paiement est gérer avec Stripe, une plateforme sécurisée du paiement
+        en ligne.
+      </p>
+    </div>
+    <quadrillage
+      class="fullHeight fullWidth absolute test"
+      [nbRows]="6"
+      [nbColumns]="18"
+    ></quadrillage>
+  </div>
+  <div class="section" [ngStyle]="{ 'height.vh': 40 }">
+    <div class="content flexRow">
+      <div class="flexColumn fullWidth right gap20">
+        <h2 class="sectionTitle textAlignRight">Personnalisation</h2>
+        <img
+          src="../../../../assets/accueil/Personnalisation.png"
+          alt=""
+          [ngStyle]="{ 'height.vh': 5 }"
+        />
+        <p class="sectionP textAlignRight">
+          En quelques clics, personnalisez entièrement votre contest. <br />
+          Changement de planning, création des poules, personnalisation des
+          règles...
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="section greyBg" [ngStyle]="{ 'height.vh': 40 }">
+    <quadrillage
+      class="fullHeight fullWidth absolute test"
+      [nbRows]="6"
+      [nbColumns]="18"
+    ></quadrillage>
+    <div class="content">
+      <h2 class="sectionTitle">Acceptez ou refusez les inscriptions</h2>
+      <p class="sectionP">
+        Si un rider est refuser il sera automatiquement remboursé des frais
+        d'inscription.
+      </p>
+    </div>
+    <img class="ridersImg" src="../../../../assets/accueil/Riders.png" alt="" />
+  </div>
+</div>

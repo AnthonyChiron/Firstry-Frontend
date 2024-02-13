@@ -19,12 +19,6 @@
     'background-repeat': backgroundImg != '' ? backgroundRepeat : '',
   }"
   ></div>
-  <quadrillage
-    *ngIf="quadrillage"
-    class="fullHeight fullWidth absolute test"
-    [nbRows]="nbLines"
-    [nbColumns]="nbColumns"
-  ></quadrillage>
   <div class="main">
     <div
       class="header"
@@ -68,7 +62,7 @@
     </div>
     <loader class="loader" *ngIf="isLoading"></loader>
 
-    <div *ngIf="!toggle" [@toggleAnimation]>
+    <div *ngIf="!toggle" [@toggleAnimation] [ngStyle]="{ 'z-index': 6 }">
       <div [@toggleAnimation] class="content">
         <ng-content></ng-content>
       </div>
@@ -90,4 +84,10 @@
       'z-index': shadowIndex
     }"
   ></div>
+  <quadrillage
+    *ngIf="quadrillage"
+    class="fullHeight fullWidth absolute"
+    [nbRows]="nbLines"
+    [nbColumns]="nbColumns"
+  ></quadrillage>
 </div>

@@ -125,10 +125,14 @@ export class RidersComponent implements OnInit {
   }
 
   resetFilters() {
-    this.filtersForm.reset();
     this.currentNameFilter = '';
     this.currentSportsFilter = [];
     this.currentPage = 1;
+    this.filtersForm.reset({
+      name: this.currentNameFilter,
+      sports: this.currentSportsFilter,
+    });
+    this._router.navigate(['/riders'], {});
     this._ridersService
       .getFilteredByPage(this.currentPage, this.limit, {
         name: '',

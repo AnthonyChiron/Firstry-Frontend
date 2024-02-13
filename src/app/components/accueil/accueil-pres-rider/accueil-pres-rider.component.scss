@@ -1,0 +1,51 @@
+@import "../../../../styles/colors.scss";
+
+.section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  .content {
+    width: 60%;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+  }
+}
+
+.right {
+  align-items: flex-end;
+}
+
+.textAlignRight {
+  text-align: right;
+}
+
+.sep {
+  height: 100%;
+  width: 1px;
+  background-color: $firstry-black-2;
+}
+
+.sectionTitle {
+  font-size: max(30px, 2.5vw);
+  margin-bottom: 1vw;
+  width: 60%;
+}
+
+.sectionP {
+  font-size: max(20px, 1.2vw);
+  margin-bottom: 1vw;
+  width: 60%;
+}
+
+.icon {
+  font-size: max(30px, 2vw);
+}
+
+.greyBg {
+  background-color: $firstry-white-2;
+}
+
+.stripe {
+  color: #5433ff;
+}

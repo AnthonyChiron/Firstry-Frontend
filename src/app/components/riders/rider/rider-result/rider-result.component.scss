@@ -1,0 +1,23 @@
+@import "../../../../../styles/colors.scss";
+
+table {
+  background-color: $firstry-white-3;
+  border-radius: 10px;
+  padding: 0.5vw;
+  width: 100%;
+
+  thead {
+    padding: 0.5vw;
+    text-align: left;
+    font-weight: bold;
+    color: $firstry-black-1;
+  }
+
+  tbody {
+    tr {
+      border-radius: 10px;
+      padding: 0.5vw;
+      color: $firstry-black-1;
+    }
+  }
+}

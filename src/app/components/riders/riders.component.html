@@ -7,7 +7,7 @@
     [toggleBtn]="true"
     class="fullWidth"
     [btn]="
-      currentNameFilter != '' ||
+      (currentNameFilter != undefined && currentNameFilter != '') ||
       (currentSportsFilter && currentSportsFilter.length > 0)
     "
     btnLabel="Réinitialiser les filtres"

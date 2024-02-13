@@ -1,13 +1,19 @@
-<card title="Riders de la même catégorie">
+<card title="Riders de la même discipline" *ngIf="riders && riders.length > 0">
   <loader *ngIf="isLoading"></loader>
-  <div class="content">
-    <rider-card-sample
-      ngClass="card"
-      *ngFor="let rider of riders; let i = index"
-      [style.--rider-index]="i"
-      [rider]="rider"
-      class="rider"
-      [routerLink]="['/riders', rider._id]"
-    ></rider-card-sample>
+  <div class="content scroll">
+    <div class="flexColumn" *ngFor="let rider of riders">
+      <card
+        [routerLink]="['/riders', rider._id]"
+        size="no"
+        class="cursorPointer riderCard"
+        color="2"
+        [quadrillage]="true"
+      >
+        <img [src]="rider.photoUrl" alt="" />
+      </card>
+      <h3>
+        {{ rider.firstName | Capitalize }} {{ rider.lastName[0] | uppercase }}.
+      </h3>
+    </div>
   </div>
 </card>

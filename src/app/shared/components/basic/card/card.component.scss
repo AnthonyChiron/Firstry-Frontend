@@ -80,7 +80,8 @@
       font-size: 20px;
     }
   }
-  &size.no .main {
+
+  &.size-no .main {
     padding: 0;
   }
 }
@@ -199,6 +200,10 @@
       .header h3 {
         font-size: 20px;
       }
+    }
+
+    &.size-no .main {
+      padding: 0vw;
     }
   }
 }
