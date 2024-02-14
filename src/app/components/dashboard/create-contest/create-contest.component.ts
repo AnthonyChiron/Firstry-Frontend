@@ -31,7 +31,7 @@ export class CreateContestComponent implements OnInit {
         endDate: ['', Validators.required],
         location: ['', Validators.required],
         sports: ['', Validators.required],
-        enablePayment: ['', Validators.required],
+        enablePayment: [true, Validators.required],
       },
       { validators: [this.fus.startEndDateValidator] }
     );

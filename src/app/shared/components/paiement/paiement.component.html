@@ -1,17 +1,17 @@
-<!-- <ngx-stripe-elements
-  *ngIf="isInit"
-  [stripe]="stripe"
-  [elementsOptions]="elementsOptions"
->
-  <ngx-stripe-payment />
-</ngx-stripe-elements>
-<btn label="Payer"></btn> -->
-
-<div class="flexColumn">
-  <ngx-stripe-elements [stripe]="stripe" [elementsOptions]="elementsOptions">
+<div class="flexColumn justifyCenter">
+  <div class="flexColumn alignCenter justifyCenter gap10" *ngIf="isLoading">
+    <loader></loader>
+    <p>Paiement en cours...</p>
+  </div>
+  <ngx-stripe-elements
+    [ngStyle]="{ opacity: isLoading ? 0 : 100 }"
+    [stripe]="stripe"
+    [elementsOptions]="elementsOptions"
+  >
     <ngx-stripe-payment [options]="paymentElementOptions" />
   </ngx-stripe-elements>
   <btn
+    *ngIf="!isLoading"
     class="alignSelfEnd payBtn"
     [label]="'Payer ' + amount + '€'"
     (click)="pay()"

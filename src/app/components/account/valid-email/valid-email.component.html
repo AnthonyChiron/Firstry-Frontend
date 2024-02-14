@@ -17,25 +17,25 @@
         icon="fa-solid fa-paper-plane"
       ></btn>
     </div>
-    <card
-      *ngIf="authService.isValid()"
-      title="Votre email a bien été validé !"
-      [fitContent]="true"
-    >
-      <div class="content">
-        <btn
-          (click)="backHome()"
-          *ngIf="authService.isCurrentUserRider()"
-          label="Retour à l'accueil"
-          icon="fa-solid fa-paper-home"
-        ></btn>
-        <btn
-          (click)="backHome()"
-          *ngIf="authService.isCurrentUserOrganizer()"
-          label="Je créé mon contest !"
-          icon="fa-regular fa-square-plus"
-        ></btn>
-      </div>
-    </card>
+  </card>
+  <card
+    *ngIf="authService.isValid()"
+    title="Votre email a bien été validé !"
+    [fitContent]="true"
+  >
+    <div class="content">
+      <btn
+        (click)="backHome()"
+        *ngIf="authService.isCurrentUserRider()"
+        label="Retour à l'accueil"
+        icon="fa-solid fa-paper-home"
+      ></btn>
+      <btn
+        (click)="backHome()"
+        *ngIf="authService.isCurrentUserOrganizer()"
+        label="Je créé mon contest !"
+        icon="fa-regular fa-plus"
+      ></btn>
+    </div>
   </card>
 </div>

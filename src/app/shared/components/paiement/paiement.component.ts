@@ -30,6 +30,7 @@ import { inject } from '@angular/core/testing';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PaymentService } from '../../data/PaymentService/payment.service';
 import { environment } from '../../../../environments/environment';
+import { is } from 'date-fns/locale';
 
 @Component({
   selector: 'paiement',
@@ -44,6 +45,7 @@ export class PaiementComponent implements OnInit, OnChanges {
   @Output() paymentSucceeded: EventEmitter<boolean> =
     new EventEmitter<boolean>();
   @Output() paymentFailed: EventEmitter<boolean> = new EventEmitter<boolean>();
+  isLoading = false;
 
   stripe = this.factoryService.create(environment.stripe_public_key);
 
@@ -85,6 +87,7 @@ export class PaiementComponent implements OnInit, OnChanges {
   }
 
   pay() {
+    this.isLoading = true;
     this.paying.set(true);
 
     this.stripe
@@ -93,13 +96,17 @@ export class PaiementComponent implements OnInit, OnChanges {
         redirect: 'if_required',
       })
       .subscribe((result) => {
+        console.log(result);
         this.paying.set(false);
         console.log('Result', result);
         if (result.error) {
           // Show error to your customer (e.g., insufficient funds)
         } else {
           // The payment has been processed!
-          if (result.paymentIntent.status === 'succeeded') {
+          if (
+            result.paymentIntent.status === 'succeeded' ||
+            result.paymentIntent.status === 'requires_capture'
+          ) {
             this.paymentSucceeded.emit(true);
           } else {
             this.paymentFailed.emit(true);
