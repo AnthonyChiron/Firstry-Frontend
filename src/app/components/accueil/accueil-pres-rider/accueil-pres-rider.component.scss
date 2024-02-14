@@ -1,0 +1,134 @@
+@import "../../../../styles/colors.scss";
+
+.section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .content {
+    width: 70%;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+    z-index: 12;
+  }
+}
+
+.test {
+  z-index: 1;
+}
+
+.sep {
+  height: 100%;
+  width: 1px;
+  background-color: $firstry-black-2;
+}
+
+.right {
+  align-items: flex-end;
+}
+
+.firstText {
+  font-size: max(35px, 2.5vw);
+}
+
+.bigText {
+  font-size: max(45px, 3.5vw);
+}
+
+.textAlignRight {
+  text-align: right;
+}
+
+.sep {
+  height: 100%;
+  width: 1px;
+  background-color: $firstry-black-2;
+}
+
+.sectionTitle {
+  font-size: max(30px, 2.5vw);
+  width: 80%;
+}
+
+.sectionP {
+  font-size: max(20px, 1.2vw);
+  margin-bottom: 1vw;
+  width: 70%;
+}
+
+.icon {
+  font-size: max(30px, 2vw);
+}
+
+.greyBg {
+  background-color: $firstry-white-2;
+}
+
+.stripe {
+  color: #5433ff;
+}
+
+.mapImg {
+  height: 55vh;
+  position: absolute;
+  top: -10vh;
+  left: 2vw;
+  z-index: 1;
+}
+
+.boutonImg {
+  position: relative;
+  height: 25vw;
+}
+
+img {
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+
+    .content {
+      width: 85%;
+    }
+  }
+
+  .icon {
+    font-size: max(25px, 2vw);
+  }
+
+  .firstText {
+    font-size: max(18px, 2.5vw);
+  }
+
+  .bigText {
+    font-size: max(28px, 3.5vw);
+  }
+
+  .sectionTitle {
+    font-size: max(25px, 2.5vw);
+    width: 90%;
+  }
+
+  .sectionP {
+    font-size: max(15px, 1.2vw);
+    margin-bottom: 1vw;
+    width: 100%;
+  }
+
+  .boutonImg {
+    position: relative;
+    right: 0;
+    height: 25vh;
+  }
+
+  .mapImg {
+    height: 35vh;
+    position: absolute;
+    top: -2vh;
+    left: -35vw;
+    z-index: 1;
+  }
+}

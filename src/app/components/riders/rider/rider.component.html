@@ -1,5 +1,5 @@
 <h1 class="mainTitle" *ngIf="!isMobile">Riders</h1>
-<div class="flexCardColumn">
+<div class="flexCardColumn" *ngIf="rider">
   <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
     <!-- <rider-card-lg [rider]="rider"></rider-card-lg> -->
     <card
@@ -72,5 +72,5 @@
       ></socials>
     </div>
   </div>
-  <rider-sample-list></rider-sample-list>
+  <rider-sample-list [rider]="rider"></rider-sample-list>
 </div>

@@ -1,0 +1,81 @@
+<div class="flexColumn">
+  <div class="section greyBg" [ngStyle]="{ 'height.vh': isMobile ? 30 : 40 }">
+    <div class="content">
+      <div class="flexRow">
+        <h2 class="sectionTitle flex2">Créez votre profil en quelques clics</h2>
+        <img
+          class="flex1"
+          [ngStyle]="{ 'height.vh': 20 }"
+          src="../../../../assets/accueil/Riders mac copie.png"
+          alt=""
+        />
+      </div>
+    </div>
+    <quadrillage
+      class="fullHeight fullWidth absolute test"
+      [nbRows]="6"
+      [nbColumns]="isMobile ? 10 : 18"
+    ></quadrillage>
+  </div>
+  <div class="section" [ngStyle]="{ 'height.vh': isMobile ? 30 : 40 }">
+    <div class="content flexRow">
+      <div class="flexColumn fullWidth right gap20">
+        <h2 class="sectionTitle textAlignRight">
+          Parcourez les events proches de chez vous
+        </h2>
+        <p class="sectionP textAlignRight">
+          Découvrez la liste des contests avec leurs informations utiles.
+        </p>
+      </div>
+      <img class="mapImg" src="../../../../assets/accueil/map.png" alt="" />
+    </div>
+  </div>
+  <div class="section greyBg" [ngStyle]="{ 'height.vh': isMobile ? 30 : 40 }">
+    <div class="content">
+      <div class="flexRow alignCenter">
+        <div class="flexColumn gap20">
+          <h2 class="sectionTitle">
+            Inscrivez-vous aux contests directement sur Firstry.fr
+          </h2>
+          <p class="sectionP"></p>
+        </div>
+
+        <img
+          class="boutonImg"
+          src="../../../../assets/accueil/bouton copie.png"
+          alt=""
+        />
+      </div>
+    </div>
+    <quadrillage
+      class="fullHeight fullWidth absolute test"
+      [nbRows]="6"
+      [nbColumns]="isMobile ? 10 : 18"
+    ></quadrillage>
+  </div>
+  <div class="section" [ngStyle]="{ 'height.vh': 30 }">
+    <div class="content flexColumn alignCenter gap20">
+      <h2 class="sectionTitle textCenter">Suivez nous sur nos plateformes</h2>
+      <div class="flexRow gap30">
+        <btn
+          icon="fa-brands fa-youtube"
+          type="transparent"
+          size="xl"
+          (click)="youtube()"
+        ></btn>
+        <btn
+          icon="fa-brands fa-tiktok"
+          type="transparent"
+          size="xl"
+          (click)="tiktok()"
+        ></btn>
+        <btn
+          icon="fa-brands fa-instagram"
+          type="transparent"
+          size="xl"
+          (click)="instagram()"
+        ></btn>
+      </div>
+    </div>
+  </div>
+</div>

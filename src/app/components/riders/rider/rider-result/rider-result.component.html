@@ -1,10 +1,21 @@
 <card title="Derniers résultats" size="m">
-  <app-table
-    *ngIf="results && results.length > 0"
-    [data]="results"
-    [columns]="['rank', 'contest', 'date']"
-    [headers]="['#', 'Contest', 'Date']"
-  ></app-table>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Contest</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let result of results">
+        <td>{{ result.rank }}</td>
+        <td>{{ result.contest }}</td>
+        <td>{{ result.date | date : "dd/MM/yyyy" }}</td>
+      </tr>
+    </tbody>
+  </table>
+
   <div *ngIf="!results || results.length === 0">
     <p>Aucun résultat pour le moment</p>
   </div>

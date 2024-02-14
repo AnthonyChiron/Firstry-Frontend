@@ -1,0 +1,14 @@
+<div class="flexRow justifyCenter positionRelative">
+  <div class="band flexColumn gap20">
+    <h2>Qui êtes-vous ?</h2>
+    <div class="flexRow alignStart gap30">
+      <button [class.active]="type === 'rider'" (click)="select('rider')">
+        Rider
+      </button>
+      <div class="sep"></div>
+      <button [class.active]="type === 'contest'" (click)="select('contest')">
+        Contest
+      </button>
+    </div>
+  </div>
+</div>

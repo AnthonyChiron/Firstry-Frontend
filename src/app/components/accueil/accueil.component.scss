@@ -28,11 +28,20 @@ card {
 }
 
 .youtube {
+  z-index: 3;
+
   h2 {
     font-size: 45px;
     font-weight: 900;
     margin-bottom: 20px;
     line-height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    i {
+      color: $youtube;
+    }
   }
 
   p {
@@ -44,9 +53,10 @@ card {
 .contest_rider {
   h2 {
     font-size: 45px;
-    font-weight: 900;
     margin-bottom: 20px;
     line-height: 30px;
+    font-variation-settings: "wght" 900;
+    font-family: "HankenGrotesk";
   }
 
   p {
@@ -58,6 +68,7 @@ card {
 
 .down {
   margin-top: 3vw;
+  margin-bottom: 3vw;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -68,4 +79,40 @@ card {
   font-weight: 900;
   margin-bottom: 20px;
   width: 90%;
+}
+
+.container {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+@media (max-width: 768px) {
+  .main {
+    height: 70vh;
+  }
+
+  .container {
+    margin-top: 5vw;
+  }
+
+  .title {
+    font-size: max(15px, 6vw);
+  }
+
+  .contest_rider {
+    h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 15px;
+      width: 100%;
+    }
+  }
+
+  .down {
+    margin-top: 7vw;
+    margin-bottom: 7vw;
+  }
 }
