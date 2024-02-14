@@ -31,5 +31,20 @@
         </contest-card>
       </div>
     </div>
+    <div
+      class="section"
+      *ngIf="comingSoonContests && comingSoonContests.length > 0"
+    >
+      <h2>Prochainement <i class="fa-solid fa-chevron-down fa-2xs"></i></h2>
+      <div class="flexCardRow flexWrap spaceBetween">
+        <contest-card
+          class="contest"
+          [routerLink]="['/contests', contest._id]"
+          [contest]="contest"
+          *ngFor="let contest of comingSoonContests"
+        >
+        </contest-card>
+      </div>
+    </div>
   </div>
 </div>
