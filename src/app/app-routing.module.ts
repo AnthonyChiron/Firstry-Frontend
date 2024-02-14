@@ -39,13 +39,6 @@ const routes: Routes = [
       import('./components/admin/admin.module').then((m) => m.AdminModule),
   },
   {
-    path: 'register',
-    loadChildren: () =>
-      import('./shared/components/login/login.module').then(
-        (m) => m.LoginModule
-      ),
-  },
-  {
     path: 'account',
     loadChildren: () =>
       import('./components/account/account.module').then(
@@ -58,6 +51,11 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    component: LoginComponent,
+    canActivate: [IsNotAuthGuard],
+  },
+  {
+    path: 'register',
     component: LoginComponent,
     canActivate: [IsNotAuthGuard],
   },

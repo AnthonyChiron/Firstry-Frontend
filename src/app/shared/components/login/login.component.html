@@ -1,7 +1,19 @@
 <div class="main">
+  <div *ngIf="isMobile">
+    <div class="flexColumn alignCenter gap10">
+      <h1>SALUT TOI.</h1>
+      <p *ngIf="openTab == 0" class="textCenter">
+        Bon retour parmi nous ! <br />
+        Tu peux te connecter juste ici
+      </p>
+      <p *ngIf="openTab == 1" class="textCenter">
+        Bienvenue sur Firstry ! <br />
+        Tu peux créer ton compte en moins de 2min (j'te jure)
+      </p>
+    </div>
+  </div>
   <card
     class="card"
-    color="1"
     [img]="isMobile ? '' : '../../../assets/dashboard/DSC09103.jpg'"
     [btn]="isMobile ? false : true"
     btnIcon="fa-solid fa-xmark"

@@ -1,63 +1,81 @@
 <div class="flexColumn">
-  <div class="section" [ngStyle]="{ 'height.vh': 30 }">
-    <div class="content flexColumn alignCenter">
-      <h2 class="sectionTitle textCenter">Créez ton compte rider</h2>
-      <div class="flexRow gap30">
-        <btn label="Créer mon compte"></btn>
-        <div class="sep"></div>
-        <btn type="border" label="Se connecter"></btn>
-      </div>
-    </div>
-  </div>
-  <div class="section greyBg" [ngStyle]="{ 'height.vh': 40 }">
+  <div class="section greyBg" [ngStyle]="{ 'height.vh': isMobile ? 30 : 40 }">
     <div class="content">
-      <h2 class="sectionTitle">
-        <i class="fa-regular fa-credit-card icon"></i>
-        Paiement des inscriptions sécurisé avec
-        <span class="stripe">Stripe</span>
-      </h2>
-      <p class="sectionP">
-        Les riders peuvent payer l'inscription à votre contest via notre site,
-        le paiement est gérer avec Stripe, une plateforme sécurisée du paiement
-        en ligne.
-      </p>
+      <div class="flexRow">
+        <h2 class="sectionTitle flex2">Créez votre profil en quelques clics</h2>
+        <img
+          class="flex1"
+          [ngStyle]="{ 'height.vh': 20 }"
+          src="../../../../assets/accueil/Riders mac copie.png"
+          alt=""
+        />
+      </div>
     </div>
     <quadrillage
       class="fullHeight fullWidth absolute test"
       [nbRows]="6"
-      [nbColumns]="18"
+      [nbColumns]="isMobile ? 10 : 18"
     ></quadrillage>
   </div>
-  <div class="section" [ngStyle]="{ 'height.vh': 40 }">
+  <div class="section" [ngStyle]="{ 'height.vh': isMobile ? 30 : 40 }">
     <div class="content flexRow">
       <div class="flexColumn fullWidth right gap20">
-        <h2 class="sectionTitle textAlignRight">Personnalisation</h2>
-        <img
-          src="../../../../assets/accueil/Personnalisation.png"
-          alt=""
-          [ngStyle]="{ 'height.vh': 5 }"
-        />
+        <h2 class="sectionTitle textAlignRight">
+          Parcourez les events proches de chez vous
+        </h2>
         <p class="sectionP textAlignRight">
-          En quelques clics, personnalisez entièrement votre contest. <br />
-          Changement de planning, création des poules, personnalisation des
-          règles...
+          Découvrez la liste des contests avec leurs informations utiles.
         </p>
       </div>
+      <img class="mapImg" src="../../../../assets/accueil/map.png" alt="" />
     </div>
   </div>
-  <div class="section greyBg" [ngStyle]="{ 'height.vh': 40 }">
+  <div class="section greyBg" [ngStyle]="{ 'height.vh': isMobile ? 30 : 40 }">
+    <div class="content">
+      <div class="flexRow alignCenter">
+        <div class="flexColumn gap20">
+          <h2 class="sectionTitle">
+            Inscrivez-vous aux contests directement sur Firstry.fr
+          </h2>
+          <p class="sectionP"></p>
+        </div>
+
+        <img
+          class="boutonImg"
+          src="../../../../assets/accueil/bouton copie.png"
+          alt=""
+        />
+      </div>
+    </div>
     <quadrillage
       class="fullHeight fullWidth absolute test"
       [nbRows]="6"
-      [nbColumns]="18"
+      [nbColumns]="isMobile ? 10 : 18"
     ></quadrillage>
-    <div class="content">
-      <h2 class="sectionTitle">Acceptez ou refusez les inscriptions</h2>
-      <p class="sectionP">
-        Si un rider est refuser il sera automatiquement remboursé des frais
-        d'inscription.
-      </p>
+  </div>
+  <div class="section" [ngStyle]="{ 'height.vh': 30 }">
+    <div class="content flexColumn alignCenter gap20">
+      <h2 class="sectionTitle textCenter">Suivez nous sur nos plateformes</h2>
+      <div class="flexRow gap30">
+        <btn
+          icon="fa-brands fa-youtube"
+          type="transparent"
+          size="xl"
+          (click)="youtube()"
+        ></btn>
+        <btn
+          icon="fa-brands fa-tiktok"
+          type="transparent"
+          size="xl"
+          (click)="tiktok()"
+        ></btn>
+        <btn
+          icon="fa-brands fa-instagram"
+          type="transparent"
+          size="xl"
+          (click)="instagram()"
+        ></btn>
+      </div>
     </div>
-    <img class="ridersImg" src="../../../../assets/accueil/Riders.png" alt="" />
   </div>
 </div>

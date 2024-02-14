@@ -11,7 +11,7 @@ import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-siz
 export class AccueilComponent implements OnInit {
   user;
   isLoggedIn: boolean = false;
-  selectContest: boolean = true;
+  selectContest: boolean = false;
   isMobile: boolean = false;
 
   constructor(

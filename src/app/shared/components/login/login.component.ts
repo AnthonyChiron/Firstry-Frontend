@@ -29,6 +29,9 @@ export class LoginComponent {
     this._screenSizeService.isMobile$.subscribe((result) => {
       this.isMobile = result;
     });
+    if (this.route.url.includes('register')) {
+      this.openTab = 1;
+    } else this.openTab = 0;
   }
 
   closeModal() {
