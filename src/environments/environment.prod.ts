@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   backendUrl: 'https://firstry.fr:3000/api/',
   stripe_public_key:
-    'pk_test_51OPhx3ExeV2TEn3k0EWYu7LkqusSy8cewkqOMeV6ydwt6ICp84mIxzw2oPzyh8v3awLSP9ymlJqrx2ysjS00TKlU00yuzgNMzN',
+    'pk_live_51OPhx3ExeV2TEn3kH4gDcko1cxSvuVlDzC6PhSp1R6ka0tXfERmwqEF23QsovEb0kspzT5Kis0MmdfoIHWiDjrVF004eocHVyI',
   firebaseConfig: {
     apiKey: 'FIREBASE_API_KEY',
     authDomain: 'AUTH_DOMAIN',
