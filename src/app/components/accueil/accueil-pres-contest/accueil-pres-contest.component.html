@@ -7,6 +7,39 @@
       </h2>
     </div>
   </div>
+  <div class="section greyBg" [ngStyle]="{ 'height.vh': 40 }">
+    <div class="content gap20">
+      <h2 class="sectionTitle">Acceptez ou refusez les inscriptions</h2>
+      <p class="sectionP">
+        Si un rider est refuser il sera automatiquement remboursé des frais
+        d'inscription.
+      </p>
+    </div>
+    <img class="ridersImg" src="../../../../assets/accueil/Riders.png" alt="" />
+    <quadrillage
+      class="fullHeight fullWidth absolute test"
+      [nbRows]="6"
+      [nbColumns]="isMobile ? 10 : 18"
+    ></quadrillage>
+  </div>
+
+  <div class="section" [ngStyle]="{ 'height.vh': isMobile ? 30 : 40 }">
+    <div class="content flexRow">
+      <div class="flexColumn fullWidth right gap20">
+        <h2 class="sectionTitle textAlignRight">Personnalisation</h2>
+        <img
+          src="../../../../assets/accueil/Personnalisation.png"
+          alt=""
+          [ngStyle]="{ 'height.vh': isMobile ? 3.5 : 5 }"
+        />
+        <p class="sectionP textAlignRight">
+          En quelques clics, personnalisez entièrement votre contest. <br />
+          Changement de planning, création des poules, personnalisation des
+          règles...
+        </p>
+      </div>
+    </div>
+  </div>
   <div class="section greyBg" [ngStyle]="{ 'height.vh': isMobile ? 30 : 40 }">
     <div class="content">
       <h2 class="sectionTitle">
@@ -26,38 +59,7 @@
       [nbColumns]="isMobile ? 10 : 18"
     ></quadrillage>
   </div>
-  <div class="section" [ngStyle]="{ 'height.vh': isMobile ? 30 : 40 }">
-    <div class="content flexRow">
-      <div class="flexColumn fullWidth right gap20">
-        <h2 class="sectionTitle textAlignRight">Personnalisation</h2>
-        <img
-          src="../../../../assets/accueil/Personnalisation.png"
-          alt=""
-          [ngStyle]="{ 'height.vh': isMobile ? 3.5 : 5 }"
-        />
-        <p class="sectionP textAlignRight">
-          En quelques clics, personnalisez entièrement votre contest. <br />
-          Changement de planning, création des poules, personnalisation des
-          règles...
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="section greyBg" [ngStyle]="{ 'height.vh': 40 }">
-    <div class="content gap20">
-      <h2 class="sectionTitle">Acceptez ou refusez les inscriptions</h2>
-      <p class="sectionP">
-        Si un rider est refuser il sera automatiquement remboursé des frais
-        d'inscription.
-      </p>
-    </div>
-    <img class="ridersImg" src="../../../../assets/accueil/Riders.png" alt="" />
-    <quadrillage
-      class="fullHeight fullWidth absolute test"
-      [nbRows]="6"
-      [nbColumns]="isMobile ? 10 : 18"
-    ></quadrillage>
-  </div>
+
   <div class="section" [ngStyle]="{ 'height.vh': 30 }">
     <div class="content flexColumn alignCenter gap20">
       <h2 class="sectionTitle textCenter">

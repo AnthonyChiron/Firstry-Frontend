@@ -20,7 +20,11 @@
     </div>
     <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
       <div [class]="'flexCardRow'">
-        <socials *ngIf="contest.socials" [socials]="contest.socials"></socials>
+        <socials
+          size="m"
+          *ngIf="contest.socials"
+          [socials]="contest.socials"
+        ></socials>
       </div>
       <div [class]="'flexCardColumn flex1'">
         <maps-card class="map" [address]="contest.location.address"></maps-card>

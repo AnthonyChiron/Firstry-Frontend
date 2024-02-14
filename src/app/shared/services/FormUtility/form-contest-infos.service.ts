@@ -43,7 +43,7 @@ export class FormContestInfosService extends FormUtilityService {
         endDate: [contest.endDate, [Validators.required]],
         registrationEndDate: [contest.registrationEndDate, Validators.required],
         location: [contest.location, Validators.required],
-        enablePayment: [contest.enablePayment, Validators.required],
+        enablePayment: [true, Validators.required],
       },
       { validators: [this.dateOrderValidator] }
     );
@@ -58,7 +58,7 @@ export class FormContestInfosService extends FormUtilityService {
       registrationEndDate: contest.registrationEndDate,
       sports: contest.sports,
       location: contest.location,
-      enablePayment: contest.enablePayment,
+      enablePayment: true,
     });
 
     this.startDate = form.get('startDate') as FormControl;
