@@ -122,7 +122,17 @@ $bottom-infos: $bottom-photo * 4.6;
   background-color: $firstry-white-3;
 }
 
+.icon {
+  height: 4vw;
+  width: 4vw;
+}
+
 @media only screen and (min-width: 768px) {
+  .icon {
+    height: 1.4vw;
+    width: 1.4vw;
+  }
+
   .card .content .infos .name {
     .firstName {
       position: relative;

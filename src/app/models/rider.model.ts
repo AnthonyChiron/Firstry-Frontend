@@ -11,6 +11,7 @@ export interface RiderModel extends GenericModel {
   category?: string;
   nationality: any;
   city: string;
+  isVerified: boolean;
   socials?: {
     instagram?: string;
     twitter?: string;
@@ -28,6 +29,7 @@ export function parseRiderToDTO(rider) {
     nationality: rider.nationality,
     city: rider.city,
     sports: rider.sports,
+    isVerified: rider.isVerified,
     socials: rider.socials,
   };
 }
