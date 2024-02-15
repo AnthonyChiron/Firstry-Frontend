@@ -19,6 +19,7 @@ export class CategoryCardComponent implements OnInit {
   @Input() contest: any;
   @Output() deleteCategory = new EventEmitter<CategoryModel>();
   @Output() submitCategory = new EventEmitter<CategoryModel>();
+  @Output() updateCategory = new EventEmitter<CategoryModel>();
 
   categoryForm: FormGroup;
   edit: boolean = false;
@@ -52,8 +53,6 @@ export class CategoryCardComponent implements OnInit {
     await this.initRules();
 
     this.fillForm();
-    console.log(this.category);
-    console.log(this.categoryForm.value);
 
     this.categoryForm
       .get('isQualificationStep')
@@ -85,8 +84,8 @@ export class CategoryCardComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.categoryForm.value);
     this.categoryForm.markAllAsTouched();
+
     if (this.categoryForm.valid) {
       this.edit = false;
 
@@ -106,6 +105,8 @@ export class CategoryCardComponent implements OnInit {
           .updateCategory(this.category._id, newCategory)
           .subscribe((res) => {
             this.category = res;
+
+            this.updateCategory.emit(this.category);
           });
     }
   }

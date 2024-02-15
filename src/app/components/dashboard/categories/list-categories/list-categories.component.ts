@@ -35,8 +35,6 @@ export class ListCategoriesComponent implements OnInit, OnChanges {
 
   deleteCategory(category: CategoryModel) {
     if (category && category._id) {
-      console.log(category);
-
       // Delete category from contest.categories
       this.contest.categories = this.contest.categories.filter(
         (c) => c._id != category._id
@@ -49,5 +47,16 @@ export class ListCategoriesComponent implements OnInit, OnChanges {
         (c) => c._id != undefined
       );
     }
+  }
+
+  updateCategoryFromList(category: CategoryModel) {
+    console.log(category);
+    // replace category in contest.categories
+    this.contest.categories = this.contest.categories.map((c) => {
+      if (c._id == category._id) {
+        return category;
+      }
+      return c;
+    });
   }
 }

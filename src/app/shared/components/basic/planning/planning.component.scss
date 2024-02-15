@@ -1,6 +1,10 @@
 @import "../../../../../styles/colors.scss";
 @import "../../../../../styles/variables.scss";
 
+:host {
+  z-index: 1;
+}
+
 .selector {
   display: flex;
   align-items: center;

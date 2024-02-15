@@ -6,7 +6,5 @@ import { environment } from '../../../../environments/environment';
 })
 export class BaseHttpService {
   protected baseUrl = environment.backendUrl;
-  constructor() {
-    console.log(this.baseUrl);
-  }
+  constructor() {}
 }
