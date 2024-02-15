@@ -37,6 +37,7 @@
   z-index: 3;
 
   .name {
+    position: relative;
     margin-bottom: 2vw;
 
     h2 {
@@ -73,11 +74,21 @@
   z-index: 3;
 }
 
+.icon {
+  height: 2vw;
+  width: 2vw;
+}
+
 @media screen and (max-width: 768px) {
   .logo {
     height: 30px;
     right: 3vw;
     width: auto;
+  }
+
+  .icon {
+    height: 5vw;
+    width: 5vw;
   }
 
   .share {
