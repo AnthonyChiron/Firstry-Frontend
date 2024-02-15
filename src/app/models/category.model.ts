@@ -8,6 +8,7 @@ export interface CategoryModel extends GenericModel {
   maxRiders: Number;
   registerPrice: Number;
   isQualificationStep: boolean;
+  isParentalAuthorizationRequired: boolean;
   steps: StepModel[];
   contestId: String;
 }
@@ -20,6 +21,7 @@ export interface CategoryModelDTO {
     maxRiders: Number;
     registerPrice: Number;
     isQualificationStep: boolean;
+    isParentalAuthorizationRequired: boolean;
     contestId: String;
   };
   steps: any[];
@@ -34,6 +36,7 @@ export interface CategoryRegistrationModelDTO {
   NbRegistration: Number;
   registerPrice: Number;
   isQualificationStep: boolean;
+  isParentalAuthorizationRequired: boolean;
   contestId: String;
   steps: any[];
 }

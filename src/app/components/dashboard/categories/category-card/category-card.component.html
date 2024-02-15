@@ -101,7 +101,14 @@
           [edit]="edit"
           [error]="fus.isFieldInvalid('registerPrice')"
         ></input-text>
-
+        <slide-input
+          class="flex1"
+          name="isParentalAuthorizationRequired"
+          formControlName="isParentalAuthorizationRequired"
+          label="Authorisation parentale ?"
+          [edit]="edit"
+        >
+        </slide-input>
         <slide-input
           *ngIf="isNew"
           class="flex1"

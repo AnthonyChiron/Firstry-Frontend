@@ -27,6 +27,7 @@ export class FormCategoriesService extends FormUtilityService {
         [Validators.required, Validators.min(1), this.numberValidator()],
       ],
       isQualificationStep: [true, Validators.required],
+      isParentalAuthorizationRequired: [false, Validators.required],
       contestId: ['', Validators.required],
       stepQualif: this.createStepForm('QUALIFICATION'),
       stepFinal: this.createStepForm('FINALE'),
@@ -73,6 +74,8 @@ export class FormCategoriesService extends FormUtilityService {
         sports: category.sports,
         registerPrice: category.registerPrice,
         isQualificationStep: category.isQualificationStep,
+        isParentalAuthorizationRequired:
+          category.isParentalAuthorizationRequired,
         contestId: contest._id,
       });
 
@@ -131,6 +134,9 @@ export class FormCategoriesService extends FormUtilityService {
         sports: categoryForm.get('sports').value,
         registerPrice: Number(categoryForm.get('registerPrice').value),
         isQualificationStep: categoryForm.get('isQualificationStep').value,
+        isParentalAuthorizationRequired: categoryForm.get(
+          'isParentalAuthorizationRequired'
+        ).value,
         contestId: categoryForm.get('contestId').value,
       },
       steps: [],
