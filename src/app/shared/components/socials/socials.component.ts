@@ -10,6 +10,7 @@ export class SocialsComponent implements OnInit, OnChanges {
   @Input() socials: socialsModel;
   @Input() size: string = 'l';
   @Input() title: string = '';
+  @Input() orientation: string = '';
   isLoading: boolean = true;
 
   constructor() {}

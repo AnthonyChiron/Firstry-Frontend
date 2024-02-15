@@ -32,6 +32,7 @@ export class PoolsComponent implements OnInit {
   pendingApprovalRegistrations: RegistrationModel[] = [];
   selectedCategory: CategoryModel;
   selectedRegistrations: any[];
+  isPoolsAvailable: boolean = false;
 
   constructor(
     private _registrationService: RegistrationsService,
@@ -43,6 +44,10 @@ export class PoolsComponent implements OnInit {
     this._activatedRoute.parent.params.subscribe((params) => {
       this._contestService.getById(params.contestId).subscribe((contest) => {
         this.contest = parseContestModel(contest);
+
+        if (this.contest.registrationEndDate < new Date()) {
+          this.isPoolsAvailable = true;
+        }
 
         this.selectedCategory = this.contest.categories[0];
         this._registrationService
