@@ -29,7 +29,7 @@
         <div class="infos">
           <div class="name">
             <h2 class="firstName">{{ rider.firstName | Capitalize }}</h2>
-            <h2 class="lastName">
+            <h2 class="lastName flexRow alignCenter gap10">
               {{ rider.lastName | uppercase }}
               <svg
                 *ngIf="rider.isVerified"
@@ -40,8 +40,8 @@
               >
                 <style type="text/css">
                   .st0 {
-                    fill: none;
-                    stroke: #73b9ea;
+                    fill: #73b9ea;
+                    stroke: white;
                     stroke-width: 5;
                     stroke-linecap: round;
                     stroke-linejoin: round;
