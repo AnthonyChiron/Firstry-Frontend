@@ -74,6 +74,7 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
           this._categoriesService
             .getAllCategoriesForRegistrations(this.contest._id)
             .subscribe((categories) => {
+              console.log(categories);
               categories.forEach((category) => {
                 if (category.NbRegistration < category.maxRiders)
                   this.categories.push(category);
@@ -159,5 +160,9 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
       .subscribe((result) => {
         console.log(result);
       });
+  }
+
+  downloadParentalAuthorization() {
+    window.open(this.contest.parentalAuthorizationUrl, '_blank');
   }
 }
