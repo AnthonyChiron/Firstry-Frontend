@@ -74,12 +74,15 @@
   position: absolute;
   top: -10vh;
   left: 2vw;
-  z-index: 1;
 }
 
 .boutonImg {
   position: relative;
   height: 25vw;
+}
+
+.pcImg {
+  height: 40vh;
 }
 
 img {
@@ -119,9 +122,10 @@ img {
   }
 
   .boutonImg {
-    position: relative;
-    right: 0;
+    position: absolute;
     height: 25vh;
+    right: 0;
+    bottom: -8vh;
   }
 
   .mapImg {
@@ -130,5 +134,11 @@ img {
     top: -2vh;
     left: -35vw;
     z-index: 1;
+  }
+
+  .pcImg {
+    height: 15vh;
+    position: absolute;
+    right: -5vw;
   }
 }
