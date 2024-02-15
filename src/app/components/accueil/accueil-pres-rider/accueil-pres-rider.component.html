@@ -1,11 +1,21 @@
 <div class="flexColumn">
   <div class="section greyBg" [ngStyle]="{ 'height.vh': isMobile ? 30 : 40 }">
     <div class="content">
-      <div class="flexRow">
-        <h2 class="sectionTitle flex2">Créez votre profil en quelques clics</h2>
+      <div class="flexRow alignCenter">
+        <div
+          class="flexColumn gap10"
+          [ngStyle]="{ 'z-index': 10, width: isMobile ? '60%' : '100%' }"
+        >
+          <h2 class="sectionTitle flex2">
+            Créez votre profil en quelques clics
+          </h2>
+          <p class="sectionP">
+            Vous aurez votre fiche rider de disponible en moins de 3min !
+          </p>
+        </div>
+
         <img
           class="pcImg"
-          [ngStyle]="{ 'height.vh': 20 }"
           src="../../../../assets/accueil/Riders mac copie (1).png"
           alt=""
         />

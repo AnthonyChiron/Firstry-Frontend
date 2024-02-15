@@ -81,6 +81,10 @@
   height: 25vw;
 }
 
+.pcImg {
+  height: 40vh;
+}
+
 img {
   z-index: 2;
 }
@@ -133,6 +137,8 @@ img {
   }
 
   .pcImg {
-    height: 25vh;
+    height: 15vh;
+    position: absolute;
+    right: -5vw;
   }
 }
