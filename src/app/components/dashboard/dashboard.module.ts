@@ -34,6 +34,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ResultsHandlerComponent } from './results/results-handler/results-handler.component';
 import { FormsModule } from '@angular/forms';
 import { ContestStateComponent } from './overview/contest-state/contest-state.component';
+import { LegalFilesComponent } from './parameters/legal-files/legal-files.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -111,6 +112,7 @@ const dashboardRoutes: Routes = [
     PoolsComponent,
     ResultsHandlerComponent,
     ContestStateComponent,
+    LegalFilesComponent,
   ],
   imports: [
     CommonModule,

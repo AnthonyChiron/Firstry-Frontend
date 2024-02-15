@@ -46,49 +46,61 @@
     class="flex1 registerCard"
     [title]="'Inscription - ' + selectedCategory.name"
   >
-    <div class="flexColumn content">
-      <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
-        <card
-          *ngFor="let step of selectedCategory.steps"
-          class="flex1"
-          color="2"
-          size="s"
-          ><div class="stepCard">
-            <div class="stepTitle spaceBetween">
-              <h3>{{ step.name }}</h3>
-              <p class="italic">
-                {{ step.startDate | date : "dd/MM/yyyy - hh:mm" }}
-              </p>
-            </div>
-            <div class="stepContent">
-              <div class="flexColumn spaceAround alignCenter flex1">
-                <info-tag
-                  size="l"
-                  icon="fa-solid fa-user"
-                  label="Poules de {{ step.ridersPerPool }}"
-                ></info-tag>
-                <info-tag
-                  *ngIf="step.ridersQualifiedCount > 0"
-                  size="l"
-                  icon="fa-solid fa-check"
-                  label="Qualifié.es {{ step.ridersPerPool }}"
-                ></info-tag>
+    <div class="flexColumn gap10">
+      <div
+        class="flexColumn"
+        *ngIf="
+          selectedCategory.description &&
+          selectedCategory.description.length > 0
+        "
+      >
+        <label>Description</label>
+        <p>{{ selectedCategory.description }}</p>
+      </div>
+      <div class="flexColumn content">
+        <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
+          <card
+            *ngFor="let step of selectedCategory.steps"
+            class="flex1"
+            color="2"
+            size="s"
+            ><div class="stepCard">
+              <div class="stepTitle spaceBetween">
+                <h3>{{ step.name }}</h3>
+                <p class="italic">
+                  {{ step.startDate | date : "dd/MM/yyyy - hh:mm" }}
+                </p>
               </div>
-              <div class="sep"></div>
-              <div class="format flex1">
-                <h4 class="textCenter">Format</h4>
-                <div
-                  *ngFor="let stepFormat of step.rules.stepFormats"
-                  class="stepFormat"
-                >
-                  <info-tag size="l" [label]="getRunLabel(stepFormat)">
-                  </info-tag>
-                  <div class="sep"></div>
+              <div class="stepContent">
+                <div class="flexColumn spaceAround alignCenter flex1">
+                  <info-tag
+                    size="l"
+                    icon="fa-solid fa-user"
+                    label="Poules de {{ step.ridersPerPool }}"
+                  ></info-tag>
+                  <info-tag
+                    *ngIf="step.ridersQualifiedCount > 0"
+                    size="l"
+                    icon="fa-solid fa-check"
+                    label="Qualifié.es {{ step.ridersPerPool }}"
+                  ></info-tag>
+                </div>
+                <div class="sep"></div>
+                <div class="format flex1">
+                  <h4 class="textCenter">Format</h4>
+                  <div
+                    *ngFor="let stepFormat of step.rules.stepFormats"
+                    class="stepFormat"
+                  >
+                    <info-tag size="l" [label]="getRunLabel(stepFormat)">
+                    </info-tag>
+                    <div class="sep"></div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </card>
+          </card>
+        </div>
       </div>
       <div class="footer">
         <div class="price">

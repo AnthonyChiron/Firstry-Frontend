@@ -1,0 +1,28 @@
+@import "../../../../../styles/colors.scss";
+@import "../../../../../styles/variables.scss";
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  p {
+    width: 100%;
+    max-width: 20vw;
+    overflow-wrap: break-word;
+  }
+}
+
+.inputBtn {
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-variation-settings: "wght" 500;
+  color: black;
+  cursor: pointer;
+
+  input {
+    display: none;
+  }
+}

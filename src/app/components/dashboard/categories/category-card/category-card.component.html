@@ -53,6 +53,16 @@
         [error]="fus.isFieldInvalid('name')"
       ></input-text>
 
+      <input-textarea
+        name="description"
+        size="m"
+        placeholder="Description de la catégorie, modalité d'inscription..."
+        label="Description de la catégorie"
+        formControlName="description"
+        [edit]="edit"
+        [error]="fus.isFieldInvalid('description')"
+      ></input-textarea>
+
       <div *ngIf="contest.sports.length > 1" class="inputGroup">
         <h4>Disciplines</h4>
         <chips-group

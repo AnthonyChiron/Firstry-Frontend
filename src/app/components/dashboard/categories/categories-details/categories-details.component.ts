@@ -41,6 +41,7 @@ export class CategoriesDetailsComponent implements OnInit {
     this._activatedRoute.parent.params.subscribe((params) => {
       this.cs.getById(params.contestId).subscribe((contest) => {
         this.contest = contest;
+        console.log(contest);
         this.contest.startDate = new Date(this.contest.startDate);
         this.contest.endDate = new Date(this.contest.endDate);
       });
