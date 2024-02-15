@@ -23,7 +23,7 @@ export class MobileSidebarComponent {
   isLoggedIn: boolean = false;
 
   constructor(
-    protected authService: AuthService,
+    protected _authService: AuthService,
     protected _screenSize: ScreenSizeService
   ) {
     this._screenSize.isMobile$.subscribe((isMobile) => {
@@ -32,7 +32,7 @@ export class MobileSidebarComponent {
   }
 
   ngOnInit(): void {
-    this.authService.isLoggedIn().subscribe((loggedIn) => {
+    this._authService.isLoggedIn().subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
   }
