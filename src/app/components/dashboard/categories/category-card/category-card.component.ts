@@ -51,9 +51,9 @@ export class CategoryCardComponent implements OnInit {
     this.initSports();
     await this.initRules();
 
-    console.log(this.rulesOptions);
-
     this.fillForm();
+    console.log(this.category);
+    console.log(this.categoryForm.value);
 
     this.categoryForm
       .get('isQualificationStep')

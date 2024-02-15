@@ -1,0 +1,8 @@
+<card title="Légal">
+  <input-file
+    label="Autorisation parentale"
+    labelFile="Télécharger l'authorisation parentale"
+    [file]="contest.parentalAuthorizationUrl"
+    (fileSelected)="onFileSelected($event)"
+  ></input-file>
+</card>

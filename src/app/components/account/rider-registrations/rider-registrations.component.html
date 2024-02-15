@@ -15,12 +15,12 @@
             label="Voir le contest"
             routerLink="/contests/{{ registration.contest._id }}"
           ></btn>
-          <btn
+          <!-- <btn
             label="Annuler son inscription"
             type="danger"
             *ngIf="registration.state != 'refused'"
             (click)="cancelRegistration(registration._id)"
-          ></btn>
+          ></btn> -->
         </div>
       </div>
     </card>

@@ -1,5 +1,5 @@
 <card title="Derniers résultats" size="m">
-  <table>
+  <table *ngIf="results && results.length != 0">
     <thead>
       <tr>
         <th>#</th>

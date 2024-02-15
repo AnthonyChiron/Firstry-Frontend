@@ -1,0 +1,24 @@
+<div class="flexColumn gap10">
+  <label *ngIf="label != ''">{{ label }}</label>
+  <div class="flexRow alignCenter spaceBetween">
+    <btn
+      icon="fa-solid fa-download"
+      [label]="labelFile"
+      (click)="downloadFileInNewPage()"
+    ></btn>
+    <label class="inputBtn" for="file">
+      <div class="flexRow alignCenter gap10">
+        <i class="fa-solid fa-plus"></i>
+        {{ placeholder }}
+      </div>
+      <input
+        name="file"
+        class="btn"
+        type="file"
+        accept=".pdf"
+        (change)="onFileChange($event)"
+      />
+    </label>
+    <ng-content></ng-content>
+  </div>
+</div>
