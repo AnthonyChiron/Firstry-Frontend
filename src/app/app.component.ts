@@ -27,14 +27,10 @@ export class AppComponent implements OnInit {
 
     // get the current route
     this._router.events.subscribe((val: any) => {
-      console.log(val);
       if (val.url)
         if (val.url === '/') this.container = false;
         else this.container = true;
-      console.log(this.container);
     });
-
-    console.log('Production : ' + environment.production);
   }
 
   changeToggle() {

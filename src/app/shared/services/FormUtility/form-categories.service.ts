@@ -27,7 +27,7 @@ export class FormCategoriesService extends FormUtilityService {
         [Validators.required, Validators.min(1), this.numberValidator()],
       ],
       isQualificationStep: [true, Validators.required],
-      isParentalAuthorizationRequired: [false, Validators.required],
+      isParentalAuthorizationRequired: [false],
       contestId: ['', Validators.required],
       stepQualif: this.createStepForm('QUALIFICATION'),
       stepFinal: this.createStepForm('FINALE'),
@@ -55,7 +55,6 @@ export class FormCategoriesService extends FormUtilityService {
     category: CategoryModel,
     contest: ContestModel
   ) {
-    console.log(category);
     if (category._id) {
       // Récupère les steps de la catégorie
       let stepQualif = category.steps.find(
