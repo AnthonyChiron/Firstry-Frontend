@@ -138,7 +138,9 @@
     </div>
     <div class="footer">
       <p class="version">v0.1.0</p>
-      <a routerLink="mentions-legal">Mention légales</a>
+      <a routerLink="mentions-legal" (click)="emitClickToggle()"
+        >Mention légales</a
+      >
       <p>Firstry - 2024</p>
     </div>
   </ul>

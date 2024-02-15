@@ -4,3 +4,9 @@
   flex-direction: column;
   gap: 2vw;
 }
+
+@media screen and (max-width: 768px) {
+  .mentions {
+    width: 90vw;
+  }
+}
