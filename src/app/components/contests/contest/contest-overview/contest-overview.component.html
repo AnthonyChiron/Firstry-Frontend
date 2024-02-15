@@ -22,6 +22,7 @@
       <div [class]="'flexCardRow'">
         <socials
           size="m"
+          [orientation]="isMobile ? 'flexColumn' : 'flexRow'"
           *ngIf="contest.socials"
           [socials]="contest.socials"
         ></socials>
@@ -29,15 +30,17 @@
       <div [class]="'flexCardColumn flex1'">
         <maps-card class="map" [address]="contest.location.address"></maps-card>
         <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
-          <card class="flex1" title="Dates" size="s"
-            ><p>
-              {{
-                (contest.startDate | date : "dd/MM/yyyy") +
-                  " - " +
-                  (contest.endDate | date : "dd/MM/yyyy")
-              }}
-            </p></card
-          >
+          <card class="flex1" title="Date" size="m">
+            <div class="flexRow alignCenter justifyCenter">
+              <p class="date">
+                {{
+                  (contest.startDate | date : "dd/MM/yyyy") +
+                    " - " +
+                    (contest.endDate | date : "dd/MM/yyyy")
+                }}
+              </p>
+            </div>
+          </card>
           <card
             class="flex1 cursorPointer"
             size="s"

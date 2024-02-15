@@ -1,7 +1,12 @@
 <div
   class="flexCardRow"
   [@fadeInOut]
-  *ngIf="contest && registrations && contest.categories.length != 0"
+  *ngIf="
+    contest &&
+    registrations &&
+    contest.categories.length != 0 &&
+    isResultsAvailable
+  "
 >
   <categories-navigation
     class="flex1"
@@ -27,4 +32,10 @@
     label="Créer une catégorie"
     [routerLink]="['/dashboard', contest._id, 'categories']"
   ></btn>
+</div>
+<div class="flexColumn alignCenter gap10" *ngIf="!isResultsAvailable">
+  <h2>Les inscriptions ne sont pas terminées !</h2>
+  <p>
+    La création des résultats sera disponible après la fin des inscriptions.
+  </p>
 </div>
