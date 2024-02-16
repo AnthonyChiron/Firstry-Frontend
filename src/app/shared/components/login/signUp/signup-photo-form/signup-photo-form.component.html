@@ -27,6 +27,8 @@
       output="blob"
       (imageCropped)="imageCropped($event)"
     ></image-cropper>
+  </div>
+  <div class="flexRow justifyCenter alignCenter">
     <btn
       *ngIf="imageChangedEvent != ''"
       (click)="confirmImage()"
