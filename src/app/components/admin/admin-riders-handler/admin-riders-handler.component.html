@@ -1,0 +1,33 @@
+<div class="flexRow alignCenter justifyCenter" *ngIf="isLoading">
+  <loader></loader>
+</div>
+<card title="Riders" *ngIf="riders && riders.length > 0">
+  <div class="flexColumn gap10">
+    <div class="flexRow spaceBetween padding">
+      <h3 class="W15vw">Nom & prénom</h3>
+      <h3 class="W15vw">Disciplines</h3>
+      <h3 class="W15vw">Age</h3>
+      <h3 class="W15vw">Actions</h3>
+    </div>
+    <div
+      class="flexRow spaceBetween padding cursorPointer contest"
+      *ngFor="let rider of riders"
+    >
+      <h4 class="W15vw">
+        {{ rider.lastName | uppercase }} {{ rider.firstName | Capitalize }}
+      </h4>
+      <h4 class="W15vw">
+        {{ rider.sports.join(", ") | Capitalize }}
+      </h4>
+      <h4 class="W15vw">{{ rider.birthDate | date : "dd/MM/YY" }}</h4>
+      <div class="W15vw flexRow gap10">
+        <btn
+          [type]="rider.isVerified ? 'valid' : 'danger'"
+          [icon]="rider.isVerified ? 'fa-solid fa-check' : 'fa-solid fa-times'"
+          label="Certif"
+          (click)="toggleVerification(rider._id)"
+        ></btn>
+      </div>
+    </div>
+  </div>
+</card>

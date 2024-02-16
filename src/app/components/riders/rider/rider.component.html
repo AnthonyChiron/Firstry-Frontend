@@ -61,7 +61,7 @@
             <div class="flexRow spaceBetween">
               <div class="flex1 label">
                 <label>Discipline</label>
-                <p>{{ rider.sports.toString() | Capitalize }}</p>
+                <p>{{ rider.sports.join(", ") | Capitalize }}</p>
               </div>
               <div class="flex1 label">
                 <label>Nationnalité</label>

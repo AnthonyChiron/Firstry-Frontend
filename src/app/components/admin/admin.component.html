@@ -6,7 +6,16 @@
     label="Aperçu"
     icon="fa-solid fa-globe"
     routerLinkActive="active"
-    routerLink="/admin"
+    routerLink="overview"
+    [routerLinkActiveOptions]="{ exact: true }"
+  ></nav-btn>
+  <nav-btn
+    type="primary"
+    size="l"
+    label="Riders"
+    icon="fa-solid fa-list"
+    routerLinkActive="active"
+    routerLink="riders"
   ></nav-btn>
   <nav-btn
     type="primary"
