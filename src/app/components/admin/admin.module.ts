@@ -10,6 +10,7 @@ import { IsAdminGuard } from 'src/app/shared/guards/IsAdmin/is-admin-guard.servi
 import { AdminContestsHandlerComponent } from './admin-contests-handler/admin-contests-handler.component';
 import { AdminOverviewComponent } from './admin-overview/admin-overview.component';
 import { AdminReportsHandlerComponent } from './admin-reports-handler/admin-reports-handler.component';
+import { AdminRidersHandlerComponent } from './admin-riders-handler/admin-riders-handler.component';
 import { NgChartsModule } from 'ng2-charts';
 
 const adminRoutes: Routes = [
@@ -19,8 +20,13 @@ const adminRoutes: Routes = [
     canActivate: [IsAuthGuard, IsAdminGuard],
     children: [
       {
-        path: '',
+        path: 'overview',
         component: AdminOverviewComponent,
+        canActivate: [IsAuthGuard, IsAdminGuard],
+      },
+      {
+        path: 'riders',
+        component: AdminRidersHandlerComponent,
         canActivate: [IsAuthGuard, IsAdminGuard],
       },
       {
@@ -43,6 +49,7 @@ const adminRoutes: Routes = [
     AdminContestsHandlerComponent,
     AdminOverviewComponent,
     AdminReportsHandlerComponent,
+    AdminRidersHandlerComponent,
   ],
   imports: [
     CommonModule,

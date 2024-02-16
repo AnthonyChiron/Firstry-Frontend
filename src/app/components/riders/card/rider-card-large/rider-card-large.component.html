@@ -21,7 +21,9 @@
       <div class="labels">
         <div class="label">
           <label for="sports">Discipline</label>
-          <p Capitalize class="sports">{{ rider.sports }}</p>
+          <p Capitalize class="sports">
+            {{ rider.sports.join(", ") | Capitalize }}
+          </p>
         </div>
         <div class="label">
           <label for="nationality">Nationalité</label>

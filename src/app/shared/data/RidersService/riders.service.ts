@@ -36,4 +36,8 @@ export class RidersService extends CrudService<RiderModel> {
     console.log(this.baseUrl);
     return this.http.put(`${this.baseUrl}/updatePhoto/${riderId}`, formData);
   }
+
+  toggleVerification(id) {
+    return this.http.put(`${this.baseUrl}/toggleVerification/${id}`, {});
+  }
 }

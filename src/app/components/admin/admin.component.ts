@@ -22,5 +22,10 @@ export class AdminComponent {
     this._screenSize.isMobile$.subscribe((isMobile) => {
       this.isMobile = isMobile;
     });
+
+    // go to admin/overview if no route is specified
+    if (this.router.url == '/admin') {
+      this.router.navigate(['overview'], { relativeTo: this._activatedRoute });
+    }
   }
 }

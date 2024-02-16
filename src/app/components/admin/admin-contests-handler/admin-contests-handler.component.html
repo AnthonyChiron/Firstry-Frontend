@@ -1,1 +1,29 @@
-<p>admin-contests-handler works!</p>
+<div class="flexRow alignCenter justifyCenter" *ngIf="isLoading">
+  <loader></loader>
+</div>
+<card title="Contests">
+  <div class="flexColumn gap10">
+    <div class="flexRow spaceBetween padding">
+      <h3 class="W15vw">Nom</h3>
+      <h3 class="W15vw">Status</h3>
+      <h3 class="W15vw">Dates</h3>
+      <h3 class="W15vw">Actions</h3>
+    </div>
+    <div
+      class="flexRow spaceBetween padding cursorPointer contest"
+      *ngFor="let contest of contests"
+    >
+      <h4 class="W15vw">{{ contest.name }}</h4>
+      <h3 class="W15vw flexRow gap10 alignCenter">
+        <div [class]="contest.isPublished ? 'greenDot' : 'redDot'"></div>
+        <h4>{{ contest.isPublished ? "Publié" : "Non publié" }}</h4>
+      </h3>
+      <h4 class="W15vw">{{ contest.startDate | date : "dd/MM/YY" }}</h4>
+      <div class="W15vw flexRow gap10">
+        <btn type="valid"></btn>
+        <btn type="warning"></btn>
+        <btn type="danger"></btn>
+      </div>
+    </div>
+  </div>
+</card>
