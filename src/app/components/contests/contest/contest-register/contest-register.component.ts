@@ -163,6 +163,6 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
   }
 
   downloadParentalAuthorization() {
-    window.open(this.contest.parentalAuthorizationUrl, '_blank');
+    window.open(this.contest.parentalAuthorizationFileUrl, '_blank');
   }
 }
