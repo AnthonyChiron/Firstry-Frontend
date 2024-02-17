@@ -40,12 +40,25 @@ export class ContestsService extends CrudService<ContestModel> {
     );
   }
 
-  uploadParentalAuthorization(contestId: string, file: File): Observable<any> {
+  uploadParentalAuthorizationFile(
+    contestId: string,
+    file: File
+  ): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
 
     return this.http.post(
-      this.baseUrl + '/uploadParentalAuthorization/' + contestId,
+      this.baseUrl + '/uploadParentalAuthorizationFile/' + contestId,
+      formData
+    );
+  }
+
+  uploadRulesFile(contestId: string, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    return this.http.post(
+      this.baseUrl + '/uploadRulesFile/' + contestId,
       formData
     );
   }

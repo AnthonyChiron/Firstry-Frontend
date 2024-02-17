@@ -41,5 +41,9 @@ export class RiderRegistrationsComponent implements OnInit {
     }
   }
 
+  downloadFileInNewPage(file) {
+    window.open(file);
+  }
+
   cancelRegistration(registrationId) {}
 }

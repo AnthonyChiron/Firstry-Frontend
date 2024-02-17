@@ -2,12 +2,13 @@
   <label *ngIf="label != ''">{{ label }}</label>
   <div class="flexRow alignCenter spaceBetween">
     <btn
+      *ngIf="file && file.length > 0"
       icon="fa-solid fa-download"
       [label]="labelFile"
       (click)="downloadFileInNewPage()"
     ></btn>
-    <label class="inputBtn" for="file">
-      <div class="flexRow alignCenter gap10">
+    <label class="inputBtn">
+      <div class="flexRow alignCenter gap10" for="file">
         <i class="fa-solid fa-plus"></i>
         {{ placeholder }}
       </div>

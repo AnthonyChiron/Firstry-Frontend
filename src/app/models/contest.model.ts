@@ -13,7 +13,8 @@ export interface ContestModel extends GenericModel {
   location: Address;
   enablePayment: boolean;
   isPublished: boolean;
-  parentalAuthorizationUrl: string;
+  parentalAuthorizationFileUrl: string;
+  rulesFileUrl: string;
   organizer: OrganizerModel;
   branding: {
     logo: string;
@@ -42,7 +43,8 @@ export function parseContestModel(contest): ContestModel {
     location: contest.location,
     enablePayment: contest.enablePayment,
     isPublished: contest.isPublished,
-    parentalAuthorizationUrl: contest.parentalAuthorizationUrl,
+    parentalAuthorizationFileUrl: contest.parentalAuthorizationFileUrl,
+    rulesFileUrl: contest.rulesFileUrl,
     branding: contest.branding,
     socials: contest.socials,
     organizer: contest.organizer,

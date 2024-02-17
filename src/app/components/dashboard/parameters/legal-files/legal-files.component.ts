@@ -11,11 +11,19 @@ export class LegalFilesComponent {
 
   constructor(private _contestService: ContestsService) {}
 
-  onFileSelected(file: File) {
-    this._contestService
-      .uploadParentalAuthorization(this.contest._id, file)
-      .subscribe((res) => {
-        console.log(res);
-      });
+  onFileSelected(type: string, file: File) {
+    if (type === 'parentalAuthorization') {
+      this._contestService
+        .uploadParentalAuthorizationFile(this.contest._id, file)
+        .subscribe((res) => {
+          this.contest = res;
+        });
+    }
+    if (type === 'rules')
+      this._contestService
+        .uploadRulesFile(this.contest._id, file)
+        .subscribe((res) => {
+          this.contest = res;
+        });
   }
 }
