@@ -155,8 +155,10 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
     this.isPaymentStep = false;
     this.isPaymentFailed = true;
 
+    console.log('test');
+
     this._registrationService
-      .paymentFailedRiderRegistration(this.rider._id, this.selectedCategory._id)
+      .paymentFailedRiderRegistration(this.registration._id)
       .subscribe((result) => {
         console.log(result);
       });
@@ -164,5 +166,9 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
 
   downloadParentalAuthorization() {
     window.open(this.contest.parentalAuthorizationFileUrl, '_blank');
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 }

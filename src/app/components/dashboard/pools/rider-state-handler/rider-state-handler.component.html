@@ -22,20 +22,30 @@
         <p class="cat">{{ registration.category.name }}</p>
       </div>
       <div class="btns">
-        <btn
-          type="danger"
-          [size]="screenWidth > 1300 ? 's' : 'm'"
-          [label]="screenWidth > 1300 ? 'Refuser' : ''"
-          [icon]="screenWidth > 1300 ? '' : 'fa-solid fa-xmark'"
-          (click)="refuseRider(registration._id)"
-        ></btn>
-        <btn
-          type="valid"
-          [size]="screenWidth > 1300 ? 's' : 'm'"
-          [label]="screenWidth > 1300 ? 'Valider' : ''"
-          [icon]="screenWidth > 1300 ? '' : 'fa-solid fa-check'"
-          (click)="validRider(registration._id)"
-        ></btn>
+        <div class="flexColumn gap10">
+          <div class="flexRow justifyCenter">
+            <btn
+              label="Voir le profil"
+              (click)="openRider(registration.rider._id)"
+            ></btn>
+          </div>
+          <div class="flexRow alignCenter gap10">
+            <btn
+              type="danger"
+              [size]="screenWidth > 1300 ? 's' : 'm'"
+              [label]="screenWidth > 1300 ? 'Refuser' : ''"
+              [icon]="screenWidth > 1300 ? '' : 'fa-solid fa-xmark'"
+              (click)="refuseRider(registration._id)"
+            ></btn>
+            <btn
+              type="valid"
+              [size]="screenWidth > 1300 ? 's' : 'm'"
+              [label]="screenWidth > 1300 ? 'Valider' : ''"
+              [icon]="screenWidth > 1300 ? '' : 'fa-solid fa-check'"
+              (click)="validRider(registration._id)"
+            ></btn>
+          </div>
+        </div>
       </div>
     </rider-card-md>
     <div class="shadow" *ngIf="registrations.length > 6"></div>

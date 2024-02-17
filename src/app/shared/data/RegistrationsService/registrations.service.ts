@@ -52,9 +52,9 @@ export class RegistrationsService extends CrudService<RegistrationModel> {
     );
   }
 
-  paymentFailedRiderRegistration(riderId, categoryId) {
+  paymentFailedRiderRegistration(registrationId) {
     return this.http.get(
-      `${this.baseUrl}/paymentFailedRiderRegistration/${riderId}/${categoryId}`
+      `${this.baseUrl}/paymentFailedRiderRegistration/${registrationId}`
     );
   }
 }

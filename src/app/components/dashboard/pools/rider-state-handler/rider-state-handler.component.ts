@@ -59,4 +59,9 @@ export class RiderStateHandlerComponent implements OnInit, OnChanges {
         );
       });
   }
+
+  openRider(riderId) {
+    // Open registration in new tab
+    window.open(`/riders/${riderId}`);
+  }
 }
