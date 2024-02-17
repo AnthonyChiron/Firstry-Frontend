@@ -50,7 +50,7 @@ const contestsRoutes: Routes = [
   {
     path: 'preview/:id',
     component: ContestComponent,
-    canActivate: [IsAuthGuard, IsOrganizerContestGuard],
+    canActivate: [],
     children: [
       {
         path: 'overview',
