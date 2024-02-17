@@ -8,7 +8,7 @@ import heic2any from 'heic2any';
 export class ImageUtilityService {
   async prepareImgForUpload(file: File): Promise<File> {
     file = await this.convertHeicToPng(file);
-    // file = await this.compressImg(file);
+    file = await this.compressImg(file);
     return file;
   }
 
