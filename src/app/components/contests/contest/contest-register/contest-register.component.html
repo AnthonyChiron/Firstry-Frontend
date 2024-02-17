@@ -172,6 +172,22 @@
     </div>
   </div>
 </card>
+<card *ngIf="!isPaymentStep && isPaymentFailed && contest">
+  <div class="flexColumn alignCenter gap10">
+    <h2>
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      Erreur lors de votre paiement
+    </h2>
+    <p>
+      Veuillez rafraichir la page et réessayer. Si le problème persiste, merci
+      de contacter le support à hello@firstry.fr
+    </p>
+    <div class="flexRow gap10">
+      <btn label="Rafraichir la page" (click)="reloadPage()"></btn>
+      <btn label="Retour à l'accueil" routerLink=""></btn>
+    </div>
+  </div>
+</card>
 <card *ngIf="isAlreadyRegistered">
   <div class="flexColumn alignCenter gap10">
     <h2>Vous êtes déjà inscrit au contest {{ contest.name }} !</h2>

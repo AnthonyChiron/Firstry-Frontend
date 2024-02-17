@@ -101,6 +101,7 @@ export class PaiementComponent implements OnInit, OnChanges {
         console.log('Result', result);
         if (result.error) {
           // Show error to your customer (e.g., insufficient funds)
+          this.paymentFailed.emit(true);
         } else {
           // The payment has been processed!
           if (
