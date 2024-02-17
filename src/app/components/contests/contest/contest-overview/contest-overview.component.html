@@ -21,7 +21,6 @@
     <div [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'">
       <div [class]="'flexCardRow'">
         <socials
-          size="m"
           [orientation]="isMobile ? 'flexColumn' : 'flexRow'"
           *ngIf="contest.socials"
           [socials]="contest.socials"

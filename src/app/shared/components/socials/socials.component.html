@@ -2,28 +2,28 @@
   <div class="content {{ orientation }}">
     <btn
       type="secondary"
-      size="xl"
+      [size]="size"
       *ngIf="socials.instagram"
       (click)="goToInstagram()"
       icon="fa-brands fa-instagram fa-xl"
     ></btn>
     <btn
       type="secondary"
-      size="xl"
+      [size]="size"
       *ngIf="socials.youtube"
       (click)="goToYoutube()"
       icon="fa-brands fa-youtube fa-xl"
     ></btn>
     <btn
       type="secondary"
-      size="xl"
+      [size]="size"
       *ngIf="socials.twitter"
       (click)="goToTwitter()"
       icon="fa-brands fa-twitter fa-xl"
     ></btn>
     <btn
       type="secondary"
-      size="xl"
+      [size]="size"
       *ngIf="socials.website"
       (click)="goToWebsite()"
       icon="fa-solid fa-globe fa-xl"
