@@ -28,6 +28,12 @@ button {
   font-size: 35px;
 }
 
+.iconOnly.l {
+  width: 33px;
+  height: 33px;
+  font-size: 21px;
+}
+
 .xs {
   padding: 2px 6px;
   font-size: max(9px, 0.7vw);
@@ -164,9 +170,9 @@ button {
   }
 
   .iconOnly.l {
-    width: 2vw;
-    height: 2vw;
-    font-size: 20px;
+    width: 3vw;
+    height: 3vw;
+    font-size: 25px;
   }
 
   .iconOnly.m {
