@@ -5,22 +5,42 @@
   <div class="flexColumn gap10">
     <card color="2" size="m" *ngFor="let registration of registrations">
       <div class="flexColumn gap10">
-        <div class="flexRow alignCenter gap10">
-          <h3>{{ registration.contest.name }}</h3>
-          <span>-</span>
-          <p class="italic">{{ getState(registration.state) }}</p>
-        </div>
-        <div class="flexRow spaceBetween">
+        <div class="flexRow alignCenter spaceBetween">
+          <div class="flexRow alignCenter gap10">
+            <h3>{{ registration.contest.name }}</h3>
+            <span>-</span>
+            <p class="italic">{{ getState(registration.state) }}</p>
+          </div>
           <btn
             label="Voir le contest"
             routerLink="/contests/{{ registration.contest._id }}"
           ></btn>
-          <!-- <btn
-            label="Annuler son inscription"
-            type="danger"
-            *ngIf="registration.state != 'refused'"
-            (click)="cancelRegistration(registration._id)"
-          ></btn> -->
+        </div>
+        <div
+          *ngIf="
+            registration.contest.parentalAuthorizationFileUrl ||
+            registration.contest.rulesFileUrl
+          "
+          class="flexRow gap10"
+        >
+          <btn
+            type="secondary"
+            icon="fa-solid fa-download"
+            label="Autorisation parentale"
+            *ngIf="registration.contest.parentalAuthorizationFileUrl"
+            (click)="
+              downloadFileInNewPage(
+                registration.contest.parentalAuthorizationFileUrl
+              )
+            "
+          ></btn>
+          <btn
+            type="secondary"
+            icon="fa-solid fa-download"
+            label="Règlement"
+            *ngIf="registration.contest.rulesFileUrl"
+            (click)="downloadFileInNewPage(registration.contest.rulesFileUrl)"
+          ></btn>
         </div>
       </div>
     </card>
