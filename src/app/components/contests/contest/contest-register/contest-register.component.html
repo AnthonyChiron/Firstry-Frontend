@@ -16,7 +16,11 @@
         class="category"
         color="{{ selectedCategory == category ? 'black' : '2' }}"
         size="s"
-        ><div class="flexRow alignCenter spaceBetween">
+        ><div
+          class="{{
+            isMobile ? 'flexColumn gap10' : 'flexRow alignCenter spaceBetween'
+          }} "
+        >
           <div class="titleCategory">
             <h3>{{ category.name }}</h3>
             <p>-</p>
