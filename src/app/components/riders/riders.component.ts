@@ -108,6 +108,7 @@ export class RidersComponent implements OnInit {
 
   searchRiders() {
     const filters = this.filtersForm.value;
+    this.currentPage = 1;
     this._ridersService
       .getFilteredByPage(this.currentPage, this.limit, filters)
       .subscribe((result: any) => {
