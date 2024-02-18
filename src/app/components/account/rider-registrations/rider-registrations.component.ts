@@ -41,6 +41,21 @@ export class RiderRegistrationsComponent implements OnInit {
     }
   }
 
+  getStateColor(state) {
+    switch (state) {
+      case 'pending_approval':
+        return 'yellow';
+      case 'validated':
+        return 'green';
+      case 'refused':
+        return 'red';
+      case 'payment_failed':
+        return 'red';
+      default:
+        return 'yellow';
+    }
+  }
+
   downloadFileInNewPage(file) {
     window.open(file);
   }

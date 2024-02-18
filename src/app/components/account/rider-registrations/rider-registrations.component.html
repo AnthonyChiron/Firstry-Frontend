@@ -10,6 +10,7 @@
             <h3>{{ registration.contest.name }}</h3>
             <span>-</span>
             <p class="italic">{{ getState(registration.state) }}</p>
+            <div class="{{ getStateColor(registration.state) }}Dot"></div>
           </div>
           <btn
             label="Voir le contest"
