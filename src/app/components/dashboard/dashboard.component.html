@@ -1,4 +1,4 @@
-<div class="main" [@fadeInOut]>
+<div class="main" [@fadeInOut] *ngIf="!isMobile">
   <h1 class="mainTitle">Dashboard</h1>
   <!-- <card
     *ngIf="closePopup"
@@ -97,4 +97,12 @@
       <create-contest></create-contest>
     </div>
   </div>
+</div>
+<div class="flexColumn" *ngIf="isMobile">
+  <h2>Gestion sur mobile en construction !</h2>
+  <p>
+    La gestion de votre contest n'est pas encore disponible sur téléphone.
+    <br />
+    Veuillez passer sur un ordinateur pour administrer votre contest.
+  </p>
 </div>
