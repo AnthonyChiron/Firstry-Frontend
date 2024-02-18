@@ -199,18 +199,28 @@
   </div>
 </card>
 <card *ngIf="isAlreadyRegistered">
-  <div class="flexColumn alignCenter gap10">
-    <h2>Vous êtes déjà inscrit au contest {{ contest.name }} !</h2>
-    <p>
-      Rendez-vous le {{ contest.startDate | date : "dd/MM" }} à
-      {{ selectedCategory.steps[0].startDate | date : "hh" }}h !
-    </p>
-    <p>Vous pouvez retrouver toutes vos inscriptions dans votre compte.</p>
-    <div class="flexRow gap10">
-      <btn label="Mon compte" type="secondary" routerLink="/account"></btn>
-      <btn label="Retour à l'accueil" routerLink=""></btn>
-    </div></div
-></card>
+  <div class="flexColumn gap30">
+    <div class="flexColumn alignCenter gap10">
+      <h2>Vous êtes déjà inscrit au contest {{ contest.name }} !</h2>
+      <p>
+        Rendez-vous le {{ contest.startDate | date : "dd/MM" }} à
+        {{ selectedCategory.steps[0].startDate | date : "hh" }}h !
+      </p>
+      <p>Vous pouvez retrouver toutes vos inscriptions dans votre compte.</p>
+      <div class="flexRow gap10">
+        <btn label="Mon compte" type="secondary" routerLink="/account"></btn>
+        <btn label="Retour à l'accueil" routerLink=""></btn>
+      </div>
+    </div>
+    <div class="flexColumn alignCenter gap10">
+      <h3>Vous souhaitez vous inscrire à une autre catégorie du contest ?</h3>
+      <btn
+        label="Voir les catégories"
+        (click)="isAlreadyRegistered = false"
+      ></btn>
+    </div>
+  </div>
+</card>
 <modal
   *ngIf="isLoginModalOpen && !isMobile"
   [isVisible]="isLoginModalOpen"
