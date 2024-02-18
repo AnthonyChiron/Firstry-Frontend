@@ -1,4 +1,4 @@
-<nav class="pagination">
+<nav class="pagination" *ngIf="totalPages != 1">
   <ul class="flexRow alignCenter spaceBetween">
     <li class="page-item" [class.disabled]="currentPage === 1">
       <btn
@@ -6,7 +6,7 @@
         label="Page précédente"
         type="transparent"
         (click)="navigateTo(currentPage - 1)"
-        [disabled]="currentPage === 1"
+        *ngIf="currentPage !== 1"
         >Précédent</btn
       >
     </li>
@@ -28,6 +28,7 @@
         label="Page suivante"
         iconPos="right"
         icon="fa-solid fa-chevron-right"
+        *ngIf="currentPage !== totalPages"
         (click)="navigateTo(currentPage + 1)"
         >Suivant</btn
       >
