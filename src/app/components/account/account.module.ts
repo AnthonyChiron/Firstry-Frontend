@@ -30,12 +30,12 @@ const accountRoutes: Routes = [
   {
     path: 'validateEmail',
     component: ValidEmailComponent,
-    canActivate: [IsAuthGuard],
+    canActivate: [],
   },
   {
     path: 'validateEmail/:token',
     component: ValidEmailComponent,
-    canActivate: [IsAuthGuard],
+    canActivate: [],
   },
   {
     path: 'validateNewEmail/:token',
