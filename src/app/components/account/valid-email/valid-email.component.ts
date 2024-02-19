@@ -17,8 +17,9 @@ export class ValidEmailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       let token = params['token'];
+      let userId = params['userId'];
       if (token) {
-        this.authService.validateEmail(token).subscribe({
+        this.authService.validateEmail(token, userId).subscribe({
           next: (result) => {
             console.log(result);
             this.authService.saveToken(result);

@@ -36,11 +36,10 @@ export class AuthService extends BaseHttpService {
     );
   }
 
-  validateEmail(token) {
-    return this.http.post(
-      `${this.baseUrl}auth/validateEmail/${this.getCurrentUser()._id}`,
-      { token: token }
-    );
+  validateEmail(token, userId) {
+    return this.http.post(`${this.baseUrl}auth/validateEmail/${userId}`, {
+      token: token,
+    });
   }
 
   // Méthode pour se connecter
