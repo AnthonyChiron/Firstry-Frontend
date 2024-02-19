@@ -33,7 +33,7 @@ const accountRoutes: Routes = [
     canActivate: [],
   },
   {
-    path: 'validateEmail/:token',
+    path: 'validateEmail/:token/:userId',
     component: ValidEmailComponent,
     canActivate: [],
   },
