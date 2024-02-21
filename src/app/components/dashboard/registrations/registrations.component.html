@@ -38,7 +38,7 @@
       <registrations-table
         [header]="false"
         [registrations]="pendingRegistrations"
-        (validRegistration)="actionRider($event, 'valid')"
+        (validRegistration)="validRegistration($event)"
         (refuseRegistration)="actionRider($event, 'refuse')"
       ></registrations-table>
     </div>
@@ -71,8 +71,8 @@
   (cancelled)="refuseRiderModal = !refuseRiderModal"
   (confirmed)="refuseRegistration(currentActionRegistrationId)"
   [isVisible]="refuseRiderModal"
-  title="Êtes-vous sûr de vouloir rembourser ce rider ?"
-  message="La personne sera remboursée et retirée de la liste des inscrits."
+  title="Êtes-vous sûr de vouloir refuser ce rider ?"
+  message="La personne ne sera pas débité de son inscription et retirée de la liste des inscrits."
 ></confirmation-modal>
 <confirmation-modal
   (cancelled)="refundRiderModal = !refundRiderModal"

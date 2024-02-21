@@ -49,6 +49,7 @@ export class RegistrationsComponent implements OnInit {
         this._registrationsService
           .getRegistrationsByContestId(contest._id)
           .subscribe((result: any) => {
+            console.log(result);
             this.registrations = result.filter(
               (registration) =>
                 registration.state === 'validated' ||
@@ -56,7 +57,6 @@ export class RegistrationsComponent implements OnInit {
                 registration.state === 'refunded' ||
                 registration.state === 'refused'
             );
-            console.log(this.registrations);
             this.getRegistrations();
           });
       });
@@ -92,11 +92,13 @@ export class RegistrationsComponent implements OnInit {
       .validRiderRegistration(registrationId)
       .subscribe((res) => {
         console.log(res);
+        console.log('a');
         let registration = this.registrations.filter(
           (registration) => registration._id == registrationId
         );
         registration[0].state = 'validated';
         this.getRegistrations();
+        console.log('b');
       });
   }
 
@@ -118,11 +120,13 @@ export class RegistrationsComponent implements OnInit {
       .refundRiderRegistration(registrationId)
       .subscribe((res) => {
         console.log(res);
+        console.log('a');
         let registration = this.registrations.filter(
           (registration) => registration._id == registrationId
         );
-        registration[0].state = 'pending_approval';
+        registration[0].state = 'refunded';
         this.getRegistrations();
+        console.log('b');
       });
   }
 

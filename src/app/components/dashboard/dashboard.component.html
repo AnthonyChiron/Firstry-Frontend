@@ -64,6 +64,7 @@
         routerLink="categories"
       ></nav-btn>
       <nav-btn
+        *ngIf="selectedContest && selectedContest.registrationEndDate < today"
         type="primary"
         size="l"
         label="Poules"
@@ -72,6 +73,7 @@
         routerLink="pools"
       ></nav-btn>
       <nav-btn
+        *ngIf="selectedContest && selectedContest.registrationEndDate < today"
         type="primary"
         size="l"
         label="Résultats"
