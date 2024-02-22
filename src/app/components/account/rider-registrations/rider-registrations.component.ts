@@ -21,7 +21,10 @@ export class RiderRegistrationsComponent implements OnInit {
       .subscribe((result: any) => {
         console.log(result);
         this.registrations = result.filter(
-          (registration) => registration.state != 'cancelled_before_payment'
+          (registration) =>
+            registration.state != 'cancelled_before_payment' ||
+            'pending_payment' ||
+            'payment_failed'
         );
       });
   }
@@ -36,6 +39,8 @@ export class RiderRegistrationsComponent implements OnInit {
         return 'Refusée';
       case 'payment_failed':
         return 'Paiement échoué';
+      case 'refunded':
+        return 'Inscription remboursée';
       default:
         return 'En attente';
     }
