@@ -22,10 +22,11 @@ export class RiderRegistrationsComponent implements OnInit {
         console.log(result);
         this.registrations = result.filter(
           (registration) =>
-            registration.state != 'cancelled_before_payment' ||
-            registration.state != 'pending_payment' ||
+            registration.state != 'cancelled_before_payment' &&
+            registration.state != 'pending_payment' &&
             registration.state != 'payment_failed'
         );
+        console.log(this.registrations);
       });
   }
 
