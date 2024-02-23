@@ -23,8 +23,8 @@ export class RiderRegistrationsComponent implements OnInit {
         this.registrations = result.filter(
           (registration) =>
             registration.state != 'cancelled_before_payment' ||
-            'pending_payment' ||
-            'payment_failed'
+            registration.state != 'pending_payment' ||
+            registration.state != 'payment_failed'
         );
       });
   }
