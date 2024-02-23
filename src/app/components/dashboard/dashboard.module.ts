@@ -35,6 +35,8 @@ import { ResultsHandlerComponent } from './results/results-handler/results-handl
 import { FormsModule } from '@angular/forms';
 import { ContestStateComponent } from './overview/contest-state/contest-state.component';
 import { LegalFilesComponent } from './parameters/legal-files/legal-files.component';
+import { RegistrationsComponent } from './registrations/registrations.component';
+import { RegistrationsTableComponent } from './registrations/registrations-table/registrations-table.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -50,6 +52,11 @@ const dashboardRoutes: Routes = [
       {
         path: 'overview',
         component: OverviewComponent,
+        canActivate: [IsAuthGuard],
+      },
+      {
+        path: 'registrations',
+        component: RegistrationsComponent,
         canActivate: [IsAuthGuard],
       },
       {
@@ -113,6 +120,8 @@ const dashboardRoutes: Routes = [
     ResultsHandlerComponent,
     ContestStateComponent,
     LegalFilesComponent,
+    RegistrationsComponent,
+    RegistrationsTableComponent,
   ],
   imports: [
     CommonModule,

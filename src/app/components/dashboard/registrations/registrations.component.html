@@ -1,0 +1,84 @@
+<card title="Inscriptions" *ngIf="contest">
+  <div class="flexColumn gap30">
+    <div class="flexRow gap30 alignCenter">
+      <dropdown
+        *ngIf="selectCategory"
+        class="width15"
+        label="Catégorie"
+        [options]="categoriesDdOptions"
+        (selected)="selectCategory($event.value)"
+        [value]="selectedCategory._id"
+      ></dropdown>
+      <div class="flexRow gap20">
+        <div class="flexColumn">
+          <h3>Nombre d'inscrits</h3>
+          <h2>
+            {{ validatedRegistrations.length + pendingRegistrations.length }}
+          </h2>
+        </div>
+        <div class="flexColumn">
+          <h3>Nombre d'inscrits max</h3>
+          <h2>
+            {{ selectedCategory.maxRiders }}
+          </h2>
+        </div>
+        <!-- <div class="flexColumn">
+          <label>Prévision du revenu total</label>
+          <p>
+            {{ selectedCategory.maxRiders * selectedCategory.registerPrice }}
+          </p>
+        </div> -->
+      </div>
+    </div>
+    <div class="flexColumn gap10">
+      <h3 class="flexRow alignCenter gap10">
+        <div class="yellowDot"></div>
+        Inscriptions en attente
+      </h3>
+      <registrations-table
+        [header]="false"
+        [registrations]="pendingRegistrations"
+        (validRegistration)="validRegistration($event)"
+        (refuseRegistration)="actionRider($event, 'refuse')"
+      ></registrations-table>
+    </div>
+
+    <div class="flexColumn gap10">
+      <h3 class="flexRow alignCenter gap10">
+        <div class="greenDot"></div>
+        Inscriptions validées
+      </h3>
+      <registrations-table
+        [header]="false"
+        [registrations]="validatedRegistrations"
+        (refundRegistration)="actionRider($event, 'refund')"
+      ></registrations-table>
+    </div>
+    <div class="flexColumn gap10">
+      <h3 class="flexRow alignCenter gap10">
+        <div class="redDot"></div>
+        Inscriptions refusées et remboursées
+      </h3>
+
+      <registrations-table
+        [header]="false"
+        [registrations]="refusedRegistrations"
+      ></registrations-table>
+    </div>
+  </div>
+</card>
+<confirmation-modal
+  (cancelled)="refuseRiderModal = !refuseRiderModal"
+  (confirmed)="refuseRegistration(currentActionRegistrationId)"
+  [isVisible]="refuseRiderModal"
+  title="Êtes-vous sûr de vouloir refuser ce rider ?"
+  message="La personne ne sera pas débité de son inscription et retirée de la liste des inscrits."
+></confirmation-modal>
+<confirmation-modal
+  (cancelled)="refundRiderModal = !refundRiderModal"
+  (confirmed)="refundRegistration(currentActionRegistrationId)"
+  [isVisible]="refundRiderModal"
+  title="Êtes-vous sûr de vouloir rembourser ce rider ?"
+  message="La personne sera remboursée et retirée de la liste des inscrits."
+>
+</confirmation-modal>

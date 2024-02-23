@@ -28,7 +28,10 @@
             type="secondary"
             icon="fa-solid fa-download"
             label="Autorisation parentale"
-            *ngIf="registration.contest.parentalAuthorizationFileUrl"
+            *ngIf="
+              registration.contest.parentalAuthorizationFileUrl &&
+              registration.contest.parentalAuthorizationFileUrl.length > 0
+            "
             (click)="
               downloadFileInNewPage(
                 registration.contest.parentalAuthorizationFileUrl
@@ -39,7 +42,10 @@
             type="secondary"
             icon="fa-solid fa-download"
             label="Règlement"
-            *ngIf="registration.contest.rulesFileUrl"
+            *ngIf="
+              registration.contest.rulesFileUrl &&
+              registration.contest.rulesFileUrl.length > 0
+            "
             (click)="downloadFileInNewPage(registration.contest.rulesFileUrl)"
           ></btn>
         </div>

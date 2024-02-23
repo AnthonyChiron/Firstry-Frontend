@@ -47,6 +47,7 @@ export class DashboardComponent implements OnInit {
   selectedContest: ContestModel;
   selectedContestId: string;
   isCreateContest: boolean = false;
+  today: Date = new Date();
 
   ngOnInit(): void {
     this.isLoading = true;

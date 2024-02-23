@@ -50,12 +50,21 @@
       <nav-btn
         type="primary"
         size="l"
+        label="Inscriptions"
+        icon="fa-solid fa-check"
+        routerLinkActive="active"
+        routerLink="registrations"
+      ></nav-btn>
+      <nav-btn
+        type="primary"
+        size="l"
         label="Catégories"
         icon="fa-solid fa-calendar"
         routerLinkActive="active"
         routerLink="categories"
       ></nav-btn>
       <nav-btn
+        *ngIf="selectedContest && selectedContest.registrationEndDate < today"
         type="primary"
         size="l"
         label="Poules"
@@ -64,6 +73,7 @@
         routerLink="pools"
       ></nav-btn>
       <nav-btn
+        *ngIf="selectedContest && selectedContest.registrationEndDate < today"
         type="primary"
         size="l"
         label="Résultats"
