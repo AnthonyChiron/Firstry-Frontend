@@ -41,7 +41,7 @@ export class RiderRegistrationsComponent implements OnInit {
       case 'payment_failed':
         return 'Paiement échoué';
       case 'refunded':
-        return 'Inscription remboursée';
+        return 'Inscription annulée & remboursée';
       default:
         return 'En attente';
     }
@@ -56,6 +56,8 @@ export class RiderRegistrationsComponent implements OnInit {
       case 'refused':
         return 'red';
       case 'payment_failed':
+        return 'red';
+      case 'refunded':
         return 'red';
       default:
         return 'yellow';
