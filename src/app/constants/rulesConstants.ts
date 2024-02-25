@@ -13,11 +13,12 @@ export const jamTimersOptions = [
   { label: '1min', value: 60 },
   { label: '1m 15s', value: 75 },
   { label: '1m 30s', value: 90 },
-  { label: '2m', value: 105 },
-  { label: '2m 15s', value: 120 },
-  { label: '2m 30s', value: 135 },
-  { label: '2m 45s', value: 150 },
-  { label: '3m', value: 175 },
+  { label: '1m 45s', value: 105 },
+  { label: '2m', value: 120 },
+  { label: '2m 15s', value: 135 },
+  { label: '2m 30s', value: 150 },
+  { label: '2m 45s', value: 175 },
+  { label: '3m', value: 200 },
 ];
 
 export const bestTricksOptions = [
