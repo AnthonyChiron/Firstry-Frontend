@@ -19,6 +19,7 @@ export class ContestListRulesCardComponent implements OnInit {
   ngOnInit(): void {
     this.rs.getAllByContestId(this.contest._id).subscribe((rules) => {
       this.rules = rules;
+      console.log(this.rules);
 
       // Map rules in 2 arrays : default rules and custom rules
       this.defaultsRules = this.rules.filter((rule) => rule.isDefault);
@@ -49,6 +50,7 @@ export class ContestListRulesCardComponent implements OnInit {
           newRule = updatedRule;
         });
     } else {
+      console.log('create rule');
       this.rs.create(rule).subscribe((createdRule) => {
         this.rules[0] = createdRule;
       });
