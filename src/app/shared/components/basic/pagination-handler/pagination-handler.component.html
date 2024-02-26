@@ -1,5 +1,5 @@
 <nav class="pagination" *ngIf="totalPages != 1">
-  <ul class="flexRow alignCenter spaceBetween">
+  <ul class="flexRow alignCenter spaceBetween gap2">
     <li class="page-item" [class.disabled]="currentPage === 1">
       <btn
         icon="fa-solid fa-chevron-left"
@@ -10,16 +10,12 @@
         >Précédent</btn
       >
     </li>
-    <li
-      class="page-item"
-      *ngFor="let page of [].constructor(totalPages); let i = index"
-      [class.active]="currentPage === i + 1"
-    >
+    <li class="page-item" *ngFor="let page of visiblePages">
       <btn
         class="page-link"
-        type="transparent"
-        label="{{ i + 1 }}"
-        (click)="navigateTo(i + 1)"
+        [type]="currentPage === page ? 'primary' : 'transparent'"
+        label="{{ page }}"
+        (click)="navigateTo(page)"
       ></btn>
     </li>
     <li class="page-item" [class.disabled]="currentPage === totalPages">
