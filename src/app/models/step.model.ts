@@ -4,7 +4,7 @@ export interface StepModel extends GenericModel {
   categoryId: String; // TODO: Mettre un id
   name: String;
   isResultPublished: boolean;
-  rules: String;
+  rules: any;
   startDate: Date;
   endDate: Date;
   ridersPerPool: Number;
@@ -15,7 +15,7 @@ export interface StepModelDTO {
   categoryId: String;
   name: String;
   isResultPublished: boolean;
-  rules: String;
+  rules: any;
   startDate: Date;
   endDate: Date;
   ridersPerPool: Number;
