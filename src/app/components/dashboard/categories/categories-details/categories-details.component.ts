@@ -38,6 +38,7 @@ export class CategoriesDetailsComponent implements OnInit {
     this._screenSize.isMobile$.subscribe((result) => {
       this.isMobile = result;
     });
+
     this._activatedRoute.parent.params.subscribe((params) => {
       this.cs.getById(params.contestId).subscribe((contest) => {
         this.contest = contest;

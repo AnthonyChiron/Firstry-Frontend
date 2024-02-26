@@ -78,22 +78,36 @@ export class FormCategoriesService extends FormUtilityService {
         contestId: contest._id,
       });
 
-      if (category.isQualificationStep)
+      if (category.isQualificationStep) {
         categoryForm.get('stepQualif').patchValue({
           _id: stepQualif._id,
           startDate: new Date(stepQualif.startDate),
           ridersPerPool: stepQualif.ridersPerPool,
           ridersQualifiedCount: stepQualif.ridersQualifiedCount,
-          rules: stepQualif.rules,
+          rules:
+            stepQualif.rules._id && stepQualif.rules._id.length > 0
+              ? stepQualif.rules._id
+              : stepQualif.rules,
         });
-      else categoryForm.removeControl('stepQualif');
+        categoryForm.get('stepQualif').value.rules =
+          stepQualif.rules._id && stepQualif.rules._id.length > 0
+            ? stepQualif.rules._id
+            : stepQualif.rules;
+      } else categoryForm.removeControl('stepQualif');
 
       categoryForm.get('stepFinal').patchValue({
         _id: stepFinal._id,
         startDate: new Date(stepFinal.startDate),
         ridersPerPool: stepFinal.ridersPerPool,
-        rules: stepFinal.rules,
+        rules:
+          stepFinal.rules._id && stepFinal.rules._id.length > 0
+            ? stepFinal.rules._id
+            : stepFinal.rules,
       });
+      categoryForm.get('stepFinal').value.rules =
+        stepFinal.rules._id && stepFinal.rules._id.length > 0
+          ? stepFinal.rules._id
+          : stepFinal.rules;
     }
     return categoryForm;
   }
