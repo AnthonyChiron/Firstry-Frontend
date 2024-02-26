@@ -16,7 +16,5 @@ export class RiderCardMediumComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.widthPhoto == 0) this.widthPhoto = this.width;
-
-    console.log(this.rider);
   }
 }

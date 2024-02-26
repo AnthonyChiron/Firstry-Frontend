@@ -96,9 +96,7 @@ export class PaiementComponent implements OnInit, OnChanges {
         redirect: 'if_required',
       })
       .subscribe((result) => {
-        console.log(result);
         this.paying.set(false);
-        console.log('Result', result);
         if (result.error) {
           // Show error to your customer (e.g., insufficient funds)
           this.paymentFailed.emit(true);

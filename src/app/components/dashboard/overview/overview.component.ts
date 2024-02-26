@@ -47,12 +47,10 @@ export class OverviewComponent implements OnInit {
     this._activatedRoute.parent.params.subscribe((params) => {
       this.cs.getById(params.contestId).subscribe((contest) => {
         this.contest = parseContestModel(contest);
-        console.log(this.contest);
         this._registrationsService
           .getRegistrationsByContestId(this.contest._id)
           .subscribe((registrations: RegistrationModel[]) => {
             this.registrations = registrations;
-            console.log(this.registrations);
             this.registrations = this.registrations.filter(
               (registration) =>
                 registration.state === 'pending_approval' ||
@@ -61,15 +59,11 @@ export class OverviewComponent implements OnInit {
             this.pendingRegistrations = this.registrations.filter(
               (registration) => registration.state === 'pending_approval'
             );
-
-            console.log(this.registrations);
-            console.log(this.pendingRegistrations.length);
           });
 
         this.contest.categories.forEach((category) => {
           this.nbMaxRegistrations += category.maxRiders;
         });
-        console.log(this.nbMaxRegistrations);
       });
     });
   }

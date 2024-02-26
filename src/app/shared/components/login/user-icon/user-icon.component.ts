@@ -45,10 +45,8 @@ export class UserIconComponent {
         this.organizerService
           .isContestPaymentEnabledByOrganizerId(this.user.organizer._id)
           .subscribe((res) => {
-            console.log(res);
             if (res)
               this.paymentService.isStripeAccountUsable().subscribe((res) => {
-                console.log(res);
                 this.alert = !res;
               });
           });
@@ -63,7 +61,6 @@ export class UserIconComponent {
   openModal(index) {
     this.indexLogin = index;
     this.isModalOpen = true;
-    console.log(this.isModalOpen);
   }
 
   @HostListener('document:mouseover', ['$event'])

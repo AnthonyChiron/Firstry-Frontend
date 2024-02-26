@@ -83,7 +83,6 @@ export class RidersComponent implements OnInit {
         this.isLoading = false;
         this.totalPages = result.totalPages;
         this.adjustEmptyItems();
-        console.log(result);
       });
   }
 
@@ -102,7 +101,6 @@ export class RidersComponent implements OnInit {
         this.totalPages = result.totalPages;
         this.isLoading = false;
         this.adjustEmptyItems();
-        console.log(result);
       });
   }
 
@@ -112,7 +110,6 @@ export class RidersComponent implements OnInit {
     this._ridersService
       .getFilteredByPage(this.currentPage, this.limit, filters)
       .subscribe((result: any) => {
-        console.log(result);
         this.riders = <RiderModel[]>result.riders;
         this._router.navigate(['/riders'], {
           queryParams: {
@@ -144,7 +141,6 @@ export class RidersComponent implements OnInit {
         this.riders = <RiderModel[]>result.riders;
         this.isLoading = false;
         this.totalPages = result.totalPages;
-        console.log(result);
       });
   }
 

@@ -50,7 +50,6 @@ export class ListCategoriesComponent implements OnInit, OnChanges {
   }
 
   updateCategoryFromList(category: CategoryModel) {
-    console.log(category);
     // replace category in contest.categories
     this.contest.categories = this.contest.categories.map((c) => {
       if (c._id == category._id) {

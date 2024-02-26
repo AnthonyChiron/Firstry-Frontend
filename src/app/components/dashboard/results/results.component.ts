@@ -52,7 +52,6 @@ export class ResultsComponent implements OnInit {
         this._registrationService
           .getRegistrationsByContestId(contest._id)
           .subscribe((result: any) => {
-            console.log(result);
             this.registrations = result;
             // this.registrations.push(...this.registrations);
             // this.registrations.push(...this.registrations);

@@ -33,7 +33,6 @@ export class RidersService extends CrudService<RiderModel> {
   updatePhoto(riderId, photo) {
     const formData = new FormData();
     formData.append('photo', photo);
-    console.log(this.baseUrl);
     return this.http.put(`${this.baseUrl}/updatePhoto/${riderId}`, formData);
   }
 

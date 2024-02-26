@@ -70,7 +70,5 @@ export class SignupPhotoFormComponent implements OnInit {
     this.imgConfirmed = true;
   }
 
-  onUpload(event) {
-    console.log(event);
-  }
+  onUpload(event) {}
 }

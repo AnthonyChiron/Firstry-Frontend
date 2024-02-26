@@ -29,7 +29,6 @@ export class RiderResultComponent implements OnInit, OnChanges {
       this._poolsService
         .getRiderResults(this.rider._id)
         .subscribe((res: any) => {
-          console.log(res);
           this.results = res.map((pool) => {
             return {
               rank: pool.rank,
@@ -37,7 +36,6 @@ export class RiderResultComponent implements OnInit, OnChanges {
               date: pool.steps[0].startDate,
             };
           });
-          console.log(this.results);
         });
     }
   }

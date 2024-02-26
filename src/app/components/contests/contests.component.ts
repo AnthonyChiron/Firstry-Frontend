@@ -42,8 +42,6 @@ export class ContestsComponent implements OnInit {
           if (contest.isPublished) this.contests.push(contest);
         });
 
-        console.log(this.contests);
-
         this.initNextWeekContests();
         this.initNextMonthContests();
         this.initComingSoonContests();

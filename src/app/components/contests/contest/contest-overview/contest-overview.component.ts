@@ -27,7 +27,6 @@ export class ContestOverviewComponent implements OnInit {
     this._activatedRoute.parent.params.subscribe((params) => {
       if (params.id) {
         this._contestService.getById(params.id).subscribe((contest) => {
-          console.log(contest);
           this.contest = parseContestModel(contest);
         });
       }

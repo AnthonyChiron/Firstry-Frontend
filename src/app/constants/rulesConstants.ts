@@ -10,6 +10,7 @@ export const runTimersOptions = [
 
 export const jamTimersOptions = [
   { label: '45s', value: 45 },
+  { label: '50s', value: 50 },
   { label: '1min', value: 60 },
   { label: '1m 15s', value: 75 },
   { label: '1m 30s', value: 90 },
@@ -17,8 +18,8 @@ export const jamTimersOptions = [
   { label: '2m', value: 120 },
   { label: '2m 15s', value: 135 },
   { label: '2m 30s', value: 150 },
-  { label: '2m 45s', value: 175 },
-  { label: '3m', value: 200 },
+  { label: '2m 45s', value: 165 },
+  { label: '3m', value: 180 },
 ];
 
 export const bestTricksOptions = [

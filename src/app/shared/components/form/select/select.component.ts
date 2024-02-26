@@ -44,7 +44,6 @@ export class InputSelectComponent implements ControlValueAccessor {
 
   // Appelée lors de la sélection d'une nouvelle valeur
   onSelect(value: any): void {
-    console.log(value);
     this.value = value;
     this.onChange(value);
     this.onTouched();

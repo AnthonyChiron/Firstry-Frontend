@@ -38,7 +38,6 @@ export class RiderStateHandlerComponent implements OnInit, OnChanges {
     this._registrationService
       .validRiderRegistration(registrationId)
       .subscribe((res) => {
-        console.log(res);
         this.registrations = this.registrations.filter(
           (registration) => registration._id != registrationId
         );
@@ -52,7 +51,6 @@ export class RiderStateHandlerComponent implements OnInit, OnChanges {
     this._registrationService
       .refuseRiderRegistration(registrationId)
       .subscribe((res) => {
-        console.log(res);
         // Remove registration from registrations
         this.registrations = this.registrations.filter(
           (registration) => registration._id != registrationId

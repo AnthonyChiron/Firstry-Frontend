@@ -120,6 +120,16 @@
           cette catégorie</label
         >
       </div>
+      <p>
+        En vous inscrivant, l'organisateur du contest validera ou non votre
+        participation :<br />
+        <span class="warning">
+          - Si votre inscription est validée, vous serez débité du montant de
+          l'inscription. <br />
+          - Si votre inscription est refusée, vous ne serez pas débité et la
+          transaction sera annulée.
+        </span>
+      </p>
       <div *ngIf="contest.rulesFileUrl && contest.rulesFileUrl.length > 0">
         <p>
           En vous inscrivant, vous acceptez les
@@ -166,8 +176,7 @@
       <i class="fa-solid fa-check"></i>
     </h2>
     <p>
-      Rendez-vous le {{ contest.startDate | date : "dd/MM" }} à
-      {{ selectedCategory.steps[0].startDate | date : "hh" }}h !
+      Vous pouvez suivre l'avancement de votre inscription dans votre compte.
     </p>
     <div class="flexColumn alignCenter gap10" *ngIf="isRiderMinor">
       <p *ngIf="selectedCategory.isParentalAuthorizationRequired">
@@ -179,7 +188,6 @@
         (click)="downloadParentalAuthorization()"
       ></btn>
     </div>
-    <p>Vous pouvez retrouver toutes vos inscriptions dans votre compte.</p>
     <div class="flexRow gap10">
       <btn label="Mon compte" type="secondary" routerLink="/account"></btn>
       <btn label="Retour à l'accueil" routerLink=""></btn>
@@ -205,11 +213,7 @@
 <card *ngIf="isAlreadyRegistered">
   <div class="flexColumn gap30">
     <div class="flexColumn alignCenter gap10">
-      <h2>Vous êtes déjà inscrit au contest {{ contest.name }} !</h2>
-      <p>
-        Rendez-vous le {{ contest.startDate | date : "dd/MM" }} à
-        {{ selectedCategory.steps[0].startDate | date : "hh" }}h !
-      </p>
+      <h2>Vous avez déjà une inscription au contest {{ contest.name }} !</h2>
       <p>Vous pouvez retrouver toutes vos inscriptions dans votre compte.</p>
       <div class="flexRow gap10">
         <btn label="Mon compte" type="secondary" routerLink="/account"></btn>
@@ -217,7 +221,10 @@
       </div>
     </div>
     <div class="flexColumn alignCenter gap10">
-      <h3>Vous souhaitez vous inscrire à une autre catégorie du contest ?</h3>
+      <h3>
+        Vous souhaitez également vous inscrire à une autre catégorie du contest
+        ?
+      </h3>
       <btn
         label="Voir les catégories"
         (click)="isAlreadyRegistered = false"

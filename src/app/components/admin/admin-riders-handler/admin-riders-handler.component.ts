@@ -20,7 +20,6 @@ export class AdminRidersHandlerComponent implements OnInit {
     this._ridersService
       .getByPage(this.page, this.pageSize)
       .subscribe((riders: any) => {
-        console.log(riders);
         this.riders = riders.data;
         this.isLoading = false;
       });
@@ -28,7 +27,6 @@ export class AdminRidersHandlerComponent implements OnInit {
 
   toggleVerification(id: string) {
     this._ridersService.toggleVerification(id).subscribe((res) => {
-      console.log(res);
       this.ngOnInit();
     });
   }

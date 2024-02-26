@@ -163,7 +163,6 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
               )._id
             )
             .subscribe((pools: any) => {
-              console.log(pools);
               this.isNewPools = false;
               this.formatPoolsEntriesToRegistrations(pools);
             });
@@ -209,7 +208,6 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     }
 
     this.pools = [...pools];
-    console.log(this.pools);
     this.updatePoolsIds(); // Mise à jour des identifiants si nécessaire
   }
 

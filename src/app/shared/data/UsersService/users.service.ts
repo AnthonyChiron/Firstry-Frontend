@@ -29,7 +29,6 @@ export class UsersService extends CrudService<UserModel> {
 
   validateNewEmail(token) {
     const url = `${this.baseUrl}/validateNewEmail/${token}`;
-    console.log(url);
     return this.http.post(url, {});
   }
 

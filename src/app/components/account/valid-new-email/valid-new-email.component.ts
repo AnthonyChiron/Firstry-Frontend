@@ -25,7 +25,6 @@ export class ValidNewEmailComponent implements OnInit {
       if (token) {
         this._userService.validateNewEmail(token).subscribe({
           next: (user) => {
-            console.log(user);
             this.isEmailValidated = true;
             this._authService.updateUserNewEmail(user);
           },

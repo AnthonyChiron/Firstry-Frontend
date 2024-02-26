@@ -38,13 +38,11 @@ export class RiderSampleListComponent implements OnInit, OnChanges {
     });
 
     if (!this.rider) return;
-    console.log(this.rider);
     this.getRiders();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.rider) return;
-    console.log(this.rider);
     this.getRiders();
   }
 
@@ -56,7 +54,6 @@ export class RiderSampleListComponent implements OnInit, OnChanges {
         sports: this.rider.sports,
       })
       .subscribe((riders: any) => {
-        console.log(riders);
         this.riders = riders.riders;
         // remove rider from riders
         this.riders = this.riders.filter((r) => r._id !== this.rider._id);

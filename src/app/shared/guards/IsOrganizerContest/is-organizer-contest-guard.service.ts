@@ -33,7 +33,6 @@ export class IsOrganizerContestGuard implements CanActivate {
     }
 
     try {
-      console.log(next.params.id);
       await this.organizerService
         .isOrganizerContest(user.organizer._id, next.params.id)
         .subscribe((isOrganizerContest) => {

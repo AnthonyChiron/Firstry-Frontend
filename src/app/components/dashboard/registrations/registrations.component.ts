@@ -38,7 +38,6 @@ export class RegistrationsComponent implements OnInit {
     this._activatedRoute.parent.params.subscribe((params) => {
       this._contestsService.getById(params.contestId).subscribe((contest) => {
         this.contest = parseContestModel(contest);
-        console.log(this.contest);
         this.categoriesDdOptions = this.contest.categories.map((category) => {
           return {
             label: category.name,
@@ -49,7 +48,6 @@ export class RegistrationsComponent implements OnInit {
         this._registrationsService
           .getRegistrationsByContestId(contest._id)
           .subscribe((result: any) => {
-            console.log(result);
             this.registrations = result.filter(
               (registration) =>
                 registration.state === 'validated' ||
@@ -84,21 +82,17 @@ export class RegistrationsComponent implements OnInit {
       (category) => category._id === value
     )[0];
     this.getRegistrations();
-    console.log(this.selectedCategory);
   }
 
   validRegistration(registrationId) {
     this._registrationsService
       .validRiderRegistration(registrationId)
       .subscribe((res) => {
-        console.log(res);
-        console.log('a');
         let registration = this.registrations.filter(
           (registration) => registration._id == registrationId
         );
         registration[0].state = 'validated';
         this.getRegistrations();
-        console.log('b');
       });
   }
 
@@ -106,7 +100,6 @@ export class RegistrationsComponent implements OnInit {
     this._registrationsService
       .refuseRiderRegistration(registrationId)
       .subscribe((res) => {
-        console.log(res);
         let registration = this.registrations.filter(
           (registration) => registration._id == registrationId
         );
@@ -119,14 +112,11 @@ export class RegistrationsComponent implements OnInit {
     this._registrationsService
       .refundRiderRegistration(registrationId)
       .subscribe((res) => {
-        console.log(res);
-        console.log('a');
         let registration = this.registrations.filter(
           (registration) => registration._id == registrationId
         );
         registration[0].state = 'refunded';
         this.getRegistrations();
-        console.log('b');
       });
   }
 

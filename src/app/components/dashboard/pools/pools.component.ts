@@ -53,7 +53,6 @@ export class PoolsComponent implements OnInit {
         this._registrationService
           .getRegistrationsByContestId(contest._id)
           .subscribe((result: any) => {
-            console.log(result);
             this.registrations = result.filter(
               (registration) => registration.state === 'validated'
             );

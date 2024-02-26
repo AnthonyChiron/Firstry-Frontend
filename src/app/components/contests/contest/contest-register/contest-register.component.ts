@@ -56,7 +56,6 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
       if (params.id) {
         this._contestService.getById(params.id).subscribe((contest) => {
           this.contest = parseContestModel(contest);
-          console.log(this.contest);
 
           this._authService.isLoggedIn().subscribe((result) => {
             let user = this._authService.getCurrentUser();
@@ -64,6 +63,7 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
             if (result && user.rider) {
               this.isLoggedin = true;
               this.rider = user.rider;
+
               if (new Date(this.rider.birthDate) > new Date(2003, 1, 1)) {
                 this.isRiderMinor = true;
               }
@@ -80,7 +80,6 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
           this._categoriesService
             .getAllCategoriesForRegistrations(this.contest._id)
             .subscribe((categories) => {
-              console.log(categories);
               categories.forEach((category) => {
                 if (category.NbRegistration < category.maxRiders)
                   this.categories.push(category);
@@ -111,9 +110,7 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
     if (this.registration)
       this._registrationService
         .cancelRiderRegistration(this.registration._id)
-        .subscribe((result) => {
-          console.log(result);
-        });
+        .subscribe((result) => {});
   }
 
   register() {
@@ -127,7 +124,6 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
         this.registration = registration;
         this.isPaymentStep = true;
         this.clientSecret = clientSecret;
-        console.log(clientSecret);
       });
   }
 
@@ -152,22 +148,16 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
     // Update rider registration
     this._registrationService
       .pendingApprovalRiderRegistration(this.registration._id)
-      .subscribe((result) => {
-        console.log(result);
-      });
+      .subscribe((result) => {});
   }
 
   paymentFailed() {
     this.isPaymentStep = false;
     this.isPaymentFailed = true;
 
-    console.log('test');
-
     this._registrationService
       .paymentFailedRiderRegistration(this.registration._id)
-      .subscribe((result) => {
-        console.log(result);
-      });
+      .subscribe((result) => {});
   }
 
   downloadParentalAuthorization() {

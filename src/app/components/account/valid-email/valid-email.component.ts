@@ -21,7 +21,6 @@ export class ValidEmailComponent implements OnInit {
       if (token) {
         this.authService.validateEmail(token, userId).subscribe({
           next: (result) => {
-            console.log(result);
             this.authService.saveToken(result);
           },
           error: (err) => {
@@ -34,9 +33,7 @@ export class ValidEmailComponent implements OnInit {
 
   sendNewEmail() {
     this.authService.sendNewValidationEmail().subscribe({
-      next: (result) => {
-        console.log(result);
-      },
+      next: (result) => {},
       error: (err) => console.log(err),
     });
   }

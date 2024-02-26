@@ -78,7 +78,6 @@ export class FormRulesService extends FormUtilityService {
         points: [pointCategory.points, Validators.required],
       })
     );
-    console.log(pointCategoriesFormGroups);
 
     const pointCategoriesArray = this.formBuilder.array(
       pointCategoriesFormGroups
