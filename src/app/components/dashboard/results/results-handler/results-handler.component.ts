@@ -52,7 +52,6 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
     this.currentStep = this._poolUtilityService.getResultCurrentStep(
       this.category.steps
     );
-    console.log(this.currentStep);
 
     this.getPools();
   }
@@ -108,13 +107,11 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
       this.originalPools.map((pool) => ({ ...pool }))
     );
     this.poolsTable();
-    console.log(this.pools);
   }
 
   validResult() {
     this.isLoading = true;
     this.edit = false;
-    console.log(this.pools[this.editPoolIndex]);
     this._poolsService
       .updatePoolResult(this.pools[this.editPoolIndex], this.currentStep._id)
       .subscribe((result) => {
@@ -132,7 +129,6 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
     this._poolsService
       .publishResult(this.currentStep._id)
       .subscribe((result) => {
-        console.log(result);
         this.isPublishConfirmationModalOpen = false;
         this.category.steps.find(
           (step) => step._id === this.currentStep._id
@@ -153,7 +149,6 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
     this._poolsService
       .unpublishResult(this.currentStep._id)
       .subscribe((result) => {
-        console.log(result);
         this.isUnpublishConfirmationModalOpen = false;
         this.category.steps.find(
           (step) => step._id === this.currentStep._id

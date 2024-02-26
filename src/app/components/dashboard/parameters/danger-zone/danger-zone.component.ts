@@ -26,23 +26,18 @@ export class DangerZoneComponent implements OnInit {
         .isContestPublishable(this.contest._id)
         .subscribe((res: ContestPublishableStatus) => {
           this.contestPublishableStatus = res;
-          console.log(res);
         });
   }
 
   publishContest() {
-    this._cs.publish(this.contest._id).subscribe((res) => {
-      console.log(res);
-    });
+    this._cs.publish(this.contest._id).subscribe((res) => {});
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/dashboard']);
     });
   }
 
   deleteContest() {
-    this._cs.delete(this.contest._id).subscribe((res) => {
-      console.log(res);
-    });
+    this._cs.delete(this.contest._id).subscribe((res) => {});
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/dashboard']);
     });

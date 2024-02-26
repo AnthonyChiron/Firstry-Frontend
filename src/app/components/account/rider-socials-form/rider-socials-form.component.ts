@@ -51,7 +51,6 @@ export class RiderSocialsFormComponent implements OnInit {
       this._riderService
         .update(this.riderId, <RiderModel>parseRiderToDTO(this.rider))
         .subscribe((res) => {
-          console.log(res);
           this._authService.updateRider(res);
         });
     }

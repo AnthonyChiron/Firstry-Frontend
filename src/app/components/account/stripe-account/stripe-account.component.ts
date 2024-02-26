@@ -36,7 +36,6 @@ export class StripeAccountComponent implements OnInit {
 
               if (res) {
                 this.paymentService.createLoginLink().subscribe((data: any) => {
-                  console.log(data);
                   this.urlStripeAccount = data.url;
                   this.isLoading = false;
                 });

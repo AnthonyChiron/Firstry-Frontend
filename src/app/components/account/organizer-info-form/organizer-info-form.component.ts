@@ -52,7 +52,6 @@ export class OrganizerInfoFormComponent implements OnInit {
     this._organizerService
       .update(this.organizerId, this.form.value)
       .subscribe((res) => {
-        console.log(res);
         this._authService.updateOrganizer(res);
       });
   }

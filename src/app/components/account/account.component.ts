@@ -22,6 +22,5 @@ export class AccountComponent implements OnInit {
     this._screenSizeService.isMobile$.subscribe((isMobile) => {
       this.isMobile = isMobile;
     });
-    console.log(this.user);
   }
 }

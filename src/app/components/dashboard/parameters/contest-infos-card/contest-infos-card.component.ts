@@ -28,8 +28,6 @@ export class ContestInfosCardComponent implements OnInit {
   ngOnInit(): void {
     this.form = this._formContestInfoService.createForm(this.contest);
     this._fus.setForm(this.form);
-
-    console.log(this.form.value);
   }
 
   cancelInfos() {
@@ -40,7 +38,6 @@ export class ContestInfosCardComponent implements OnInit {
   saveInfos() {
     this.form.markAllAsTouched();
 
-    console.log(this.form.value);
     if (this.form.invalid) return;
 
     this.edit = false;

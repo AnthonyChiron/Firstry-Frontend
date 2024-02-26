@@ -61,7 +61,6 @@ export class DashboardComponent implements OnInit {
 
         this._activatedRoute.params.subscribe((params) => {
           const contestId = params.contestId;
-          console.log(contestId);
           if (contestId) {
             this.selectContest(contestId, false);
           } else {

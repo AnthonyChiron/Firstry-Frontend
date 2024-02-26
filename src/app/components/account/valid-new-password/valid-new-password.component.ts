@@ -25,7 +25,6 @@ export class ValidNewPasswordComponent implements OnInit {
       if (token) {
         this._userService.validateNewPassword(token).subscribe({
           next: (user) => {
-            console.log(user);
             this.isPasswordValidated = true;
           },
           error: (err) => {

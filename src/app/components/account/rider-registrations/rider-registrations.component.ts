@@ -19,21 +19,19 @@ export class RiderRegistrationsComponent implements OnInit {
     this._registrationService
       .getRiderRegistrations(this._authService.getCurrentUser().rider._id)
       .subscribe((result: any) => {
-        console.log(result);
         this.registrations = result.filter(
           (registration) =>
             registration.state != 'cancelled_before_payment' &&
             registration.state != 'pending_payment' &&
             registration.state != 'payment_failed'
         );
-        console.log(this.registrations);
       });
   }
 
   getState(state) {
     switch (state) {
       case 'pending_approval':
-        return 'En attente de validation du contest';
+        return 'En attente de la validation du contest';
       case 'validated':
         return 'Validée';
       case 'refused':

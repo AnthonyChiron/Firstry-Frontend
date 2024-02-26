@@ -90,7 +90,6 @@ export class AccountSecurityComponent implements OnInit {
           this.changePasswordForm.value.newPassword
         )
         .subscribe((res) => {
-          console.log(res);
           this.isPasswordChanging = true;
         });
     }

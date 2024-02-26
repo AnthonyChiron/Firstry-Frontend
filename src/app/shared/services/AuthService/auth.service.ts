@@ -49,7 +49,6 @@ export class AuthService extends BaseHttpService {
 
   // Méthode pour se déconnecter
   logout(): void {
-    console.log('logout');
     localStorage.removeItem('auth-token');
     localStorage.removeItem('current-user');
     this.loggedInSubject.next(false);

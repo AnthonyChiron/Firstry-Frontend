@@ -38,7 +38,6 @@ export class AdminOverviewComponent implements OnInit {
     this.contestsStats = await this._adminService
       .getContestsStats()
       .toPromise();
-    console.log(this.organizersStats);
     const labels = Object.keys(this.ridersStats.resultsByDay);
     const dataRiders = Object.values(this.ridersStats.resultsByDay);
     const dataOrganizers = Object.values(this.organizersStats.resultsByDay);

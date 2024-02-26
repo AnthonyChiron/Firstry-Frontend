@@ -95,9 +95,7 @@ export class PlanningComponent implements OnInit, OnChanges {
     let step = stepModelToDTO(event.meta.step);
     step.rules = event.meta.step.rules._id;
 
-    this._stepsService.update(event.meta.step._id, step).subscribe((res) => {
-      console.log(res);
-    });
+    this._stepsService.update(event.meta.step._id, step).subscribe((res) => {});
     this.refresh.next();
   }
 

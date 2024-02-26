@@ -31,7 +31,6 @@ export class ResetPasswordComponent implements OnInit {
       this._userService.checkResetPasswordToken(params['token']).subscribe({
         next: (res) => {
           this.isTokenValid = true;
-          console.log(res);
         },
         error: (res) => {
           console.log(res);
@@ -51,9 +50,6 @@ export class ResetPasswordComponent implements OnInit {
     this.form.markAllAsTouched();
     if (this.form.invalid) return;
 
-    console.log(this.form.value.newPassword);
-    console.log(this.form.value.newPassword2);
-
     if (this.form.value.newPassword !== this.form.value.newPassword2) {
       this.isPasswordsMatching = false;
       return;
@@ -63,7 +59,6 @@ export class ResetPasswordComponent implements OnInit {
       .updateResetPassword(this.token, this.form.value.newPassword)
       .subscribe((res) => {
         this.isPasswordReset = true;
-        console.log(res);
       });
   }
 }

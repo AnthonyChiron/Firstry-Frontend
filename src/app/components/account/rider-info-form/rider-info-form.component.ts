@@ -36,7 +36,6 @@ export class RiderInfoFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.rider);
     this.sports = this._sportService.getSportsAsOption();
 
     this.form = this._formRiderService.createForm();
@@ -57,15 +56,12 @@ export class RiderInfoFormComponent implements OnInit {
 
   submit() {
     this.form.markAllAsTouched();
-    console.log(this.form.value);
     if (this.form.valid) {
       this.edit = false;
       this.rider = this.form.value;
-      console.log(this.form.value);
       this._riderService
         .update(this.riderId, this.form.value)
         .subscribe((res) => {
-          console.log(res);
           this._authService.updateRider(res);
         });
     }
