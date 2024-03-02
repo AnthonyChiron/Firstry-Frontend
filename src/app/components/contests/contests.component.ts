@@ -36,13 +36,13 @@ export class ContestsComponent implements OnInit {
 
     this.contestsService.getAll().subscribe((data) => {
       this.contests = [];
-      console.log(data);
       if (data) {
         data.forEach((contest) => {
           contest = parseContestModel(contest);
 
           if (contest.isPublished) this.contests.push(contest);
         });
+        console.log(this.contests);
 
         this.initNextWeekContests();
         this.initCurrentMonthContests();
