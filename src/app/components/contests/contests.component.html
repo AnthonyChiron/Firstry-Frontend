@@ -10,8 +10,23 @@
         <contest-card
           class="contest"
           [routerLink]="['/contests', contests[0]._id]"
-          [contest]="contests[0]"
+          [contest]="contests"
           *ngFor="let contest of nextWeekContests"
+        >
+        </contest-card>
+      </div>
+    </div>
+    <div
+      class="section"
+      *ngIf="nextMonthContests && nextMonthContests.length > 0"
+    >
+      <h2>Au mois de mars<i class="fa-solid fa-chevron-down fa-2xs"></i></h2>
+      <div class="flexCardRow flexWrap spaceBetween">
+        <contest-card
+          class="contest"
+          [routerLink]="['/contests', contest._id]"
+          [contest]="contest"
+          *ngFor="let contest of thisMonthContests"
         >
         </contest-card>
       </div>
