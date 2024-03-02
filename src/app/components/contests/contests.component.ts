@@ -28,7 +28,7 @@ export class ContestsComponent implements OnInit {
   nextWeekContests: ContestModel[] = null;
   nextMonthContests: ContestModel[] = null;
   comingSoonContests: ContestModel[] = null;
-  thisMonthContests: ContestModel[] = null;
+  currentMonthContests: ContestModel[] = null;
   today: Date;
 
   ngOnInit(): void {
@@ -44,12 +44,11 @@ export class ContestsComponent implements OnInit {
           if (contest.isPublished) this.contests.push(contest);
         });
 
-        console.log(this.contests);
-
         this.initNextWeekContests();
-        this.initThisMonthContests();
+        this.initCurrentMonthContests();
         this.initNextMonthContests();
         this.initComingSoonContests();
+        console.log(this.currentMonthContests);
       }
     });
   }
@@ -72,22 +71,22 @@ export class ContestsComponent implements OnInit {
     );
   }
 
-  initThisMonthContests() {
-    const firstDayThisMonth = new Date(
+  initCurrentMonthContests() {
+    const firstDayCurrentMonth = new Date(
       this.today.getFullYear(),
       this.today.getMonth(),
       1
     );
-    const lastDayThisMonth = new Date(
-      firstDayThisMonth.getFullYear(),
-      firstDayThisMonth.getMonth() + 1,
+    const lastDayCurrentMonth = new Date(
+      this.today.getFullYear(),
+      this.today.getMonth() + 1,
       0
     );
 
-    this.thisMonthContests = this.contests.filter(
+    this.currentMonthContests = this.contests.filter(
       (contest) =>
-        contest.startDate >= firstDayThisMonth &&
-        contest.startDate <= lastDayThisMonth
+        contest.startDate >= firstDayCurrentMonth &&
+        contest.startDate <= lastDayCurrentMonth
     );
   }
 

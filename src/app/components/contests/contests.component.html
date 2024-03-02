@@ -26,7 +26,7 @@
           class="contest"
           [routerLink]="['/contests', contest._id]"
           [contest]="contest"
-          *ngFor="let contest of thisMonthContests"
+          *ngFor="let contest of currentMonthContests"
         >
         </contest-card>
       </div>
