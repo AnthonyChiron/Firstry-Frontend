@@ -51,4 +51,9 @@ export class UsersService extends CrudService<UserModel> {
     const url = `${this.baseUrl}/resetPassword/${token}`;
     return this.http.post(url, { newPassword: newPassword });
   }
+
+  getUserByRiderId(riderId) {
+    const url = `${this.baseUrl}/getUserByRiderId/${riderId}`;
+    return this.http.get(url, {});
+  }
 }

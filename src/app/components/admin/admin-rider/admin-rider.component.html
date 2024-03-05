@@ -1,0 +1,41 @@
+<div class="flexCardRow fullWidth" *ngIf="rider">
+  <card class="flex1" title="Informations">
+    <div class="flexRow">
+      <img [src]="rider.photoUrl" class="photo" />
+      <div class="flexColumn gap10">
+        <div class="flexRow gap10 alignCenter">
+          <h2>
+            {{ rider.lastName | uppercase }} {{ rider.firstName | Capitalize }}
+          </h2>
+        </div>
+        <div class="flexColumn gap5">
+          <label>Date de naissance</label>
+          <p>{{ rider.birthDate | date : "dd/MM/YY" }}</p>
+        </div>
+        <div class="flexColumn gap5">
+          <label>Sports</label>
+          <p>{{ rider.sports.join(", ") | Capitalize }}</p>
+        </div>
+        <div class="flexColumn gap5">
+          <label>Email</label>
+          <p>{{ user.email }}</p>
+        </div>
+        <div class="flexRow alignCenter gap10">
+          <h3>Email valide ?</h3>
+          <div class="{{ user.isValid ? 'greenDot' : 'redDot' }}"></div>
+        </div>
+      </div>
+    </div>
+  </card>
+  <card class="flex1" title="Inscriptions">
+    <card size="s" *ngFor="let registration of registrations">
+      <div class="flexRow alignCenter gap10">
+        <h3>{{ registration.contest.name }}</h3>
+        -
+        <p>
+          {{ registration.state }}
+        </p>
+      </div>
+    </card>
+  </card>
+</div>

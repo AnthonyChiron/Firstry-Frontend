@@ -97,7 +97,6 @@ export class RidersComponent implements OnInit {
       .getFilteredByPage(this.currentPage, this.limit, filters)
       .subscribe((result: any) => {
         this.riders = <RiderModel[]>result.riders;
-        this.isLoading = false;
         this.totalPages = result.totalPages;
         this.isLoading = false;
         this.adjustEmptyItems();

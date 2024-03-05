@@ -49,6 +49,7 @@ export class ContestsComponent implements OnInit {
         this.initNextMonthContests();
         this.initComingSoonContests();
         console.log(this.currentMonthContests);
+        console.log(this.nextWeekContests);
       }
     });
   }
