@@ -11,6 +11,7 @@
   <h2>{{ contest.name }}</h2>
   <div class="tags">
     <info-tag
+      *ngIf="contest.location && contest.location.city"
       size="l"
       icon="fa-solid fa-location-dot"
       [label]="contest.location.city"

@@ -1,8 +1,30 @@
 <div class="flexRow alignCenter justifyCenter" *ngIf="isLoading">
   <loader></loader>
 </div>
-<card title="Riders" *ngIf="riders && riders.length > 0">
-  <div class="flexColumn gap10">
+<card title="Riders">
+  <form [formGroup]="filtersForm" class="flexRow spaceBetween">
+    <chips-group
+      label="Sports"
+      [chips]="sportsOptions"
+      formControlName="sports"
+      [edit]="true"
+    ></chips-group>
+    <input-text
+      label="Recherche par nom"
+      placeholder="Entrer le nom"
+      formControlName="name"
+      [edit]="true"
+    ></input-text>
+    <div class="buttons">
+      <btn
+        class="alignSelfEnd"
+        label="Rechercher"
+        icon="fa-solid fa-magnifying-glass"
+        (click)="searchRiders()"
+      ></btn>
+    </div>
+  </form>
+  <div class="flexColumn gap10" *ngIf="riders && riders.length > 0">
     <div class="flexRow spaceBetween padding">
       <h3 class="W15vw">Nom & prénom</h3>
       <h3 class="W15vw">Disciplines</h3>
@@ -12,6 +34,7 @@
     <div
       class="flexRow spaceBetween padding cursorPointer contest"
       *ngFor="let rider of riders"
+      routerLink="/admin/riders/{{ rider._id }}"
     >
       <h4 class="W15vw">
         {{ rider.lastName | uppercase }} {{ rider.firstName | Capitalize }}

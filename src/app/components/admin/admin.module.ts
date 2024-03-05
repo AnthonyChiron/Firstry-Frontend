@@ -12,6 +12,7 @@ import { AdminOverviewComponent } from './admin-overview/admin-overview.componen
 import { AdminReportsHandlerComponent } from './admin-reports-handler/admin-reports-handler.component';
 import { AdminRidersHandlerComponent } from './admin-riders-handler/admin-riders-handler.component';
 import { NgChartsModule } from 'ng2-charts';
+import { AdminRiderComponent } from './admin-rider/admin-rider.component';
 
 const adminRoutes: Routes = [
   {
@@ -27,6 +28,11 @@ const adminRoutes: Routes = [
       {
         path: 'riders',
         component: AdminRidersHandlerComponent,
+        canActivate: [IsAuthGuard, IsAdminGuard],
+      },
+      {
+        path: 'riders/:id',
+        component: AdminRiderComponent,
         canActivate: [IsAuthGuard, IsAdminGuard],
       },
       {
@@ -50,6 +56,7 @@ const adminRoutes: Routes = [
     AdminOverviewComponent,
     AdminReportsHandlerComponent,
     AdminRidersHandlerComponent,
+    AdminRiderComponent,
   ],
   imports: [
     CommonModule,
