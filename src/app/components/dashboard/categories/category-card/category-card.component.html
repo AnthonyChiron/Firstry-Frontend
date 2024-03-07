@@ -101,14 +101,14 @@
           [edit]="edit"
           [error]="fus.isFieldInvalid('registerPrice')"
         ></input-text>
-        <slide-input
+        <!-- <slide-input
           class="flex1"
           name="isParentalAuthorizationRequired"
           formControlName="isParentalAuthorizationRequired"
           label="Authorisation parentale ?"
           [edit]="edit"
         >
-        </slide-input>
+        </slide-input> -->
         <slide-input
           *ngIf="isNew"
           class="flex1"
@@ -182,7 +182,7 @@
                 label="Règle de l'étape"
                 [options]="rulesOptions"
                 [edit]="edit"
-                [value]="this.categoryForm.value.stepFinal.rules"
+                [value]="isNew ? '' : this.categoryForm.value.stepFinal.rules"
               ></dropdown>
             </div>
           </card>

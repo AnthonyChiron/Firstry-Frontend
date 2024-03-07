@@ -8,32 +8,4 @@ import { environment } from 'src/environments/environment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  title = 'firstry';
-  toggleSidebar: boolean = false;
-  isMobile: boolean = false;
-  shadow: boolean = false;
-  container: boolean = true;
-
-  constructor(
-    private _screenSize: ScreenSizeService,
-    private _router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this._screenSize.isMobile$.subscribe((isMobile) => {
-      this.isMobile = isMobile;
-    });
-
-    // get the current route
-    this._router.events.subscribe((val: any) => {
-      if (val.url)
-        if (val.url === '/') this.container = false;
-        else this.container = true;
-    });
-  }
-
-  changeToggle() {
-    this.toggleSidebar = !this.toggleSidebar;
-  }
-}
+export class AppComponent {}

@@ -18,6 +18,7 @@ import { AuthInterceptor } from './shared/data/InterceptorHttp/interceptorHttp.s
 import { NgOptimizedImage } from '@angular/common';
 import { MentionsLegalComponent } from './components/mentions-legal/mentions-legal.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AdminComponent } from './components/admin/admin.component';
     TopbarComponent,
     AccessDeniedComponent,
     MentionsLegalComponent,
+    LayoutComponent,
   ],
   imports: [
     AppRoutingModule,

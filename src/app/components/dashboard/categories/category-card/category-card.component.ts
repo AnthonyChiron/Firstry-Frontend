@@ -98,6 +98,7 @@ export class CategoryCardComponent implements OnInit {
         this.cs.createCategory(newCategory).subscribe((res) => {
           this.category = res;
           this.isNew = false;
+          console.log(this.category);
           this.submitCategory.emit(this.category);
         });
       else
@@ -105,6 +106,7 @@ export class CategoryCardComponent implements OnInit {
           .updateCategory(this.category._id, newCategory)
           .subscribe((res) => {
             this.category = res;
+            console.log(this.category);
 
             this.updateCategory.emit(this.category);
           });

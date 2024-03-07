@@ -1,8 +1,10 @@
 <card title="Inscriptions" *ngIf="contest">
-  <div class="flexColumn gap30">
+  <div
+    class="flexColumn gap30"
+    *ngIf="contest.categories && contest.categories.length > 0"
+  >
     <div class="flexRow gap30 alignCenter">
       <dropdown
-        *ngIf="selectCategory"
         class="width15"
         label="Catégorie"
         [options]="categoriesDdOptions"
@@ -65,6 +67,16 @@
         [registrations]="refusedRegistrations"
       ></registrations-table>
     </div>
+  </div>
+  <div
+    class="flexColumn alignCenter justifyCenter gap10"
+    *ngIf="contest.categories && contest.categories.length == 0"
+  >
+    <h3>Vous n'avez pas encore créé de catégorie</h3>
+    <btn
+      label="Créer une catégorie"
+      [routerLink]="['/dashboard', contest._id, 'categories']"
+    ></btn>
   </div>
 </card>
 <confirmation-modal

@@ -1,0 +1,18 @@
+<div class="flexCardRow">
+  <card class="flex1" title="Général">
+    <div class="flexRow alignCenter gap20">
+      <dropdown
+        label="Catégorie"
+        [options]="categoryOptions"
+        (selected)="selectCategory($event)"
+      ></dropdown>
+      <dropdown
+        label="Etape"
+        [options]="stepsOptions"
+        (selected)="selectStep($event)"
+      ></dropdown>
+    </div>
+    <router-outlet></router-outlet>
+  </card>
+  <card class="flex1" title="Poules"></card>
+</div>
