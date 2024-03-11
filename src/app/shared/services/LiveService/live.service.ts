@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 // src/app/services/socket.service.ts
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
@@ -7,7 +8,7 @@ import { io, Socket } from 'socket.io-client';
 })
 export class LiveService {
   private socket: Socket;
-  private url = 'http://localhost:3001'; // URL de votre serveur, à ajuster selon votre configuration
+  private url = environment.backendUrl; // URL de votre serveur, à ajuster selon votre configuration
 
   constructor() {
     this.socket = io(this.url);
@@ -39,5 +40,21 @@ export class LiveService {
 
   public updateCurrentStep(step: string) {
     this.emitEvent('updateCurrentStep', step);
+  }
+
+  public updateNbPools(nbPools: number) {
+    this.emitEvent('updateNbPools', nbPools);
+  }
+
+  public updateCurrentPool(pool: any) {
+    this.emitEvent('updateCurrentStep', pool);
+  }
+
+  public updateCurrentRiders(riders: any) {
+    this.emitEvent('updateCurrentRiders', riders);
+  }
+
+  public updateCurrentRider(rider: any) {
+    this.emitEvent('updateCurrentRider', rider);
   }
 }

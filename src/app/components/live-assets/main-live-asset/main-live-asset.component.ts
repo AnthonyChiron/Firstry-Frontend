@@ -11,16 +11,38 @@ import { io } from 'socket.io-client';
 export class MainLiveAssetComponent implements OnDestroy {
   subscription: Subscription = new Subscription();
   currentCategory: any;
-  // Déclarez d'autres propriétés pour les données auxquelles vous vous abonnez
+  currentStep: any;
+  currentRiders: any;
+  currentRider: any;
+  currentPool: any;
+  nbPools: any;
 
   constructor(private _liveService: LiveService) {}
 
   ngOnInit(): void {
     this._liveService.connect();
     this._liveService.onEvent<any>('currentCategory', (data) => {
-      console.log(data);
       this.currentCategory = data;
-      // Mettez à jour l'état du composant avec les données reçues
+    });
+
+    this._liveService.onEvent<any>('currentStep', (data) => {
+      this.currentStep = data;
+    });
+
+    this._liveService.onEvent<any>('currentRiders', (data) => {
+      this.currentRiders = data;
+    });
+
+    this._liveService.onEvent<any>('currentRider', (data) => {
+      this.currentRider = data;
+    });
+
+    this._liveService.onEvent<any>('currentPool', (data) => {
+      this.currentPool = data;
+    });
+
+    this._liveService.onEvent<any>('nbPools', (data) => {
+      this.nbPools = data;
     });
   }
 

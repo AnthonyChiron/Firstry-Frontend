@@ -1,18 +1,72 @@
 <div class="flexCardRow">
   <card class="flex1" title="Général">
-    <div class="flexRow alignCenter gap20">
-      <dropdown
-        label="Catégorie"
-        [options]="categoryOptions"
-        (selected)="selectCategory($event)"
-      ></dropdown>
-      <dropdown
-        label="Etape"
-        [options]="stepsOptions"
-        (selected)="selectStep($event)"
-      ></dropdown>
+    <div class="flexColumn gap10">
+      <div class="flexRow alignCenter gap20">
+        <dropdown
+          class="width15"
+          label="Catégorie"
+          [options]="categoryOptions"
+          (selected)="selectCategory($event)"
+        ></dropdown>
+        <dropdown
+          class="width15"
+          label="Etape"
+          [options]="stepsOptions"
+          (selected)="selectStep($event)"
+        ></dropdown>
+      </div>
+      <div class="flexColumn" *ngIf="currentPools.length > 0">
+        <label>Poule</label>
+        <div class="flexRow gap10">
+          <btn
+            *ngFor="let pool of currentPools; let i = index"
+            label="{{ i + 1 }}"
+            [type]="currentPoolNumber == i + 1 ? 'primary' : 'transparent'"
+            (click)="selectPool(i + 1)"
+          ></btn>
+        </div>
+      </div>
     </div>
-    <router-outlet></router-outlet>
   </card>
-  <card class="flex1" title="Poules"></card>
+  <card class="flex1" title="Poules">
+    <div
+      *ngIf="currentPools && currentPools.length > 0"
+      class="flexColumn gap20"
+    >
+      <div
+        [class]="
+          'flexColumn pool ' + (currentPoolNumber == i + 1 ? 'active' : '')
+        "
+        *ngFor="let pool of currentPools; let i = index"
+      >
+        <h3>Poule {{ pool[0].poolNumber }}</h3>
+        <div [class]="'flexRow'" *ngFor="let rider of pool; let i = index">
+          <p
+            [class]="
+              'width10 rider ' + (currentRider._id == rider._id ? 'active' : '')
+            "
+          >
+            {{ rider.registration.rider.firstName | Capitalize }}
+            <span class="bold">{{
+              rider.registration.rider.lastName | uppercase
+            }}</span>
+          </p>
+          <p class="width10">0 points</p>
+          <p class="width7">
+            {{
+              rider.registration.rider.rank
+                ? (rider.registration.rider.rank | uppercase)
+                : "Pas de rang"
+            }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      *ngIf="currentPools && currentPools.length == 0"
+      class="flexColumn gap20"
+    >
+      <p class="textCenter">Les poules ne sont pas encore créées.</p>
+    </div>
+  </card>
 </div>

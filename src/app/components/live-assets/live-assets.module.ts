@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MainLiveAssetComponent } from './main-live-asset/main-live-asset.component';
 import { RouterModule, Routes } from '@angular/router';
 import { IsAdminGuard } from 'src/app/shared/guards/IsAdmin/is-admin-guard.service';
-import { SharedModule } from 'primeng/api';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const liveAssetsRoutes: Routes = [
   {

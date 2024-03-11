@@ -1,1 +1,19 @@
-<p class="test">{{ currentCategory }}</p>
+<div class="main">
+  <div class="header">
+    <div class="step">{{ currentStep }}</div>
+    <div class="category">{{ currentCategory }}</div>
+  </div>
+  <div class="poo">
+    <div class="pool">Poules {{ currentRider.poolNumber }} / {{ nbPools }}</div>
+    <div class="riders">
+      <div class="rider" *ngFor="let rider of currentRiders">
+        {{ rider.registration.rider.firstName | Capitalize }}
+        {{ rider.registration.rider.lastName | uppercase }}
+      </div>
+    </div>
+  </div>
+  <div class="timer">
+    <div class="timer__title">TIMER</div>
+    <div class="timer__value">00:45</div>
+  </div>
+</div>

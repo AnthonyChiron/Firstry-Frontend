@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { th } from 'date-fns/locale';
 import { ContestModel, parseContestModel } from 'src/app/models/contest.model';
@@ -21,8 +21,11 @@ export class LiveOverviewComponent implements OnInit {
 
   currentCategory: any;
   currentStep: any;
-  currentPools: any[] = [];
+  currentPools: any[][] = [];
+  currentPoolNumber: number = 0;
   currentRiders: any[] = [];
+  currentRiderNumber: any;
+  currentRider: any;
 
   categoryOptions: any[] = [];
   stepsOptions: any[] = [];
@@ -58,12 +61,53 @@ export class LiveOverviewComponent implements OnInit {
   }
 
   selectStep(selectedStep) {
-    console.log(selectedStep);
     this.currentStep = this.currentCategory.steps.find(
       (step) => step._id == selectedStep.value
     );
-    console.log(this.currentStep);
+    this.initPools();
     this._liveService.updateCurrentStep(this.currentStep.name);
+  }
+
+  selectPool(selectedPool) {
+    this.currentPoolNumber = selectedPool;
+    this.initRider();
+  }
+
+  prevPool() {
+    if (this.currentPoolNumber > 1) this.currentPoolNumber--;
+    else this.currentPoolNumber = this.currentPools.length;
+    this.initRider();
+  }
+
+  nextPool() {
+    if (this.currentPoolNumber < this.currentPools.length)
+      this.currentPoolNumber++;
+    else this.currentPoolNumber = 1;
+    this.initRider();
+  }
+
+  prevRider() {
+    if (this.currentRiderNumber > 1) this.currentRiderNumber--;
+    else
+      this.currentRiderNumber =
+        this.currentPools[this.currentPoolNumber].length;
+    this.currentRider =
+      this.currentPools[this.currentPoolNumber - 1][
+        this.currentRiderNumber - 1
+      ];
+  }
+
+  nextRider() {
+    if (
+      this.currentRiderNumber < this.currentPools[this.currentPoolNumber].length
+    )
+      this.currentRiderNumber++;
+    else this.currentRiderNumber = 1;
+
+    this.currentRider =
+      this.currentPools[this.currentPoolNumber - 1][
+        this.currentRiderNumber - 1
+      ];
   }
 
   initCategoryOptions(categories) {
@@ -84,8 +128,55 @@ export class LiveOverviewComponent implements OnInit {
   initPools() {
     this._poolService
       .getPoolsByStepId(this.currentStep._id)
-      .subscribe((pools) => {
-        console.log(pools);
+      .subscribe((pools: any) => {
+        // format pools to [][] based on poolNumber
+        this.currentPools = [];
+        pools.forEach((pool) => {
+          if (!this.currentPools[pool.poolNumber - 1]) {
+            this.currentPools[pool.poolNumber - 1] = [];
+          }
+          this.currentPools[pool.poolNumber - 1].push(pool);
+        });
+
+        this.currentPoolNumber = 1;
+
+        if (this.currentPools.length > 0) {
+          this.currentRider = this.currentPools[0][0];
+
+          this._liveService.updateNbPools(this.currentPools.length);
+          this._liveService.updateCurrentRiders(this.currentPools[0]);
+          this._liveService.updateCurrentRider(this.currentRider);
+        }
       });
+  }
+
+  initRider() {
+    this.currentRiderNumber = 1;
+    this.currentRider = this.currentPools[this.currentPoolNumber - 1][0];
+    this._liveService.updateCurrentRiders(
+      this.currentPools[this.currentPoolNumber - 1]
+    );
+    this._liveService.updateCurrentRider(this.currentRider);
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    console.log(event);
+
+    if (event.code === 'F13') {
+      this.prevPool();
+    }
+
+    if (event.code === 'F14') {
+      this.nextPool();
+    }
+
+    if (event.code === 'F15') {
+      this.prevRider();
+    }
+
+    if (event.code === 'F16') {
+      this.nextRider();
+    }
   }
 }

@@ -1,0 +1,39 @@
+@import "../../../../styles/colors.scss";
+
+.width15 {
+  width: 15vw;
+}
+
+.width10 {
+  width: 10vw;
+}
+
+.width7 {
+  width: 7vw;
+}
+
+.width3 {
+  width: 3vw;
+}
+
+.pool {
+  border-radius: 5px;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.active {
+  background-color: $firstry-white-3;
+}
+
+.rider {
+  transition: 0.3s;
+}
+
+.rider.active {
+  background-color: $firstry-white-4;
+}
+
+.bold {
+  font-variation-settings: "wght" 700;
+}
