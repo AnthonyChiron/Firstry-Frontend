@@ -1,6 +1,7 @@
 export const environment = {
   production: false,
   backendUrl: 'http://localhost:3001/api/',
+  socketIOUrl: 'http://localhost:3001/',
   stripe_public_key:
     'pk_test_51OPhx3ExeV2TEn3k0EWYu7LkqusSy8cewkqOMeV6ydwt6ICp84mIxzw2oPzyh8v3awLSP9ymlJqrx2ysjS00TKlU00yuzgNMzN',
   firebaseConfig: {

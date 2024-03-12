@@ -1,0 +1,15 @@
+<card title="Timer">
+  <div class="flexColumn gap10">
+    <div class="flexRow gap10">
+      <btn label="Start" type="valid" (click)="start()"></btn>
+      <btn label="Stop" type="danger" (click)="stop()"></btn>
+      <btn label="Reset" type="warning" (click)="reset()"></btn>
+    </div>
+    <dropdown
+      class="width15"
+      label="Durée"
+      [options]="timerOptions"
+      (selected)="selectTimer($event.value)"
+    ></dropdown>
+  </div>
+</card>

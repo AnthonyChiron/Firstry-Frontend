@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { IsAdminGuard } from 'src/app/shared/guards/IsAdmin/is-admin-guard.service';
 import { DashboardLiveComponent } from './dashboard-live/dashboard-live.component';
 import { LiveOverviewComponent } from './live-overview/live-overview.component';
+import { LiveTimerComponent } from './live-timer/live-timer.component';
 
 const liveRoutes: Routes = [
   {
@@ -33,7 +34,7 @@ const liveRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [DashboardLiveComponent, LiveOverviewComponent],
+  declarations: [DashboardLiveComponent, LiveOverviewComponent, LiveTimerComponent],
   imports: [CommonModule, RouterModule.forChild(liveRoutes), SharedModule],
 })
 export class LiveModule {}

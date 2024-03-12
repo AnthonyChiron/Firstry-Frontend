@@ -32,6 +32,7 @@
     "html2canvas": "^1.4.1",
     "jwt-decode": "^3.1.2",
     "ng2-charts": "^5.0.4",
+    "ngx-countdown": "^16.0.0",
     "ngx-image-cropper": "^7.0.2",
     "ngx-mask": "^16.3.8",
     "ngx-stripe": "16.2",

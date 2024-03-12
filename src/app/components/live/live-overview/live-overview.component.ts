@@ -26,9 +26,11 @@ export class LiveOverviewComponent implements OnInit {
   currentRiders: any[] = [];
   currentRiderNumber: any;
   currentRider: any;
+  currentStepFormat: any;
 
   categoryOptions: any[] = [];
   stepsOptions: any[] = [];
+  StepFormatOptions: any[] = [];
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -46,6 +48,7 @@ export class LiveOverviewComponent implements OnInit {
         if (this.contest.categories.length > 0) {
           this.selectCategory({ value: this.contest.categories[0]._id });
           this.initCategoryOptions(this.contest.categories);
+          console.log(this.categories);
         }
         console.log(this.contest);
       });
@@ -73,6 +76,11 @@ export class LiveOverviewComponent implements OnInit {
     this.initRider();
   }
 
+  selectStepFormat(stepFormat) {
+    this.currentStepFormat = stepFormat;
+    this._liveService.updateCurrentStepFormat(this.currentStepFormat);
+  }
+
   prevPool() {
     if (this.currentPoolNumber > 1) this.currentPoolNumber--;
     else this.currentPoolNumber = this.currentPools.length;
@@ -95,6 +103,7 @@ export class LiveOverviewComponent implements OnInit {
       this.currentPools[this.currentPoolNumber - 1][
         this.currentRiderNumber - 1
       ];
+    this._liveService.updateCurrentRider(this.currentRider);
   }
 
   nextRider() {
@@ -108,6 +117,7 @@ export class LiveOverviewComponent implements OnInit {
       this.currentPools[this.currentPoolNumber - 1][
         this.currentRiderNumber - 1
       ];
+    this._liveService.updateCurrentRider(this.currentRider);
   }
 
   initCategoryOptions(categories) {
@@ -163,20 +173,20 @@ export class LiveOverviewComponent implements OnInit {
   handleKeyboardEvent(event: KeyboardEvent) {
     console.log(event);
 
-    if (event.code === 'F13') {
-      this.prevPool();
-    }
+    if (event.code === 'F13') this.prevPool();
 
-    if (event.code === 'F14') {
-      this.nextPool();
-    }
+    if (event.code === 'F14') this.nextPool();
 
-    if (event.code === 'F15') {
-      this.prevRider();
-    }
+    if (event.code === 'F15') this.prevRider();
 
-    if (event.code === 'F16') {
-      this.nextRider();
-    }
+    if (event.code === 'F16') this.nextRider();
+
+    if (event.code === 'F17') this.selectStepFormat('RUN 1');
+
+    if (event.code === 'F18') this.selectStepFormat('RUN 2');
+
+    if (event.code === 'F19') this.selectStepFormat('JAM');
+
+    if (event.code === 'F20') this.selectStepFormat('BEST TRICK');
   }
 }

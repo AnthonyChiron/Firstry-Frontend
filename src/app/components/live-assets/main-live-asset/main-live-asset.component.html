@@ -1,19 +1,40 @@
-<div class="main">
-  <div class="header">
-    <div class="step">{{ currentStep }}</div>
-    <div class="category">{{ currentCategory }}</div>
-  </div>
-  <div class="poo">
-    <div class="pool">Poules {{ currentRider.poolNumber }} / {{ nbPools }}</div>
-    <div class="riders">
-      <div class="rider" *ngFor="let rider of currentRiders">
-        {{ rider.registration.rider.firstName | Capitalize }}
-        {{ rider.registration.rider.lastName | uppercase }}
+<div class="bg"></div>
+<div id="bloc" class="bloc">
+  <div id="info" class="info">
+    <section id="competition-info" class="commonInfo">
+      <h1 id="competitionStep" class="mainLiveTitle">{{ currentStep }}</h1>
+      <div class="compet">
+        <h2 id="categorie">{{ currentCategory }}</h2>
       </div>
-    </div>
+    </section>
+
+    <!-- A ENLEVER POUR QUALIFICATION -->
+    <section id="riders" class="riders">
+      <h3 id="pool" class="mainLiveTitle">
+        POULE <span id="selectedPool"> {{ currentRider.poolNumber }}</span
+        >/<span id="totalPool">{{ nbPools }}</span>
+      </h3>
+      <table id="poolTable" class="poolTable">
+        <tbody>
+          <tr
+            class="{{
+              currentRider._id == rider._id ? 'selectedRider' : 'rider'
+            }}"
+            *ngFor="let rider of currentRiders; let i = index"
+          >
+            <td class="selectedRiderLabel ArrowLeft">>></td>
+            <td class="firstName">{{ rider.registration.rider.firstName }}</td>
+            <td class="lastName">{{ rider.registration.rider.lastName }}</td>
+            <td class="selectedRiderLabel ArrowRight"><<</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
   </div>
-  <div class="timer">
-    <div class="timer__title">TIMER</div>
-    <div class="timer__value">00:45</div>
-  </div>
+  <section class="timer" id="timer-info">
+    <p class="timer-label" id="run">{{ currentStepFormat }}</p>
+    <p class="timer-timer" id="timer">
+      <countdown #cd [config]="config"></countdown>
+    </p>
+  </section>
 </div>

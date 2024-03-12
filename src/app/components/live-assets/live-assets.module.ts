@@ -5,6 +5,7 @@ import { MainLiveAssetComponent } from './main-live-asset/main-live-asset.compon
 import { RouterModule, Routes } from '@angular/router';
 import { IsAdminGuard } from 'src/app/shared/guards/IsAdmin/is-admin-guard.service';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CountdownModule } from 'ngx-countdown';
 
 const liveAssetsRoutes: Routes = [
   {
@@ -20,6 +21,7 @@ const liveAssetsRoutes: Routes = [
     CommonModule,
     RouterModule.forChild(liveAssetsRoutes),
     SharedModule,
+    CountdownModule,
   ],
 })
 export class LiveAssetsModule {}

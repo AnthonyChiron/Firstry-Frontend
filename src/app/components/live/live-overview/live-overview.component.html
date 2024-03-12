@@ -1,33 +1,59 @@
 <div class="flexCardRow">
-  <card class="flex1" title="Général">
-    <div class="flexColumn gap10">
-      <div class="flexRow alignCenter gap20">
-        <dropdown
-          class="width15"
-          label="Catégorie"
-          [options]="categoryOptions"
-          (selected)="selectCategory($event)"
-        ></dropdown>
-        <dropdown
-          class="width15"
-          label="Etape"
-          [options]="stepsOptions"
-          (selected)="selectStep($event)"
-        ></dropdown>
-      </div>
-      <div class="flexColumn" *ngIf="currentPools.length > 0">
-        <label>Poule</label>
+  <div class="flexCardColumn">
+    <live-timer></live-timer>
+    <card class="flex1" title="Général">
+      <div class="flexColumn gap10">
+        <div class="flexRow alignCenter gap20">
+          <dropdown
+            class="width15"
+            label="Catégorie"
+            [options]="categoryOptions"
+            (selected)="selectCategory($event)"
+          ></dropdown>
+          <dropdown
+            class="width15"
+            label="Etape"
+            [options]="stepsOptions"
+            (selected)="selectStep($event)"
+          ></dropdown>
+        </div>
+        <div class="flexColumn" *ngIf="currentPools.length > 0">
+          <label>Poule</label>
+          <div class="flexRow gap10">
+            <btn
+              *ngFor="let pool of currentPools; let i = index"
+              label="{{ i + 1 }}"
+              [type]="currentPoolNumber == i + 1 ? 'primary' : 'transparent'"
+              (click)="selectPool(i + 1)"
+            ></btn>
+          </div>
+        </div>
         <div class="flexRow gap10">
           <btn
-            *ngFor="let pool of currentPools; let i = index"
-            label="{{ i + 1 }}"
-            [type]="currentPoolNumber == i + 1 ? 'primary' : 'transparent'"
-            (click)="selectPool(i + 1)"
+            label="RUN 1"
+            [type]="currentStepFormat == 'RUN 1' ? 'primary' : 'secondary'"
+            (click)="selectStepFormat('RUN 1')"
+          ></btn>
+          <btn
+            label="RUN 2"
+            [type]="currentStepFormat == 'RUN 2' ? 'primary' : 'secondary'"
+            (click)="selectStepFormat('RUN 2')"
+          ></btn>
+          <btn
+            label="JAM"
+            [type]="currentStepFormat == 'JAM' ? 'primary' : 'secondary'"
+            (click)="selectStepFormat('JAM')"
+          ></btn>
+          <btn
+            label="Best Tricks"
+            [type]="currentStepFormat == 'BEST TRICK' ? 'primary' : 'secondary'"
+            (click)="selectStepFormat('BEST TRICK')"
           ></btn>
         </div>
       </div>
-    </div>
-  </card>
+    </card>
+  </div>
+
   <card class="flex1" title="Poules">
     <div
       *ngIf="currentPools && currentPools.length > 0"

@@ -8,7 +8,7 @@ import { io, Socket } from 'socket.io-client';
 })
 export class LiveService {
   private socket: Socket;
-  private url = environment.backendUrl; // URL de votre serveur, à ajuster selon votre configuration
+  private url = environment.socketIOUrl; // URL de votre serveur, à ajuster selon votre configuration
 
   constructor() {
     this.socket = io(this.url);
@@ -16,6 +16,7 @@ export class LiveService {
 
   public connect() {
     this.socket.connect();
+    console.log('Connected to socket');
   }
 
   public disconnect() {
@@ -56,5 +57,25 @@ export class LiveService {
 
   public updateCurrentRider(rider: any) {
     this.emitEvent('updateCurrentRider', rider);
+  }
+
+  public updateCurrentStepFormat(stepFormat: any) {
+    this.emitEvent('updateCurrentStepFormat', stepFormat);
+  }
+
+  public updateCurrentTimer(timer: any) {
+    this.emitEvent('updateCurrentTimer', timer);
+  }
+
+  public startTimer() {
+    this.emitEvent('startTimer', '');
+  }
+
+  public stopTimer() {
+    this.emitEvent('stopTimer', '');
+  }
+
+  public resetTimer() {
+    this.emitEvent('resetTimer', '');
   }
 }
