@@ -59,7 +59,7 @@ export class LiveOverviewComponent implements OnInit {
     this.currentCategory = this.categories.find(
       (category) => category._id == selectedCategory.value
     );
-    this._liveService.updateCurrentCategory(this.currentCategory.name);
+    this._liveService.updateCurrentCategory(this.currentCategory.shortName);
     this.initStepsOptions();
   }
 
@@ -122,7 +122,7 @@ export class LiveOverviewComponent implements OnInit {
 
   initCategoryOptions(categories) {
     this.categoryOptions = categories.map((category) => {
-      return { label: category.name, value: category._id };
+      return { label: category.shortName, value: category._id };
     });
   }
 

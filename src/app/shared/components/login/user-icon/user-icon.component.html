@@ -1,6 +1,6 @@
 <div class="main">
   <div
-    *ngIf="isLoggedIn && user.role != 'admin'"
+    *ngIf="isLoggedIn"
     class="flexRow spaceBetween alignCenter account"
     (click)="toggleAccountOption = !toggleAccountOption"
   >
