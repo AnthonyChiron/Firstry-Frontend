@@ -224,14 +224,18 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
   }
 
   formatPoolsEntriesToRegistrations(pools) {
+    if (pools.length === 0) return;
     this.missing = this.originalPoolsEntries.filter((pool) => pool.isMissing);
-    console.log(this.missing);
     this.missing = this.missing.map((pool) => pool.registration);
-    console.log(this.missing);
 
     this.pools = this.formatPoolsEntriesInDoubleTable(
       pools.filter((pool) => pool.isMissing === false)
     );
+    if (this.currentStep._id != pools[0].stepId) {
+      const pools = this.pools.flat();
+      this.createPoolsFromRegistrations(pools);
+    }
+
     this.updatePoolsIds();
   }
 
@@ -241,12 +245,13 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
 
     // Format pools
     this.pools.forEach((pool, index) => {
-      pool.forEach((registration) => {
+      pool.forEach((registration, orderIndex) => {
         pools.push({
           isMissing: false,
           poolNumber: index + 1,
           registrationId: registration._id,
           stepId: this.currentStep._id,
+          order: orderIndex,
         });
       });
     });
