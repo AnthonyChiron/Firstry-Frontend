@@ -68,6 +68,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
 
   async ngOnChanges(changes: SimpleChanges) {
     this.pools = [];
+    this.missing = [];
     this.edit = false;
 
     this.initCurrentStep();
@@ -149,6 +150,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
       .getPoolsByStepId(this.currentStep._id)
       .subscribe((pools: any) => {
         this.originalPoolsEntries = [...pools];
+        console.log('pools', pools);
 
         if (
           this.category.steps.find((step) => step.isResultPublished === true) &&
@@ -223,7 +225,9 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
 
   formatPoolsEntriesToRegistrations(pools) {
     this.missing = this.originalPoolsEntries.filter((pool) => pool.isMissing);
+    console.log(this.missing);
     this.missing = this.missing.map((pool) => pool.registration);
+    console.log(this.missing);
 
     this.pools = this.formatPoolsEntriesInDoubleTable(
       pools.filter((pool) => pool.isMissing === false)
