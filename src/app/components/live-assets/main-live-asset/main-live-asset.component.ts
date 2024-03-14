@@ -66,10 +66,12 @@ export class MainLiveAssetComponent implements OnDestroy {
 
     this._liveService.onEvent<any>('startTimer', (data) => {
       this.countdown.begin();
+      console.log('startTimer');
     });
 
     this._liveService.onEvent<any>('stopTimer', (data) => {
       this.countdown.stop();
+      console.log('stopTimer');
     });
 
     this._liveService.onEvent<any>('resetTimer', (data) => {
