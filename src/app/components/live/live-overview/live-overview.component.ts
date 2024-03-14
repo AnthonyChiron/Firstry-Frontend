@@ -173,20 +173,26 @@ export class LiveOverviewComponent implements OnInit {
   handleKeyboardEvent(event: KeyboardEvent) {
     console.log(event);
 
-    if (event.code === 'F13') this.prevPool();
+    if (event.key === 'F13') this.prevPool();
 
-    if (event.code === 'F14') this.nextPool();
+    if (event.key === 'F14') this.nextPool();
 
-    if (event.code === 'F15') this.prevRider();
+    if (event.key === 'F15') this.prevRider();
 
-    if (event.code === 'F16') this.nextRider();
+    if (event.key === 'F16') this.nextRider();
 
-    if (event.code === 'F17') this.selectStepFormat('RUN 1');
+    if (event.key === 'F17') this.selectStepFormat('RUN 1');
 
-    if (event.code === 'F18') this.selectStepFormat('RUN 2');
+    if (event.key === 'F18') this.selectStepFormat('RUN 2');
 
-    if (event.code === 'F19') this.selectStepFormat('JAM');
+    if (event.key === 'F19') this.selectStepFormat('JAM');
 
-    if (event.code === 'F20') this.selectStepFormat('BEST TRICK');
+    if (event.key === 'F20') this.selectStepFormat('BEST TRICK');
+
+    if (event.key === 'F21') this._liveService.startTimer();
+
+    if (event.key === 'F22') this._liveService.stopTimer();
+
+    if (event.key === 'F23') this._liveService.resetTimer();
   }
 }
