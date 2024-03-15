@@ -68,11 +68,11 @@ export class LiveService {
   }
 
   public updateIsWaitingDisplayed(timer: any) {
-    this.emitEvent('updateWaitingScreen', timer);
+    this.emitEvent('updateIsWaitingDisplayed', timer);
   }
 
   public updateIsMainDisplayed(timer: any) {
-    this.emitEvent('updateMainScreen', timer);
+    this.emitEvent('updateIsMainDisplayed', timer);
   }
 
   public startTimer() {

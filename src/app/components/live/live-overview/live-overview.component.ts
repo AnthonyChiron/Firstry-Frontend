@@ -28,7 +28,7 @@ export class LiveOverviewComponent implements OnInit {
   currentRider: any;
   currentStepFormat: any;
 
-  isWaitingDisplayed: boolean = false;
+  isWaitingDisplayed: boolean = true;
   isMainDisplayed: boolean = false;
 
   categoryOptions: any[] = [];

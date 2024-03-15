@@ -19,7 +19,7 @@ export class MainLiveAssetComponent implements OnDestroy {
   currentPool: any = '';
   currentTimer: any = 40;
   nbPools: any = 1;
-  isWaitingDisplayed: boolean = false;
+  isWaitingDisplayed: boolean = true;
   isMainDisplayed: boolean = false;
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
