@@ -51,6 +51,21 @@
           ></btn>
         </div>
       </div>
+      <div class="flexColumn" *ngIf="currentPools.length > 0">
+        <label>Affichage</label>
+        <div class="flexRow gap10">
+          <btn
+            label="Waiting asset"
+            [type]="isWaitingDisplayed ? 'danger' : 'valid'"
+            (click)="toggleWaiting()"
+          ></btn>
+          <btn
+            label="Main asset"
+            [type]="isMainDisplayed ? 'danger' : 'valid'"
+            (click)="toggleMain()"
+          ></btn>
+        </div>
+      </div>
     </card>
   </div>
 

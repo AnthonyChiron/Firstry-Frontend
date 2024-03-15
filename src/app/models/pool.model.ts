@@ -16,6 +16,9 @@ export interface PoolResultDTOModel {
   registration: any;
   step: String;
   score: Number;
+  juge1: Number;
+  juge2: Number;
+  juge3: Number;
   rank: Number;
   isMissing: Boolean;
   isQualified: Boolean;

@@ -95,6 +95,9 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
           pool.registration.rider.lastName,
         score: pool.score ? pool.score : 0,
         rank: pool.rank ? pool.rank : '-',
+        juge1: pool.juge1 ? pool.juge1 : 0,
+        juge2: pool.juge2 ? pool.juge2 : 0,
+        juge3: pool.juge3 ? pool.juge3 : 0,
         isQualified: pool.isQualified ? pool.isQualified : false,
       };
     });
@@ -169,6 +172,19 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
       this.pools.length > 0 &&
       this._poolUtilityService.checkIfAllPoolsHaveResults(this.pools.flat()) &&
       !this.currentStep.isResultPublished
+    );
+  }
+
+  calculatePoints(rider) {
+    if (rider.juge1 == undefined) rider.juge1 = 0;
+    if (rider.juge2 == undefined) rider.juge2 = 0;
+    if (rider.juge3 == undefined) rider.juge3 = 0;
+
+    rider.score =
+      Math.round(((rider.juge1 + rider.juge2 + rider.juge3) / 3) * 10) / 10;
+
+    return (
+      Math.round(((rider.juge1 + rider.juge2 + rider.juge3) / 3) * 10) / 10
     );
   }
 }

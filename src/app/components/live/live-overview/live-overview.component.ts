@@ -28,6 +28,9 @@ export class LiveOverviewComponent implements OnInit {
   currentRider: any;
   currentStepFormat: any;
 
+  isWaitingDisplayed: boolean = false;
+  isMainDisplayed: boolean = false;
+
   categoryOptions: any[] = [];
   stepsOptions: any[] = [];
   StepFormatOptions: any[] = [];
@@ -167,6 +170,14 @@ export class LiveOverviewComponent implements OnInit {
       this.currentPools[this.currentPoolNumber - 1]
     );
     this._liveService.updateCurrentRider(this.currentRider);
+  }
+
+  toggleWaiting() {
+    this._liveService.updateIsWaitingDisplayed(!this.isWaitingDisplayed);
+  }
+
+  toggleMain() {
+    this._liveService.updateIsMainDisplayed(!this.isMainDisplayed);
   }
 
   @HostListener('window:keydown', ['$event'])

@@ -67,6 +67,14 @@ export class LiveService {
     this.emitEvent('updateCurrentTimer', timer);
   }
 
+  public updateIsWaitingDisplayed(timer: any) {
+    this.emitEvent('updateWaitingScreen', timer);
+  }
+
+  public updateIsMainDisplayed(timer: any) {
+    this.emitEvent('updateMainScreen', timer);
+  }
+
   public startTimer() {
     this.emitEvent('callToStartTimer', '');
   }

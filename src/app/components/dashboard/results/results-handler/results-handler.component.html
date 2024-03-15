@@ -45,7 +45,7 @@
                 <!-- <p *ngIf="edit && editPoolIndex == i">Options</p> -->
               </div>
               <div
-                class="rider flexRow alignCenter spaceBetween"
+                class="rider flexRow alignCenter spaceBetween gap10"
                 *ngFor="let rider of pool"
               >
                 <div class="flexRow gap10 flex4">
@@ -58,11 +58,26 @@
                 </div>
                 <input
                   *ngIf="edit && editPoolIndex == i"
-                  [(ngModel)]="rider.score"
-                  placeholder="Points"
+                  [(ngModel)]="rider.juge1"
+                  placeholder="Juge 1"
                   type="number"
                   class="flex1"
                 />
+                <input
+                  *ngIf="edit && editPoolIndex == i"
+                  [(ngModel)]="rider.juge2"
+                  placeholder="Juge 2"
+                  type="number"
+                  class="flex1"
+                />
+                <input
+                  *ngIf="edit && editPoolIndex == i"
+                  [(ngModel)]="rider.juge3"
+                  placeholder="Juge 3"
+                  type="number"
+                  class="flex1"
+                />
+                <p *ngIf="editPoolIndex == i">{{ calculatePoints(rider) }}</p>
                 <p *ngIf="editPoolIndex != i">{{ rider.score }}</p>
                 <!-- <div *ngIf="edit && editPoolIndex == i">
                   <btn type="warning" label="Abandon"></btn>
