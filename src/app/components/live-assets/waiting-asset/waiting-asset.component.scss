@@ -1,0 +1,220 @@
+$widthpx: 250px; // sea blueHell
+
+$NRF-main-color: rgba(255, 255, 255, 0.63);
+$NRF-second-color: black;
+
+$main-color: $NRF-main-color;
+$second-color: $NRF-second-color;
+$background-color: white;
+$text-color: black;
+
+$border-radius: 6px;
+
+.bloc {
+  position: absolute;
+  border-radius: 4px;
+  bottom: 10vh;
+  height: 140px;
+  left: 12vw;
+  display: flex;
+  font-family: "Akira";
+  box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.76);
+  background-image: linear-gradient(315deg, #252525ab, #000000b6),
+    url("../../../../assets/live/image_part_001\ \(1\).jpg");
+  background-size: 150%;
+  background-position: center;
+  animation: backgroundGradient 454s ease infinite;
+
+  .box {
+    text-align: center;
+    display: flex;
+
+    .subBox {
+    }
+  }
+}
+
+.pub {
+  width: 400px;
+  border-right: 2px white solid;
+
+  #slide {
+    background-size: cover;
+    color: #00000000;
+  }
+}
+
+.infos {
+  display: flex;
+  width: 45vw;
+
+  .contest {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    mix-blend-mode: difference;
+
+    h2 {
+      font: "Akira";
+      font-size: 5vh;
+      font-style: italic;
+      letter-spacing: 3px;
+      color: rgba(255, 255, 255, 0.959);
+    }
+  }
+
+  .categorie {
+    flex: 1;
+
+    .labelCat {
+      flex: 1;
+      max-width: 100%;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+
+      // .shadow {
+      // 	box-shadow: inset 0px 0px 15px red;
+      // 	position: absolute;
+      // 	pointer-events: none;
+      // 	top: 0;
+      // 	left: 0;
+      // 	width: 100%;
+      // 	height: 100%;
+      // }
+
+      .logo {
+        position: absolute;
+        top: -10px;
+        left: 50px;
+        height: 8vh;
+      }
+
+      .infiniteScroll {
+        white-space: nowrap;
+        overflow: hidden;
+        display: inline-block;
+        animation: marquee 7s linear infinite;
+
+        .logo {
+          height: 5vh;
+        }
+
+        .next {
+          display: inline-block;
+          position: relative;
+          top: 3px;
+          font-size: 3.2vh;
+          font-style: italic;
+          padding-left: 20px;
+
+          .separator {
+            font-size: 2vh;
+          }
+        }
+      }
+
+      .competition {
+        position: relative;
+        top: -3px;
+        font-size: 2.4vh;
+      }
+    }
+
+    .nextCat {
+      flex: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: black;
+      border-top: double white 1px;
+      background-color: white;
+      mix-blend-mode: difference;
+
+      h3 {
+        position: relative;
+        top: 3px;
+        padding-right: 70px;
+      }
+    }
+  }
+}
+
+.timer {
+  width: 9vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(315deg, #55555500, #00000094);
+  background-size: 250%;
+  animation: backgroundGradient 4s ease infinite;
+  color: white;
+  border-left: 2px solid white;
+
+  h3 {
+    font: "HankenGrotesk";
+  }
+
+  h2 {
+    font-size: 4vh;
+    margin-bottom: 10px;
+  }
+}
+
+h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 3vh;
+  font: "HankenGrotesk";
+  font-variation-settings: "wght" 900;
+}
+
+h3 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.5vh;
+  font: "HankenGrotesk";
+  font-variation-settings: "wght" 500;
+}
+
+.column {
+  flex-direction: column;
+}
+
+h1 {
+  font: "Akira";
+  color: white;
+}
+
+.border {
+  outline: 2px solid black;
+}
+
+.firstrySite {
+  // background-image: url("../../shared/assets/testpub.png");
+  background-size: cover;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes backgroundGradient {
+  0% {
+    background-position: 5% 0%;
+  }
+  50% {
+    background-position: 96% 100%;
+  }
+  100% {
+    background-position: 5% 0%;
+  }
+}
