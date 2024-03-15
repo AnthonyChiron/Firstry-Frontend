@@ -1,6 +1,7 @@
+import { CountdownConfig, CountdownComponent } from 'ngx-countdown';
 import { LiveService } from 'src/app/shared/services/LiveService/live.service';
 import { OwlOptions } from './../../../../../node_modules/ngx-owl-carousel-o/lib/models/owl-options.model.d';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'waiting-asset',
@@ -9,6 +10,10 @@ import { Component, OnDestroy } from '@angular/core';
 })
 export class WaitingAssetComponent implements OnDestroy {
   currentCategory: any = '';
+  currentTimer: any = 50;
+
+  @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
+  config: CountdownConfig = { leftTime: this.currentTimer, format: 'hh:mm' };
 
   customOptions: OwlOptions = {
     loop: true,
@@ -30,6 +35,29 @@ export class WaitingAssetComponent implements OnDestroy {
 
     this._liveService.onEvent<any>('currentCategory', (data) => {
       this.currentCategory = data;
+    });
+
+    this._liveService.onEvent<any>('currentWaitingTimer', (data) => {
+      this.currentTimer = data;
+      this.config = {
+        leftTime: this.currentTimer,
+        format: 'mm:ss',
+      };
+    });
+
+    this._liveService.onEvent<any>('startWaitingTimer', (data) => {
+      this.countdown.restart();
+      console.log('startTimer');
+    });
+
+    this._liveService.onEvent<any>('stopWaitingTimer', (data) => {
+      this.countdown.stop();
+      console.log('stopTimer');
+    });
+
+    this._liveService.onEvent<any>('resetWaitingTimer', (data) => {
+      this.countdown.restart();
+      this.countdown.stop();
     });
   }
 
