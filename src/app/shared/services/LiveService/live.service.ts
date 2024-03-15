@@ -68,14 +68,14 @@ export class LiveService {
   }
 
   public startTimer() {
-    this.emitEvent('startTimer', '');
+    this.emitEvent('callToStartTimer', '');
   }
 
   public stopTimer() {
-    this.emitEvent('stopTimer', '');
+    this.emitEvent('callToStopTimer', '');
   }
 
   public resetTimer() {
-    this.emitEvent('resetTimer', '');
+    this.emitEvent('callToResetTimer', '');
   }
 }

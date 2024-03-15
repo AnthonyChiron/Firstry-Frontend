@@ -34,7 +34,11 @@ const liveRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [DashboardLiveComponent, LiveOverviewComponent, LiveTimerComponent],
+  declarations: [
+    DashboardLiveComponent,
+    LiveOverviewComponent,
+    LiveTimerComponent,
+  ],
   imports: [CommonModule, RouterModule.forChild(liveRoutes), SharedModule],
 })
 export class LiveModule {}
