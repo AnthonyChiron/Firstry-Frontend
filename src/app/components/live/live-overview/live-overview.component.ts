@@ -35,6 +35,25 @@ export class LiveOverviewComponent implements OnInit {
   stepsOptions: any[] = [];
   StepFormatOptions: any[] = [];
 
+  waitingTimerOptions: any[] = [
+    { label: '1', value: '60' },
+    { label: '2', value: '120' },
+    { label: '3', value: '180' },
+    { label: '4', value: '240' },
+    { label: '5', value: '300' },
+    { label: '10', value: '600' },
+    { label: '15', value: '900' },
+    { label: '20', value: '1200' },
+    { label: '25', value: '1500' },
+    { label: '30', value: '1800' },
+    { label: '35', value: '2100' },
+    { label: '40', value: '2400' },
+    { label: '45', value: '2700' },
+    { label: '50', value: '3000' },
+    { label: '55', value: '3300' },
+    { label: '60', value: '3600' },
+  ];
+
   constructor(
     private _activatedRoute: ActivatedRoute,
     private cs: ContestsService,
@@ -180,6 +199,22 @@ export class LiveOverviewComponent implements OnInit {
   toggleMain() {
     this.isMainDisplayed = !this.isMainDisplayed;
     this._liveService.updateIsMainDisplayed(!this.isMainDisplayed);
+  }
+
+  selectWaitingTimer(waitingTimer) {
+    this._liveService.updateWaitingTimer(waitingTimer);
+  }
+
+  start() {
+    this._liveService.startWaitingTimer();
+  }
+
+  stop() {
+    this._liveService.stopWaitingTimer();
+  }
+
+  reset() {
+    this._liveService.resetWaitingTimer();
   }
 
   @HostListener('window:keydown', ['$event'])

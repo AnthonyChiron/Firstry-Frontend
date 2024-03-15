@@ -59,6 +59,22 @@ export class LiveService {
     this.emitEvent('updateCurrentRider', rider);
   }
 
+  public updateWaitingTimer(timer: any) {
+    this.emitEvent('updateWaitingTimer', timer);
+  }
+
+  public startWaitingTimer() {
+    this.emitEvent('callToWaitingStartTimer', '');
+  }
+
+  public stopWaitingTimer() {
+    this.emitEvent('callToWaitingStopTimer', '');
+  }
+
+  public resetWaitingTimer() {
+    this.emitEvent('callToWaitingResetTimer', '');
+  }
+
   public updateCurrentStepFormat(stepFormat: any) {
     this.emitEvent('updateCurrentStepFormat', stepFormat);
   }
@@ -67,12 +83,12 @@ export class LiveService {
     this.emitEvent('updateCurrentTimer', timer);
   }
 
-  public updateIsWaitingDisplayed(timer: any) {
-    this.emitEvent('updateIsWaitingDisplayed', timer);
+  public updateIsWaitingDisplayed(isDisplayed: any) {
+    this.emitEvent('updateIsWaitingDisplayed', isDisplayed);
   }
 
-  public updateIsMainDisplayed(timer: any) {
-    this.emitEvent('updateIsMainDisplayed', timer);
+  public updateIsMainDisplayed(isDisplayed: any) {
+    this.emitEvent('updateIsMainDisplayed', isDisplayed);
   }
 
   public startTimer() {

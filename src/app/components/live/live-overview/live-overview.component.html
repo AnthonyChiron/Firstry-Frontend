@@ -1,6 +1,37 @@
 <div class="flexCardRow">
   <div class="flexCardColumn">
     <live-timer></live-timer>
+    <card label="Affichage">
+      <div class="flexColumn">
+        <div class="flexRow gap10">
+          <btn
+            label="Waiting asset"
+            [type]="isWaitingDisplayed ? 'danger' : 'valid'"
+            (click)="toggleWaiting()"
+          ></btn>
+          <btn
+            label="Main asset"
+            [type]="isMainDisplayed ? 'danger' : 'valid'"
+            (click)="toggleMain()"
+          ></btn>
+        </div></div
+    ></card>
+    <card label="Waiting asset">
+      <div class="flexColumn">
+        <div class="flexRow gap10">
+          <dropdown
+            class="width15"
+            label="Catégorie"
+            [options]="waitingTimerOptions"
+            (selected)="selectWaitingTimer($event.value)"
+          ></dropdown>
+        </div>
+        <div class="flexRow gap10">
+          <btn label="Start" type="valid" (click)="start()"></btn>
+          <btn label="Stop" type="danger" (click)="stop()"></btn>
+          <btn label="Reset" type="warning" (click)="reset()"></btn>
+        </div></div
+    ></card>
     <card class="flex1" title="Général">
       <div class="flexColumn gap10">
         <div class="flexRow alignCenter gap20">
@@ -48,21 +79,6 @@
             label="Best Tricks"
             [type]="currentStepFormat == 'BEST TRICK' ? 'primary' : 'secondary'"
             (click)="selectStepFormat('BEST TRICK')"
-          ></btn>
-        </div>
-      </div>
-      <div class="flexColumn">
-        <label>Affichage</label>
-        <div class="flexRow gap10">
-          <btn
-            label="Waiting asset"
-            [type]="isWaitingDisplayed ? 'danger' : 'valid'"
-            (click)="toggleWaiting()"
-          ></btn>
-          <btn
-            label="Main asset"
-            [type]="isMainDisplayed ? 'danger' : 'valid'"
-            (click)="toggleMain()"
           ></btn>
         </div>
       </div>

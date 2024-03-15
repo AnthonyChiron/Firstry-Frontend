@@ -36,6 +36,29 @@ export class WaitingAssetComponent implements OnDestroy {
     this._liveService.onEvent<any>('currentCategory', (data) => {
       this.currentCategory = data;
     });
+
+    this._liveService.onEvent<any>('currentWaitingTimer', (data) => {
+      this.currentTimer = data;
+      this.config = {
+        leftTime: this.currentTimer,
+        format: 'mm:ss',
+      };
+    });
+
+    this._liveService.onEvent<any>('startWaitingTimer', (data) => {
+      this.countdown.restart();
+      console.log('startTimer');
+    });
+
+    this._liveService.onEvent<any>('stopWaitingTimer', (data) => {
+      this.countdown.stop();
+      console.log('stopTimer');
+    });
+
+    this._liveService.onEvent<any>('resetWaitingTimer', (data) => {
+      this.countdown.restart();
+      this.countdown.stop();
+    });
   }
 
   ngOnDestroy(): void {
