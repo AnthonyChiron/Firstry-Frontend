@@ -6,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { IsAdminGuard } from 'src/app/shared/guards/IsAdmin/is-admin-guard.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CountdownModule } from 'ngx-countdown';
+import { WaitingAssetComponent } from './waiting-asset/waiting-asset.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 const liveAssetsRoutes: Routes = [
   {
@@ -16,12 +18,13 @@ const liveAssetsRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [MainLiveAssetComponent],
+  declarations: [MainLiveAssetComponent, WaitingAssetComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(liveAssetsRoutes),
     SharedModule,
     CountdownModule,
+    CarouselModule,
   ],
 })
 export class LiveAssetsModule {}

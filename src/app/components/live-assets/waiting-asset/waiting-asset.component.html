@@ -1,0 +1,40 @@
+<div id="bloc" class="bloc">
+  <div class="box pub">
+    <!-- <div class="swiper mySwiper">
+      <div id="pubSwipper" class="swiper-wrapper"></div>
+    </div> -->
+    <owl-carousel-o [options]="customOptions" class="fullWidth fullHeight">
+      <ng-template carouselSlide>
+        <img
+          src="../../../../assets/live/LastVideoVlogProbowl.png"
+          alt="image_2"
+        />
+      </ng-template>
+      <ng-template carouselSlide>
+        <img src="../../../../assets/live/twitchprime.png" alt="image_2" />
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+  <div class="box infos column">
+    <div class="contest">
+      <h1 id="contestName">TROTTIRAMA 8</h1>
+    </div>
+    <div class="box categorie">
+      <div class="labelCat">
+        <img
+          class="logo"
+          src="../../../../assets/logos/Globe_Blanc.png"
+          alt=""
+        />
+      </div>
+      <div class="nextCat">
+        <h3>Prochaine catégorie</h3>
+        <h2 id="categorie">{{ currentCategory }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="box timer">
+    <h3 id="labelTimer">Reprise dans</h3>
+    <h2 id="timer"></h2>
+  </div>
+</div>
