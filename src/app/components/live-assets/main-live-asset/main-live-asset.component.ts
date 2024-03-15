@@ -63,10 +63,14 @@ export class MainLiveAssetComponent implements OnDestroy {
     });
 
     this._liveService.onEvent<any>('isWaitingAssetDisplayed', (data) => {
+      console.log('isWaitingAssetDisplayed');
+      console.log(data);
       this.isWaitingDisplayed = data;
     });
 
     this._liveService.onEvent<any>('isMainAssetDisplayed', (data) => {
+      console.log('isMainAssetDisplayed');
+      console.log(data);
       this.isMainDisplayed = data;
     });
 

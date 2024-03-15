@@ -8,12 +8,12 @@ import { Component, OnDestroy, ViewChild } from '@angular/core';
   templateUrl: './waiting-asset.component.html',
   styleUrls: ['./waiting-asset.component.scss'],
 })
-export class WaitingAssetComponent implements OnDestroy {
+export class WaitingAssetComponent {
   currentCategory: any = '';
   currentTimer: any = 50;
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
-  config: CountdownConfig = { leftTime: this.currentTimer, format: 'hh:mm' };
+  config: CountdownConfig = { leftTime: 60, format: 'HH:mm' };
 
   customOptions: OwlOptions = {
     loop: true,
@@ -38,6 +38,7 @@ export class WaitingAssetComponent implements OnDestroy {
     });
 
     this._liveService.onEvent<any>('currentWaitingTimer', (data) => {
+      console.log('currentWaitingTimer', data);
       this.currentTimer = data;
       this.config = {
         leftTime: this.currentTimer,
@@ -59,9 +60,5 @@ export class WaitingAssetComponent implements OnDestroy {
       this.countdown.restart();
       this.countdown.stop();
     });
-  }
-
-  ngOnDestroy(): void {
-    this._liveService.disconnect();
   }
 }

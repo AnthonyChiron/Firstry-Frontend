@@ -192,16 +192,18 @@ export class LiveOverviewComponent implements OnInit {
   }
 
   toggleWaiting() {
+    console.log('toggleWaiting');
     this.isWaitingDisplayed = !this.isWaitingDisplayed;
-    this._liveService.updateIsWaitingDisplayed(!this.isWaitingDisplayed);
+    this._liveService.updateIsWaitingDisplayed(this.isWaitingDisplayed);
   }
 
   toggleMain() {
     this.isMainDisplayed = !this.isMainDisplayed;
-    this._liveService.updateIsMainDisplayed(!this.isMainDisplayed);
+    this._liveService.updateIsMainDisplayed(this.isMainDisplayed);
   }
 
   selectWaitingTimer(waitingTimer) {
+    console.log(waitingTimer);
     this._liveService.updateWaitingTimer(waitingTimer);
   }
 
