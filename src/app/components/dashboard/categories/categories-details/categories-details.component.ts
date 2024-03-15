@@ -6,10 +6,8 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ContestsService } from 'src/app/shared/data/ContestsService/contests.service';
-import { FormUtilityService } from 'src/app/shared/services/FormUtility/form-utility.service';
 import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 
 @Component({

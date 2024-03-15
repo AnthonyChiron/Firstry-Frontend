@@ -1,0 +1,202 @@
+//* VARIABLES *//
+$widthpx: 270px; // sea blueHell
+
+$NRF-main-color: rgba(255, 255, 255, 0.63);
+$NRF-second-color: black;
+
+$main-color: $NRF-main-color;
+$second-color: $NRF-second-color;
+$background-color: white;
+$text-color: white;
+
+$transi_rider_color1: rgba(255, 255, 255, 0);
+$transi_rider_color2: rgb(255, 255, 255);
+$border-radius: 6px;
+
+body {
+  background-color: transparent;
+  // background-image: url("../../shared/assets/test.jpg");
+  background-size: 120%;
+}
+
+.bloc {
+  display: flex;
+  position: absolute;
+  font-family: "HankenGrotesk";
+  // bottom: 40%;
+  // left: 50%;
+  bottom: 10%;
+  left: 80%;
+  flex-direction: column;
+  transition: 0.8s;
+  width: $widthpx;
+
+  section {
+    background-image: url("../../../../assets/live/image_part_001\ \(1\).jpg");
+    background-size: 120%;
+    background-position: top left;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.308);
+  }
+
+  .info {
+    .commonInfo {
+      .compet {
+        background-color: white;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 10px;
+
+        h2 {
+          margin: 0;
+          font-size: 17px;
+          font-family: "akira";
+          padding-top: 4px;
+          padding-bottom: 4px;
+        }
+      }
+    }
+
+    .riders {
+      .poolTable {
+        background-image: linear-gradient(315deg, #0000002d, #000000);
+        color: white;
+        width: 100%;
+        justify-content: center;
+        border-spacing: 0 0;
+        font-size: 17px;
+        font-weight: 600;
+
+        tr {
+          padding-top: 1px;
+          padding-bottom: 1px;
+          transition: all 0.4s;
+          background: linear-gradient(
+              to right,
+              $transi_rider_color1 50%,
+              $transi_rider_color2 50%
+            )
+            left;
+          background-size: 201% 201%;
+        }
+
+        .firstName {
+          text-align: right;
+          padding-right: 6px;
+        }
+
+        .lastName {
+          text-align: left;
+          padding-left: 6px;
+        }
+
+        .selectedRiderLabel {
+          opacity: 0;
+          font-size: 15px;
+        }
+
+        .selectedRider {
+          transition: 0.4s;
+          background: linear-gradient(
+              to left,
+              $transi_rider_color2 50%,
+              $transi_rider_color1 50%
+            )
+            right;
+          background-size: 200% 200%;
+          color: black;
+          // font-size: 17px;
+
+          .selectedRiderLabel {
+            transition: 0.4s;
+            transition-delay: 0.25s;
+            color: black;
+            opacity: 1;
+          }
+
+          .ArrowLeft {
+            text-align: right;
+            animation: arrowLeft 1.5s infinite ease;
+            animation-direction: both;
+          }
+
+          .ArrowRight {
+            text-align: left;
+            animation: arrowRight 1.5s infinite ease;
+            animation-direction: both;
+          }
+        }
+      }
+    }
+  }
+
+  .timer {
+    display: flex;
+    color: black;
+    transition: 0.05s;
+    margin-top: 10px;
+
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      flex: 1;
+      height: 50px;
+    }
+
+    .timer-label {
+      //			background-image: url("back_NRF.png");
+      //			background-size: 100%;
+
+      background-color: white;
+      color: black;
+      font-size: 22px;
+      font-family: "Akira";
+      text-align: center;
+      line-height: 20px;
+    }
+
+    .timer-timer {
+      color: $text-color;
+      background-color: rgba(0, 0, 0, 0.836);
+      font-weight: 300;
+      font-family: "akira";
+      font-size: 26px;
+    }
+  }
+}
+
+.mainLiveTitle {
+  background-color: rgba(0, 0, 0, 0.801);
+  color: white;
+  font-family: "Akira";
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+  font-style: italic;
+  font-size: 22px;
+}
+
+@keyframes arrowRight {
+  0% {
+    transform: translateX(-6px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-6px);
+  }
+}
+
+@keyframes arrowLeft {
+  0% {
+    transform: translateX(6px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(6px);
+  }
+}

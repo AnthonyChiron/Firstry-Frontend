@@ -1,14 +1,15 @@
 <card title="Légal">
-  <input-file
-    label="Autorisation parentale"
-    labelFile="Télécharger l'authorisation parentale"
-    [file]="contest.parentalAuthorizationFileUrl"
-    (fileSelected)="onFileSelected('parentalAuthorization', $event)"
-  ></input-file>
-  <input-file
-    label="Règlement du contest"
-    labelFile="Télécharger le règlement du contest"
-    [file]="contest.rulesFileUrl"
-    (fileSelected)="onFileSelected('rules', $event)"
-  ></input-file>
-</card>
+  <div class="flexColumn gap20">
+    <input-file
+      label="Autorisation parentale"
+      labelFile="Télécharger l'authorisation parentale"
+      [file]="contest.parentalAuthorizationFileUrl"
+      (fileSelected)="onFileSelected('parentalAuthorization', $event)"
+    ></input-file>
+    <input-file
+      label="Règlement du contest"
+      labelFile="Télécharger le règlement du contest"
+      [file]="contest.rulesFileUrl"
+      (fileSelected)="onFileSelected('rules', $event)"
+    ></input-file></div
+></card>

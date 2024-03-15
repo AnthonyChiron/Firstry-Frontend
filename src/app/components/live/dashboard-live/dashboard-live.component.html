@@ -1,0 +1,11 @@
+<div class="flexCardColumn">
+  <h1>Live</h1>
+  <div class="flexRow">
+    <dropdown
+      [options]="contestsDdOptions"
+      (selected)="selectContest($event.value, true)"
+      [value]="selectedContestId"
+    ></dropdown>
+  </div>
+  <router-outlet></router-outlet>
+</div>

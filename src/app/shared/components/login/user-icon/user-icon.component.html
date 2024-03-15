@@ -38,6 +38,9 @@
       >Se déconnecté</a
     >
   </div>
+  <div *ngIf="isLoggedIn && user.role == 'admin'">
+    <btn (click)="logout()" label="Se déconnecté"></btn>
+  </div>
 </div>
 <modal
   *ngIf="isModalOpen && !isMobile"

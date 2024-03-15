@@ -64,7 +64,11 @@
         routerLink="categories"
       ></nav-btn>
       <nav-btn
-        *ngIf="selectedContest && selectedContest.registrationEndDate < today"
+        *ngIf="
+          selectedContest &&
+          (selectedContest.registrationEndDate < today ||
+            contestsDdOptions[0].label == 'TROTTIRAMA 9')
+        "
         type="primary"
         size="l"
         label="Poules"
@@ -73,7 +77,11 @@
         routerLink="pools"
       ></nav-btn>
       <nav-btn
-        *ngIf="selectedContest && selectedContest.registrationEndDate < today"
+        *ngIf="
+          selectedContest &&
+          (selectedContest.registrationEndDate < today ||
+            contestsDdOptions[0].label == 'TROTTIRAMA 9')
+        "
         type="primary"
         size="l"
         label="Résultats"

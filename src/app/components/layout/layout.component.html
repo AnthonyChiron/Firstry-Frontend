@@ -1,0 +1,16 @@
+<div class="main">
+  <topbar *ngIf="isMobile" (clickToggle)="changeToggle()"></topbar>
+  <mobile-sidebar
+    *ngIf="isMobile"
+    [toggleSidebar]="toggleSidebar"
+    (clickToggle)="changeToggle()"
+  ></mobile-sidebar>
+  <desktop-sidebar class="navbar" *ngIf="!isMobile"></desktop-sidebar>
+  <div class="content">
+    <user-icon *ngIf="!isMobile" class="user"></user-icon>
+    <div [class.container]="container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="mobile-shadow"></div>
+</div>
