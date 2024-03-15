@@ -173,10 +173,12 @@ export class LiveOverviewComponent implements OnInit {
   }
 
   toggleWaiting() {
+    this.isWaitingDisplayed = !this.isWaitingDisplayed;
     this._liveService.updateIsWaitingDisplayed(!this.isWaitingDisplayed);
   }
 
   toggleMain() {
+    this.isMainDisplayed = !this.isMainDisplayed;
     this._liveService.updateIsMainDisplayed(!this.isMainDisplayed);
   }
 
