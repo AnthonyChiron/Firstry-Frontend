@@ -1,6 +1,6 @@
 <div class="bg"></div>
-<waiting-asset></waiting-asset>
-<div id="bloc" class="bloc">
+<waiting-asset *ngIf="isWaitingDisplayed"></waiting-asset>
+<div id="bloc" class="bloc" *ngIf="isMainDisplayed">
   <div id="info" class="info">
     <section id="competition-info" class="commonInfo">
       <h1 id="competitionStep" class="mainLiveTitle">{{ currentStep }}</h1>

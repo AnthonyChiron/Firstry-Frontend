@@ -19,6 +19,8 @@ export class MainLiveAssetComponent implements OnDestroy {
   currentPool: any = '';
   currentTimer: any = 40;
   nbPools: any = 1;
+  isWaitingDisplayed: boolean = false;
+  isMainDisplayed: boolean = false;
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
   config: CountdownConfig = { leftTime: this.currentTimer, format: 'mm:ss' };
@@ -58,6 +60,14 @@ export class MainLiveAssetComponent implements OnDestroy {
         leftTime: this.currentTimer,
         format: 'mm:ss',
       };
+    });
+
+    this._liveService.onEvent<any>('isWaitingAssetDisplayed', (data) => {
+      this.isWaitingDisplayed = data;
+    });
+
+    this._liveService.onEvent<any>('isMainAssetDisplayed', (data) => {
+      this.isMainDisplayed = data;
     });
 
     this._liveService.onEvent<any>('nbPools', (data) => {
