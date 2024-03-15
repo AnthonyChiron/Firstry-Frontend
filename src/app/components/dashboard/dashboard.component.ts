@@ -47,9 +47,12 @@ export class DashboardComponent implements OnInit {
   selectedContest: ContestModel;
   selectedContestId: string;
   isCreateContest: boolean = false;
-  today: Date = new Date();
+  isPoolDisplayed: boolean = false;
+  isResultsDisplayed: boolean = false;
+  today: Date;
 
   ngOnInit(): void {
+    this.today = new Date();
     this.isLoading = true;
     this._contestsService.getOrganizerContests().subscribe((data) => {
       if (data && data.length > 0) {
@@ -84,6 +87,13 @@ export class DashboardComponent implements OnInit {
     );
     if (redirect) {
       this.router.navigate(['/dashboard', this.selectedContestId, 'overview']);
+    }
+    if (new Date(this.selectedContest.registrationEndDate) < this.today) {
+      this.isResultsDisplayed = true;
+      this.isPoolDisplayed = true;
+    } else {
+      this.isResultsDisplayed = false;
+      this.isPoolDisplayed = false;
     }
     this.isLoading = false;
   }
