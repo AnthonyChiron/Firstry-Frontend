@@ -6,6 +6,7 @@
 }
 
 .dropdown {
+  z-index: 10;
   position: relative;
   width: 100%;
 
@@ -31,7 +32,7 @@
     flex-direction: column;
     background-color: $firstry-white-2;
     border-radius: 6px;
-    z-index: 20;
+    z-index: 999;
 
     a {
       transition: 0.3s;

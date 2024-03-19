@@ -1,9 +1,14 @@
 <div class="flexCardRow" *ngIf="contest">
   <categories-navigation
     class="flex1"
+    *ngIf="!isMobile"
     [categories]="contest.categories"
     [selectedCategory]="selectedCategory"
     (categorySelected)="onSelectedCategory($event)"
   ></categories-navigation>
-  <result-table class="flex2" [category]="selectedCategory"></result-table>
+  <result-table
+    class="flex2"
+    [category]="selectedCategory"
+    [categories]="contest.categories"
+  ></result-table>
 </div>

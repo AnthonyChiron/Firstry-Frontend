@@ -1,6 +1,8 @@
+import { map } from 'rxjs';
 import { is } from 'date-fns/locale';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { PoolsService } from 'src/app/shared/data/PoolsService/pools.service';
+import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
 
 @Component({
   selector: 'result-table',
@@ -9,14 +11,26 @@ import { PoolsService } from 'src/app/shared/data/PoolsService/pools.service';
 })
 export class ResultTableComponent implements OnInit, OnChanges {
   @Input() category: any;
+  @Input() categories: any;
   results: any[];
   stepsOptions: any[] = [];
   currentStep: any;
   missings: any[];
+  isMobile: boolean = false;
+  categoriesOptions: any[] = [];
 
-  constructor(private _poolsService: PoolsService) {}
+  constructor(
+    private _poolsService: PoolsService,
+    private _screenSizeService: ScreenSizeService
+  ) {}
 
   ngOnInit() {
+    this._screenSizeService.isMobile$.subscribe((isMobile) => {
+      this.isMobile = isMobile;
+    });
+
+    this.initCategoryOptions();
+
     if (this.category) {
       this.initStepOptions();
       if (this.currentStep.isResultPublished) this.getResults();
@@ -25,6 +39,20 @@ export class ResultTableComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
+    if (this.category) {
+      this.initStepOptions();
+      if (this.currentStep.isResultPublished) {
+        this.getResults();
+        this.initResults();
+      } else {
+        this.results = [];
+        this.missings = [];
+      }
+    }
+  }
+
+  selectCategory(event) {
+    this.category = this.categories.find((category) => category._id === event);
     if (this.category) {
       this.initStepOptions();
       if (this.currentStep.isResultPublished) {
@@ -60,6 +88,12 @@ export class ResultTableComponent implements OnInit, OnChanges {
     // remove missing riders from results
     this.missings = this.results.filter((result) => result.isMissing);
     this.results = this.results.filter((result) => !result.isMissing);
+  }
+
+  initCategoryOptions() {
+    this.categoriesOptions = this.categories.map((category) => {
+      return { label: category.name, value: category._id };
+    });
   }
 
   formatPoolsToResults(poolsEntries: any[]) {
