@@ -129,8 +129,11 @@ export class LiveOverviewComponent implements OnInit {
   }
 
   nextRider() {
+    console.log(this.currentPools);
+    console.log(this.currentPoolNumber);
     if (
-      this.currentRiderNumber < this.currentPools[this.currentPoolNumber].length
+      this.currentRiderNumber <
+      this.currentPools[this.currentPoolNumber - 1].length
     )
       this.currentRiderNumber++;
     else this.currentRiderNumber = 1;
@@ -139,6 +142,7 @@ export class LiveOverviewComponent implements OnInit {
       this.currentPools[this.currentPoolNumber - 1][
         this.currentRiderNumber - 1
       ];
+    console.log(this.currentRider);
     this._liveService.updateCurrentRider(this.currentRider);
   }
 
@@ -192,7 +196,6 @@ export class LiveOverviewComponent implements OnInit {
   }
 
   toggleWaiting() {
-    console.log('toggleWaiting');
     this.isWaitingDisplayed = !this.isWaitingDisplayed;
     this._liveService.updateIsWaitingDisplayed(this.isWaitingDisplayed);
   }

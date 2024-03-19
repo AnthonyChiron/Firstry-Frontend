@@ -27,6 +27,10 @@ export class ContestResultsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this._screenSizeService.isMobile$.subscribe((isMobile) => {
+      this.isMobile = isMobile;
+    });
+
     this._activatedRoute.parent.params.subscribe((params) => {
       if (params.id) {
         this._contestService.getById(params.id).subscribe((contest) => {
