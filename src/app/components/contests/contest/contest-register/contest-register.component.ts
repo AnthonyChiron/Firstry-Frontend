@@ -11,6 +11,7 @@ import { RiderModel } from 'src/app/models/rider.model';
 import { PaymentService } from 'src/app/shared/data/PaymentService/payment.service';
 import { CategoryRegistrationModelDTO } from 'src/app/models/category.model';
 import { CategoriesService } from 'src/app/shared/data/CategoriesService/categories.service';
+import { AgePipe } from 'src/app/shared/pipe/age.pipe';
 
 @Component({
   selector: 'app-contest-register',
@@ -64,7 +65,8 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
               this.isLoggedin = true;
               this.rider = user.rider;
 
-              if (new Date(this.rider.birthDate) > new Date(2003, 1, 1)) {
+              // Use pipe age to check if rider is minor
+              if (AgePipe.apply(this.rider.birthDate) < 18) {
                 this.isRiderMinor = true;
               }
 

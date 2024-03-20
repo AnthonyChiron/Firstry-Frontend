@@ -52,7 +52,10 @@ export class ContestComponent implements OnInit {
 
   getMobileNavbarLinks() {
     if (this.isMobile) {
-      if (this.contest && this.contest.registrationEndDate > new Date()) {
+      if (
+        this.contest &&
+        new Date(this.contest.registrationEndDate) > new Date()
+      ) {
         this.links = [
           { label: 'Aperçu', route: 'overview', icon: 'fa-solid fa-home' },
           {
@@ -74,11 +77,21 @@ export class ContestComponent implements OnInit {
         ];
       }
     } else {
-      this.links = [
-        { label: 'Aperçu', route: 'overview', icon: 'fa-solid fa-home' },
-        { label: 'Inscription', route: 'register', icon: 'fa-solid fa-plus' },
-        { label: 'Résultats', route: 'results', icon: 'fa-solid fa-list-ol' },
-      ];
+      if (
+        this.contest &&
+        new Date(this.contest.registrationEndDate) > new Date()
+      ) {
+        this.links = [
+          { label: 'Aperçu', route: 'overview', icon: 'fa-solid fa-home' },
+          { label: 'Inscription', route: 'register', icon: 'fa-solid fa-plus' },
+          { label: 'Résultats', route: 'results', icon: 'fa-solid fa-list-ol' },
+        ];
+      } else {
+        this.links = [
+          { label: 'Aperçu', route: 'overview', icon: 'fa-solid fa-home' },
+          { label: 'Résultats', route: 'results', icon: 'fa-solid fa-list-ol' },
+        ];
+      }
     }
   }
 }
