@@ -19,6 +19,7 @@ import { PoolsService } from 'src/app/shared/data/PoolsService/pools.service';
 import { PoolUtilityService } from 'src/app/shared/services/PoolUtilityService/poolUtilityService.service';
 import { compilePipeFromMetadata } from '@angular/compiler';
 import { th } from 'date-fns/locale';
+import { PdfService } from 'src/app/shared/services/PdfServices/pdf.service';
 
 @Component({
   selector: 'pools-handler',
@@ -56,7 +57,8 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
 
   constructor(
     private _poolsService: PoolsService,
-    private _poolUtilityService: PoolUtilityService
+    private _poolUtilityService: PoolUtilityService,
+    private _pdfService: PdfService
   ) {}
 
   async ngOnInit() {
@@ -311,5 +313,19 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
   updatePoolsIds() {
     this.poolsIds = this.pools.map((_, index) => `pool-${index}`);
     this.poolsIds.push('missing');
+  }
+
+  async downloadJugesPaper() {
+    // this._pdfService.downloadPDF('test', 'test.pdf');
+    // this._pdfService.generatePdf(
+    //   this.originalPoolsEntries.filter((pool) => !pool.isMissing)
+    // );
+  }
+
+  downloadSpeakerPaper() {
+    this._pdfService.generateSpeakerPdf(
+      this.originalPoolsEntries,
+      this.category.name
+    );
   }
 }

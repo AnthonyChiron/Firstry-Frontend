@@ -25,7 +25,15 @@
     <div *ngIf="isLoading" class="flexRow alignCenter justifyCenter">
       <loader></loader>
     </div>
-    <div class="content" *ngIf="!isLoading">
+    <div class="content flexColumn gap10" *ngIf="!isLoading">
+      <div class="flexRow gap10 alignCenter flexEnd">
+        <btn
+          label="Fiches speaker"
+          icon="fa-solid fa-download"
+          (click)="downloadSpeakerPaper()"
+        ></btn>
+      </div>
+
       <div
         class="flexColumn alignCenter"
         *ngIf="pools.length == 0 && registrations.length == 0"
@@ -43,6 +51,7 @@
         </p>
         <btn label="Créer les poules" (click)="edit = true"></btn>
       </div>
+
       <div *ngIf="edit" class="flexColumn gap10">
         <p>
           Vous pouvez déplacer les riders d'une poule à une autre. <br />
@@ -197,6 +206,7 @@
             </div>
           </div>
         </div>
+
         <div class="pool" *ngFor="let pool of pools; index as i">
           <h3 class="poolTitle">Poule {{ i + 1 }}</h3>
           <div class="poolRiders">

@@ -37,6 +37,7 @@ import { ContestStateComponent } from './overview/contest-state/contest-state.co
 import { LegalFilesComponent } from './parameters/legal-files/legal-files.component';
 import { RegistrationsComponent } from './registrations/registrations.component';
 import { RegistrationsTableComponent } from './registrations/registrations-table/registrations-table.component';
+import { JugesPaperComponent } from './pools/juges-paper/juges-paper.component';
 
 const dashboardRoutes: Routes = [
   {
@@ -122,6 +123,7 @@ const dashboardRoutes: Routes = [
     LegalFilesComponent,
     RegistrationsComponent,
     RegistrationsTableComponent,
+    JugesPaperComponent,
   ],
   imports: [
     CommonModule,
