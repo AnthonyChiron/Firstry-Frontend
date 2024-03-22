@@ -123,7 +123,9 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     this.isLoading = true;
 
     // Check si une pool est vide && afficher un message d'erreur
-    if (this.checkEmptyPool() === true) return;
+    // if (this.checkEmptyPool() === true) return;
+
+    this.removeEmptyPools();
 
     this.isError = false;
     this.edit = false;
@@ -308,6 +310,10 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
       }
     }
     return false;
+  }
+
+  removeEmptyPools() {
+    this.pools = this.pools.filter((pool) => pool.length > 0);
   }
 
   updatePoolsIds() {
