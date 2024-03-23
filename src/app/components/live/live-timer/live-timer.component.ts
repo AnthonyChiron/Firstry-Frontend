@@ -10,6 +10,7 @@ export class LiveTimerComponent {
   currentTimer: any;
 
   timerOptions: any[] = [
+    { label: '00:35', value: '35' },
     { label: '00:40', value: '40' },
     { label: '00:45', value: '45' },
     { label: '00:50', value: '50' },
