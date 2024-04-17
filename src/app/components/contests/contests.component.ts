@@ -29,6 +29,7 @@ export class ContestsComponent implements OnInit {
   nextMonthContests: ContestModel[] = null;
   comingSoonContests: ContestModel[] = null;
   currentMonthContests: ContestModel[] = null;
+  previousContests: ContestModel[] = null;
   today: Date;
 
   ngOnInit(): void {
@@ -48,6 +49,7 @@ export class ContestsComponent implements OnInit {
         this.initCurrentMonthContests();
         this.initNextMonthContests();
         this.initComingSoonContests();
+        this.initPreviousContests();
         console.log(this.currentMonthContests);
         console.log(this.nextWeekContests);
       }
@@ -124,6 +126,12 @@ export class ContestsComponent implements OnInit {
 
     this.comingSoonContests = this.contests.filter(
       (contest) => contest.startDate > lastDayNextMonth
+    );
+  }
+
+  initPreviousContests() {
+    this.previousContests = this.contests.filter(
+      (contest) => contest.endDate < this.today
     );
   }
 }
