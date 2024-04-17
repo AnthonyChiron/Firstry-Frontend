@@ -131,7 +131,7 @@ export class ContestsComponent implements OnInit {
 
   initPreviousContests() {
     this.previousContests = this.contests.filter(
-      (contest) => contest.endDate < this.today
+      (contest) => contest.endDate < new Date()
     );
   }
 }
