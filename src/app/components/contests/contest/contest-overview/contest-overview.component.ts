@@ -12,6 +12,7 @@ import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-siz
 export class ContestOverviewComponent implements OnInit {
   contest: ContestModel = null;
   isMobile: boolean = false;
+  today: Date = new Date();
 
   constructor(
     private _screenSizeService: ScreenSizeService,
