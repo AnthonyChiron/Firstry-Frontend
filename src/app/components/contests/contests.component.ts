@@ -50,8 +50,7 @@ export class ContestsComponent implements OnInit {
         this.initNextMonthContests();
         this.initComingSoonContests();
         this.initPreviousContests();
-        console.log(this.currentMonthContests);
-        console.log(this.nextWeekContests);
+        console.log(this.previousContests);
       }
     });
   }
@@ -131,7 +130,7 @@ export class ContestsComponent implements OnInit {
 
   initPreviousContests() {
     this.previousContests = this.contests.filter(
-      (contest) => contest.endDate < new Date()
+      (contest) => contest.endDate < this.today
     );
   }
 }
