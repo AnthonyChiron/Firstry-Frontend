@@ -45,9 +45,27 @@
             size="s"
             color="black"
             routerLink="/contests/{{ contest._id }}/register"
+            *ngIf="contest.registrationEndDate > today"
           >
             <div class="inscriptionCard flexRow alignCenter gap10">
-              <h2>JE VEUX <b>M'INSCRIRE</b></h2>
+              <h2>
+                JE VEUX <br />
+                <b>M'INSCRIRE</b>
+              </h2>
+            </div>
+          </card>
+          <card
+            class="flex1 cursorPointer"
+            size="s"
+            color="black"
+            routerLink="/contests/{{ contest._id }}/results"
+            *ngIf="contest.registrationEndDate < today"
+          >
+            <div class="inscriptionCard flexRow alignCenter gap10">
+              <h2>
+                VOIR LES <br />
+                <b>RESULTATS</b>
+              </h2>
             </div>
           </card>
         </div>
