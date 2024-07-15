@@ -2,9 +2,11 @@ import { OrganizerInfoFormComponent } from './../../../account/organizer-info-fo
 import { filter } from 'rxjs';
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { CategoryModel } from 'src/app/models/category.model';
@@ -29,6 +31,7 @@ import { PdfService } from 'src/app/shared/services/PdfServices/pdf.service';
 export class PoolsHandlerComponent implements OnInit, OnChanges {
   @Input() category: CategoryModel;
   @Input() registrations: RegistrationModel[];
+  @Output() poolChanged: EventEmitter<any> = new EventEmitter<any>();
 
   edit: boolean = false;
   isLoading: boolean = false;
@@ -37,7 +40,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
 
   isNewPools: boolean = true;
   originalPoolsEntries: any;
-  currentStep: any;
+  @Input() currentStep: any;
   stepsOptions: any[] = [];
   displayStepDropdown: boolean = false;
 
@@ -64,7 +67,6 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
   async ngOnInit() {
     this.isLoading = true;
 
-    this.initCurrentStep();
     await this.getPoolFromDb();
   }
 
@@ -73,7 +75,6 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     this.missing = [];
     this.edit = false;
 
-    this.initCurrentStep();
     await this.getPoolFromDb();
 
     if (
@@ -82,16 +83,6 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
         this.registrations.length !== this.originalPoolsEntries.length)
     )
       this.createPoolsFromRegistrations(this.registrations);
-  }
-
-  initCurrentStep() {
-    this.stepsOptions = this.category.steps.map((step) => {
-      return { label: step.name, value: step._id };
-    });
-
-    this.currentStep = this._poolUtilityService.getPoolCurrentStep(
-      this.category.steps
-    );
   }
 
   drop(event: CdkDragDrop<any>) {
@@ -137,6 +128,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
           this.originalPoolsEntries = [...pools];
           this.isNewPools = false;
           this.isLoading = false;
+          this.poolChanged.emit();
         });
     else
       this._poolsService
@@ -145,6 +137,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
           this.originalPoolsEntries = [...pools];
           this.isNewPools = false;
           this.isLoading = false;
+          this.poolChanged.emit();
         });
   }
 
@@ -235,7 +228,9 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     this.pools = this.formatPoolsEntriesInDoubleTable(
       pools.filter((pool) => pool.isMissing === false)
     );
-    if (this.currentStep._id != pools[0].stepId) {
+
+    console.log(this.currentStep._id);
+    if (this.currentStep._id != pools[0].step) {
       const pools = this.pools.flat();
       this.createPoolsFromRegistrations(pools);
     }
@@ -283,13 +278,6 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     if (qualifStep.isResultPublished === false)
       this.displayStepDropdown = false;
     return (this.displayStepDropdown = true);
-  }
-
-  async selectStep(event) {
-    this.edit = false;
-    this.currentStep = this.category.steps.find((step) => step._id === event);
-
-    await this.getPoolFromDb();
   }
 
   selectPerPool(event) {

@@ -66,13 +66,8 @@ const dashboardRoutes: Routes = [
         canActivate: [IsAuthGuard],
       },
       {
-        path: 'pools',
+        path: 'pools-results',
         component: PoolsComponent,
-        canActivate: [IsAuthGuard],
-      },
-      {
-        path: 'results',
-        component: ResultsComponent,
         canActivate: [IsAuthGuard],
       },
       {

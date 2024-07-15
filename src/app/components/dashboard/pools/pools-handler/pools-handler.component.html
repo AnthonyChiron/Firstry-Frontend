@@ -1,17 +1,11 @@
 <card
   *ngIf="category && registrations"
-  [title]="'Poules - ' + category.name"
+  title="Poules"
   [btn]="pools.length > 0 && !edit"
   (btnClicked)="edit = !edit"
+  [toggleBtn]="true"
 >
   <div header class="flexRow alignCenter gap10">
-    <dropdown
-      *ngIf="displayStepDropdown && !edit"
-      [options]="stepsOptions"
-      (selected)="selectStep($event.value)"
-      [value]="currentStep._id"
-      [ngStyle]="{ width: '10vw' }"
-    ></dropdown>
     <div *ngIf="edit" class="flexRow alignCenter gap10">
       <p>Riders par poule</p>
       <dropdown

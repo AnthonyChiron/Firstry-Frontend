@@ -1,4 +1,8 @@
-<card title="Résultats">
+<card
+  title="Résultats"
+  [subTitle]="currentStep.isResultPublished ? 'Publié' : 'Non publié'"
+  [toggleBtn]="true"
+>
   <div *ngIf="isLoading" class="flexRow alignCenter justifyCenter">
     <loader></loader>
   </div>
@@ -15,13 +19,6 @@
       label="Dépublier"
       (click)="isUnpublishConfirmationModalOpen = true"
     ></btn>
-    <dropdown
-      class="contestDropDown"
-      [options]="stepsOptions"
-      (selected)="selectStep($event.value)"
-      [value]="currentStep._id"
-      [ngStyle]="{ width: '10vw' }"
-    ></dropdown>
   </div>
   <div
     *ngIf="!isLoading && currentStep && pools.length != 0"
@@ -100,8 +97,16 @@
       </div>
       <card class="flex2" color="2" size="m" title="Aperçu du classement">
         <app-table
-          [headers]="['#', 'Nom & prénom', 'Score', 'Qualifié ?']"
-          [columns]="['rank', 'name', 'score', 'isQualified']"
+          [headers]="
+            currentStep && currentStep.name == 'QUALIFICATION'
+              ? ['#', 'Nom & prénom', 'Score', 'Qualifié ?']
+              : ['#', 'Nom & prénom', 'Score']
+          "
+          [columns]="
+            currentStep && currentStep.name == 'QUALIFICATION'
+              ? ['rank', 'name', 'score', 'isQualified']
+              : ['rank', 'name', 'score']
+          "
           [data]="table"
           sortColumn="rank"
         ></app-table>
@@ -116,10 +121,6 @@
       Les poules de cette catégorie n'ont pas encore été créées pour l'étape
       <b>{{ currentStep.name | lowercase }}</b>
     </p>
-    <btn
-      label="Créer les poules"
-      [routerLink]="['/dashboard', contest._id, 'pools']"
-    ></btn>
   </div>
 </card>
 <confirmation-modal
