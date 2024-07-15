@@ -52,7 +52,7 @@
             </td>
             <td>{{ result.rider.lastName | uppercase }}</td>
             <td>{{ result.rider.firstName | lowercase | Capitalize }}</td>
-            <td>{{ result.score }}</td>
+            <td>{{ result.score == 0 ? "DNF" : result.score }}</td>
             <td *ngIf="currentStep.name != 'FINALE'">
               <div class="flexRow justifyCenter">
                 <div *ngIf="result.isQualified" class="greenDot"></div>

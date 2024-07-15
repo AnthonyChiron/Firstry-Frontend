@@ -15,12 +15,37 @@
     [selectedCategory]="selectedCategory"
     (categorySelected)="onSelectedCategory($event)"
   ></categories-navigation>
-  <pools-handler
-    class="flex2"
-    [category]="selectedCategory"
-    [registrations]="selectedRegistrations"
-  >
-  </pools-handler>
+  <div class="flex2">
+    <div class="flexCardColumn">
+      <card class="flex1" size="m">
+        <div class="flexRow alignCenter spaceBetween">
+          <h2 class="cardTitle">{{ selectedCategory.name }}</h2>
+          <dropdown
+            label="Étape"
+            [options]="stepsOptions"
+            (selected)="selectStep($event.value)"
+            [value]="currentStep._id"
+            [ngStyle]="{ width: '10vw' }"
+          ></dropdown>
+        </div>
+      </card>
+      <pools-handler
+        class="flex2"
+        [category]="selectedCategory"
+        [currentStep]="currentStep"
+        [registrations]="selectedRegistrations"
+        (poolChanged)="onPoolChanged()"
+      >
+      </pools-handler>
+      <results-handler
+        class="flex3"
+        [contest]="contest"
+        [currentStep]="currentStep"
+        [category]="selectedCategory"
+        [poolsChanged]="poolChanged"
+      ></results-handler>
+    </div>
+  </div>
 </div>
 <div
   *ngIf="contest && registrations && contest.categories.length == 0"
@@ -33,7 +58,7 @@
     [routerLink]="['/dashboard', contest._id, 'categories']"
   ></btn>
 </div>
-<div class="flexColumn alignCenter gap10" *ngIf="!isPoolsAvailable">
+<div class="flexColumn alignCenter gap10" *ngIf="contest && !isPoolsAvailable">
   <h2>Les inscriptions ne sont pas terminées !</h2>
   <p>La création des poules sera disponible après la fin des inscriptions.</p>
 </div>

@@ -13,6 +13,7 @@ import { PoolModel, PoolResultDTOModel } from 'src/app/models/pool.model';
 export class ResultsHandlerComponent implements OnInit, OnChanges {
   @Input() category: CategoryModel;
   @Input() contest: ContestModel;
+  @Input() poolsChanged: boolean;
   originalPools: any[] = [];
   pools: PoolResultDTOModel[][] = [];
   edit: boolean = false;
@@ -20,9 +21,8 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
 
   isLoading: boolean = false;
 
-  currentStep: any;
+  @Input() currentStep: any;
   table: any[];
-  stepsOptions: any[] = [];
 
   isUnpublishConfirmationModalOpen: boolean = false;
   isPublishConfirmationModalOpen: boolean = false;
@@ -33,26 +33,11 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
-    this.stepsOptions = this.category.steps.map((step) => {
-      return { label: step.name, value: step._id };
-    });
-
-    this.currentStep = this._poolUtilityService.getResultCurrentStep(
-      this.category.steps
-    );
-
     this.getPools();
   }
 
   ngOnChanges() {
-    this.stepsOptions = this.category.steps.map((step) => {
-      return { label: step.name, value: step._id };
-    });
-
-    this.currentStep = this._poolUtilityService.getResultCurrentStep(
-      this.category.steps
-    );
-
+    if (this.poolsChanged) this.poolsChanged = false;
     this.getPools();
   }
 
@@ -168,11 +153,12 @@ export class ResultsHandlerComponent implements OnInit, OnChanges {
   }
 
   isResultPublishable() {
-    return (
-      this.pools.length > 0 &&
-      this._poolUtilityService.checkIfAllPoolsHaveResults(this.pools.flat()) &&
-      !this.currentStep.isResultPublished
-    );
+    return this.pools.length > 0 && !this.currentStep.isResultPublished;
+    // return (
+    //   this.pools.length > 0 &&
+    //   this._poolUtilityService.checkIfAllPoolsHaveResults(this.pools.flat()) &&
+    //   !this.currentStep.isResultPublished
+    // );
   }
 
   calculatePoints(rider) {
