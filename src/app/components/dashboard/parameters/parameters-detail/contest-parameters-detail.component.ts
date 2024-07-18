@@ -10,6 +10,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
+import { ExportImportService } from 'src/app/shared/services/ExportImportService/exportImport.service';
 
 @Component({
   selector: 'contest-parameters-detail',
@@ -31,7 +32,8 @@ export class ContestParametersDetailComponent implements OnInit {
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _contestService: ContestsService,
-    private _screenSize: ScreenSizeService
+    private _screenSize: ScreenSizeService,
+    private _exportImportService: ExportImportService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +46,17 @@ export class ContestParametersDetailComponent implements OnInit {
         this.contest = parseContestModel(contest);
         this.isLoading = false;
       });
+    });
+  }
+
+  exportRiders() {
+    this._exportImportService.getRidersExport().subscribe((response) => {
+      const a = document.createElement('a');
+      const objectUrl = URL.createObjectURL(response);
+      a.href = objectUrl;
+      a.download = 'riders_export.csv';
+      a.click();
+      URL.revokeObjectURL(objectUrl);
     });
   }
 }
