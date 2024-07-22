@@ -102,6 +102,7 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
 
   selectCategory(category) {
     this.selectedCategory = category;
+    console.log(this.selectedCategory);
     if (this.isPaymentStep) {
       this.cancelRegistration();
       this.isPaymentStep = false;

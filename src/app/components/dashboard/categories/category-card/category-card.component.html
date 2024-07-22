@@ -77,7 +77,30 @@
         >
         </note>
       </div>
-      <div class="inscription flexRow gap10">
+      <div class="flexRow gap10">
+        <slide-input
+          *ngIf="isNew && contest.isFederal"
+          class="flex1"
+          name="isFederal"
+          formControlName="isFederal"
+          label="Catégorie fédérale ?"
+          [edit]="edit"
+        >
+        </slide-input>
+        <slide-input
+          *ngIf="isNew"
+          class="flex1"
+          name="isQualificationStep"
+          formControlName="isQualificationStep"
+          label="Qualification ?"
+          [edit]="edit"
+        >
+        </slide-input>
+      </div>
+      <div
+        class="inscription flexRow gap10"
+        *ngIf="categoryForm.value.isFederal === false"
+      >
         <input-text
           class="flex1"
           name="maxRiders"
@@ -109,15 +132,6 @@
           [edit]="edit"
         >
         </slide-input> -->
-        <slide-input
-          *ngIf="isNew"
-          class="flex1"
-          name="isQualificationStep"
-          formControlName="isQualificationStep"
-          label="Qualification ?"
-          [edit]="edit"
-        >
-        </slide-input>
       </div>
 
       <div class="steps">

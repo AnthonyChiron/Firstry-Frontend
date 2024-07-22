@@ -1,9 +1,11 @@
+import { is } from 'date-fns/locale';
 import { GenericModel } from './generic.model';
 import { StepModel } from './step.model';
 
 export interface CategoryModel extends GenericModel {
   name: String;
   description: String;
+  isFederal: boolean;
   sports: [];
   maxRiders: Number;
   registerPrice: Number;
@@ -17,6 +19,7 @@ export interface CategoryModelDTO {
   category: {
     name: String;
     description: String;
+    isFederal: boolean;
     sports: [];
     maxRiders: Number;
     registerPrice: Number;
@@ -31,6 +34,7 @@ export interface CategoryModelDTO {
 export interface CategoryRegistrationModelDTO {
   name: String;
   description: String;
+  isFederal: boolean;
   sports: [];
   maxRiders: Number;
   NbRegistration: Number;

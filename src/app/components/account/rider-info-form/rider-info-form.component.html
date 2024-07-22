@@ -19,6 +19,14 @@
         formControlName="firstName"
       ></input-text>
     </div>
+    <div class="flexRow gap10">
+      <input-text
+        label="Numéro de licence fédérale"
+        [edit]="edit"
+        [error]="_fus.isFieldInvalid('licenceNumber')"
+        formControlName="licenceNumber"
+      ></input-text>
+    </div>
     <input-textarea
       label="Bio"
       [edit]="edit"

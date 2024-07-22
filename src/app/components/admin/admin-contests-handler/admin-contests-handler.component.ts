@@ -19,4 +19,10 @@ export class AdminContestsHandlerComponent implements OnInit {
       this.isLoading = false;
     });
   }
+
+  toggleIsFederal(id) {
+    this._contestService.toggleIsFederalById(id).subscribe((res) => {
+      this.ngOnInit();
+    });
+  }
 }

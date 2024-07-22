@@ -21,6 +21,7 @@ export class FormRiderService extends FormUtilityService {
     return this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      licenceNumber: [''],
       bio: [''],
       nationality: ['', Validators.required],
       city: ['', [Validators.required, Validators.minLength(2)]],
@@ -38,6 +39,7 @@ export class FormRiderService extends FormUtilityService {
     form.patchValue({
       firstName: data.firstName,
       lastName: data.lastName,
+      licenceNumber: data.licenceNumber,
       bio: data.bio,
       nationality: data.nationality,
       city: data.city,

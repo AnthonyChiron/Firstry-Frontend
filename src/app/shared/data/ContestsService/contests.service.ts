@@ -70,6 +70,10 @@ export class ContestsService extends CrudService<ContestModel> {
   isContestPublishable(contestId: string): Observable<any> {
     return this.http.get(this.baseUrl + '/isContestPublishable/' + contestId);
   }
+
+  toggleIsFederalById(id) {
+    return this.http.put(`${this.baseUrl}/toggleIsFederalById/${id}`, {});
+  }
 }
 
 export interface ContestPublishableStatus {
