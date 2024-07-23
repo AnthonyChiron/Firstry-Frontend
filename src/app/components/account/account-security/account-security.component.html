@@ -56,9 +56,7 @@
     <div class="field">
       <div *ngIf="!changePasswordEdit">
         <label>Password</label>
-        <p *ngIf="!isPasswordChanging">
-          On va pas vous montrer votre mot de passe hein
-        </p>
+        <p *ngIf="!isPasswordChanging">**************</p>
         <p *ngIf="isPasswordChanging">
           Un email vous a été envoyé pour confirmer votre nouveau mot de passe.
         </p>

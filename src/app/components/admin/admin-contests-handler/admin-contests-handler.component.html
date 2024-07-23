@@ -20,9 +20,12 @@
       </h3>
       <h4 class="W15vw">{{ contest.startDate | date : "dd/MM/YY" }}</h4>
       <div class="W15vw flexRow gap10">
-        <btn type="valid"></btn>
-        <btn type="warning"></btn>
-        <btn type="danger"></btn>
+        <btn
+          [type]="contest.isFederal ? 'valid' : 'danger'"
+          [icon]="contest.isFederal ? 'fa-solid fa-check' : 'fa-solid fa-times'"
+          label="Contest fédéral"
+          (click)="toggleIsFederal(contest._id)"
+        ></btn>
       </div>
     </div>
   </div>

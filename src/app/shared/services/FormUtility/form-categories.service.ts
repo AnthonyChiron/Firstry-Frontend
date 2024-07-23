@@ -13,10 +13,11 @@ export class FormCategoriesService extends FormUtilityService {
   }
 
   createCategoriesForm(): FormGroup {
-    return this.formBuilder.group({
+    const form = this.formBuilder.group({
       _id: [''],
       name: ['', Validators.required],
       description: [''],
+      isFederal: [false, Validators.required],
       maxRiders: [
         '0',
         [Validators.required, Validators.min(1), this.numberValidator()],
@@ -32,6 +33,13 @@ export class FormCategoriesService extends FormUtilityService {
       stepQualif: this.createStepForm('QUALIFICATION'),
       stepFinal: this.createStepForm('FINALE'),
     });
+
+    // Subscribe to changes in isFederal
+    form.get('isFederal').valueChanges.subscribe((isFederal: boolean) => {
+      this.updateValidators(form, isFederal);
+    });
+
+    return form;
   }
 
   createStepForm(type): FormGroup {
@@ -69,6 +77,7 @@ export class FormCategoriesService extends FormUtilityService {
         _id: category._id,
         name: category.name,
         description: category.description,
+        isFederal: category.isFederal,
         maxRiders: category.maxRiders,
         sports: category.sports,
         registerPrice: category.registerPrice,
@@ -143,6 +152,7 @@ export class FormCategoriesService extends FormUtilityService {
       category: {
         name: categoryForm.get('name').value,
         description: categoryForm.get('description').value,
+        isFederal: categoryForm.get('isFederal').value,
         maxRiders: Number(categoryForm.get('maxRiders').value),
         sports: categoryForm.get('sports').value,
         registerPrice: Number(categoryForm.get('registerPrice').value),
@@ -198,5 +208,29 @@ export class FormCategoriesService extends FormUtilityService {
       };
     });
     return datesOptions;
+  }
+
+  private updateValidators(form: FormGroup, isFederal: boolean): void {
+    const maxRidersControl = form.get('maxRiders');
+    const registerPriceControl = form.get('registerPrice');
+
+    if (isFederal) {
+      maxRidersControl.setValidators([]);
+      registerPriceControl.setValidators([]);
+    } else {
+      maxRidersControl.setValidators([
+        Validators.required,
+        Validators.min(1),
+        this.numberValidator(),
+      ]);
+      registerPriceControl.setValidators([
+        Validators.required,
+        Validators.min(1),
+        this.numberValidator(),
+      ]);
+    }
+
+    maxRidersControl.updateValueAndValidity();
+    registerPriceControl.updateValueAndValidity();
   }
 }

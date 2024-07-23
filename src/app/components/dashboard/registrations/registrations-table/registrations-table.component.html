@@ -24,7 +24,7 @@
       <p class="width15">
         {{ registration.rider.birthDate | date : "dd/MM/yyyy" }}
       </p>
-      <div class="flexRow width15 alignCenter gap10">
+      <div class="flexRow width15 alignCenter gap10" *ngIf="!isFederal">
         <p>
           {{
             registration.state == "pending_approval"
@@ -60,7 +60,7 @@
           (click)="refuseRider(registration._id)"
         ></btn>
         <btn
-          *ngIf="registration.state === 'validated'"
+          *ngIf="registration.state === 'validated' && !isFederal"
           icon="fa-solid fa-user-slash"
           label="Supprimer & Rembourser"
           type="danger"

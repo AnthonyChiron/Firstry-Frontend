@@ -10,6 +10,7 @@ export class RegistrationsTableComponent {
   @Input() registrations: any[] = [];
   @Input() header: boolean = true;
   @Input() label: string = '';
+  @Input() isFederal: boolean = false;
   @Output() validRegistration = new EventEmitter();
   @Output() refuseRegistration = new EventEmitter();
   @Output() refundRegistration = new EventEmitter();

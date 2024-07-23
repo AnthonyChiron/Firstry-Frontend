@@ -50,7 +50,14 @@
     class="flex1 registerCard"
     [title]="'Inscription - ' + selectedCategory.name"
   >
-    <div class="flexColumn gap10">
+    <div *ngIf="selectedCategory.isFederal" class="flexColumn gap20">
+      <p>
+        Vous êtes sur le point de vous inscrire à une catégorie fédérale. Pour
+        cela, vous devez vous rendre sur le site de la fédération concernée.
+      </p>
+      <btn class="alignSelfCenter" label="Je m'inscris !"></btn>
+    </div>
+    <div *ngIf="!selectedCategory.isFederal" class="flexColumn gap10">
       <div
         class="flexColumn"
         *ngIf="

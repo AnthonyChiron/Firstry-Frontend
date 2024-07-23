@@ -3,6 +3,7 @@ import { GenericModel } from './generic.model';
 export interface RiderModel extends GenericModel {
   firstName: string;
   lastName: string;
+  licenceNumber: string;
   photoUrl: string;
   gender?: string;
   birthDate: Date;
@@ -24,6 +25,7 @@ export function parseRiderToDTO(rider) {
   return {
     firstName: rider.firstName,
     lastName: rider.lastName,
+    licenceNumber: rider.licenceNumber,
     birthDate: rider.birthDate,
     bio: rider.bio,
     nationality: rider.nationality,

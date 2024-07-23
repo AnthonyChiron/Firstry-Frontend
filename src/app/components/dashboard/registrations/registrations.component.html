@@ -4,13 +4,15 @@
     *ngIf="contest.categories && contest.categories.length > 0"
   >
     <div class="flexRow gap30 alignCenter">
-      <dropdown
-        class="width15"
-        label="Catégorie"
-        [options]="categoriesDdOptions"
-        (selected)="selectCategory($event.value)"
-        [value]="selectedCategory._id"
-      ></dropdown>
+      <div class="flexColumn gap10">
+        <dropdown
+          class="width15"
+          label="Catégorie"
+          [options]="categoriesDdOptions"
+          (selected)="selectCategory($event.value)"
+          [value]="selectedCategory._id"
+        ></dropdown>
+      </div>
       <div class="flexRow gap20">
         <div class="flexColumn">
           <h3>Nombre d'inscrits</h3>
@@ -18,12 +20,30 @@
             {{ validatedRegistrations.length + pendingRegistrations.length }}
           </h2>
         </div>
-        <div class="flexColumn">
+        <div class="flexColumn" *ngIf="!selectedCategory.isFederal">
           <h3>Nombre d'inscrits max</h3>
           <h2>
             {{ selectedCategory.maxRiders }}
           </h2>
         </div>
+        <div class="flexColumn" *ngIf="contest.isFederal">
+          <h3>Catégorie fédérale</h3>
+          <div
+            *ngIf="selectedCategory.isFederal"
+            class="flexRow alignCenter gap10"
+          >
+            <div class="greenDot"></div>
+            <h2>Oui</h2>
+          </div>
+          <div
+            *ngIf="!selectedCategory.isFederal"
+            class="flexRow alignCenter gap10"
+          >
+            <div class="redDot"></div>
+            <h2>Non</h2>
+          </div>
+        </div>
+
         <!-- <div class="flexColumn">
           <label>Prévision du revenu total</label>
           <p>
@@ -32,7 +52,7 @@
         </div> -->
       </div>
     </div>
-    <div class="flexColumn gap10">
+    <div class="flexColumn gap10" *ngIf="!selectedCategory.isFederal">
       <h3 class="flexRow alignCenter gap10">
         <div class="yellowDot"></div>
         Inscriptions en attente
@@ -47,16 +67,18 @@
 
     <div class="flexColumn gap10">
       <h3 class="flexRow alignCenter gap10">
-        <div class="greenDot"></div>
-        Inscriptions validées
+        {{
+          !selectedCategory.isFederal ? "Inscriptions validées" : "Inscriptions"
+        }}
       </h3>
       <registrations-table
         [header]="false"
         [registrations]="validatedRegistrations"
+        [isFederal]="selectedCategory.isFederal"
         (refundRegistration)="actionRider($event, 'refund')"
       ></registrations-table>
     </div>
-    <div class="flexColumn gap10">
+    <div class="flexColumn gap10" *ngIf="!selectedCategory.isFederal">
       <h3 class="flexRow alignCenter gap10">
         <div class="redDot"></div>
         Inscriptions refusées et remboursées
