@@ -13,34 +13,36 @@
           [value]="selectedCategory._id"
         ></dropdown>
       </div>
-      <div class="flexRow gap20">
-        <div class="flexColumn">
-          <h3>Nombre d'inscrits</h3>
-          <h2>
-            {{ validatedRegistrations.length + pendingRegistrations.length }}
-          </h2>
-        </div>
-        <div class="flexColumn" *ngIf="!selectedCategory.isFederal">
-          <h3>Nombre d'inscrits max</h3>
-          <h2>
-            {{ selectedCategory.maxRiders }}
-          </h2>
-        </div>
-        <div class="flexColumn" *ngIf="contest.isFederal">
-          <h3>Catégorie fédérale</h3>
-          <div
-            *ngIf="selectedCategory.isFederal"
-            class="flexRow alignCenter gap10"
-          >
-            <div class="greenDot"></div>
-            <h2>Oui</h2>
+      <div class="flexRow fullWidth spaceBetween">
+        <div class="flexRow gap20">
+          <div class="flexColumn">
+            <h3>Nombre d'inscrits</h3>
+            <h2>
+              {{ validatedRegistrations.length + pendingRegistrations.length }}
+            </h2>
           </div>
-          <div
-            *ngIf="!selectedCategory.isFederal"
-            class="flexRow alignCenter gap10"
-          >
-            <div class="redDot"></div>
-            <h2>Non</h2>
+          <div class="flexColumn" *ngIf="!selectedCategory.isFederal">
+            <h3>Nombre d'inscrits max</h3>
+            <h2>
+              {{ selectedCategory.maxRiders }}
+            </h2>
+          </div>
+          <div class="flexColumn" *ngIf="contest.isFederal">
+            <h3>Catégorie fédérale</h3>
+            <div
+              *ngIf="selectedCategory.isFederal"
+              class="flexRow alignCenter gap10"
+            >
+              <div class="greenDot"></div>
+              <h2>Oui</h2>
+            </div>
+            <div
+              *ngIf="!selectedCategory.isFederal"
+              class="flexRow alignCenter gap10"
+            >
+              <div class="redDot"></div>
+              <h2>Non</h2>
+            </div>
           </div>
         </div>
 

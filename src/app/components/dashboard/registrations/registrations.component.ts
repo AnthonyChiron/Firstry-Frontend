@@ -62,6 +62,7 @@ export class RegistrationsComponent implements OnInit {
   }
 
   getRegistrations() {
+    console.log(this.registrations);
     this.selectedRegistrations = this.registrations.filter(
       (registration) => registration.category._id === this.selectedCategory._id
     );

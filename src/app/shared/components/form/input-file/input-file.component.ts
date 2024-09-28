@@ -10,6 +10,7 @@ export class InputFileComponent {
   @Input() placeholder: string = 'Choisir un nouveau fichier';
   @Input() label: string = '';
   @Input() labelFile: string = 'Fichier actuel';
+  @Input() acceptedFiles: string = '.pdf';
   @Output() fileSelected: EventEmitter<File> = new EventEmitter<File>();
 
   constructor() {}

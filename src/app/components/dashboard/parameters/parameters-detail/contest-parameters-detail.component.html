@@ -8,9 +8,25 @@
   <div class="flexCardColumn">
     <contest-infos-card [contest]="contest"></contest-infos-card>
     <contest-socials-card [contest]="contest"></contest-socials-card>
-    <card title="Exportation de données"
-      ><btn label="Export riders" (click)="exportRiders()"></btn
-    ></card>
+    <card title="Gestion des données">
+      <div class="flexRow">
+        <div class="flexColumn">
+          <h3>Exporter les données</h3>
+          <btn label="Cliquer pour exporter" (click)="exportRiders()"></btn>
+        </div>
+        <div class="flexColumn">
+          <h3>Importer des riders</h3>
+          <input-file
+            placeholder="Choisir un fichier de rider (.xlsx)"
+            acceptedFiles=".xlsx"
+            (fileSelected)="importRiders($event)"
+          ></input-file>
+        </div>
+        <div class="flexColumn">
+          <btn label="RESET" type="danger" (click)="reset()"></btn>
+        </div>
+      </div>
+    </card>
   </div>
 
   <div class="flexCardColumn">
