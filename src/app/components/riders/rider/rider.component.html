@@ -20,7 +20,15 @@
           class="asset"
           src="../../../../assets/riders/Inscription_cote_Fiche-rider.svg"
         />
-        <img class="photo" [src]="rider.photoUrl" alt="" />
+        <img
+          class="photo"
+          [src]="
+            rider.photoUrl
+              ? rider.photoUrl
+              : '../../../../../assets/riders/pnj.webp'
+          "
+          alt=""
+        />
         <img
           class="logo"
           src="../../../../assets/logos/Globe_Blanc.png"
@@ -63,7 +71,7 @@
                 <label>Discipline</label>
                 <p>{{ rider.sports.join(", ") | Capitalize }}</p>
               </div>
-              <div class="flex1 label">
+              <div *ngIf="rider.nationality" class="flex1 label">
                 <label>Nationnalité</label>
                 <div class="flexRow flexRow alignCenter">
                   <p>{{ rider.nationality.name.common }}</p>

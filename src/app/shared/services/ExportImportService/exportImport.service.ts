@@ -21,4 +21,18 @@ export class ExportImportService extends BaseHttpService {
       responseType: 'blob',
     });
   }
+
+  importRiders(event: File, contestId: string) {
+    const formData = new FormData();
+    formData.append('file', event);
+    console.log(event);
+    return this.http.post(
+      `${this.baseUrl}import/importRidersOnContest/` + contestId,
+      formData
+    );
+  }
+
+  reset() {
+    return this.http.get(`${this.baseUrl}import/reset`);
+  }
 }

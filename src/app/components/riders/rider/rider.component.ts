@@ -29,6 +29,7 @@ export class RiderComponent implements OnInit {
     this.isLoading = true;
     this.activatedRoute.params.subscribe((params) => {
       this.ridersService.getById(params['id']).subscribe((rider) => {
+        console.log(rider);
         this.rider = rider;
         this.isLoading = false;
       });

@@ -59,4 +59,15 @@ export class ContestParametersDetailComponent implements OnInit {
       URL.revokeObjectURL(objectUrl);
     });
   }
+
+  importRiders(file) {
+    console.log(file);
+    this._exportImportService
+      .importRiders(file, this.contest._id)
+      .subscribe((response) => {});
+  }
+
+  reset() {
+    this._exportImportService.reset().subscribe((response) => {});
+  }
 }

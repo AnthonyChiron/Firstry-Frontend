@@ -16,7 +16,7 @@
         name="file"
         class="btn"
         type="file"
-        accept=".pdf"
+        accept="{{ acceptedFiles }}"
         (change)="onFileChange($event)"
       />
     </label>

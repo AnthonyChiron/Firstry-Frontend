@@ -18,7 +18,7 @@
         {{ registration.rider.lastName | uppercase }}
         {{ registration.rider.firstName | Capitalize }}
       </p>
-      <p class="width15">
+      <p class="width15" *ngIf="registration.user">
         {{ registration.user.email }}
       </p>
       <p class="width15">
