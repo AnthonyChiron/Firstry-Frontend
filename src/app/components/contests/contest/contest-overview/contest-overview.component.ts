@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContestModel, parseContestModel } from 'src/app/models/contest.model';
 import { ContestsService } from 'src/app/shared/data/ContestsService/contests.service';
 import { ScreenSizeService } from 'src/app/shared/services/screenSize/screen-size.service';
@@ -17,7 +17,8 @@ export class ContestOverviewComponent implements OnInit {
   constructor(
     private _screenSizeService: ScreenSizeService,
     private _activatedRoute: ActivatedRoute,
-    private _contestService: ContestsService
+    private _contestService: ContestsService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,5 +33,14 @@ export class ContestOverviewComponent implements OnInit {
         });
       }
     });
+  }
+
+  goTo(): void {
+    console.log(this.contest.federalRegistrationLink);
+    if (this.contest.isFederal)
+      window.open(this.contest.federalRegistrationLink, '_blank');
+    else {
+      this._router.navigate(['/contests', this.contest._id, 'register']);
+    }
   }
 }

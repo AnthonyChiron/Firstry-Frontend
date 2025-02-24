@@ -26,6 +26,20 @@
           icon="fa-solid fa-download"
           (click)="downloadSpeakerPaper()"
         ></btn>
+        <btn
+          label="Supprimer les poules"
+          type="danger"
+          (click)="showDeleteModal = true"
+        ></btn>
+        <confirmation-modal
+          [isVisible]="showDeleteModal"
+          title="Danger zone !"
+          message="
+    Voulez-vous vraiment supprimer les poules ? Supprimer les poules supprimera également les résultats de ces poules !!
+  "
+          (confirmed)="onDeleteConfirmed()"
+          (cancelled)="onDeleteCanceled()"
+        ></confirmation-modal>
       </div>
 
       <div

@@ -44,6 +44,8 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
   stepsOptions: any[] = [];
   displayStepDropdown: boolean = false;
 
+  showDeleteModal: boolean = false;
+
   missing: any[] = [];
   pools: any[][] = [];
   poolsIds = [];
@@ -321,5 +323,20 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
       this.originalPoolsEntries,
       this.category.name
     );
+  }
+
+  onDeleteConfirmed() {
+    this.showDeleteModal = false;
+    this.isLoading = true;
+    this._poolsService
+      .deletePoolsByStepId(this.currentStep._id)
+      .subscribe((response) => {
+        this.isLoading = false;
+        this.getPoolFromDb();
+      });
+  }
+
+  onDeleteCanceled() {
+    this.showDeleteModal = false;
   }
 }

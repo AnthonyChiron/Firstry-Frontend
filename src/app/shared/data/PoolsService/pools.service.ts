@@ -70,4 +70,8 @@ export class PoolsService extends CrudService<PoolModel> {
       {}
     );
   }
+
+  deletePoolsByStepId(stepId: string) {
+    return this.http.delete(`${this.baseUrl}/deletePoolsByStepId/${stepId}`);
+  }
 }

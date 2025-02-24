@@ -44,6 +44,7 @@ export class FormContestInfosService extends FormUtilityService {
         registrationEndDate: [contest.registrationEndDate, Validators.required],
         location: [contest.location, Validators.required],
         enablePayment: [true, Validators.required],
+        federalRegistrationLink: [contest.federalRegistrationLink],
       },
       { validators: [this.dateOrderValidator] }
     );
@@ -58,6 +59,7 @@ export class FormContestInfosService extends FormUtilityService {
       registrationEndDate: contest.registrationEndDate,
       sports: contest.sports,
       location: contest.location,
+      federalRegistrationLink: contest.federalRegistrationLink,
       enablePayment: true,
     });
 

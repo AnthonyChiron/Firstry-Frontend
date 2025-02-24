@@ -44,8 +44,7 @@
             class="flex1 cursorPointer"
             size="s"
             color="black"
-            routerLink="/contests/{{ contest._id }}/register"
-            *ngIf="contest.registrationEndDate > today"
+            (click)="goTo()"
           >
             <div class="inscriptionCard flexRow alignCenter gap10">
               <h2>
