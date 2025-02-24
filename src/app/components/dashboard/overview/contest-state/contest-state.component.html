@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="flexRow alignCenter gap10">
+    <div class="flexRow alignCenter gap10" *ngIf="!contest.isFederal">
       <h3>Status de votre compte stripe :</h3>
       <div *ngIf="isStripeAccountUsable" class="flexRow alignCenter gap10">
         <p>Valide</p>

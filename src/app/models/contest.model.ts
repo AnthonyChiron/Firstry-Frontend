@@ -17,6 +17,7 @@ export interface ContestModel extends GenericModel {
   isFederal: boolean;
   rulesFileUrl: string;
   organizer: OrganizerModel;
+  federalRegistrationLink: string;
   branding: {
     logo: string;
     banner: string;
@@ -46,6 +47,7 @@ export function parseContestModel(contest): ContestModel {
     isPublished: contest.isPublished,
     parentalAuthorizationFileUrl: contest.parentalAuthorizationFileUrl,
     isFederal: contest.isFederal,
+    federalRegistrationLink: contest.federalRegistrationLink,
     rulesFileUrl: contest.rulesFileUrl,
     branding: contest.branding,
     socials: contest.socials,

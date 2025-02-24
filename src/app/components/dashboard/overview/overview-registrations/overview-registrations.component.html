@@ -9,9 +9,10 @@
         icon="fa-solid fa-hourglass-half"
       ></btn>
       <progress-bar
+        *ngIf="!contest.isFederal"
         [percentage]="100 / (nbMaxRegistrations / registrations.length)"
       ></progress-bar>
-      <p class="max">Max {{ nbMaxRegistrations }}</p>
+      <p *ngIf="!contest.isFederal" class="max">Max {{ nbMaxRegistrations }}</p>
     </div>
   </div>
 </card>

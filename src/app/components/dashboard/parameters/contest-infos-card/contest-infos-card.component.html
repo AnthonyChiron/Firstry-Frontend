@@ -74,6 +74,13 @@
       label="Inscription payante ?"
       formControlName="enablePayment"
     ></slide-input> -->
+    <input-text
+      placeholder="https://www.example.com"
+      label="Lien d'inscription"
+      formControlName="federalRegistrationLink"
+      [edit]="edit"
+      [error]="_fus.isFieldInvalid('federalRegistrationLink')"
+    ></input-text>
     <note
       *ngIf="form.errors?.dateOrderInvalid && (form.submitted || form.dirty)"
       type="errorLabel"

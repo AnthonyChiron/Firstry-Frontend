@@ -43,7 +43,7 @@ export class ContestStateComponent implements OnInit, OnChanges {
 
     if (this.contest) {
       this.nbDaysLeft = differenceInDays(
-        new Date(this.contest.registrationEndDate),
+        new Date(this.contest.startDate),
         new Date()
       );
     }
@@ -52,7 +52,7 @@ export class ContestStateComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     if (this.contest) {
       this.nbDaysLeft = differenceInDays(
-        new Date(this.contest.registrationEndDate),
+        new Date(this.contest.startDate),
         new Date()
       );
     }
