@@ -178,4 +178,9 @@ export class ContestRegisterComponent implements OnInit, OnDestroy {
       this.isLoginModalOpen = true;
     }
   }
+
+  goTo(): void {
+    if (this.contest.isFederal)
+      window.open(this.contest.federalRegistrationLink, '_blank');
+  }
 }

@@ -45,6 +45,7 @@
             size="s"
             color="black"
             (click)="goTo()"
+            *ngIf="contest.registrationEndDate > today"
           >
             <div class="inscriptionCard flexRow alignCenter gap10">
               <h2>
