@@ -36,7 +36,6 @@ export class ContestOverviewComponent implements OnInit {
   }
 
   goTo(): void {
-    console.log(this.contest.federalRegistrationLink);
     if (this.contest.isFederal)
       window.open(this.contest.federalRegistrationLink, '_blank');
     else {

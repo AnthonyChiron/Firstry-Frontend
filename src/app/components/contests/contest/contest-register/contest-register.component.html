@@ -1,6 +1,10 @@
 <div
   *ngIf="
-    contest && !isPaymentFailed && !isPaymentSucceeded && !isAlreadyRegistered
+    contest &&
+    !isPaymentFailed &&
+    !isPaymentSucceeded &&
+    !isAlreadyRegistered &&
+    !contest.isFederal
   "
   [class]="isMobile ? 'flexCardColumn' : 'flexCardRow'"
 >
@@ -236,6 +240,25 @@
         label="Voir les catégories"
         (click)="isAlreadyRegistered = false"
       ></btn>
+    </div>
+  </div>
+</card>
+<card *ngIf="contest && contest.isFederal">
+  <div class="flexColumn gap30">
+    <div class="flexColumn alignCenter gap10">
+      <h2>
+        Les inscriptions au contest {{ contest.name }} ne sont pas sur Firstry !
+      </h2>
+      <h3>Vous pouvez vous inscrire au cliquant sur le bouton ci-dessous</h3>
+      <div class="flexRow gap10">
+        <btn label="Lien vers le site d'inscription" (click)="goTo()"></btn>
+      </div>
+    </div>
+    <div class="flexColumn alignCenter gap10">
+      <p>
+        Pas de panique ! Vous retrouverez toutes les informations et tous les
+        résultats du contest sur Firstry.
+      </p>
     </div>
   </div>
 </card>
