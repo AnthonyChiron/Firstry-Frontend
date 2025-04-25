@@ -213,13 +213,16 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
   }
 
   formatPoolsEntriesInDoubleTable(pools: any[]) {
-    console.log('pools', pools);
     return pools.reduce((acc, pool) => {
+      if (!pool || !pool.poolNumber || !pool.registration) {
+        console.warn('⚠️ Pool invalide ignorée :', pool);
+        return acc;
+      }
+
       const poolNumber = pool.poolNumber - 1;
-      if (pool.registration) {
-        acc[poolNumber].push(pool.registration);
-      } else {
-        console.warn('⚠️ Pool sans registration :', pool);
+
+      if (!acc[poolNumber]) {
+        acc[poolNumber] = [];
       }
 
       acc[poolNumber].push(pool.registration);
