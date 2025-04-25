@@ -213,9 +213,15 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
   }
 
   formatPoolsEntriesInDoubleTable(pools: any[]) {
+    console.log('pools', pools);
     return pools.reduce((acc, pool) => {
       const poolNumber = pool.poolNumber - 1;
-      if (!acc[poolNumber]) acc[poolNumber] = [];
+      if (pool.registration) {
+        acc[poolNumber].push(pool.registration);
+      } else {
+        console.warn('⚠️ Pool sans registration :', pool);
+      }
+
       acc[poolNumber].push(pool.registration);
 
       return acc;
@@ -226,6 +232,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     if (pools.length === 0) return;
     this.missing = this.originalPoolsEntries.filter((pool) => pool.isMissing);
     this.missing = this.missing.map((pool) => pool.registration);
+    console.log('Missing:', this.missing);
 
     this.pools = this.formatPoolsEntriesInDoubleTable(
       pools.filter((pool) => pool.isMissing === false)
