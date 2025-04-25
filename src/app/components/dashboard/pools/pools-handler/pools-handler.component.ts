@@ -233,8 +233,11 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
 
   formatPoolsEntriesToRegistrations(pools) {
     if (pools.length === 0) return;
-    this.missing = this.originalPoolsEntries.filter((pool) => pool.isMissing);
-    this.missing = this.missing.map((pool) => pool.registration);
+    this.missing = this.originalPoolsEntries
+      .filter(
+        (pool) => pool.isMissing && pool.registration && pool.registration.rider
+      )
+      .map((pool) => pool.registration);
     console.log('Missing:', this.missing);
 
     this.pools = this.formatPoolsEntriesInDoubleTable(
