@@ -20,7 +20,10 @@
       class="section"
       *ngIf="currentMonthContests && currentMonthContests.length > 0"
     >
-      <h2>Au mois de mars<i class="fa-solid fa-chevron-down fa-2xs"></i></h2>
+      <h2>
+        Au mois de {{ currentMonth }}
+        <i class="fa-solid fa-chevron-down fa-2xs"></i>
+      </h2>
       <div class="flexCardRow flexWrap spaceBetween">
         <contest-card
           class="contest"
@@ -31,6 +34,7 @@
         </contest-card>
       </div>
     </div>
+
     <div
       class="section"
       *ngIf="nextMonthContests && nextMonthContests.length > 0"
