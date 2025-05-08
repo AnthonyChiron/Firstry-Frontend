@@ -31,21 +31,21 @@ export class ContestsComponent implements OnInit {
   currentMonthContests: ContestModel[] = null;
   previousContests: ContestModel[] = null;
   today: Date;
+  currentMonth: string;
 
   ngOnInit(): void {
     this.today = new Date();
+    this.currentMonth = this.today.toLocaleString('default', { month: 'long' }); // Nom du mois actuel
 
     this.contestsService.getAll().subscribe((data) => {
       this.contests = [];
       if (data) {
         data.forEach((contest) => {
           contest = parseContestModel(contest);
-
           if (contest.isPublished) this.contests.push(contest);
         });
         console.log(this.contests);
 
-        this.initNextWeekContests();
         this.initCurrentMonthContests();
         this.initNextMonthContests();
         this.initComingSoonContests();
@@ -53,24 +53,6 @@ export class ContestsComponent implements OnInit {
         console.log(this.previousContests);
       }
     });
-  }
-
-  initNextWeekContests() {
-    const dayOfWeek = this.today.getDay(); // Dimanche = 0, Lundi = 1, etc.
-    const daysUntilNextMonday = (7 - dayOfWeek + 1) % 7;
-    const nextMonday = new Date(
-      new Date(this.today).setDate(this.today.getDate() + daysUntilNextMonday)
-    );
-
-    // Le dernier jour de la semaine prochaine (dimanche)
-    const nextSunday = new Date(
-      new Date(nextMonday).setDate(nextMonday.getDate() + 6)
-    );
-
-    this.nextWeekContests = this.contests.filter(
-      (contest) =>
-        contest.startDate >= nextMonday && contest.startDate <= nextSunday
-    );
   }
 
   initCurrentMonthContests() {
