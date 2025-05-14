@@ -102,7 +102,7 @@
                   ></info-tag>
                 </div>
                 <div class="sep"></div>
-                <div class="format flex1">
+                <div class="format flex1" *ngIf="step.rules.stepFormats">
                   <h4 class="textCenter">Format</h4>
                   <div
                     *ngFor="let stepFormat of step.rules.stepFormats"
