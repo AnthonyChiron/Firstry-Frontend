@@ -295,7 +295,7 @@ export class PoolsHandlerComponent implements OnInit, OnChanges {
     const qualifStep = this.category.steps.find(
       (step) => step.name === 'QUALIFICATION'
     );
-    if (qualifStep.isResultPublished === false)
+    if (qualifStep.isResultPublished && qualifStep.isResultPublished === false)
       this.displayStepDropdown = false;
     return (this.displayStepDropdown = true);
   }
