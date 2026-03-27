@@ -177,6 +177,7 @@ export class LiveOverviewComponent implements OnInit {
         this.currentPoolNumber = 1;
 
         if (this.currentPools.length > 0) {
+          this.currentRiderNumber = 1;
           this.currentRider = this.currentPools[0][0];
 
           this._liveService.updateNbPools(this.currentPools.length);

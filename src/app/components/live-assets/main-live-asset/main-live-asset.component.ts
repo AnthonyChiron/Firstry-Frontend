@@ -1,15 +1,59 @@
-import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  animate,
+  query,
+  stagger,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { LiveService } from 'src/app/shared/services/LiveService/live.service';
-import { io } from 'socket.io-client';
 import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-main-live-asset',
   templateUrl: './main-live-asset.component.html',
   styleUrls: ['./main-live-asset.component.scss'],
+  animations: [
+    trigger('slideIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(60px)' }),
+        animate(
+          '420ms cubic-bezier(0.22, 1, 0.36, 1)',
+          style({ opacity: 1, transform: 'translateX(0)' }),
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '280ms cubic-bezier(0.4, 0, 1, 1)',
+          style({ opacity: 0, transform: 'translateX(40px)' }),
+        ),
+      ]),
+    ]),
+    // Déclenché par la longueur de la liste uniquement : stagger à l’arrivée d’une poule,
+    // pas au changement de rider (géré par le surlignage glissant + CSS).
+    trigger('listAnimation', [
+      transition('* => *', [
+        query(
+          ':enter',
+          [
+            style({ opacity: 0, transform: 'translateY(8px)' }),
+            stagger(45, [
+              animate(
+                '220ms ease-out',
+                style({ opacity: 1, transform: 'translateY(0)' }),
+              ),
+            ]),
+          ],
+          { optional: true },
+        ),
+      ]),
+    ]),
+  ],
 })
-export class MainLiveAssetComponent implements OnDestroy {
+export class MainLiveAssetComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
   currentCategory: any = '';
   currentStep: any = '';
@@ -20,12 +64,31 @@ export class MainLiveAssetComponent implements OnDestroy {
   currentTimer: any = 40;
   nbPools: any = 1;
   isWaitingDisplayed: boolean = true;
-  isMainDisplayed: boolean = false;
+  /**
+   * Route : `/live-assets`. Sans événement socket `isMainAssetDisplayed`, le template
+   * `*ngIf="isMainDisplayed"` masque tout le bloc (liste riders, timer). En prod, false
+   * jusqu’au toggle depuis la vue Live ; en local, `environment.liveAssetsDefaultMainVisible`.
+   */
+  isMainDisplayed: boolean = environment.liveAssetsDefaultMainVisible ?? false;
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
   config: CountdownConfig = { leftTime: this.currentTimer, format: 'mm:ss' };
 
   constructor(private _liveService: LiveService) {}
+
+  trackByRider(_index: number, rider: any): string {
+    return rider?._id ?? String(_index);
+  }
+
+  /** Index du rider courant dans `currentRiders` (surlignage glissant). -1 si introuvable. */
+  get activeRiderIndex(): number {
+    if (!this.currentRiders?.length || !this.currentRider?._id) {
+      return -1;
+    }
+    return this.currentRiders.findIndex(
+      (r: any) => r?._id === this.currentRider._id,
+    );
+  }
 
   ngOnInit(): void {
     this._liveService.connect();

@@ -1,5 +1,9 @@
-export const environment = {
+import type { FirstryEnvironment } from './environment.model';
+
+export const environment: FirstryEnvironment = {
   production: false,
+  /** Si true, l’overlay /live-assets affiche le bloc principal (noms, timer) sans attendre le toggle live. */
+  liveAssetsDefaultMainVisible: true,
   backendUrl: 'http://localhost:3001/api/',
   socketIOUrl: 'http://localhost:3001/',
   stripe_public_key:

@@ -1,5 +1,8 @@
-export const environment = {
+import type { FirstryEnvironment } from './environment.model';
+
+export const environment: FirstryEnvironment = {
   production: false,
+  liveAssetsDefaultMainVisible: true,
   backendUrl: 'https://firstry.fr:3002/api/',
   socketIOUrl: 'https://firstry.fr:3002/',
   stripe_public_key:

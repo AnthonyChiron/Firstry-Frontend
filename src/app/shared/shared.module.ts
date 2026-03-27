@@ -53,7 +53,6 @@ import { AgePipe } from './pipe/age.pipe';
     ChipsGroupComponent,
     LoaderComponent,
     NoteComponent,
-    CapitalizePipe,
     FormatDateJJMMDirective,
     QuadrillageComponent,
     CardComponent,
@@ -76,6 +75,7 @@ import { AgePipe } from './pipe/age.pipe';
   ],
   imports: [
     CommonModule,
+    CapitalizePipe,
     ButtonModule,
     CardModule,
     CheckboxModule,

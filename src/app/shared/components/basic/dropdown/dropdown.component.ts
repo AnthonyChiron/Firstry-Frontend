@@ -1,6 +1,7 @@
 import {
   Component,
   forwardRef,
+  HostBinding,
   HostListener,
   Input,
   ElementRef,
@@ -37,6 +38,12 @@ export class DropdownComponent
   selectedOption: any = { label: '', value: '' };
 
   @Input() value: any;
+
+  /** Permet à une règle globale (.card:has(.dropdown-open)) d’élever toute la carte au-dessus des cartes sœurs. */
+  @HostBinding('class.dropdown-open')
+  get hostDropdownOpen(): boolean {
+    return this.showDropdown;
+  }
 
   private onChange: Function = (value: any) => {};
   onTouched: () => void = () => {};

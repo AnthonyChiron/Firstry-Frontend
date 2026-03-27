@@ -91,6 +91,24 @@
       class="flexColumn gap20"
     >
       <div
+        *ngIf="currentPoolNumber > 0"
+        class="flexRow alignCenter gap10"
+      >
+        <btn
+          label="Rider précédent"
+          icon="fa-solid fa-chevron-left"
+          type="transparent"
+          (click)="prevRider()"
+        ></btn>
+        <btn
+          label="Rider suivant"
+          icon="fa-solid fa-chevron-right"
+          iconPos="right"
+          type="transparent"
+          (click)="nextRider()"
+        ></btn>
+      </div>
+      <div
         [class]="
           'flexColumn pool ' + (currentPoolNumber == i + 1 ? 'active' : '')
         "
